@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png">
 <meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png">
-<meta property="og:updated_time" content="2017-10-18T14:32:33.225Z">
+<meta property="og:updated_time" content="2017-10-18T14:35:01.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rosetta蛋白蛋白对接">
 <meta name="twitter:description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
@@ -228,13 +228,13 @@
 <p>&nbsp;</p>
 <p>当然可以附加<code>ignore_unrecognized_res</code>在设置中从而删除PDB中的水和配体（当然也可以手动删除）</p>
 <h5 id="局部对接"><a href="#局部对接" class="headerlink" title="局部对接"></a>局部对接</h5><p>Rosetta在局部对接中有更加精确的结果，<strong>顾名思义，局部对接就是假设已知两个蛋白的结合（口袋）区域</strong>。首先我们需要将两个蛋白结合口袋大致的对着对方约10埃的位置，如下图:</p>
-<p>[<figure class="image-bubble">
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png)" title="">
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt="" title="">
                 </div>
-                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png)</div>
-            </figure></p>
+                <div class="image-caption"></div>
+            </figure>
 <p>我们进行如下的设置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-partners A_B</div><div class="line">-dock_pert 3 8</div></pre></td></tr></table></figure>
 <p>以上这两个设置分别表示i):链B对接进入链A； ii）在开始单独的模拟之前随机的将配体（链B）进行一个3埃的平移和8度的旋转。<br>若为对接的多链蛋白（如一个蛋白为链A和B，一个为链L和H）<br>那么设置为<code>-partners LH_AB</code>即可。若我们同时想和1v74.pdb进行计算比较。<br>完整的参数为：</p>
@@ -280,7 +280,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T14:32:33.225Z" itemprop="dateUpdated">2017-10-18 22:32:33</time>
+    Last updated: <time datetime="2017-10-18T14:35:01.866Z" itemprop="dateUpdated">2017-10-18 22:35:01</time>
 </span><br>
 
 
