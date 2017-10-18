@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>[转载]linux screen 命令详解 | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转载]linux screen 命令详解">
+<meta property="og:url" content="http://kangsgo.com/376.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转载]linux screen 命令详解">
+<meta name="twitter:description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-e8-bd-ac-e8-bd-bdlinux-screen-e5-91-bd-e4-bb-a4-e8-af-a6-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/376.html" class="article-date">
+  <time datetime="2016-05-10T04:08:36.000Z" itemprop="datePublished">2016-05-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [转载]linux screen 命令详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：<a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="external">Tang的博文</a>非常不错，所以转载给自己留着备用</p>
+<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，因为它们执行的时间太长了。必须等待它们执行完毕，在此期间不能关掉窗口或者断开连接，否则这个任务就会被杀掉，一切半途而废了。</p>
+<h2 id="二、简介"><a href="#二、简介" class="headerlink" title="二、简介"></a>二、简介</h2><p>GNU Screen是一款由GNU计划开发的用于命令行终端切换的自由软件。用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。</p>
+<p>GNU Screen可以看作是窗口管理器的命令行界面版本。它提供了统一的管理多个会话的界面和相应的功能。</p>
+<h3 id="会话恢复"><a href="#会话恢复" class="headerlink" title="会话恢复"></a>会话恢复</h3><p>只要Screen本身没有终止，在其内部运行的会话都可以恢复。这一点对于远程登录的用户特别有用——即使网络连接中断，用户也不会失去对已经打开的命令行会话的控制。只要再次登录到主机上执行screen -r就可以恢复会话的运行。同样在暂时离开的时候，也可以执行分离命令detach，在保证里面的程序正常运行的情况下让Screen挂起（切换到后台）。这一点和图形界面下的VNC很相似。</p>
+<h3 id="多窗口"><a href="#多窗口" class="headerlink" title="多窗口"></a>多窗口</h3><p>在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。Screen实现了基本的文本操作，如复制粘贴等；还提供了类似滚动条的功能，可以查看窗口状况的历史记录。窗口还可以被分区和命名，还可以监视后台窗口的活动。<br>会话共享<br>Screen可以让一个或多个用户从不同终端多次登录一个会话，并共享会话的所有特性（比如可以看到完全相同的输出）。它同时提供了窗口访问权限的机制，可以对窗口进行密码保护。<br>GNU’s Screen 官方站点：<a href="http://www.gnu.org/software/screen/" target="_blank" rel="external">http://www.gnu.org/software/screen/</a></p>
+<h2 id="三、语法"><a href="#三、语法" class="headerlink" title="三、语法"></a>三、语法</h2><h1 id="screen-AmRvx-ls-wipe-d-lt-作业名称-gt-h-lt-行数-gt-r-lt-作业名称-gt-s-S-lt-作业名称-gt"><a href="#screen-AmRvx-ls-wipe-d-lt-作业名称-gt-h-lt-行数-gt-r-lt-作业名称-gt-s-S-lt-作业名称-gt" class="headerlink" title="screen [-AmRvx -ls -wipe][-d &lt;作业名称&gt;][-h &lt;行数&gt;][-r &lt;作业名称&gt;][-s ][-S &lt;作业名称&gt;]"></a>screen [-AmRvx -ls -wipe][-d &lt;作业名称&gt;][-h &lt;行数&gt;][-r &lt;作业名称&gt;][-s ][-S &lt;作业名称&gt;]</h1><p>参数说明</p>
+<p>-A 　将所有的视窗都调整为目前终端机的大小。<br>-d &lt;作业名称&gt; 　将指定的screen作业离线。<br>-h &lt;行数&gt; 　指定视窗的缓冲区行数。<br>-m 　即使目前已在作业中的screen作业，仍强制建立新的screen作业。<br>-r &lt;作业名称&gt; 　恢复离线的screen作业。<br>-R 　先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。<br>-s 　指定建立新视窗时，所要执行的shell。<br>-S &lt;作业名称&gt; 　指定screen作业的名称。<br>-v 　显示版本信息。<br>-x 　恢复之前离线的screen作业。<br>-ls或–list 　显示目前所有的screen作业。<br>-wipe 　检查目前所有的screen作业，并删除已经无法使用的screen作业。</p>
+<h2 id="四、常用screen参数"><a href="#四、常用screen参数" class="headerlink" title="四、常用screen参数"></a>四、常用screen参数</h2><p>screen -S yourname -&gt; 新建一个叫yourname的session<br>screen -ls -&gt; 列出当前所有的session<br>screen -r yourname -&gt; 回到yourname这个session<br>screen -d yourname -&gt; 远程detach某个session<br>screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</p>
+<p>在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。<br>C-a ? -&gt; 显示所有键绑定信息<br>C-a c -&gt; 创建一个新的运行shell的窗口并切换到该窗口<br>C-a n -&gt; Next，切换到下一个 window<br>C-a p -&gt; Previous，切换到前一个 window<br>C-a 0..9 -&gt; 切换到第 0..9 个 window<br>Ctrl+a [Space] -&gt; 由视窗0循序切换到视窗9<br>C-a C-a -&gt; 在两个最近使用的 window 间切换<br>C-a x -&gt; 锁住当前的 window，需用用户密码解锁<br>C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里，每个 window 内运行的 process (无论是前台/后台)都在继续执行，即使 logout 也不影响。<br>C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令则可回去。<br>C-a w -&gt; 显示所有窗口列表<br>C-a t -&gt; Time，显示当前时间，和系统的 load<br>C-a k -&gt; kill window，强行关闭当前的 window<br>C-a [ -&gt; 进入 copy mode，在 copy mode 下可以回滚、搜索、复制就像用使用 vi 一样<br>C-b Backward，PageUp<br>C-f Forward，PageDown<br>H(大写) High，将光标移至左上角<br>L Low，将光标移至左下角<br>0 移到行首<br>$ 行末<br>w forward one word，以字为单位往前移<br>b backward one word，以字为单位往后移<br>Space 第一次按为标记区起点，第二次按为终点<br>Esc 结束 copy mode<br>C-a ] -&gt; Paste，把刚刚在 copy mode 选定的内容贴上</p>
+<h2 id="五、使用-screen"><a href="#五、使用-screen" class="headerlink" title="五、使用 screen"></a>五、使用 screen</h2><h3 id="5-1-安装screen"><a href="#5-1-安装screen" class="headerlink" title="5.1 安装screen"></a>5.1 安装screen</h3><p>流行的Linux发行版（例如Red Hat Enterprise Linux）通常会自带screen实用程序，如果没有的话，可以从GNU screen的官方网站下载。</p>
+<p>[root@TS-DEV ~]# yum install screen<br>[root@TS-DEV ~]# rpm -qa|grep screen<br>screen-4.0.3-4.el5<br>[root@TS-DEV ~]#</p>
+<h3 id="5-2-创建一个新的窗口"><a href="#5-2-创建一个新的窗口" class="headerlink" title="5.2 创建一个新的窗口"></a>5.2 创建一个新的窗口</h3><p>安装完成后，直接敲命令screen就可以启动它。但是这样启动的screen会话没有名字，实践上推荐为每个screen会话取一个名字，方便分辨：</p>
+<p>[root@TS-DEV ~]# screen -S david<br>screen启动后，会创建第一个窗口，也就是窗口No. 0，并在其中打开一个系统默认的shell，一般都会是bash。所以你敲入命令screen之后，会立刻又返回到命令提示符，仿佛什么也没有发生似的，其实你已经进入Screen的世界了。当然，也可以在screen命令之后加入你喜欢的参数，使之直接打开你指定的程序，例如：</p>
+<p>[root@TS-DEV ~]# screen vi david.txt<br>screen创建一个执行vi david.txt的单窗口会话，退出vi 将退出该窗口/会话。</p>
+<h3 id="5-3-查看窗口和窗口名称"><a href="#5-3-查看窗口和窗口名称" class="headerlink" title="5.3 查看窗口和窗口名称"></a>5.3 查看窗口和窗口名称</h3><p>打开多个窗口后，可以使用快捷键C-a w列出当前所有窗口。如果使用文本终端，这个列表会列在屏幕左下角，如果使用X环境下的终端模拟器，这个列表会列在标题栏里。窗口列表的样子一般是这样：</p>
+<p>0$ bash 1-$ bash 2<em>$ bash<br>这个例子中我开启了三个窗口，其中</em>号表示当前位于窗口2，-号表示上一次切换窗口时位于窗口1。</p>
+<p>Screen默认会为窗口命名为编号和窗口中运行程序名的组合，上面的例子中窗口都是默认名字。练习了上面查看窗口的方法，你可能就希望各个窗口可以有不同的名字以方便区分了。可以使用快捷键C-a A来为当前窗口重命名，按下快捷键后，Screen会允许你为当前窗口输入新的名字，回车确认。</p>
+<h3 id="5-4-会话分离与恢复"><a href="#5-4-会话分离与恢复" class="headerlink" title="5.4 会话分离与恢复"></a>5.4 会话分离与恢复</h3><p>你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/david.txt文件：</p>
+<p>[root@TS-DEV ~]# screen vi /tmp/david.txt<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p>
+<h3 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h3><p><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg" alt="29144351-ff7e78c079a44f51ae44d48b6942b87f"></a></p>
+<p>半个小时之后回来了，找到该screen会话：</p>
+<p><pre>[root@TS-DEV ~]# screen -ls</pre><br><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg" alt="29144759-7cea9fc3f5f4481ab21df8bd017c88ef"></a></p>
+<h3 id="重新连接会话："><a href="#重新连接会话：" class="headerlink" title="重新连接会话："></a>重新连接会话：</h3><p><pre>[root@TS-DEV ~]# screen -r 12865</pre><br>一切都在。</p>
+<p>当然，如果你在另一台机器上没有分离一个Screen会话，就无从恢复会话了。</p>
+<p>这时可以使用下面命令强制将这个会话从它所在的终端分离，转移到新的终端上来：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/3.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg" alt="3"></a></p>
+<h3 id="5-5-清除dead-会话"><a href="#5-5-清除dead-会话" class="headerlink" title="5.5 清除dead 会话"></a>5.5 清除dead 会话</h3><p>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/4.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg" alt="4"></a></p>
+<h3 id="5-6-关闭或杀死窗口"><a href="#5-6-关闭或杀死窗口" class="headerlink" title="5.6 关闭或杀死窗口"></a>5.6 关闭或杀死窗口</h3><p>正常情况下，当你退出一个窗口中最后一个程序（通常是bash）后，这个窗口就关闭了。另一个关闭窗口的方法是使用C-a k，这个快捷键杀死当前的窗口，同时也将杀死这个窗口中正在运行的进程。</p>
+<p>如果一个Screen会话中最后一个窗口被关闭了，那么整个Screen会话也就退出了，screen进程会被终止。</p>
+<p>除了依次退出/杀死当前Screen会话中所有窗口这种方法之外，还可以使用快捷键C-a :，然后输入quit命令退出Screen会话。需要注意的是，这样退出会杀死所有窗口并退出其中运行的所有程序。其实C-a :这个快捷键允许用户直接输入的命令有很多，包括分屏可以输入split等，这也是实现Screen功能的一个途径，不过个人认为还是快捷键比较方便些。</p>
+<h2 id="六、screen-高级应用"><a href="#六、screen-高级应用" class="headerlink" title="六、screen 高级应用"></a>六、screen 高级应用</h2><h3 id="6-1-会话共享"><a href="#6-1-会话共享" class="headerlink" title="6.1 会话共享"></a>6.1 会话共享</h3><p>还有一种比较好玩的会话恢复，可以实现会话共享。假设你在和朋友在不同地点以相同用户登录一台机器，然后你创建一个screen会话，你朋友可以在他的终端上命令：</p>
+<p><pre>[root@TS-DEV ~]# screen -x</pre><br>这个命令会将你朋友的终端Attach到你的Screen会话上，并且你的终端不会被Detach。这样你就可以和朋友共享同一个会话了，如果你们当前又处于同一个窗口，那就相当于坐在同一个显示器前面，你的操作会同步演示给你朋友，你朋友的操作也会同步演示给你。当然，如果你们切换到这个会话的不同窗口中去，那还是可以分别进行不同的操作的。</p>
+<h3 id="6-2-会话锁定与解锁"><a href="#6-2-会话锁定与解锁" class="headerlink" title="6.2 会话锁定与解锁"></a>6.2 会话锁定与解锁</h3><p>Screen允许使用快捷键C-a s锁定会话。锁定以后，再进行任何输入屏幕都不会再有反应了。但是要注意虽然屏幕上看不到反应，但你的输入都会被Screen中的进程接收到。快捷键C-a q可以解锁一个会话。</p>
+<p>也可以使用C-a x锁定会话，不同的是这样锁定之后，会话会被Screen所属用户的密码保护，需要输入密码才能继续访问这个会话。</p>
+<h3 id="6-3-发送命令到screen会话"><a href="#6-3-发送命令到screen会话" class="headerlink" title="6.3 发送命令到screen会话"></a>6.3 发送命令到screen会话</h3><p>在Screen会话之外，可以通过screen命令操作一个Screen会话，这也为使用Screen作为脚本程序增加了便利。关于Screen在脚本中的应用超出了入门的范围，这里只看一个例子，体会一下在会话之外对Screen的操作：</p>
+<p><pre>[root@TS-DEV ~]# screen -S sandy -X screen ping www.baidu.com</pre><br>这个命令在一个叫做sandy的screen会话中创建一个新窗口，并在其中运行ping命令。</p>
+<h3 id="6-4-屏幕分割"><a href="#6-4-屏幕分割" class="headerlink" title="6.4 屏幕分割"></a>6.4 屏幕分割</h3><p>现在显示器那么大，将一个屏幕分割成不同区域显示不同的Screen窗口显然是个很酷的事情。可以使用快捷键C-a S将显示器水平分割，Screen 4.00.03版本以后，也支持垂直分屏，快捷键是C-a |。分屏以后，可以使用C-a 在各个区块间切换，每一区块上都可以创建窗口并在其中运行进程。</p>
+<p>可以用C-a X快捷键关闭当前焦点所在的屏幕区块，也可以用C-a Q关闭除当前区块之外其他的所有区块。关闭的区块中的窗口并不会关闭，还可以通过窗口切换找到它。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/5.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg" alt="5"></a></p>
+<h3 id="6-5-C-P模式和操作"><a href="#6-5-C-P模式和操作" class="headerlink" title="6.5 C/P模式和操作"></a>6.5 C/P模式和操作</h3><p>screen的另一个很强大的功能就是可以在不同窗口之间进行复制粘贴了。使用快捷键C-a 或者C-a [可以进入copy/paste模式，这个模式下可以像在vi中一样移动光标，并可以使用空格键设置标记。其实在这个模式下有很多类似vi的操作，譬如使用/进行搜索，使用y快速标记一行，使用w快速标记一个单词等。关于C/P模式下的高级操作，其文档的这一部分有比较详细的说明。</p>
+<p>一般情况下，可以移动光标到指定位置，按下空格设置一个开头标记，然后移动光标到结尾位置，按下空格设置第二个标记，同时会将两个标记之间的部分储存在copy/paste buffer中，并退出copy/paste模式。在正常模式下，可以使用快捷键C-a ]将储存在buffer中的内容粘贴到当前窗口。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/6.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg" alt="6"></a></p>
+<h3 id="6-6-更多screen功能"><a href="#6-6-更多screen功能" class="headerlink" title="6.6 更多screen功能"></a>6.6 更多screen功能</h3><p>同大多数UNIX程序一样，GNU Screen提供了丰富强大的定制功能。你可以在Screen的默认两级配置文件/etc/screenrc和$HOME/.screenrc中指定更多，例如设定screen选项，定制绑定键，设定screen会话自启动窗口，启用多用户模式，定制用户访问权限控制等等。如果你愿意的话，也可以自己指定screen配置文件。</p>
+<p>以多用户功能为例，screen默认是以单用户模式运行的，你需要在配置文件中指定multiuser on 来打开多用户模式，通过acl*（acladd,acldel,aclchg…）命令，你可以灵活配置其他用户访问你的screen会话。更多配置文件内容请参考screen的man页。</p>
+<p>转载自：Tang的<a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="external">linux screen 命令详解</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/376.html" data-id="cj8x084m7003unora0agzti2v" class="article-share-link" data-share="baidu" data-title="[转载]linux screen 命令详解">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/376.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/386.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Bio3D安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/363.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">gromacs DPPC膜初体验</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="376.html" data-title="[转载]linux screen 命令详解" data-url="http://kangsgo.com/376.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

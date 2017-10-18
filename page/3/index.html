@@ -1,0 +1,1351 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小康博客">
+<meta property="og:url" content="http://kangsgo.com/page/3/index.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小康博客">
+<meta name="twitter:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-gromacs-e4-b9-8b-e6-b0-b4-e4-b8-ad-e9-83-a8-e5-88-86-e8-bc-89-e8-84-82-e8-9b-8b-e7-99-bd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/670.html" class="article-date">
+  <time datetime="2017-07-11T02:18:51.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/670.html">GROMACS之水中部分載脂蛋白</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>&gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。<br><br>首先看一下GROMACS做MD的一般流程<br><img src="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GROMACS MD一般流程"><br><br>### 下载PDB文件<br><br>首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter notebook编写，若在终端运行的话无需加out=!{}<br>例如：out=!{“ls”},在终端运行只需要为ls即可<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“wget <a href="http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}" target="_blank" rel="external">http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}</a><br></pre><br><br>### 生成蛋白拓扑（Topology文件）<br><br>在用GROMACS的程序对pdb文件进行处理前, 要做许多检查, 以保证pdb文件的完整性. 根据pdb文件的不同, 要进行不同的处理. 需要处理的方面包括但不限于:<br><br>&gt; -氢原子<br>&gt; -C端氧原子<br>&gt; -结晶水<br>&gt; -缺失原子/残基/侧链<br>&gt; -二硫键<br>&gt; -带电残基<br><br>请在进行下一步之前仔细简单是否有错误，如教程蜘蛛肽需要进行末尾蛋白的补全，如删除蛋白中本身含有的结晶水等等工作。<br>在本例中你需要从20个模型中获取单一模型，可以使用例如<code>pymol</code>进行操作。<br>下一步需要注意的是我们需要<code>-ignh</code>进行删除pdb中的氢，然后gmx进行自动加氢。我们将其修改为fws.pdb<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx pdb2gmx -f fws.pdb -ignh -o 1ODQ_processed.gro -water spce<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">····<br><br>    Select the Force Field:<br>    From ‘/usr/share/gromacs/top’:<br>     1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)<br>     2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)<br>     3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)<br>     4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)<br>     5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)<br>     6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)<br>     7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)<br>     8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)<br>     9: GROMOS96 43a1 force field<br>    10: GROMOS96 43a2 force field (improved alkane dihedrals)<br>    11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)<br>    12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)<br>    13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)<br>    14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)<br>    15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</pre><br>&nbsp;<br><br>力场包含了将要写入到拓扑文件中的信息. 这个选择非常重要! 你必须仔细了解每个力场, 并决定哪个力场最适用于你的体系. 在本教程中, 我们选gromos联合原子力场, 因此在命令提示行中输入<code>14</code>, 然后回车.由于在jupyter中shell交互不是很方便，所以我们采用的是在尾部<code>&amp;lt;&amp;lt;EOF\n14\nEOF</code>的方式进行交互，下面的情况类似，不再申明，<strong>即大家在实际操作中在shell终端输入前面的命令，后面选择的选项与后面命令类似</strong>。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx pdb2gmx -f fws.pdb -ignh -o fws_processed.gro -water spce &lt;&lt;EOF\n14\nEOF”}<br></pre><br>&nbsp;<br><br>### 定义单位盒子并填充溶剂<br><br>教程中是需要模拟一个简单的水溶液分子，定义模拟用的盒子并添加溶剂分为两步完成：<br>1.使用<code>editconf</code>模块定义盒子的尺寸<br>2.使用<code>solvate</code>模块想盒子中填充水<br>首先我们来定义盒子，本教程用的正方形盒子，其实盒子种类很多，一般使用菱形十二面体晶胞，其可以节省许多水分子，从而节省计算量。<code>-c</code>表示分子在盒子的中心部分。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx editconf -f fws_processed.gro -o fws_newbox.gro -c -d 1.0 -bt cubic”}<br></pre><br>我们可以在vmd或者pymol中查看分子的情况，在用shell交互中下面块的内容不需要输入，转而使用<code>vmd fws_newbox.gro</code>或者<code>pymol fws_newbox.gro</code>进行查看<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用，真正进行学习时直接vmd或者pymol查看<br>from IPythonTweaks import <em></em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">#演示使用<br>pymolPlotStructure(“fws_newbox.gro”)</pre><br><img src="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_11_0.png"><br><br>之后我们进行溶剂分子的增加<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx solvate -cp fws_newbox.gro -cs spc216.gro -o fws_solv.gro -p topol.top”}<br></pre><br><br>同样我们也可以进行可视化查看<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>pymolPlotStructure(“fws_solv.gro”)</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-56a9f9532ac746ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_15_0.png"><br><br>### 增加离子<br><br>现在我们已经有了一个带电荷的溶液体系，<code>其实在pdb2gmx</code>程序的输出文件会显示带了多少电荷，如果没有查看到我们可以查看一下<code>topol.top</code>文件中<code>[ atoms ]</code>指令的的最后一行, 它应该含有<code>qtot 0</code>这一信息. 由于生命体系中不存在净电荷, 所以我们必须往我们体系中添加离子, 以保证总电荷为零.虽然电荷为0，我们还是增加一下0个离子，作为演示的作用。<br>首先我们创建一个ions.mdp的文件，并输入如下内容：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)</pre><br>&nbsp;<br><br>使用如下命令来产生<code>.tpr</code>文件<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“ions.mdp”,”w”)<br>file.write(“””<br>; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f ions.mdp -c fws_solv.gro -p topol.top -o ions.tpr”}<br>out=!{“gmx genion -s ions.tpr -o fws_solv_ions.gro -p topol.top -pname NA -nname CL -nn 0 &lt;&lt;EOF\n13\nEOF”}</pre><br>&nbsp;<br><br>### 能量最小化<br><br>现在, 我们已经添加了溶剂分子和离子, 得到了一个电中性的体系. 在开始动力学模拟之前, 我们必须保证体系的结构正常, 原子之间的距离不会过近, 几何构型合理. 对结构进行弛豫可以达到这些要求, 这个过程称为能量最小化(EM, energy minimization).<br><br>能量最小化过程与添加离子过程差不多. 我们要再次使用<code>grompp</code>将结构, 拓扑和模拟参数写入一个二进制的输入文件中(.tpr), 但这次我们不需要将<code>.tpr</code>文件传递给<code>genion</code>, 而是使用GROMACS MD引擎的<code>mdrun</code>模块来进行能量最小化.<br>能量最小化的<code>mdp</code>文件参数与解释如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; 传递给预处理器的一些定义<br>define          = -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量<br><br>; 模拟类型, 结束控制, 输出控制参数<br>integrator      = steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>emtol           = 500.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>emstep          = 0.01          ; 初始步长(nm)<br>nsteps          = 1000          ; 在能量最小化中, 指定最大迭代次数<br>nstenergy       = 1             ; 能量写出频率<br>energygrps      = System        ; 要写出的能量组<br><br>; 近邻列表, 相互作用计算参数<br>nstlist         = 1             ; 更新近邻列表的频率. 1表示每步都更新<br>ns_type         = grid          ; 近邻列表确定方法(simple或grid)<br>coulombtype     = PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>rlist           = 1.0           ; 短程力近邻列表的截断值<br>rcoulomb        = 1.0           ; 长程库仑力的截断值<br>vdwtype         = cut-off       ; 计算范德华作用的方法<br>rvdw            = 1.0           ; 范德华距离截断值<br>constraints     = none          ; 设置模型中使用的约束<br>pbc             = xyz           ; 3维周期性边界条件</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“minim.mdp”,”w”)<br>file.write(“””<br>; minim.mdp - used as input into grompp to generate em.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f minim.mdp -c fws_solv_ions.gro -p topol.top -o em.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm em”}<br></pre><br>&nbsp;<br><br>我们可以使用grace打开查看，若没有安装可以使用<code>sudo apt-get install grace</code>进行安装，为了演示方便我们直接在内部作图：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f em.edr -o energy.xvg&lt;&lt;EOF\n10\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”energy.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br><br><img src="http://upload-images.jianshu.io/upload_images/903467-e869284ee2c703d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_27_0.png"><br><br>### NVT平衡<br><br>EM可保证我们的初始结构在几何构型和溶剂分子取向等方面都合理. 为了开始真正的动力学模拟, 我们必须对蛋白质周围的溶剂和离子进行平衡. 如果我们在这时就尝试进行非限制的动力学模拟, 体系可能会崩溃. 原因在于我们基本上只是优化了溶剂分子自身, 而没有考虑溶质. 我们需要将体系置于设定的模拟温度下, 以确定溶质(蛋白质)的合理取向. 达到正确的温度(基于动能)之后, 我们要对体系施加压力直到它达到合适的密度.<br><br>还记得好久以前我们用<code>db2gmx</code>生成的<code>osre.itp</code>文件么? 现在它要派上用场了. <code>posre.itp</code>文件的目的在于对蛋白质中的重原子(非氢原子)施加位置限制(position restraining)力. 这些原子不会移动, 除非增加非常大的能量. 位置限制的用途在于, 我们可以平衡蛋白质周围的溶剂分子, 而不引起蛋白质结构的变化.<br><br>平衡往往分两个阶段进行. 第一个阶段在NVT系综(粒子数, 体积和温度都是恒定的)下进行. 这个系综也被称为等温等容系综或正则系综. 这个过程的需要的时间与体系的构成有关, 但在NVT系综中, 体系的温度应达到预期值并基本保持不变. 如果温度仍然没有稳定, 那就需要更多的时间. 通常情况下, 50 ps到100 ps就足够了,为了节约时间，我们仅进行2ps的NVT。<br><code>nvt.mdp</code>的设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2  1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘nvt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2 <em> 1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed<br>“””)<br>file.close()</em></pre><br>接下来与能量最小化情况类似：<br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f nvt.mdp -c em.gro -p topol.top -o nvt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm nvt”}<br></pre><br>&nbsp;<br><br>由于模拟的时间比较短，我一会儿就模拟好了<br>让我们来分析温度变化情况, 再次使用<code>energy</code>模块：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f nvt.edr -o nvt.xvg&lt;&lt;EOF\n15\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”nvt.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-42c51cc3e29a1ed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>由于这里<code>nstxout</code>记录值过大所以只有两个点，应该把值设置更小，从而产生如下结果<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-5d8239bcb5b0786b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="temp3.png"><br><br>前一步的NVT平衡稳定了体系的温度. 在采集数据之前, 我们还需要稳定体系的压力(因此还包括密度). 压力平衡是在NPT系综下进行的, 其中粒子数, 压力和温度都保持不变. 这个系综也被称为等温等压系综, 最接近实验条件.<br>一般建议设置的模拟时长为1ns，但是由于时间关系，这里仅模拟10ps<br><code>npt.mdp</code>设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2  5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘npt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2 <em> 5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -o npt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm npt”}<br></pre><br>&nbsp;<br><br>我们可以通过压力和密度检测来看模拟是否平衡：<br><br>&nbsp;<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#压力<br>out=!{“gmx energy -f npt.edr -o pressure.xvg&lt;&lt;EOF\n16\n0\nEOF”}<br>#密度<br>out=!{“gmx energy -f npt.edr -o density.xvg&lt;&lt;EOF\n22\n0\nEOF”}</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”pressure.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-0b3e2f17ca1c67fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_43_0.png"><br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”density.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-8012dcf833f90e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_44_0.png"><br><br>### 成品MD<br><br>随着两个平衡阶段的完成, 体系已经在需要的温度和压强下平衡好了. 我们现在可以放开位置限制并进行成品MD以收集数据了. 这个过程跟前面的类似. 运行<code>grompp</code>时, 我们还要用到检查点文件(在这种情况下,其中包含了压力耦合信息). 我们要进行一个1 ns的MD模拟, 所用的参数文件如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">title       = OPLS MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2  500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘md.mdp’,’w’)<br>file.write(“””<br>title       = OPLS Lysozyme MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2 * 500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx mdrun -v -deffnm md_0_1<br></pre><br>&nbsp;<br><br>具体的分析方法与内容我们下次分享<br><br></div>
+
+<p>参考文献:  <a href="http://jerkwin.coding.me/GMX/GMXtut-1/#%E6%A6%82%E8%BF%B0" target="_blank" rel="external">GROMACS教程之水中的溶菌酶</a></p>
+<p><a href="https://github.com/lupoglaz/GromacsIPython" target="_blank" rel="external">GromacsIPython</a></p>
+<div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+IyMjIEdST01BQ1PkuYvmsLTkuK3pg6jliIbovInohILom4vnmb08L3A+PHA+5pys5pWZ56iL 5p2l6Ieq5LqO5p2O57un5a2Y6ICB5biI5Y2a5a6i77yaaHR0cDovL2plcmt3aW4uY29kaW5nLm1l L0dNWC9HTVh0dXQtMS8jJUU2JUE2JTgyJUU4JUJGJUIwPGJyPiDnibnmraTor7TmmI48L3A+PHA+ Jmd0O+S7iuWkqeW4puWSjOWkp+WutuS7i+e7jeS4gOS4i2dyb21hY3PmnIDnroDljZXnmoTmlZnn qIvvvIzov5nkuKrmlZnnqIvmnY7ogIHluIjlt7Lnu4/nu4Tnu4fnv7vor5HkuobkuIDpgY3vvIzn v7vor5HnmoTotKjph4/pnZ7luLjpq5jvvIzmiJHku43nhLbngpLkuIDpgY3lianppa3kuLvopoHm mK/mg7Plh4blpIfmioroh6rlt7HmiYDlrabnmoTmuKnmlYXnn6XmlrDkuIDpgY3vvIzkuLrkuobm m7TliqDlv6vpgJ/nmoTov5vooYzmqKHmi5/vvIzmiJHku6zlsIbkuKTkuKrmlZnnqIvnmoTom4vn mb3ov5vooYzkuobmm7/mjaLvvIzljbPlsIbovInohILom4vnmb3mm7/mjaLkuobmurboj4zphbbv vIzlrp7pmYXkuIrmmK/kuIDmoLfnmoTjgII8L3A+PHA+6aaW5YWI55yL5LiA5LiLR1JPTUFDU+WB mk1E55qE5LiA6Iis5rWB56iLPGJyPiAhW0dST01BQ1MgTUTkuIDoiKzmtYHnqItdKGh0dHA6Ly91 cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctOWQ5MmYxNmQ5NzAy OThiNC5wbmc/aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEy NDApPC9wPjxwPiMjIyDkuIvovb1QRELmlofku7Y8YnI+IOmmluWFiOaIkeS7rOWcqFBEQuaVsOaN ruW6k+S4i+i9veWwj+iCveeahFBEQuaWh+S7tu+8jOazqOaEj+aIkemHh+eUqOeahOS4ump1cHl0 ZXIgbm90ZWJvb2vnvJblhpnvvIzoi6XlnKjnu4jnq6/ov5DooYznmoTor53ml6DpnIDliqBvdXQ9 IXt9PGJyPiDkvovlpoLvvJpvdXQ9IXsibHMifSzlnKjnu4jnq6/ov5DooYzlj6rpnIDopoHkuLps c+WNs+WPrzwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJ3Z2V0IGh0dHA6Ly93d3cucmNzYi5v cmcvcGRiL2ZpbGVzLzFPRFEucGRiIn08YnI+IGBgYDwvcD48cD4jIyMg55Sf5oiQ6JuL55m95ouT 5omR77yIVG9wb2xvZ3nmlofku7bvvIk8YnI+IOWcqOeUqEdST01BQ1PnmoTnqIvluo/lr7lwZGLm lofku7bov5vooYzlpITnkIbliY0sIOimgeWBmuiuuOWkmuajgOafpSwg5Lul5L+d6K+BcGRi5paH 5Lu255qE5a6M5pW05oCnLiDmoLnmja5wZGLmlofku7bnmoTkuI3lkIwsIOimgei/m+ihjOS4jeWQ jOeahOWkhOeQhi4g6ZyA6KaB5aSE55CG55qE5pa56Z2i5YyF5ous5L2G5LiN6ZmQ5LqOOjwvcD48 cD4t5rCi5Y6f5a2QPGJyPiAtQ+err+awp+WOn+WtkDxicj4gLee7k+aZtuawtDxicj4gLee8uuWk seWOn+WtkC/mrovln7ov5L6n6ZO+PGJyPiAt5LqM56Gr6ZSuPGJyPiAt5bim55S15q6L5Z+6PGJy PiDor7flnKjov5vooYzkuIvkuIDmraXkuYvliY3ku5Tnu4bnroDljZXmmK/lkKbmnInplJnor6/v vIzlpoLmlZnnqIvonJjom5vogr3pnIDopoHov5vooYzmnKvlsL7om4vnmb3nmoTooaXlhajvvIzl poLliKDpmaTom4vnmb3kuK3mnKzouqvlkKvmnInnmoTnu5PmmbbmsLTnrYnnrYnlt6XkvZzjgII8 YnI+IOWcqOacrOS+i+S4reS9oOmcgOimgeS7jjIw5Liq5qih5Z6L5Lit6I635Y+W5Y2V5LiA5qih 5Z6L77yM5Y+v5Lul5L2/55So5L6L5aaCYHB5bW9sYOi/m+ihjOaTjeS9nOOAgjxicj4g5LiL5LiA 5q2l6ZyA6KaB5rOo5oSP55qE5piv5oiR5Lus6ZyA6KaBYC1pZ25oYOi/m+ihjOWIoOmZpHBkYuS4 reeahOawou+8jOeEtuWQjmdteOi/m+ihjOiHquWKqOWKoOawouOAguaIkeS7rOWwhuWFtuS/ruaU ueS4umZ3cy5wZGI8L3A+PHA+YGBgcHl0aG9uPGJyPiAhZ214IHBkYjJnbXggLWYgZndzLnBkYiAt aWduaCAtbyAxT0RRX3Byb2Nlc3NlZC5ncm8gLXdhdGVyIHNwY2U8YnI+IGBgYDwvcD48cD5gYGA8 YnI+IMK3wrfCt8K3PC9wPjxwPlNlbGVjdCB0aGUgRm9yY2UgRmllbGQ6PGJyPiBGcm9tICcvdXNy L3NoYXJlL2dyb21hY3MvdG9wJzo8YnI+IDE6IEFNQkVSMDMgcHJvdGVpbiwgbnVjbGVpYyBBTUJF Ujk0IChEdWFuIGV0IGFsLiwgSi4gQ29tcC4gQ2hlbS4gMjQsIDE5OTktMjAxMiwgMjAwMyk8YnI+ IDI6IEFNQkVSOTQgZm9yY2UgZmllbGQgKENvcm5lbGwgZXQgYWwuLCBKQUNTIDExNywgNTE3OS01 MTk3LCAxOTk1KTxicj4gMzogQU1CRVI5NiBwcm90ZWluLCBudWNsZWljIEFNQkVSOTQgKEtvbGxt YW4gZXQgYWwuLCBBY2MuIENoZW0uIFJlcy4gMjksIDQ2MS00NjksIDE5OTYpPGJyPiA0OiBBTUJF Ujk5IHByb3RlaW4sIG51Y2xlaWMgQU1CRVI5NCAoV2FuZyBldCBhbC4sIEouIENvbXAuIENoZW0u IDIxLCAxMDQ5LTEwNzQsIDIwMDApPGJyPiA1OiBBTUJFUjk5U0IgcHJvdGVpbiwgbnVjbGVpYyBB TUJFUjk0IChIb3JuYWsgZXQgYWwuLCBQcm90ZWlucyA2NSwgNzEyLTcyNSwgMjAwNik8YnI+IDY6 IEFNQkVSOTlTQi1JTEROIHByb3RlaW4sIG51Y2xlaWMgQU1CRVI5NCAoTGluZG9yZmYtTGFyc2Vu IGV0IGFsLiwgUHJvdGVpbnMgNzgsIDE5NTAtNTgsIDIwMTApPGJyPiA3OiBBTUJFUkdTIGZvcmNl IGZpZWxkIChHYXJjaWEgJmFtcDsgU2FuYm9ubWF0c3UsIFBOQVMgOTksIDI3ODItMjc4NywgMjAw Mik8YnI+IDg6IENIQVJNTTI3IGFsbC1hdG9tIGZvcmNlIGZpZWxkIChDSEFSTTIyIHBsdXMgQ01B UCBmb3IgcHJvdGVpbnMpPGJyPiA5OiBHUk9NT1M5NiA0M2ExIGZvcmNlIGZpZWxkPGJyPiAxMDog R1JPTU9TOTYgNDNhMiBmb3JjZSBmaWVsZCAoaW1wcm92ZWQgYWxrYW5lIGRpaGVkcmFscyk8YnI+ IDExOiBHUk9NT1M5NiA0NWEzIGZvcmNlIGZpZWxkIChTY2h1bGVyIEpDQyAyMDAxIDIyIDEyMDUp PGJyPiAxMjogR1JPTU9TOTYgNTNhNSBmb3JjZSBmaWVsZCAoSkNDIDIwMDQgdm9sIDI1IHBhZyAx NjU2KTxicj4gMTM6IEdST01PUzk2IDUzYTYgZm9yY2UgZmllbGQgKEpDQyAyMDA0IHZvbCAyNSBw YWcgMTY1Nik8YnI+IDE0OiBHUk9NT1M5NiA1NGE3IGZvcmNlIGZpZWxkIChFdXIuIEJpb3BoeXMu IEouICgyMDExKSwgNDAsLCA4NDMtODU2LCBET0k6IDEwLjEwMDcvczAwMjQ5LTAxMS0wNzAwLTkp PGJyPiAxNTogT1BMUy1BQS9MIGFsbC1hdG9tIGZvcmNlIGZpZWxkICgyMDAxIGFtaW5vYWNpZCBk aWhlZHJhbHMpPGJyPiBgYGA8L3A+PHA+5Yqb5Zy65YyF5ZCr5LqG5bCG6KaB5YaZ5YWl5Yiw5ouT 5omR5paH5Lu25Lit55qE5L+h5oGvLiDov5nkuKrpgInmi6npnZ7luLjph43opoEhIOS9oOW/hemh u+S7lOe7huS6huino+avj+S4quWKm+Wcuiwg5bm25Yaz5a6a5ZOq5Liq5Yqb5Zy65pyA6YCC55So 5LqO5L2g55qE5L2T57O7LiDlnKjmnKzmlZnnqIvkuK0sIOaIkeS7rOmAiWdyb21vc+iBlOWQiOWO n+WtkOWKm+Wcuiwg5Zug5q2k5Zyo5ZG95Luk5o+Q56S66KGM5Lit6L6T5YWlYDE0YCwg54S25ZCO 5Zue6L2mLueUseS6juWcqGp1cHl0ZXLkuK1zaGVsbOS6pOS6kuS4jeaYr+W+iOaWueS+v++8jOaJ gOS7peaIkeS7rOmHh+eUqOeahOaYr+WcqOWwvumDqGAmbHQ7Jmx0O0VPRlxuMTRcbkVPRmDnmoTm lrnlvI/ov5vooYzkuqTkupLvvIzkuIvpnaLnmoTmg4XlhrXnsbvkvLzvvIzkuI3lho3nlLPmmI7v vIwqKuWNs+Wkp+WutuWcqOWunumZheaTjeS9nOS4reWcqHNoZWxs57uI56uv6L6T5YWl5YmN6Z2i 55qE5ZG95Luk77yM5ZCO6Z2i6YCJ5oup55qE6YCJ6aG55LiO5ZCO6Z2i5ZG95Luk57G75Ly8Kirj gII8L3A+PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IHBkYjJnbXggLWYgZndzLnBkYiAtaWdu aCAtbyBmd3NfcHJvY2Vzc2VkLmdybyAtd2F0ZXIgc3BjZSAmbHQ7Jmx0O0VPRlxuMTRcbkVPRiJ9 PGJyPiBgYGA8L3A+PHA+IyMjIOWumuS5ieWNleS9jeebkuWtkOW5tuWhq+WFhea6tuWJgjxicj4g 5pWZ56iL5Lit5piv6ZyA6KaB5qih5ouf5LiA5Liq566A5Y2V55qE5rC05rq25ray5YiG5a2Q77yM 5a6a5LmJ5qih5ouf55So55qE55uS5a2Q5bm25re75Yqg5rq25YmC5YiG5Li65Lik5q2l5a6M5oiQ 77yaPGJyPiAxLuS9v+eUqGBlZGl0Y29uZmDmqKHlnZflrprkuYnnm5LlrZDnmoTlsLrlr7g8YnI+ IDIu5L2/55SoYHNvbHZhdGVg5qih5Z2X5oOz55uS5a2Q5Lit5aGr5YWF5rC0PGJyPiDpppblhYjm iJHku6zmnaXlrprkuYnnm5LlrZDvvIzmnKzmlZnnqIvnlKjnmoTmraPmlrnlvaLnm5LlrZDvvIzl hbblrp7nm5LlrZDnp43nsbvlvojlpJrvvIzkuIDoiKzkvb/nlKjoj7HlvaLljYHkuozpnaLkvZPm mbbog57vvIzlhbblj6/ku6XoioLnnIHorrjlpJrmsLTliIblrZDvvIzku47ogIzoioLnnIHorqHn rpfph4/jgIJgLWNg6KGo56S65YiG5a2Q5Zyo55uS5a2Q55qE5Lit5b+D6YOo5YiG44CCPC9wPjxw PmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBlZGl0Y29uZiAtZiBmd3NfcHJvY2Vzc2VkLmdybyAt byBmd3NfbmV3Ym94LmdybyAtYyAtZCAxLjAgLWJ0IGN1YmljIn08YnI+IGBgYDwvcD48cD7miJHk u6zlj6/ku6XlnKh2bWTmiJbogIVweW1vbOS4reafpeeci+WIhuWtkOeahOaDheWGte+8jOWcqOeU qHNoZWxs5Lqk5LqS5Lit5LiL6Z2i5Z2X55qE5YaF5a655LiN6ZyA6KaB6L6T5YWl77yM6L2s6ICM 5L2/55SoYHZtZCBmd3NfbmV3Ym94Lmdyb2DmiJbogIVgcHltb2wgZndzX25ld2JveC5ncm9g6L+b 6KGM5p+l55yLPC9wPjxwPmBgYHB5dGhvbjxicj4gI+a8lOekuuS9v+eUqO+8jOecn+ato+i/m+ih jOWtpuS5oOaXtuebtOaOpXZtZOaIluiAhXB5bW9s5p+l55yLPGJyPiBmcm9tIElQeXRob25Ud2Vh a3MgaW1wb3J0ICo8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+ IHB5bW9sUGxvdFN0cnVjdHVyZSgiZndzX25ld2JveC5ncm8iKTxicj4gYGBgPC9wPjxwPiFbb3V0 cHV0XzExXzAucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFn ZXMvOTAzNDY3LWE3ZGUyNjU2OGZiYjY0MWQucG5nP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3Ry aXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD7kuYvlkI7miJHku6zov5vooYzmurbliYLl iIblrZDnmoTlop7liqA8L3A+PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IHNvbHZhdGUgLWNw IGZ3c19uZXdib3guZ3JvIC1jcyBzcGMyMTYuZ3JvIC1vIGZ3c19zb2x2LmdybyAtcCB0b3BvbC50 b3AifTxicj4gYGBgPC9wPjxwPuWQjOagt+aIkeS7rOS5n+WPr+S7pei/m+ihjOWPr+inhuWMluaf peecizwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IHB5bW9sUGxvdFN0cnVj dHVyZSgiZndzX3NvbHYuZ3JvIik8YnI+IGBgYDwvcD48cD4hW291dHB1dF8xNV8wLnBuZ10oaHR0 cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny01NmE5Zjk1 MzJhYzc0NmFlLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8y L3cvMTI0MCk8L3A+PHA+IyMjIOWinuWKoOemu+WtkDxicj4g546w5Zyo5oiR5Lus5bey57uP5pyJ 5LqG5LiA5Liq5bim55S16I2355qE5rq25ray5L2T57O777yMYOWFtuWunuWcqHBkYjJnbXhg56iL 5bqP55qE6L6T5Ye65paH5Lu25Lya5pi+56S65bim5LqG5aSa5bCR55S16I2377yM5aaC5p6c5rKh 5pyJ5p+l55yL5Yiw5oiR5Lus5Y+v5Lul5p+l55yL5LiA5LiLYHRvcG9sLnRvcGDmlofku7bkuK1g WyBhdG9tcyBdYOaMh+S7pOeahOeahOacgOWQjuS4gOihjCwg5a6D5bqU6K+l5ZCr5pyJYHF0b3Qg MGDov5nkuIDkv6Hmga8uIOeUseS6jueUn+WRveS9k+ezu+S4reS4jeWtmOWcqOWHgOeUteiNtywg 5omA5Lul5oiR5Lus5b+F6aG75b6A5oiR5Lus5L2T57O75Lit5re75Yqg56a75a2QLCDku6Xkv53o r4HmgLvnlLXojbfkuLrpm7Yu6Jm954S255S16I235Li6MO+8jOaIkeS7rOi/mOaYr+WinuWKoOS4 gOS4izDkuKrnprvlrZDvvIzkvZzkuLrmvJTnpLrnmoTkvZznlKjjgII8YnI+IOmmluWFiOaIkeS7 rOWIm+W7uuS4gOS4qmlvbnMubWRw55qE5paH5Lu277yM5bm26L6T5YWl5aaC5LiL5YaF5a6577ya PGJyPiBgYGA8YnI+IDsgaW9ucy5tZHAgLSB1c2VkIGFzIGlucHV0IGludG8gZ3JvbXBwIHRvIGdl bmVyYXRlIGlvbnMudHByPGJyPiA7IFBhcmFtZXRlcnMgZGVzY3JpYmluZyB3aGF0IHRvIGRvLCB3 aGVuIHRvIHN0b3AgYW5kIHdoYXQgdG8gc2F2ZTxicj4gaW50ZWdyYXRvciA9IHN0ZWVwIDsgQWxn b3JpdGhtIChzdGVlcCA9IHN0ZWVwZXN0IGRlc2NlbnQgbWluaW1pemF0aW9uKTxicj4gZW10b2wg PSAxMDAwLjAgOyBTdG9wIG1pbmltaXphdGlvbiB3aGVuIHRoZSBtYXhpbXVtIGZvcmNlICZsdDsg MTAwMC4wIGtKL21vbC9ubTxicj4gZW1zdGVwID0gMC4wMSA7IEVuZXJneSBzdGVwIHNpemU8YnI+ IG5zdGVwcyA9IDUwMDAwIDsgTWF4aW11bSBudW1iZXIgb2YgKG1pbmltaXphdGlvbikgc3RlcHMg dG8gcGVyZm9ybTwvcD48cD47IFBhcmFtZXRlcnMgZGVzY3JpYmluZyBob3cgdG8gZmluZCB0aGUg bmVpZ2hib3JzIG9mIGVhY2ggYXRvbSBhbmQgaG93IHRvIGNhbGN1bGF0ZSB0aGUgaW50ZXJhY3Rp b25zPGJyPiBuc3RsaXN0ID0gMSA7IEZyZXF1ZW5jeSB0byB1cGRhdGUgdGhlIG5laWdoYm9yIGxp c3QgYW5kIGxvbmcgcmFuZ2UgZm9yY2VzPGJyPiBuc190eXBlID0gZ3JpZCA7IE1ldGhvZCB0byBk ZXRlcm1pbmUgbmVpZ2hib3IgbGlzdCAoc2ltcGxlLCBncmlkKTxicj4gcmxpc3QgPSAxLjAgOyBD dXQtb2ZmIGZvciBtYWtpbmcgbmVpZ2hib3IgbGlzdCAoc2hvcnQgcmFuZ2UgZm9yY2VzKTxicj4g Y291bG9tYnR5cGUgPSBQTUUgOyBUcmVhdG1lbnQgb2YgbG9uZyByYW5nZSBlbGVjdHJvc3RhdGlj IGludGVyYWN0aW9uczxicj4gcmNvdWxvbWIgPSAxLjAgOyBTaG9ydC1yYW5nZSBlbGVjdHJvc3Rh dGljIGN1dC1vZmY8YnI+IHJ2ZHcgPSAxLjAgOyBTaG9ydC1yYW5nZSBWYW4gZGVyIFdhYWxzIGN1 dC1vZmY8YnI+IHBiYyA9IHh5eiA7IFBlcmlvZGljIEJvdW5kYXJ5IENvbmRpdGlvbnMgKHllcy9u byk8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3Bl bigiaW9ucy5tZHAiLCJ3Iik8YnI+IGZpbGUud3JpdGUoIiIiPGJyPiA7IGlvbnMubWRwIC0gdXNl ZCBhcyBpbnB1dCBpbnRvIGdyb21wcCB0byBnZW5lcmF0ZSBpb25zLnRwcjxicj4gOyBQYXJhbWV0 ZXJzIGRlc2NyaWJpbmcgd2hhdCB0byBkbywgd2hlbiB0byBzdG9wIGFuZCB3aGF0IHRvIHNhdmU8 YnI+IGludGVncmF0b3IgPSBzdGVlcCA7IEFsZ29yaXRobSAoc3RlZXAgPSBzdGVlcGVzdCBkZXNj ZW50IG1pbmltaXphdGlvbik8YnI+IGVtdG9sID0gMTAwMC4wIDsgU3RvcCBtaW5pbWl6YXRpb24g d2hlbiB0aGUgbWF4aW11bSBmb3JjZSAmbHQ7IDEwMDAuMCBrSi9tb2wvbm08YnI+IGVtc3RlcCA9 IDAuMDEgOyBFbmVyZ3kgc3RlcCBzaXplPGJyPiBuc3RlcHMgPSA1MDAwMCA7IE1heGltdW0gbnVt YmVyIG9mIChtaW5pbWl6YXRpb24pIHN0ZXBzIHRvIHBlcmZvcm08L3A+PHA+OyBQYXJhbWV0ZXJz IGRlc2NyaWJpbmcgaG93IHRvIGZpbmQgdGhlIG5laWdoYm9ycyBvZiBlYWNoIGF0b20gYW5kIGhv dyB0byBjYWxjdWxhdGUgdGhlIGludGVyYWN0aW9uczxicj4gbnN0bGlzdCA9IDEgOyBGcmVxdWVu Y3kgdG8gdXBkYXRlIHRoZSBuZWlnaGJvciBsaXN0IGFuZCBsb25nIHJhbmdlIGZvcmNlczxicj4g bnNfdHlwZSA9IGdyaWQgOyBNZXRob2QgdG8gZGV0ZXJtaW5lIG5laWdoYm9yIGxpc3QgKHNpbXBs ZSwgZ3JpZCk8YnI+IHJsaXN0ID0gMS4wIDsgQ3V0LW9mZiBmb3IgbWFraW5nIG5laWdoYm9yIGxp c3QgKHNob3J0IHJhbmdlIGZvcmNlcyk8YnI+IGNvdWxvbWJ0eXBlID0gUE1FIDsgVHJlYXRtZW50 IG9mIGxvbmcgcmFuZ2UgZWxlY3Ryb3N0YXRpYyBpbnRlcmFjdGlvbnM8YnI+IHJjb3Vsb21iID0g MS4wIDsgU2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBjdXQtb2ZmPGJyPiBydmR3ID0gMS4wIDsg U2hvcnQtcmFuZ2UgVmFuIGRlciBXYWFscyBjdXQtb2ZmPGJyPiBwYmMgPSB4eXogOyBQZXJpb2Rp YyBCb3VuZGFyeSBDb25kaXRpb25zICh5ZXMvbm8pPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8 YnI+IGBgYDwvcD48cD7kvb/nlKjlpoLkuIvlkb3ku6TmnaXkuqfnlJ9gLnRwcmDmlofku7Y8L3A+ PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IGdyb21wcCAtZiBpb25zLm1kcCAtYyBmd3Nfc29s di5ncm8gLXAgdG9wb2wudG9wIC1vIGlvbnMudHByIn08YnI+IG91dD0heyJnbXggZ2VuaW9uIC1z IGlvbnMudHByIC1vIGZ3c19zb2x2X2lvbnMuZ3JvIC1wIHRvcG9sLnRvcCAtcG5hbWUgTkEgLW5u YW1lIENMIC1ubiAwICZsdDsmbHQ7RU9GXG4xM1xuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRo b248YnI+IG91dDxicj4gYGBgPC9wPjxwPmBgYDxicj4gwrfCt8K3PGJyPiAnR1JPTUFDUzogZ214 IGdlbmlvbiwgVkVSU0lPTiA1LjEuMicsPGJyPiAnRXhlY3V0YWJsZTogL3Vzci9iaW4vZ214Jyw8 YnI+ICdEYXRhIHByZWZpeDogL3VzcicsPGJyPiAnQ29tbWFuZCBsaW5lOicsPGJyPiAnIGdteCBn ZW5pb24gLXMgaW9ucy50cHIgLW8gZndzX3NvbHZfaW9ucy5ncm8gLXAgdG9wb2wudG9wIC1wbmFt ZSBOQSAtbm5hbWUgQ0wgLW5uIDAnLDxicj4gJycsPGJyPiAnUmVhZGluZyBmaWxlIGlvbnMudHBy LCBWRVJTSU9OIDUuMS4yIChzaW5nbGUgcHJlY2lzaW9uKScsPGJyPiAnUmVhZGluZyBmaWxlIGlv bnMudHByLCBWRVJTSU9OIDUuMS4yIChzaW5nbGUgcHJlY2lzaW9uKScsPGJyPiAnTm8gaW9ucyB0 byBhZGQsIHdpbGwganVzdCBjb3B5IGlucHV0IGNvbmZpZ3VyYXRpb24uJyw8YnI+ICcnLDxicj4g J2djcSM0MTg6ICJBIGN1cmlvdXMgYXNwZWN0IG9mIHRoZSB0aGVvcnkgb2YgZXZvbHV0aW9uIGlz IHRoYXQgZXZlcnlib2R5IHRoaW5rcyBoZSB1bmRlcnN0YW5kcyBpdC4iIChKYWNxdWVzIE1vbm9k KScsPGJyPiAnJ108L3A+PHA+YGBgPC9wPjxwPiMjIyDog73ph4/mnIDlsI/ljJY8YnI+IOeOsOWc qCwg5oiR5Lus5bey57uP5re75Yqg5LqG5rq25YmC5YiG5a2Q5ZKM56a75a2QLCDlvpfliLDkuobk uIDkuKrnlLXkuK3mgKfnmoTkvZPns7suIOWcqOW8gOWni+WKqOWKm+WtpuaooeaLn+S5i+WJjSwg 5oiR5Lus5b+F6aG75L+d6K+B5L2T57O755qE57uT5p6E5q2j5bi4LCDljp/lrZDkuYvpl7TnmoTo t53nprvkuI3kvJrov4fov5EsIOWHoOS9leaehOWei+WQiOeQhi4g5a+557uT5p6E6L+b6KGM5byb 6LGr5Y+v5Lul6L6+5Yiw6L+Z5Lqb6KaB5rGCLCDov5nkuKrov4fnqIvnp7DkuLrog73ph4/mnIDl sI/ljJYoRU0sIGVuZXJneSBtaW5pbWl6YXRpb24pLjwvcD48cD7og73ph4/mnIDlsI/ljJbov4fn qIvkuI7mt7vliqDnprvlrZDov4fnqIvlt67kuI3lpJouIOaIkeS7rOimgeWGjeasoeS9v+eUqGBn cm9tcHBg5bCG57uT5p6ELCDmi5PmiZHlkozmqKHmi5/lj4LmlbDlhpnlhaXkuIDkuKrkuozov5vl iLbnmoTovpPlhaXmlofku7bkuK0oLnRwciksIOS9hui/measoeaIkeS7rOS4jemcgOimgeWwhmAu dHByYOaWh+S7tuS8oOmAkue7mWBnZW5pb25gLCDogIzmmK/kvb/nlKhHUk9NQUNTIE1E5byV5pOO 55qEYG1kcnVuYOaooeWdl+adpei/m+ihjOiDvemHj+acgOWwj+WMli48YnI+IOiDvemHj+acgOWw j+WMlueahGBtZHBg5paH5Lu25Y+C5pWw5LiO6Kej6YeK5aaC5LiL77yaPGJyPiBgYGA8YnI+IDsg 5Lyg6YCS57uZ6aKE5aSE55CG5Zmo55qE5LiA5Lqb5a6a5LmJPGJyPiBkZWZpbmUgPSAtREZMRVhJ QkxFIDsg5L2/55So5p+U5oCn5rC05qih5Z6L6ICM6Z2e5Yia5oCn5qih5Z6LLCDov5nmoLfmnIDp maHkuIvpmY3ms5Xlj6/ov5vkuIDmraXmnIDlsI/ljJbog73ph488L3A+PHA+OyDmqKHmi5/nsbvl nossIOe7k+adn+aOp+WItiwg6L6T5Ye65o6n5Yi25Y+C5pWwPGJyPiBpbnRlZ3JhdG9yID0gc3Rl ZXAgOyDmjIflrprkvb/nlKjmnIDpmaHkuIvpmY3ms5Xov5vooYzog73ph4/mnIDlsI/ljJYuIOiL peiuvuS4umBjZ2DliJnkvb/nlKjlhbHova3moq/luqbms5U8YnI+IGVtdG9sID0gNTAwLjAgOyDo i6XlipvnmoTmnIDlpKflgLzlsI/kuo7mraTlgLzliJnorqTkuLrog73ph4/mnIDlsI/ljJbmlLbm lZso5Y2V5L2Na0ogbW9sXi0xXiBubV4tMV4pPGJyPiBlbXN0ZXAgPSAwLjAxIDsg5Yid5aeL5q2l 6ZW/KG5tKTxicj4gbnN0ZXBzID0gMTAwMCA7IOWcqOiDvemHj+acgOWwj+WMluS4rSwg5oyH5a6a 5pyA5aSn6L+t5Luj5qyh5pWwPGJyPiBuc3RlbmVyZ3kgPSAxIDsg6IO96YeP5YaZ5Ye66aKR546H PGJyPiBlbmVyZ3lncnBzID0gU3lzdGVtIDsg6KaB5YaZ5Ye655qE6IO96YeP57uEPC9wPjxwPjsg 6L+R6YK75YiX6KGoLCDnm7jkupLkvZznlKjorqHnrpflj4LmlbA8YnI+IG5zdGxpc3QgPSAxIDsg 5pu05paw6L+R6YK75YiX6KGo55qE6aKR546HLiAx6KGo56S65q+P5q2l6YO95pu05pawPGJyPiBu c190eXBlID0gZ3JpZCA7IOi/kemCu+WIl+ihqOehruWumuaWueazlShzaW1wbGXmiJZncmlkKTxi cj4gY291bG9tYnR5cGUgPSBQTUUgOyDorqHnrpfplb/nqIvpnZnnlLXnmoTmlrnms5UuIFBNReS4 uueykuWtkOe9keagvEV3YWxk5pa55rOVLCDov5jlj6/ku6Xkvb/nlKhjdXQtb2ZmPGJyPiBybGlz dCA9IDEuMCA7IOefreeoi+WKm+i/kemCu+WIl+ihqOeahOaIquaWreWAvDxicj4gcmNvdWxvbWIg PSAxLjAgOyDplb/nqIvlupPku5HlipvnmoTmiKrmlq3lgLw8YnI+IHZkd3R5cGUgPSBjdXQtb2Zm IDsg6K6h566X6IyD5b635Y2O5L2c55So55qE5pa55rOVPGJyPiBydmR3ID0gMS4wIDsg6IyD5b63 5Y2O6Led56a75oiq5pat5YC8PGJyPiBjb25zdHJhaW50cyA9IG5vbmUgOyDorr7nva7mqKHlnovk uK3kvb/nlKjnmoTnuqbmnZ88YnI+IHBiYyA9IHh5eiA7IDPnu7TlkajmnJ/mgKfovrnnlYzmnaHk u7Y8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3Bl bigibWluaW0ubWRwIiwidyIpPGJyPiBmaWxlLndyaXRlKCIiIjxicj4gOyBtaW5pbS5tZHAgLSB1 c2VkIGFzIGlucHV0IGludG8gZ3JvbXBwIHRvIGdlbmVyYXRlIGVtLnRwcjxicj4gOyBQYXJhbWV0 ZXJzIGRlc2NyaWJpbmcgd2hhdCB0byBkbywgd2hlbiB0byBzdG9wIGFuZCB3aGF0IHRvIHNhdmU8 YnI+IGludGVncmF0b3IgPSBzdGVlcCA7IEFsZ29yaXRobSAoc3RlZXAgPSBzdGVlcGVzdCBkZXNj ZW50IG1pbmltaXphdGlvbik8YnI+IGVtdG9sID0gMTAwMC4wIDsgU3RvcCBtaW5pbWl6YXRpb24g d2hlbiB0aGUgbWF4aW11bSBmb3JjZSAmbHQ7IDEwMDAuMCBrSi9tb2wvbm08YnI+IGVtc3RlcCA9 IDAuMDEgOyBFbmVyZ3kgc3RlcCBzaXplPGJyPiBuc3RlcHMgPSA1MDAwMCA7IE1heGltdW0gbnVt YmVyIG9mIChtaW5pbWl6YXRpb24pIHN0ZXBzIHRvIHBlcmZvcm08L3A+PHA+OyBQYXJhbWV0ZXJz IGRlc2NyaWJpbmcgaG93IHRvIGZpbmQgdGhlIG5laWdoYm9ycyBvZiBlYWNoIGF0b20gYW5kIGhv dyB0byBjYWxjdWxhdGUgdGhlIGludGVyYWN0aW9uczxicj4gbnN0bGlzdCA9IDEgOyBGcmVxdWVu Y3kgdG8gdXBkYXRlIHRoZSBuZWlnaGJvciBsaXN0IGFuZCBsb25nIHJhbmdlIGZvcmNlczxicj4g bnNfdHlwZSA9IGdyaWQgOyBNZXRob2QgdG8gZGV0ZXJtaW5lIG5laWdoYm9yIGxpc3QgKHNpbXBs ZSwgZ3JpZCk8YnI+IHJsaXN0ID0gMS4wIDsgQ3V0LW9mZiBmb3IgbWFraW5nIG5laWdoYm9yIGxp c3QgKHNob3J0IHJhbmdlIGZvcmNlcyk8YnI+IGNvdWxvbWJ0eXBlID0gUE1FIDsgVHJlYXRtZW50 IG9mIGxvbmcgcmFuZ2UgZWxlY3Ryb3N0YXRpYyBpbnRlcmFjdGlvbnM8YnI+IHJjb3Vsb21iID0g MS4wIDsgU2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBjdXQtb2ZmPGJyPiBydmR3ID0gMS4wIDsg U2hvcnQtcmFuZ2UgVmFuIGRlciBXYWFscyBjdXQtb2ZmPGJyPiBwYmMgPSB4eXogOyBQZXJpb2Rp YyBCb3VuZGFyeSBDb25kaXRpb25zICh5ZXMvbm8pPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8 YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZ3JvbXBwIC1mIG1pbmltLm1k cCAtYyBmd3Nfc29sdl9pb25zLmdybyAtcCB0b3BvbC50b3AgLW8gZW0udHByIn08YnI+IGBgYDwv cD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggbWRydW4gLXYgLWRlZmZubSBlbSJ9PGJyPiBg YGA8L3A+PHA+5oiR5Lus5Y+v5Lul5L2/55SoZ3JhY2XmiZPlvIDmn6XnnIvvvIzoi6XmsqHmnInl ronoo4Xlj6/ku6Xkvb/nlKhgc3VkbyBhcHQtZ2V0IGluc3RhbGwgZ3JhY2Vg6L+b6KGM5a6J6KOF 77yM5Li65LqG5ryU56S65pa55L6/5oiR5Lus55u05o6l5Zyo5YaF6YOo5YGa5Zu+PC9wPjxwPmBg YHB5dGhvbjxicj4gb3V0PSF7ImdteCBlbmVyZ3kgLWYgZW0uZWRyIC1vIGVuZXJneS54dmcmbHQ7 Jmx0O0VPRlxuMTBcbjBcbkVPRiJ9PGJyPiBgYGA8L3A+PHA+YGBgcHl0aG9uPGJyPiAj5ryU56S6 5L2/55SoPGJyPiBmaWcsYXg9cGx0LnN1YnBsb3RzKCk8YnI+IHBsb3RYVkcoYXgsImVuZXJneS54 dmciKTxicj4gcHBsLmxlZ2VuZChheCk8YnI+IHBsdC5zaG93KCk8YnI+IGBgYDwvcD48cD4hW291 dHB1dF8yN18wLnBuZ10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1h Z2VzLzkwMzQ2Ny1lODY5Mjg0ZWUyYzcwM2QzLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0 cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MCk8L3A+PHA+IyMjIE5WVOW5s+ihoTxicj4gRU3lj6/k v53or4HmiJHku6znmoTliJ3lp4vnu5PmnoTlnKjlh6DkvZXmnoTlnovlkozmurbliYLliIblrZDl j5blkJHnrYnmlrnpnaLpg73lkIjnkIYuIOS4uuS6huW8gOWni+ecn+ato+eahOWKqOWKm+Wtpuao oeaLnywg5oiR5Lus5b+F6aG75a+56JuL55m96LSo5ZGo5Zu055qE5rq25YmC5ZKM56a75a2Q6L+b 6KGM5bmz6KGhLiDlpoLmnpzmiJHku6zlnKjov5nml7blsLHlsJ3or5Xov5vooYzpnZ7pmZDliLbn moTliqjlipvlrabmqKHmi58sIOS9k+ezu+WPr+iDveS8muW0qea6gy4g5Y6f5Zug5Zyo5LqO5oiR 5Lus5Z+65pys5LiK5Y+q5piv5LyY5YyW5LqG5rq25YmC5YiG5a2Q6Ieq6LqrLCDogIzmsqHmnIno gIPomZHmurbotKguIOaIkeS7rOmcgOimgeWwhuS9k+ezu+e9ruS6juiuvuWumueahOaooeaLn+a4 qeW6puS4iywg5Lul56Gu5a6a5rq26LSoKOibi+eZvei0qCnnmoTlkIjnkIblj5blkJEuIOi+vuWI sOato+ehrueahOa4qeW6pijln7rkuo7liqjog70p5LmL5ZCOLCDmiJHku6zopoHlr7nkvZPns7vm lr3liqDljovlipvnm7TliLDlroPovr7liLDlkIjpgILnmoTlr4bluqYuPC9wPjxwPui/mOiusOW+ l+WlveS5heS7peWJjeaIkeS7rOeUqGBkYjJnbXhg55Sf5oiQ55qEYG9zcmUuaXRwYOaWh+S7tuS5 iD8g546w5Zyo5a6D6KaB5rS+5LiK55So5Zy65LqGLiBgcG9zcmUuaXRwYOaWh+S7tueahOebruea hOWcqOS6juWvueibi+eZvei0qOS4reeahOmHjeWOn+WtkCjpnZ7msKLljp/lrZAp5pa95Yqg5L2N 572u6ZmQ5Yi2KHBvc2l0aW9uIHJlc3RyYWluaW5nKeWKmy4g6L+Z5Lqb5Y6f5a2Q5LiN5Lya56e7 5YqoLCDpmaTpnZ7lop7liqDpnZ7luLjlpKfnmoTog73ph48uIOS9jee9rumZkOWItueahOeUqOmA lOWcqOS6jiwg5oiR5Lus5Y+v5Lul5bmz6KGh6JuL55m96LSo5ZGo5Zu055qE5rq25YmC5YiG5a2Q LCDogIzkuI3lvJXotbfom4vnmb3otKjnu5PmnoTnmoTlj5jljJYuPC9wPjxwPuW5s+ihoeW+gOW+ gOWIhuS4pOS4qumYtuautei/m+ihjC4g56ys5LiA5Liq6Zi25q615ZyoTlZU57O757u8KOeykuWt kOaVsCwg5L2T56ev5ZKM5rip5bqm6YO95piv5oGS5a6a55qEKeS4i+i/m+ihjC4g6L+Z5Liq57O7 57u85Lmf6KKr56ew5Li6562J5rip562J5a6557O757u85oiW5q2j5YiZ57O757u8LiDov5nkuKro v4fnqIvnmoTpnIDopoHnmoTml7bpl7TkuI7kvZPns7vnmoTmnoTmiJDmnInlhbMsIOS9huWcqE5W VOezu+e7vOS4rSwg5L2T57O755qE5rip5bqm5bqU6L6+5Yiw6aKE5pyf5YC85bm25Z+65pys5L+d 5oyB5LiN5Y+YLiDlpoLmnpzmuKnluqbku43nhLbmsqHmnInnqLPlrposIOmCo+WwsemcgOimgeab tOWkmueahOaXtumXtC4g6YCa5bi45oOF5Ya15LiLLCA1MCBwc+WIsDEwMCBwc+Wwsei2s+Wkn+S6 hizkuLrkuoboioLnuqbml7bpl7TvvIzmiJHku6zku4Xov5vooYwycHPnmoROVlTjgII8YnI+IGBu dnQubWRwYOeahOiuvue9ruWmguS4i++8mjxicj4gYGBgPGJyPiB0aXRsZSA9IE9QTFMgTlZUIGVx dWlsaWJyYXRpb248YnI+IGRlZmluZSA9IC1EUE9TUkVTIDsgcG9zaXRpb24gcmVzdHJhaW4gdGhl IHByb3RlaW48YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxlYXAt ZnJvZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSAxMDAwIDsgMiAqIDEwMDAgPSAyIHBzPGJyPiBk dCA9IDAuMDAyIDsgMiBmczxicj4gOyBPdXRwdXQgY29udHJvbDxicj4gbnN0eG91dCA9IDUwMCA7 IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMS4wIHBzPGJyPiBuc3R2b3V0ID0gNTAwIDsgc2F2ZSB2 ZWxvY2l0aWVzIGV2ZXJ5IDEuMCBwczxicj4gbnN0ZW5lcmd5ID0gNTAwIDsgc2F2ZSBlbmVyZ2ll cyBldmVyeSAxLjAgcHM8YnI+IG5zdGxvZyA9IDUwMCA7IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAx LjAgcHM8YnI+IDsgQm9uZCBwYXJhbWV0ZXJzPGJyPiBjb250aW51YXRpb24gPSBubyA7IGZpcnN0 IGR5bmFtaWNzIHJ1bjxicj4gY29uc3RyYWludF9hbGdvcml0aG0gPSBsaW5jcyA7IGhvbG9ub21p YyBjb25zdHJhaW50czxicj4gY29uc3RyYWludHMgPSBhbGwtYm9uZHMgOyBhbGwgYm9uZHMgKGV2 ZW4gaGVhdnkgYXRvbS1IIGJvbmRzKSBjb25zdHJhaW5lZDxicj4gbGluY3NfaXRlciA9IDEgOyBh Y2N1cmFjeSBvZiBMSU5DUzxicj4gbGluY3Nfb3JkZXIgPSA0IDsgYWxzbyByZWxhdGVkIHRvIGFj Y3VyYWN5PGJyPiA7IE5laWdoYm9yc2VhcmNoaW5nPGJyPiBjdXRvZmYtc2NoZW1lID0gVmVybGV0 PGJyPiBuc190eXBlID0gZ3JpZCA7IHNlYXJjaCBuZWlnaGJvcmluZyBncmlkIGNlbGxzPGJyPiBu c3RsaXN0ID0gMTAgOyAyMCBmcywgbGFyZ2VseSBpcnJlbGV2YW50IHdpdGggVmVybGV0PGJyPiBy Y291bG9tYiA9IDEuMCA7IHNob3J0LXJhbmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8 YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0p PGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1l c2ggRXdhbGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQg OyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJyPiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNw YWNpbmcgZm9yIEZGVDxicj4gOyBUZW1wZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBs ID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMg PSBQcm90ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJh dGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9 IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4g Szxicj4gOyBQcmVzc3VyZSBjb3VwbGluZyBpcyBvZmY8YnI+IHBjb3VwbCA9IG5vIDsgbm8gcHJl c3N1cmUgY291cGxpbmcgaW4gTlZUPGJyPiA7IFBlcmlvZGljIGJvdW5kYXJ5IGNvbmRpdGlvbnM8 YnI+IHBiYyA9IHh5eiA7IDMtRCBQQkM8YnI+IDsgRGlzcGVyc2lvbiBjb3JyZWN0aW9uPGJyPiBE aXNwQ29yciA9IEVuZXJQcmVzIDsgYWNjb3VudCBmb3IgY3V0LW9mZiB2ZFcgc2NoZW1lPGJyPiA7 IFZlbG9jaXR5IGdlbmVyYXRpb248YnI+IGdlbl92ZWwgPSB5ZXMgOyBhc3NpZ24gdmVsb2NpdGll cyBmcm9tIE1heHdlbGwgZGlzdHJpYnV0aW9uPGJyPiBnZW5fdGVtcCA9IDMwMCA7IHRlbXBlcmF0 dXJlIGZvciBNYXh3ZWxsIGRpc3RyaWJ1dGlvbjxicj4gZ2VuX3NlZWQgPSAtMSA7IGdlbmVyYXRl IGEgcmFuZG9tIHNlZWQ8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8 YnI+IGZpbGU9b3BlbignbnZ0Lm1kcCcsJ3cnKTxicj4gZmlsZS53cml0ZSgiIiI8YnI+IHRpdGxl ID0gT1BMUyBOVlQgZXF1aWxpYnJhdGlvbjxicj4gZGVmaW5lID0gLURQT1NSRVMgOyBwb3NpdGlv biByZXN0cmFpbiB0aGUgcHJvdGVpbjxicj4gOyBSdW4gcGFyYW1ldGVyczxicj4gaW50ZWdyYXRv ciA9IG1kIDsgbGVhcC1mcm9nIGludGVncmF0b3I8YnI+IG5zdGVwcyA9IDEwMDAgOyAyICogMTAw MCA9IDIgcHM8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBu c3R4b3V0ID0gNTAwIDsgc2F2ZSBjb29yZGluYXRlcyBldmVyeSAxLjAgcHM8YnI+IG5zdHZvdXQg PSA1MDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMS4wIHBzPGJyPiBuc3RlbmVyZ3kgPSA1MDAg OyBzYXZlIGVuZXJnaWVzIGV2ZXJ5IDEuMCBwczxicj4gbnN0bG9nID0gNTAwIDsgdXBkYXRlIGxv ZyBmaWxlIGV2ZXJ5IDEuMCBwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVhdGlv biA9IG5vIDsgZmlyc3QgZHluYW1pY3MgcnVuPGJyPiBjb25zdHJhaW50X2FsZ29yaXRobSA9IGxp bmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9IGFsbC1ib25kcyA7 IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFpbmVkPGJyPiBsaW5j c19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRlciA9IDQgOyBhbHNv IHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1dG9mZi1z Y2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5laWdoYm9yaW5nIGdy aWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZhbnQgd2l0 aCBWZXJsZXQ8YnI+IHJjb3Vsb21iID0gMS4wIDsgc2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBj dXRvZmYgKGluIG5tKTxicj4gcnZkdyA9IDEuMCA7IHNob3J0LXJhbmdlIHZhbiBkZXIgV2FhbHMg Y3V0b2ZmIChpbiBubSk8YnI+IDsgRWxlY3Ryb3N0YXRpY3M8YnI+IGNvdWxvbWJ0eXBlID0gUE1F IDsgUGFydGljbGUgTWVzaCBFd2FsZCBmb3IgbG9uZy1yYW5nZSBlbGVjdHJvc3RhdGljczxicj4g cG1lX29yZGVyID0gNCA7IGN1YmljIGludGVycG9sYXRpb248YnI+IGZvdXJpZXJzcGFjaW5nID0g MC4xNiA7IGdyaWQgc3BhY2luZyBmb3IgRkZUPGJyPiA7IFRlbXBlcmF0dXJlIGNvdXBsaW5nIGlz IG9uPGJyPiB0Y291cGwgPSBWLXJlc2NhbGUgOyBtb2RpZmllZCBCZXJlbmRzZW4gdGhlcm1vc3Rh dDxicj4gdGMtZ3JwcyA9IFByb3RlaW4gTm9uLVByb3RlaW4gOyB0d28gY291cGxpbmcgZ3JvdXBz IC0gbW9yZSBhY2N1cmF0ZTxicj4gdGF1X3QgPSAwLjEgMC4xIDsgdGltZSBjb25zdGFudCwgaW4g cHM8YnI+IHJlZl90ID0gMzAwIDMwMCA7IHJlZmVyZW5jZSB0ZW1wZXJhdHVyZSwgb25lIGZvciBl YWNoIGdyb3VwLCBpbiBLPGJyPiA7IFByZXNzdXJlIGNvdXBsaW5nIGlzIG9mZjxicj4gcGNvdXBs ID0gbm8gOyBubyBwcmVzc3VyZSBjb3VwbGluZyBpbiBOVlQ8YnI+IDsgUGVyaW9kaWMgYm91bmRh cnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxicj4gOyBEaXNwZXJzaW9uIGNv cnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2NvdW50IGZvciBjdXQtb2ZmIHZk VyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4gZ2VuX3ZlbCA9IHllcyA7IGFz c2lnbiB2ZWxvY2l0aWVzIGZyb20gTWF4d2VsbCBkaXN0cmlidXRpb248YnI+IGdlbl90ZW1wID0g MzAwIDsgdGVtcGVyYXR1cmUgZm9yIE1heHdlbGwgZGlzdHJpYnV0aW9uPGJyPiBnZW5fc2VlZCA9 IC0xIDsgZ2VuZXJhdGUgYSByYW5kb20gc2VlZDxicj4gIiIiKTxicj4gZmlsZS5jbG9zZSgpPGJy PiBgYGA8L3A+PHA+5o6l5LiL5p2l5LiO6IO96YeP5pyA5bCP5YyW5oOF5Ya157G75Ly8PC9wPjxw PmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBncm9tcHAgLWYgbnZ0Lm1kcCAtYyBlbS5ncm8gLXAg dG9wb2wudG9wIC1vIG52dC50cHIifTxicj4gYGBgPC9wPjxwPmBgYHB5dGhvbjxicj4gb3V0PSF7 ImdteCBtZHJ1biAtdiAtZGVmZm5tIG52dCJ9PGJyPiBgYGA8L3A+PHA+55Sx5LqO5qih5ouf55qE 5pe26Ze05q+U6L6D55+t77yM5oiR5LiA5Lya5YS/5bCx5qih5ouf5aW95LqGPGJyPiDorqnmiJHk u6zmnaXliIbmnpDmuKnluqblj5jljJbmg4XlhrUsIOWGjeasoeS9v+eUqGBlbmVyZ3lg5qih5Z2X OjwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZW5lcmd5IC1mIG52dC5lZHIgLW8gbnZ0 Lnh2ZyZsdDsmbHQ7RU9GXG4xNVxuMFxuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ ICPmvJTnpLrkvb/nlKg8YnI+IGZpZyxheD1wbHQuc3VicGxvdHMoKTxicj4gcGxvdFhWRyhheCwi bnZ0Lnh2ZyIpPGJyPiBwcGwubGVnZW5kKGF4KTxicj4gcGx0LnNob3coKTxicj4gYGBgPC9wPjxw PiFbXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3 LTQyYzUxY2MzZTI5YTFlZDcucG5nP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFn ZVZpZXcyLzIvdy8xMjQwKTwvcD48cD7nlLHkuo7ov5nph4xgbnN0eG91dGDorrDlvZXlgLzov4fl pKfmiYDku6Xlj6rmnInkuKTkuKrngrnvvIzlupTor6XmiorlgLzorr7nva7mm7TlsI/vvIzku47o gIzkuqfnlJ/lpoLkuIvnu5Pmnpw8L3A+PHA+IVt0ZW1wMy5wbmddKGh0dHA6Ly91cGxvYWQtaW1h Z2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctNWQ4MjM5YmNiNWIwNzg2Yi5wbmc/ aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxw PuWJjeS4gOatpeeahE5WVOW5s+ihoeeos+WumuS6huS9k+ezu+eahOa4qeW6pi4g5Zyo6YeH6ZuG 5pWw5o2u5LmL5YmNLCDmiJHku6zov5jpnIDopoHnqLPlrprkvZPns7vnmoTljovlipso5Zug5q2k 6L+Y5YyF5ous5a+G5bqmKS4g5Y6L5Yqb5bmz6KGh5piv5ZyoTlBU57O757u85LiL6L+b6KGM55qE LCDlhbbkuK3nspLlrZDmlbAsIOWOi+WKm+WSjOa4qeW6pumDveS/neaMgeS4jeWPmC4g6L+Z5Liq 57O757u85Lmf6KKr56ew5Li6562J5rip562J5Y6L57O757u8LCDmnIDmjqXov5Hlrp7pqozmnaHk u7YuPGJyPiDkuIDoiKzlu7rorq7orr7nva7nmoTmqKHmi5/ml7bplb/kuLoxbnPvvIzkvYbmmK/n lLHkuo7ml7bpl7TlhbPns7vvvIzov5nph4zku4XmqKHmi58xMHBzPGJyPiBgbnB0Lm1kcGDorr7n va7lpoLkuIvvvJo8YnI+IGBgYDxicj4gdGl0bGUgPSBPUExTIE5QVCBlcXVpbGlicmF0aW9uPGJy PiBkZWZpbmUgPSAtRFBPU1JFUyA7IHBvc2l0aW9uIHJlc3RyYWluIHRoZSBwcm90ZWluPGJyPiA7 IFJ1biBwYXJhbWV0ZXJzPGJyPiBpbnRlZ3JhdG9yID0gbWQgOyBsZWFwLWZyb2cgaW50ZWdyYXRv cjxicj4gbnN0ZXBzID0gNTAwMCA7IDIgKiA1MDAwID0gMTAgcHM8YnI+IGR0ID0gMC4wMDIgOyAy IGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBuc3R4b3V0ID0gNTAgOyBzYXZlIGNvb3JkaW5h dGVzIGV2ZXJ5IDAuMSBwczxicj4gbnN0dm91dCA9IDUwIDsgc2F2ZSB2ZWxvY2l0aWVzIGV2ZXJ5 IDAuMSBwczxicj4gbnN0ZW5lcmd5ID0gNTAgOyBzYXZlIGVuZXJnaWVzIGV2ZXJ5IDAuMSBwczxi cj4gbnN0bG9nID0gNTAwIDsgdXBkYXRlIGxvZyBmaWxlIGV2ZXJ5IDEuMCBwczxicj4gOyBCb25k IHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVhdGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlZU PGJyPiBjb25zdHJhaW50X2FsZ29yaXRobSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRz PGJyPiBjb25zdHJhaW50cyA9IGFsbC1ib25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9t LUggYm9uZHMpIGNvbnN0cmFpbmVkPGJyPiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJ TkNTPGJyPiBsaW5jc19vcmRlciA9IDQgOyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsg TmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUg PSBncmlkIDsgc2VhcmNoIG5laWdoYm9yaW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7 IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZhbnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9t YiA9IDEuMCA7IHNob3J0LXJhbmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2 ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7 IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdh bGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJp YyBpbnRlcnBvbGF0aW9uPGJyPiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcg Zm9yIEZGVDxicj4gOyBUZW1wZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1y ZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90 ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+ IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAz MDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4g OyBQcmVzc3VyZSBjb3VwbGluZyBpcyBvbjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4g OyBQcmVzc3VyZSBjb3VwbGluZyBvbiBpbiBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMg OyB1bmlmb3JtIHNjYWxpbmcgb2YgYm94IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBj b25zdGFudCwgaW4gcHM8YnI+IHJlZl9wID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBi YXI8YnI+IGNvbXByZXNzaWJpbGl0eSA9IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmls aXR5IG9mIHdhdGVyLCBiYXJeLTE8YnI+IHJlZmNvb3JkX3NjYWxpbmcgPSBjb208YnI+IDsgUGVy aW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxicj4gOyBE aXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2NvdW50IGZv ciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4gZ2VuX3Zl bCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+IGBgYDwvcD48cD5gYGBweXRo b248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3BlbignbnB0Lm1kcCcsJ3cnKTxicj4gZmls ZS53cml0ZSgiIiI8YnI+IHRpdGxlID0gT1BMUyBOUFQgZXF1aWxpYnJhdGlvbjxicj4gZGVmaW5l ID0gLURQT1NSRVMgOyBwb3NpdGlvbiByZXN0cmFpbiB0aGUgcHJvdGVpbjxicj4gOyBSdW4gcGFy YW1ldGVyczxicj4gaW50ZWdyYXRvciA9IG1kIDsgbGVhcC1mcm9nIGludGVncmF0b3I8YnI+IG5z dGVwcyA9IDUwMDAgOyAyICogNTAwMCA9IDEwIHBzPGJyPiBkdCA9IDAuMDAyIDsgMiBmczxicj4g OyBPdXRwdXQgY29udHJvbDxicj4gbnN0eG91dCA9IDUwIDsgc2F2ZSBjb29yZGluYXRlcyBldmVy eSAwLjEgcHM8YnI+IG5zdHZvdXQgPSA1MCA7IHNhdmUgdmVsb2NpdGllcyBldmVyeSAwLjEgcHM8 YnI+IG5zdGVuZXJneSA9IDUwIDsgc2F2ZSBlbmVyZ2llcyBldmVyeSAwLjEgcHM8YnI+IG5zdGxv ZyA9IDUwMCA7IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAxLjAgcHM8YnI+IDsgQm9uZCBwYXJhbWV0 ZXJzPGJyPiBjb250aW51YXRpb24gPSB5ZXMgOyBSZXN0YXJ0aW5nIGFmdGVyIE5WVDxicj4gY29u c3RyYWludF9hbGdvcml0aG0gPSBsaW5jcyA7IGhvbG9ub21pYyBjb25zdHJhaW50czxicj4gY29u c3RyYWludHMgPSBhbGwtYm9uZHMgOyBhbGwgYm9uZHMgKGV2ZW4gaGVhdnkgYXRvbS1IIGJvbmRz KSBjb25zdHJhaW5lZDxicj4gbGluY3NfaXRlciA9IDEgOyBhY2N1cmFjeSBvZiBMSU5DUzxicj4g bGluY3Nfb3JkZXIgPSA0IDsgYWxzbyByZWxhdGVkIHRvIGFjY3VyYWN5PGJyPiA7IE5laWdoYm9y c2VhcmNoaW5nPGJyPiBjdXRvZmYtc2NoZW1lID0gVmVybGV0PGJyPiBuc190eXBlID0gZ3JpZCA7 IHNlYXJjaCBuZWlnaGJvcmluZyBncmlkIGNlbGxzPGJyPiBuc3RsaXN0ID0gMTAgOyAyMCBmcywg bGFyZ2VseSBpcnJlbGV2YW50IHdpdGggVmVybGV0IHNjaGVtZTxicj4gcmNvdWxvbWIgPSAxLjAg OyBzaG9ydC1yYW5nZSBlbGVjdHJvc3RhdGljIGN1dG9mZiAoaW4gbm0pPGJyPiBydmR3ID0gMS4w IDsgc2hvcnQtcmFuZ2UgdmFuIGRlciBXYWFscyBjdXRvZmYgKGluIG5tKTxicj4gOyBFbGVjdHJv c3RhdGljczxicj4gY291bG9tYnR5cGUgPSBQTUUgOyBQYXJ0aWNsZSBNZXNoIEV3YWxkIGZvciBs b25nLXJhbmdlIGVsZWN0cm9zdGF0aWNzPGJyPiBwbWVfb3JkZXIgPSA0IDsgY3ViaWMgaW50ZXJw b2xhdGlvbjxicj4gZm91cmllcnNwYWNpbmcgPSAwLjE2IDsgZ3JpZCBzcGFjaW5nIGZvciBGRlQ8 YnI+IDsgVGVtcGVyYXR1cmUgY291cGxpbmcgaXMgb248YnI+IHRjb3VwbCA9IFYtcmVzY2FsZSA7 IG1vZGlmaWVkIEJlcmVuZHNlbiB0aGVybW9zdGF0PGJyPiB0Yy1ncnBzID0gUHJvdGVpbiBOb24t UHJvdGVpbiA7IHR3byBjb3VwbGluZyBncm91cHMgLSBtb3JlIGFjY3VyYXRlPGJyPiB0YXVfdCA9 IDAuMSAwLjEgOyB0aW1lIGNvbnN0YW50LCBpbiBwczxicj4gcmVmX3QgPSAzMDAgMzAwIDsgcmVm ZXJlbmNlIHRlbXBlcmF0dXJlLCBvbmUgZm9yIGVhY2ggZ3JvdXAsIGluIEs8YnI+IDsgUHJlc3N1 cmUgY291cGxpbmcgaXMgb248YnI+IHBjb3VwbCA9IFBhcnJpbmVsbG8tUmFobWFuIDsgUHJlc3N1 cmUgY291cGxpbmcgb24gaW4gTlBUPGJyPiBwY291cGx0eXBlID0gaXNvdHJvcGljIDsgdW5pZm9y bSBzY2FsaW5nIG9mIGJveCB2ZWN0b3JzPGJyPiB0YXVfcCA9IDIuMCA7IHRpbWUgY29uc3RhbnQs IGluIHBzPGJyPiByZWZfcCA9IDEuMCA7IHJlZmVyZW5jZSBwcmVzc3VyZSwgaW4gYmFyPGJyPiBj b21wcmVzc2liaWxpdHkgPSA0LjVlLTUgOyBpc290aGVybWFsIGNvbXByZXNzaWJpbGl0eSBvZiB3 YXRlciwgYmFyXi0xPGJyPiByZWZjb29yZF9zY2FsaW5nID0gY29tPGJyPiA7IFBlcmlvZGljIGJv dW5kYXJ5IGNvbmRpdGlvbnM8YnI+IHBiYyA9IHh5eiA7IDMtRCBQQkM8YnI+IDsgRGlzcGVyc2lv biBjb3JyZWN0aW9uPGJyPiBEaXNwQ29yciA9IEVuZXJQcmVzIDsgYWNjb3VudCBmb3IgY3V0LW9m ZiB2ZFcgc2NoZW1lPGJyPiA7IFZlbG9jaXR5IGdlbmVyYXRpb248YnI+IGdlbl92ZWwgPSBubyA7 IFZlbG9jaXR5IGdlbmVyYXRpb24gaXMgb2ZmPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8YnI+ IGBgYDwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZ3JvbXBwIC1mIG5wdC5tZHAgLWMg bnZ0LmdybyAtdCBudnQuY3B0IC1wIHRvcG9sLnRvcCAtbyBucHQudHByIn08YnI+IGBgYDwvcD48 cD5gYGBweXRob248YnI+IG91dD0heyJnbXggbWRydW4gLXYgLWRlZmZubSBucHQifTxicj4gYGBg PC9wPjxwPuaIkeS7rOWPr+S7pemAmui/h+WOi+WKm+WSjOWvhuW6puajgOa1i+adpeeci+aooeaL n+aYr+WQpuW5s+ihoTwvcD48cD5gYGBweXRob248YnI+ICPljovlips8YnI+IG91dD0heyJnbXgg ZW5lcmd5IC1mIG5wdC5lZHIgLW8gcHJlc3N1cmUueHZnJmx0OyZsdDtFT0ZcbjE2XG4wXG5FT0Yi fTxicj4gI+WvhuW6pjxicj4gb3V0PSF7ImdteCBlbmVyZ3kgLWYgbnB0LmVkciAtbyBkZW5zaXR5 Lnh2ZyZsdDsmbHQ7RU9GXG4yMlxuMFxuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ ICPmvJTnpLrkvb/nlKg8YnI+IGZpZyxheD1wbHQuc3VicGxvdHMoKTxicj4gcGxvdFhWRyhheCwi cHJlc3N1cmUueHZnIik8YnI+IHBwbC5sZWdlbmQoYXgpPGJyPiBwbHQuc2hvdygpPGJyPiBgYGA8 L3A+PHA+IVtvdXRwdXRfNDNfMC5wbmddKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8v dXBsb2FkX2ltYWdlcy85MDM0NjctMGIzZTJmMTdjYTFjNjdmZC5wbmc/aW1hZ2VNb2dyMi9hdXRv LW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPmBgYHB5dGhvbjxicj4g I+a8lOekuuS9v+eUqDxicj4gZmlnLGF4PXBsdC5zdWJwbG90cygpPGJyPiBwbG90WFZHKGF4LCJk ZW5zaXR5Lnh2ZyIpPGJyPiBwcGwubGVnZW5kKGF4KTxicj4gcGx0LnNob3coKTxicj4gYGBgPC9w PjxwPiFbb3V0cHV0XzQ0XzAucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3Vw bG9hZF9pbWFnZXMvOTAzNDY3LTgwMTJkY2Y4MzNmOTBlMjAucG5nP2ltYWdlTW9ncjIvYXV0by1v cmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD4jIyMg5oiQ5ZOBTUQ8YnI+ IOmaj+edgOS4pOS4quW5s+ihoemYtuauteeahOWujOaIkCwg5L2T57O75bey57uP5Zyo6ZyA6KaB 55qE5rip5bqm5ZKM5Y6L5by65LiL5bmz6KGh5aW95LqGLiDmiJHku6znjrDlnKjlj6/ku6XmlL7l vIDkvY3nva7pmZDliLblubbov5vooYzmiJDlk4FNROS7peaUtumbhuaVsOaNruS6hi4g6L+Z5Liq 6L+H56iL6Lef5YmN6Z2i55qE57G75Ly8LiDov5DooYxgZ3JvbXBwYOaXtiwg5oiR5Lus6L+Y6KaB 55So5Yiw5qOA5p+l54K55paH5Lu2KOWcqOi/meenjeaDheWGteS4iyzlhbbkuK3ljIXlkKvkuobl jovlipvogKblkIjkv6Hmga8pLiDmiJHku6zopoHov5vooYzkuIDkuKoxIG5z55qETUTmqKHmi58s IOaJgOeUqOeahOWPguaVsOaWh+S7tuWmguS4izo8YnI+IGBgYDxicj4gdGl0bGUgPSBPUExTIE1E IHNpbXVsYXRpb248YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxl YXAtZnJvZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSA1MDAwMDAgOyAyICogNTAwMDAwID0gMTAw MCBwcyAoMSBucyk8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJy PiBuc3R4b3V0ID0gNTAwMCA7IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0 dm91dCA9IDUwMDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0ZW5lcmd5 ID0gNTAwMCA7IHNhdmUgZW5lcmdpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0bG9nID0gNTAwMCA7 IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAxMC4wIHBzPGJyPiBuc3R4b3V0LWNvbXByZXNzZWQgPSA1 MDAwIDsgc2F2ZSBjb21wcmVzc2VkIGNvb3JkaW5hdGVzIGV2ZXJ5IDEwLjAgcHM8YnI+IDsgbnN0 eG91dC1jb21wcmVzc2VkIHJlcGxhY2VzIG5zdHh0Y291dDxicj4gY29tcHJlc3NlZC14LWdycHMg PSBTeXN0ZW0gOyByZXBsYWNlcyB4dGMtZ3Jwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNv bnRpbnVhdGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlBUPGJyPiBjb25zdHJhaW50X2Fs Z29yaXRobSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9 IGFsbC1ib25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFp bmVkPGJyPiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRl ciA9IDQgOyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8 YnI+IGN1dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5l aWdoYm9yaW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGly cmVsZXZhbnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9tYiA9IDEuMCA7IHNob3J0LXJh bmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1y YW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJy PiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdhbGQgZm9yIGxvbmctcmFuZ2Ug ZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJy PiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcgZm9yIEZGVDxicj4gOyBUZW1w ZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQg QmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90ZWluIE5vbi1Qcm90ZWluIDsg dHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7 IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVt cGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4gOyBQcmVzc3VyZSBjb3VwbGlu ZyBpcyBvbjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4gOyBQcmVzc3VyZSBjb3VwbGlu ZyBvbiBpbiBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMgOyB1bmlmb3JtIHNjYWxpbmcg b2YgYm94IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBjb25zdGFudCwgaW4gcHM8YnI+ IHJlZl9wID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBiYXI8YnI+IGNvbXByZXNzaWJp bGl0eSA9IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmlsaXR5IG9mIHdhdGVyLCBiYXJe LTE8YnI+IDsgUGVyaW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1E IFBCQzxicj4gOyBEaXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMg OyBhY2NvdW50IGZvciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlv bjxicj4gZ2VuX3ZlbCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+IGBgYDwv cD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3BlbignbWQubWRwJywn dycpPGJyPiBmaWxlLndyaXRlKCIiIjxicj4gdGl0bGUgPSBPUExTIEx5c296eW1lIE1EIHNpbXVs YXRpb248YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxlYXAtZnJv ZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSA1MDAwMDAgOyAyICogNTAwMDAwID0gMTAwMCBwcyAo MSBucyk8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBuc3R4 b3V0ID0gNTAwMCA7IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0dm91dCA9 IDUwMDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0ZW5lcmd5ID0gNTAw MCA7IHNhdmUgZW5lcmdpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0bG9nID0gNTAwMCA7IHVwZGF0 ZSBsb2cgZmlsZSBldmVyeSAxMC4wIHBzPGJyPiBuc3R4b3V0LWNvbXByZXNzZWQgPSA1MDAwIDsg c2F2ZSBjb21wcmVzc2VkIGNvb3JkaW5hdGVzIGV2ZXJ5IDEwLjAgcHM8YnI+IDsgbnN0eG91dC1j b21wcmVzc2VkIHJlcGxhY2VzIG5zdHh0Y291dDxicj4gY29tcHJlc3NlZC14LWdycHMgPSBTeXN0 ZW0gOyByZXBsYWNlcyB4dGMtZ3Jwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVh dGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlBUPGJyPiBjb25zdHJhaW50X2FsZ29yaXRo bSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9IGFsbC1i b25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFpbmVkPGJy PiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRlciA9IDQg OyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1 dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5laWdoYm9y aW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZh bnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9tYiA9IDEuMCA7IHNob3J0LXJhbmdlIGVs ZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2 YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vs b21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdhbGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ry b3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJyPiBmb3Vy aWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcgZm9yIEZGVDxicj4gOyBUZW1wZXJhdHVy ZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5k c2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNv dXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUg Y29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1 cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4gOyBQcmVzc3VyZSBjb3VwbGluZyBpcyBv bjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4gOyBQcmVzc3VyZSBjb3VwbGluZyBvbiBp biBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMgOyB1bmlmb3JtIHNjYWxpbmcgb2YgYm94 IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBjb25zdGFudCwgaW4gcHM8YnI+IHJlZl9w ID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBiYXI8YnI+IGNvbXByZXNzaWJpbGl0eSA9 IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmlsaXR5IG9mIHdhdGVyLCBiYXJeLTE8YnI+ IDsgUGVyaW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxi cj4gOyBEaXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2Nv dW50IGZvciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4g Z2VuX3ZlbCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+ICIiIik8YnI+IGZp bGUuY2xvc2UoKTxicj4gYGBgPC9wPjxwPmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBncm9tcHAg LWYgbWQubWRwIC1jIG5wdC5ncm8gLXQgbnB0LmNwdCAtcCB0b3BvbC50b3AgLW8gbWRfMF8xLnRw ciJ9PGJyPiBgYGA8L3A+PHA+YGBgcHl0aG9uPGJyPiAhZ214IG1kcnVuIC12IC1kZWZmbm0gbWRf MF8xPGJyPiBgYGA8L3A+PHA+5YW35L2T55qE5YiG5p6Q5pa55rOV5LiO5YaF5a655oiR5Lus5LiL 5qyh5YiG5LqrPC9wPjxwPuabtOWkmuWOn+WIm+eyvuW9qeinhumikeaVrOivt+WFs+azqCoq55Sf 5L+h5p2C6LCIOioqPC9wPjxwPiFbXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3Vw bG9hZF9pbWFnZXMvOTAzNDY3LWUxNDk5NzdkYmMyZGU1ZjY/aW1hZ2VNb2dyMi9hdXRvLW9yaWVu dC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDAp4oCLPC9wPg==">​</div><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/670.html" data-id="cj8x084ov007xnora3q7nyx5t" class="article-share-link" data-share="baidu" data-title="GROMACS之水中部分載脂蛋白">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/670.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e9-9d-9e-e5-b8-b8-e6-9c-89-e7-94-a8-e7-9a-84-e8-9b-8b-e7-99-bd-e8-b4-a8-e7-a7-91-e5-ad-a6-e5-b7-a5-e5-85-b7-e4-b8-8e-e9-a1-b9-e7-9b-ae" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/665.html" class="article-date">
+  <time datetime="2017-06-21T11:49:23.000Z" itemprop="datePublished">2017-06-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dock/">Dock</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/665.html">非常有用的蛋白质科学工具与项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>翻译自，<a href="https://github.com/rasbt/protein-science/blob/master/scripts-and-tools/more_protein-science_tools.md" target="_blank" rel="external">github</a>:(2015版)<br><br>## 蛋白配体对接与评价<br><br>### AutoDock 4.2<br><br>License:free, open-source (GNU GPL)<br><br>一个使用相对廉价的”hybrid”力场的分子对接与得分工具，该力场为半经验的方法（molecular mechanics as well as empirical terms）.其预测的绝对结合自由能相较于更大的计算量项目可能精确度较低，但这种半经验方法对于相对得分(ranking)可能更加合适。<br><br>虽然AutoDock这种半经验力场被AutoDock Vina这个完整的基于知识的，统计得分函数的软件所替代。同时AutoDock Vina具有更精确和更快的速度。但是AutoDock 4.2 提供了更加详细的输出描述可能对某些应用具有其独有的优势。<br><br>网址:<a href="http://autodock.scripps.edu/downloads/autodock-registration/autodock-4-2-download-page/" target="_blank" rel="external">http://autodock.scripps.edu/downloads/autodock-registration/autodock-4-2-download-page/</a><br><br><em>Huey, Ruth, Garrett M. Morris, Arthur J. Olson, and David S. Goodsell. 2007. “A Semiempirical Free Energy Force Field with Charge-Based Desolvation.” Journal of Computational Chemistry 28 (6): 1145–52. doi:10.1002/jcc.20634.</em><br><br>#### 输出例子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">Total Intermolecular Interaction Energy          =  -3.1862 kcal/mol<br>Total Intermolecular vdW + Hbond + desolv Energy =  -0.2499 kcal/mol<br>Total Intermolecular Electrostatic Energy        =  -2.9362 kcal/mol<br>Total Intermolecular + Intramolecular Energy     =  -5.6314 kcal/mol<br><br>epdb: USER    Estimated Free Energy of Binding    =   -1.40 kcal/mol  [=(1)+(2)+(3)-(4)]<br>epdb: USER    Estimated Inhibition Constant, Ki   =   94.72 mM (millimolar)  [Temperature = 298.15 K]<br>epdb: USER<br>epdb: USER    (1) Final Intermolecular Energy     =   -3.19 kcal/mol<br>epdb: USER        vdW + Hbond + desolv Energy     =   -0.25 kcal/mol<br>epdb: USER        Electrostatic Energy            =   -2.94 kcal/mol<br>epdb: USER    (2) Final Total Internal Energy     =   -2.45 kcal/mol<br>epdb: USER    (3) Torsional Free Energy           =   +1.79 kcal/mol<br>epdb: USER    (4) Unbound System’s Energy  [=(2)] =   -2.45 kcal/mol</pre><br>版本:<br><pre class="EnlighterJSRAW" data-enlighter-language="null">AutoDock 4.2 Release 4.2.5.1</pre><br>AutoDock Vina<br><br>License: free, open-source (Apache license)<br><br>其为AutoDock的蛋白对接与在得分的继承者，其可以评价结合能力以及一些独有的项目，例如疏水贡献以及氢键(PS:译者并未发现有这些功能····)<br><br>网站:<a href="http://vina.scripps.edu/" target="_blank" rel="external">http://vina.scripps.edu/</a><br><br><em>O. Trott, A. J. Olson, AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization and multithreading, Journal of Computational Chemistry 31 (2010) 455-461</em><br><br>#### 重新打分用法:<br><br></div>
+
+<div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><pre class="EnlighterJSRAW" data-enlighter-language="null">vina –config config.txt –score_only<br></pre><br>config.txt的例子如下:<br><br></div>
+
+<div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><pre class="EnlighterJSRAW" data-enlighter-language="null">receptor = protein.pdbqt<br>ligand = ligand.pdbqt<br>center_x = -2.491 # Center of Grid points X<br>center_y = 30.038 # Center of Grid points Y<br>center_z = -10.765 # Center of Grid points Z<br>size_x = 25 # Number of Grid points in X direction<br>size_y = 25 # Number of Grid points in Y Direction<br>size_z = 25 # Number of Grid points in Z Direction</pre><br><br>### DrugScoreX<br><br>License: free without any limitations (redistribution requires permission)<br><br>DrugScoreX是一个较新的，对于蛋白配体打分具有比DrugScore更高精度的软件，其打分功能是基于统计势能？(statistical potentials)<br><br>网址:<a href="http://pc1664.pharmazie.uni-marburg.de/drugscore/" target="_blank" rel="external">http://pc1664.pharmazie.uni-marburg.de/drugscore/</a><br><br><em>DSX: A Knowledge-Based Scoring Function for the Assessment of Protein–Ligand Complexes Gerd Neudert and Gerhard Klebe Journal of Chemical Information and Modeling 2011 51 (10), 2731-2745</em><br><br>#### 用法:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">dsx_mac_64.mac -h<br><br>…<br><br>pro_file    :  A pdb or mol2 file of your protein.<br>              In pdb format metals in this file will be treated as part<br>              of the protein. =&gt; Be sure to delete metals in the pdb file<br>              if you want to supply some metals seperately (-M met_file)!<br>              All other HETATMs will be ignored!<br>              In mol2 format everything will be taken as part of the<br>              protein. =&gt; Be sure to delete molecules you want to supply<br>              seperately (-C, -W, -M) from the protein-mol2-file!<br>lig_file    :  A mol2- or autodock dlg-file containing all molecules that<br>              should be scored.<br><br>…</pre><br>译者注:其可以对金属离子进行打分<br><br>#### 例子:<br><br>译者注:个人觉得作者下载的是mac版本<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">dsx_mac_64.mac -P protein.pdb -L ligand.mol2 -D pdb_pot_0511<br></pre><br>其中pdb_pot_0511在下载文件中:<br><pre class="EnlighterJSRAW" data-enlighter-language="null">dsx/<br>    ACC_DON_AnD_HYD_ARO_map.def<br>    mac64/               # directory that contains the binaries<br>    README.txt<br>    pdb_pot_0511/     # potentials</pre><br>LigScore<br><br>License: free, open-source (GNU GPL)<br><br>与DrugScore的算法类似,提供本地(IMP 工具包)以及在线服务。<br>其得分功能具有两种”口味”,<code>RankScore</code>，推荐被用于不同配体在蛋白结合界面的评分(例如虚拟筛选);<code>PoseScore</code>，在设置的一系列配体叠代中寻找优化的结合构象(例如相同的具有不同方向或者构象的配体)<br><br>网址:<a href="http://salilab.org/imp/" target="_blank" rel="external">http://salilab.org/imp/</a><br>在线网址:<a href="http://modbase.compbio.ucsf.edu/ligscore/" target="_blank" rel="external">http://modbase.compbio.ucsf.edu/ligscore/</a><br><br><em>Fan H, Schneidman-Duhovny D, Irwin J, Dong GQ, Shoichet B, Sali A. Statistical Potential for Modeling and Ranking of Protein-Ligand Interactions. J Chem Inf Model. 2011, 51:3078-92.</em><br><br>#### 使用:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">ligand_score -h<br>Usage: ligand_score file.mol2 file.pdb [libfile]</pre><br>其中<code>protein_ligand_pose_score.lib</code> 用来<code>PoseScore</code>打分，<code>protein_ligand_rank_score.lib</code>用来<code>RankScore</code>打分。<br><br>#### 示例:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">ligand_score my.mol2 my.pdb /usr/local/share/IMP/atom/protein_ligand_pose_score.lib<br></pre><br>DOCK 6 Amber Score<br><br>License: Available free of charge for academic institutions, but there is a licensing fee for industrial organizations.<br><br>DOCK 6 是一个对接工具提供了几种打分函数，其可以用来对已经对接的构象进行再打分。下面是一个如何在打分的例子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">dock6 -h<br><br>————————————–<br>DOCK v6.7<br><br>Released February 2015<br>Copyright UCSF<br>————————————–<br><br>Usage:<br>    dock6 -i filename.in [-o filename.out] [-v]</pre><br><br>#### 例子:<br><br>Amber 打分对蛋白配体复合物进行最小化，分子动力学模拟，能量最小化，更详细的计算方法可以查看:<a href="http://dock.compbio.ucsf.edu/DOCK_6/tutorials/amber_score/amber_score.htm" target="_blank" rel="external">http://dock.compbio.ucsf.edu/DOCK_6/tutorials/amber_score/amber_score.htm</a><br><br>下面这个例子，我们假设一次已经进行了蛋白配体处理，例如:我们在蛋白PDB文件中移除了配体，金属离子和水分子，并且将组氨酸残基进行了正确的质子化。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">prepare_amber.pl lig.mol2 1a9x.pdb</pre><br>接下来我们创建如下的<code>dock.in</code>文件:<br><pre class="EnlighterJSRAW" data-enlighter-language="null">ligand_atom_file                                             lig.amber_score.mol2<br>limit_max_ligands                                            no<br>skip_molecule                                                no<br>read_mol_solvation                                           no<br>calculate_rmsd                                               no<br>use_database_filter                                          no<br>orient_ligand                                                no<br>use_internal_energy                                          no<br>flexible_ligand                                              no<br>bump_filter                                                  no<br>score_molecules                                              yes<br>contact_score_primary                                        no<br>contact_score_secondary                                      no<br>grid_score_primary                                           no<br>grid_score_secondary                                         no<br>multigrid_score_primary                                      no<br>multigrid_score_secondary                                    no<br>dock3.5_score_primary                                        no<br>dock3.5_score_secondary                                      no<br>continuous_score_primary                                     no<br>continuous_score_secondary                                   no<br>descriptor_score_primary                                     no<br>descriptor_score_secondary                                   no<br>gbsa_zou_score_primary                                       no<br>gbsa_zou_score_secondary                                     no<br>gbsa_hawkins_score_primary                                   no<br>gbsa_hawkins_score_secondary                                 no<br>SASA_descriptor_score_primary                                no<br>SASA_descriptor_score_secondary                              no<br>amber_score_primary                                          yes<br>amber_score_secondary                                        no<br>amber_score_receptor_file_prefix                             1a9x<br>amber_score_movable_region                                   ligand<br>amber_score_minimization_rmsgrad                             0.01<br>amber_score_before_md_minimization_cycles                    100<br>amber_score_md_steps                                         3000<br>amber_score_after_md_minimization_cycles                     100<br>amber_score_gb_model                                         5<br>amber_score_nonbonded_cutoff                                 18.0<br>amber_score_temperature                                      300.0<br>amber_score_abort_on_unprepped_ligand                        yes<br>ligand_outfile_prefix                                        output<br>write_orientations                                           no<br>num_scored_conformers                                        1<br>rank_ligands                                                 no</pre><br>&nbsp;<br><br>最后步骤，我们执行<code>dock6</code>读取<code>dock.in</code>文件<br><br><code>dock6 -i dock.in &amp;gt; dock.out</code><br><br>在<code>dock.out</code>文件，我们可以找到Amber 得分:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">[…]<br>Molecule: <strong>*</strong><br><br>Elapsed time for docking:  34 seconds<br><br>Anchors:       1<br>Orientations:      1<br>Conformations:     1<br><br>Amber Score:          -19.431744<br>    complex:        50250.946122<br>   receptor:       -50307.949484<br>     ligand:           37.571619<br><br>1 Molecules Processed<br>Total elapsed time: 41 seconds</pre><br>&nbsp;<br><br>## 蛋白文件和结构处理<br><br>### OpenBabel<br><br>License: free, open-source (GNU GPL)<br><br>一个格式转换工具，具有本地编译包和多种语言的API<br><br>网站:<a href="http://openbabel.org/" target="_blank" rel="external">http://openbabel.org/</a><br><br><em>O’Boyle, Noel M., Michael Banck, Craig A. James, Chris Morley, Tim Vandermeersch, and Geoffrey R. Hutchison. “Open Babel: An Open Chemical Toolbox.” J Cheminf 3 (2011): 33.</em><br><br>#### 使用:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">babel -H<br>Open Babel converts chemical structures from one file format to another<br><br>Usage: babel &lt;input spec&gt; &lt;output spec&gt; [Options]</pre><br><br>#### 例子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">babel -i mol2 my.mol2 -o pdbqt my.pdbqt</pre><br><span style="font-family: 'Droid Sans', sans-serif; font-size: 1.2em; font-weight: bold; background-color: #ffffff; color: #404040;">版本:</span><br><pre class="EnlighterJSRAW" data-enlighter-language="null">babel<br>No output file or format spec!<br>Open Babel 2.3.1 – Oct 13 2011 – 15:14:47</pre><br><br>### Reduce<br><br>License: free, but no particular license provided<br><br>一个加氢删氢的命令行工具，仅支持PDB格式<br><br>网站:<a href="http://kinemage.biochem.duke.edu/software/reduce.php" target="_blank" rel="external">http://kinemage.biochem.duke.edu/software/reduce.php</a><br><br><em>Word, et al.(1999) “Asparagine and glutamine: using hydrogen atom contacts in the choice of sidechain amide orientation” J. Mol. Biol. 285, 1735-1747.</em><br><br>#### 使用:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">~/Desktop &gt;./reduce -h<br>reduce: version 3.23 05/21/2013, Copyright 1997-2013, J. Michael Word<br>reduce.3.23.130521<br>arguments: [-flags] filename or -<br><br>Suggested usage:<br>reduce -FLIP myfile.pdb &gt; myfileFH.pdb (do NQH-flips)<br>reduce -NOFLIP myfile.pdb &gt; myfileH.pdb (do NOT do NQH-flips)<br><br>Flags:<br>-FLIP             add H and rotate and flip NQH groups<br>-NOFLIP           add H and rotate groups with no NQH flips<br>-Trim             remove (rather than add) hydrogens<br><br>-NUClear          use nuclear X-H distances rather than default<br>                  electron cloud distances<br>-NOOH             remove hydrogens on OH and SH groups<br>-OH               add hydrogens on OH and SH groups (default)<br><br>-HIS              create NH hydrogens on HIS rings<br>-FLIPs            allow complete ASN, GLN and HIS sidechains to flip<br>                        (usually used with -HIS)<br>…</pre><br><br>#### 版本:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="null">reduce -v<br>reduce.3.23.130521</pre><br><br>## 配体结构<br><br>由于配体结构原文中主要是介绍的OpenEye，这个要求，所以就不 翻译了。<br><br>## 晶体结构分析<br><br>### PyWater<br><br>一个寻找保守水分子的Pymol插件<br><br>文档与代码:<a href="https://github.com/hiteshpatel379/PyWATER" target="_blank" rel="external">https://github.com/hiteshpatel379/PyWATER</a><br><br>## 质谱?(Mass Spectrometry)<br><br>### ProteoWizard<br><br>一个蛋白质组学分析的图形化和命令行分析工具<br>网站:<a href="http://proteowizard.sourceforge.net/index.shtml" target="_blank" rel="external">http://proteowizard.sourceforge.net/index.shtml</a><br><br>### OpenMS<br><br>一个LC/MS数据管理和分析C++工具包<br>网站:<a href="http://open-ms.sourceforge.net/" target="_blank" rel="external">http://open-ms.sourceforge.net/</a><br><em>Marc Sturm, Andreas Bertsch, Clemens Gröpl, Andreas Hildebrandt, Rene Hussong, Eva Lange, Nico Pfeifer, Ole Schulz-Trieglaff, Alexandra Zerck, Knut Reinert, and Oliver Kohlbacher, 2008. “OpenMS – an Open-Source Software Framework for Mass Spectrometry” BMC Bioinformatics 9: 163. doi:10.1186/1471-2105-9-163.</em><br><br>## （开发）库<br><br>### Biopython<br><br>License: free, open-source (very permissive custom license)<br>一个Python工具包<br>网站:<a href="http://biopython.org/wiki/Main_Page" target="_blank" rel="external">http://biopython.org/wiki/Main_Page</a><br>中文文档:<a href="http://biopython-cn.readthedocs.io/zh_CN/latest/" target="_blank" rel="external">http://biopython-cn.readthedocs.io/zh_CN/latest/</a><br><br>### scikit-bio<br><br>License: free, open-source (BSD)<br>一个提供多种生物科学功能，数据结构和算法的Python包<br>网站:<a href="http://scikit-bio.org/" target="_blank" rel="external">http://scikit-bio.org/</a><br><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+57+76K+R6Ieq77yMW2dpdGh1Yl0oaHR0cHM6Ly9naXRodWIuY29tL3Jhc2J0L3Byb3RlaW4t
+c2NpZW5jZS9ibG9iL21hc3Rlci9zY3JpcHRzLWFuZC10b29scy9tb3JlX3Byb3RlaW4tc2NpZW5j
+ZV90b29scy5tZCk6KDIwMTXniYgpPC9wPjxwPiMjIOibi+eZvemFjeS9k+WvueaOpeS4juivhOS7
+tzwvcD48cD4jIyMgQXV0b0RvY2sgNC4yPGJyPkxpY2Vuc2U6ZnJlZSwgb3Blbi1zb3VyY2UgKEdO
+VSBHUEwpPC9wPjxwPuS4gOS4quS9v+eUqOebuOWvueW7ieS7t+eahCJoeWJyaWQi5Yqb5Zy655qE
+5YiG5a2Q5a+55o6l5LiO5b6X5YiG5bel5YW377yM6K+l5Yqb5Zy65Li65Y2K57uP6aqM55qE5pa5
+5rOV77yIbW9sZWN1bGFyIG1lY2hhbmljcyBhcyB3ZWxsIGFzIGVtcGlyaWNhbCB0ZXJtc++8iS7l
+hbbpooTmtYvnmoTnu53lr7nnu5PlkIjoh6rnlLHog73nm7jovoPkuo7mm7TlpKfnmoTorqHnrpfp
+h4/pobnnm67lj6/og73nsr7noa7luqbovoPkvY7vvIzkvYbov5nnp43ljYrnu4/pqozmlrnms5Xl
+r7nkuo7nm7jlr7nlvpfliIYocmFua2luZynlj6/og73mm7TliqDlkIjpgILjgII8L3A+PHA+6Jm9
+54S2QXV0b0RvY2vov5nnp43ljYrnu4/pqozlipvlnLrooqtBdXRvRG9jayBWaW5h6L+Z5Liq5a6M
+5pW055qE5Z+65LqO55+l6K+G55qE77yM57uf6K6h5b6X5YiG5Ye95pWw55qE6L2v5Lu25omA5pu/
+5Luj44CC5ZCM5pe2QXV0b0RvY2sgVmluYeWFt+acieabtOeyvuehruWSjOabtOW/q+eahOmAn+W6
+puOAguS9huaYr0F1dG9Eb2NrIDQuMiDmj5Dkvpvkuobmm7TliqDor6bnu4bnmoTovpPlh7rmj4/o
+v7Dlj6/og73lr7nmn5DkupvlupTnlKjlhbfmnInlhbbni6zmnInnmoTkvJjlir/jgII8L3A+PHA+
+572R5Z2AOmh0dHA6Ly9hdXRvZG9jay5zY3JpcHBzLmVkdS9kb3dubG9hZHMvYXV0b2RvY2stcmVn
+aXN0cmF0aW9uL2F1dG9kb2NrLTQtMi1kb3dubG9hZC1wYWdlLzwvcD48cD4qSHVleSwgUnV0aCwg
+R2FycmV0dCBNLiBNb3JyaXMsIEFydGh1ciBKLiBPbHNvbiwgYW5kIERhdmlkIFMuIEdvb2RzZWxs
+LiAyMDA3LiDigJxBIFNlbWllbXBpcmljYWwgRnJlZSBFbmVyZ3kgRm9yY2UgRmllbGQgd2l0aCBD
+aGFyZ2UtQmFzZWQgRGVzb2x2YXRpb24u4oCdIEpvdXJuYWwgb2YgQ29tcHV0YXRpb25hbCBDaGVt
+aXN0cnkgMjggKDYpOiAxMTQ14oCTNTIuIGRvaToxMC4xMDAyL2pjYy4yMDYzNC4qPC9wPjxwPiMj
+IyMg6L6T5Ye65L6L5a2QOjxicj5gYGBiYXNoPGJyPlRvdGFsIEludGVybW9sZWN1bGFyIEludGVy
+YWN0aW9uIEVuZXJneSA9IC0zLjE4NjIga2NhbC9tb2w8YnI+VG90YWwgSW50ZXJtb2xlY3VsYXIg
+dmRXICsgSGJvbmQgKyBkZXNvbHYgRW5lcmd5ID0gLTAuMjQ5OSBrY2FsL21vbDxicj5Ub3RhbCBJ
+bnRlcm1vbGVjdWxhciBFbGVjdHJvc3RhdGljIEVuZXJneSA9IC0yLjkzNjIga2NhbC9tb2w8YnI+
+VG90YWwgSW50ZXJtb2xlY3VsYXIgKyBJbnRyYW1vbGVjdWxhciBFbmVyZ3kgPSAtNS42MzE0IGtj
+YWwvbW9sPC9wPjxwPjxicj5lcGRiOiBVU0VSIEVzdGltYXRlZCBGcmVlIEVuZXJneSBvZiBCaW5k
+aW5nID0gLTEuNDAga2NhbC9tb2wgWz0oMSkrKDIpKygzKS0oNCldPGJyPmVwZGI6IFVTRVIgRXN0
+aW1hdGVkIEluaGliaXRpb24gQ29uc3RhbnQsIEtpID0gOTQuNzIgbU0gKG1pbGxpbW9sYXIpIFtU
+ZW1wZXJhdHVyZSA9IDI5OC4xNSBLXTxicj5lcGRiOiBVU0VSIDxicj5lcGRiOiBVU0VSICgxKSBG
+aW5hbCBJbnRlcm1vbGVjdWxhciBFbmVyZ3kgPSAtMy4xOSBrY2FsL21vbDxicj5lcGRiOiBVU0VS
+IHZkVyArIEhib25kICsgZGVzb2x2IEVuZXJneSA9IC0wLjI1IGtjYWwvbW9sPGJyPmVwZGI6IFVT
+RVIgRWxlY3Ryb3N0YXRpYyBFbmVyZ3kgPSAtMi45NCBrY2FsL21vbDxicj5lcGRiOiBVU0VSICgy
+KSBGaW5hbCBUb3RhbCBJbnRlcm5hbCBFbmVyZ3kgPSAtMi40NSBrY2FsL21vbDxicj5lcGRiOiBV
+U0VSICgzKSBUb3JzaW9uYWwgRnJlZSBFbmVyZ3kgPSArMS43OSBrY2FsL21vbDxicj5lcGRiOiBV
+U0VSICg0KSBVbmJvdW5kIFN5c3RlbSdzIEVuZXJneSBbPSgyKV0gPSAtMi40NSBrY2FsL21vbDxi
+cj5gYGA8YnI+IyMjIyDniYjmnKw6PGJyPmBgYGJhc2g8YnI+QXV0b0RvY2sgNC4yIFJlbGVhc2Ug
+NC4yLjUuMSA8YnI+YGBgPGJyPiMjIyBBdXRvRG9jayBWaW5hPGJyPkxpY2Vuc2U6IGZyZWUsIG9w
+ZW4tc291cmNlIChBcGFjaGUgbGljZW5zZSk8L3A+PHA+5YW25Li6QXV0b0RvY2vnmoTom4vnmb3l
+r7nmjqXkuI7lnKjlvpfliIbnmoTnu6fmib/ogIXvvIzlhbblj6/ku6Xor4Tku7fnu5PlkIjog73l
+ipvku6Xlj4rkuIDkupvni6zmnInnmoTpobnnm67vvIzkvovlpoLnlo/msLTotKHnjK7ku6Xlj4rm
+sKLplK4oUFM66K+R6ICF5bm25pyq5Y+R546w5pyJ6L+Z5Lqb5Yqf6IO9wrfCt8K3wrcpPC9wPjxw
+Pue9keermTpodHRwOi8vdmluYS5zY3JpcHBzLmVkdS88L3A+PHA+Kk8uIFRyb3R0LCBBLiBKLiBP
+bHNvbiwgQXV0b0RvY2sgVmluYTogaW1wcm92aW5nIHRoZSBzcGVlZCBhbmQgYWNjdXJhY3kgb2Yg
+ZG9ja2luZyB3aXRoIGEgbmV3IHNjb3JpbmcgZnVuY3Rpb24sIGVmZmljaWVudCBvcHRpbWl6YXRp
+b24gYW5kIG11bHRpdGhyZWFkaW5nLCBKb3VybmFsIG9mIENvbXB1dGF0aW9uYWwgQ2hlbWlzdHJ5
+IDMxICgyMDEwKSA0NTUtNDYxKjwvcD48cD4jIyMjIOmHjeaWsOaJk+WIhueUqOazlTo8YnI+YGBg
+YmFzaDxicj52aW5hIC0tY29uZmlnIGNvbmZpZy50eHQgLS1zY29yZV9vbmx5PGJyPmBgYDxicj5j
+b25maWcudHh055qE5L6L5a2Q5aaC5LiLOjxicj5gYGBiYXNoPGJyPnJlY2VwdG9yID0gcHJvdGVp
+bi5wZGJxdDxicj5saWdhbmQgPSBsaWdhbmQucGRicXQ8YnI+Y2VudGVyX3ggPSAtMi40OTEgIyBD
+ZW50ZXIgb2YgR3JpZCBwb2ludHMgWDxicj5jZW50ZXJfeSA9IDMwLjAzOCAjIENlbnRlciBvZiBH
+cmlkIHBvaW50cyBZPGJyPmNlbnRlcl96ID0gLTEwLjc2NSAjIENlbnRlciBvZiBHcmlkIHBvaW50
+cyBaPGJyPnNpemVfeCA9IDI1ICMgTnVtYmVyIG9mIEdyaWQgcG9pbnRzIGluIFggZGlyZWN0aW9u
+PGJyPnNpemVfeSA9IDI1ICMgTnVtYmVyIG9mIEdyaWQgcG9pbnRzIGluIFkgRGlyZWN0aW9uPGJy
+PnNpemVfeiA9IDI1ICMgTnVtYmVyIG9mIEdyaWQgcG9pbnRzIGluIFogRGlyZWN0aW9uPGJyPmBg
+YDwvcD48cD4jIyMjIOeJiOacrDo8YnI+YGBgYmFzaDxicj52aW5hIC0tdmVyc2lvbjxicj5BdXRv
+RG9jayBWaW5hIDEuMS4yIChNYXkgMTEsIDIwMTEpPGJyPmBgYDxicj4jIyMgRHJ1Z1Njb3JlWDxi
+cj5MaWNlbnNlOiBmcmVlIHdpdGhvdXQgYW55IGxpbWl0YXRpb25zIChyZWRpc3RyaWJ1dGlvbiBy
+ZXF1aXJlcyBwZXJtaXNzaW9uKTwvcD48cD5EcnVnU2NvcmVY5piv5LiA5Liq6L6D5paw55qE77yM
+5a+55LqO6JuL55m96YWN5L2T5omT5YiG5YW35pyJ5q+URHJ1Z1Njb3Jl5pu06auY57K+5bqm55qE
+6L2v5Lu277yM5YW25omT5YiG5Yqf6IO95piv5Z+65LqO57uf6K6h5Yq/6IO977yfKHN0YXRpc3Rp
+Y2FsIHBvdGVudGlhbHMpPC9wPjxwPue9keWdgDpodHRwOi8vcGMxNjY0LnBoYXJtYXppZS51bmkt
+bWFyYnVyZy5kZS9kcnVnc2NvcmUvPC9wPjxwPipEU1g6IEEgS25vd2xlZGdlLUJhc2VkIFNjb3Jp
+bmcgRnVuY3Rpb24gZm9yIHRoZSBBc3Nlc3NtZW50IG9mIFByb3RlaW7igJNMaWdhbmQgQ29tcGxl
+eGVzIEdlcmQgTmV1ZGVydCBhbmQgR2VyaGFyZCBLbGViZSBKb3VybmFsIG9mIENoZW1pY2FsIElu
+Zm9ybWF0aW9uIGFuZCBNb2RlbGluZyAyMDExIDUxICgxMCksIDI3MzEtMjc0NSo8YnI+IyMjIyDn
+lKjms5U6PGJyPmBgYGJhc2g8YnI+ZHN4X21hY182NC5tYWMgLWg8L3A+PHA+Li4uPC9wPjxwPnBy
+b19maWxlIDogQSBwZGIgb3IgbW9sMiBmaWxlIG9mIHlvdXIgcHJvdGVpbi48YnI+IEluIHBkYiBm
+b3JtYXQgbWV0YWxzIGluIHRoaXMgZmlsZSB3aWxsIGJlIHRyZWF0ZWQgYXMgcGFydDxicj4gb2Yg
+dGhlIHByb3RlaW4uID0mZ3Q7IEJlIHN1cmUgdG8gZGVsZXRlIG1ldGFscyBpbiB0aGUgcGRiIGZp
+bGU8YnI+IGlmIHlvdSB3YW50IHRvIHN1cHBseSBzb21lIG1ldGFscyBzZXBlcmF0ZWx5ICgtTSBt
+ZXRfZmlsZSkhPGJyPiBBbGwgb3RoZXIgSEVUQVRNcyB3aWxsIGJlIGlnbm9yZWQhPGJyPiBJbiBt
+b2wyIGZvcm1hdCBldmVyeXRoaW5nIHdpbGwgYmUgdGFrZW4gYXMgcGFydCBvZiB0aGU8YnI+IHBy
+b3RlaW4uID0mZ3Q7IEJlIHN1cmUgdG8gZGVsZXRlIG1vbGVjdWxlcyB5b3Ugd2FudCB0byBzdXBw
+bHk8YnI+IHNlcGVyYXRlbHkgKC1DLCAtVywgLU0pIGZyb20gdGhlIHByb3RlaW4tbW9sMi1maWxl
+ITxicj5saWdfZmlsZSA6IEEgbW9sMi0gb3IgYXV0b2RvY2sgZGxnLWZpbGUgY29udGFpbmluZyBh
+bGwgbW9sZWN1bGVzIHRoYXQ8YnI+IHNob3VsZCBiZSBzY29yZWQuPGJyPiA8YnI+Li4uIDxicj5g
+YGA8YnI+6K+R6ICF5rOoOuWFtuWPr+S7peWvuemHkeWxnuemu+WtkOi/m+ihjOaJk+WIhjwvcD48
+cD4jIyMjIOS+i+WtkDo8YnI+6K+R6ICF5rOoOuS4quS6uuinieW+l+S9nOiAheS4i+i9veeahOaY
+r21hY+eJiOacrDxicj5gYGBiYXNoPGJyPmRzeF9tYWNfNjQubWFjIC1QIHByb3RlaW4ucGRiIC1M
+IGxpZ2FuZC5tb2wyIC1EIHBkYl9wb3RfMDUxMTxicj5gYGA8YnI+5YW25LitcGRiX3BvdF8wNTEx
+5Zyo5LiL6L295paH5Lu25LitOjxicj5gYGBiYXNoPGJyPmRzeC88YnI+IEFDQ19ET05fQW5EX0hZ
+RF9BUk9fbWFwLmRlZiA8YnI+IG1hYzY0LyAjIGRpcmVjdG9yeSB0aGF0IGNvbnRhaW5zIHRoZSBi
+aW5hcmllczxicj4gUkVBRE1FLnR4dCA8YnI+IHBkYl9wb3RfMDUxMS8gIyBwb3RlbnRpYWxzPGJy
+PmBgYDwvcD48cD4jIyMgTGlnU2NvcmU8YnI+TGljZW5zZTogZnJlZSwgb3Blbi1zb3VyY2UgKEdO
+VSBHUEwpPC9wPjxwPuS4jkRydWdTY29yZeeahOeul+azleexu+S8vCzmj5DkvpvmnKzlnLAoSU1Q
+IOW3peWFt+WMhSnku6Xlj4rlnKjnur/mnI3liqHjgII8YnI+5YW25b6X5YiG5Yqf6IO95YW35pyJ
+5Lik56eNIuWPo+WRsyIsYFJhbmtTY29yZWDvvIzmjqjojZDooqvnlKjkuo7kuI3lkIzphY3kvZPl
+nKjom4vnmb3nu5PlkIjnlYzpnaLnmoTor4TliIYo5L6L5aaC6Jma5ouf562b6YCJKTtgUG9zZVNj
+b3JlYO+8jOWcqOiuvue9rueahOS4gOezu+WIl+mFjeS9k+WPoOS7o+S4reWvu+aJvuS8mOWMluea
+hOe7k+WQiOaehOixoSjkvovlpoLnm7jlkIznmoTlhbfmnInkuI3lkIzmlrnlkJHmiJbogIXmnoTo
+saHnmoTphY3kvZMpPC9wPjxwPue9keWdgDpodHRwOi8vc2FsaWxhYi5vcmcvaW1wLzxicj7lnKjn
+ur/nvZHlnYA6aHR0cDovL21vZGJhc2UuY29tcGJpby51Y3NmLmVkdS9saWdzY29yZS88L3A+PHA+
+KkZhbiBILCBTY2huZWlkbWFuLUR1aG92bnkgRCwgSXJ3aW4gSiwgRG9uZyBHUSwgU2hvaWNoZXQg
+QiwgU2FsaSBBLiBTdGF0aXN0aWNhbCBQb3RlbnRpYWwgZm9yIE1vZGVsaW5nIGFuZCBSYW5raW5n
+IG9mIFByb3RlaW4tTGlnYW5kIEludGVyYWN0aW9ucy4gSiBDaGVtIEluZiBNb2RlbC4gMjAxMSwg
+NTE6MzA3OC05Mi4qPC9wPjxwPiMjIyMg5L2/55SoOjxicj5gYGBiYXNoPGJyPmxpZ2FuZF9zY29y
+ZSAtaDxicj5Vc2FnZTogbGlnYW5kX3Njb3JlIGZpbGUubW9sMiBmaWxlLnBkYiBbbGliZmlsZV08
+YnI+YGBgPGJyPuWFtuS4rWBwcm90ZWluX2xpZ2FuZF9wb3NlX3Njb3JlLmxpYmAg55So5p2lYFBv
+c2VTY29yZWDmiZPliIbvvIxgcHJvdGVpbl9saWdhbmRfcmFua19zY29yZS5saWJg55So5p2lYFJh
+bmtTY29yZWDmiZPliIbjgII8L3A+PHA+IyMjIyDnpLrkvos6PGJyPmBgYGJhc2g8YnI+bGlnYW5k
+X3Njb3JlIG15Lm1vbDIgbXkucGRiIC91c3IvbG9jYWwvc2hhcmUvSU1QL2F0b20vcHJvdGVpbl9s
+aWdhbmRfcG9zZV9zY29yZS5saWI8YnI+YGBgPGJyPiMjIyBET0NLIDYgQW1iZXIgU2NvcmU8YnI+
+TGljZW5zZTogQXZhaWxhYmxlIGZyZWUgb2YgY2hhcmdlIGZvciBhY2FkZW1pYyBpbnN0aXR1dGlv
+bnMsIGJ1dCB0aGVyZSBpcyBhIGxpY2Vuc2luZyBmZWUgZm9yIGluZHVzdHJpYWwgb3JnYW5pemF0
+aW9ucy48L3A+PHA+RE9DSyA2IOaYr+S4gOS4quWvueaOpeW3peWFt+aPkOS+m+S6huWHoOenjeaJ
+k+WIhuWHveaVsO+8jOWFtuWPr+S7peeUqOadpeWvueW3sue7j+WvueaOpeeahOaehOixoei/m+ih
+jOWGjeaJk+WIhuOAguS4i+mdouaYr+S4gOS4quWmguS9leWcqOaJk+WIhueahOS+i+WtkDo8YnI+
+YGBgYmFzaDxicj5kb2NrNiAtaDwvcD48cD4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLTxicj5ET0NLIHY2Ljc8L3A+PHA+UmVsZWFzZWQgRmVicnVhcnkgMjAxNTxicj5Db3B5
+cmlnaHQgVUNTRjxicj4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTwvcD48
+cD48YnI+VXNhZ2U6PGJyPiBkb2NrNiAtaSBmaWxlbmFtZS5pbiBbLW8gZmlsZW5hbWUub3V0XSBb
+LXZdPGJyPmBgYDxicj4jIyMjIOS+i+WtkDo8YnI+QW1iZXIg5omT5YiG5a+56JuL55m96YWN5L2T
+5aSN5ZCI54mp6L+b6KGM5pyA5bCP5YyW77yM5YiG5a2Q5Yqo5Yqb5a2m5qih5ouf77yM6IO96YeP
+5pyA5bCP5YyW77yM5pu06K+m57uG55qE6K6h566X5pa55rOV5Y+v5Lul5p+l55yLOmh0dHA6Ly9k
+b2NrLmNvbXBiaW8udWNzZi5lZHUvRE9DS182L3R1dG9yaWFscy9hbWJlcl9zY29yZS9hbWJlcl9z
+Y29yZS5odG08L3A+PHA+5LiL6Z2i6L+Z5Liq5L6L5a2Q77yM5oiR5Lus5YGH6K6+5LiA5qyh5bey
+57uP6L+b6KGM5LqG6JuL55m96YWN5L2T5aSE55CG77yM5L6L5aaCOuaIkeS7rOWcqOibi+eZvVBE
+QuaWh+S7tuS4reenu+mZpOS6humFjeS9k++8jOmHkeWxnuemu+WtkOWSjOawtOWIhuWtkO+8jOW5
+tuS4lOWwhue7hOawqOmFuOaui+Wfuui/m+ihjOS6huato+ehrueahOi0qOWtkOWMluOAgjxicj5g
+YGBiYXNoPGJyPnByZXBhcmVfYW1iZXIucGwgbGlnLm1vbDIgMWE5eC5wZGI8YnI+YGBgPGJyPuaO
+peS4i+adpeaIkeS7rOWIm+W7uuWmguS4i+eahGBkb2NrLmluYOaWh+S7tjo8YnI+YGBgYmFzaDxi
+cj5saWdhbmRfYXRvbV9maWxlIGxpZy5hbWJlcl9zY29yZS5tb2wyPGJyPmxpbWl0X21heF9saWdh
+bmRzIG5vPGJyPnNraXBfbW9sZWN1bGUgbm88YnI+cmVhZF9tb2xfc29sdmF0aW9uIG5vPGJyPmNh
+bGN1bGF0ZV9ybXNkIG5vPGJyPnVzZV9kYXRhYmFzZV9maWx0ZXIgbm88YnI+b3JpZW50X2xpZ2Fu
+ZCBubzxicj51c2VfaW50ZXJuYWxfZW5lcmd5IG5vPGJyPmZsZXhpYmxlX2xpZ2FuZCBubzxicj5i
+dW1wX2ZpbHRlciBubzxicj5zY29yZV9tb2xlY3VsZXMgeWVzPGJyPmNvbnRhY3Rfc2NvcmVfcHJp
+bWFyeSBubzxicj5jb250YWN0X3Njb3JlX3NlY29uZGFyeSBubzxicj5ncmlkX3Njb3JlX3ByaW1h
+cnkgbm88YnI+Z3JpZF9zY29yZV9zZWNvbmRhcnkgbm88YnI+bXVsdGlncmlkX3Njb3JlX3ByaW1h
+cnkgbm88YnI+bXVsdGlncmlkX3Njb3JlX3NlY29uZGFyeSBubzxicj5kb2NrMy41X3Njb3JlX3By
+aW1hcnkgbm88YnI+ZG9jazMuNV9zY29yZV9zZWNvbmRhcnkgbm88YnI+Y29udGludW91c19zY29y
+ZV9wcmltYXJ5IG5vPGJyPmNvbnRpbnVvdXNfc2NvcmVfc2Vjb25kYXJ5IG5vPGJyPmRlc2NyaXB0
+b3Jfc2NvcmVfcHJpbWFyeSBubzxicj5kZXNjcmlwdG9yX3Njb3JlX3NlY29uZGFyeSBubzxicj5n
+YnNhX3pvdV9zY29yZV9wcmltYXJ5IG5vPGJyPmdic2Ffem91X3Njb3JlX3NlY29uZGFyeSBubzxi
+cj5nYnNhX2hhd2tpbnNfc2NvcmVfcHJpbWFyeSBubzxicj5nYnNhX2hhd2tpbnNfc2NvcmVfc2Vj
+b25kYXJ5IG5vPGJyPlNBU0FfZGVzY3JpcHRvcl9zY29yZV9wcmltYXJ5IG5vPGJyPlNBU0FfZGVz
+Y3JpcHRvcl9zY29yZV9zZWNvbmRhcnkgbm88YnI+YW1iZXJfc2NvcmVfcHJpbWFyeSB5ZXM8YnI+
+YW1iZXJfc2NvcmVfc2Vjb25kYXJ5IG5vPGJyPmFtYmVyX3Njb3JlX3JlY2VwdG9yX2ZpbGVfcHJl
+Zml4IDFhOXg8YnI+YW1iZXJfc2NvcmVfbW92YWJsZV9yZWdpb24gbGlnYW5kPGJyPmFtYmVyX3Nj
+b3JlX21pbmltaXphdGlvbl9ybXNncmFkIDAuMDE8YnI+YW1iZXJfc2NvcmVfYmVmb3JlX21kX21p
+bmltaXphdGlvbl9jeWNsZXMgMTAwPGJyPmFtYmVyX3Njb3JlX21kX3N0ZXBzIDMwMDA8YnI+YW1i
+ZXJfc2NvcmVfYWZ0ZXJfbWRfbWluaW1pemF0aW9uX2N5Y2xlcyAxMDA8YnI+YW1iZXJfc2NvcmVf
+Z2JfbW9kZWwgNTxicj5hbWJlcl9zY29yZV9ub25ib25kZWRfY3V0b2ZmIDE4LjA8YnI+YW1iZXJf
+c2NvcmVfdGVtcGVyYXR1cmUgMzAwLjA8YnI+YW1iZXJfc2NvcmVfYWJvcnRfb25fdW5wcmVwcGVk
+X2xpZ2FuZCB5ZXM8YnI+bGlnYW5kX291dGZpbGVfcHJlZml4IG91dHB1dDxicj53cml0ZV9vcmll
+bnRhdGlvbnMgbm88YnI+bnVtX3Njb3JlZF9jb25mb3JtZXJzIDE8YnI+cmFua19saWdhbmRzIG5v
+PGJyPmBgYDxicj7mnIDlkI7mraXpqqTvvIzmiJHku6zmiafooYxgZG9jazZg6K+75Y+WYGRvY2su
+aW5g5paH5Lu2PGJyPmBgYGJhc2g8YnI+ZG9jazYgLWkgZG9jay5pbiAmZ3Q7IGRvY2sub3V0IDxi
+cj5gYGA8YnI+5ZyoYGRvY2sub3V0YOaWh+S7tu+8jOaIkeS7rOWPr+S7peaJvuWIsEFtYmVyIOW+
+l+WIhjo8YnI+YGBgYmFzaDxicj5bLi4uXTxicj5Nb2xlY3VsZTogKioqKio8L3A+PHA+RWxhcHNl
+ZCB0aW1lIGZvciBkb2NraW5nOiAzNCBzZWNvbmRzPC9wPjxwPkFuY2hvcnM6IDE8YnI+T3JpZW50
+YXRpb25zOiAxPGJyPkNvbmZvcm1hdGlvbnM6IDE8L3A+PHA+QW1iZXIgU2NvcmU6IC0xOS40MzE3
+NDQ8YnI+IGNvbXBsZXg6IDUwMjUwLjk0NjEyMjxicj4gcmVjZXB0b3I6IC01MDMwNy45NDk0ODQ8
+YnI+IGxpZ2FuZDogMzcuNTcxNjE5PC9wPjxwPjxicj4xIE1vbGVjdWxlcyBQcm9jZXNzZWQ8YnI+
+VG90YWwgZWxhcHNlZCB0aW1lOiA0MSBzZWNvbmRzPGJyPmBgYDxicj4jIyDom4vnmb3mlofku7bl
+koznu5PmnoTlpITnkIY8YnI+IyMjIE9wZW5CYWJlbDxicj5MaWNlbnNlOiBmcmVlLCBvcGVuLXNv
+dXJjZSAoR05VIEdQTCk8L3A+PHA+5LiA5Liq5qC85byP6L2s5o2i5bel5YW377yM5YW35pyJ5pys
+5Zyw57yW6K+R5YyF5ZKM5aSa56eN6K+t6KiA55qEQVBJPC9wPjxwPue9keermTpodHRwOi8vb3Bl
+bmJhYmVsLm9yZy88L3A+PHA+Kk8nQm95bGUsIE5vZWwgTS4sIE1pY2hhZWwgQmFuY2ssIENyYWln
+IEEuIEphbWVzLCBDaHJpcyBNb3JsZXksIFRpbSBWYW5kZXJtZWVyc2NoLCBhbmQgR2VvZmZyZXkg
+Ui4gSHV0Y2hpc29uLiDigJxPcGVuIEJhYmVsOiBBbiBPcGVuIENoZW1pY2FsIFRvb2xib3gu4oCd
+IEogQ2hlbWluZiAzICgyMDExKTogMzMuKjwvcD48cD4jIyMjIOS9v+eUqDo8YnI+YGBgYmFzaDxi
+cj5iYWJlbCAtSDxicj5PcGVuIEJhYmVsIGNvbnZlcnRzIGNoZW1pY2FsIHN0cnVjdHVyZXMgZnJv
+bSBvbmUgZmlsZSBmb3JtYXQgdG8gYW5vdGhlcjwvcD48cD5Vc2FnZTogYmFiZWwgJmx0O2lucHV0
+IHNwZWMmZ3Q7ICZsdDtvdXRwdXQgc3BlYyZndDsgW09wdGlvbnNdPGJyPmBgYDxicj4jIyMjIOS+
+i+WtkDo8YnI+YGBgYmFzaDxicj5iYWJlbCAtaSBtb2wyIG15Lm1vbDIgLW8gcGRicXQgbXkucGRi
+cXQ8YnI+YGBgPGJyPiMjIyMg54mI5pysOjxicj5gYGBiYXNoPGJyPmJhYmVsPGJyPk5vIG91dHB1
+dCBmaWxlIG9yIGZvcm1hdCBzcGVjITxicj5PcGVuIEJhYmVsIDIuMy4xIC0tIE9jdCAxMyAyMDEx
+IC0tIDE1OjE0OjQ3PGJyPmBgYDwvcD48cD4jIyMgUmVkdWNlPGJyPkxpY2Vuc2U6IGZyZWUsIGJ1
+dCBubyBwYXJ0aWN1bGFyIGxpY2Vuc2UgcHJvdmlkZWQ8L3A+PHA+5LiA5Liq5Yqg5rCi5Yig5rCi
+55qE5ZG95Luk6KGM5bel5YW377yM5LuF5pSv5oyBUERC5qC85byPPC9wPjxwPue9keermTpodHRw
+Oi8va2luZW1hZ2UuYmlvY2hlbS5kdWtlLmVkdS9zb2Z0d2FyZS9yZWR1Y2UucGhwPC9wPjxwPipX
+b3JkLCBldCBhbC4oMTk5OSkgIkFzcGFyYWdpbmUgYW5kIGdsdXRhbWluZTogdXNpbmcgaHlkcm9n
+ZW4gYXRvbSBjb250YWN0cyBpbiB0aGUgY2hvaWNlIG9mIHNpZGVjaGFpbiBhbWlkZSBvcmllbnRh
+dGlvbiIgSi4gTW9sLiBCaW9sLiAyODUsIDE3MzUtMTc0Ny4qPC9wPjxwPiMjIyMg5L2/55SoOjxi
+cj5gYGBiYXNoPGJyPn4vRGVza3RvcCAmZ3Q7Li9yZWR1Y2UgLWg8YnI+cmVkdWNlOiB2ZXJzaW9u
+IDMuMjMgMDUvMjEvMjAxMywgQ29weXJpZ2h0IDE5OTctMjAxMywgSi4gTWljaGFlbCBXb3JkPGJy
+PnJlZHVjZS4zLjIzLjEzMDUyMTxicj5hcmd1bWVudHM6IFstZmxhZ3NdIGZpbGVuYW1lIG9yIC08
+L3A+PHA+U3VnZ2VzdGVkIHVzYWdlOjxicj5yZWR1Y2UgLUZMSVAgbXlmaWxlLnBkYiAmZ3Q7IG15
+ZmlsZUZILnBkYiAoZG8gTlFILWZsaXBzKTxicj5yZWR1Y2UgLU5PRkxJUCBteWZpbGUucGRiICZn
+dDsgbXlmaWxlSC5wZGIgKGRvIE5PVCBkbyBOUUgtZmxpcHMpPC9wPjxwPkZsYWdzOjxicj4tRkxJ
+UCBhZGQgSCBhbmQgcm90YXRlIGFuZCBmbGlwIE5RSCBncm91cHM8YnI+LU5PRkxJUCBhZGQgSCBh
+bmQgcm90YXRlIGdyb3VwcyB3aXRoIG5vIE5RSCBmbGlwczxicj4tVHJpbSByZW1vdmUgKHJhdGhl
+ciB0aGFuIGFkZCkgaHlkcm9nZW5zPC9wPjxwPi1OVUNsZWFyIHVzZSBudWNsZWFyIFgtSCBkaXN0
+YW5jZXMgcmF0aGVyIHRoYW4gZGVmYXVsdDxicj4gZWxlY3Ryb24gY2xvdWQgZGlzdGFuY2VzPGJy
+Pi1OT09IIHJlbW92ZSBoeWRyb2dlbnMgb24gT0ggYW5kIFNIIGdyb3Vwczxicj4tT0ggYWRkIGh5
+ZHJvZ2VucyBvbiBPSCBhbmQgU0ggZ3JvdXBzIChkZWZhdWx0KTwvcD48cD4tSElTIGNyZWF0ZSBO
+SCBoeWRyb2dlbnMgb24gSElTIHJpbmdzPGJyPi1GTElQcyBhbGxvdyBjb21wbGV0ZSBBU04sIEdM
+TiBhbmQgSElTIHNpZGVjaGFpbnMgdG8gZmxpcDxicj4gKHVzdWFsbHkgdXNlZCB3aXRoIC1ISVMp
+PGJyPi4uLjxicj5gYGA8L3A+PHA+IyMjIyDniYjmnKw6PGJyPmBgYGJhc2g8YnI+cmVkdWNlIC12
+PGJyPnJlZHVjZS4zLjIzLjEzMDUyMTxicj5gYGA8L3A+PHA+IyMg6YWN5L2T57uT5p6EPGJyPueU
+seS6jumFjeS9k+e7k+aehOWOn+aWh+S4reS4u+imgeaYr+S7i+e7jeeahE9wZW5FeWXvvIzov5nk
+uKropoHmsYLvvIzmiYDku6XlsLHkuI0g57+76K+R5LqG44CCPC9wPjxwPiMjIOaZtuS9k+e7k+ae
+hOWIhuaekDxicj4jIyMgUHlXYXRlcjxicj7kuIDkuKrlr7vmib7kv53lrojmsLTliIblrZDnmoRQ
+eW1vbOaPkuS7tjwvcD48cD7mlofmoaPkuI7ku6PnoIE6aHR0cHM6Ly9naXRodWIuY29tL2hpdGVz
+aHBhdGVsMzc5L1B5V0FURVI8L3A+PHA+IyMg6LSo6LCxPyhNYXNzIFNwZWN0cm9tZXRyeSk8YnI+
+IyMjIFByb3Rlb1dpemFyZDxicj7kuIDkuKrom4vnmb3otKjnu4TlrabliIbmnpDnmoTlm77lvaLl
+jJblkozlkb3ku6TooYzliIbmnpDlt6Xlhbc8YnI+572R56uZOmh0dHA6Ly9wcm90ZW93aXphcmQu
+c291cmNlZm9yZ2UubmV0L2luZGV4LnNodG1sPC9wPjxwPiMjIyBPcGVuTVM8YnI+5LiA5LiqTEMv
+TVPmlbDmja7nrqHnkIblkozliIbmnpBDKyvlt6XlhbfljIU8YnI+572R56uZOmh0dHA6Ly9vcGVu
+LW1zLnNvdXJjZWZvcmdlLm5ldC88YnI+Kk1hcmMgU3R1cm0sIEFuZHJlYXMgQmVydHNjaCwgQ2xl
+bWVucyBHcsO2cGwsIEFuZHJlYXMgSGlsZGVicmFuZHQsIFJlbmUgSHVzc29uZywgRXZhIExhbmdl
+LCBOaWNvIFBmZWlmZXIsIE9sZSBTY2h1bHotVHJpZWdsYWZmLCBBbGV4YW5kcmEgWmVyY2ssIEtu
+dXQgUmVpbmVydCwgYW5kIE9saXZlciBLb2hsYmFjaGVyLCAyMDA4LiDigJxPcGVuTVMg4oCTIGFu
+IE9wZW4tU291cmNlIFNvZnR3YXJlIEZyYW1ld29yayBmb3IgTWFzcyBTcGVjdHJvbWV0cnnigJ0g
+Qk1DIEJpb2luZm9ybWF0aWNzIDk6IDE2My4gZG9pOjEwLjExODYvMTQ3MS0yMTA1LTktMTYzLio8
+L3A+PHA+IyMg77yI5byA5Y+R77yJ5bqTPGJyPiMjIyBCaW9weXRob248YnI+TGljZW5zZTogZnJl
+ZSwgb3Blbi1zb3VyY2UgKHZlcnkgcGVybWlzc2l2ZSBjdXN0b20gbGljZW5zZSk8YnI+5LiA5Liq
+UHl0aG9u5bel5YW35YyFPGJyPue9keermTpodHRwOi8vYmlvcHl0aG9uLm9yZy93aWtpL01haW5f
+UGFnZTxicj7kuK3mlofmlofmoaM6aHR0cDovL2Jpb3B5dGhvbi1jbi5yZWFkdGhlZG9jcy5pby96
+aF9DTi9sYXRlc3QvPC9wPjxwPiMjIyBzY2lraXQtYmlvPGJyPkxpY2Vuc2U6IGZyZWUsIG9wZW4t
+c291cmNlIChCU0QpPGJyPuS4gOS4quaPkOS+m+WkmuenjeeUn+eJqeenkeWtpuWKn+iDve+8jOaV
+sOaNrue7k+aehOWSjOeul+azleeahFB5dGhvbuWMhTxicj7nvZHnq5k6aHR0cDovL3NjaWtpdC1i
+aW8ub3JnLzwvcD48cD7mm7TlpJrljp/liJvnsr7lvanop4bpopHmlazor7flhbPms6gqKueUn+S/
+oeadguiwiDoqKjxicj4hW10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRf
+aW1hZ2VzLzkwMzQ2Ny1lMTQ5OTc3ZGJjMmRlNWY2P2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3Ry
+aXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKeKAizwvcD4=">​</div><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/665.html" data-id="cj8x084md0044nora8wj6ma10" class="article-share-link" data-share="baidu" data-title="非常有用的蛋白质科学工具与项目">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/665.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-rosetta-e4-bb-8e-e5-a4-b4-e7-bb-93-e6-9e-84-e9-a2-84-e6-b5-8b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/657.html" class="article-date">
+  <time datetime="2017-06-20T08:58:30.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rosetta/">Rosetta</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/657.html">Rosetta从头结构预测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此文档不完全翻译自官方从头预测文档<br>当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。</p>
+<p>官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每个帐号只能计算一条序列，且要注意的是不能进行已知序列或者高相似度序列的计算，否则会ban ip，删号。因为从头结构预测时间太久太长。<br>官方地址如下：<a href="http://robetta.bakerlab.org/" target="_blank" rel="external">http://robetta.bakerlab.org/</a><br>网站截图如下：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png" alt=""></a></p>
+<p>网站截图</p>
+<p>该项目是伯克利分校搞的一个分布式系统项目BOINC，若你也想加入这个计算可以具体查看这一篇教程。<br>想与各位探讨的是个人觉得若单独拿一段序列进行从头计算然后拼接进模型中是不准确的，更好的方法是进行loop环的补全（若缺失部分为loop环），或者进行分子动力学模拟来预测。<br>官方的从头预测方法是采用的T4 溶菌酶（噬菌体中）的序列来进行的蛋白结构预测。并于解析了结构的蛋白PDB文件进行比较。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png" alt=""></a></p>
+<p>图文无关，纯粹好看</p>
+<p>###<br>1.准备输入文件</p>
+<p>需要：</p>
+<ul>
+<li>fasta格式的序列</li>
+<li>9mer 片段文件</li>
+<li>3mer 片段文件</li>
+<li>已知的pdb文件</li>
+</ul>
+<h4 id="1-保存蛋白序列文件为FASTA格式"><a href="#1-保存蛋白序列文件为FASTA格式" class="headerlink" title="1.保存蛋白序列文件为FASTA格式"></a>1.保存蛋白序列文件为FASTA格式</h4><p>例如：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">&gt;2LZMA                                                           
+ ITKDEAEKLFNQDVDAAVRGILRNAKLKPVYDSLDAVRRCALINMVFQMGETGVAGFTNSLRMLQQKRWDEAAVNLAKSRWYNQTPNRAKRVITTFRTGTWDAYKNL</pre>
+
+<h4 id="2-准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件："><a href="#2-准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件：" class="headerlink" title="2.准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件："></a>2.准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件：</h4><pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/aa2LZMA03_05.200_v1_3 (3mer fragments)
+input_files/aa2LZMA09_05.200_v1_3 (9mer fragments)</pre>
+
+<p>这个片段文件生成较为复杂，需要用perl脚本和库文件，安装许多包才能实现，我也还没有完全搞透，由于时间关系，搞透以后作为补充分享给大家。并且搞透的意义不大，毕竟也不是做这个的。<br>建议大家还是用上面的网站的Fragment Libraries进行在线制作。</p>
+<p>####<br>3.为了与已知文件进行比较分析结果准确度，所以插入已知文件,当然这个不是必须的。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/2LZMA.pdb
+</pre>
+
+<p>由于option文件设置较多，我们分开来讲解。<br>首先是输入文件设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in
+-file
+-native input_files/2LZMA.pdb
+-fasta input_files/2LZMA.fasta
+-frag3 input_files/aa2LZMA03_05.200_v1_3
+-frag9 input_files/aa2LZMA09_05.200_v1_3</pre>
+
+<p>这个没有什么好说的，接下来是建模设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-abinitio
+-relax
+-increase_cycles 10
+-rg_reweight 0.5
+-rsd_wt_helix 0.5
+-rsd_wt_loop 0.5</pre>
+
+<p>increase_cycles表示AbinitioRelax 循环的次数，若想快速完成可以设置为0.1,后面三个参数分别为回转半径，螺旋和环赋予的权重，没有深入了解一般默认即可<br>然后是relax设置，若想快速完成该步可以不设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-relax
+-fast</pre>
+
+<p>-fast设置表示在建模后对蛋白进行一个FastRelax，其同时兼容了准确性和速度。<br>最后是输出</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-out
+-pdb
+-nstruct 1
+-file
+-scorefile score.sc
+-overwrite
+
+-nstruct 1</pre>
+
+<p>官方教程设置了两次-nstruct，原因待考。</p>
+<h3 id="2-运行Rosetta-AbinitioRelax-应用"><a href="#2-运行Rosetta-AbinitioRelax-应用" class="headerlink" title="2.运行Rosetta AbinitioRelax 应用"></a>2.运行Rosetta AbinitioRelax 应用</h3><pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt; ../../../main/source/bin/AbinitioRelax.default.linuxclangrelease @input_files/options
+</pre>
+
+<p>当然也可以在后台运行:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ nohup ../../../main/source/bin/ AbinitioRelax.default.linuxclangrelease @input_files/options &gt; log &amp;
+</pre>
+
+<p>每个结构约运行10-20分钟<br>没有错误的话将会输出如下结果：</p>
+<p>S_00000001.pdb (生成的模型)<br>score.sc (展示得分，Rosetta的得分算法将会在后期介绍)<br>为了得到精确的结果，建议生成50,000到100,000个模型（官方教程中一说至少1,000）</p>
+<p>###<br>3.分析结果</p>
+<h4 id="3-1-绘制得分图和rmsd图"><a href="#3-1-绘制得分图和rmsd图" class="headerlink" title="3.1 绘制得分图和rmsd图"></a>3.1 绘制得分图和rmsd图</h4><p>你可以绘制得分最好的5%或10%的模型图。total_score和rms数据都在score文件中提供。你可以使用同源蛋白做参考（毕竟有pdb数据的话就不用从头建模了）如果连同源结构都没有的话一般考虑最低能量模型。<br>可以用awk简单的提取数据</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ sort -n -k2 score.sc | head -n 5000 | awk '{print $25 "\t" $2}' &gt; score_rmsd.dat
+</pre>
+
+<p>然后可以对数据进行绘图，绘图的方法多种，也非常简单，后期会完整介绍。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png" alt=""></a></p>
+<p>图</p>
+<p>左图可以发现rmsd与score成相关性并且收敛，而右侧没有收敛，说明右侧的结果并不那么可靠</p>
+<h4 id="3-2-提取模型"><a href="#3-2-提取模型" class="headerlink" title="3.2 提取模型"></a>3.2 提取模型</h4><p>获得的结果中有一个二进制silent file（此要在设置中设置，这样生成的模型都压缩在一个文件中，可以节省空间更加美观，其实也可以不对其进行这个操作，详见Rosetta silent file一章）我们可以从中提取pdb文件，例如我们想提取得分最好的5个文件。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ sort -n -k2 score.sc | head -l 5
+</pre>
+
+<p>将会获得模型的名称，将silent file对这些模型名称进行提取即可。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ ../../../main/source/bin/extract_pdbs.default.linuxgccrelease -in:file:silent_struct_type binary -in:file:silent AbRelax.out -in:file:tags 
+</pre>
+
+<p>好的Rosetta得分并不代表结构就一定是好的，所以我们在进行任何分子模拟的时候一定要有许多辅助的实验验证，这样的结果才可是可靠的可信的。我们需要不断的提醒自己。结果可信吗！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/657.html" data-id="cj8x084o20069norar5b7ojiy" class="article-share-link" data-share="baidu" data-title="Rosetta从头结构预测">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/657.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-rosetta-e8-9b-8b-e7-99-bd-e8-9b-8b-e7-99-bd-e5-af-b9-e6-8e-a5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/647.html" class="article-date">
+  <time datetime="2017-06-13T03:08:23.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rosetta/">Rosetta</a>►<a class="article-category-link" href="/categories/Rosetta/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/647.html">Rosetta蛋白蛋白对接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。</p>
+</blockquote>
+<p>蛋白蛋白对接如今比较著名的软件有<code>Hex Protein Docking</code>，<code>ZDock</code>，<code>rDock</code>，以及<code>Rosetta</code>等等。其中Hex Protein Docking虽算法比较复杂，但没有评分功能（PS：可能是我没有找到···），ZDock一般作为前期的初对接，rDock为ZDock的升级算法，一般将ZDock对接后的前几个得分构象使用rDock进行进一步对接。但是这个三个算法的准确度本人均保持怀疑态度。<br>今天想和大家分享的为Rosetta的蛋白蛋白对接模块，我对Baker课题组还是有非常盲目的崇拜的^_^<br>本教程翻译不完全翻译自官方<a href="https://www.rosettacommons.org/demos/latest/tutorials/Protein-Protein-Docking/Protein-Protein-Docking" target="_blank" rel="external">蛋白蛋白对接文档</a>。</p>
+<h5 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h5><p>Rosetta可以从两个未结合蛋白开始来预测结合结构。Rosetta蛋白蛋白对接教程主要内容为:</p>
+<ul>
+<li>怎样准备对接结构</li>
+<li>怎样进行两个蛋白的局部对接</li>
+<li>怎样优化已经对接的结构</li>
+<li>怎样对接结合界面未知的两个蛋白质</li>
+<li>怎样对接柔性蛋白</li>
+<li>怎样将柔性肽对接到蛋白</li>
+</ul>
+<h5 id="Rosetta中进行对接"><a href="#Rosetta中进行对接" class="headerlink" title="Rosetta中进行对接"></a>Rosetta中进行对接</h5><p>Rosetta中进行对接包含两个步骤。第一步，进行积极（aggresive）采样，方法使用的<a href="https://www.rosettacommons.org/demos/latest/tutorials/full_atom_vs_centroid/fullatom_centroid" target="_blank" rel="external">质心</a>模型。第二步采用全原子模型进行小范围的优化。（PS：质心模型相较于全原子模型保留蛋白主链原子，而侧链原子采用不同大小的单一赝原子表示，如图1）</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png" alt=""></a></p>
+<p>它会在内部使用跳跃连接两个链的中心，沿着跳跃两条链被拉在了一起（滑动联系 slide into contact）。算法为<a href="https://www.rosettacommons.org/demos/latest/tutorials/fold_tree/fold_tree" target="_blank" rel="external">折叠树</a>算法，是一种优化移动的方法，Rosetta在能量最小化中也有使用。这里不作探讨，也不会影响使用。算法还是使用Baker课题组特别喜欢的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Core_Concepts/Core_Concepts#monte-carlo-sampling" target="_blank" rel="external">Monte Carlo</a>随机算法进行计算如下内容：</p>
+<ul>
+<li>平移（x,y,z方向）</li>
+<li>旋转（围绕x,y,z轴）<br>默认情况下对接工具采用的为一个刚性骨架，仅能够旋转，平移和侧链packing（我理解为侧链优化，见<a href="https://www.rosettacommons.org/demos/latest/tutorials/Optimizing_Sidechains_The_Packer/Optimizing_Sidechains_The_Packer" target="_blank" rel="external">侧链优化</a>一章）,详细的描述可以查看<a href="https://www.rosettacommons.org/docs/latest/application_documentation/docking/docking-protocol" target="_blank" rel="external">Rosetta对接一章</a></li>
+</ul>
+<h5 id="演示导航"><a href="#演示导航" class="headerlink" title="演示导航"></a>演示导航</h5><p>演示可以在安装文件的<code>$ROSETTA3/demos/tutorials/Protein-Protein-Docking</code>中查看，ROSETTA3为安装路径更目录，具体可查看Rosetta安装一章。</p>
+<h5 id="对接前结构准备"><a href="#对接前结构准备" class="headerlink" title="对接前结构准备"></a>对接前结构准备</h5><p>Rosetta给的例子为Colicin-D与其抑制剂IMM之间的对接。需要提供两个精炼的输入文件<code>COL_D.pdb</code>和<code>IMM_D.pdb</code>文件，以及<code>1v74.pdb</code>文件在<code>input_files</code>文件夹下<br>准备的方法详细可以查看输入和输出一章的<a href="https://www.rosettacommons.org/demos/latest/tutorials/input_and_output/input_and_output#controlling-input_common-stucture-input-files" target="_blank" rel="external">准备结构一节</a>，为了连续性这里做简单介绍。<br>若模型为同源建模等方法进行构建，可以首先进行一个结构的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Relax_Tutorial/Relax" target="_blank" rel="external"><em>relax</em></a>,当然也可以用其他软件进行制作。详细的relax方法我们后面详细分享。在此略过，若您的模型为同源建模等进行的，模型评价效果不理想可以采用GROMACS等软件进行能量最小化的工作。<br>若模型质量佳或为解析结构，结构准备更多的是为了将输入结构转化为Rosetta的标准规范，官网给了一个简单的例子：<code>&amp;lt;path_to_Rosetta_directory&amp;gt;/demos/tutorials/input_and_output/flag_input_relax</code><br>当然结构的准备是非常玄学的东西，最好能够系统的学习同时加上大量的文献阅读增加准确性。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-nstruct 2
+
+-relax:constrain_relax_to_start_coords
+-relax:ramp_constraints false
+
+-ex1
+-ex2
+
+-use_input_sc
+-flip_HNQ
+-no_optH false</pre>
+
+<p>使用更多的<code>nstruct</code>可以提高模型结果的质量，如<code>nstruct 10</code>将会获得10个模型。<code>constrain_relax_to_start_coords</code>将会约束重原子，从而是的骨架较初始不会移动太多。<code>ramp_constraints false</code>表示不进行倾斜约束（PS：官方文档上有说明进行整体约束该选项需要设置为false）<code>flip_HNQ</code>在氢键原子位置优化期间考虑翻转HIS，ASN，GLN。<code>no_optH</code>表示是否在PDB加载期间进行氢原子位置优化.一般后面5个设置为基本设置，详见准备<a href="https://www.rosettacommons.org/docs/latest/rosetta_basics/preparation/preparing-structures" target="_blank" rel="external">结构一章</a><br>然后进行运行：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;  $ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb @flag_input_relax
+</pre>
+
+<p>&nbsp;</p>
+<p>当然可以附加<code>ignore_unrecognized_res</code>在设置中从而删除PDB中的水和配体（当然也可以手动删除）</p>
+<h5 id="局部对接"><a href="#局部对接" class="headerlink" title="局部对接"></a>局部对接</h5><p>Rosetta在局部对接中有更加精确的结果，<strong>顾名思义，局部对接就是假设已知两个蛋白的结合（口袋）区域</strong>。首先我们需要将两个蛋白结合口袋大致的对着对方约10埃的位置，如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt=""></a></p>
+<p>我们进行如下的设置：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-partners A_B
+-dock_pert 3 8</pre>
+
+<p>以上这两个设置分别表示i):链B对接进入链A； ii）在开始单独的模拟之前随机的将配体（链B）进行一个3埃的平移和8度的旋转。<br>若为对接的多链蛋白（如一个蛋白为链A和B，一个为链L和H）<br>那么设置为<code>-partners LH_AB</code>即可。若我们同时想和1v74.pdb进行计算比较。<br>完整的参数为：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _local_dock</pre>
+
+<p>然后我们进行对接：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_local_docking
+</pre>
+
+<p>大约1min即可完成，请确保<code>-nstruct 500</code>或者更大的设置</p>
+<h5 id="局部优化对接结构"><a href="#局部优化对接结构" class="headerlink" title="局部优化对接结构"></a>局部优化对接结构</h5><p>一些小的冲突可能导致蛋白对接的得分非常高（越小越好），在Relax之前我们需要对界面处进行一定的修复。因为已经对接完成，我们需要避免大的蛋白移动。所以我们跳过之前的第一步（质心步骤）而仅进行第二部分计算。我们替换局部对接的flags:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-docking_local_refine
+-use_input_sc</pre>
+
+<p>我们用此来完善<code>1v74.pdb</code><br>完整的设置为:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/1v74.pdb
+
+-nstruct 1
+
+-docking_local_refine
+-use_input_sc
+
+-ex1
+-ex2aro
+
+-out:file:fullatom
+-out:path:all output_files
+-out:suffix _local_refine</pre>
+
+<p>对接命令</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_local_refine
+</pre>
+
+<p>然后可以对结构进行<code>relax</code>进一步优化，也可以用其他软件进行能量最小化，在此不进行进一步探讨了。</p>
+<h5 id="全局对接"><a href="#全局对接" class="headerlink" title="全局对接"></a>全局对接</h5><p>官方教程称之为Global Docking，有语言基础的对Global词的翻译应该非常熟悉，一般翻译为全局的意思。如果没有蛋白结合位点的信息的话只能使用全局对接，全局对接假设蛋白质为球型，而更小的蛋白质配体围绕蛋白质受体寻转，其原理个人理解与rDock双球对接类似。因为其随机起始位置，故输入的结构位置显得不是那么重要。</p>
+<blockquote>
+<p>全局对接对小复合物相对较好（残基数小于450）<br>在全局对接中我们添加以下设置</p>
+</blockquote>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-spin
+-randomize1
+-randomize2</pre>
+
+<p>整体的设置如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+-spin
+-randomize1
+-randomize2
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _global_dock</pre>
+
+<p>我们同样采用的之前的复合物，然后使用命令进行对接:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_global_docking
+</pre>
+
+<p>采样样本量更加大，故为了得到精确的结果，需要大量的运行，一般高达10,000-100,000次</p>
+<blockquote>
+<p>另一种方法为使用<a href="https://cluspro.bu.edu/login.php" target="_blank" rel="external">ClusPro</a>进行预对接确定结合口袋然后再运行局部对接。</p>
+</blockquote>
+<h5 id="柔性蛋白对接"><a href="#柔性蛋白对接" class="headerlink" title="柔性蛋白对接"></a>柔性蛋白对接</h5><p>正如之前所提到的，Rosetta假设蛋白骨架为柔性的进行对接。其假设蛋白蛋白结合过程前后构象发生了较大的变化，我们对蛋白构象簇（ensembles ）进行对接。而不是像之前一般一个配体构象和一个受体构象。在蛋白对接第一步（质心步骤）我们在构象簇中不断的变化着来进行对接。这样可以相当于固定骨架与多个骨架之前进行采样。<br>这个簇可以使用无约束的<code>relax</code>进行完成。对于这个教程我们使用小簇- 3 COL_D 和 3 IMM_D构象。在设置其为输入文件之前要确认链名和残基数量每个簇中都一样。<br>簇的设置类似如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/COL_D_ensemble/COL_D_0001.pdb
+input_files/COL_D_ensemble/COL_D_0002.pdb
+input_files/COL_D_ensemble/COL_D_0003.pdb</pre>
+
+<p>IMM_D_ensembel情况类似，然后将下列内容添加至之前的局部对接中</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-ensemble1 COL_D_ensemblelist
+-ensemble2 IMM_D_ensemblelist</pre>
+
+<p><code>-ensemble</code>必须包含蛋白质PDB列表。即使有一个蛋白只有一个构象，两个ensemble也都要申明。<br>具体设置为：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+
+-ensemble1 COL_D_ensemblelist
+-ensemble2 IMM_D_ensemblelist
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _ensemble_dock</pre>
+
+<p>在对接之前我们还要进行一步前处理（<em>prepacking</em>）。前处理可以消除由于构象异构体而产生的不同能量贡献，其设置与对接类似类似，仅仅删除<code>-dock_pert</code>设置.<br>其大约运行30s，将会得到prepacked PDBs文件，以及规范化的质心得分和全原子得分，如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/COL_D_ensemble/COL_D_0001.pdb.ppk
+input_files/COL_D_ensemble/COL_D_0002.pdb.ppk
+input_files/COL_D_ensemble/COL_D_0003.pdb.ppk
+0.77058
+0
+1.00377
+-93.3588
+-94.2715
+-93.9065</pre>
+
+<p>注意的是如果你需要进行再次的前处理，需要删除<code>COL_D_ensemblelist</code>和<code>IMM_D_ensemblelist</code>，否则可能会报错。<br>前处理后再进行对接命令</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_ensemble_docking
+</pre>
+
+<p>官方文档建议使用较大的簇（25到100）个构象，<code>-nstruc 5000</code>或者更多。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/647.html" data-id="cj8x084o4006bnorap9oylcsf" class="article-share-link" data-share="baidu" data-title="Rosetta蛋白蛋白对接">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/647.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-8e-9f-e5-88-9b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-88-86-e5-89-b2-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/639.html" class="article-date">
+  <time datetime="2017-06-01T10:26:33.000Z" itemprop="datePublished">2017-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dock/">Dock</a>►<a class="article-category-link" href="/categories/Dock/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/639.html">原创蛋白配体分割工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们用Gooey制作了一个蛋白配体分割工具。用以切割Pymol中保存的Autodock Vina对接结果。</p>
+<p>工具下载地址: <a href="https://pan.baidu.com/s/1jIzGh2A" target="_blank" rel="external">https://pan.baidu.com/s/1jIzGh2A</a> 密码: kwg2</p>
+<p>我们用<a href="http://v.youku.com/v_show/id_XMTQwNDE5NjMyMA==.html?spm=a2hzp.8253869.0.0" target="_blank" rel="external">Pymol插件中的Autodock Vina对接</a>,对接完后在Pymol中将蛋白配体结果全部保存，保存以后问题来了，我们如何进行分析和后续处理呢？<br>比较简单的方法为进行手动切割，如图:</p>
+<div class="image-package"><a href="http://kangsgo.com/wp-content/uploads/2017/06/11.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/11.png" alt=""></a><br><div class="image-caption"></div><br></div>
+
+<p>蛋白pdb中每一个配体均用<code>TER\s+\d{3}\s+\W{3}\s</code>的方式进行切割，所以我们仅需把最前面的蛋白提取，然后依次提取一段以TER分割的配体进去，比较麻烦。</p>
+<p>另外我们不仅仅只使用Autodock Vina进行对接，可能还用到iGEMDOK（将在后期介绍）等对接软件进行对接。但是Pymol保存的Autodock Vina对接的结果中配体并无标识，这不利于后续分析。同时并没有<code>HET</code>蛋白配体标识，导致iGEMDOCK在内的对接软件无法定位。</p>
+<div class="image-package"><a href="http://kangsgo.com/wp-content/uploads/2017/06/12.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/12.png" alt=""></a><br><div class="image-caption"></div><br></div>
+
+<p>比较基础的方法既手动修改，比如第一行<br><code>ATOM    3186   N7                      0</code><br>修改为:<br><code>ATOM    3186   N7        LIG   D     999</code><br>,稍微高级一点可以使用正则进行匹配。这里不做详细介绍了。<br>最近采用Python+Gooey快速制作了一个蛋白配体分割工具。界面如图：</p>
+<div class="image-package"><a href="http://kangsgo.com/wp-content/uploads/2017/06/13.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/13.png" alt=""></a></div>
+
+<div class="image-package"></div>
+
+<p>使用方法非常简单简便，用<strong>管理员身份</strong>打开软件。filename输入需要切割的pdb文件，右侧标签输入配体需要标记的标签，默认为LIG，最好使用三字母以免出错。<br>然后start，最后结果如下图:</p>
+<div class="image-package"><br><div class="image-caption"><a href="http://kangsgo.com/wp-content/uploads/2017/06/14.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/14.png" alt=""></a></div><br></div>
+
+<p>结果会以数字.pdb编号在软件运行目录下。<br>以下为完整教程:</p>
+<div class="image-package"></div>
+
+<div class="image-package"><a href="http://kangsgo.com/wp-content/uploads/2017/06/15.gif"><img src="http://kangsgo.com/wp-content/uploads/2017/06/15.gif" alt=""></a></div>
+
+<div class="image-package"></div>
+
+<p>非常简单方便</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/639.html" data-id="cj8x084jz001lnora6ikd43ha" class="article-share-link" data-share="baidu" data-title="原创蛋白配体分割工具">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/639.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-88-86-e5-ad-90-e5-af-b9-e6-8e-a5-e8-bd-af-e4-bb-b6igemdock-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/625.html" class="article-date">
+  <time datetime="2017-06-01T10:18:46.000Z" itemprop="datePublished">2017-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dock/">Dock</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/625.html">分子对接软件iGEMDOCK简单介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iGEMDOCK是一个台湾产的分子对接软件，其优势是简单易用，对接准确度较高，可以用于初筛和精度对接，也可用于金属对接（注：未试）。最后更新为2008年，但对接软件近几年发展缓慢，基本没有什么新的算法产生。<br>其完整手册可从次下载：<a href="http://gemdock.life.nctu.edu.tw/dock/download/iGEMDOCK-guide.pdf" target="_blank" rel="external">点我下载</a><br>官方下载地址：<a href="http://gemdock.life.nctu.edu.tw/" target="_blank" rel="external">点我进入</a></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>直接打开即可</p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><p>赋权</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">chmod 755 iGemdock/bin/*
+
+</pre>
+
+<p>执行脚本</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">cd iGemdock/bin/
+.iGemdock.sh</pre>
+
+<h2 id="2-界面简单介绍"><a href="#2-界面简单介绍" class="headerlink" title="2.界面简单介绍"></a>2.界面简单介绍</h2><p>其界面主要有四个模块，如图</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/1-300x227.png" alt=""></a><br><div class="image-caption">A为主界面，B为对接设置界面，C为界面简单分析界面，D为查看界面（PS：其自带的分析查看界面太丑了，建议用别的软件查看）</div><br></div>
+
+<p>其主要对接流程图如下：</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/2.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/2-300x168.png" alt=""></a><br><br>## 3.受体准备<br><br></div>
+
+<p>iGEMdock定义结合腔不怎么好定义，虽然提供了一个swiss-viewer方法但是个人觉得不好用。若你是AutoDock <strong>转来的朋友，可以将之前的结果用之前文章使用的<a href="http://www.jianshu.com/p/ff19624e521f" target="_blank" rel="external">蛋白配体切割器</a>进行切割优化。<br>如果是复合物晶体结构也可以</strong>直接使用**。如果无法使用，可打开pdb文件，查找是否有<code>HET</code>标签，若没有加上<code>HET</code>+配体名字+链+编号（具体可查看蛋白配体切割器那一章）iGEMDOCK会读取<code>ATOM</code>标签和<code>HETATM</code>标签，所以重要的在活性腔中的水原子可以保留，使得对接结果可能更精确（注：个人觉得也不一定，水是动态的说，可能适得其反），如下是一个复杂受体例子：</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/4.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/4-300x202.png" alt=""></a><br><br></div>
+
+<p>为了区分一般原子和配体原子，需要在81位标记P作为一般特异性原子的标识。<br>后打开<code>Prepare Binding Site</code>按钮</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/5-300x191.png" alt=""></a><br><br></div>
+
+<h2 id="3-配体准备"><a href="#3-配体准备" class="headerlink" title="3. 配体准备"></a>3. 配体准备</h2><p>支持PDB，MOL和MOL2三种格式。<br>点击<code>Prepare Compounds</code>即可使用</p>
+<h2 id="4-运行iGEMDOCK"><a href="#4-运行iGEMDOCK" class="headerlink" title="4.运行iGEMDOCK"></a>4.运行iGEMDOCK</h2><p>主要设置对接的精确度和速度，如果做筛选就选快速对接，如果单个配体可以采用精确对接。</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/5-300x191.png" alt=""></a><br><br></div>
+
+<p>如上图最终会生成1个结构文件，而这个结构是70次GA计算后的结果。（？类似最陡梯度法？）<br>对接完后结构文件都会在<code>docked_pose</code>文件夹，最好的在<code>best_pose</code>文件夹,fitness.txt为预测pose的能量清单</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/6.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/6-300x226.png" alt=""></a><br><br></div>
+
+<h2 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5.注意事项"></a>5.注意事项</h2><p>若需要进行用这个软件对接推荐还是完整的看一下文档内容。这里做一些注意事项<br>iGEMdock自己不能进行自动的扭转键设置，设置主要来自于<code>SINGLE</code>标签标记，如下:</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/7.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/7-300x226.png" alt=""></a><br><div class="image-caption">事项</div><br></div>
+
+<p>对接后的结果标记<br>氢键 (H), 电荷能 (E) 和范德瓦尔力 (V)，其余的可以查看原始参考文献<br><code>Proteins, vol. 55, pp. 288-304, 2004</code><br>其有一张图详细介绍了联系类型，我觉得解释的很棒很直观：</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/8.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/8-300x208.png" alt=""></a><br><br></div>
+
+<p>分析结果界面如下：</p>
+<div class="image-package"><br><br><a href="http://kangsgo.com/wp-content/uploads/2017/06/9.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/9-300x243.png" alt=""></a><br><br></div>
+
+<p>还有成簇分析等等功能，具体可以查看文档文件26页。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/625.html" data-id="cj8x084ju001dnora60oszygd" class="article-share-link" data-share="baidu" data-title="分子对接软件iGEMDOCK简单介绍">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/625.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-tdd-e6-a0-b9-e6-8d-aepdb-e5-af-bb-e6-89-be-e7-96-be-e7-97-85-ef-bc-8c-e9-9d-b6-e7-82-b9-ef-bc-8c-e7-9b-b8-e5-ba-94-e6-b2-bb-e7-96-97-e8-8d-af-e7-89-a9-e7-bd-91-e7-ab-99" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/597.html" class="article-date">
+  <time datetime="2017-05-04T14:52:20.000Z" itemprop="datePublished">2017-05-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dock/">Dock</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/597.html">TDD 根据PDB寻找疾病，靶点，相应治疗药物网站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为bioms群-汕大洪 提供</p>
+<p>还没有细看，待研究</p>
+<p><a href="http://www.dddc.ac.cn/pdtd/index.php" target="_blank" rel="external">http://www.dddc.ac.cn/pdtd/index.php</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/597.html" data-id="cj8x084oa006lnorafz5cdje0" class="article-share-link" data-share="baidu" data-title="TDD 根据PDB寻找疾病，靶点，相应治疗药物网站">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/597.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-ae-a1-e7-ae-97-e6-b0-a8-e5-9f-ba-e9-85-b8-e6-ae-8b-e5-9f-ba-e4-bf-9d-e5-ae-88-e6-80-a7-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/593.html" class="article-date">
+  <time datetime="2017-04-26T07:53:01.000Z" itemprop="datePublished">2017-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/杂项/">杂项</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/593.html">计算氨基酸残基保守性工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置）</p>
+<p>使用方法如下:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">Usage: aln.py [options] arg
+
+Options:
+  -h, --help            show this help message and exit
+  -n NUMPROTEIN, --num=NUMPROTEIN
+                        设置序列比对中蛋白数量
+  -p PARAGRAPH, --paragraph=PARAGRAPH
+                        设置一共有多少段内容
+  -f PATHFILE, --file=PATHFILE
+                        设置读入文件路径
+  -s SAVEFILE, --save=SAVEFILE
+                        设置保存文件名
+</pre>
+
+<p>例如:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">python .\aln.py -n 100 -p 16 -f .\seqdump.aln -s .\save.csv
+
+</pre>
+
+<p>结果可用统计软件进行处理</p>
+<p>脚本下载:  <a href="http://kangsgo.com/wp-content/uploads/2017/04/aln.rar">aln</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/593.html" data-id="cj8x084kt002jnoraykuxywl6" class="article-share-link" data-share="baidu" data-title="计算氨基酸残基保守性工具">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/593.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gromacs-cuda-e7-89-88-e4-b8-80-e9-94-ae-e5-ae-89-e8-a3-85-e8-84-9a-e6-9c-ac" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/577.html" class="article-date">
+  <time datetime="2017-03-31T10:26:12.000Z" itemprop="datePublished">2017-03-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/自用脚本/">自用脚本</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/577.html">Gromacs CUDA版一键安装脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最新版本:1.01beta  更新时间 2017/10/8</p>
+<p>使用方法:<br>将解压后的脚本放置于主文件夹（home主目录）</p>
+<p><pre class="EnlighterJSRAW" data-enlighter-language="shell">chomd +x gromacs.sh<br>./gromacs.sh</pre><br>适用于系统:ubuntu 14.04和 16.04<br>可选择安装的gmx版本:</p>
+<blockquote>
+<p>1.gromacs2016版本</p>
+<p>2.gromacs5.1.X版本</p>
+<p>3.gromacs5.0.X版本<br>如有问题可以bioms群联系:西南交大-小康（可能改名为湖大-小康）或者邮箱:347657442#qq.com<br>点我下载:<a href="http://kangsgo.com/wp-content/uploads/2017/03/gromacs.zip">gromacs</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/577.html" data-id="cj8x084mm004enorac1aah6hc" class="article-share-link" data-share="baidu" data-title="Gromacs CUDA版一键安装脚本">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/577.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-b8-ad-e5-8c-bb-e8-af-81-e5-9e-8b-e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e6-8c-96-e6-8e-98-e9-94-99-e8-af-af-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/570.html" class="article-date">
+  <time datetime="2017-02-17T10:29:44.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据挖掘/">数据挖掘</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/570.html">中医证型关联规则挖掘错误解决办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在读Python数据分析与挖掘实战发现《中医证型关联规则挖掘》中Apriori关联规则</p>
+<p>通过百度发现来自苏剑林《<a href="http://spaces.ac.cn/archives/3380/" target="_blank" rel="external">用Pandas实现高效的Apriori算法</a>》一文，书中代码</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">#-*- coding: utf-8 -*-
+from __future__ import print_function
+import pandas as pd
+from apriori import * #导入自行编写的apriori函数
+import time #导入时间库用来计算用时
+
+inputfile = '../data/apriori.txt' #输入事务集文件
+data = pd.read_csv(inputfile, header=None, dtype = object)
+
+start = time.clock() #计时开始
+print(u'\n转换原始数据至0-1矩阵...')
+ct = lambda x : pd.Series(1, index = x) #转换0-1矩阵的过渡函数
+b = map(ct, data.as_matrix()) #用map方式执行
+data = pd.DataFrame(b).fillna(0) #实现矩阵转换，空值用0填充
+end = time.clock() #计时结束
+print(u'\n转换完毕，用时：%0.2f秒' %(end-start))
+del b #删除中间变量b，节省内存
+
+support = 0.06 #最小支持度
+confidence = 0.75 #最小置信度
+ms = '---' #连接符，默认'--'，用来区分不同元素，如A--B。需要保证原始表格中不含有该字符
+
+start = time.clock() #计时开始
+print(u'\n开始搜索关联规则...')
+find_rule(data, support, confidence, ms)
+end = time.clock() #计时结束
+print(u'\n搜索完成，用时：%0.2f秒' %(end-start))</pre>
+
+<p>其中<code>data = pd.DataFrame(b).fillna(0)</code>会出现无法迭代的错误出现，查看原文是map后需要list转换成列表模型，才可以迭代，故应该更正为<code>data = pd.DataFrame(list(b)).fillna(0)</code></p>
+<p>特别记录给后来人方便</p>
+<p><span style="color: #ff0000;">开始以为本书是抄袭，后来发现博主就是作者之一，造成的负面影响非常抱歉</span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/570.html" data-id="cj8x084jo0016norazeqrb1ww" class="article-share-link" data-share="baidu" data-title="中医证型关联规则挖掘错误解决办法">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/570.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">下一頁 &raquo;</a>
+  </nav>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

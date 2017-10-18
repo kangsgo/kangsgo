@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rosetta蛋白蛋白对接 | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rosetta蛋白蛋白对接">
+<meta property="og:url" content="http://kangsgo.com/647.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rosetta蛋白蛋白对接">
+<meta name="twitter:description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-rosetta-e8-9b-8b-e7-99-bd-e8-9b-8b-e7-99-bd-e5-af-b9-e6-8e-a5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/647.html" class="article-date">
+  <time datetime="2017-06-13T03:08:23.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rosetta/">Rosetta</a>►<a class="article-category-link" href="/categories/Rosetta/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rosetta蛋白蛋白对接
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。</p>
+</blockquote>
+<p>蛋白蛋白对接如今比较著名的软件有<code>Hex Protein Docking</code>，<code>ZDock</code>，<code>rDock</code>，以及<code>Rosetta</code>等等。其中Hex Protein Docking虽算法比较复杂，但没有评分功能（PS：可能是我没有找到···），ZDock一般作为前期的初对接，rDock为ZDock的升级算法，一般将ZDock对接后的前几个得分构象使用rDock进行进一步对接。但是这个三个算法的准确度本人均保持怀疑态度。<br>今天想和大家分享的为Rosetta的蛋白蛋白对接模块，我对Baker课题组还是有非常盲目的崇拜的^_^<br>本教程翻译不完全翻译自官方<a href="https://www.rosettacommons.org/demos/latest/tutorials/Protein-Protein-Docking/Protein-Protein-Docking" target="_blank" rel="external">蛋白蛋白对接文档</a>。</p>
+<h5 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h5><p>Rosetta可以从两个未结合蛋白开始来预测结合结构。Rosetta蛋白蛋白对接教程主要内容为:</p>
+<ul>
+<li>怎样准备对接结构</li>
+<li>怎样进行两个蛋白的局部对接</li>
+<li>怎样优化已经对接的结构</li>
+<li>怎样对接结合界面未知的两个蛋白质</li>
+<li>怎样对接柔性蛋白</li>
+<li>怎样将柔性肽对接到蛋白</li>
+</ul>
+<h5 id="Rosetta中进行对接"><a href="#Rosetta中进行对接" class="headerlink" title="Rosetta中进行对接"></a>Rosetta中进行对接</h5><p>Rosetta中进行对接包含两个步骤。第一步，进行积极（aggresive）采样，方法使用的<a href="https://www.rosettacommons.org/demos/latest/tutorials/full_atom_vs_centroid/fullatom_centroid" target="_blank" rel="external">质心</a>模型。第二步采用全原子模型进行小范围的优化。（PS：质心模型相较于全原子模型保留蛋白主链原子，而侧链原子采用不同大小的单一赝原子表示，如图1）</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png" alt=""></a></p>
+<p>它会在内部使用跳跃连接两个链的中心，沿着跳跃两条链被拉在了一起（滑动联系 slide into contact）。算法为<a href="https://www.rosettacommons.org/demos/latest/tutorials/fold_tree/fold_tree" target="_blank" rel="external">折叠树</a>算法，是一种优化移动的方法，Rosetta在能量最小化中也有使用。这里不作探讨，也不会影响使用。算法还是使用Baker课题组特别喜欢的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Core_Concepts/Core_Concepts#monte-carlo-sampling" target="_blank" rel="external">Monte Carlo</a>随机算法进行计算如下内容：</p>
+<ul>
+<li>平移（x,y,z方向）</li>
+<li>旋转（围绕x,y,z轴）<br>默认情况下对接工具采用的为一个刚性骨架，仅能够旋转，平移和侧链packing（我理解为侧链优化，见<a href="https://www.rosettacommons.org/demos/latest/tutorials/Optimizing_Sidechains_The_Packer/Optimizing_Sidechains_The_Packer" target="_blank" rel="external">侧链优化</a>一章）,详细的描述可以查看<a href="https://www.rosettacommons.org/docs/latest/application_documentation/docking/docking-protocol" target="_blank" rel="external">Rosetta对接一章</a></li>
+</ul>
+<h5 id="演示导航"><a href="#演示导航" class="headerlink" title="演示导航"></a>演示导航</h5><p>演示可以在安装文件的<code>$ROSETTA3/demos/tutorials/Protein-Protein-Docking</code>中查看，ROSETTA3为安装路径更目录，具体可查看Rosetta安装一章。</p>
+<h5 id="对接前结构准备"><a href="#对接前结构准备" class="headerlink" title="对接前结构准备"></a>对接前结构准备</h5><p>Rosetta给的例子为Colicin-D与其抑制剂IMM之间的对接。需要提供两个精炼的输入文件<code>COL_D.pdb</code>和<code>IMM_D.pdb</code>文件，以及<code>1v74.pdb</code>文件在<code>input_files</code>文件夹下<br>准备的方法详细可以查看输入和输出一章的<a href="https://www.rosettacommons.org/demos/latest/tutorials/input_and_output/input_and_output#controlling-input_common-stucture-input-files" target="_blank" rel="external">准备结构一节</a>，为了连续性这里做简单介绍。<br>若模型为同源建模等方法进行构建，可以首先进行一个结构的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Relax_Tutorial/Relax" target="_blank" rel="external"><em>relax</em></a>,当然也可以用其他软件进行制作。详细的relax方法我们后面详细分享。在此略过，若您的模型为同源建模等进行的，模型评价效果不理想可以采用GROMACS等软件进行能量最小化的工作。<br>若模型质量佳或为解析结构，结构准备更多的是为了将输入结构转化为Rosetta的标准规范，官网给了一个简单的例子：<code>&amp;lt;path_to_Rosetta_directory&amp;gt;/demos/tutorials/input_and_output/flag_input_relax</code><br>当然结构的准备是非常玄学的东西，最好能够系统的学习同时加上大量的文献阅读增加准确性。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-nstruct 2
+
+-relax:constrain_relax_to_start_coords
+-relax:ramp_constraints false
+
+-ex1
+-ex2
+
+-use_input_sc
+-flip_HNQ
+-no_optH false</pre>
+
+<p>使用更多的<code>nstruct</code>可以提高模型结果的质量，如<code>nstruct 10</code>将会获得10个模型。<code>constrain_relax_to_start_coords</code>将会约束重原子，从而是的骨架较初始不会移动太多。<code>ramp_constraints false</code>表示不进行倾斜约束（PS：官方文档上有说明进行整体约束该选项需要设置为false）<code>flip_HNQ</code>在氢键原子位置优化期间考虑翻转HIS，ASN，GLN。<code>no_optH</code>表示是否在PDB加载期间进行氢原子位置优化.一般后面5个设置为基本设置，详见准备<a href="https://www.rosettacommons.org/docs/latest/rosetta_basics/preparation/preparing-structures" target="_blank" rel="external">结构一章</a><br>然后进行运行：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;  $ROSETTA3/bin/relax.default.linuxgccrelease -in:file:s input_files/from_rcsb/1qys.pdb @flag_input_relax
+</pre>
+
+<p>&nbsp;</p>
+<p>当然可以附加<code>ignore_unrecognized_res</code>在设置中从而删除PDB中的水和配体（当然也可以手动删除）</p>
+<h5 id="局部对接"><a href="#局部对接" class="headerlink" title="局部对接"></a>局部对接</h5><p>Rosetta在局部对接中有更加精确的结果，<strong>顾名思义，局部对接就是假设已知两个蛋白的结合（口袋）区域</strong>。首先我们需要将两个蛋白结合口袋大致的对着对方约10埃的位置，如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt=""></a></p>
+<p>我们进行如下的设置：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-partners A_B
+-dock_pert 3 8</pre>
+
+<p>以上这两个设置分别表示i):链B对接进入链A； ii）在开始单独的模拟之前随机的将配体（链B）进行一个3埃的平移和8度的旋转。<br>若为对接的多链蛋白（如一个蛋白为链A和B，一个为链L和H）<br>那么设置为<code>-partners LH_AB</code>即可。若我们同时想和1v74.pdb进行计算比较。<br>完整的参数为：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _local_dock</pre>
+
+<p>然后我们进行对接：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_local_docking
+</pre>
+
+<p>大约1min即可完成，请确保<code>-nstruct 500</code>或者更大的设置</p>
+<h5 id="局部优化对接结构"><a href="#局部优化对接结构" class="headerlink" title="局部优化对接结构"></a>局部优化对接结构</h5><p>一些小的冲突可能导致蛋白对接的得分非常高（越小越好），在Relax之前我们需要对界面处进行一定的修复。因为已经对接完成，我们需要避免大的蛋白移动。所以我们跳过之前的第一步（质心步骤）而仅进行第二部分计算。我们替换局部对接的flags:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-docking_local_refine
+-use_input_sc</pre>
+
+<p>我们用此来完善<code>1v74.pdb</code><br>完整的设置为:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/1v74.pdb
+
+-nstruct 1
+
+-docking_local_refine
+-use_input_sc
+
+-ex1
+-ex2aro
+
+-out:file:fullatom
+-out:path:all output_files
+-out:suffix _local_refine</pre>
+
+<p>对接命令</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_local_refine
+</pre>
+
+<p>然后可以对结构进行<code>relax</code>进一步优化，也可以用其他软件进行能量最小化，在此不进行进一步探讨了。</p>
+<h5 id="全局对接"><a href="#全局对接" class="headerlink" title="全局对接"></a>全局对接</h5><p>官方教程称之为Global Docking，有语言基础的对Global词的翻译应该非常熟悉，一般翻译为全局的意思。如果没有蛋白结合位点的信息的话只能使用全局对接，全局对接假设蛋白质为球型，而更小的蛋白质配体围绕蛋白质受体寻转，其原理个人理解与rDock双球对接类似。因为其随机起始位置，故输入的结构位置显得不是那么重要。</p>
+<blockquote>
+<p>全局对接对小复合物相对较好（残基数小于450）<br>在全局对接中我们添加以下设置</p>
+</blockquote>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-spin
+-randomize1
+-randomize2</pre>
+
+<p>整体的设置如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+-spin
+-randomize1
+-randomize2
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _global_dock</pre>
+
+<p>我们同样采用的之前的复合物，然后使用命令进行对接:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_global_docking
+</pre>
+
+<p>采样样本量更加大，故为了得到精确的结果，需要大量的运行，一般高达10,000-100,000次</p>
+<blockquote>
+<p>另一种方法为使用<a href="https://cluspro.bu.edu/login.php" target="_blank" rel="external">ClusPro</a>进行预对接确定结合口袋然后再运行局部对接。</p>
+</blockquote>
+<h5 id="柔性蛋白对接"><a href="#柔性蛋白对接" class="headerlink" title="柔性蛋白对接"></a>柔性蛋白对接</h5><p>正如之前所提到的，Rosetta假设蛋白骨架为柔性的进行对接。其假设蛋白蛋白结合过程前后构象发生了较大的变化，我们对蛋白构象簇（ensembles ）进行对接。而不是像之前一般一个配体构象和一个受体构象。在蛋白对接第一步（质心步骤）我们在构象簇中不断的变化着来进行对接。这样可以相当于固定骨架与多个骨架之前进行采样。<br>这个簇可以使用无约束的<code>relax</code>进行完成。对于这个教程我们使用小簇- 3 COL_D 和 3 IMM_D构象。在设置其为输入文件之前要确认链名和残基数量每个簇中都一样。<br>簇的设置类似如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/COL_D_ensemble/COL_D_0001.pdb
+input_files/COL_D_ensemble/COL_D_0002.pdb
+input_files/COL_D_ensemble/COL_D_0003.pdb</pre>
+
+<p>IMM_D_ensembel情况类似，然后将下列内容添加至之前的局部对接中</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-ensemble1 COL_D_ensemblelist
+-ensemble2 IMM_D_ensemblelist</pre>
+
+<p><code>-ensemble</code>必须包含蛋白质PDB列表。即使有一个蛋白只有一个构象，两个ensemble也都要申明。<br>具体设置为：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in:file:s input_files/col_complex.pdb
+-in:file:native input_files/1v74.pdb
+-unboundrot input_files/col_complex.pdb
+
+-nstruct 1
+
+-partners A_B
+-dock_pert 3 8
+
+-ensemble1 COL_D_ensemblelist
+-ensemble2 IMM_D_ensemblelist
+
+-ex1
+-ex2aro
+
+-out:path:all output_files
+-out:suffix _ensemble_dock</pre>
+
+<p>在对接之前我们还要进行一步前处理（<em>prepacking</em>）。前处理可以消除由于构象异构体而产生的不同能量贡献，其设置与对接类似类似，仅仅删除<code>-dock_pert</code>设置.<br>其大约运行30s，将会得到prepacked PDBs文件，以及规范化的质心得分和全原子得分，如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/COL_D_ensemble/COL_D_0001.pdb.ppk
+input_files/COL_D_ensemble/COL_D_0002.pdb.ppk
+input_files/COL_D_ensemble/COL_D_0003.pdb.ppk
+0.77058
+0
+1.00377
+-93.3588
+-94.2715
+-93.9065</pre>
+
+<p>注意的是如果你需要进行再次的前处理，需要删除<code>COL_D_ensemblelist</code>和<code>IMM_D_ensemblelist</code>，否则可能会报错。<br>前处理后再进行对接命令</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt;$ROSETTA3/main/source/bin/docking_protocol.linuxgccrelease @flag_ensemble_docking
+</pre>
+
+<p>官方文档建议使用较大的簇（25到100）个构象，<code>-nstruc 5000</code>或者更多。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/647.html" data-id="cj8x084o4006bnorap9oylcsf" class="article-share-link" data-share="baidu" data-title="Rosetta蛋白蛋白对接">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/647.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/657.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Rosetta从头结构预测
+        
+      </div>
+    </a>
+  
+  
+    <a href="/639.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">原创蛋白配体分割工具</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="647.html" data-title="Rosetta蛋白蛋白对接" data-url="http://kangsgo.com/647.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

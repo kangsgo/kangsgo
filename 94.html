@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gromacs下蛋白-配体复合物模拟[GAFF] | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
+<meta property="og:url" content="http://kangsgo.com/94.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.228Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
+<meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-gromacs-e4-b8-8b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-a4-8d-e5-90-88-e7-89-a9-e6-a8-a1-e6-8b-9fgaff" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/94.html" class="article-date">
+  <time datetime="2015-12-05T08:10:06.000Z" itemprop="datePublished">2015-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gromacs下蛋白-配体复合物模拟[GAFF]
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～</p>
+<p>我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。</p>
+<p>由于AhR晶体结构并未解析，建模的方法我在这里不累述</p>
+<p>你可以在这里下载初始文件:<a href="http://kangsgo.com/wp-content/uploads/2015/12/tcddPhe289Ala.tar.gz">tcddPhe289Ala.tar</a></p>
+<p><span style="color: #ff0000;">mdp文件建议从压缩包中的进行修改，以免直接复制导致换行问题。</span></p>
+<a id="more"></a>
+<p>1.高斯输入文件建立</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">antechamber -i tcdd-h.mol2 -fi mol2 -o tcdd.gjf -fo gcrt -pf y -gm "%mem=1024MB" -gn "%nproc=2" -nc 0 -gk "#HF/6-31G*SCF=tight Test Pop=MK iop(6/33=2) iop(6/42=6) iop(6/50=1) opt nosymm" -ge tcdd_resp.gesp -gv 1</pre>
+
+<p>其中nosymm是是否保留坐标，可以不加。高斯windows版本内存最多使用1G</p>
+<p>2.运行高斯</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">g09 tcdd.gjf</pre>
+
+<p>3.拟合成resp文件</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">antechamber -i tcdd_resp.gesp -fi gesp -o tcdd.mol2 -fo mol2 -pf y -c resp -rn TCD</pre>
+
+<p>4.生成缺失参数文件</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">parmchk2 -i tcdd.mol2 -f mol2 -o tcdd.frcmod</pre>
+
+<p>5.生成AMBER参数文件及坐标文件</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">source leaprc.ff99SB
+ source leaprc.gaff
+ loadamberparams tcdd.frcmod
+ lig=loadmol2 tcdd.mol2
+ check lig
+ saveamberparm lig tcdd.prmtop tcdd.inpcrd
+ quit</pre>
+
+<p>命名为<code>leap.in</code></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">tleap -f leap.in</pre>
+
+<p>6.将AMBER文件转换为GROMACS文件</p>
+<p>这里有两种办法amb2gmx.pl和acpype.py，一般使用后者</p>
+<p>命令如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">python2.7 acpype -p tcdd.prmtop -x tcdd.inpcrd -d</pre>
+
+<p>将会得到MOL_GMX.gro和MOL_GMX.top两个文件为下面做准备</p>
+<p>7.准备蛋白质的拓扑</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx pdb2gmx -f mAhR.pdb -o mAhR_processed.gro -water tip3p</pre>
+
+<p>注：群里说tip3p准确度比spec高</p>
+<blockquote>
+<p>力场选择amber99SB 5</p>
+</blockquote>
+<p>8.准备小分子拓扑结构</p>
+<p>将得到的TCD_GMX.top中顶部的[defaults]，[ atomtypes ]，[ moleculetype ]，底部的[ system ]，[ molecules ]删除，改名为TCD.itp</p>
+<p>复制mAhR_processed.gro，重命名为complex.gro 将TCD_GMX.gro中内容：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">1  TCD  CL1    1   1.163  -4.344   0.912
+1  TCD  CL2    2   1.223  -4.088   0.726
+1  TCD  CL3    3   2.103  -4.309   1.263
+1  TCD  CL4    4   2.164  -4.054   1.077
+1  TCD   O1    5   1.637  -4.310   1.076
+1  TCD   O2    6   1.690  -4.088   0.913
+1  TCD   C1    7   1.542  -4.258   0.994
+1  TCD   C2    8   1.568  -4.148   0.914
+1  TCD   C3    9   1.759  -4.250   1.075
+1  TCD   C4   10   1.785  -4.140   0.995
+1  TCD   C5   11   1.417  -4.317   0.992
+1  TCD   C6   12   1.469  -4.098   0.832
+1  TCD   C7   13   1.857  -4.300   1.157
+1  TCD   C8   14   1.909  -4.081   0.997
+1  TCD   C9   15   1.318  -4.266   0.911
+1  TCD  C10   16   1.344  -4.156   0.830
+1  TCD  C11   17   1.983  -4.242   1.159
+1  TCD  C12   18   2.009  -4.132   1.079
+1  TCD   H1   19   1.399  -4.402   1.055
+1  TCD   H2   20   1.490  -4.013   0.771
+1  TCD   H3   21   1.836  -4.385   1.218
+1  TCD   H4   22   1.928  -3.996   0.934</pre>
+
+<p>添加到complex.gro底部数字行上面将顶部1741加22个原子改为1763，保存。</p>
+<p>在topol文件中添加小分子的位置限制：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; Include Position restraint file
+#ifdef POSRES
+#include "posre.itp"
+#endif
+
+; Include ligand topology 
+#include "TCD.itp" 
+
+; Include water topology
+#include "amber99sb.ff/tip3p.itp"
+
+[ molecules ]
+; Compound        #mols
+Protein             1
+TCD                 1</pre>
+
+<p>[注：增加了itp文件，以及molecules增加了小分子，即：]</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; Include ligand topology 
+#include "TCD.itp"</pre>
+
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">TCD                 1</pre>
+
+<p>9.定义单元盒子</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx editconf -f complex.gro -o newbox.gro -bt cubic -d 1.2</pre>
+
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx solvate -cp newbox.gro -cs spc216.gro -p topol.top -o solv.gro</pre>
+
+<p>用vmd观察蛋白体系是否在盒子内部</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr
+gmx mdrun -deffnm md_0_1</pre>
+
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png" alt="vmdscene"></a></p>
+<p>个人感觉盒子可以调小一些～</p>
+<p>10.添加离子</p>
+<p>教程使用了能量最小化的文件，我这里稍微改了一下</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; LINES STARTING WITH ';' ARE COMMENTS
+title       = Minimization  ; 标题
+define          = -DFLEXIBLE   ;使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量
+
+; Parameters describing what to do, when to stop and what to save
+; 参数描述如何做，当模拟结束后如何保存
+integrator  = steep     ; Algorithm (steep = steepest descent minimization) 最陡梯度法
+emtol       = 1000.0    ; Stop minimization when the maximum force &lt; 10.0 kJ/mol    当小于多少能量以后停止最小化
+emstep      = 0.01      ; Energy step size  能量步大小
+nsteps      = 50000     ; Maximum number of (minimization) steps to perform  最大最小化步骤
+energygrps  = system    ; Which energy group(s) to write to disk   哪个组进行能量最小化
+
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+; 参数描述怎样寻找邻近的原子，怎么样计算相互联系
+nstlist         = 1         ; Frequency to update the neighbor list and long range forces 更新近邻列表的频率. 1表示每步都更新
+cutoff-scheme   = Verlet           ; With cutoff-scheme=Verlet and verlet-buffer-tolerance set, nstlist is actually a minimum value and mdrun might increase it, unless it is set to 1 这样设置更加精确（看英文貌似是的）
+ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+rlist           = 1.0       ; Cut-off for making neighbor list (short range forces) 短程力近邻列表的截断值
+coulombtype     = PME       ; Treatment of long range electrostatic interactions 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off
+rcoulomb        = 1.0       ; long range electrostatic cut-off   长程库仑力截断值
+rvdw            = 1.0       ; long range Van der Waals cut-off  范德华距离截断值
+constraints         = none             ;无位置限制
+pbc             = xyz       ; Periodic Boundary Conditions  周期性
+</pre>
+
+<p>我们这里还需要查看topol文件，看一下我们的体系电荷多少，需要补足电荷，可以看出我们需要补4个CL离子</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/topol.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png" alt="topol"></a></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f em.mdp -c solv.gro -p topol.top -o ions.tpr</pre>
+
+<p>做到这里会报错，我找了很久原因，后来查看amber力场文件，发现是大小写不同导致的<br>我们来看一下我们的TCD.itp文件</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight"> 1   Cl     1   TCD   CL1    1    -0.072622     35.45000 ; qtot -0.073
+ 2   Cl     1   TCD   CL2    2    -0.072622     35.45000 ; qtot -0.145
+ 3   Cl     1   TCD   CL3    3    -0.072622     35.45000 ; qtot -0.218
+ 4   Cl     1   TCD   CL4    4    -0.072622     35.45000 ; qtot -0.290
+ 5   OS     1   TCD    O1    5    -0.320484     16.00000 ; qtot -0.611
+ 6   OS     1   TCD    O2    6    -0.320484     16.00000 ; qtot -0.931
+ 7   CA     1   TCD    C1    7     0.247670     12.01000 ; qtot -0.684
+ 8   CA     1   TCD    C2    8     0.247670     12.01000 ; qtot -0.436
+ 9   CA     1   TCD    C3    9     0.247670     12.01000 ; qtot -0.188
+10   CA     1   TCD    C4   10     0.247670     12.01000 ; qtot 0.059
+11   CA     1   TCD    C5   11    -0.253268     12.01000 ; qtot -0.194
+12   CA     1   TCD    C6   12    -0.253268     12.01000 ; qtot -0.447
+13   CA     1   TCD    C7   13    -0.253268     12.01000 ; qtot -0.701
+14   CA     1   TCD    C8   14    -0.253268     12.01000 ; qtot -0.954
+15   CA     1   TCD    C9   15     0.041544     12.01000 ; qtot -0.912
+16   CA     1   TCD   C10   16     0.041544     12.01000 ; qtot -0.871
+17   CA     1   TCD   C11   17     0.041544     12.01000 ; qtot -0.829
+18   CA     1   TCD   C12   18     0.041544     12.01000 ; qtot -0.788
+19   HA     1   TCD    H1   19     0.196918      1.00800 ; qtot -0.591
+20   HA     1   TCD    H2   20     0.196918      1.00800 ; qtot -0.394
+21   HA     1   TCD    H3   21     0.196918      1.00800 ; qtot -0.197
+22   HA     1   TCD    H4   22     0.196918      1.00800 ; qtot -0.000</pre>
+
+<p>然而amber99SB力场下如是写的：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">Cl          17      35.45    0.0000  A   4.40104e-01  4.18400e-01</pre>
+
+<p><span style="color: #ff0000;">我们需要将top文件的[ atomtypes ]可以写入相应力场的ffnonbonded.itp中，这个方法更加的实用。</span></p>
+<p>个人认为比较稳妥且不会污染力场的方法为将力场文件复制出来，然后在当前目录中进行修改，如果采用apt-get安装，可以在usr/share/gromacs/top下查找对应力场文件,例如拷贝amber99sb-ildn-ligand.ff力场文件，重命名为amber99sb-ildn-ligand.ff，将; Include forcefield parameters下面一行修改为：</p>
+<p>#include “amber99sb-ildn-ligand.ff/forcefield.itp”</p>
+<p>topol文件其它引用力场的位置可修改可不修改，个人觉得最好修改</p>
+<p>&nbsp;</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png" alt="2"></a></p>
+<p>然后就是添加离子了</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nname CL -nn 4</pre>
+
+<p>-nn 表示的添加阴离子数目</p>
+<blockquote>
+<p>选择15，添加在水溶剂里面</p>
+</blockquote>
+<p>会有如下话：</p>
+<pre>Back Off! I just backed up topol.top to ./#topol.top.2#
+Replacing solvent molecule 1173 (atom 5282) with CL
+Replacing solvent molecule 3252 (atom 11519) with CL
+Replacing solvent molecule 2563 (atom 9452) with CL
+Replacing solvent molecule 10648 (atom 33707) with CL
+</pre>
+
+<p>表示插入进去了</p>
+<p>11.能量最小化</p>
+<p>参数文件如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; LINES STARTING WITH ';' ARE COMMENTS
+title       = Minimization  ; Title of run
+define          = -DFLEXIBLE
+
+; Parameters describing what to do, when to stop and what to save
+integrator  = steep     ; Algorithm (steep = steepest descent minimization)
+emtol       = 500.0     ; Stop minimization when the maximum force &lt; 5.0 kJ/mol
+emstep      = 0.01      ; Energy step size
+nsteps      = 50000     ; Maximum number of (minimization) steps to perform
+energygrps  = Protein TCD   ; Which energy group(s) to write to disk
+
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+nstlist         = 1         ; Frequency to update the neighbor list and long range forces
+cutoff-scheme   = Verlet
+ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+rlist           = 1.0       ; Cut-off for making neighbor list (short range forces)
+coulombtype     = PME       ; Treatment of long range electrostatic interactions
+rcoulomb        = 1.0       ; long range electrostatic cut-off
+rvdw            = 1.0       ; long range Van der Waals cut-off
+constraints         = none
+pbc             = xyz       ; Periodic Boundary Conditions</pre>
+
+<p><strong><span style="color: #ff0000;">能量组为energygrps = Protein TCD，这里TCD需要根据自己的体系进行修改，下同 </span></strong></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">energygrps   = Protein TCD</pre>
+
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f em_real.mdp -c solv_ions.gro -p topol.top -o em.tpr</pre>
+
+<p>运行模拟</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx mdrun -v -deffnm em</pre>
+
+<p>个人认为在运行模拟之前要搞懂参数的意义，所幸这里有<a href="http://jerkwin.github.io/GMX/GMXprg#gmxmdrun:执行模拟简正分析或能量最小化翻译:王浩博" target="_blank" rel="external">中文参考教程</a>，因为要去吃饭了～这里就使用默认的先</p>
+<p>我们发现700步就收敛了，所以我决定改成emtol= 1000修改成500再跑````<br>1888步收敛了～所以我尝试删掉emtol= 1000<br>但是通过前面的教程，其也是500来步就已经收敛了～</p>
+<p>结果如图</p>
+<p>PS：作图方法如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f em.edr -o potential.xvg</pre>
+
+<p>选择 10 0</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png" alt="potential"></a></p>
+<p>再用共轭梯度法，mdp文件参数如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; LINES STARTING WITH ';' ARE COMMENTS
+title       = Minimization  ; Title of run
+define          = -DFLEXIBLE
+
+; Parameters describing what to do, when to stop and what to save
+integrator  = cg        ; Algorithm (steep = steepest descent minimization)
+emtol       = 100.0     ; Stop minimization when the maximum force &lt; 10.0 kJ/mol
+emstep      = 0.01      ; Energy step size
+nsteps      = 50000     ; Maximum number of (minimization) steps to perform
+nstcgsteep      = 1000
+energygrps  = Protein TCD   ; Which energy group(s) to write to disk
+
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+nstlist         = 1         ; Frequency to update the neighbor list and long range forces
+cutoff-scheme   = Verlet
+ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+rlist           = 1.0       ; Cut-off for making neighbor list (short range forces)
+coulombtype     = PME       ; Treatment of long range electrostatic interactions
+rcoulomb        = 1.0       ; long range electrostatic cut-off
+rvdw            = 1.0       ; long range Van der Waals cut-off
+constraints         = none
+pbc             = xyz       ; Periodic Boundary Conditions</pre>
+
+<p>&nbsp;</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f em2.mdp -c em.gro -p topol.top -o em2.tpr</pre>
+
+<p>运行模拟</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx mdrun -v -deffnm em2</pre>
+
+<p>做出来如这个图，图是否正确待考</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png" alt="potential2"></a></p>
+<p>&nbsp;</p>
+<p>12.NVT平衡（温度平衡）</p>
+<p>限制配体：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genrestr -f TCD.gro -o posre_TCD.itp -fc 1000 1000 1000</pre>
+
+<p>在选择组过程中个人觉得选择system或者TCD均可<br><a href="http://kangsgo.com/wp-content/uploads/2015/12/3.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png" alt="3"></a></p>
+<p>增加配体限制：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; Include ligand topology
+#include "TCD.itp"
+
+; Ligand position restraints 
+#ifdef POSRES 
+#include "posre_TCD.itp" 
+#endif
+
+; Include water topology
+#include "amber99sb.ff/tip3p.itp"</pre>
+
+<p>[注：插入的为]</p>
+<pre>; Ligand position restraints 
+#ifdef POSRES 
+#include "posre_TCD.itp" 
+#endif</pre>
+
+<p>其实这里还可以分开限制（具体这里还是没有特别理解～待我看一下参考资料）</p>
+<p>热浴</p>
+<p>–温度耦合需要蛋白质和配体在一起？</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx make_ndx -f em2.gro -o index.ndx</pre>
+
+<p>选择蛋白和配体分为一组</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/4.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png" alt="4"></a></p>
+<p>然后就可以热浴了～热浴的mdp如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NVT equilibration 
+define      = -DPOSRES  ; position restrain the protein and ligand
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 50000     ; 2 * 50000 = 100 ps
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout     = 200       ; save coordinates every 1.0 ps
+nstvout     = 200       ; save velocities every 1.0 ps
+nstenergy   = 200       ; save energies every 1.0 ps
+nstlog      = 200       ; update log file every 1.0 ps
+energygrps  = Protein TCD
+; Bond parameters
+continuation    = no            ; first dynamics run
+constraint_algorithm = lincs    ; holonomic constraints 
+constraints     = all-bonds     ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter      = 1             ; accuracy of LINCS
+lincs_order     = 4             ; also related to accuracy
+; Neighborsearching
+cutoff-scheme   = Verlet
+ns_type         = grid      ; search neighboring grid cells
+nstlist         = 10        ; 20 fs, largely irrelevant with Verlet
+rcoulomb        = 1.4       ; short-range electrostatic cutoff (in nm)
+rvdw            = 1.4       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4         ; cubic interpolation
+fourierspacing  = 0.16      ; grid spacing for FFT
+; Temperature coupling
+tcoupl      = V-rescale                     ; modified Berendsen thermostat
+tc-grps     = Protein_TCD Water_and_ions    ; two coupling groups - more accurate
+tau_t       = 0.1   0.1                     ; time constant, in ps
+ref_t       = 300   300                     ; reference temperature, one for each group, in K
+; Pressure coupling
+pcoupl      = no        ; no pressure coupling in NVT
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = yes       ; assign velocities from Maxwell distribution
+gen_temp    = 300       ; temperature for Maxwell distribution
+gen_seed    = -1        ; generate a random seed</pre>
+
+<p>&nbsp;</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f nvt.mdp -c em2.gro -p topol.top -n index.ndx -o nvt.tpr
+gmx mdrun -deffnm nvt</pre>
+
+<p>完成后我的析出如图：</p>
+<pre>NOTE: The GPU has &gt;20% more load than the CPU. This imbalance causes
+      performance loss, consider using a shorter cut-off and a finer PME grid.
+
+               Core t (s)   Wall t (s)        (%)
+       Time:     3799.500      518.255      733.1
+                 (ns/day)    (hour/ns)
+Performance:       16.672        1.440
+</pre>
+
+<p>可以看出我的GPU太渣，暂时没有想到解决办法</p>
+<p>我们来看一下NVT耦合的怎么样</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f nvt.edr -o template.xvg</pre>
+
+<p>选择15 0</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/template.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png" alt="template"></a></p>
+<p>13.NPT平衡<br>mdp文件如下：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NPT equilibration 
+define      = -DPOSRES  ; position restrain the protein and ligand
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 50000     ; 2 * 50000 = 100 ps
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout     = 200       ; save coordinates every 1.0 ps
+nstvout     = 200       ; save velocities every 1.0 ps
+nstenergy   = 200       ; save energies every 1.0 ps
+nstlog      = 200       ; update log file every 1.0 ps
+energygrps  = Protein TCD
+; Bond parameters
+continuation    = yes           ; first dynamics run
+constraint_algorithm = lincs    ; holonomic constraints 
+constraints     = all-bonds     ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter      = 1             ; accuracy of LINCS
+lincs_order     = 4             ; also related to accuracy
+; Neighborsearching
+cutoff-scheme   = Verlet
+ns_type         = grid      ; search neighboring grid cells
+nstlist         = 10        ; 20 fs, largely irrelevant with Verlet
+rcoulomb        = 1.4       ; short-range electrostatic cutoff (in nm)
+rvdw            = 1.4       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4         ; cubic interpolation
+fourierspacing  = 0.16      ; grid spacing for FFT
+; Temperature coupling
+tcoupl      = V-rescale                     ; modified Berendsen thermostat
+tc-grps     = Protein_TCD Water_and_ions    ; two coupling groups - more accurate
+tau_t       = 0.1   0.1                     ; time constant, in ps
+ref_t       = 300   300                     ; reference temperature, one for each group, in K
+; Pressure coupling
+pcoupl      = Parrinello-Rahman             ; pressure coupling is on for NPT
+pcoupltype  = isotropic                     ; uniform scaling of box vectors
+tau_p       = 2.0                           ; time constant, in ps
+ref_p       = 1.0                           ; reference pressure, in bar
+compressibility = 4.5e-5                    ; isothermal compressibility of water, bar^-1
+refcoord_scaling    = com
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = no        ; velocity generation off after NVT</pre>
+
+<p><span style="color: #ff0000;">注意，耦合组为Protein_TCD，自己的体系需要修改成自己的，下同</span></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -n index.ndx -o npt.tpr
+
+gmx mdrun -deffnm npt</pre>
+
+<p>先看一下压力</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o pressure.xvg</pre>
+
+<p>选择 16 0</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png" alt="pressure"></a></p>
+<p>再来看一下密度</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o density.xvg</pre>
+
+<p>选择 22 0</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/density.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png" alt="density"></a></p>
+<p>可以看出在1000左右，符合水的密度，个人觉得tip3p效果比spec水模型效果好</p>
+<p>14.成品MD</p>
+<p>一般MD需要100ns以上，但是我的电脑我怕受不了，就先50ns吧～大约需要3天-4天左右</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex MD simulation 
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 25000000    ; 2 * 25000000 = 50000 ps (50 ns)
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout             = 0         ; suppress .trr output 
+nstvout             = 0         ; suppress .trr output
+nstenergy           = 5000      ; save energies every 10.0 ps
+nstlog              = 5000      ; update log file every 10.0 ps
+nstxout-compressed  = 5000      ; write .xtc trajectory every 10.0 ps
+compressed-x-grps   = System
+energygrps          = Protein TCD
+; Bond parameters
+continuation    = yes           ; first dynamics run
+constraint_algorithm = lincs    ; holonomic constraints 
+constraints     = all-bonds     ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter      = 1             ; accuracy of LINCS
+lincs_order     = 4             ; also related to accuracy
+; Neighborsearching
+cutoff-scheme   = Verlet
+ns_type         = grid      ; search neighboring grid cells
+nstlist         = 10        ; 20 fs, largely irrelevant with Verlet
+rcoulomb        = 1.4       ; short-range electrostatic cutoff (in nm)
+rvdw            = 1.4       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4         ; cubic interpolation
+fourierspacing  = 0.16      ; grid spacing for FFT
+; Temperature coupling
+tcoupl      = V-rescale                     ; modified Berendsen thermostat
+tc-grps     = Protein_TCD Water_and_ions    ; two coupling groups - more accurate
+tau_t       = 0.1   0.1                     ; time constant, in ps
+ref_t       = 300   300                     ; reference temperature, one for each group, in K
+; Pressure coupling 
+pcoupl      = Parrinello-Rahman             ; pressure coupling is on for NPT
+pcoupltype  = isotropic                     ; uniform scaling of box vectors
+tau_p       = 2.0                           ; time constant, in ps
+ref_p       = 1.0                           ; reference pressure, in bar
+compressibility = 4.5e-5                    ; isothermal compressibility of water, bar^-1
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = no        ; assign velocities from Maxwell distribution</pre>
+
+<p><span style="color: #ff0000;">注意：nsteps = 25000000 ; 2 * 25000000 = 50000 ps (50 ns) 这里修改时长，同时注意修改耦合组成为自己的</span></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr
+gmx mdrun -deffnm md_0_1</pre>
+
+<p>经过2d12h的计算，终于完成了，即高兴又紧张。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/5.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png" alt="5"></a></p>
+<p>由于这个贴实在太长，另外开一贴</p>
+<p>参考文献：<a href="http://platinhom.github.io/2015/09/17/AutoCalcRESP/" target="_blank" rel="external">自动计算ESP和RESP电荷(AMBER and G09)</a></p>
+<p>参考文献：<a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=409&amp;highlight=GAFF" target="_blank" rel="external">小分子在GAFF立场GROMCA中的操作</a></p>
+<p>参考文献：<a href="http://jerkwin.github.io/2015/12/08/%E4%BD%BF%E7%94%A8AmberTools+ACPYPE+Gaussian%E5%88%9B%E5%BB%BA%E5%B0%8F%E5%88%86%E5%AD%90GAFF%E5%8A%9B%E5%9C%BA%E7%9A%84%E6%8B%93%E6%89%91%E6%96%87%E4%BB%B6/" target="_blank" rel="external">使用AmberTools+ACPYPE+Gaussian创建小分子GAFF力场的拓扑文件</a></p>
+<p>参考文献：<a href="http://jerkwin.github.io/GMX/GMXtut-5#TOC2" target="_blank" rel="external">蛋白质配体复合物</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/94.html" data-id="cj8x084mr004lnora6c8hptt8" class="article-share-link" data-share="baidu" data-title="gromacs下蛋白-配体复合物模拟[GAFF]">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/94.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/106.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Gromacs共轭梯度法mdp设置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/89.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Autodock与AutoDock vina利用pymol插件使用教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="94.html" data-title="gromacs下蛋白-配体复合物模拟[GAFF]" data-url="http://kangsgo.com/94.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

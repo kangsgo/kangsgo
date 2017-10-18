@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小康博客">
+<meta property="og:url" content="http://kangsgo.com/page/9/index.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小康博客">
+<meta name="twitter:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-e8-bd-ac-e8-bd-bd-e5-88-b6-e4-bd-9cvmd-e5-8a-a8-e7-94-bb-ef-bc-88-e4-b8-ad-e6-96-87-e7-89-88-ef-bc-89" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/239.html" class="article-date">
+  <time datetime="2016-02-25T07:21:14.000Z" itemprop="datePublished">2016-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/239.html">制作VMD动画（中文版）/Pymol 动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文连接失效了，此为PDF版本：<a href="http://kangsgo.com/wp-content/uploads/2016/02/VMD-animations.pdf">VMD-animations</a></p>
+<p>VMD版本</p>
+<p><strong>第一步：</strong> <strong>提取轨迹。</strong></p>
+<p>往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。</p>
+<p><strong>第二步：导入轨迹</strong></p>
+<p>安装VMD，然后先导入十进制文件，再导入二进制轨迹文件（这些简单操作就带过了）。然后你就能看到轨迹了。要将轨迹做得美观点，一般有这样几个建议：1. 不要把VMD全屏，否则你会后悔的；2. 背景色相应进行调整；3. DisplayàAxesàoff去掉坐标系。接下来选择Extension à Visualization à Movie Maker，然后就会跳出一个VMD Movie Generator的小窗口。</p>
+<p><strong>第三步：设置参数</strong></p>
+<p>建议在空间大的盘里建立一个临时文件夹，路径名最好都是英文或者拉丁字符的，汉字VMD不认的。然后把working directory改成你刚刚新建的临时文件夹目录。Renderer选择Snapshot，Movie Setting改成Trajectory，format改成MPEG-1或者AVI（如果你有足够空间和时间的话）。其他参数按照自己的需求修改。此时点击Make Movie，整个过程就开始了。这里有个非常重要的东西要提醒：VMD是将视频一帧一桢形成图片格式输出，然后再在另一个软件中组成一个动画，因此图片就是你一会做动画的来源，既然图片选择snapshot（快照），那也就是说你必须将动画置于窗口，而不能最小化，否则相当于无法截屏了。</p>
+<p>VMD中</p>
+<blockquote>
+<p>trjconv -f mdwholeNOjump.xtc -s md_0_1.tpr -fit rot+trans -o mdahrfitNojump.xtc<br>选择蛋白文件不动，这样做出来的结果就是稳定的</p>
+</blockquote>
+<p>另外一种方法为：</p>
+<p>选<strong>mouse-move-molecule</strong>，然后按住shift拖动分子调整分子与坐标轴的相对朝向，以使得绕着坐标轴的某个轴转动时可以把感兴趣的区域显示出来。然后<strong>extension-analysis-RMSD trajectory tool</strong>，直接点<strong>Align</strong>，这样后续的帧中的结构就都向着最初帧的分子朝向对齐了。</p>
+<p>在Pymol模式下可以这样子：</p>
+<blockquote>
+<p>intra_fit protein and (name c,n,ca)<br>Pymol版本制作电影：<br>viewport 640,480</p>
+<p>set ray_trace_frames,1</p>
+<p>mpng frame_.png<br>具体Pymol方法可以看这里（5-6页）：<a href="http://kangsgo.com/wp-content/uploads/2016/02/Gromacs教程II-MD结果分析.docx">Gromacs教程II-MD结果分析</a></p>
+</blockquote>
+<p>参考文献：<a href="http://blog.sina.com.cn/s/blog_63f794950101dtte.html" target="_blank" rel="external">如何用VMD将轨迹文件制作动画</a></p>
+<p>参考文献：<a href="http://emuch.net/html/201508/9277925.html" target="_blank" rel="external">怎样用VMD软件画出一条MD轨迹中所有构象</a></p>
+<p>参考文献：<a href="http://sobereva.com/65" target="_blank" rel="external">显示粒子运动轨迹的VMD脚本</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/239.html" data-id="cj8x084ls003fnorazldw634t" class="article-share-link" data-share="baidu" data-title="制作VMD动画（中文版）/Pymol 动画">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/239.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-b8-a4-e4-b8-aapca-e5-88-86-e6-9e-90-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/230.html" class="article-date">
+  <time datetime="2016-02-24T15:28:54.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/230.html">两个PCA分析工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>待编辑：</p>
+<p><a href="http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/att-15365/PorcupinePlot.tcl" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/att-15365/PorcupinePlot.tcl</a></p>
+<p><a href="http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/9391.html" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/9391.html</a></p>
+<p>&nbsp;</p>
+<p><a href="http://www.ks.uiuc.edu/Research/vmd/plugins/nmwiz/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/plugins/nmwiz/</a></p>
+<p>&nbsp;</p>
+<p><a href="https://www.researchgate.net/post/How_to_use_PorcupinePlottcl_in_VMD2" target="_blank" rel="external">https://www.researchgate.net/post/How_to_use_PorcupinePlottcl_in_VMD2</a></p>
+<p>&nbsp;</p>
+<p><a href="http://wenku.baidu.com/link?url=dgbJ_MFW3qQRiWrlt_kWdhtlofbcIp_8GI-cSUKfiSW2vtIdyeGyknJR4LT2P315sO7iFKMPpW75N-3ciSEUHDhaQNuFMthcO99rjGPb-ti" target="_blank" rel="external">http://wenku.baidu.com/link?url=dgbJ_MFW3qQRiWrlt_kWdhtlofbcIp_8GI-cSUKfiSW2vtIdyeGyknJR4LT2P315sO7iFKMPpW75N-3ciSEUHDhaQNuFMthcO99rjGPb-ti</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/230.html" data-id="cj8x084jm0014nora78fdfg94" class="article-share-link" data-share="baidu" data-title="两个PCA分析工具">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/230.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ubuntu-15-10-gromacs-gpu-e5-8a-a0-e9-80-9f-e9-94-99-e8-af-af-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/226.html" class="article-date">
+  <time datetime="2016-02-24T14:48:51.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/226.html">Ubuntu 15.10 Gromacs GPU加速错误解决办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。</p>
+<p>看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下：</p>
+<p>按照先前安装教程<a href="http://kangsgo.com/40.html">安装</a></p>
+<p>1.终端输入如下：</p>
+<blockquote>
+<p><strong>nvcc -V</strong>(注意大写V)<br>&nbsp;</p>
+</blockquote>
+<p>应该有类似输出：</p>
+<p><pre>nvcc: NVIDIA(R) Cuda compiler driver<br>copyright (c) 2005-2015 NVIDIA Corporation<br>Built on ………………<br>Cuda compilation tools, release 7.5, V7.5.17<br></pre><br>2.使用自带的samples进行GPU运算测试。</p>
+<p>进入到cuda-7.5的samples目录，一般都是<span style="color: #ff0000;"><code>cd /usr/local/cuda-7.5/samples</code></span>，然后会有一个Makefile文件，执行命令<span style="color: #ff0000;"><code>sudo make</code></span>，不出意外地话，会出现带有红颜色的error错误，大概是这样的：unsupported GNU version! gcc versions later than 4.9 are not supported! 意思也很明显了，就是gcc的版本高于4.9，Cuda不支持。解释一下：ubuntu15.10自带的gcc是5.2.1，可以通过<span style="color: #ff0000;"><code>gcc –version</code></span>（两个-）查看，但是cuda不支持超过4.9.0的gcc编译器。要么安装一个低版本的编译器，要么把cuda的这个限制给去掉。我选择的是后者，而且尚未出现其他问题。</p>
+<p>3.解决方案如下：</p>
+<p><pre>    sudo cd /usr/local/cuda/include/ #进入到头文件目录cuda(而不是cuda-7.5)；<br>    sudo cp host_config.h host_config.h.bak #备份原头文件；<br>    sudo gedit host_config.h #编辑头文件；<br>    ctrl+F查找4.9出现的地方，大约位于115行，在第113行处应该显示if <em>GNUC</em>&gt;4 || (<em>GNUC</em> == 4 &amp;&amp; _GNUC<em>MINOR</em> &gt; 9)，因为我们的是5.2.1，因此，把上面的2个4都改成5就ok了，保存退出。<br></pre><br>自此解决，若还不放心，可以从新运行第2步的sudo make（注意目录同第二步）</p>
+<p>参考文献：<a href="http://blog.csdn.net/niuwei22007/article/details/50439478" target="_blank" rel="external">Ubuntu15.10_64位安装Theano+cuda7.5详细笔记</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/226.html" data-id="cj8x084oc006nnoras5p7r51n" class="article-share-link" data-share="baidu" data-title="Ubuntu 15.10 Gromacs GPU加速错误解决办法">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/226.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0plos-one-e4-b8-8a-e4-b8-80-e7-af-87-e7-aa-81-e5-8f-98-e7-9a-84-e6-96-87-e7-ab-a0-e5-88-86-e6-9e-90-e6-a8-a1-e5-bc-8f-e5-ad-a6-e4-b9-a0-ef-bc-88-e7-ae-80-ef-bc-89" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/221.html" class="article-date">
+  <time datetime="2016-02-24T12:23:14.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/221.html">[读书笔记]Plos One 上一篇突变的文章分析模式学习（简）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>标题</strong>：Molecular Dynamics Analysis Reveals Structural Insights into Mechanism of Nicotine N -Demethylation Catalyzed by Tobacco Cytochrome P450 Mono-Oxygenase</p>
+<p><strong>杂志</strong>：Plos One</p>
+<p><strong>年份</strong>: 2011</p>
+<p><strong>影响因子</strong>：3.24</p>
+<p><strong>文章下载</strong>：<a href="http://kangsgo.com/wp-content/uploads/2016/02/参考文献pone.pdf">参考文献pone</a></p>
+<p><strong>方法：</strong></p>
+<h3 id="1-结构准备："><a href="#1-结构准备：" class="headerlink" title="1.结构准备："></a>1.结构准备：</h3><p>建模 SWISS-MODEL ，评价 TM-score</p>
+<p>分子对接：AUTODOCK</p>
+<p>分子动力学：</p>
+<p>GROMACS 4.5.3</p>
+<p>力场：GROMOS96 53a6 force field</p>
+<p>小分子力场：Dundee PRODRG Server</p>
+<p>MD：30ns</p>
+<h3 id="2-分析："><a href="#2-分析：" class="headerlink" title="2.分析："></a>2.分析：</h3><h4 id="RMSD-RMSF-Helix-and-Channel-analysis"><a href="#RMSD-RMSF-Helix-and-Channel-analysis" class="headerlink" title="RMSD, RMSF, Helix, and Channel analysis"></a>RMSD, RMSF, Helix, and Channel analysis</h4><p>RMSDs 骨架原子</p>
+<p>C-alpha RMSFs</p>
+<p>g_helix program 观察突变螺旋卷曲 Specifically, the helical rise per residue is<br>plotted as the difference in Z-coordinate between Ca atoms</p>
+<h4 id="通道：CAVER"><a href="#通道：CAVER" class="headerlink" title="通道：CAVER"></a>通道：CAVER</h4><h4 id="主成分分析和协方差分析："><a href="#主成分分析和协方差分析：" class="headerlink" title="主成分分析和协方差分析："></a>主成分分析和协方差分析：</h4><p>PCA（Principal component analysis）分析：<a href="http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/att-15365/PorcupinePlot.tcl" target="_blank" rel="external">脚本</a></p>
+<p>另外蒲中机同学分享了一个脚本，生成豪猪图的~在这里分享给大家~版权归蒲中机所有~<a href="http://kangsgo.com/wp-content/uploads/2016/02/vmdtcl.txt">vmdtcl</a><br>会自动生成豪猪图</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/221.html" data-id="cj8x084lo003anora98ai6jf9" class="article-share-link" data-share="baidu" data-title="[读书笔记]Plos One 上一篇突变的文章分析模式学习（简）">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/221.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-87-aa-e5-8a-a8-e7-9a-84gromacs-e6-8b-93-e6-89-91-e7-94-9f-e6-88-90-e5-b7-a5-e5-85-b7-e5-92-8c-e6-af-94-e8-be-83-e4-b8-8d-e5-90-8c-e5-8a-9b-e5-9c-ba-e7-9a-84-e6-ba-b6-e5-89-82-e5-8c-96-e8-87-aa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/214.html" class="article-date">
+  <time datetime="2016-02-14T12:21:53.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/214.html">自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文名称：Automatic GROMACS Topology Generation and Comparisons of Force Fields for Solvation Free Energy Calculations</p>
+<p>接受日期：2014年10月26日</p>
+<p>影响因子:3.32</p>
+<p>文章下载：<a href="http://kangsgo.com/wp-content/uploads/2016/02/lundborg2014.pdf">本地下载</a></p>
+<p>摘要：现在我们提供一个新的框架，这个框架能够全自动的生成GROMACS拓扑文件对于许多（any of these force fields）力场，并且自动进行并行优化设置的高通量（high-throughput）自由能计算。</p>
+<p>使用方法：git clone <a href="https://gerrit.gromacs.org/STaGE" target="_blank" rel="external">https://gerrit.gromacs.org/STaGE</a>  ！–未测试–！</p>
+<p>太长了，而且没有说明书···烂尾了········</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/214.html" data-id="cj8x084kk0029norac6ennxgo" class="article-share-link" data-share="baidu" data-title="自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/214.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0nedd-8-e6-b4-bb-e5-8c-96-e9-85-b6-e7-9a-84-e4-bd-8e-e6-95-8f-e6-84-9f-e6-80-a7-e7-aa-81-e5-8f-98-e4-b8-8e-e7-99-8c-e7-97-87-e8-8d-af-e7-89-a9mln4924-e6-8a-91" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/194.html" class="article-date">
+  <time datetime="2016-02-07T04:21:27.000Z" itemprop="datePublished">2016-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/194.html">[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>杂志：Am J Cancer Res</p>
+<p>影响因子：3.98</p>
+<p>接收：2015年8月  发表：2015年11月</p>
+<p>一篇伊朗的研究论文</p>
+<p>题目：Molecular dynamics simulation on the low sensitivity of<br>mutants of NEDD-8 activating enzyme for<br>MLN4924 inhibitor as a cancer drug</p>
+<p>全文下载：<a href="http://kangsgo.com/wp-content/uploads/2016/02/ajcr0005-3400.pdf">点我下载</a></p>
+<p>摘要：MLN4924是NEDD8活化酶（NAE）抑制剂，而NAE是结合在culin蛋白上的库林环连接酶（CRLs）。如图：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/nrm1547-f5.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/02/nrm1547-f5.jpg" alt="nrm1547-f5"></a></p>
+<p>这个共价修饰招募E2泛素化调控原件，导致下游蛋白泛素化以及蛋白酶的降解。MLN4924为<strong><span style="color: #ff0000;">共价</span></strong>抑制剂！使得CLRs失活（而CLRs会导致DNA的复制以及抑制NF-κB信号通路）从而导致癌细胞的死亡。</p>
+<p>突变可以减少酶对MLN4924的敏感性：Verma et al等人在2013年分子动力学研究发现A171T减少MLN4924和DNA结合位点作用酶（ DNA Binding site of enzyme as a result of reduction<br>of enzyme affinity to ATP）的相互作用，减少酶和ATP的亲和力。</p>
+<p>一年后Wei Xu et al.发现Y352H和I310N的突变导致酶阻碍MLN4924的抑制作用。有趣的是报道称增加酶和ATP的亲和力。其并未做分子动力学研究。</p>
+<p>本文采用Gromacs 4.5.6版本</p>
+<p>介绍：癌细胞介导细胞信号不仅位于细胞循环。而且阻止细胞凋亡。细胞凋亡要求特别的调节蛋白例如扁在蛋白酶系统（ubiquitin-proteasome system UPS）作为监测点，UPS包括E3遍在蛋白酶联体称之为CUllin-RING Ligases（CRLs），其核心为NEDD8（ubiquitin-like protein ；ULP）。</p>
+<p>NEDD8修饰能够介入细胞循环和细胞骨架的调节。</p>
+<p><img src="http://kangsgo.com/wp-content/uploads/2016/02/1.png" alt="1"></p>
+<p>E1（NEDD8激活酶NAE）催化带有NEDD8的cullin的初始化。NAE与其他蛋白的联系阐述如图1.NAE的抑制剂MLN4924被揭露其阻止NAE的激活以及随后的cullins表达。被认为是一个潜在的抗癌药物，表达临床效用在一些固体肿瘤和血液病和近期发现淋巴瘤和多发性骨癌。</p>
+<p>方法：</p>
+<p>预测NAE可能的相互作用伙伴</p>
+<p>使用STRING数据库（<a href="http://string-db.org/）。这个相互作用包括直接（物理）和间接（功能性）联系。" target="_blank" rel="external">http://string-db.org/）。这个相互作用包括直接（物理）和间接（功能性）联系。</a></p>
+<p>MLN4924属性计算和化学结构</p>
+<p>通过Pfam database (www.<a href="http://pfam.xfam.org/)，我们计算Molecular" target="_blank" rel="external">http://pfam.xfam.org/)，我们计算Molecular</a> Weight,Molecular Formula, XLogP3, Hydrogen Bond Donor Count, Hydrogen Bond Acceptor Count,Rotatable Bond Count and etc。以及化学结构</p>
+<p>分子动力学和分子结构最小化</p>
+<p>使用之前教程方法，突变使用Modeller 9.13项目，mutant Y352H and I310N，MD 20ns，抑制剂和蛋白均为晶体结构</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/2.png"><img src="http://kangsgo.com/wp-content/uploads/2016/02/2-267x300.png" alt="2"></a></p>
+<p>&nbsp;</p>
+<p>结果与讨论</p>
+<p>蛋白联系预测</p>
+<p>计算参数结果和化学构象</p>
+<p>其说对于MD非常有用，个人觉得没什么用</p>
+<p>分子动力学</p>
+<p>RMSD分析用来查看动力学稳定性（原文In MD analysis, Root Mean Square Deviation (RSMD) of simulated  structure  upon time is an appropriated and common criterion to verify Molecular dynamics stimulation stability.）</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/3.png"><img src="http://kangsgo.com/wp-content/uploads/2016/02/3-300x253.png" alt="3"></a></p>
+<p>此外，蛋白结构域和形状可以被通过Gyration Radius计算修饰。这个参数提供了关于蛋白总体积分配，换而言之，其表明了紧密的分子形状？（tensed molecular shape）</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/4.png"><img src="http://kangsgo.com/wp-content/uploads/2016/02/4-300x260.png" alt="4"></a></p>
+<p>RMSF 一些结构的柔性改变和改变的模式对于正常的与突变的不同的模式能够从此图中比较出来</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/5.png"><img src="http://kangsgo.com/wp-content/uploads/2016/02/5-300x278.png" alt="5"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/194.html" data-id="cj8x084ln0038norakqahs0gv" class="article-share-link" data-share="baidu" data-title="[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/194.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-88-86-e6-9e-90-e5-be-85-e6-95-b4-e7-90-86" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/190.html" class="article-date">
+  <time datetime="2016-01-18T17:59:12.000Z" itemprop="datePublished">2016-01-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/杂项/">杂项</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/190.html">分析待整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>王新宇@天津&lt;wangdephor@qq.com&gt; 9:07:29<br>@吴萌@上海 ,取残基中两个特定原子间的距离可以吗，比如alpha碳，如果是残基质心的话，我觉得需要自己动手写脚本<br>吴萌@上海(2425896046) 9:10:25<br>我想分析的是两个residue间的距离随时间的变化情况<br>王新宇@天津&lt;wangdephor@qq.com&gt; 9:11:53<br>每个残基好多原子，怎么定义残基距离呢<br>赵红霞@南京(763348803) 9:12:19<br>先分别找到两个residue的质心，再测量两个质心的距离随模拟时间的变化。<br>王新宇@天津&lt;wangdephor@qq.com&gt; 9:12:58<br>这个测量有现成选项吗<br>赵红霞@南京(763348803) 9:13:14<br>原理是这样，具体操作就不会了<br>王新宇@天津&lt;wangdephor@qq.com&gt; 9:13:49<br>最好有现成脚本，<br>吴萌@上海(2425896046) 9:14:10<br>我昨天用了distance，我引用了ndx，然后选择了分组，就是选好了要测的氨基酸，但选好后停那了，没有得到我想输出的文件<br>蒲中机@大连(1530547071) 9:14:20<br>gmx distance 可以<br>蒲中机@大连(1530547071) 9:14:35<br>肯定能完成的<br>王新宇@天津&lt;wangdephor@qq.com&gt; 9:15:14<br>好，去试试<br>张鲁格@济宁(374248600) 9:15:14<br>对<br>赵红霞@南京(763348803) 9:15:28<br>应该有一个选质心的过程吧<br>吴萌@上海(2425896046) 9:15:29<br>@赵红霞@南京 怎么找质心<br>赵红霞@南京(763348803) 9:16:06<br>我先前在MS里是这么做的，gromacs还刚刚摸索呢<br>阮洋@南京(1532014681) 9:23:05<br>或者是g_dist，用质心，输出的结果，编程处理一下<br>康文斌@南京(407747533) 9:23:38<br>求残基距离有很多的方法：1、可以参考US例子中的方法2、你可以定义bond<br>康文斌@南京(407747533) 9:24:51<br>gmx distance -s pull.tpr -f conf${i}.gro -n index.ndx -select ‘com of group 19 plus com of group 20’ -oav dist${i}.xvg&amp;&gt;/dev/null<br>康文斌@南京(407747533) 9:25:05<br>改改这个是一种方法<br>康文斌@南京(407747533) 9:27:23<br>选择你关心的原子做为两个组<br>康文斌@南京(407747533) 9:28:53<br>还有一个大家可以关心PLUMED，这个可以做的事更多。其中有些工具可以实现你想计算的物理量。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!--StartFragment -->
+<p><div>祝新哲@北京(979434812)  21:17:32<br>请问求两个分子质心随时间变化是gmx distance -f md1.trr -s md.tpr -n index.ndx -selrpos res_cog -oall dis_BCD1-BCD2.xvg，这样有问题吗<br>阮洋@南京(1532014681)  21:19:27<br>-pbc com</div></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/190.html" data-id="cj8x084k7001snorap8c6lx1b" class="article-share-link" data-share="baidu" data-title="分析待整理">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/190.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-bd-acpymol-e5-b0-8f-e6-8a-80-e5-b7-a7-e9-80-89-e6-8b-a9-e9-85-8d-e4-bd-93-e5-91-a8-e5-9b-b4-e6-b0-a8-e5-9f-ba-e9-85-b8-e6-ae-8b-e5-9f-ba" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/181.html" class="article-date">
+  <time datetime="2016-01-17T15:50:27.000Z" itemprop="datePublished">2016-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/181.html">[转]pymol小技巧-选择配体周围氨基酸残基</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们常常遇到想要选取配体周围几埃范围内的氨基酸，这样更有利于我们分析配体和周围氨基酸的作用。<br>首先我们可以通过命令</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">#ligand为选择配体的名字
+select ligand，resn x
+#设置为红色
+color red， ligand
+#配体5埃范围内的残基
+select 5A， byres ligand around 5
+show sticks, 5A
+color yellow, 5A</pre>
+
+<p>转载自：<a href="http://bioms.org/thread-852-1-1.html?_dsign=bb92da73" target="_blank" rel="external">pymol使用小技巧8-选取配体周围氨基酸</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/181.html" data-id="cj8x084ma003znoravhzktucp" class="article-share-link" data-share="baidu" data-title="[转]pymol小技巧-选择配体周围氨基酸残基">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/181.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-g-mmpbsa-e5-ae-89-e8-a3-85-e4-b8-8e-e4-bd-bf-e7-94-a8-e7-ac-94-e8-ae-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/170.html" class="article-date">
+  <time datetime="2016-01-16T15:38:55.000Z" itemprop="datePublished">2016-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/170.html">g_mmpbsa 安装与使用笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>g_mmpbsa现在可以不编译直接用，非常的方便，现在提供了4.5.x，4.6.x和5.0.x三个版本，暂时不支持5.1以上版本。</p>
+<p>1.安装教程</p>
+<p>先从这里下载<a href="http://rashmikumari.github.io/g_mmpbsa/Download-and-Installation.html" target="_blank" rel="external">预编译版本</a></p>
+<blockquote>
+<p>tar -zxvf g_mmpbsa.tar.gz</p>
+<p>cd bin</p>
+<p>sudo cp g_mmpbsa /usr/local/bin/.</p>
+<p>sudo cp energy2bfac /usr/local/bin/.<br>也可以设置环境变量：<br>export PATH=${PATH}:/path/to/g_mmpbsa/bin<br>2.使用</p>
+</blockquote>
+<p>2.1 轨迹处理</p>
+<p>由于在计算能量过程中，是按照每ps来计算，特别费时，所以需要用trjconv把轨迹文件，通过-skip参数设置每隔多长时间读取一次轨迹，如：</p>
+<blockquote>
+<p>gmx trjconv -f md_0_1.xtc -o trj_20-50ns -b 20000 -e 50000 -dt 100<br>我这里总共获得了300个frame</p>
+</blockquote>
+<p>现在g_mmpbs提供了3步计算和1步计算两种方法</p>
+<p>2.2 三步计算（由于我是使用的一步计算法，所以这里是直接复制）</p>
+<p>(a) Calculation of potential energy in Vacuum</p>
+<blockquote>
+<p>g_mmpbsa -f 1EBZ.xtc -s 1EBZ.tpr -n 1EBZ.ndx -pdie 2 -decomp<br>(b) Calculation of polar solvation energy<br>g_mmpbsa -f 1EBZ.xtc -s 1EBZ.tpr -n 1EBZ.ndx -i ../polar.mdp -nomme -pbsa -decomp<br>(c) Calculation of non-polar solvation energy</p>
+</blockquote>
+<p>For SASA-only model:</p>
+<blockquote>
+<p>g_mmpbsa -f 1EBZ.xtc -s 1EBZ.tpr -n 1EBZ.ndx -i ../apolar_sasa.mdp -nomme -pbsa -decomp -apol sasa.xvg -apcon sasa_contrib.dat<br>For SAV-only model:<br>g_mmpbsa -f 1EBZ.xtc -s 1EBZ.tpr -n 1EBZ.ndx -i ../apolar_sav.mdp -nomme -pbsa -decomp -apol sav.xvg -apcon sav_contrib.dat<br>2.3 一步计算<br>g_mmpbsa -f  <span style="color: #ff0000;">trj20-50ns.xtc </span>-s npt.tpr -n index.ndx -i canshu/pbsa.mdp -pdie 2 -pbsa -decomp<br>使用的是三步计算的SASA模型</p>
+</blockquote>
+<p>注意：一般跑100个frame就可以了，我就是红色部分打错了，结果非常悲剧的跑了一天还没跑完<code>（相当于30000个frame</code>）</p>
+<p>使用的mdp文件来自于官方教程，我打包上传在<a href="http://kangsgo.com/wp-content/uploads/2016/01/canshu.zip">这里</a>，具体的相关含义<a href="http://rashmikumari.github.io/g_mmpbsa/Parameters.html" target="_blank" rel="external">官方</a>有详细解释，我并未研究。</p>
+<blockquote>
+<p>选择1|13  蛋白质和配体<br>跑完以后应该会得到如下文件：</p>
+</blockquote>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/1.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png" alt="1"></a></p>
+<p>3.平均结合能计算</p>
+<p>3.1 安装numby</p>
+<blockquote>
+<p>sudo apt-get install python3-numpy<br>提示建议安装<br>sudo apt-get install python-numpy-doc python3-dev python3-nose python3-numpy-dbg<br>但是我没有安装</p>
+</blockquote>
+<p>3.2 下载脚本自实验目录</p>
+<p>下载官方的脚本。只需要下载两个，但是官方提供了4个，另外两个有待研究</p>
+<p>点击这里下载我下载好的脚本：<a href="http://kangsgo.com/wp-content/uploads/2016/01/jiaoben.zip">jiaoben</a></p>
+<p>脚本参数使用可以看这里：<a href="http://rashmikumari.github.io/g_mmpbsa/Usage.html#mmpbsastatpy" target="_blank" rel="external">官方参数使用</a></p>
+<p>3.3 计算</p>
+<blockquote>
+<p>python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvg (or sasa.xvg)<br>其中括号以内取决于你的模型，若是一步法则为apolar.xvg</p>
+</blockquote>
+<p>我的到的结果如下：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/2.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/2-300x215.png" alt="2"></a></p>
+<p>得到的文件主要是两个date</p>
+<p>4.能量拆分</p>
+<blockquote>
+<p>python3 MmPbSaDecomp.py -bs -nbs 2000 -m contrib_MM.dat -p contrib_pol.dat -a contrib_apol.dat<br>其中-nbs 2000 的解释为：</p>
+</blockquote>
+<p>Number of boot strap steps for average energy and standard error calculation.</p>
+<p>但是具体含义不清楚</p>
+<p>我得到的能量拆分图：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn-300x232.png" alt="energyMapIn"></a></p>
+<p>建议复制文本用excel做，好看一些</p>
+<p>&nbsp;</p>
+<p>参考文献：<a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=1244&amp;highlight=mmpbs&amp;_dsign=cad7662c" target="_blank" rel="external">GROMACS 中 g_mmpbsa 工具使用详解</a></p>
+<p><a href="http://rashmikumari.github.io/g_mmpbsa/single_protein_ligand_binding_energy.html" target="_blank" rel="external"> g_mmpbsa官方教程</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/170.html" data-id="cj8x084mf0046noraha1sfunl" class="article-share-link" data-share="baidu" data-title="g_mmpbsa 安装与使用笔记">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/170.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-b8-a6-e5-b8-90-e5-8f-b7-e7-a6-bb-e7-ba-bf-e4-b8-8b-e8-bd-bd-e5-8a-9e-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/161.html" class="article-date">
+  <time datetime="2016-01-08T17:53:06.000Z" itemprop="datePublished">2016-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/杂项/">杂项</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/161.html">带帐号离线下载办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个主要是rostta下载的时候没有速度，所以想拖到vps上然后下载。</p>
+<p>方法为在hostloc的朋友告知</p>
+<blockquote>
+<p>wget <a href="http://user:passwd@url.com/xxx.files.tar.gz" target="_blank" rel="external">http://user:passwd@url.com/xxx.files.tar.gz</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/161.html" data-id="cj8x084ki0027noradle3sli5" class="article-share-link" data-share="baidu" data-title="带帐号离线下载办法">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/161.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">下一頁 &raquo;</a>
+  </nav>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

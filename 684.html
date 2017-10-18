@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PLIP:蛋白配体联系分析工具 | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;gt; PILP（Protein-Ligand Interaction Profiler）是一个在线的蛋白配体非共价联系的分析工具，其简单易用，同时提供Github版本利于学习其设计模式。PILP可以直接使用四字符的PDB code或者使用自己的pdb结构文件。之后分析复合物，结果将会展示所有可测定的在原子水平的非共价联系（氢键，水桥，盐桥，卤键，疏水联系，π-堆积，π-离子联系，金属复合物）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLIP:蛋白配体联系分析工具">
+<meta property="og:url" content="http://kangsgo.com/684.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="&amp;gt; PILP（Protein-Ligand Interaction Profiler）是一个在线的蛋白配体非共价联系的分析工具，其简单易用，同时提供Github版本利于学习其设计模式。PILP可以直接使用四字符的PDB code或者使用自己的pdb结构文件。之后分析复合物，结果将会展示所有可测定的在原子水平的非共价联系（氢键，水桥，盐桥，卤键，疏水联系，π-堆积，π-离子联系，金属复合物）。">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-c889a71e9b386cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-5910528ab2bb2fa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-93643b8496fd37b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PLIP:蛋白配体联系分析工具">
+<meta name="twitter:description" content="&amp;gt; PILP（Protein-Ligand Interaction Profiler）是一个在线的蛋白配体非共价联系的分析工具，其简单易用，同时提供Github版本利于学习其设计模式。PILP可以直接使用四字符的PDB code或者使用自己的pdb结构文件。之后分析复合物，结果将会展示所有可测定的在原子水平的非共价联系（氢键，水桥，盐桥，卤键，疏水联系，π-堆积，π-离子联系，金属复合物）。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-c889a71e9b386cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-plip-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e8-81-94-e7-b3-bb-e5-88-86-e6-9e-90-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/684.html" class="article-date">
+  <time datetime="2017-08-10T08:08:23.000Z" itemprop="datePublished">2017-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dock/">Dock</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PLIP:蛋白配体联系分析工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br>&gt; <code>PILP</code>（Protein-Ligand Interaction Profiler）是一个在线的蛋白配体非共价联系的分析工具，其简单易用，同时提供Github版本利于学习其设计模式。PILP可以直接使用四字符的PDB code或者使用自己的pdb结构文件。之后分析复合物，结果将会展示所有可测定的在原子水平的非共价联系（氢键，水桥，盐桥，卤键，疏水联系，π-堆积，π-离子联系，金属复合物）。同时结果可以下载文本结果，机器可读的XML格式以及PyMOL可视化文件（pse），同时网站上也有JSmol应用的3D联系图像。<br><br>其网址为:<a href="http://plip.biotec.tu-dresden.de/plip-web/plip/index" target="_blank" rel="external">http://plip.biotec.tu-dresden.de/plip-web/plip/index</a><br><br>Github地址为:<a href="https://github.com/ssalentin/plip" target="_blank" rel="external">https://github.com/ssalentin/plip</a><br><br>首先上传PDB或者直接输入PDB code，例如<code>1XDN</code>：<br><img src="http://upload-images.jianshu.io/upload_images/903467-c889a71e9b386cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="主界面"><br><br>结果如图：<br><img src="http://upload-images.jianshu.io/upload_images/903467-5910528ab2bb2fa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果图"><br><br>可以看出结果图片可以说达到发表级，也难怪其可以在2015年发表到NAR这种高水平的杂志上，相关的解释与测定标准可以看官网上的帮助文档:<a href="http://plip.biotec.tu-dresden.de/plip-web/plip/help" target="_blank" rel="external">http://plip.biotec.tu-dresden.de/plip-web/plip/help</a><br><br>同样你也可以下载pse文件，导入进PyMOL中查看:<br><img src="http://upload-images.jianshu.io/upload_images/903467-93643b8496fd37b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="PyMOL"><br><br>参考文献:<br>Salentin,S. et al. PLIP: fully automated protein-ligand interaction profiler. Nucl. Acids Res. (1 July 2015) 43 (W1): W443-W447. doi: 10.1093/nar/gkv315<br><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O2BQSUxQYO+8iFByb3RlaW4tTGlnYW5kIEludGVyYWN0aW9uIFByb2ZpbGVy77yJ5piv
+5LiA5Liq5Zyo57q/55qE6JuL55m96YWN5L2T6Z2e5YWx5Lu36IGU57O755qE5YiG5p6Q5bel5YW3
+77yM5YW2566A5Y2V5piT55So77yM5ZCM5pe25o+Q5L6bR2l0aHVi54mI5pys5Yip5LqO5a2m5Lmg
+5YW26K6+6K6h5qih5byP44CCUElMUOWPr+S7peebtOaOpeS9v+eUqOWbm+Wtl+espueahFBEQiBj
+b2Rl5oiW6ICF5L2/55So6Ieq5bex55qEcGRi57uT5p6E5paH5Lu244CC5LmL5ZCO5YiG5p6Q5aSN
+5ZCI54mp77yM57uT5p6c5bCG5Lya5bGV56S65omA5pyJ5Y+v5rWL5a6a55qE5Zyo5Y6f5a2Q5rC0
+5bmz55qE6Z2e5YWx5Lu36IGU57O777yI5rCi6ZSu77yM5rC05qGl77yM55uQ5qGl77yM5Y2k6ZSu
+77yM55aP5rC06IGU57O777yMz4At5aCG56ev77yMz4At56a75a2Q6IGU57O777yM6YeR5bGe5aSN
+5ZCI54mp77yJ44CC5ZCM5pe257uT5p6c5Y+v5Lul5LiL6L295paH5pys57uT5p6c77yM5py65Zmo
+5Y+v6K+755qEWE1M5qC85byP5Lul5Y+KUHlNT0zlj6/op4bljJbmlofku7bvvIhwc2XvvInvvIzl
+kIzml7bnvZHnq5nkuIrkuZ/mnIlKU21vbOW6lOeUqOeahDNE6IGU57O75Zu+5YOP44CCPC9wPjxw
+PuWFtue9keWdgOS4ujpodHRwOi8vcGxpcC5iaW90ZWMudHUtZHJlc2Rlbi5kZS9wbGlwLXdlYi9w
+bGlwL2luZGV4PGJyPkdpdGh1YuWcsOWdgOS4ujpodHRwczovL2dpdGh1Yi5jb20vc3NhbGVudGlu
+L3BsaXA8L3A+PHA+6aaW5YWI5LiK5LygUERC5oiW6ICF55u05o6l6L6T5YWlUERCIGNvZGXvvIzk
+vovlpoJgMVhETiBg77yaPGJyPiFb5Li755WM6Z2iXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFu
+c2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LWM4ODlhNzFlOWIzODZjZDYucG5nP2ltYWdlTW9n
+cjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD7nu5Pmnpzl
+poLlm77vvJo8L3A+PHA+IVvnu5Pmnpzlm75dKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUu
+aW8vdXBsb2FkX2ltYWdlcy85MDM0NjctNTkxMDUyOGFiMmJiMmZhMy5wbmc/aW1hZ2VNb2dyMi9h
+dXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPjxiciBkYXRhLW1j
+ZS1ib2d1cz0iMSI+PC9wPjxwPuWPr+S7peeci+WHuue7k+aenOWbvueJh+WPr+S7peivtOi+vuWI
+sOWPkeihqOe6p++8jOS5n+mavuaAquWFtuWPr+S7peWcqDIwMTXlubTlj5HooajliLBOQVLov5nn
+p43pq5jmsLTlubPnmoTmnYLlv5fkuIrvvIznm7jlhbPnmoTop6Pph4rkuI7mtYvlrprmoIflh4bl
+j6/ku6XnnIvlrpjnvZHkuIrnmoTluK7liqnmlofmoaM6aHR0cDovL3BsaXAuYmlvdGVjLnR1LWRy
+ZXNkZW4uZGUvcGxpcC13ZWIvcGxpcC9oZWxwPC9wPjxwPuWQjOagt+S9oOS5n+WPr+S7peS4i+i9
+vXBzZeaWh+S7tu+8jOWvvOWFpei/m1B5TU9M5Lit5p+l55yLOjwvcD48cD4hW1B5TU9MXShodHRw
+Oi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LTkzNjQzYjg0
+OTZmZDM3YjcucG5nP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIv
+dy8xMjQwKTwvcD48cD7lj4LogIPmlofnjK46PGJyPlNhbGVudGluLFMuIGV0IGFsLiBQTElQOiBm
+dWxseSBhdXRvbWF0ZWQgcHJvdGVpbi1saWdhbmQgaW50ZXJhY3Rpb24gcHJvZmlsZXIuIE51Y2wu
+IEFjaWRzIFJlcy4gKDEgSnVseSAyMDE1KSA0MyAoVzEpOiBXNDQzLVc0NDcuIGRvaTogMTAuMTA5
+My9uYXIvZ2t2MzE1PC9wPjxwPuabtOWkmuWOn+WIm+eyvuW9qeinhumikeaVrOivt+WFs+azqCoq
+55Sf5L+h5p2C6LCIOioqPC9wPjxwPiFbXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1Lmlv
+L3VwbG9hZF9pbWFnZXMvOTAzNDY3LTIxN2VlNjhjYWFhNjU0YzMucG5nP2ltYWdlTW9ncjIvYXV0
+by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD4=">​</div><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/684.html" data-id="cj8x084nq005tnoraq02i2oti" class="article-share-link" data-share="baidu" data-title="PLIP:蛋白配体联系分析工具">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/684.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/690.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          GromacsWrapper:Gromacs的Python框架包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/681.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">LigParGen:配体OPLS/CM1A力场在线生成</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="684.html" data-title="PLIP:蛋白配体联系分析工具" data-url="http://kangsgo.com/684.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

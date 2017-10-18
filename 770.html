@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MARTINI 2.0力场笔记 | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.0的文献以及蛋白参数文献 3.此笔记并未包含Martini力场性能测评部分，可能后续会加上粗粒化（CG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MARTINI 2.0力场笔记">
+<meta property="og:url" content="http://kangsgo.com/770.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.0的文献以及蛋白参数文献 3.此笔记并未包含Martini力场性能测评部分，可能后续会加上粗粒化（CG">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/1.gif">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/10.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/8.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/3.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/4.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/5.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/11.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/12.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/6.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/7.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/9.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/15.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/16.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/09/17.png">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MARTINI 2.0力场笔记">
+<meta name="twitter:description" content="阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.0的文献以及蛋白参数文献 3.此笔记并未包含Martini力场性能测评部分，可能后续会加上粗粒化（CG">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2017/09/1.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-martini-e5-8a-9b-e5-9c-ba-e7-ac-94-e8-ae-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/770.html" class="article-date">
+  <time datetime="2017-09-30T10:29:37.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MARTINI 2.0力场笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>阅读前请注意:</p>
+<p>1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为<strong>kangsgo@vip.qq.com  湖大-小康</strong></p>
+<p>2.由于我只关注蛋白模拟，故只查阅了Martini力场2.0的文献以及蛋白参数文献</p>
+<p>3.此笔记并未包含Martini力场性能测评部分，可能后续会加上<br>粗粒化（CG ）模拟在各种各样的模拟化技术中提供与全原子模型（AA model）相比更广的空间和时间尺度研究。在粗粒化模拟研究的早期一般运用在蒙特卡洛模拟上，这是一种基于概率的模拟算法，与经典模拟在理论上还是有大的差别，早期的CG模型其缺点是需要每次模拟前都进行参数的设置矫正，而Martini力场开发的初衷是更为提供一种能够进行普适应用的操作简单的力场。</p>
+</blockquote>
+<p>Martini的力场开发目的主要是应用于囊泡的形成，薄层相的转移，结构和膜的自组装等等，其比较关注于<strong>极性与非极性之间</strong>的相互转换/作用。Martini力场相比之前的力场模拟（2007年以前）有更多的能量”等级”和类型，与实验参数也拟合的更好，同时提供了环类物质的CG 模型的方法。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/1.gif"><img src="http://kangsgo.com/wp-content/uploads/2017/09/1.gif" alt=""></a></p>
+<h5 id="力场概述（2-0版本）："><a href="#力场概述（2-0版本）：" class="headerlink" title="力场概述（2.0版本）："></a>力场概述（2.0版本）：</h5><h6 id="联系位点："><a href="#联系位点：" class="headerlink" title="联系位点："></a>联系位点：</h6><p>Maritini力场与其他CG力场一样，均为4个heavy原子用一个单一珠子所联系。珠子主要有四种主要类型。polar（P），nonpolar（N），apolar（C）和charged（Q）。同时有18种亚型，比如按照成氢键能力用单字母分为（d=donor，a=acceptor，da=both，0=none）或者指示极性（1，最低极性，5，最高极性）</p>
+<p><strong>蛋白的原子类型:</strong></p>
+<p>蛋白残基中侧链表示:非极性残基Leu，Pro，Ile，Val，Cys和Met用C-类型颗粒表示。非极性残基Thr，Ser，Asn和Gln通过P-类型颗粒表示，氨基酸残基带有小的负电荷侧链Glu和Asp残基用Q-类型颗粒表示。正电荷氨基酸残基Arg和Lys采用带电荷的Q类型和不带电荷颗粒组成。带环芳香烃残基通过三（His，Phe和Tyr）或者四（Trp）个珠子来表示特别的环颗粒。Gly和Ala残基仅仅设置骨架颗粒。骨架参数依赖二级结构，如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/10.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/10.png" alt=""></a></p>
+<p>在溶液中或者无规卷曲或者弯曲中，骨架拥有非常强的极性特征（P类型），在部分螺旋或者β折叠中，内部骨架键减少了极性特征的放大（N类型）。辅氨酸是低极性的因为其缺乏氢键供体能力。其全原子映射结果如下表:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/8.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/8.png" alt=""></a></p>
+<h6 id="非键联系："><a href="#非键联系：" class="headerlink" title="非键联系："></a>非键联系：</h6><p>首先是Lennard-Jones(LJ)12-6势，公式如下:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png" alt=""></a></p>
+<p>其中r为原子对距离，ε(字母代考)与σ为势能参数，因原子的种类而异，具体可以查看陈正隆老师的分子模拟一书。在martini力场中统一为σ=0.47nm，除了两个特别的类rings和antifreeze以外,还有一个例外就是Q类型和大多数极性类型 ，其C1和C2 斥力σ范围扩展为0.62nm。这个变化利于带电粒子在非极性介质中利于生成水化层。完整的参数数据如下表：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/2.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/2.png" alt=""></a></p>
+<p>除了LJ势能以外，电荷组（类型Q）还有完整的qi,j联系，通过库能势：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/3.png" alt=""></a></p>
+<p>库能势与之前的比较准确性略有降低，主要是为了和之前的模型相比平衡增加的疏水强度。εr(字母代考)相对介电常数为15，与之前相比略微降低。</p>
+<h6 id="键联系："><a href="#键联系：" class="headerlink" title="键联系："></a>键联系：</h6><p>键的描述和上一个版本相比没有升级，主要还是微弱的简谐振动提供的。此项在陈正隆老师的书籍版本中译为键伸缩势能项。平均键长与σ相同，为0.47nm，约束力为Kbond=1250Kj*mol-1，公式如下:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/4.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/4.png" alt=""></a></p>
+<p>键角的简谐震荡项，参数依据为与全原子模型相互比较,计算公式如下：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/5.png" alt=""></a></p>
+<p>一般情况下Kangle=25KJmol-1，θ0=180°，在涉及<span class="word">cis</span> <span class="word">double </span><span class="word">bond时，参数为Kangle=45KJmol-1（之前参数为35KJmol-1</span><span class="word">），θ0=120°，因为和全原子相比联系过于微弱。</span></p>
+<p><strong>蛋白的键联系:</strong></p>
+<p>蛋白的键长，键角，二面角和他们各自的力场约束统计起来作为键参数的参考。这些参数来源于PDB库中近2000个蛋白作为数据集。蛋白的二级结构来源于DSSP项目。计算的键长，键角和二面角如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/11.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/11.png" alt=""></a></p>
+<p>PDB数据库中的参数分布如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/12.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/12.png" alt=""></a></p>
+<h6 id="环化物参数"><a href="#环化物参数" class="headerlink" title="环化物参数:"></a>环化物参数:</h6><p>对于环化物，4个原子称为1个珠子是不怎么适用的，最佳为2个或者3个位1个珠子，具体可以查看文章中给的环己烷，苯环等的例子。由于会照成很大CG珠子密度，因此这些参数需要差别对待。特别的设置标签为“S”,其LJ势能的σ也是不同的，σ=0.43nm,ε(字母代考)缩小至75%。环的话<strong>分子内的</strong>LJ不适合该体系，而更换improper dihedral angle势来合理的解释。其公式如下:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/6.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/6.png" alt=""></a></p>
+<p><span class="word">θ的角度由i,j,k和j,k,l构成，θid则为平均角度，力场约束为Kid。</span></p>
+<h6 id="二面角（dihedral-angle）参数-蛋白"><a href="#二面角（dihedral-angle）参数-蛋白" class="headerlink" title="二面角（dihedral angle）参数(蛋白):"></a>二面角（dihedral angle）参数(蛋白):</h6><p>对于氨基酸残基还有两个二面角势,其中improper 二面角势 Vid主要被用来阻止平面组的面外扭曲。Proper二面势Vd被使用来约束肽骨架的二级结构。这是一个非常重要的点，因此，若有蛋白序列二级结构的改变是不适合这个模型的（分别为公式5,6），公式如下:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/7.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/7.png" alt=""></a></p>
+<p>二面角参数仅仅在四个联系的珠子拥有相同的二级结构（螺旋或者延长(extended)），下表统计了所有侧链的键长和联系约束。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/9.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/9.png" alt=""></a></p>
+<p>键角统计如下表:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png" alt=""></a></p>
+<h6 id="抗凝剂参数"><a href="#抗凝剂参数" class="headerlink" title="抗凝剂参数:"></a>抗凝剂参数:</h6><p>由于水模型是P4颗粒，相对于真实的水更容易freezing，故需要Antifreez参数。CG 水在280到300K可能会freezes。freezing是一个核驱动的过程，一般CG水能够保留其流动性(fluid)非常长的时间，但是一旦成核形成，将会很快速的形成，在固态表面甚至膜表面可能都会加速水的freeze。若研究更低温度同样如此，故需要增加水的无序程度。引入抗凝剂BigP4，LJ参数从0.47nm改为0.57nm，为了避免相的分离，BP4-P4联系上升为等级“O”。其他按照正常颗粒。当加入抗凝剂以后会对液体平衡性产生一定的影响,但作者对膜水体系进行分析，发现在膜表面积，形成gel phase的转移温度，膜分子的横向扩散长度都没有很大的影响，故认为为可接受范围之内。</p>
+<h6 id="模拟参数"><a href="#模拟参数" class="headerlink" title="模拟参数:"></a>模拟参数:</h6><p>对于模拟参数，非键联系的cut off距离设置为rcut=1.2nm。为了避免产生不必要的噪音，使用GROMACS 的标准偏移功能，<strong>其中能量和约束力设置在截止距离处消失</strong>。LJ势能的偏移从rshift=0.9nm到rcut。静电势偏移从rshift=0.0nm到rcut。静电势的偏移会对模拟距离依赖性的screening<strong>造成影响</strong>。neighbor list可以升到10 steps， <span class="word">neighbor</span> <span class="word">list</span> <span class="word">cutoff设置等于rcut。模拟步长可以升至dt=40fs。当然设置成25fs到30fs可能会更加稳定。选择时间步长的不同对自由能有一定的影响，影响约为5%。（从40到5fs），所以说影响不是很大。</span></p>
+<p>对于粗粒化模拟时间因子一般扩大为2到10倍，文献中默认的时间因子为4（注:文献1如是说，文献3说的为2到8倍，但时间因子均说的为4），即CG模型模拟10ns，实际上相当于现实中40ns，可以粗略的乘以4。产生这个现象的原因是CG模型相对于AA模型联系更加的平滑。</p>
+<p><strong>蛋白模拟:</strong></p>
+<p>文献中提供的作者使用的模拟参数如下，<strong>可能和官网的有出入，毕竟时间和版本较久（文献中的gromacs为3.3），故以下内容是过时的，仅供参考和笔记作用。</strong></p>
+<ul>
+<li>拓扑文件使用官网的脚本</li>
+<li>每个组（lipids，water 和proteins）的温度算法采用Berendsen温度耦合算法，时间为1ps</li>
+<li>使用Berendsen算法进行半均匀（ <span class="word">Semi-isotropic</span>）压力耦合，大气压为1bar任意的在膜平面上且垂直于膜，使用的时间约束为5.0ps，压缩率为4.5*10-5 bar-1</li>
+<li>芳香氨基酸残基Val，Ile和Thr侧链和骨架侧链键使用的约束算法为LINCS算法，主要是为了避免快速波动（fluctuations，看到这个单词是否想到了RMSF?）所造成的大量的不稳定现象的发生。</li>
+<li>neighbor list 设置为10 steps，neighbor list cutoff等于rcut=1.2nm和其他设置为一样</li>
+<li>由于计算影响的原因（猜测是为了更快），所有的珠子设置的相对质量为72，依据为4个水分子，对于环（ring）结构，相对质量设置为45</li>
+<li>时间尺度和前面一样，时间因子为4，即25fs相当于有效时间100fs，当然这个估计是不精确的，故需要进行精确时间的模拟计算是行不通的，但是精确模拟计算运用是较少的,故对于研究扩散的时候要特别小心，即时有些扩散的CG模型研究与实验吻合较好。</li>
+</ul>
+<h5 id="拓扑中离子需要注意"><a href="#拓扑中离子需要注意" class="headerlink" title="拓扑中离子需要注意:"></a>拓扑中离子需要注意:</h5><p>对于粒子，考虑到AA力场对ions难度已经很大，CG ion力场仅在定性上准确。</p>
+<p>这段我也不是很懂，原文如下:</p>
+<p><strong>Keeping in mind the difficulty of model-ing of ions already with AA force fields, the CG ion force field is only qualitatively accurate</strong></p>
+<h5 id="Martini力场性能测评部分结果"><a href="#Martini力场性能测评部分结果" class="headerlink" title="Martini力场性能测评部分结果:"></a>Martini力场性能测评部分结果:</h5><h6 id="氨基酸残基侧链在DOPC膜上跨膜研究"><a href="#氨基酸残基侧链在DOPC膜上跨膜研究" class="headerlink" title="氨基酸残基侧链在DOPC膜上跨膜研究"></a>氨基酸残基侧链在DOPC膜上跨膜研究</h6><p>对不同侧链从DOPC膜中拉出（PMF）研究，将CG模型和全原子模型进行比较，研究结果表明疏水性氨基酸与全原子模拟相比有非常好的吻合，特别是barrier方面。如图中的leucine，isoleucine和valine。对于tryptophan和tyrosine，barrier在全原子profiles中不存在，且在CGprofiles低于5KJ/mol。且最小区域和全原子模拟拟合较好。对于极性氨基酸残基，对于全原子模型和CG模型，也有合理的分布。电荷残基在全原子模拟和CG模拟之间显示了非常大的不同。对于CG模型，其在进入膜中的自由能惩罚被严重低估，但是还是仍然高的（glu，asp和arg超过40，lys超过35）进入膜的数量是可以忽略不计的，换而言之其对于入膜这个时间是没有影响的，但是其他影响是有可能的，这也是力场需要改进的地方。完整的PMF结果如下图:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png" alt=""></a></p>
+<p>但是需要注意的是与其相比较的全原子力场为OPLSAA力场，OPLSAA在全原子力场中对于蛋白的表现也并不是那么的好，其对于蛋白是用的老的amber力场，且开发的人较少，长时间未开发（来源:GROMACS中文组-李继存老师）</p>
+<h6 id="氨基酸残基联系常数"><a href="#氨基酸残基联系常数" class="headerlink" title="氨基酸残基联系常数:"></a>氨基酸残基联系常数:</h6><p>氨基酸残基i和j的定义如下:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/15.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/15.png" alt=""></a></p>
+<p>其中1 / C是校正系统中物种浓度的因子,P(x)是在X状态下找到的概率。其中<a href="http://kangsgo.com/wp-content/uploads/2017/09/16.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/16.png" alt=""></a>，NA是Avogadro’s 数，V是盒子的体积。bound和unbound状态通过计算复合物溶液可及表面（solvent accessible surface area ASA）的不同。当ASA低于阈值的话表示两个残基是联系的，若高出阈值则定义为不联系，阈值的选择来自ASA的直方图分布。得到的结果如下表:</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/17.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/17.png" alt=""></a></p>
+<p>可以发现CG模型和全原子模拟的比例是一样的，但是CG模型较全原子模型数值有低估。</p>
+<h5 id="Martini力场的限制"><a href="#Martini力场的限制" class="headerlink" title="Martini力场的限制:"></a>Martini力场的限制:</h5><p>1.参数对于固体相并不是那么准确，相比液体相来说固体和气体相显得太稳定</p>
+<p>2.内在熵变会丢失，温度依赖性受到了影响。Martini模型，也许在大多数CG方法中一样遇到的另一个困难是将极性和带电荷的化合物分配成低介电常数。因为极性物质的相互作用强度在非极性环境中会被低估。</p>
+<p>3.由于开发的初衷是涉及在非极性环境中形成极性/带电复合物的应用尤其容易受到影响</p>
+<p>4.忽略了长程电荷力是另一个限制，<strong>超过1.2nm的长程电荷不会被统计！</strong>但原则上是可以增加长程电荷的，必须认识到，静电相互作用方案的改进可能影响其他性质，例如每个脂质的面积或自发曲率</p>
+<p>5.由于氨基酸残基二面角的存在，<strong>使得蛋白的二级结构无法改变</strong>，进行模拟的前提之一是蛋白二级结构是没有变化的，若需要查看二级结构的变化，可以使用Go模型。具体可以查看参考文献2.</p>
+<p>由于这些限制，个人看法Martini力场还是有很多可以开发和提升的地方，这个力场还是很不是完美，<strong>特别是对于带电性质的研究，Martini力场可能是不可行的，有许多需要做的工作来进行完善，否则很难得到自己想要得到的结果！</strong></p>
+<p>最后更新于2017-9-30</p>
+<p>参考文献:</p>
+<ol>
+<li>Marrink S J, Risselada H J, Yefimov S, et al. <strong>The MARTINI force field: coarse grained model for biomolecular simulations</strong>[J]. The journal of physical chemistry B, 2007, 111(27): 7812-7824.</li>
+<li>Go N, Taketomi H. Respective roles of short-and long-range interactions in protein folding[J]. Proceedings of the National Academy of Sciences, 1978, 75(2): 559-563.</li>
+<li>Monticelli L, Kandasamy S K, Periole X, et al. <strong>The MARTINI coarse-grained force field: extension to proteins</strong>[J]. Journal of chemical theory and computation, 2008, 4(5): 819-834.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/770.html" data-id="cj8x084nf005dnoraroylajve" class="article-share-link" data-share="baidu" data-title="MARTINI 2.0力场笔记">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/770.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/811.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Martini 2.2P力场笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/766.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">[转载]ubuntu16耳机没声音解决</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="770.html" data-title="MARTINI 2.0力场笔记" data-url="http://kangsgo.com/770.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rosetta从头结构预测 | 小康博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此文档不完全翻译自官方从头预测文档当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。 官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rosetta从头结构预测">
+<meta property="og:url" content="http://kangsgo.com/657.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="此文档不完全翻译自官方从头预测文档当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。 官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png">
+<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rosetta从头结构预测">
+<meta name="twitter:description" content="此文档不完全翻译自官方从头预测文档当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。 官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小康博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="kangsgo.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-rosetta-e4-bb-8e-e5-a4-b4-e7-bb-93-e6-9e-84-e9-a2-84-e6-b5-8b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/657.html" class="article-date">
+  <time datetime="2017-06-20T08:58:30.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rosetta/">Rosetta</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rosetta从头结构预测
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此文档不完全翻译自官方从头预测文档<br>当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。</p>
+<p>官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每个帐号只能计算一条序列，且要注意的是不能进行已知序列或者高相似度序列的计算，否则会ban ip，删号。因为从头结构预测时间太久太长。<br>官方地址如下：<a href="http://robetta.bakerlab.org/" target="_blank" rel="external">http://robetta.bakerlab.org/</a><br>网站截图如下：</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png" alt=""></a></p>
+<p>网站截图</p>
+<p>该项目是伯克利分校搞的一个分布式系统项目BOINC，若你也想加入这个计算可以具体查看这一篇教程。<br>想与各位探讨的是个人觉得若单独拿一段序列进行从头计算然后拼接进模型中是不准确的，更好的方法是进行loop环的补全（若缺失部分为loop环），或者进行分子动力学模拟来预测。<br>官方的从头预测方法是采用的T4 溶菌酶（噬菌体中）的序列来进行的蛋白结构预测。并于解析了结构的蛋白PDB文件进行比较。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png" alt=""></a></p>
+<p>图文无关，纯粹好看</p>
+<p>###<br>1.准备输入文件</p>
+<p>需要：</p>
+<ul>
+<li>fasta格式的序列</li>
+<li>9mer 片段文件</li>
+<li>3mer 片段文件</li>
+<li>已知的pdb文件</li>
+</ul>
+<h4 id="1-保存蛋白序列文件为FASTA格式"><a href="#1-保存蛋白序列文件为FASTA格式" class="headerlink" title="1.保存蛋白序列文件为FASTA格式"></a>1.保存蛋白序列文件为FASTA格式</h4><p>例如：</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">&gt;2LZMA                                                           
+ ITKDEAEKLFNQDVDAAVRGILRNAKLKPVYDSLDAVRRCALINMVFQMGETGVAGFTNSLRMLQQKRWDEAAVNLAKSRWYNQTPNRAKRVITTFRTGTWDAYKNL</pre>
+
+<h4 id="2-准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件："><a href="#2-准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件：" class="headerlink" title="2.准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件："></a>2.准备片段文件。这些片段文件包含短的骨架碎片，在模拟期间其将会随机插入在所有位置。教程中提供了一些片段文件：</h4><pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/aa2LZMA03_05.200_v1_3 (3mer fragments)
+input_files/aa2LZMA09_05.200_v1_3 (9mer fragments)</pre>
+
+<p>这个片段文件生成较为复杂，需要用perl脚本和库文件，安装许多包才能实现，我也还没有完全搞透，由于时间关系，搞透以后作为补充分享给大家。并且搞透的意义不大，毕竟也不是做这个的。<br>建议大家还是用上面的网站的Fragment Libraries进行在线制作。</p>
+<p>####<br>3.为了与已知文件进行比较分析结果准确度，所以插入已知文件,当然这个不是必须的。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">input_files/2LZMA.pdb
+</pre>
+
+<p>由于option文件设置较多，我们分开来讲解。<br>首先是输入文件设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-in
+-file
+-native input_files/2LZMA.pdb
+-fasta input_files/2LZMA.fasta
+-frag3 input_files/aa2LZMA03_05.200_v1_3
+-frag9 input_files/aa2LZMA09_05.200_v1_3</pre>
+
+<p>这个没有什么好说的，接下来是建模设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-abinitio
+-relax
+-increase_cycles 10
+-rg_reweight 0.5
+-rsd_wt_helix 0.5
+-rsd_wt_loop 0.5</pre>
+
+<p>increase_cycles表示AbinitioRelax 循环的次数，若想快速完成可以设置为0.1,后面三个参数分别为回转半径，螺旋和环赋予的权重，没有深入了解一般默认即可<br>然后是relax设置，若想快速完成该步可以不设置</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-relax
+-fast</pre>
+
+<p>-fast设置表示在建模后对蛋白进行一个FastRelax，其同时兼容了准确性和速度。<br>最后是输出</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">-out
+-pdb
+-nstruct 1
+-file
+-scorefile score.sc
+-overwrite
+
+-nstruct 1</pre>
+
+<p>官方教程设置了两次-nstruct，原因待考。</p>
+<h3 id="2-运行Rosetta-AbinitioRelax-应用"><a href="#2-运行Rosetta-AbinitioRelax-应用" class="headerlink" title="2.运行Rosetta AbinitioRelax 应用"></a>2.运行Rosetta AbinitioRelax 应用</h3><pre class="EnlighterJSRAW" data-enlighter-language="null">$&gt; ../../../main/source/bin/AbinitioRelax.default.linuxclangrelease @input_files/options
+</pre>
+
+<p>当然也可以在后台运行:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ nohup ../../../main/source/bin/ AbinitioRelax.default.linuxclangrelease @input_files/options &gt; log &amp;
+</pre>
+
+<p>每个结构约运行10-20分钟<br>没有错误的话将会输出如下结果：</p>
+<p>S_00000001.pdb (生成的模型)<br>score.sc (展示得分，Rosetta的得分算法将会在后期介绍)<br>为了得到精确的结果，建议生成50,000到100,000个模型（官方教程中一说至少1,000）</p>
+<p>###<br>3.分析结果</p>
+<h4 id="3-1-绘制得分图和rmsd图"><a href="#3-1-绘制得分图和rmsd图" class="headerlink" title="3.1 绘制得分图和rmsd图"></a>3.1 绘制得分图和rmsd图</h4><p>你可以绘制得分最好的5%或10%的模型图。total_score和rms数据都在score文件中提供。你可以使用同源蛋白做参考（毕竟有pdb数据的话就不用从头建模了）如果连同源结构都没有的话一般考虑最低能量模型。<br>可以用awk简单的提取数据</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ sort -n -k2 score.sc | head -n 5000 | awk '{print $25 "\t" $2}' &gt; score_rmsd.dat
+</pre>
+
+<p>然后可以对数据进行绘图，绘图的方法多种，也非常简单，后期会完整介绍。</p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png" alt=""></a></p>
+<p>图</p>
+<p>左图可以发现rmsd与score成相关性并且收敛，而右侧没有收敛，说明右侧的结果并不那么可靠</p>
+<h4 id="3-2-提取模型"><a href="#3-2-提取模型" class="headerlink" title="3.2 提取模型"></a>3.2 提取模型</h4><p>获得的结果中有一个二进制silent file（此要在设置中设置，这样生成的模型都压缩在一个文件中，可以节省空间更加美观，其实也可以不对其进行这个操作，详见Rosetta silent file一章）我们可以从中提取pdb文件，例如我们想提取得分最好的5个文件。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ sort -n -k2 score.sc | head -l 5
+</pre>
+
+<p>将会获得模型的名称，将silent file对这些模型名称进行提取即可。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null">$ ../../../main/source/bin/extract_pdbs.default.linuxgccrelease -in:file:silent_struct_type binary -in:file:silent AbRelax.out -in:file:tags 
+</pre>
+
+<p>好的Rosetta得分并不代表结构就一定是好的，所以我们在进行任何分子模拟的时候一定要有许多辅助的实验验证，这样的结果才可是可靠的可信的。我们需要不断的提醒自己。结果可信吗！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://kangsgo.com/657.html" data-id="cj8x084o20069norar5b7ojiy" class="article-share-link" data-share="baidu" data-title="Rosetta从头结构预测">分享到</a>
+      
+
+      
+        <a href="http://kangsgo.com/657.html#ds-thread" class="article-comment-link">評論</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/665.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          非常有用的蛋白质科学工具与项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/647.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Rosetta蛋白蛋白对接</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="657.html" data-title="Rosetta从头结构预测" data-url="http://kangsgo.com/657.html"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/811.html">Martini 2.2P力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/770.html">MARTINI 2.0力场笔记</a>
+          </li>
+        
+          <li>
+            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
+          </li>
+        
+          <li>
+            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情鏈接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 kangsgo<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
