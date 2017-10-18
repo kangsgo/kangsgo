@@ -16,6 +16,8 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -31,8 +33,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,19 +50,68 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -75,6 +126,20 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -127,7 +192,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        原文连接失效了，此为PDF版本：VMD-animati...
+        原文连接失效了，此为PDF版本：VMD-animations
+VMD版本
+第一步： 提取轨迹。
+往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。
+第二步：导入轨迹
+安装VMD，然后先导入十进制文件，再导入二进制轨迹文件（这些简...
     
 
         <a href="/239.html" class="post-more waves-effect waves-button">
@@ -169,7 +239,10 @@
 
     
         待编辑：
-http://www.ks.uiuc.edu...
+http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/att-15365/PorcupinePlot.tcl
+http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/9391.html
+&nbsp;
+http://www.ks.uiuc.edu/Research/vmd/p...
     
 
         <a href="/230.html" class="post-more waves-effect waves-button">
@@ -210,7 +283,14 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        今天把新电脑装了Ubuntu15.10，装GPU加速版...
+        今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。
+看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下：
+按照先前安装教程安装
+1.终端输入如下：
+
+nvcc -V(注意大写V)&nbsp;
+
+应该有类似...
     
 
         <a href="/226.html" class="post-more waves-effect waves-button">
@@ -251,7 +331,11 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        标题：Molecular Dynamics Analy...
+        标题：Molecular Dynamics Analysis Reveals Structural Insights into Mechanism of Nicotine N -Demethylation Catalyzed by Tobacco Cytochrome P450 Mono-Oxygenase
+杂志：Plos One
+年份: 2011
+影响因子：3.24
+文章下载：参考文献po...
     
 
         <a href="/221.html" class="post-more waves-effect waves-button">
@@ -292,7 +376,11 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        原文名称：Automatic GROMACS Topo...
+        原文名称：Automatic GROMACS Topology Generation and Comparisons of Force Fields for Solvation Free Energy Calculations
+接受日期：2014年10月26日
+影响因子:3.32
+文章下载：本地下载
+摘要：现在我们提供一个新的框架，这个框架能够全自动的生成GROMACS拓扑文件对于许多（an...
     
 
         <a href="/214.html" class="post-more waves-effect waves-button">
@@ -334,7 +422,11 @@ http://www.ks.uiuc.edu...
 
     
         杂志：Am J Cancer Res
-影响因子：3.9...
+影响因子：3.98
+接收：2015年8月  发表：2015年11月
+一篇伊朗的研究论文
+题目：Molecular dynamics simulation on the low sensitivity ofmutants of NEDD-8 activating enzyme forMLN4924 inhibitor as a cancer drug
+全文...
     
 
         <a href="/194.html" class="post-more waves-effect waves-button">
@@ -375,7 +467,7 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        王新宇@天津&lt;wangdephor@qq.com...
+        王新宇@天津&lt;wangdephor@qq.com&gt; 9:07:29@吴萌@上海 ,取残基中两个特定原子间的距离可以吗，比如alpha碳，如果是残基质心的话，我觉得需要自己动手写脚本吴萌@上海(2425896046) 9:10:25我想分析的是两个residue间的距离随时间的变化情况王新宇@天津&lt;wangdephor@qq.com&gt; 9:11:53每个残基好多原子，怎...
     
 
         <a href="/190.html" class="post-more waves-effect waves-button">
@@ -416,7 +508,16 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        我们常常遇到想要选取配体周围几埃范围内的氨基酸，这样更...
+        我们常常遇到想要选取配体周围几埃范围内的氨基酸，这样更有利于我们分析配体和周围氨基酸的作用。首先我们可以通过命令
+#ligand为选择配体的名字
+select ligand，resn x
+#设置为红色
+color red， ligand
+#配体5埃范围内的残基
+select 5A， byres ligand around 5
+show sticks, 5A
+color yellow, 5A
+...
     
 
         <a href="/181.html" class="post-more waves-effect waves-button">
@@ -457,7 +558,14 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        g_mmpbsa现在可以不编译直接用，非常的方便，现在...
+        g_mmpbsa现在可以不编译直接用，非常的方便，现在提供了4.5.x，4.6.x和5.0.x三个版本，暂时不支持5.1以上版本。
+1.安装教程
+先从这里下载预编译版本
+
+tar -zxvf g_mmpbsa.tar.gz
+cd bin
+sudo cp g_mmpbsa /usr/local/bin/.
+sudo cp energy2bfac /usr/local/bin/.也可以设置环境变...
     
 
         <a href="/170.html" class="post-more waves-effect waves-button">
@@ -498,7 +606,12 @@ http://www.ks.uiuc.edu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        这个主要是rostta下载的时候没有速度，所以想拖到v...
+        这个主要是rostta下载的时候没有速度，所以想拖到vps上然后下载。
+方法为在hostloc的朋友告知
+
+wget http://user:passwd@url.com/xxx.files.tar.gz
+
+
     
 
         <a href="/161.html" class="post-more waves-effect waves-button">
@@ -525,6 +638,15 @@ http://www.ks.uiuc.edu...
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
@@ -534,7 +656,7 @@ http://www.ks.uiuc.edu...
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2017</span>
+        <p><span>kangsgo &copy; 2015 - 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -548,21 +670,106 @@ http://www.ks.uiuc.edu...
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/9/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/9/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/9/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/9/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/9/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABYElEQVR42u3awY6DMAxF0f7/T1NpVpUq6H02LMa+WSHU0MMCJ7bzeuFx/I3Pa37n8/7NQ5asQazjclyzvv8ynXtKlyVrJYsEBf7xk9f7YZAlSxamkMVYlixZTwSI64WZBBdZsmR1Ns38oeQ5t+3lZckawaoVkmrXj9e3ZMn6h6yjMdLib/BkWbKWsXgK2klNSakXTZAlazSLTK61W9Jt8elvZMlayeoXjGptmNgrS9ZQVq0YVDtq0MqkZckaxEo/6bsOGaDEVZasNax0o5x+6mnD5kchSZas0axaGYgvz/xfkoxWlqxprHTjW1ukSbCQJUsW36+mc9MsVZasbazaUYAn7suStZnV2VLXluFOQJElazaLB4VagsoDx2l9S5asNSxSyUnLTJ1mqixZskhQ4KGBl4CDU0iyZC1mpYsuaZfG3R5Zskaz0sMBaZEobazKkrWN1TmOwFPczgvIkjWa9QZeNCwjQmt9AAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
