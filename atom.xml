@@ -42,8 +42,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://kangsgo.com/cj8x3svjs0050uwrag3if9c58.html"/>
-    <id>http://kangsgo.com/cj8x3svjs0050uwrag3if9c58.html</id>
+    <link href="http://kangsgo.com/cj8x50hcu005pocra5et24sw3.html"/>
+    <id>http://kangsgo.com/cj8x50hcu005pocra5et24sw3.html</id>
     <published>2017-10-18T11:55:39.674Z</published>
     <updated>2017-10-18T11:55:39.674Z</updated>
     
@@ -145,7 +145,7 @@
     <link href="http://kangsgo.com/759.html"/>
     <id>http://kangsgo.com/759.html</id>
     <published>2017-09-23T04:22:18.000Z</published>
-    <updated>2017-10-18T12:17:14.231Z</updated>
+    <updated>2017-10-18T14:22:29.201Z</updated>
     
     <content type="html"><![CDATA[<p>此篇文章是简单的归纳总结官网的<a href="http://www.cgmartini.nl/index.php/tools2/visualization" target="_blank" rel="external">Rendering CG bonds &amp; constraints with VMD</a>, 查看的时候的时间为16 August 2017，请注意时效性。</p><p>该脚本分为两个版本，一个是<a href="http://www.cgmartini.nl/images/tools/VMD/cg_bonds.tcl" target="_blank" rel="external">gromacs5</a>以前版本，一个是<a href="http://www.cgmartini.nl/images/tools/VMD/cg_bonds-v5.tcl" target="_blank" rel="external">gromacs5</a>版本（包括2016），以下均以cg_bonds-v5.tcl为例</p><h4 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h4><p>使用的方法与VMD其他脚本类似，即source一下即可</p><blockquote><p>source /path/to/cg_bonds-v5.tcl</p></blockquote><p>现在脚本可以通过-top设置来读入.top和.itp文件</p><h4 id="cg-bonds："><a href="#cg-bonds：" class="headerlink" title="cg_bonds："></a>cg_bonds：</h4><p>-molid   “top”     VMD-defined ID of the molecule to process</p><p>-gmx      /usr/bin/gmxdump   gmxdump绝对路径的执行脚本，对于版本5，默认的为/usr/bin/gmx</p><p>-tpr         topol.tpr    顾名思义</p><p>-top         topol.top    顾名思义</p><p>-topoltype  “martini”    蛋白拓扑类型:”martini”,”elastic”,”elnedyn”</p><p>-net          “martini”       绘制网络:”martini”,”elastic”,”both”</p><p>-bndrcnstr    “both”       绘制键和/或约束”bonds”,”constraints”,”both”</p><p>-cutoff            7.0           键截距（埃）</p><p>-color           “red”           颜色名称或者VMD定义ID对于elastic 键</p><p>-mat              “Opaque”       对于elnedyn键的材料</p><p>-rad               0.2               elastic键半径</p><p>-res                6                 elastic键分辨率</p><h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4><blockquote><p><span style="color: #808080;">user@machine $</span> vmd protein.gro<br><span style="color: #808080;">vmd &gt;</span>  source /home/user/scripts/cg_bonds.tcl<br><span style="color: #808080;">vmd &gt;</span>  cg_bonds -top system.top -topoltype “elastic”<br><span style="color: #808080;">vmd &gt;</span>  cg_bonds -gmx /home/user/bin/gmx-4.5.4/bin/gmxdump -tpr dyn.tpr -net “elastic” -cutoff 12.0 -color “orange” -mat “AOChalky” -res 12 -rad 0.1 -topoltype “elastic”<br><span style="color: #808080;">vmd &gt;</span> cg_delete_elastic_bonds</p></blockquote>]]></content>
     
@@ -158,8 +158,12 @@
     
     </summary>
     
-      <category term="Gromacs" scheme="http://kangsgo.com/categories/Gromacs/"/>
+      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
+    
+      <category term="粗粒化" scheme="http://kangsgo.com/tags/%E7%B2%97%E7%B2%92%E5%8C%96/"/>
+    
+      <category term="VMD" scheme="http://kangsgo.com/tags/VMD/"/>
     
   </entry>
   
