@@ -1,345 +1,491 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>Pymol 选择速查手册 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*PyMOL中加载全原子nonenone啥也不选hydroh.所有氢原子，足以后面有.hetatmhet加载HETATM标签visiblev.选择所有可见的原子polymerpol.聚合物backbonebb.骨架原子sidechai">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Pymol 选择速查手册 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。                                                                                             pymol.png             ## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*P">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pymol 选择速查手册">
 <meta property="og:url" content="http://kangsgo.com/706.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*PyMOL中加载全原子nonenone啥也不选hydroh.所有氢原子，足以后面有.hetatmhet加载HETATM标签visiblev.选择所有可见的原子polymerpol.聚合物backbonebb.骨架原子sidechai">
+<meta property="og:description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。                                                                                             pymol.png             ## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*P">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-f38366920a6af25a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pymol 选择速查手册">
-<meta name="twitter:description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*PyMOL中加载全原子nonenone啥也不选hydroh.所有氢原子，足以后面有.hetatmhet加载HETATM标签visiblev.选择所有可见的原子polymerpol.聚合物backbonebb.骨架原子sidechai">
+<meta name="twitter:description" content="&amp;gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看PymolWiki。                                                                                             pymol.png             ## 原子选择的命名## 单字母选择—单字母——短选择——描述—all*P">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-f38366920a6af25a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Pymol 选择速查手册</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
 </header>
-    <div class="outer">
-      <section id="main"><article id="post-pymol-e9-80-89-e6-8b-a9-e9-80-9f-e6-9f-a5-e6-89-8b-e5-86-8c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/706.html" class="article-date">
-  <time datetime="2017-09-05T05:27:24.000Z" itemprop="datePublished">2017-09-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
+<header class="content-header post-header">
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Pymol 选择速查手册
-    </h1>
-  
+    <div class="container fade-scale">
+        <h1 class="title">Pymol 选择速查手册</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-05T05:27:24.000Z" itemprop="datePublished" class="page-time">
+  2017-09-05
+</time>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post.php?post=706&amp;action=edit"><br>&gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看<a href="https://pymolwiki.org/index.php/TOPTOC" target="_blank" rel="external">PymolWiki</a>。<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-f38366920a6af25a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pymol.png"><br><br>## 原子选择的命名<br><br>## 单字母选择<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—单字母—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—描述—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">all</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">*</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">PyMOL中加载全原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">none</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">none</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">啥也不选</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">hydro</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">h.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">所有氢原子，足以后面有.</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">hetatm</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">het</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">加载HETATM标签</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">visible</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">v.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择所有可见的原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">polymer</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pol.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">聚合物</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">backbone</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bb.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">骨架原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">sidechain</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">sc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">侧链原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">center</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">居中</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">origin</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">旋转</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">orgainic</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">org.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">所有非聚合的有机化合物（如:配体，buffers等等）</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">metals</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">金属离子（PyMOL1.6.1以上）</td><br></tr><br></tbody><br></table><br><br>## 特征选择<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—匹配参数选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—例子和解释—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">symbol</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">e.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">一到两个化学特征字符<code>select polar,symbol O+N</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">name</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">n.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">最高4个字符的蛋白或者核酸原子<code>select carbons,name CA+CB+CG+CD</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">resn</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">r.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">残基名<code>select aas, resn ASP+GLU+ASN</code> 核酸名<code>select bases,resn A+G</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">resi</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">i.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">残基编号<code>select mults10,resi 1+10+100``select nterm,resi 1-10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alt</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alt</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alternate-conformation-identifier-list <code>select altconf,alt A+&quot;&quot;</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">chain</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">c.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择相应的链<code>select firstch,chain A</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">segi</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择片段特征<code>select ligand,segi lig</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">flag</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">f.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">从0到31的单整数<code>select f1,flag 0</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">numeric_type</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">nt.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单个整数<code>select typel, nt. 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">text_type</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">tt.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">type-string<code>select subset,text_type HA+HC</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">id</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">id</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单整数外部索引<code>select idno,id 23</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">index</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">idx.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单整数内部索引<code>select intid,index 11</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ss</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ss</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">二级结构<code>select allstrs,ss H+S+L+&quot;&quot;</code></td><br></tr><br></tbody><br></table><br><br>## 数字选择表<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—数字选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—参数和例子—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">b</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">b</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">beta因子<code>select fuzzy,b&amp;gt;10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">q</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">q</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">占有率值<code>select lowcharges,q&amp;gt;0.50</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">formal_charge</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">fc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">形成电荷值<code>select doubles,fc.=-1</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">partial_charge</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">部分电荷值<code>select hicharges,pc.&amp;gt;1</code></td><br></tr><br></tbody><br></table><br><br>## 选择操作和修饰表格<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—操作—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—影响—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">not s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">!s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">不包括<code>select sidechains,!bb</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 and s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1&amp;s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">和<code>select far_bb,bb&amp;amp;farfrm_ten</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 or s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1\</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s2</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 in s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">位于<code>select same_atms,pept in prot</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 like s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 \</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">.s2</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 gap X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择范德华半径的所有原子与s1的范德华半径分开最小的X埃。<code>select farfrm_ten,resi 10 gap 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 around X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 a.X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择以此为中心的所有原子<code>select near_ten,resi 10 around 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 expand</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 x.X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">Expands s1 by all atoms within X Angstroms of the center of any atom in s1.扩展<code>select near_ten_x,near_ten expand 3</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 within X of s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 w.X of s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">在s1中选择s2中任何原子的X埃内的原子。<code>select bbnearten,bb w. 4 of resi 10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byres s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">br. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">扩展完整的分子<code>select complete_mol, bm. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bymolecule s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bm.s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">故名思义，下同</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byfragment s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bf. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select complete_frag, bf. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bysegment s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bs. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select complete_seg, bs. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byobject s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bo. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择完整的objects<code>select near_obj, bo. near_res</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bycell s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byring s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">1.8.2新功能<code>select rings,byring (all)</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">neighbor s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">nbr. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">Selects atoms directly bonded to s1, excludes s1.<code>select vicinos,neighbor resi 10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bound_to s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bto. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 extend X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 xt. X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>selecr connect_x,near10 extend 3</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pepseq SEQ</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ps. SEQ</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select 1tvn and ps. FATEW</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">rep <em>rep</em></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select sele,rep spheres</code></td><br></tr><br></tbody><br></table><br><br>## 大量快速选择<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">select pept and segi lig and chain b and resi 142 and name ca<br>#可以压缩成如下格式:<br><br>select /pept/lig/b/142/ca</pre><br>&nbsp;<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O+atpOWGheWuueS4u+imgeaYr+S4uuS6huWvuVB5bW9s6L+b6KGM6YCJ5oup55qE5bCP 57uT5oC757uT77yM5a6M5YWo55qE5YaF5a655Y+v5Lul5p+l55yLW1B5bW9sV2lraV0oaHR0cHM6 Ly9weW1vbHdpa2kub3JnL2luZGV4LnBocC9UT1BUT0Mp44CCPC9wPjxwPjxiciBkYXRhLW1jZS1i b2d1cz0iMSI+PC9wPjxwPiFbcHltb2wucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1 LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LWYzODM2NjkyMGE2YWYyNWEucG5nP2ltYWdlTW9ncjIv YXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD48YnIgZGF0YS1t Y2UtYm9ndXM9IjEiPjwvcD48cD4jIyDljp/lrZDpgInmi6nnmoTlkb3lkI08L3A+PHA+PC9wPjxw PiMjIOWNleWtl+avjemAieaLqTxicj58LS3ljZXlrZfmr40tLXwtLeefremAieaLqS0tfC0t5o+P 6L+wLS18PGJyPnwtLS18LS0tfC0tLXw8YnI+fGFsbHwqfFB5TU9M5Lit5Yqg6L295YWo5Y6f5a2Q fDxicj58bm9uZXxub25lfOWVpeS5n+S4jemAiXw8YnI+fGh5ZHJvfGgufOaJgOacieawouWOn+Wt kO+8jOi2s+S7peWQjumdouaciS58PGJyPnxoZXRhdG18aGV0fOWKoOi9vUhFVEFUTeagh+etvnw8 YnI+fHZpc2libGV8di586YCJ5oup5omA5pyJ5Y+v6KeB55qE5Y6f5a2QfDxicj58cG9seW1lcnxw b2wufOiBmuWQiOeJqXw8YnI+fGJhY2tib25lfGJiLnzpqqjmnrbljp/lrZB8PGJyPnxzaWRlY2hh aW58c2MufOS+p+mTvuWOn+WtkHw8YnI+fGNlbnRlcnx85bGF5LitfDxicj58b3JpZ2lufHzml4vo vax8PGJyPnxvcmdhaW5pY3xvcmcufOaJgOaciemdnuiBmuWQiOeahOacieacuuWMluWQiOeJqe+8 iOWmgjrphY3kvZPvvIxidWZmZXJz562J562J77yJfDxicj58bWV0YWxzfHzph5HlsZ7nprvlrZDv vIhQeU1PTDEuNi4x5Lul5LiK77yJfDwvcD48cD48L3A+PHA+IyMg54m55b6B6YCJ5oupPGJyPnwt LeWMuemFjeWPguaVsOmAieaLqS0tfC0t55+t5a2X56ymLS18LS3kvovlrZDlkozop6Pph4otLXw8 YnI+fC0tLXwtLS18LS0tfDxicj58c3ltYm9sfGUufOS4gOWIsOS4pOS4quWMluWtpueJueW+geWt l+espmBzZWxlY3QgcG9sYXIsc3ltYm9sIE8rTmB8PGJyPnxuYW1lfG4ufOacgOmrmDTkuKrlrZfn rKbnmoTom4vnmb3miJbogIXmoLjphbjljp/lrZBgc2VsZWN0IGNhcmJvbnMsbmFtZSBDQStDQitD RytDRGB8PGJyPnxyZXNufHIufCDmrovln7rlkI1gc2VsZWN0IGFhcywgcmVzbiBBU1ArR0xVK0FT TmAg5qC46YW45ZCNYHNlbGVjdCBiYXNlcyxyZXNuIEErR2B8PGJyPnxyZXNpfGkufOaui+Wfuue8 luWPt2BzZWxlY3QgbXVsdHMxMCxyZXNpIDErMTArMTAwYGBzZWxlY3QgbnRlcm0scmVzaSAxLTEw YHw8YnI+fGFsdHxhbHR8YWx0ZXJuYXRlLWNvbmZvcm1hdGlvbi1pZGVudGlmaWVyLWxpc3QgYHNl bGVjdCBhbHRjb25mLGFsdCBBKyIiYHw8YnI+fGNoYWlufGMufOmAieaLqeebuOW6lOeahOmTvmBz ZWxlY3QgZmlyc3RjaCxjaGFpbiBBYHw8YnI+fHNlZ2l8cy586YCJ5oup54mH5q6154m55b6BYHNl bGVjdCBsaWdhbmQsc2VnaSBsaWdgfDxicj58ZmxhZ3xmLnzku44w5YiwMzHnmoTljZXmlbTmlbBg c2VsZWN0IGYxLGZsYWcgMGB8PGJyPnxudW1lcmljX3R5cGV8bnQufOWNleS4quaVtOaVsGBzZWxl Y3QgdHlwZWwsIG50LiA1YHw8YnI+fHRleHRfdHlwZXx0dC58dHlwZS1zdHJpbmdgc2VsZWN0IHN1 YnNldCx0ZXh0X3R5cGUgSEErSENgfDxicj58aWR8aWR85Y2V5pW05pWw5aSW6YOo57Si5byVYHNl bGVjdCBpZG5vLGlkIDIzYHw8YnI+fGluZGV4fGlkeC585Y2V5pW05pWw5YaF6YOo57Si5byVYHNl bGVjdCBpbnRpZCxpbmRleCAxMWB8PGJyPnxzc3xzc3zkuoznuqfnu5PmnoRgc2VsZWN0IGFsbHN0 cnMsc3MgSCtTK0wrIiJgfDwvcD48cD4jIyDmlbDlrZfpgInmi6nooag8YnI+fC0t5pWw5a2X6YCJ 5oupLS18LS3nn63lrZfnrKYtLXwtLeWPguaVsOWSjOS+i+WtkC0tfDxicj58LS0tfC0tLXwtLS18 PGJyPnxifGJ8YmV0YeWboOWtkGBzZWxlY3QgZnV6enksYiZndDsxMGB8PGJyPnxxfHF85Y2g5pyJ 546H5YC8YHNlbGVjdCBsb3djaGFyZ2VzLHEmZ3Q7MC41MGB8PGJyPnxmb3JtYWxfY2hhcmdlfGZj LnzlvaLmiJDnlLXojbflgLxgc2VsZWN0IGRvdWJsZXMsZmMuPS0xYHw8YnI+fHBhcnRpYWxfY2hh cmdlfHBjLnzpg6jliIbnlLXojbflgLxgc2VsZWN0IGhpY2hhcmdlcyxwYy4mZ3Q7MWB8PC9wPjxw Pjxicj48L3A+PHA+IyMg6YCJ5oup5pON5L2c5ZKM5L+u6aWw6KGo5qC8PGJyPnwtLeaTjeS9nC0t fC0t55+t5a2X56ymLS18LS3lvbHlk40tLXw8YnI+fC0tLXwtLS18LS0tfDxicj58bm90IHMxfCFz MXzkuI3ljIXmi6xgc2VsZWN0IHNpZGVjaGFpbnMsIWJiYHw8YnI+fHMxIGFuZCBzMnwgczEmYW1w O3MyfOWSjGBzZWxlY3QgZmFyX2JiLGJiJmFtcDtmYXJmcm1fdGVuYHw8YnI+fHMxIG9yIHMyfHMx XHxzMnzmiJZgc2VsZWN0IGFsbF9wcm90LGJiXHxzaWRlY2hhaW5gfDxicj58czEgaW4gczJ8fOS9 jeS6jmBzZWxlY3Qgc2FtZV9hdG1zLHBlcHQgaW4gcHJvdGB8PGJyPnxzMSBsaWtlIHMyfHMxIFx8 LnMyfG5hbWXlkoxyZXNp55u45Ly85LqOczJgc2VsZWN0IHNpbWlsYXJfYXRtcyxwZXB0IGxpa2Ug cHJvdGB8PGJyPnxzMSBnYXAgWHx86YCJ5oup6IyD5b635Y2O5Y2K5b6E55qE5omA5pyJ5Y6f5a2Q 5LiOczHnmoTojIPlvrfljY7ljYrlvoTliIblvIDmnIDlsI/nmoRY5Z+D44CCYHNlbGVjdCBmYXJm cm1fdGVuLHJlc2kgMTAgZ2FwIDVgfDxicj58czEgYXJvdW5kIFh8czEgYS5YfOmAieaLqeS7peat pOS4uuS4reW/g+eahOaJgOacieWOn+WtkGBzZWxlY3QgbmVhcl90ZW4scmVzaSAxMCBhcm91bmQg NWB8PGJyPnxzMSBleHBhbmR8czEgeC5YfEV4cGFuZHMgczEgYnkgYWxsIGF0b21zIHdpdGhpbiBY IEFuZ3N0cm9tcyBvZiB0aGUgY2VudGVyIG9mIGFueSBhdG9tIGluIHMxLuaJqeWxlWBzZWxlY3Qg bmVhcl90ZW5feCxuZWFyX3RlbiBleHBhbmQgM2B8PGJyPnxzMSB3aXRoaW4gWCBvZiBzMnxzMSB3 Llggb2YgczJ85ZyoczHkuK3pgInmi6lzMuS4reS7u+S9leWOn+WtkOeahFjln4PlhoXnmoTljp/l rZDjgIJgc2VsZWN0IGJibmVhcnRlbixiYiB3LiA0IG9mIHJlc2kgMTBgfDxicj58YnlyZXMgczF8 YnIuIHMxfOaJqeWxleWujOaVtOeahOWIhuWtkGBzZWxlY3QgY29tcGxldGVfbW9sLCBibS4gYmJu ZWFyMTBgfDxicj58Ynltb2xlY3VsZSBzMXxibS5zMXzmlYXlkI3mgJ3kuYnvvIzkuIvlkIx8PGJy PnxieWZyYWdtZW50IHMxfGJmLiBzMXxgc2VsZWN0IGNvbXBsZXRlX2ZyYWcsIGJmLiBiYm5lYXIx MGB8PGJyPnxieXNlZ21lbnQgczF8YnMuIHMxfGBzZWxlY3QgY29tcGxldGVfc2VnLCBicy4gYmJu ZWFyMTBgfDxicj58YnlvYmplY3QgczF8Ym8uIHMxfOmAieaLqeWujOaVtOeahG9iamVjdHNgc2Vs ZWN0IG5lYXJfb2JqLCBiby4gbmVhcl9yZXNgfDxicj58YnljZWxsIHMxfHx8PGJyPnxieXJpbmcg czF8fDEuOC4y5paw5Yqf6IO9YHNlbGVjdCByaW5ncyxieXJpbmcgKGFsbClgfDxicj58bmVpZ2hi b3IgczF8bmJyLiBzMXxTZWxlY3RzIGF0b21zIGRpcmVjdGx5IGJvbmRlZCB0byBzMSwgZXhjbHVk ZXMgczEuYHNlbGVjdCB2aWNpbm9zLG5laWdoYm9yIHJlc2kgMTBgfDxicj58Ym91bmRfdG8gczF8 YnRvLiBzMXx8PGJyPnxzMSBleHRlbmQgWHxzMSB4dC4gWHxgc2VsZWNyIGNvbm5lY3RfeCxuZWFy MTAgZXh0ZW5kIDNgfDxicj58cGVwc2VxIFNFUXxwcy4gU0VRfGBzZWxlY3QgMXR2biBhbmQgcHMu IEZBVEVXYHw8YnI+fHJlcCAqcmVwKnx8YHNlbGVjdCBzZWxlLHJlcCBzcGhlcmVzYHw8L3A+PHA+ IyMg5aSn6YeP5b+r6YCf6YCJ5oupPGJyPjwvcD4=">​</div><br></div>
-      
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+            
+        </h5>
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/706.html" data-id="cj8x084o00065noranuooxu6z" class="article-share-link" data-share="baidu" data-title="Pymol 选择速查手册">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/706.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
     
-<nav id="article-nav">
-  
-    <a href="/714.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-pymol-e9-80-89-e6-8b-a9-e9-80-9f-e6-9f-a5-e6-89-8b-e5-86-8c"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Pymol 选择速查手册</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-05 13:27:24" datetime="2017-09-05T05:27:24.000Z"  itemprop="datePublished">2017-09-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post.php?post=706&amp;action=edit"><br>&gt; 此内容主要是为了对Pymol进行选择的小结总结，完全的内容可以查看<a href="https://pymolwiki.org/index.php/TOPTOC" target="_blank" rel="external">PymolWiki</a>。<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-f38366920a6af25a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pymol.png" title="">
+                </div>
+                <div class="image-caption">pymol.png</div>
+            </figure><br><br>## 原子选择的命名<br><br>## 单字母选择<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—单字母—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—描述—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">all</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">*</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">PyMOL中加载全原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">none</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">none</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">啥也不选</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">hydro</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">h.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">所有氢原子，足以后面有.</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">hetatm</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">het</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">加载HETATM标签</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">visible</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">v.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择所有可见的原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">polymer</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pol.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">聚合物</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">backbone</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bb.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">骨架原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">sidechain</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">sc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">侧链原子</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">center</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">居中</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">origin</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">旋转</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">orgainic</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">org.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">所有非聚合的有机化合物（如:配体，buffers等等）</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">metals</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">金属离子（PyMOL1.6.1以上）</td><br></tr><br></tbody><br></table><br><br>## 特征选择<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—匹配参数选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—例子和解释—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">symbol</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">e.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">一到两个化学特征字符<code>select polar,symbol O+N</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">name</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">n.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">最高4个字符的蛋白或者核酸原子<code>select carbons,name CA+CB+CG+CD</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">resn</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">r.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">残基名<code>select aas, resn ASP+GLU+ASN</code> 核酸名<code>select bases,resn A+G</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">resi</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">i.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">残基编号<code>select mults10,resi 1+10+100``select nterm,resi 1-10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alt</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alt</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">alternate-conformation-identifier-list <code>select altconf,alt A+&quot;&quot;</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">chain</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">c.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择相应的链<code>select firstch,chain A</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">segi</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择片段特征<code>select ligand,segi lig</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">flag</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">f.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">从0到31的单整数<code>select f1,flag 0</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">numeric_type</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">nt.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单个整数<code>select typel, nt. 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">text_type</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">tt.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">type-string<code>select subset,text_type HA+HC</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">id</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">id</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单整数外部索引<code>select idno,id 23</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">index</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">idx.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">单整数内部索引<code>select intid,index 11</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ss</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ss</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">二级结构<code>select allstrs,ss H+S+L+&quot;&quot;</code></td><br></tr><br></tbody><br></table><br><br>## 数字选择表<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—数字选择—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—参数和例子—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">b</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">b</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">beta因子<code>select fuzzy,b&amp;gt;10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">q</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">q</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">占有率值<code>select lowcharges,q&amp;gt;0.50</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">formal_charge</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">fc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">形成电荷值<code>select doubles,fc.=-1</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">partial_charge</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pc.</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">部分电荷值<code>select hicharges,pc.&amp;gt;1</code></td><br></tr><br></tbody><br></table><br><br>## 选择操作和修饰表格<br><br><table style="margin: 1.2em 0px; padding: 0px; border-collapse: collapse; border-spacing: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; border: 0px;"><br><thead><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—操作—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—短字符—</th><br><th style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em; font-weight: bold; background-color: #f0f0f0;">—影响—</th><br></tr><br></thead><br><tbody style="margin: 0px; padding: 0px; border: 0px;"><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">not s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">!s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">不包括<code>select sidechains,!bb</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 and s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1&amp;s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">和<code>select far_bb,bb&amp;amp;farfrm_ten</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 or s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1\</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s2</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 in s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">位于<code>select same_atms,pept in prot</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 like s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 \</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">.s2</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 gap X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择范德华半径的所有原子与s1的范德华半径分开最小的X埃。<code>select farfrm_ten,resi 10 gap 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 around X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 a.X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择以此为中心的所有原子<code>select near_ten,resi 10 around 5</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 expand</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 x.X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">Expands s1 by all atoms within X Angstroms of the center of any atom in s1.扩展<code>select near_ten_x,near_ten expand 3</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 within X of s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 w.X of s2</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">在s1中选择s2中任何原子的X埃内的原子。<code>select bbnearten,bb w. 4 of resi 10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byres s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">br. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">扩展完整的分子<code>select complete_mol, bm. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bymolecule s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bm.s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">故名思义，下同</td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byfragment s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bf. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select complete_frag, bf. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bysegment s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bs. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select complete_seg, bs. bbnear10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byobject s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bo. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">选择完整的objects<code>select near_obj, bo. near_res</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bycell s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">byring s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">1.8.2新功能<code>select rings,byring (all)</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">neighbor s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">nbr. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">Selects atoms directly bonded to s1, excludes s1.<code>select vicinos,neighbor resi 10</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bound_to s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">bto. s1</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 extend X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">s1 xt. X</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>selecr connect_x,near10 extend 3</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: #f8f8f8; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">pepseq SEQ</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">ps. SEQ</td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select 1tvn and ps. FATEW</code></td><br></tr><br><tr style="border-width: 1px 0px 0px; border-image: initial; background-color: white; margin: 0px; padding: 0px; border-color: #cccccc initial initial initial; border-style: solid initial initial initial;"><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;">rep <em>rep</em></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"></td><br><td style="font-size: 1em; border: 1px solid #cccccc; margin: 0px; padding: 0.5em 1em;"><code>select sele,rep spheres</code></td><br></tr><br></tbody><br></table><br><br>## 大量快速选择<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">select pept and segi lig and chain b and resi 142 and name ca<br>#可以压缩成如下格式:<br><br>select /pept/lig/b/142/ca</pre><br>&nbsp;<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O+atpOWGheWuueS4u+imgeaYr+S4uuS6huWvuVB5bW9s6L+b6KGM6YCJ5oup55qE5bCP 57uT5oC757uT77yM5a6M5YWo55qE5YaF5a655Y+v5Lul5p+l55yLW1B5bW9sV2lraV0oaHR0cHM6 Ly9weW1vbHdpa2kub3JnL2luZGV4LnBocC9UT1BUT0Mp44CCPC9wPjxwPjxiciBkYXRhLW1jZS1i b2d1cz0iMSI+PC9wPjxwPiFbcHltb2wucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1 LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LWYzODM2NjkyMGE2YWYyNWEucG5nP2ltYWdlTW9ncjIv YXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD48YnIgZGF0YS1t Y2UtYm9ndXM9IjEiPjwvcD48cD4jIyDljp/lrZDpgInmi6nnmoTlkb3lkI08L3A+PHA+PC9wPjxw PiMjIOWNleWtl+avjemAieaLqTxicj58LS3ljZXlrZfmr40tLXwtLeefremAieaLqS0tfC0t5o+P 6L+wLS18PGJyPnwtLS18LS0tfC0tLXw8YnI+fGFsbHwqfFB5TU9M5Lit5Yqg6L295YWo5Y6f5a2Q fDxicj58bm9uZXxub25lfOWVpeS5n+S4jemAiXw8YnI+fGh5ZHJvfGgufOaJgOacieawouWOn+Wt kO+8jOi2s+S7peWQjumdouaciS58PGJyPnxoZXRhdG18aGV0fOWKoOi9vUhFVEFUTeagh+etvnw8 YnI+fHZpc2libGV8di586YCJ5oup5omA5pyJ5Y+v6KeB55qE5Y6f5a2QfDxicj58cG9seW1lcnxw b2wufOiBmuWQiOeJqXw8YnI+fGJhY2tib25lfGJiLnzpqqjmnrbljp/lrZB8PGJyPnxzaWRlY2hh aW58c2MufOS+p+mTvuWOn+WtkHw8YnI+fGNlbnRlcnx85bGF5LitfDxicj58b3JpZ2lufHzml4vo vax8PGJyPnxvcmdhaW5pY3xvcmcufOaJgOaciemdnuiBmuWQiOeahOacieacuuWMluWQiOeJqe+8 iOWmgjrphY3kvZPvvIxidWZmZXJz562J562J77yJfDxicj58bWV0YWxzfHzph5HlsZ7nprvlrZDv vIhQeU1PTDEuNi4x5Lul5LiK77yJfDwvcD48cD48L3A+PHA+IyMg54m55b6B6YCJ5oupPGJyPnwt LeWMuemFjeWPguaVsOmAieaLqS0tfC0t55+t5a2X56ymLS18LS3kvovlrZDlkozop6Pph4otLXw8 YnI+fC0tLXwtLS18LS0tfDxicj58c3ltYm9sfGUufOS4gOWIsOS4pOS4quWMluWtpueJueW+geWt l+espmBzZWxlY3QgcG9sYXIsc3ltYm9sIE8rTmB8PGJyPnxuYW1lfG4ufOacgOmrmDTkuKrlrZfn rKbnmoTom4vnmb3miJbogIXmoLjphbjljp/lrZBgc2VsZWN0IGNhcmJvbnMsbmFtZSBDQStDQitD RytDRGB8PGJyPnxyZXNufHIufCDmrovln7rlkI1gc2VsZWN0IGFhcywgcmVzbiBBU1ArR0xVK0FT TmAg5qC46YW45ZCNYHNlbGVjdCBiYXNlcyxyZXNuIEErR2B8PGJyPnxyZXNpfGkufOaui+Wfuue8 luWPt2BzZWxlY3QgbXVsdHMxMCxyZXNpIDErMTArMTAwYGBzZWxlY3QgbnRlcm0scmVzaSAxLTEw YHw8YnI+fGFsdHxhbHR8YWx0ZXJuYXRlLWNvbmZvcm1hdGlvbi1pZGVudGlmaWVyLWxpc3QgYHNl bGVjdCBhbHRjb25mLGFsdCBBKyIiYHw8YnI+fGNoYWlufGMufOmAieaLqeebuOW6lOeahOmTvmBz ZWxlY3QgZmlyc3RjaCxjaGFpbiBBYHw8YnI+fHNlZ2l8cy586YCJ5oup54mH5q6154m55b6BYHNl bGVjdCBsaWdhbmQsc2VnaSBsaWdgfDxicj58ZmxhZ3xmLnzku44w5YiwMzHnmoTljZXmlbTmlbBg c2VsZWN0IGYxLGZsYWcgMGB8PGJyPnxudW1lcmljX3R5cGV8bnQufOWNleS4quaVtOaVsGBzZWxl Y3QgdHlwZWwsIG50LiA1YHw8YnI+fHRleHRfdHlwZXx0dC58dHlwZS1zdHJpbmdgc2VsZWN0IHN1 YnNldCx0ZXh0X3R5cGUgSEErSENgfDxicj58aWR8aWR85Y2V5pW05pWw5aSW6YOo57Si5byVYHNl bGVjdCBpZG5vLGlkIDIzYHw8YnI+fGluZGV4fGlkeC585Y2V5pW05pWw5YaF6YOo57Si5byVYHNl bGVjdCBpbnRpZCxpbmRleCAxMWB8PGJyPnxzc3xzc3zkuoznuqfnu5PmnoRgc2VsZWN0IGFsbHN0 cnMsc3MgSCtTK0wrIiJgfDwvcD48cD4jIyDmlbDlrZfpgInmi6nooag8YnI+fC0t5pWw5a2X6YCJ 5oupLS18LS3nn63lrZfnrKYtLXwtLeWPguaVsOWSjOS+i+WtkC0tfDxicj58LS0tfC0tLXwtLS18 PGJyPnxifGJ8YmV0YeWboOWtkGBzZWxlY3QgZnV6enksYiZndDsxMGB8PGJyPnxxfHF85Y2g5pyJ 546H5YC8YHNlbGVjdCBsb3djaGFyZ2VzLHEmZ3Q7MC41MGB8PGJyPnxmb3JtYWxfY2hhcmdlfGZj LnzlvaLmiJDnlLXojbflgLxgc2VsZWN0IGRvdWJsZXMsZmMuPS0xYHw8YnI+fHBhcnRpYWxfY2hh cmdlfHBjLnzpg6jliIbnlLXojbflgLxgc2VsZWN0IGhpY2hhcmdlcyxwYy4mZ3Q7MWB8PC9wPjxw Pjxicj48L3A+PHA+IyMg6YCJ5oup5pON5L2c5ZKM5L+u6aWw6KGo5qC8PGJyPnwtLeaTjeS9nC0t fC0t55+t5a2X56ymLS18LS3lvbHlk40tLXw8YnI+fC0tLXwtLS18LS0tfDxicj58bm90IHMxfCFz MXzkuI3ljIXmi6xgc2VsZWN0IHNpZGVjaGFpbnMsIWJiYHw8YnI+fHMxIGFuZCBzMnwgczEmYW1w O3MyfOWSjGBzZWxlY3QgZmFyX2JiLGJiJmFtcDtmYXJmcm1fdGVuYHw8YnI+fHMxIG9yIHMyfHMx XHxzMnzmiJZgc2VsZWN0IGFsbF9wcm90LGJiXHxzaWRlY2hhaW5gfDxicj58czEgaW4gczJ8fOS9 jeS6jmBzZWxlY3Qgc2FtZV9hdG1zLHBlcHQgaW4gcHJvdGB8PGJyPnxzMSBsaWtlIHMyfHMxIFx8 LnMyfG5hbWXlkoxyZXNp55u45Ly85LqOczJgc2VsZWN0IHNpbWlsYXJfYXRtcyxwZXB0IGxpa2Ug cHJvdGB8PGJyPnxzMSBnYXAgWHx86YCJ5oup6IyD5b635Y2O5Y2K5b6E55qE5omA5pyJ5Y6f5a2Q 5LiOczHnmoTojIPlvrfljY7ljYrlvoTliIblvIDmnIDlsI/nmoRY5Z+D44CCYHNlbGVjdCBmYXJm cm1fdGVuLHJlc2kgMTAgZ2FwIDVgfDxicj58czEgYXJvdW5kIFh8czEgYS5YfOmAieaLqeS7peat pOS4uuS4reW/g+eahOaJgOacieWOn+WtkGBzZWxlY3QgbmVhcl90ZW4scmVzaSAxMCBhcm91bmQg NWB8PGJyPnxzMSBleHBhbmR8czEgeC5YfEV4cGFuZHMgczEgYnkgYWxsIGF0b21zIHdpdGhpbiBY IEFuZ3N0cm9tcyBvZiB0aGUgY2VudGVyIG9mIGFueSBhdG9tIGluIHMxLuaJqeWxlWBzZWxlY3Qg bmVhcl90ZW5feCxuZWFyX3RlbiBleHBhbmQgM2B8PGJyPnxzMSB3aXRoaW4gWCBvZiBzMnxzMSB3 Llggb2YgczJ85ZyoczHkuK3pgInmi6lzMuS4reS7u+S9leWOn+WtkOeahFjln4PlhoXnmoTljp/l rZDjgIJgc2VsZWN0IGJibmVhcnRlbixiYiB3LiA0IG9mIHJlc2kgMTBgfDxicj58YnlyZXMgczF8 YnIuIHMxfOaJqeWxleWujOaVtOeahOWIhuWtkGBzZWxlY3QgY29tcGxldGVfbW9sLCBibS4gYmJu ZWFyMTBgfDxicj58Ynltb2xlY3VsZSBzMXxibS5zMXzmlYXlkI3mgJ3kuYnvvIzkuIvlkIx8PGJy PnxieWZyYWdtZW50IHMxfGJmLiBzMXxgc2VsZWN0IGNvbXBsZXRlX2ZyYWcsIGJmLiBiYm5lYXIx MGB8PGJyPnxieXNlZ21lbnQgczF8YnMuIHMxfGBzZWxlY3QgY29tcGxldGVfc2VnLCBicy4gYmJu ZWFyMTBgfDxicj58YnlvYmplY3QgczF8Ym8uIHMxfOmAieaLqeWujOaVtOeahG9iamVjdHNgc2Vs ZWN0IG5lYXJfb2JqLCBiby4gbmVhcl9yZXNgfDxicj58YnljZWxsIHMxfHx8PGJyPnxieXJpbmcg czF8fDEuOC4y5paw5Yqf6IO9YHNlbGVjdCByaW5ncyxieXJpbmcgKGFsbClgfDxicj58bmVpZ2hi b3IgczF8bmJyLiBzMXxTZWxlY3RzIGF0b21zIGRpcmVjdGx5IGJvbmRlZCB0byBzMSwgZXhjbHVk ZXMgczEuYHNlbGVjdCB2aWNpbm9zLG5laWdoYm9yIHJlc2kgMTBgfDxicj58Ym91bmRfdG8gczF8 YnRvLiBzMXx8PGJyPnxzMSBleHRlbmQgWHxzMSB4dC4gWHxgc2VsZWNyIGNvbm5lY3RfeCxuZWFy MTAgZXh0ZW5kIDNgfDxicj58cGVwc2VxIFNFUXxwcy4gU0VRfGBzZWxlY3QgMXR2biBhbmQgcHMu IEZBVEVXYHw8YnI+fHJlcCAqcmVwKnx8YHNlbGVjdCBzZWxlLHJlcCBzcGhlcmVzYHw8L3A+PHA+ IyMg5aSn6YeP5b+r6YCf6YCJ5oupPGJyPjwvcD4=">​</div><br></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
         
-          Pymol小脚本之Rotkit
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
         
-      </div>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/706.html" target="_blank" rel="external">http://kangsgo.com/706.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/706.html&title=《Pymol 选择速查手册》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/706.html&title=《Pymol 选择速查手册》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/706.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol 选择速查手册》 — 小康博客&url=http://kangsgo.com/706.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/706.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/714.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Pymol小脚本之Rotkit</h4>
+      </a>
+    </div>
   
-    <a href="/700.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">VMD粗粒化显示插件Bendix简单介绍</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/700.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VMD粗粒化显示插件Bendix简单介绍</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="706.html" data-title="Pymol 选择速查手册" data-url="http://kangsgo.com/706.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/706.html&title=《Pymol 选择速查手册》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/706.html&title=《Pymol 选择速查手册》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/706.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol 选择速查手册》 — 小康博客&url=http://kangsgo.com/706.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/706.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABtUlEQVR42u3aS46DMBAFwNz/0sw2iwFet7FNpPIKJRYULFr98ecTr+Nrnf1+tie/22MLFxd3mHtcrrMHVOm9f/95JVxc3IXcs4hxfT1j/40NFxf3R7hJALoOhbi4uL/OzQuY6zvj4uK+n5sUJ9f0BL20VsPFxR3g5l3KeddT+ru4uLgt7lFcSSBL2qy9hYuLu4abB5Tx1CcveG5KLFxc3Mnc3ij02VZp/mlwcXFXcqvJyvjqJUC4uLi7uL1xyPgANUqGcHFxt3LzkWoyJknCVvRcXFzchdw80ckPXpQPVSRPx8XFXcKtHrHq0XtNlpv+Li4u7hJu1LKckPQkd8bFxV3JzYcc1dZn9XhWdGdcXNwl3OqxiR66Wvzc7MTFxd3EXTlkLRdXuLi4m7h5CtJLaIYaKLi4uAu5vdQkaYLkCU20HxcXdzJ3JDWpHr2qtlNxcXF3cavBpToUqdJHgiwuLu6z3GoLozc+6X2Cm4NZuLi4k7nVNkcSzvKWSrlWw8XFfTE3D3nV0uuByQ8uLu7LuM+2PHBxcXdxxw9d5S8wkrHg4uKu4VZDSbWASVoe1UILFxd3GvcPMgXiMW11Lz0AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

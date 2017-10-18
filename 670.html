@@ -1,17 +1,31 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>GROMACS之水中部分載脂蛋白 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>GROMACS之水中部分載脂蛋白 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GROMACS之水中部分載脂蛋白">
 <meta property="og:url" content="http://kangsgo.com/670.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
+<meta property="og:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -24,333 +38,507 @@
 <meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GROMACS之水中部分載脂蛋白">
-<meta name="twitter:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
+<meta name="twitter:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-gromacs-e4-b9-8b-e6-b0-b4-e4-b8-ad-e9-83-a8-e5-88-86-e8-bc-89-e8-84-82-e8-9b-8b-e7-99-bd" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/670.html" class="article-date">
-  <time datetime="2017-07-11T02:18:51.000Z" itemprop="datePublished">2017-07-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 class="article-title" itemprop="name">
-      GROMACS之水中部分載脂蛋白
-    </h1>
-  
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-      </header>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">GROMACS之水中部分載脂蛋白</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">GROMACS之水中部分載脂蛋白</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-11T02:18:51.000Z" itemprop="datePublished" class="page-time">
+  2017-07-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>&gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。<br><br>首先看一下GROMACS做MD的一般流程<br><img src="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GROMACS MD一般流程"><br><br>### 下载PDB文件<br><br>首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter notebook编写，若在终端运行的话无需加out=!{}<br>例如：out=!{“ls”},在终端运行只需要为ls即可<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“wget <a href="http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}" target="_blank" rel="external">http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}</a><br></pre><br><br>### 生成蛋白拓扑（Topology文件）<br><br>在用GROMACS的程序对pdb文件进行处理前, 要做许多检查, 以保证pdb文件的完整性. 根据pdb文件的不同, 要进行不同的处理. 需要处理的方面包括但不限于:<br><br>&gt; -氢原子<br>&gt; -C端氧原子<br>&gt; -结晶水<br>&gt; -缺失原子/残基/侧链<br>&gt; -二硫键<br>&gt; -带电残基<br><br>请在进行下一步之前仔细简单是否有错误，如教程蜘蛛肽需要进行末尾蛋白的补全，如删除蛋白中本身含有的结晶水等等工作。<br>在本例中你需要从20个模型中获取单一模型，可以使用例如<code>pymol</code>进行操作。<br>下一步需要注意的是我们需要<code>-ignh</code>进行删除pdb中的氢，然后gmx进行自动加氢。我们将其修改为fws.pdb<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx pdb2gmx -f fws.pdb -ignh -o 1ODQ_processed.gro -water spce<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">····<br><br>    Select the Force Field:<br>    From ‘/usr/share/gromacs/top’:<br>     1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)<br>     2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)<br>     3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)<br>     4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)<br>     5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)<br>     6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)<br>     7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)<br>     8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)<br>     9: GROMOS96 43a1 force field<br>    10: GROMOS96 43a2 force field (improved alkane dihedrals)<br>    11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)<br>    12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)<br>    13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)<br>    14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)<br>    15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</pre><br>&nbsp;<br><br>力场包含了将要写入到拓扑文件中的信息. 这个选择非常重要! 你必须仔细了解每个力场, 并决定哪个力场最适用于你的体系. 在本教程中, 我们选gromos联合原子力场, 因此在命令提示行中输入<code>14</code>, 然后回车.由于在jupyter中shell交互不是很方便，所以我们采用的是在尾部<code>&amp;lt;&amp;lt;EOF\n14\nEOF</code>的方式进行交互，下面的情况类似，不再申明，<strong>即大家在实际操作中在shell终端输入前面的命令，后面选择的选项与后面命令类似</strong>。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx pdb2gmx -f fws.pdb -ignh -o fws_processed.gro -water spce &lt;&lt;EOF\n14\nEOF”}<br></pre><br>&nbsp;<br><br>### 定义单位盒子并填充溶剂<br><br>教程中是需要模拟一个简单的水溶液分子，定义模拟用的盒子并添加溶剂分为两步完成：<br>1.使用<code>editconf</code>模块定义盒子的尺寸<br>2.使用<code>solvate</code>模块想盒子中填充水<br>首先我们来定义盒子，本教程用的正方形盒子，其实盒子种类很多，一般使用菱形十二面体晶胞，其可以节省许多水分子，从而节省计算量。<code>-c</code>表示分子在盒子的中心部分。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx editconf -f fws_processed.gro -o fws_newbox.gro -c -d 1.0 -bt cubic”}<br></pre><br>我们可以在vmd或者pymol中查看分子的情况，在用shell交互中下面块的内容不需要输入，转而使用<code>vmd fws_newbox.gro</code>或者<code>pymol fws_newbox.gro</code>进行查看<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用，真正进行学习时直接vmd或者pymol查看<br>from IPythonTweaks import <em></em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">#演示使用<br>pymolPlotStructure(“fws_newbox.gro”)</pre><br><img src="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_11_0.png"><br><br>之后我们进行溶剂分子的增加<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx solvate -cp fws_newbox.gro -cs spc216.gro -o fws_solv.gro -p topol.top”}<br></pre><br><br>同样我们也可以进行可视化查看<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>pymolPlotStructure(“fws_solv.gro”)</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-56a9f9532ac746ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_15_0.png"><br><br>### 增加离子<br><br>现在我们已经有了一个带电荷的溶液体系，<code>其实在pdb2gmx</code>程序的输出文件会显示带了多少电荷，如果没有查看到我们可以查看一下<code>topol.top</code>文件中<code>[ atoms ]</code>指令的的最后一行, 它应该含有<code>qtot 0</code>这一信息. 由于生命体系中不存在净电荷, 所以我们必须往我们体系中添加离子, 以保证总电荷为零.虽然电荷为0，我们还是增加一下0个离子，作为演示的作用。<br>首先我们创建一个ions.mdp的文件，并输入如下内容：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)</pre><br>&nbsp;<br><br>使用如下命令来产生<code>.tpr</code>文件<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“ions.mdp”,”w”)<br>file.write(“””<br>; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f ions.mdp -c fws_solv.gro -p topol.top -o ions.tpr”}<br>out=!{“gmx genion -s ions.tpr -o fws_solv_ions.gro -p topol.top -pname NA -nname CL -nn 0 &lt;&lt;EOF\n13\nEOF”}</pre><br>&nbsp;<br><br>### 能量最小化<br><br>现在, 我们已经添加了溶剂分子和离子, 得到了一个电中性的体系. 在开始动力学模拟之前, 我们必须保证体系的结构正常, 原子之间的距离不会过近, 几何构型合理. 对结构进行弛豫可以达到这些要求, 这个过程称为能量最小化(EM, energy minimization).<br><br>能量最小化过程与添加离子过程差不多. 我们要再次使用<code>grompp</code>将结构, 拓扑和模拟参数写入一个二进制的输入文件中(.tpr), 但这次我们不需要将<code>.tpr</code>文件传递给<code>genion</code>, 而是使用GROMACS MD引擎的<code>mdrun</code>模块来进行能量最小化.<br>能量最小化的<code>mdp</code>文件参数与解释如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; 传递给预处理器的一些定义<br>define          = -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量<br><br>; 模拟类型, 结束控制, 输出控制参数<br>integrator      = steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>emtol           = 500.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>emstep          = 0.01          ; 初始步长(nm)<br>nsteps          = 1000          ; 在能量最小化中, 指定最大迭代次数<br>nstenergy       = 1             ; 能量写出频率<br>energygrps      = System        ; 要写出的能量组<br><br>; 近邻列表, 相互作用计算参数<br>nstlist         = 1             ; 更新近邻列表的频率. 1表示每步都更新<br>ns_type         = grid          ; 近邻列表确定方法(simple或grid)<br>coulombtype     = PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>rlist           = 1.0           ; 短程力近邻列表的截断值<br>rcoulomb        = 1.0           ; 长程库仑力的截断值<br>vdwtype         = cut-off       ; 计算范德华作用的方法<br>rvdw            = 1.0           ; 范德华距离截断值<br>constraints     = none          ; 设置模型中使用的约束<br>pbc             = xyz           ; 3维周期性边界条件</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“minim.mdp”,”w”)<br>file.write(“””<br>; minim.mdp - used as input into grompp to generate em.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f minim.mdp -c fws_solv_ions.gro -p topol.top -o em.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm em”}<br></pre><br>&nbsp;<br><br>我们可以使用grace打开查看，若没有安装可以使用<code>sudo apt-get install grace</code>进行安装，为了演示方便我们直接在内部作图：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f em.edr -o energy.xvg&lt;&lt;EOF\n10\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”energy.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br><br><img src="http://upload-images.jianshu.io/upload_images/903467-e869284ee2c703d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_27_0.png"><br><br>### NVT平衡<br><br>EM可保证我们的初始结构在几何构型和溶剂分子取向等方面都合理. 为了开始真正的动力学模拟, 我们必须对蛋白质周围的溶剂和离子进行平衡. 如果我们在这时就尝试进行非限制的动力学模拟, 体系可能会崩溃. 原因在于我们基本上只是优化了溶剂分子自身, 而没有考虑溶质. 我们需要将体系置于设定的模拟温度下, 以确定溶质(蛋白质)的合理取向. 达到正确的温度(基于动能)之后, 我们要对体系施加压力直到它达到合适的密度.<br><br>还记得好久以前我们用<code>db2gmx</code>生成的<code>osre.itp</code>文件么? 现在它要派上用场了. <code>posre.itp</code>文件的目的在于对蛋白质中的重原子(非氢原子)施加位置限制(position restraining)力. 这些原子不会移动, 除非增加非常大的能量. 位置限制的用途在于, 我们可以平衡蛋白质周围的溶剂分子, 而不引起蛋白质结构的变化.<br><br>平衡往往分两个阶段进行. 第一个阶段在NVT系综(粒子数, 体积和温度都是恒定的)下进行. 这个系综也被称为等温等容系综或正则系综. 这个过程的需要的时间与体系的构成有关, 但在NVT系综中, 体系的温度应达到预期值并基本保持不变. 如果温度仍然没有稳定, 那就需要更多的时间. 通常情况下, 50 ps到100 ps就足够了,为了节约时间，我们仅进行2ps的NVT。<br><code>nvt.mdp</code>的设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2  1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘nvt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2 <em> 1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed<br>“””)<br>file.close()</em></pre><br>接下来与能量最小化情况类似：<br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f nvt.mdp -c em.gro -p topol.top -o nvt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm nvt”}<br></pre><br>&nbsp;<br><br>由于模拟的时间比较短，我一会儿就模拟好了<br>让我们来分析温度变化情况, 再次使用<code>energy</code>模块：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f nvt.edr -o nvt.xvg&lt;&lt;EOF\n15\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”nvt.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-42c51cc3e29a1ed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>由于这里<code>nstxout</code>记录值过大所以只有两个点，应该把值设置更小，从而产生如下结果<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-5d8239bcb5b0786b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="temp3.png"><br><br>前一步的NVT平衡稳定了体系的温度. 在采集数据之前, 我们还需要稳定体系的压力(因此还包括密度). 压力平衡是在NPT系综下进行的, 其中粒子数, 压力和温度都保持不变. 这个系综也被称为等温等压系综, 最接近实验条件.<br>一般建议设置的模拟时长为1ns，但是由于时间关系，这里仅模拟10ps<br><code>npt.mdp</code>设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2  5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘npt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2 <em> 5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -o npt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm npt”}<br></pre><br>&nbsp;<br><br>我们可以通过压力和密度检测来看模拟是否平衡：<br><br>&nbsp;<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#压力<br>out=!{“gmx energy -f npt.edr -o pressure.xvg&lt;&lt;EOF\n16\n0\nEOF”}<br>#密度<br>out=!{“gmx energy -f npt.edr -o density.xvg&lt;&lt;EOF\n22\n0\nEOF”}</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”pressure.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-0b3e2f17ca1c67fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_43_0.png"><br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”density.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-8012dcf833f90e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_44_0.png"><br><br>### 成品MD<br><br>随着两个平衡阶段的完成, 体系已经在需要的温度和压强下平衡好了. 我们现在可以放开位置限制并进行成品MD以收集数据了. 这个过程跟前面的类似. 运行<code>grompp</code>时, 我们还要用到检查点文件(在这种情况下,其中包含了压力耦合信息). 我们要进行一个1 ns的MD模拟, 所用的参数文件如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">title       = OPLS MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2  500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘md.mdp’,’w’)<br>file.write(“””<br>title       = OPLS Lysozyme MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2 * 500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx mdrun -v -deffnm md_0_1<br></pre><br>&nbsp;<br><br>具体的分析方法与内容我们下次分享<br><br></div>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-gromacs-e4-b9-8b-e6-b0-b4-e4-b8-ad-e9-83-a8-e5-88-86-e8-bc-89-e8-84-82-e8-9b-8b-e7-99-bd"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">GROMACS之水中部分載脂蛋白</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-11 10:18:51" datetime="2017-07-11T02:18:51.000Z"  itemprop="datePublished">2017-07-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>&gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。<br><br>首先看一下GROMACS做MD的一般流程<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GROMACS MD一般流程" title="">
+                </div>
+                <div class="image-caption">GROMACS MD一般流程</div>
+            </figure><br><br>### 下载PDB文件<br><br>首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter notebook编写，若在终端运行的话无需加out=!{}<br>例如：out=!{“ls”},在终端运行只需要为ls即可<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“wget <a href="http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}" target="_blank" rel="external">http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}</a><br></pre><br><br>### 生成蛋白拓扑（Topology文件）<br><br>在用GROMACS的程序对pdb文件进行处理前, 要做许多检查, 以保证pdb文件的完整性. 根据pdb文件的不同, 要进行不同的处理. 需要处理的方面包括但不限于:<br><br>&gt; -氢原子<br>&gt; -C端氧原子<br>&gt; -结晶水<br>&gt; -缺失原子/残基/侧链<br>&gt; -二硫键<br>&gt; -带电残基<br><br>请在进行下一步之前仔细简单是否有错误，如教程蜘蛛肽需要进行末尾蛋白的补全，如删除蛋白中本身含有的结晶水等等工作。<br>在本例中你需要从20个模型中获取单一模型，可以使用例如<code>pymol</code>进行操作。<br>下一步需要注意的是我们需要<code>-ignh</code>进行删除pdb中的氢，然后gmx进行自动加氢。我们将其修改为fws.pdb<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx pdb2gmx -f fws.pdb -ignh -o 1ODQ_processed.gro -water spce<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">····<br><br>    Select the Force Field:<br>    From ‘/usr/share/gromacs/top’:<br>     1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)<br>     2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)<br>     3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)<br>     4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)<br>     5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)<br>     6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)<br>     7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)<br>     8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)<br>     9: GROMOS96 43a1 force field<br>    10: GROMOS96 43a2 force field (improved alkane dihedrals)<br>    11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)<br>    12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)<br>    13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)<br>    14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)<br>    15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</pre><br>&nbsp;<br><br>力场包含了将要写入到拓扑文件中的信息. 这个选择非常重要! 你必须仔细了解每个力场, 并决定哪个力场最适用于你的体系. 在本教程中, 我们选gromos联合原子力场, 因此在命令提示行中输入<code>14</code>, 然后回车.由于在jupyter中shell交互不是很方便，所以我们采用的是在尾部<code>&amp;lt;&amp;lt;EOF\n14\nEOF</code>的方式进行交互，下面的情况类似，不再申明，<strong>即大家在实际操作中在shell终端输入前面的命令，后面选择的选项与后面命令类似</strong>。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx pdb2gmx -f fws.pdb -ignh -o fws_processed.gro -water spce &lt;&lt;EOF\n14\nEOF”}<br></pre><br>&nbsp;<br><br>### 定义单位盒子并填充溶剂<br><br>教程中是需要模拟一个简单的水溶液分子，定义模拟用的盒子并添加溶剂分为两步完成：<br>1.使用<code>editconf</code>模块定义盒子的尺寸<br>2.使用<code>solvate</code>模块想盒子中填充水<br>首先我们来定义盒子，本教程用的正方形盒子，其实盒子种类很多，一般使用菱形十二面体晶胞，其可以节省许多水分子，从而节省计算量。<code>-c</code>表示分子在盒子的中心部分。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx editconf -f fws_processed.gro -o fws_newbox.gro -c -d 1.0 -bt cubic”}<br></pre><br>我们可以在vmd或者pymol中查看分子的情况，在用shell交互中下面块的内容不需要输入，转而使用<code>vmd fws_newbox.gro</code>或者<code>pymol fws_newbox.gro</code>进行查看<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用，真正进行学习时直接vmd或者pymol查看<br>from IPythonTweaks import <em></em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">#演示使用<br>pymolPlotStructure(“fws_newbox.gro”)</pre><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_11_0.png" title="">
+                </div>
+                <div class="image-caption">output_11_0.png</div>
+            </figure><br><br>之后我们进行溶剂分子的增加<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx solvate -cp fws_newbox.gro -cs spc216.gro -o fws_solv.gro -p topol.top”}<br></pre><br><br>同样我们也可以进行可视化查看<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>pymolPlotStructure(“fws_solv.gro”)</pre><br>&nbsp;<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-56a9f9532ac746ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_15_0.png" title="">
+                </div>
+                <div class="image-caption">output_15_0.png</div>
+            </figure><br><br>### 增加离子<br><br>现在我们已经有了一个带电荷的溶液体系，<code>其实在pdb2gmx</code>程序的输出文件会显示带了多少电荷，如果没有查看到我们可以查看一下<code>topol.top</code>文件中<code>[ atoms ]</code>指令的的最后一行, 它应该含有<code>qtot 0</code>这一信息. 由于生命体系中不存在净电荷, 所以我们必须往我们体系中添加离子, 以保证总电荷为零.虽然电荷为0，我们还是增加一下0个离子，作为演示的作用。<br>首先我们创建一个ions.mdp的文件，并输入如下内容：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)</pre><br>&nbsp;<br><br>使用如下命令来产生<code>.tpr</code>文件<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“ions.mdp”,”w”)<br>file.write(“””<br>; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f ions.mdp -c fws_solv.gro -p topol.top -o ions.tpr”}<br>out=!{“gmx genion -s ions.tpr -o fws_solv_ions.gro -p topol.top -pname NA -nname CL -nn 0 &lt;&lt;EOF\n13\nEOF”}</pre><br>&nbsp;<br><br>### 能量最小化<br><br>现在, 我们已经添加了溶剂分子和离子, 得到了一个电中性的体系. 在开始动力学模拟之前, 我们必须保证体系的结构正常, 原子之间的距离不会过近, 几何构型合理. 对结构进行弛豫可以达到这些要求, 这个过程称为能量最小化(EM, energy minimization).<br><br>能量最小化过程与添加离子过程差不多. 我们要再次使用<code>grompp</code>将结构, 拓扑和模拟参数写入一个二进制的输入文件中(.tpr), 但这次我们不需要将<code>.tpr</code>文件传递给<code>genion</code>, 而是使用GROMACS MD引擎的<code>mdrun</code>模块来进行能量最小化.<br>能量最小化的<code>mdp</code>文件参数与解释如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; 传递给预处理器的一些定义<br>define          = -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量<br><br>; 模拟类型, 结束控制, 输出控制参数<br>integrator      = steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>emtol           = 500.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>emstep          = 0.01          ; 初始步长(nm)<br>nsteps          = 1000          ; 在能量最小化中, 指定最大迭代次数<br>nstenergy       = 1             ; 能量写出频率<br>energygrps      = System        ; 要写出的能量组<br><br>; 近邻列表, 相互作用计算参数<br>nstlist         = 1             ; 更新近邻列表的频率. 1表示每步都更新<br>ns_type         = grid          ; 近邻列表确定方法(simple或grid)<br>coulombtype     = PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>rlist           = 1.0           ; 短程力近邻列表的截断值<br>rcoulomb        = 1.0           ; 长程库仑力的截断值<br>vdwtype         = cut-off       ; 计算范德华作用的方法<br>rvdw            = 1.0           ; 范德华距离截断值<br>constraints     = none          ; 设置模型中使用的约束<br>pbc             = xyz           ; 3维周期性边界条件</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“minim.mdp”,”w”)<br>file.write(“””<br>; minim.mdp - used as input into grompp to generate em.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f minim.mdp -c fws_solv_ions.gro -p topol.top -o em.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm em”}<br></pre><br>&nbsp;<br><br>我们可以使用grace打开查看，若没有安装可以使用<code>sudo apt-get install grace</code>进行安装，为了演示方便我们直接在内部作图：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f em.edr -o energy.xvg&lt;&lt;EOF\n10\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”energy.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-e869284ee2c703d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_27_0.png" title="">
+                </div>
+                <div class="image-caption">output_27_0.png</div>
+            </figure><br><br>### NVT平衡<br><br>EM可保证我们的初始结构在几何构型和溶剂分子取向等方面都合理. 为了开始真正的动力学模拟, 我们必须对蛋白质周围的溶剂和离子进行平衡. 如果我们在这时就尝试进行非限制的动力学模拟, 体系可能会崩溃. 原因在于我们基本上只是优化了溶剂分子自身, 而没有考虑溶质. 我们需要将体系置于设定的模拟温度下, 以确定溶质(蛋白质)的合理取向. 达到正确的温度(基于动能)之后, 我们要对体系施加压力直到它达到合适的密度.<br><br>还记得好久以前我们用<code>db2gmx</code>生成的<code>osre.itp</code>文件么? 现在它要派上用场了. <code>posre.itp</code>文件的目的在于对蛋白质中的重原子(非氢原子)施加位置限制(position restraining)力. 这些原子不会移动, 除非增加非常大的能量. 位置限制的用途在于, 我们可以平衡蛋白质周围的溶剂分子, 而不引起蛋白质结构的变化.<br><br>平衡往往分两个阶段进行. 第一个阶段在NVT系综(粒子数, 体积和温度都是恒定的)下进行. 这个系综也被称为等温等容系综或正则系综. 这个过程的需要的时间与体系的构成有关, 但在NVT系综中, 体系的温度应达到预期值并基本保持不变. 如果温度仍然没有稳定, 那就需要更多的时间. 通常情况下, 50 ps到100 ps就足够了,为了节约时间，我们仅进行2ps的NVT。<br><code>nvt.mdp</code>的设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2  1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘nvt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2 <em> 1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed<br>“””)<br>file.close()</em></pre><br>接下来与能量最小化情况类似：<br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f nvt.mdp -c em.gro -p topol.top -o nvt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm nvt”}<br></pre><br>&nbsp;<br><br>由于模拟的时间比较短，我一会儿就模拟好了<br>让我们来分析温度变化情况, 再次使用<code>energy</code>模块：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f nvt.edr -o nvt.xvg&lt;&lt;EOF\n15\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”nvt.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-42c51cc3e29a1ed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>由于这里<code>nstxout</code>记录值过大所以只有两个点，应该把值设置更小，从而产生如下结果<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-5d8239bcb5b0786b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="temp3.png" title="">
+                </div>
+                <div class="image-caption">temp3.png</div>
+            </figure><br><br>前一步的NVT平衡稳定了体系的温度. 在采集数据之前, 我们还需要稳定体系的压力(因此还包括密度). 压力平衡是在NPT系综下进行的, 其中粒子数, 压力和温度都保持不变. 这个系综也被称为等温等压系综, 最接近实验条件.<br>一般建议设置的模拟时长为1ns，但是由于时间关系，这里仅模拟10ps<br><code>npt.mdp</code>设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2  5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘npt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2 <em> 5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -o npt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm npt”}<br></pre><br>&nbsp;<br><br>我们可以通过压力和密度检测来看模拟是否平衡：<br><br>&nbsp;<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#压力<br>out=!{“gmx energy -f npt.edr -o pressure.xvg&lt;&lt;EOF\n16\n0\nEOF”}<br>#密度<br>out=!{“gmx energy -f npt.edr -o density.xvg&lt;&lt;EOF\n22\n0\nEOF”}</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”pressure.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-0b3e2f17ca1c67fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_43_0.png" title="">
+                </div>
+                <div class="image-caption">output_43_0.png</div>
+            </figure><br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”density.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-8012dcf833f90e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_44_0.png" title="">
+                </div>
+                <div class="image-caption">output_44_0.png</div>
+            </figure><br><br>### 成品MD<br><br>随着两个平衡阶段的完成, 体系已经在需要的温度和压强下平衡好了. 我们现在可以放开位置限制并进行成品MD以收集数据了. 这个过程跟前面的类似. 运行<code>grompp</code>时, 我们还要用到检查点文件(在这种情况下,其中包含了压力耦合信息). 我们要进行一个1 ns的MD模拟, 所用的参数文件如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">title       = OPLS MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2  500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘md.mdp’,’w’)<br>file.write(“””<br>title       = OPLS Lysozyme MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2 * 500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx mdrun -v -deffnm md_0_1<br></pre><br>&nbsp;<br><br>具体的分析方法与内容我们下次分享<br><br></div>
 
 <p>参考文献:  <a href="http://jerkwin.coding.me/GMX/GMXtut-1/#%E6%A6%82%E8%BF%B0" target="_blank" rel="external">GROMACS教程之水中的溶菌酶</a></p>
 <p><a href="https://github.com/lupoglaz/GromacsIPython" target="_blank" rel="external">GromacsIPython</a></p>
 <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+IyMjIEdST01BQ1PkuYvmsLTkuK3pg6jliIbovInohILom4vnmb08L3A+PHA+5pys5pWZ56iL 5p2l6Ieq5LqO5p2O57un5a2Y6ICB5biI5Y2a5a6i77yaaHR0cDovL2plcmt3aW4uY29kaW5nLm1l L0dNWC9HTVh0dXQtMS8jJUU2JUE2JTgyJUU4JUJGJUIwPGJyPiDnibnmraTor7TmmI48L3A+PHA+ Jmd0O+S7iuWkqeW4puWSjOWkp+WutuS7i+e7jeS4gOS4i2dyb21hY3PmnIDnroDljZXnmoTmlZnn qIvvvIzov5nkuKrmlZnnqIvmnY7ogIHluIjlt7Lnu4/nu4Tnu4fnv7vor5HkuobkuIDpgY3vvIzn v7vor5HnmoTotKjph4/pnZ7luLjpq5jvvIzmiJHku43nhLbngpLkuIDpgY3lianppa3kuLvopoHm mK/mg7Plh4blpIfmioroh6rlt7HmiYDlrabnmoTmuKnmlYXnn6XmlrDkuIDpgY3vvIzkuLrkuobm m7TliqDlv6vpgJ/nmoTov5vooYzmqKHmi5/vvIzmiJHku6zlsIbkuKTkuKrmlZnnqIvnmoTom4vn mb3ov5vooYzkuobmm7/mjaLvvIzljbPlsIbovInohILom4vnmb3mm7/mjaLkuobmurboj4zphbbv vIzlrp7pmYXkuIrmmK/kuIDmoLfnmoTjgII8L3A+PHA+6aaW5YWI55yL5LiA5LiLR1JPTUFDU+WB mk1E55qE5LiA6Iis5rWB56iLPGJyPiAhW0dST01BQ1MgTUTkuIDoiKzmtYHnqItdKGh0dHA6Ly91 cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctOWQ5MmYxNmQ5NzAy OThiNC5wbmc/aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEy NDApPC9wPjxwPiMjIyDkuIvovb1QRELmlofku7Y8YnI+IOmmluWFiOaIkeS7rOWcqFBEQuaVsOaN ruW6k+S4i+i9veWwj+iCveeahFBEQuaWh+S7tu+8jOazqOaEj+aIkemHh+eUqOeahOS4ump1cHl0 ZXIgbm90ZWJvb2vnvJblhpnvvIzoi6XlnKjnu4jnq6/ov5DooYznmoTor53ml6DpnIDliqBvdXQ9 IXt9PGJyPiDkvovlpoLvvJpvdXQ9IXsibHMifSzlnKjnu4jnq6/ov5DooYzlj6rpnIDopoHkuLps c+WNs+WPrzwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJ3Z2V0IGh0dHA6Ly93d3cucmNzYi5v cmcvcGRiL2ZpbGVzLzFPRFEucGRiIn08YnI+IGBgYDwvcD48cD4jIyMg55Sf5oiQ6JuL55m95ouT 5omR77yIVG9wb2xvZ3nmlofku7bvvIk8YnI+IOWcqOeUqEdST01BQ1PnmoTnqIvluo/lr7lwZGLm lofku7bov5vooYzlpITnkIbliY0sIOimgeWBmuiuuOWkmuajgOafpSwg5Lul5L+d6K+BcGRi5paH 5Lu255qE5a6M5pW05oCnLiDmoLnmja5wZGLmlofku7bnmoTkuI3lkIwsIOimgei/m+ihjOS4jeWQ jOeahOWkhOeQhi4g6ZyA6KaB5aSE55CG55qE5pa56Z2i5YyF5ous5L2G5LiN6ZmQ5LqOOjwvcD48 cD4t5rCi5Y6f5a2QPGJyPiAtQ+err+awp+WOn+WtkDxicj4gLee7k+aZtuawtDxicj4gLee8uuWk seWOn+WtkC/mrovln7ov5L6n6ZO+PGJyPiAt5LqM56Gr6ZSuPGJyPiAt5bim55S15q6L5Z+6PGJy PiDor7flnKjov5vooYzkuIvkuIDmraXkuYvliY3ku5Tnu4bnroDljZXmmK/lkKbmnInplJnor6/v vIzlpoLmlZnnqIvonJjom5vogr3pnIDopoHov5vooYzmnKvlsL7om4vnmb3nmoTooaXlhajvvIzl poLliKDpmaTom4vnmb3kuK3mnKzouqvlkKvmnInnmoTnu5PmmbbmsLTnrYnnrYnlt6XkvZzjgII8 YnI+IOWcqOacrOS+i+S4reS9oOmcgOimgeS7jjIw5Liq5qih5Z6L5Lit6I635Y+W5Y2V5LiA5qih 5Z6L77yM5Y+v5Lul5L2/55So5L6L5aaCYHB5bW9sYOi/m+ihjOaTjeS9nOOAgjxicj4g5LiL5LiA 5q2l6ZyA6KaB5rOo5oSP55qE5piv5oiR5Lus6ZyA6KaBYC1pZ25oYOi/m+ihjOWIoOmZpHBkYuS4 reeahOawou+8jOeEtuWQjmdteOi/m+ihjOiHquWKqOWKoOawouOAguaIkeS7rOWwhuWFtuS/ruaU ueS4umZ3cy5wZGI8L3A+PHA+YGBgcHl0aG9uPGJyPiAhZ214IHBkYjJnbXggLWYgZndzLnBkYiAt aWduaCAtbyAxT0RRX3Byb2Nlc3NlZC5ncm8gLXdhdGVyIHNwY2U8YnI+IGBgYDwvcD48cD5gYGA8 YnI+IMK3wrfCt8K3PC9wPjxwPlNlbGVjdCB0aGUgRm9yY2UgRmllbGQ6PGJyPiBGcm9tICcvdXNy L3NoYXJlL2dyb21hY3MvdG9wJzo8YnI+IDE6IEFNQkVSMDMgcHJvdGVpbiwgbnVjbGVpYyBBTUJF Ujk0IChEdWFuIGV0IGFsLiwgSi4gQ29tcC4gQ2hlbS4gMjQsIDE5OTktMjAxMiwgMjAwMyk8YnI+ IDI6IEFNQkVSOTQgZm9yY2UgZmllbGQgKENvcm5lbGwgZXQgYWwuLCBKQUNTIDExNywgNTE3OS01 MTk3LCAxOTk1KTxicj4gMzogQU1CRVI5NiBwcm90ZWluLCBudWNsZWljIEFNQkVSOTQgKEtvbGxt YW4gZXQgYWwuLCBBY2MuIENoZW0uIFJlcy4gMjksIDQ2MS00NjksIDE5OTYpPGJyPiA0OiBBTUJF Ujk5IHByb3RlaW4sIG51Y2xlaWMgQU1CRVI5NCAoV2FuZyBldCBhbC4sIEouIENvbXAuIENoZW0u IDIxLCAxMDQ5LTEwNzQsIDIwMDApPGJyPiA1OiBBTUJFUjk5U0IgcHJvdGVpbiwgbnVjbGVpYyBB TUJFUjk0IChIb3JuYWsgZXQgYWwuLCBQcm90ZWlucyA2NSwgNzEyLTcyNSwgMjAwNik8YnI+IDY6 IEFNQkVSOTlTQi1JTEROIHByb3RlaW4sIG51Y2xlaWMgQU1CRVI5NCAoTGluZG9yZmYtTGFyc2Vu IGV0IGFsLiwgUHJvdGVpbnMgNzgsIDE5NTAtNTgsIDIwMTApPGJyPiA3OiBBTUJFUkdTIGZvcmNl IGZpZWxkIChHYXJjaWEgJmFtcDsgU2FuYm9ubWF0c3UsIFBOQVMgOTksIDI3ODItMjc4NywgMjAw Mik8YnI+IDg6IENIQVJNTTI3IGFsbC1hdG9tIGZvcmNlIGZpZWxkIChDSEFSTTIyIHBsdXMgQ01B UCBmb3IgcHJvdGVpbnMpPGJyPiA5OiBHUk9NT1M5NiA0M2ExIGZvcmNlIGZpZWxkPGJyPiAxMDog R1JPTU9TOTYgNDNhMiBmb3JjZSBmaWVsZCAoaW1wcm92ZWQgYWxrYW5lIGRpaGVkcmFscyk8YnI+ IDExOiBHUk9NT1M5NiA0NWEzIGZvcmNlIGZpZWxkIChTY2h1bGVyIEpDQyAyMDAxIDIyIDEyMDUp PGJyPiAxMjogR1JPTU9TOTYgNTNhNSBmb3JjZSBmaWVsZCAoSkNDIDIwMDQgdm9sIDI1IHBhZyAx NjU2KTxicj4gMTM6IEdST01PUzk2IDUzYTYgZm9yY2UgZmllbGQgKEpDQyAyMDA0IHZvbCAyNSBw YWcgMTY1Nik8YnI+IDE0OiBHUk9NT1M5NiA1NGE3IGZvcmNlIGZpZWxkIChFdXIuIEJpb3BoeXMu IEouICgyMDExKSwgNDAsLCA4NDMtODU2LCBET0k6IDEwLjEwMDcvczAwMjQ5LTAxMS0wNzAwLTkp PGJyPiAxNTogT1BMUy1BQS9MIGFsbC1hdG9tIGZvcmNlIGZpZWxkICgyMDAxIGFtaW5vYWNpZCBk aWhlZHJhbHMpPGJyPiBgYGA8L3A+PHA+5Yqb5Zy65YyF5ZCr5LqG5bCG6KaB5YaZ5YWl5Yiw5ouT 5omR5paH5Lu25Lit55qE5L+h5oGvLiDov5nkuKrpgInmi6npnZ7luLjph43opoEhIOS9oOW/hemh u+S7lOe7huS6huino+avj+S4quWKm+Wcuiwg5bm25Yaz5a6a5ZOq5Liq5Yqb5Zy65pyA6YCC55So 5LqO5L2g55qE5L2T57O7LiDlnKjmnKzmlZnnqIvkuK0sIOaIkeS7rOmAiWdyb21vc+iBlOWQiOWO n+WtkOWKm+Wcuiwg5Zug5q2k5Zyo5ZG95Luk5o+Q56S66KGM5Lit6L6T5YWlYDE0YCwg54S25ZCO 5Zue6L2mLueUseS6juWcqGp1cHl0ZXLkuK1zaGVsbOS6pOS6kuS4jeaYr+W+iOaWueS+v++8jOaJ gOS7peaIkeS7rOmHh+eUqOeahOaYr+WcqOWwvumDqGAmbHQ7Jmx0O0VPRlxuMTRcbkVPRmDnmoTm lrnlvI/ov5vooYzkuqTkupLvvIzkuIvpnaLnmoTmg4XlhrXnsbvkvLzvvIzkuI3lho3nlLPmmI7v vIwqKuWNs+Wkp+WutuWcqOWunumZheaTjeS9nOS4reWcqHNoZWxs57uI56uv6L6T5YWl5YmN6Z2i 55qE5ZG95Luk77yM5ZCO6Z2i6YCJ5oup55qE6YCJ6aG55LiO5ZCO6Z2i5ZG95Luk57G75Ly8Kirj gII8L3A+PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IHBkYjJnbXggLWYgZndzLnBkYiAtaWdu aCAtbyBmd3NfcHJvY2Vzc2VkLmdybyAtd2F0ZXIgc3BjZSAmbHQ7Jmx0O0VPRlxuMTRcbkVPRiJ9 PGJyPiBgYGA8L3A+PHA+IyMjIOWumuS5ieWNleS9jeebkuWtkOW5tuWhq+WFhea6tuWJgjxicj4g 5pWZ56iL5Lit5piv6ZyA6KaB5qih5ouf5LiA5Liq566A5Y2V55qE5rC05rq25ray5YiG5a2Q77yM 5a6a5LmJ5qih5ouf55So55qE55uS5a2Q5bm25re75Yqg5rq25YmC5YiG5Li65Lik5q2l5a6M5oiQ 77yaPGJyPiAxLuS9v+eUqGBlZGl0Y29uZmDmqKHlnZflrprkuYnnm5LlrZDnmoTlsLrlr7g8YnI+ IDIu5L2/55SoYHNvbHZhdGVg5qih5Z2X5oOz55uS5a2Q5Lit5aGr5YWF5rC0PGJyPiDpppblhYjm iJHku6zmnaXlrprkuYnnm5LlrZDvvIzmnKzmlZnnqIvnlKjnmoTmraPmlrnlvaLnm5LlrZDvvIzl hbblrp7nm5LlrZDnp43nsbvlvojlpJrvvIzkuIDoiKzkvb/nlKjoj7HlvaLljYHkuozpnaLkvZPm mbbog57vvIzlhbblj6/ku6XoioLnnIHorrjlpJrmsLTliIblrZDvvIzku47ogIzoioLnnIHorqHn rpfph4/jgIJgLWNg6KGo56S65YiG5a2Q5Zyo55uS5a2Q55qE5Lit5b+D6YOo5YiG44CCPC9wPjxw PmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBlZGl0Y29uZiAtZiBmd3NfcHJvY2Vzc2VkLmdybyAt byBmd3NfbmV3Ym94LmdybyAtYyAtZCAxLjAgLWJ0IGN1YmljIn08YnI+IGBgYDwvcD48cD7miJHk u6zlj6/ku6XlnKh2bWTmiJbogIVweW1vbOS4reafpeeci+WIhuWtkOeahOaDheWGte+8jOWcqOeU qHNoZWxs5Lqk5LqS5Lit5LiL6Z2i5Z2X55qE5YaF5a655LiN6ZyA6KaB6L6T5YWl77yM6L2s6ICM 5L2/55SoYHZtZCBmd3NfbmV3Ym94Lmdyb2DmiJbogIVgcHltb2wgZndzX25ld2JveC5ncm9g6L+b 6KGM5p+l55yLPC9wPjxwPmBgYHB5dGhvbjxicj4gI+a8lOekuuS9v+eUqO+8jOecn+ato+i/m+ih jOWtpuS5oOaXtuebtOaOpXZtZOaIluiAhXB5bW9s5p+l55yLPGJyPiBmcm9tIElQeXRob25Ud2Vh a3MgaW1wb3J0ICo8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+ IHB5bW9sUGxvdFN0cnVjdHVyZSgiZndzX25ld2JveC5ncm8iKTxicj4gYGBgPC9wPjxwPiFbb3V0 cHV0XzExXzAucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFn ZXMvOTAzNDY3LWE3ZGUyNjU2OGZiYjY0MWQucG5nP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3Ry aXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD7kuYvlkI7miJHku6zov5vooYzmurbliYLl iIblrZDnmoTlop7liqA8L3A+PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IHNvbHZhdGUgLWNw IGZ3c19uZXdib3guZ3JvIC1jcyBzcGMyMTYuZ3JvIC1vIGZ3c19zb2x2LmdybyAtcCB0b3BvbC50 b3AifTxicj4gYGBgPC9wPjxwPuWQjOagt+aIkeS7rOS5n+WPr+S7pei/m+ihjOWPr+inhuWMluaf peecizwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IHB5bW9sUGxvdFN0cnVj dHVyZSgiZndzX3NvbHYuZ3JvIik8YnI+IGBgYDwvcD48cD4hW291dHB1dF8xNV8wLnBuZ10oaHR0 cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny01NmE5Zjk1 MzJhYzc0NmFlLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8y L3cvMTI0MCk8L3A+PHA+IyMjIOWinuWKoOemu+WtkDxicj4g546w5Zyo5oiR5Lus5bey57uP5pyJ 5LqG5LiA5Liq5bim55S16I2355qE5rq25ray5L2T57O777yMYOWFtuWunuWcqHBkYjJnbXhg56iL 5bqP55qE6L6T5Ye65paH5Lu25Lya5pi+56S65bim5LqG5aSa5bCR55S16I2377yM5aaC5p6c5rKh 5pyJ5p+l55yL5Yiw5oiR5Lus5Y+v5Lul5p+l55yL5LiA5LiLYHRvcG9sLnRvcGDmlofku7bkuK1g WyBhdG9tcyBdYOaMh+S7pOeahOeahOacgOWQjuS4gOihjCwg5a6D5bqU6K+l5ZCr5pyJYHF0b3Qg MGDov5nkuIDkv6Hmga8uIOeUseS6jueUn+WRveS9k+ezu+S4reS4jeWtmOWcqOWHgOeUteiNtywg 5omA5Lul5oiR5Lus5b+F6aG75b6A5oiR5Lus5L2T57O75Lit5re75Yqg56a75a2QLCDku6Xkv53o r4HmgLvnlLXojbfkuLrpm7Yu6Jm954S255S16I235Li6MO+8jOaIkeS7rOi/mOaYr+WinuWKoOS4 gOS4izDkuKrnprvlrZDvvIzkvZzkuLrmvJTnpLrnmoTkvZznlKjjgII8YnI+IOmmluWFiOaIkeS7 rOWIm+W7uuS4gOS4qmlvbnMubWRw55qE5paH5Lu277yM5bm26L6T5YWl5aaC5LiL5YaF5a6577ya PGJyPiBgYGA8YnI+IDsgaW9ucy5tZHAgLSB1c2VkIGFzIGlucHV0IGludG8gZ3JvbXBwIHRvIGdl bmVyYXRlIGlvbnMudHByPGJyPiA7IFBhcmFtZXRlcnMgZGVzY3JpYmluZyB3aGF0IHRvIGRvLCB3 aGVuIHRvIHN0b3AgYW5kIHdoYXQgdG8gc2F2ZTxicj4gaW50ZWdyYXRvciA9IHN0ZWVwIDsgQWxn b3JpdGhtIChzdGVlcCA9IHN0ZWVwZXN0IGRlc2NlbnQgbWluaW1pemF0aW9uKTxicj4gZW10b2wg PSAxMDAwLjAgOyBTdG9wIG1pbmltaXphdGlvbiB3aGVuIHRoZSBtYXhpbXVtIGZvcmNlICZsdDsg MTAwMC4wIGtKL21vbC9ubTxicj4gZW1zdGVwID0gMC4wMSA7IEVuZXJneSBzdGVwIHNpemU8YnI+ IG5zdGVwcyA9IDUwMDAwIDsgTWF4aW11bSBudW1iZXIgb2YgKG1pbmltaXphdGlvbikgc3RlcHMg dG8gcGVyZm9ybTwvcD48cD47IFBhcmFtZXRlcnMgZGVzY3JpYmluZyBob3cgdG8gZmluZCB0aGUg bmVpZ2hib3JzIG9mIGVhY2ggYXRvbSBhbmQgaG93IHRvIGNhbGN1bGF0ZSB0aGUgaW50ZXJhY3Rp b25zPGJyPiBuc3RsaXN0ID0gMSA7IEZyZXF1ZW5jeSB0byB1cGRhdGUgdGhlIG5laWdoYm9yIGxp c3QgYW5kIGxvbmcgcmFuZ2UgZm9yY2VzPGJyPiBuc190eXBlID0gZ3JpZCA7IE1ldGhvZCB0byBk ZXRlcm1pbmUgbmVpZ2hib3IgbGlzdCAoc2ltcGxlLCBncmlkKTxicj4gcmxpc3QgPSAxLjAgOyBD dXQtb2ZmIGZvciBtYWtpbmcgbmVpZ2hib3IgbGlzdCAoc2hvcnQgcmFuZ2UgZm9yY2VzKTxicj4g Y291bG9tYnR5cGUgPSBQTUUgOyBUcmVhdG1lbnQgb2YgbG9uZyByYW5nZSBlbGVjdHJvc3RhdGlj IGludGVyYWN0aW9uczxicj4gcmNvdWxvbWIgPSAxLjAgOyBTaG9ydC1yYW5nZSBlbGVjdHJvc3Rh dGljIGN1dC1vZmY8YnI+IHJ2ZHcgPSAxLjAgOyBTaG9ydC1yYW5nZSBWYW4gZGVyIFdhYWxzIGN1 dC1vZmY8YnI+IHBiYyA9IHh5eiA7IFBlcmlvZGljIEJvdW5kYXJ5IENvbmRpdGlvbnMgKHllcy9u byk8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3Bl bigiaW9ucy5tZHAiLCJ3Iik8YnI+IGZpbGUud3JpdGUoIiIiPGJyPiA7IGlvbnMubWRwIC0gdXNl ZCBhcyBpbnB1dCBpbnRvIGdyb21wcCB0byBnZW5lcmF0ZSBpb25zLnRwcjxicj4gOyBQYXJhbWV0 ZXJzIGRlc2NyaWJpbmcgd2hhdCB0byBkbywgd2hlbiB0byBzdG9wIGFuZCB3aGF0IHRvIHNhdmU8 YnI+IGludGVncmF0b3IgPSBzdGVlcCA7IEFsZ29yaXRobSAoc3RlZXAgPSBzdGVlcGVzdCBkZXNj ZW50IG1pbmltaXphdGlvbik8YnI+IGVtdG9sID0gMTAwMC4wIDsgU3RvcCBtaW5pbWl6YXRpb24g d2hlbiB0aGUgbWF4aW11bSBmb3JjZSAmbHQ7IDEwMDAuMCBrSi9tb2wvbm08YnI+IGVtc3RlcCA9 IDAuMDEgOyBFbmVyZ3kgc3RlcCBzaXplPGJyPiBuc3RlcHMgPSA1MDAwMCA7IE1heGltdW0gbnVt YmVyIG9mIChtaW5pbWl6YXRpb24pIHN0ZXBzIHRvIHBlcmZvcm08L3A+PHA+OyBQYXJhbWV0ZXJz IGRlc2NyaWJpbmcgaG93IHRvIGZpbmQgdGhlIG5laWdoYm9ycyBvZiBlYWNoIGF0b20gYW5kIGhv dyB0byBjYWxjdWxhdGUgdGhlIGludGVyYWN0aW9uczxicj4gbnN0bGlzdCA9IDEgOyBGcmVxdWVu Y3kgdG8gdXBkYXRlIHRoZSBuZWlnaGJvciBsaXN0IGFuZCBsb25nIHJhbmdlIGZvcmNlczxicj4g bnNfdHlwZSA9IGdyaWQgOyBNZXRob2QgdG8gZGV0ZXJtaW5lIG5laWdoYm9yIGxpc3QgKHNpbXBs ZSwgZ3JpZCk8YnI+IHJsaXN0ID0gMS4wIDsgQ3V0LW9mZiBmb3IgbWFraW5nIG5laWdoYm9yIGxp c3QgKHNob3J0IHJhbmdlIGZvcmNlcyk8YnI+IGNvdWxvbWJ0eXBlID0gUE1FIDsgVHJlYXRtZW50 IG9mIGxvbmcgcmFuZ2UgZWxlY3Ryb3N0YXRpYyBpbnRlcmFjdGlvbnM8YnI+IHJjb3Vsb21iID0g MS4wIDsgU2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBjdXQtb2ZmPGJyPiBydmR3ID0gMS4wIDsg U2hvcnQtcmFuZ2UgVmFuIGRlciBXYWFscyBjdXQtb2ZmPGJyPiBwYmMgPSB4eXogOyBQZXJpb2Rp YyBCb3VuZGFyeSBDb25kaXRpb25zICh5ZXMvbm8pPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8 YnI+IGBgYDwvcD48cD7kvb/nlKjlpoLkuIvlkb3ku6TmnaXkuqfnlJ9gLnRwcmDmlofku7Y8L3A+ PHA+YGBgcHl0aG9uPGJyPiBvdXQ9IXsiZ214IGdyb21wcCAtZiBpb25zLm1kcCAtYyBmd3Nfc29s di5ncm8gLXAgdG9wb2wudG9wIC1vIGlvbnMudHByIn08YnI+IG91dD0heyJnbXggZ2VuaW9uIC1z IGlvbnMudHByIC1vIGZ3c19zb2x2X2lvbnMuZ3JvIC1wIHRvcG9sLnRvcCAtcG5hbWUgTkEgLW5u YW1lIENMIC1ubiAwICZsdDsmbHQ7RU9GXG4xM1xuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRo b248YnI+IG91dDxicj4gYGBgPC9wPjxwPmBgYDxicj4gwrfCt8K3PGJyPiAnR1JPTUFDUzogZ214 IGdlbmlvbiwgVkVSU0lPTiA1LjEuMicsPGJyPiAnRXhlY3V0YWJsZTogL3Vzci9iaW4vZ214Jyw8 YnI+ICdEYXRhIHByZWZpeDogL3VzcicsPGJyPiAnQ29tbWFuZCBsaW5lOicsPGJyPiAnIGdteCBn ZW5pb24gLXMgaW9ucy50cHIgLW8gZndzX3NvbHZfaW9ucy5ncm8gLXAgdG9wb2wudG9wIC1wbmFt ZSBOQSAtbm5hbWUgQ0wgLW5uIDAnLDxicj4gJycsPGJyPiAnUmVhZGluZyBmaWxlIGlvbnMudHBy LCBWRVJTSU9OIDUuMS4yIChzaW5nbGUgcHJlY2lzaW9uKScsPGJyPiAnUmVhZGluZyBmaWxlIGlv bnMudHByLCBWRVJTSU9OIDUuMS4yIChzaW5nbGUgcHJlY2lzaW9uKScsPGJyPiAnTm8gaW9ucyB0 byBhZGQsIHdpbGwganVzdCBjb3B5IGlucHV0IGNvbmZpZ3VyYXRpb24uJyw8YnI+ICcnLDxicj4g J2djcSM0MTg6ICJBIGN1cmlvdXMgYXNwZWN0IG9mIHRoZSB0aGVvcnkgb2YgZXZvbHV0aW9uIGlz IHRoYXQgZXZlcnlib2R5IHRoaW5rcyBoZSB1bmRlcnN0YW5kcyBpdC4iIChKYWNxdWVzIE1vbm9k KScsPGJyPiAnJ108L3A+PHA+YGBgPC9wPjxwPiMjIyDog73ph4/mnIDlsI/ljJY8YnI+IOeOsOWc qCwg5oiR5Lus5bey57uP5re75Yqg5LqG5rq25YmC5YiG5a2Q5ZKM56a75a2QLCDlvpfliLDkuobk uIDkuKrnlLXkuK3mgKfnmoTkvZPns7suIOWcqOW8gOWni+WKqOWKm+WtpuaooeaLn+S5i+WJjSwg 5oiR5Lus5b+F6aG75L+d6K+B5L2T57O755qE57uT5p6E5q2j5bi4LCDljp/lrZDkuYvpl7TnmoTo t53nprvkuI3kvJrov4fov5EsIOWHoOS9leaehOWei+WQiOeQhi4g5a+557uT5p6E6L+b6KGM5byb 6LGr5Y+v5Lul6L6+5Yiw6L+Z5Lqb6KaB5rGCLCDov5nkuKrov4fnqIvnp7DkuLrog73ph4/mnIDl sI/ljJYoRU0sIGVuZXJneSBtaW5pbWl6YXRpb24pLjwvcD48cD7og73ph4/mnIDlsI/ljJbov4fn qIvkuI7mt7vliqDnprvlrZDov4fnqIvlt67kuI3lpJouIOaIkeS7rOimgeWGjeasoeS9v+eUqGBn cm9tcHBg5bCG57uT5p6ELCDmi5PmiZHlkozmqKHmi5/lj4LmlbDlhpnlhaXkuIDkuKrkuozov5vl iLbnmoTovpPlhaXmlofku7bkuK0oLnRwciksIOS9hui/measoeaIkeS7rOS4jemcgOimgeWwhmAu dHByYOaWh+S7tuS8oOmAkue7mWBnZW5pb25gLCDogIzmmK/kvb/nlKhHUk9NQUNTIE1E5byV5pOO 55qEYG1kcnVuYOaooeWdl+adpei/m+ihjOiDvemHj+acgOWwj+WMli48YnI+IOiDvemHj+acgOWw j+WMlueahGBtZHBg5paH5Lu25Y+C5pWw5LiO6Kej6YeK5aaC5LiL77yaPGJyPiBgYGA8YnI+IDsg 5Lyg6YCS57uZ6aKE5aSE55CG5Zmo55qE5LiA5Lqb5a6a5LmJPGJyPiBkZWZpbmUgPSAtREZMRVhJ QkxFIDsg5L2/55So5p+U5oCn5rC05qih5Z6L6ICM6Z2e5Yia5oCn5qih5Z6LLCDov5nmoLfmnIDp maHkuIvpmY3ms5Xlj6/ov5vkuIDmraXmnIDlsI/ljJbog73ph488L3A+PHA+OyDmqKHmi5/nsbvl nossIOe7k+adn+aOp+WItiwg6L6T5Ye65o6n5Yi25Y+C5pWwPGJyPiBpbnRlZ3JhdG9yID0gc3Rl ZXAgOyDmjIflrprkvb/nlKjmnIDpmaHkuIvpmY3ms5Xov5vooYzog73ph4/mnIDlsI/ljJYuIOiL peiuvuS4umBjZ2DliJnkvb/nlKjlhbHova3moq/luqbms5U8YnI+IGVtdG9sID0gNTAwLjAgOyDo i6XlipvnmoTmnIDlpKflgLzlsI/kuo7mraTlgLzliJnorqTkuLrog73ph4/mnIDlsI/ljJbmlLbm lZso5Y2V5L2Na0ogbW9sXi0xXiBubV4tMV4pPGJyPiBlbXN0ZXAgPSAwLjAxIDsg5Yid5aeL5q2l 6ZW/KG5tKTxicj4gbnN0ZXBzID0gMTAwMCA7IOWcqOiDvemHj+acgOWwj+WMluS4rSwg5oyH5a6a 5pyA5aSn6L+t5Luj5qyh5pWwPGJyPiBuc3RlbmVyZ3kgPSAxIDsg6IO96YeP5YaZ5Ye66aKR546H PGJyPiBlbmVyZ3lncnBzID0gU3lzdGVtIDsg6KaB5YaZ5Ye655qE6IO96YeP57uEPC9wPjxwPjsg 6L+R6YK75YiX6KGoLCDnm7jkupLkvZznlKjorqHnrpflj4LmlbA8YnI+IG5zdGxpc3QgPSAxIDsg 5pu05paw6L+R6YK75YiX6KGo55qE6aKR546HLiAx6KGo56S65q+P5q2l6YO95pu05pawPGJyPiBu c190eXBlID0gZ3JpZCA7IOi/kemCu+WIl+ihqOehruWumuaWueazlShzaW1wbGXmiJZncmlkKTxi cj4gY291bG9tYnR5cGUgPSBQTUUgOyDorqHnrpfplb/nqIvpnZnnlLXnmoTmlrnms5UuIFBNReS4 uueykuWtkOe9keagvEV3YWxk5pa55rOVLCDov5jlj6/ku6Xkvb/nlKhjdXQtb2ZmPGJyPiBybGlz dCA9IDEuMCA7IOefreeoi+WKm+i/kemCu+WIl+ihqOeahOaIquaWreWAvDxicj4gcmNvdWxvbWIg PSAxLjAgOyDplb/nqIvlupPku5HlipvnmoTmiKrmlq3lgLw8YnI+IHZkd3R5cGUgPSBjdXQtb2Zm IDsg6K6h566X6IyD5b635Y2O5L2c55So55qE5pa55rOVPGJyPiBydmR3ID0gMS4wIDsg6IyD5b63 5Y2O6Led56a75oiq5pat5YC8PGJyPiBjb25zdHJhaW50cyA9IG5vbmUgOyDorr7nva7mqKHlnovk uK3kvb/nlKjnmoTnuqbmnZ88YnI+IHBiYyA9IHh5eiA7IDPnu7TlkajmnJ/mgKfovrnnlYzmnaHk u7Y8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3Bl bigibWluaW0ubWRwIiwidyIpPGJyPiBmaWxlLndyaXRlKCIiIjxicj4gOyBtaW5pbS5tZHAgLSB1 c2VkIGFzIGlucHV0IGludG8gZ3JvbXBwIHRvIGdlbmVyYXRlIGVtLnRwcjxicj4gOyBQYXJhbWV0 ZXJzIGRlc2NyaWJpbmcgd2hhdCB0byBkbywgd2hlbiB0byBzdG9wIGFuZCB3aGF0IHRvIHNhdmU8 YnI+IGludGVncmF0b3IgPSBzdGVlcCA7IEFsZ29yaXRobSAoc3RlZXAgPSBzdGVlcGVzdCBkZXNj ZW50IG1pbmltaXphdGlvbik8YnI+IGVtdG9sID0gMTAwMC4wIDsgU3RvcCBtaW5pbWl6YXRpb24g d2hlbiB0aGUgbWF4aW11bSBmb3JjZSAmbHQ7IDEwMDAuMCBrSi9tb2wvbm08YnI+IGVtc3RlcCA9 IDAuMDEgOyBFbmVyZ3kgc3RlcCBzaXplPGJyPiBuc3RlcHMgPSA1MDAwMCA7IE1heGltdW0gbnVt YmVyIG9mIChtaW5pbWl6YXRpb24pIHN0ZXBzIHRvIHBlcmZvcm08L3A+PHA+OyBQYXJhbWV0ZXJz IGRlc2NyaWJpbmcgaG93IHRvIGZpbmQgdGhlIG5laWdoYm9ycyBvZiBlYWNoIGF0b20gYW5kIGhv dyB0byBjYWxjdWxhdGUgdGhlIGludGVyYWN0aW9uczxicj4gbnN0bGlzdCA9IDEgOyBGcmVxdWVu Y3kgdG8gdXBkYXRlIHRoZSBuZWlnaGJvciBsaXN0IGFuZCBsb25nIHJhbmdlIGZvcmNlczxicj4g bnNfdHlwZSA9IGdyaWQgOyBNZXRob2QgdG8gZGV0ZXJtaW5lIG5laWdoYm9yIGxpc3QgKHNpbXBs ZSwgZ3JpZCk8YnI+IHJsaXN0ID0gMS4wIDsgQ3V0LW9mZiBmb3IgbWFraW5nIG5laWdoYm9yIGxp c3QgKHNob3J0IHJhbmdlIGZvcmNlcyk8YnI+IGNvdWxvbWJ0eXBlID0gUE1FIDsgVHJlYXRtZW50 IG9mIGxvbmcgcmFuZ2UgZWxlY3Ryb3N0YXRpYyBpbnRlcmFjdGlvbnM8YnI+IHJjb3Vsb21iID0g MS4wIDsgU2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBjdXQtb2ZmPGJyPiBydmR3ID0gMS4wIDsg U2hvcnQtcmFuZ2UgVmFuIGRlciBXYWFscyBjdXQtb2ZmPGJyPiBwYmMgPSB4eXogOyBQZXJpb2Rp YyBCb3VuZGFyeSBDb25kaXRpb25zICh5ZXMvbm8pPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8 YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZ3JvbXBwIC1mIG1pbmltLm1k cCAtYyBmd3Nfc29sdl9pb25zLmdybyAtcCB0b3BvbC50b3AgLW8gZW0udHByIn08YnI+IGBgYDwv cD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggbWRydW4gLXYgLWRlZmZubSBlbSJ9PGJyPiBg YGA8L3A+PHA+5oiR5Lus5Y+v5Lul5L2/55SoZ3JhY2XmiZPlvIDmn6XnnIvvvIzoi6XmsqHmnInl ronoo4Xlj6/ku6Xkvb/nlKhgc3VkbyBhcHQtZ2V0IGluc3RhbGwgZ3JhY2Vg6L+b6KGM5a6J6KOF 77yM5Li65LqG5ryU56S65pa55L6/5oiR5Lus55u05o6l5Zyo5YaF6YOo5YGa5Zu+PC9wPjxwPmBg YHB5dGhvbjxicj4gb3V0PSF7ImdteCBlbmVyZ3kgLWYgZW0uZWRyIC1vIGVuZXJneS54dmcmbHQ7 Jmx0O0VPRlxuMTBcbjBcbkVPRiJ9PGJyPiBgYGA8L3A+PHA+YGBgcHl0aG9uPGJyPiAj5ryU56S6 5L2/55SoPGJyPiBmaWcsYXg9cGx0LnN1YnBsb3RzKCk8YnI+IHBsb3RYVkcoYXgsImVuZXJneS54 dmciKTxicj4gcHBsLmxlZ2VuZChheCk8YnI+IHBsdC5zaG93KCk8YnI+IGBgYDwvcD48cD4hW291 dHB1dF8yN18wLnBuZ10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1h Z2VzLzkwMzQ2Ny1lODY5Mjg0ZWUyYzcwM2QzLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0 cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MCk8L3A+PHA+IyMjIE5WVOW5s+ihoTxicj4gRU3lj6/k v53or4HmiJHku6znmoTliJ3lp4vnu5PmnoTlnKjlh6DkvZXmnoTlnovlkozmurbliYLliIblrZDl j5blkJHnrYnmlrnpnaLpg73lkIjnkIYuIOS4uuS6huW8gOWni+ecn+ato+eahOWKqOWKm+Wtpuao oeaLnywg5oiR5Lus5b+F6aG75a+56JuL55m96LSo5ZGo5Zu055qE5rq25YmC5ZKM56a75a2Q6L+b 6KGM5bmz6KGhLiDlpoLmnpzmiJHku6zlnKjov5nml7blsLHlsJ3or5Xov5vooYzpnZ7pmZDliLbn moTliqjlipvlrabmqKHmi58sIOS9k+ezu+WPr+iDveS8muW0qea6gy4g5Y6f5Zug5Zyo5LqO5oiR 5Lus5Z+65pys5LiK5Y+q5piv5LyY5YyW5LqG5rq25YmC5YiG5a2Q6Ieq6LqrLCDogIzmsqHmnIno gIPomZHmurbotKguIOaIkeS7rOmcgOimgeWwhuS9k+ezu+e9ruS6juiuvuWumueahOaooeaLn+a4 qeW6puS4iywg5Lul56Gu5a6a5rq26LSoKOibi+eZvei0qCnnmoTlkIjnkIblj5blkJEuIOi+vuWI sOato+ehrueahOa4qeW6pijln7rkuo7liqjog70p5LmL5ZCOLCDmiJHku6zopoHlr7nkvZPns7vm lr3liqDljovlipvnm7TliLDlroPovr7liLDlkIjpgILnmoTlr4bluqYuPC9wPjxwPui/mOiusOW+ l+WlveS5heS7peWJjeaIkeS7rOeUqGBkYjJnbXhg55Sf5oiQ55qEYG9zcmUuaXRwYOaWh+S7tuS5 iD8g546w5Zyo5a6D6KaB5rS+5LiK55So5Zy65LqGLiBgcG9zcmUuaXRwYOaWh+S7tueahOebruea hOWcqOS6juWvueibi+eZvei0qOS4reeahOmHjeWOn+WtkCjpnZ7msKLljp/lrZAp5pa95Yqg5L2N 572u6ZmQ5Yi2KHBvc2l0aW9uIHJlc3RyYWluaW5nKeWKmy4g6L+Z5Lqb5Y6f5a2Q5LiN5Lya56e7 5YqoLCDpmaTpnZ7lop7liqDpnZ7luLjlpKfnmoTog73ph48uIOS9jee9rumZkOWItueahOeUqOmA lOWcqOS6jiwg5oiR5Lus5Y+v5Lul5bmz6KGh6JuL55m96LSo5ZGo5Zu055qE5rq25YmC5YiG5a2Q LCDogIzkuI3lvJXotbfom4vnmb3otKjnu5PmnoTnmoTlj5jljJYuPC9wPjxwPuW5s+ihoeW+gOW+ gOWIhuS4pOS4qumYtuautei/m+ihjC4g56ys5LiA5Liq6Zi25q615ZyoTlZU57O757u8KOeykuWt kOaVsCwg5L2T56ev5ZKM5rip5bqm6YO95piv5oGS5a6a55qEKeS4i+i/m+ihjC4g6L+Z5Liq57O7 57u85Lmf6KKr56ew5Li6562J5rip562J5a6557O757u85oiW5q2j5YiZ57O757u8LiDov5nkuKro v4fnqIvnmoTpnIDopoHnmoTml7bpl7TkuI7kvZPns7vnmoTmnoTmiJDmnInlhbMsIOS9huWcqE5W VOezu+e7vOS4rSwg5L2T57O755qE5rip5bqm5bqU6L6+5Yiw6aKE5pyf5YC85bm25Z+65pys5L+d 5oyB5LiN5Y+YLiDlpoLmnpzmuKnluqbku43nhLbmsqHmnInnqLPlrposIOmCo+WwsemcgOimgeab tOWkmueahOaXtumXtC4g6YCa5bi45oOF5Ya15LiLLCA1MCBwc+WIsDEwMCBwc+Wwsei2s+Wkn+S6 hizkuLrkuoboioLnuqbml7bpl7TvvIzmiJHku6zku4Xov5vooYwycHPnmoROVlTjgII8YnI+IGBu dnQubWRwYOeahOiuvue9ruWmguS4i++8mjxicj4gYGBgPGJyPiB0aXRsZSA9IE9QTFMgTlZUIGVx dWlsaWJyYXRpb248YnI+IGRlZmluZSA9IC1EUE9TUkVTIDsgcG9zaXRpb24gcmVzdHJhaW4gdGhl IHByb3RlaW48YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxlYXAt ZnJvZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSAxMDAwIDsgMiAqIDEwMDAgPSAyIHBzPGJyPiBk dCA9IDAuMDAyIDsgMiBmczxicj4gOyBPdXRwdXQgY29udHJvbDxicj4gbnN0eG91dCA9IDUwMCA7 IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMS4wIHBzPGJyPiBuc3R2b3V0ID0gNTAwIDsgc2F2ZSB2 ZWxvY2l0aWVzIGV2ZXJ5IDEuMCBwczxicj4gbnN0ZW5lcmd5ID0gNTAwIDsgc2F2ZSBlbmVyZ2ll cyBldmVyeSAxLjAgcHM8YnI+IG5zdGxvZyA9IDUwMCA7IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAx LjAgcHM8YnI+IDsgQm9uZCBwYXJhbWV0ZXJzPGJyPiBjb250aW51YXRpb24gPSBubyA7IGZpcnN0 IGR5bmFtaWNzIHJ1bjxicj4gY29uc3RyYWludF9hbGdvcml0aG0gPSBsaW5jcyA7IGhvbG9ub21p YyBjb25zdHJhaW50czxicj4gY29uc3RyYWludHMgPSBhbGwtYm9uZHMgOyBhbGwgYm9uZHMgKGV2 ZW4gaGVhdnkgYXRvbS1IIGJvbmRzKSBjb25zdHJhaW5lZDxicj4gbGluY3NfaXRlciA9IDEgOyBh Y2N1cmFjeSBvZiBMSU5DUzxicj4gbGluY3Nfb3JkZXIgPSA0IDsgYWxzbyByZWxhdGVkIHRvIGFj Y3VyYWN5PGJyPiA7IE5laWdoYm9yc2VhcmNoaW5nPGJyPiBjdXRvZmYtc2NoZW1lID0gVmVybGV0 PGJyPiBuc190eXBlID0gZ3JpZCA7IHNlYXJjaCBuZWlnaGJvcmluZyBncmlkIGNlbGxzPGJyPiBu c3RsaXN0ID0gMTAgOyAyMCBmcywgbGFyZ2VseSBpcnJlbGV2YW50IHdpdGggVmVybGV0PGJyPiBy Y291bG9tYiA9IDEuMCA7IHNob3J0LXJhbmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8 YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0p PGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1l c2ggRXdhbGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQg OyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJyPiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNw YWNpbmcgZm9yIEZGVDxicj4gOyBUZW1wZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBs ID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMg PSBQcm90ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJh dGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9 IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4g Szxicj4gOyBQcmVzc3VyZSBjb3VwbGluZyBpcyBvZmY8YnI+IHBjb3VwbCA9IG5vIDsgbm8gcHJl c3N1cmUgY291cGxpbmcgaW4gTlZUPGJyPiA7IFBlcmlvZGljIGJvdW5kYXJ5IGNvbmRpdGlvbnM8 YnI+IHBiYyA9IHh5eiA7IDMtRCBQQkM8YnI+IDsgRGlzcGVyc2lvbiBjb3JyZWN0aW9uPGJyPiBE aXNwQ29yciA9IEVuZXJQcmVzIDsgYWNjb3VudCBmb3IgY3V0LW9mZiB2ZFcgc2NoZW1lPGJyPiA7 IFZlbG9jaXR5IGdlbmVyYXRpb248YnI+IGdlbl92ZWwgPSB5ZXMgOyBhc3NpZ24gdmVsb2NpdGll cyBmcm9tIE1heHdlbGwgZGlzdHJpYnV0aW9uPGJyPiBnZW5fdGVtcCA9IDMwMCA7IHRlbXBlcmF0 dXJlIGZvciBNYXh3ZWxsIGRpc3RyaWJ1dGlvbjxicj4gZ2VuX3NlZWQgPSAtMSA7IGdlbmVyYXRl IGEgcmFuZG9tIHNlZWQ8YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8 YnI+IGZpbGU9b3BlbignbnZ0Lm1kcCcsJ3cnKTxicj4gZmlsZS53cml0ZSgiIiI8YnI+IHRpdGxl ID0gT1BMUyBOVlQgZXF1aWxpYnJhdGlvbjxicj4gZGVmaW5lID0gLURQT1NSRVMgOyBwb3NpdGlv biByZXN0cmFpbiB0aGUgcHJvdGVpbjxicj4gOyBSdW4gcGFyYW1ldGVyczxicj4gaW50ZWdyYXRv ciA9IG1kIDsgbGVhcC1mcm9nIGludGVncmF0b3I8YnI+IG5zdGVwcyA9IDEwMDAgOyAyICogMTAw MCA9IDIgcHM8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBu c3R4b3V0ID0gNTAwIDsgc2F2ZSBjb29yZGluYXRlcyBldmVyeSAxLjAgcHM8YnI+IG5zdHZvdXQg PSA1MDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMS4wIHBzPGJyPiBuc3RlbmVyZ3kgPSA1MDAg OyBzYXZlIGVuZXJnaWVzIGV2ZXJ5IDEuMCBwczxicj4gbnN0bG9nID0gNTAwIDsgdXBkYXRlIGxv ZyBmaWxlIGV2ZXJ5IDEuMCBwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVhdGlv biA9IG5vIDsgZmlyc3QgZHluYW1pY3MgcnVuPGJyPiBjb25zdHJhaW50X2FsZ29yaXRobSA9IGxp bmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9IGFsbC1ib25kcyA7 IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFpbmVkPGJyPiBsaW5j c19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRlciA9IDQgOyBhbHNv IHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1dG9mZi1z Y2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5laWdoYm9yaW5nIGdy aWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZhbnQgd2l0 aCBWZXJsZXQ8YnI+IHJjb3Vsb21iID0gMS4wIDsgc2hvcnQtcmFuZ2UgZWxlY3Ryb3N0YXRpYyBj dXRvZmYgKGluIG5tKTxicj4gcnZkdyA9IDEuMCA7IHNob3J0LXJhbmdlIHZhbiBkZXIgV2FhbHMg Y3V0b2ZmIChpbiBubSk8YnI+IDsgRWxlY3Ryb3N0YXRpY3M8YnI+IGNvdWxvbWJ0eXBlID0gUE1F IDsgUGFydGljbGUgTWVzaCBFd2FsZCBmb3IgbG9uZy1yYW5nZSBlbGVjdHJvc3RhdGljczxicj4g cG1lX29yZGVyID0gNCA7IGN1YmljIGludGVycG9sYXRpb248YnI+IGZvdXJpZXJzcGFjaW5nID0g MC4xNiA7IGdyaWQgc3BhY2luZyBmb3IgRkZUPGJyPiA7IFRlbXBlcmF0dXJlIGNvdXBsaW5nIGlz IG9uPGJyPiB0Y291cGwgPSBWLXJlc2NhbGUgOyBtb2RpZmllZCBCZXJlbmRzZW4gdGhlcm1vc3Rh dDxicj4gdGMtZ3JwcyA9IFByb3RlaW4gTm9uLVByb3RlaW4gOyB0d28gY291cGxpbmcgZ3JvdXBz IC0gbW9yZSBhY2N1cmF0ZTxicj4gdGF1X3QgPSAwLjEgMC4xIDsgdGltZSBjb25zdGFudCwgaW4g cHM8YnI+IHJlZl90ID0gMzAwIDMwMCA7IHJlZmVyZW5jZSB0ZW1wZXJhdHVyZSwgb25lIGZvciBl YWNoIGdyb3VwLCBpbiBLPGJyPiA7IFByZXNzdXJlIGNvdXBsaW5nIGlzIG9mZjxicj4gcGNvdXBs ID0gbm8gOyBubyBwcmVzc3VyZSBjb3VwbGluZyBpbiBOVlQ8YnI+IDsgUGVyaW9kaWMgYm91bmRh cnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxicj4gOyBEaXNwZXJzaW9uIGNv cnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2NvdW50IGZvciBjdXQtb2ZmIHZk VyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4gZ2VuX3ZlbCA9IHllcyA7IGFz c2lnbiB2ZWxvY2l0aWVzIGZyb20gTWF4d2VsbCBkaXN0cmlidXRpb248YnI+IGdlbl90ZW1wID0g MzAwIDsgdGVtcGVyYXR1cmUgZm9yIE1heHdlbGwgZGlzdHJpYnV0aW9uPGJyPiBnZW5fc2VlZCA9 IC0xIDsgZ2VuZXJhdGUgYSByYW5kb20gc2VlZDxicj4gIiIiKTxicj4gZmlsZS5jbG9zZSgpPGJy PiBgYGA8L3A+PHA+5o6l5LiL5p2l5LiO6IO96YeP5pyA5bCP5YyW5oOF5Ya157G75Ly8PC9wPjxw PmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBncm9tcHAgLWYgbnZ0Lm1kcCAtYyBlbS5ncm8gLXAg dG9wb2wudG9wIC1vIG52dC50cHIifTxicj4gYGBgPC9wPjxwPmBgYHB5dGhvbjxicj4gb3V0PSF7 ImdteCBtZHJ1biAtdiAtZGVmZm5tIG52dCJ9PGJyPiBgYGA8L3A+PHA+55Sx5LqO5qih5ouf55qE 5pe26Ze05q+U6L6D55+t77yM5oiR5LiA5Lya5YS/5bCx5qih5ouf5aW95LqGPGJyPiDorqnmiJHk u6zmnaXliIbmnpDmuKnluqblj5jljJbmg4XlhrUsIOWGjeasoeS9v+eUqGBlbmVyZ3lg5qih5Z2X OjwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZW5lcmd5IC1mIG52dC5lZHIgLW8gbnZ0 Lnh2ZyZsdDsmbHQ7RU9GXG4xNVxuMFxuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ ICPmvJTnpLrkvb/nlKg8YnI+IGZpZyxheD1wbHQuc3VicGxvdHMoKTxicj4gcGxvdFhWRyhheCwi bnZ0Lnh2ZyIpPGJyPiBwcGwubGVnZW5kKGF4KTxicj4gcGx0LnNob3coKTxicj4gYGBgPC9wPjxw PiFbXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3 LTQyYzUxY2MzZTI5YTFlZDcucG5nP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFn ZVZpZXcyLzIvdy8xMjQwKTwvcD48cD7nlLHkuo7ov5nph4xgbnN0eG91dGDorrDlvZXlgLzov4fl pKfmiYDku6Xlj6rmnInkuKTkuKrngrnvvIzlupTor6XmiorlgLzorr7nva7mm7TlsI/vvIzku47o gIzkuqfnlJ/lpoLkuIvnu5Pmnpw8L3A+PHA+IVt0ZW1wMy5wbmddKGh0dHA6Ly91cGxvYWQtaW1h Z2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctNWQ4MjM5YmNiNWIwNzg2Yi5wbmc/ aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxw PuWJjeS4gOatpeeahE5WVOW5s+ihoeeos+WumuS6huS9k+ezu+eahOa4qeW6pi4g5Zyo6YeH6ZuG 5pWw5o2u5LmL5YmNLCDmiJHku6zov5jpnIDopoHnqLPlrprkvZPns7vnmoTljovlipso5Zug5q2k 6L+Y5YyF5ous5a+G5bqmKS4g5Y6L5Yqb5bmz6KGh5piv5ZyoTlBU57O757u85LiL6L+b6KGM55qE LCDlhbbkuK3nspLlrZDmlbAsIOWOi+WKm+WSjOa4qeW6pumDveS/neaMgeS4jeWPmC4g6L+Z5Liq 57O757u85Lmf6KKr56ew5Li6562J5rip562J5Y6L57O757u8LCDmnIDmjqXov5Hlrp7pqozmnaHk u7YuPGJyPiDkuIDoiKzlu7rorq7orr7nva7nmoTmqKHmi5/ml7bplb/kuLoxbnPvvIzkvYbmmK/n lLHkuo7ml7bpl7TlhbPns7vvvIzov5nph4zku4XmqKHmi58xMHBzPGJyPiBgbnB0Lm1kcGDorr7n va7lpoLkuIvvvJo8YnI+IGBgYDxicj4gdGl0bGUgPSBPUExTIE5QVCBlcXVpbGlicmF0aW9uPGJy PiBkZWZpbmUgPSAtRFBPU1JFUyA7IHBvc2l0aW9uIHJlc3RyYWluIHRoZSBwcm90ZWluPGJyPiA7 IFJ1biBwYXJhbWV0ZXJzPGJyPiBpbnRlZ3JhdG9yID0gbWQgOyBsZWFwLWZyb2cgaW50ZWdyYXRv cjxicj4gbnN0ZXBzID0gNTAwMCA7IDIgKiA1MDAwID0gMTAgcHM8YnI+IGR0ID0gMC4wMDIgOyAy IGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBuc3R4b3V0ID0gNTAgOyBzYXZlIGNvb3JkaW5h dGVzIGV2ZXJ5IDAuMSBwczxicj4gbnN0dm91dCA9IDUwIDsgc2F2ZSB2ZWxvY2l0aWVzIGV2ZXJ5 IDAuMSBwczxicj4gbnN0ZW5lcmd5ID0gNTAgOyBzYXZlIGVuZXJnaWVzIGV2ZXJ5IDAuMSBwczxi cj4gbnN0bG9nID0gNTAwIDsgdXBkYXRlIGxvZyBmaWxlIGV2ZXJ5IDEuMCBwczxicj4gOyBCb25k IHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVhdGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlZU PGJyPiBjb25zdHJhaW50X2FsZ29yaXRobSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRz PGJyPiBjb25zdHJhaW50cyA9IGFsbC1ib25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9t LUggYm9uZHMpIGNvbnN0cmFpbmVkPGJyPiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJ TkNTPGJyPiBsaW5jc19vcmRlciA9IDQgOyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsg TmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUg PSBncmlkIDsgc2VhcmNoIG5laWdoYm9yaW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7 IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZhbnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9t YiA9IDEuMCA7IHNob3J0LXJhbmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2 ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7 IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdh bGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJp YyBpbnRlcnBvbGF0aW9uPGJyPiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcg Zm9yIEZGVDxicj4gOyBUZW1wZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1y ZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90 ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+ IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAz MDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4g OyBQcmVzc3VyZSBjb3VwbGluZyBpcyBvbjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4g OyBQcmVzc3VyZSBjb3VwbGluZyBvbiBpbiBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMg OyB1bmlmb3JtIHNjYWxpbmcgb2YgYm94IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBj b25zdGFudCwgaW4gcHM8YnI+IHJlZl9wID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBi YXI8YnI+IGNvbXByZXNzaWJpbGl0eSA9IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmls aXR5IG9mIHdhdGVyLCBiYXJeLTE8YnI+IHJlZmNvb3JkX3NjYWxpbmcgPSBjb208YnI+IDsgUGVy aW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxicj4gOyBE aXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2NvdW50IGZv ciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4gZ2VuX3Zl bCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+IGBgYDwvcD48cD5gYGBweXRo b248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3BlbignbnB0Lm1kcCcsJ3cnKTxicj4gZmls ZS53cml0ZSgiIiI8YnI+IHRpdGxlID0gT1BMUyBOUFQgZXF1aWxpYnJhdGlvbjxicj4gZGVmaW5l ID0gLURQT1NSRVMgOyBwb3NpdGlvbiByZXN0cmFpbiB0aGUgcHJvdGVpbjxicj4gOyBSdW4gcGFy YW1ldGVyczxicj4gaW50ZWdyYXRvciA9IG1kIDsgbGVhcC1mcm9nIGludGVncmF0b3I8YnI+IG5z dGVwcyA9IDUwMDAgOyAyICogNTAwMCA9IDEwIHBzPGJyPiBkdCA9IDAuMDAyIDsgMiBmczxicj4g OyBPdXRwdXQgY29udHJvbDxicj4gbnN0eG91dCA9IDUwIDsgc2F2ZSBjb29yZGluYXRlcyBldmVy eSAwLjEgcHM8YnI+IG5zdHZvdXQgPSA1MCA7IHNhdmUgdmVsb2NpdGllcyBldmVyeSAwLjEgcHM8 YnI+IG5zdGVuZXJneSA9IDUwIDsgc2F2ZSBlbmVyZ2llcyBldmVyeSAwLjEgcHM8YnI+IG5zdGxv ZyA9IDUwMCA7IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAxLjAgcHM8YnI+IDsgQm9uZCBwYXJhbWV0 ZXJzPGJyPiBjb250aW51YXRpb24gPSB5ZXMgOyBSZXN0YXJ0aW5nIGFmdGVyIE5WVDxicj4gY29u c3RyYWludF9hbGdvcml0aG0gPSBsaW5jcyA7IGhvbG9ub21pYyBjb25zdHJhaW50czxicj4gY29u c3RyYWludHMgPSBhbGwtYm9uZHMgOyBhbGwgYm9uZHMgKGV2ZW4gaGVhdnkgYXRvbS1IIGJvbmRz KSBjb25zdHJhaW5lZDxicj4gbGluY3NfaXRlciA9IDEgOyBhY2N1cmFjeSBvZiBMSU5DUzxicj4g bGluY3Nfb3JkZXIgPSA0IDsgYWxzbyByZWxhdGVkIHRvIGFjY3VyYWN5PGJyPiA7IE5laWdoYm9y c2VhcmNoaW5nPGJyPiBjdXRvZmYtc2NoZW1lID0gVmVybGV0PGJyPiBuc190eXBlID0gZ3JpZCA7 IHNlYXJjaCBuZWlnaGJvcmluZyBncmlkIGNlbGxzPGJyPiBuc3RsaXN0ID0gMTAgOyAyMCBmcywg bGFyZ2VseSBpcnJlbGV2YW50IHdpdGggVmVybGV0IHNjaGVtZTxicj4gcmNvdWxvbWIgPSAxLjAg OyBzaG9ydC1yYW5nZSBlbGVjdHJvc3RhdGljIGN1dG9mZiAoaW4gbm0pPGJyPiBydmR3ID0gMS4w IDsgc2hvcnQtcmFuZ2UgdmFuIGRlciBXYWFscyBjdXRvZmYgKGluIG5tKTxicj4gOyBFbGVjdHJv c3RhdGljczxicj4gY291bG9tYnR5cGUgPSBQTUUgOyBQYXJ0aWNsZSBNZXNoIEV3YWxkIGZvciBs b25nLXJhbmdlIGVsZWN0cm9zdGF0aWNzPGJyPiBwbWVfb3JkZXIgPSA0IDsgY3ViaWMgaW50ZXJw b2xhdGlvbjxicj4gZm91cmllcnNwYWNpbmcgPSAwLjE2IDsgZ3JpZCBzcGFjaW5nIGZvciBGRlQ8 YnI+IDsgVGVtcGVyYXR1cmUgY291cGxpbmcgaXMgb248YnI+IHRjb3VwbCA9IFYtcmVzY2FsZSA7 IG1vZGlmaWVkIEJlcmVuZHNlbiB0aGVybW9zdGF0PGJyPiB0Yy1ncnBzID0gUHJvdGVpbiBOb24t UHJvdGVpbiA7IHR3byBjb3VwbGluZyBncm91cHMgLSBtb3JlIGFjY3VyYXRlPGJyPiB0YXVfdCA9 IDAuMSAwLjEgOyB0aW1lIGNvbnN0YW50LCBpbiBwczxicj4gcmVmX3QgPSAzMDAgMzAwIDsgcmVm ZXJlbmNlIHRlbXBlcmF0dXJlLCBvbmUgZm9yIGVhY2ggZ3JvdXAsIGluIEs8YnI+IDsgUHJlc3N1 cmUgY291cGxpbmcgaXMgb248YnI+IHBjb3VwbCA9IFBhcnJpbmVsbG8tUmFobWFuIDsgUHJlc3N1 cmUgY291cGxpbmcgb24gaW4gTlBUPGJyPiBwY291cGx0eXBlID0gaXNvdHJvcGljIDsgdW5pZm9y bSBzY2FsaW5nIG9mIGJveCB2ZWN0b3JzPGJyPiB0YXVfcCA9IDIuMCA7IHRpbWUgY29uc3RhbnQs IGluIHBzPGJyPiByZWZfcCA9IDEuMCA7IHJlZmVyZW5jZSBwcmVzc3VyZSwgaW4gYmFyPGJyPiBj b21wcmVzc2liaWxpdHkgPSA0LjVlLTUgOyBpc290aGVybWFsIGNvbXByZXNzaWJpbGl0eSBvZiB3 YXRlciwgYmFyXi0xPGJyPiByZWZjb29yZF9zY2FsaW5nID0gY29tPGJyPiA7IFBlcmlvZGljIGJv dW5kYXJ5IGNvbmRpdGlvbnM8YnI+IHBiYyA9IHh5eiA7IDMtRCBQQkM8YnI+IDsgRGlzcGVyc2lv biBjb3JyZWN0aW9uPGJyPiBEaXNwQ29yciA9IEVuZXJQcmVzIDsgYWNjb3VudCBmb3IgY3V0LW9m ZiB2ZFcgc2NoZW1lPGJyPiA7IFZlbG9jaXR5IGdlbmVyYXRpb248YnI+IGdlbl92ZWwgPSBubyA7 IFZlbG9jaXR5IGdlbmVyYXRpb24gaXMgb2ZmPGJyPiAiIiIpPGJyPiBmaWxlLmNsb3NlKCk8YnI+ IGBgYDwvcD48cD5gYGBweXRob248YnI+IG91dD0heyJnbXggZ3JvbXBwIC1mIG5wdC5tZHAgLWMg bnZ0LmdybyAtdCBudnQuY3B0IC1wIHRvcG9sLnRvcCAtbyBucHQudHByIn08YnI+IGBgYDwvcD48 cD5gYGBweXRob248YnI+IG91dD0heyJnbXggbWRydW4gLXYgLWRlZmZubSBucHQifTxicj4gYGBg PC9wPjxwPuaIkeS7rOWPr+S7pemAmui/h+WOi+WKm+WSjOWvhuW6puajgOa1i+adpeeci+aooeaL n+aYr+WQpuW5s+ihoTwvcD48cD5gYGBweXRob248YnI+ICPljovlips8YnI+IG91dD0heyJnbXgg ZW5lcmd5IC1mIG5wdC5lZHIgLW8gcHJlc3N1cmUueHZnJmx0OyZsdDtFT0ZcbjE2XG4wXG5FT0Yi fTxicj4gI+WvhuW6pjxicj4gb3V0PSF7ImdteCBlbmVyZ3kgLWYgbnB0LmVkciAtbyBkZW5zaXR5 Lnh2ZyZsdDsmbHQ7RU9GXG4yMlxuMFxuRU9GIn08YnI+IGBgYDwvcD48cD5gYGBweXRob248YnI+ ICPmvJTnpLrkvb/nlKg8YnI+IGZpZyxheD1wbHQuc3VicGxvdHMoKTxicj4gcGxvdFhWRyhheCwi cHJlc3N1cmUueHZnIik8YnI+IHBwbC5sZWdlbmQoYXgpPGJyPiBwbHQuc2hvdygpPGJyPiBgYGA8 L3A+PHA+IVtvdXRwdXRfNDNfMC5wbmddKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8v dXBsb2FkX2ltYWdlcy85MDM0NjctMGIzZTJmMTdjYTFjNjdmZC5wbmc/aW1hZ2VNb2dyMi9hdXRv LW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPmBgYHB5dGhvbjxicj4g I+a8lOekuuS9v+eUqDxicj4gZmlnLGF4PXBsdC5zdWJwbG90cygpPGJyPiBwbG90WFZHKGF4LCJk ZW5zaXR5Lnh2ZyIpPGJyPiBwcGwubGVnZW5kKGF4KTxicj4gcGx0LnNob3coKTxicj4gYGBgPC9w PjxwPiFbb3V0cHV0XzQ0XzAucG5nXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3Vw bG9hZF9pbWFnZXMvOTAzNDY3LTgwMTJkY2Y4MzNmOTBlMjAucG5nP2ltYWdlTW9ncjIvYXV0by1v cmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48cD4jIyMg5oiQ5ZOBTUQ8YnI+ IOmaj+edgOS4pOS4quW5s+ihoemYtuauteeahOWujOaIkCwg5L2T57O75bey57uP5Zyo6ZyA6KaB 55qE5rip5bqm5ZKM5Y6L5by65LiL5bmz6KGh5aW95LqGLiDmiJHku6znjrDlnKjlj6/ku6XmlL7l vIDkvY3nva7pmZDliLblubbov5vooYzmiJDlk4FNROS7peaUtumbhuaVsOaNruS6hi4g6L+Z5Liq 6L+H56iL6Lef5YmN6Z2i55qE57G75Ly8LiDov5DooYxgZ3JvbXBwYOaXtiwg5oiR5Lus6L+Y6KaB 55So5Yiw5qOA5p+l54K55paH5Lu2KOWcqOi/meenjeaDheWGteS4iyzlhbbkuK3ljIXlkKvkuobl jovlipvogKblkIjkv6Hmga8pLiDmiJHku6zopoHov5vooYzkuIDkuKoxIG5z55qETUTmqKHmi58s IOaJgOeUqOeahOWPguaVsOaWh+S7tuWmguS4izo8YnI+IGBgYDxicj4gdGl0bGUgPSBPUExTIE1E IHNpbXVsYXRpb248YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxl YXAtZnJvZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSA1MDAwMDAgOyAyICogNTAwMDAwID0gMTAw MCBwcyAoMSBucyk8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJy PiBuc3R4b3V0ID0gNTAwMCA7IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0 dm91dCA9IDUwMDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0ZW5lcmd5 ID0gNTAwMCA7IHNhdmUgZW5lcmdpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0bG9nID0gNTAwMCA7 IHVwZGF0ZSBsb2cgZmlsZSBldmVyeSAxMC4wIHBzPGJyPiBuc3R4b3V0LWNvbXByZXNzZWQgPSA1 MDAwIDsgc2F2ZSBjb21wcmVzc2VkIGNvb3JkaW5hdGVzIGV2ZXJ5IDEwLjAgcHM8YnI+IDsgbnN0 eG91dC1jb21wcmVzc2VkIHJlcGxhY2VzIG5zdHh0Y291dDxicj4gY29tcHJlc3NlZC14LWdycHMg PSBTeXN0ZW0gOyByZXBsYWNlcyB4dGMtZ3Jwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNv bnRpbnVhdGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlBUPGJyPiBjb25zdHJhaW50X2Fs Z29yaXRobSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9 IGFsbC1ib25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFp bmVkPGJyPiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRl ciA9IDQgOyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8 YnI+IGN1dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5l aWdoYm9yaW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGly cmVsZXZhbnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9tYiA9IDEuMCA7IHNob3J0LXJh bmdlIGVsZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1y YW5nZSB2YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJy PiBjb3Vsb21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdhbGQgZm9yIGxvbmctcmFuZ2Ug ZWxlY3Ryb3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJy PiBmb3VyaWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcgZm9yIEZGVDxicj4gOyBUZW1w ZXJhdHVyZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQg QmVyZW5kc2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90ZWluIE5vbi1Qcm90ZWluIDsg dHdvIGNvdXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7 IHRpbWUgY29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVt cGVyYXR1cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4gOyBQcmVzc3VyZSBjb3VwbGlu ZyBpcyBvbjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4gOyBQcmVzc3VyZSBjb3VwbGlu ZyBvbiBpbiBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMgOyB1bmlmb3JtIHNjYWxpbmcg b2YgYm94IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBjb25zdGFudCwgaW4gcHM8YnI+ IHJlZl9wID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBiYXI8YnI+IGNvbXByZXNzaWJp bGl0eSA9IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmlsaXR5IG9mIHdhdGVyLCBiYXJe LTE8YnI+IDsgUGVyaW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1E IFBCQzxicj4gOyBEaXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMg OyBhY2NvdW50IGZvciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlv bjxicj4gZ2VuX3ZlbCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+IGBgYDwv cD48cD5gYGBweXRob248YnI+ICPmvJTnpLrkvb/nlKg8YnI+IGZpbGU9b3BlbignbWQubWRwJywn dycpPGJyPiBmaWxlLndyaXRlKCIiIjxicj4gdGl0bGUgPSBPUExTIEx5c296eW1lIE1EIHNpbXVs YXRpb248YnI+IDsgUnVuIHBhcmFtZXRlcnM8YnI+IGludGVncmF0b3IgPSBtZCA7IGxlYXAtZnJv ZyBpbnRlZ3JhdG9yPGJyPiBuc3RlcHMgPSA1MDAwMDAgOyAyICogNTAwMDAwID0gMTAwMCBwcyAo MSBucyk8YnI+IGR0ID0gMC4wMDIgOyAyIGZzPGJyPiA7IE91dHB1dCBjb250cm9sPGJyPiBuc3R4 b3V0ID0gNTAwMCA7IHNhdmUgY29vcmRpbmF0ZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0dm91dCA9 IDUwMDAgOyBzYXZlIHZlbG9jaXRpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0ZW5lcmd5ID0gNTAw MCA7IHNhdmUgZW5lcmdpZXMgZXZlcnkgMTAuMCBwczxicj4gbnN0bG9nID0gNTAwMCA7IHVwZGF0 ZSBsb2cgZmlsZSBldmVyeSAxMC4wIHBzPGJyPiBuc3R4b3V0LWNvbXByZXNzZWQgPSA1MDAwIDsg c2F2ZSBjb21wcmVzc2VkIGNvb3JkaW5hdGVzIGV2ZXJ5IDEwLjAgcHM8YnI+IDsgbnN0eG91dC1j b21wcmVzc2VkIHJlcGxhY2VzIG5zdHh0Y291dDxicj4gY29tcHJlc3NlZC14LWdycHMgPSBTeXN0 ZW0gOyByZXBsYWNlcyB4dGMtZ3Jwczxicj4gOyBCb25kIHBhcmFtZXRlcnM8YnI+IGNvbnRpbnVh dGlvbiA9IHllcyA7IFJlc3RhcnRpbmcgYWZ0ZXIgTlBUPGJyPiBjb25zdHJhaW50X2FsZ29yaXRo bSA9IGxpbmNzIDsgaG9sb25vbWljIGNvbnN0cmFpbnRzPGJyPiBjb25zdHJhaW50cyA9IGFsbC1i b25kcyA7IGFsbCBib25kcyAoZXZlbiBoZWF2eSBhdG9tLUggYm9uZHMpIGNvbnN0cmFpbmVkPGJy PiBsaW5jc19pdGVyID0gMSA7IGFjY3VyYWN5IG9mIExJTkNTPGJyPiBsaW5jc19vcmRlciA9IDQg OyBhbHNvIHJlbGF0ZWQgdG8gYWNjdXJhY3k8YnI+IDsgTmVpZ2hib3JzZWFyY2hpbmc8YnI+IGN1 dG9mZi1zY2hlbWUgPSBWZXJsZXQ8YnI+IG5zX3R5cGUgPSBncmlkIDsgc2VhcmNoIG5laWdoYm9y aW5nIGdyaWQgY2VsbHM8YnI+IG5zdGxpc3QgPSAxMCA7IDIwIGZzLCBsYXJnZWx5IGlycmVsZXZh bnQgd2l0aCBWZXJsZXQgc2NoZW1lPGJyPiByY291bG9tYiA9IDEuMCA7IHNob3J0LXJhbmdlIGVs ZWN0cm9zdGF0aWMgY3V0b2ZmIChpbiBubSk8YnI+IHJ2ZHcgPSAxLjAgOyBzaG9ydC1yYW5nZSB2 YW4gZGVyIFdhYWxzIGN1dG9mZiAoaW4gbm0pPGJyPiA7IEVsZWN0cm9zdGF0aWNzPGJyPiBjb3Vs b21idHlwZSA9IFBNRSA7IFBhcnRpY2xlIE1lc2ggRXdhbGQgZm9yIGxvbmctcmFuZ2UgZWxlY3Ry b3N0YXRpY3M8YnI+IHBtZV9vcmRlciA9IDQgOyBjdWJpYyBpbnRlcnBvbGF0aW9uPGJyPiBmb3Vy aWVyc3BhY2luZyA9IDAuMTYgOyBncmlkIHNwYWNpbmcgZm9yIEZGVDxicj4gOyBUZW1wZXJhdHVy ZSBjb3VwbGluZyBpcyBvbjxicj4gdGNvdXBsID0gVi1yZXNjYWxlIDsgbW9kaWZpZWQgQmVyZW5k c2VuIHRoZXJtb3N0YXQ8YnI+IHRjLWdycHMgPSBQcm90ZWluIE5vbi1Qcm90ZWluIDsgdHdvIGNv dXBsaW5nIGdyb3VwcyAtIG1vcmUgYWNjdXJhdGU8YnI+IHRhdV90ID0gMC4xIDAuMSA7IHRpbWUg Y29uc3RhbnQsIGluIHBzPGJyPiByZWZfdCA9IDMwMCAzMDAgOyByZWZlcmVuY2UgdGVtcGVyYXR1 cmUsIG9uZSBmb3IgZWFjaCBncm91cCwgaW4gSzxicj4gOyBQcmVzc3VyZSBjb3VwbGluZyBpcyBv bjxicj4gcGNvdXBsID0gUGFycmluZWxsby1SYWhtYW4gOyBQcmVzc3VyZSBjb3VwbGluZyBvbiBp biBOUFQ8YnI+IHBjb3VwbHR5cGUgPSBpc290cm9waWMgOyB1bmlmb3JtIHNjYWxpbmcgb2YgYm94 IHZlY3RvcnM8YnI+IHRhdV9wID0gMi4wIDsgdGltZSBjb25zdGFudCwgaW4gcHM8YnI+IHJlZl9w ID0gMS4wIDsgcmVmZXJlbmNlIHByZXNzdXJlLCBpbiBiYXI8YnI+IGNvbXByZXNzaWJpbGl0eSA9 IDQuNWUtNSA7IGlzb3RoZXJtYWwgY29tcHJlc3NpYmlsaXR5IG9mIHdhdGVyLCBiYXJeLTE8YnI+ IDsgUGVyaW9kaWMgYm91bmRhcnkgY29uZGl0aW9uczxicj4gcGJjID0geHl6IDsgMy1EIFBCQzxi cj4gOyBEaXNwZXJzaW9uIGNvcnJlY3Rpb248YnI+IERpc3BDb3JyID0gRW5lclByZXMgOyBhY2Nv dW50IGZvciBjdXQtb2ZmIHZkVyBzY2hlbWU8YnI+IDsgVmVsb2NpdHkgZ2VuZXJhdGlvbjxicj4g Z2VuX3ZlbCA9IG5vIDsgVmVsb2NpdHkgZ2VuZXJhdGlvbiBpcyBvZmY8YnI+ICIiIik8YnI+IGZp bGUuY2xvc2UoKTxicj4gYGBgPC9wPjxwPmBgYHB5dGhvbjxicj4gb3V0PSF7ImdteCBncm9tcHAg LWYgbWQubWRwIC1jIG5wdC5ncm8gLXQgbnB0LmNwdCAtcCB0b3BvbC50b3AgLW8gbWRfMF8xLnRw ciJ9PGJyPiBgYGA8L3A+PHA+YGBgcHl0aG9uPGJyPiAhZ214IG1kcnVuIC12IC1kZWZmbm0gbWRf MF8xPGJyPiBgYGA8L3A+PHA+5YW35L2T55qE5YiG5p6Q5pa55rOV5LiO5YaF5a655oiR5Lus5LiL 5qyh5YiG5LqrPC9wPjxwPuabtOWkmuWOn+WIm+eyvuW9qeinhumikeaVrOivt+WFs+azqCoq55Sf 5L+h5p2C6LCIOioqPC9wPjxwPiFbXShodHRwOi8vdXBsb2FkLWltYWdlcy5qaWFuc2h1LmlvL3Vw bG9hZF9pbWFnZXMvOTAzNDY3LWUxNDk5NzdkYmMyZGU1ZjY/aW1hZ2VNb2dyMi9hdXRvLW9yaWVu dC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDAp4oCLPC9wPg==">​</div><br></div>
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/670.html" target="_blank" rel="external">http://kangsgo.com/670.html</a>
+        
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/670.html" data-id="cj8x084ov007xnora3q7nyx5t" class="article-share-link" data-share="baidu" data-title="GROMACS之水中部分載脂蛋白">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/670.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/681.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          LigParGen:配体OPLS/CM1A力场在线生成
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/670.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GROMACS之水中部分載脂蛋白》 — 小康博客&url=http://kangsgo.com/670.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/670.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/681.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LigParGen:配体OPLS/CM1A力场在线生成</h4>
+      </a>
+    </div>
   
-    <a href="/665.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">非常有用的蛋白质科学工具与项目</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/665.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">非常有用的蛋白质科学工具与项目</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="670.html" data-title="GROMACS之水中部分載脂蛋白" data-url="http://kangsgo.com/670.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/670.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GROMACS之水中部分載脂蛋白》 — 小康博客&url=http://kangsgo.com/670.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/670.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aS24DIRAFQN//0hMpq0QR49c04IlUrCzbYwovWvTn9YrX9b1+vv77zuip0TdHTy1YuLi4be51u/rc0XdGvzky4OLinufmm93TR9vnAe6NDRcX92Hc+0vJXKjCxcX979xqSnN/SFxc3Odzk0BzH5juLzH5wZblari4uA3uXMF07evt9V1cXNxFXYl8JYGpvyMuLu4Zbl7ySJKluafyEgkuLu4Zbie9SbbsJ0i/3sHFxT3CrSYkyfbJATrlGFxc3N3cZHAqvwAlISl/qvy/4uLibuPmjc/8+rIqqOHi4p7n5hea/jHy3Qv1GFxc3EXczgXlTUY1NaJRMODi4h7n5iGsUyJJiLi4uOe5UcrRaI0khZVCCoSLi3uEuyoFKoxVxYePmqy4uLjbuPl4VqeokV+homPg4uIe4Sas6pWlkzLlfyIuLu4+7qoxi6S9+iouXFzck9yruOZGK6oXneGnuLi4R7hzka86zjU3ioGLi/tZbh68csTcINeyVisuLu4i7qriSF4umQuduLi4z+RWWynJlagwvIWLi/sw7lzYqh670OfBxcXdzK0WSfMWSz6wVe754OLibuPOpSL7KJPjWbi4uGu4X4I6vlVd8791AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

@@ -1,116 +1,208 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>gromacs下蛋白-配体复合物模拟[GAFF] | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>gromacs下蛋白-配体复合物模拟[GAFF] | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta property="og:url" content="http://kangsgo.com/94.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/topol.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/3.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/4.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/template.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/density.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/5.png">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-gromacs-e4-b8-8b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-a4-8d-e5-90-88-e7-89-a9-e6-a8-a1-e6-8b-9fgaff" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/94.html" class="article-date">
-  <time datetime="2015-12-05T08:10:06.000Z" itemprop="datePublished">2015-12-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 class="article-title" itemprop="name">
-      gromacs下蛋白-配体复合物模拟[GAFF]
-    </h1>
-  
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-      </header>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">gromacs下蛋白-配体复合物模拟[GAFF]</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">gromacs下蛋白-配体复合物模拟[GAFF]</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-12-05T08:10:06.000Z" itemprop="datePublished" class="page-time">
+  2015-12-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～</p>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-gromacs-e4-b8-8b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-a4-8d-e5-90-88-e7-89-a9-e6-a8-a1-e6-8b-9fgaff"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">gromacs下蛋白-配体复合物模拟[GAFF]</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015-12-05 16:10:06" datetime="2015-12-05T08:10:06.000Z"  itemprop="datePublished">2015-12-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～</p>
 <p>我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。</p>
 <p>由于AhR晶体结构并未解析，建模的方法我在这里不累述</p>
 <p>你可以在这里下载初始文件:<a href="http://kangsgo.com/wp-content/uploads/2015/12/tcddPhe289Ala.tar.gz">tcddPhe289Ala.tar</a></p>
@@ -213,7 +305,13 @@ TCD                 1</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr
 gmx mdrun -deffnm md_0_1</pre>
 
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png" alt="vmdscene"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png" alt="vmdscene](http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png)" title="">
+                </div>
+                <div class="image-caption">vmdscene](http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png)</div>
+            </figure></p>
 <p>个人感觉盒子可以调小一些～</p>
 <p>10.添加离子</p>
 <p>教程使用了能量最小化的文件，我这里稍微改了一下</p>
@@ -243,7 +341,13 @@ pbc             = xyz       ; Periodic Boundary Conditions  周期性
 </pre>
 
 <p>我们这里还需要查看topol文件，看一下我们的体系电荷多少，需要补足电荷，可以看出我们需要补4个CL离子</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/topol.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png" alt="topol"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/topol.png" alt="topol](http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png)" title="">
+                </div>
+                <div class="image-caption">topol](http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png)</div>
+            </figure></p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f em.mdp -c solv.gro -p topol.top -o ions.tpr</pre>
 
 <p>做到这里会报错，我找了很久原因，后来查看amber力场文件，发现是大小写不同导致的<br>我们来看一下我们的TCD.itp文件</p>
@@ -278,7 +382,13 @@ pbc             = xyz       ; Periodic Boundary Conditions  周期性
 <p>#include “amber99sb-ildn-ligand.ff/forcefield.itp”</p>
 <p>topol文件其它引用力场的位置可修改可不修改，个人觉得最好修改</p>
 <p>&nbsp;</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png" alt="2"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/2.png" alt="2](http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png)" title="">
+                </div>
+                <div class="image-caption">2](http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png)</div>
+            </figure></p>
 <p>然后就是添加离子了</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nname CL -nn 4</pre>
 
@@ -334,7 +444,13 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f em.edr -o potential.xvg</pre>
 
 <p>选择 10 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png" alt="potential"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/potential.png" alt="potential](http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png)" title="">
+                </div>
+                <div class="image-caption">potential](http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png)</div>
+            </figure></p>
 <p>再用共轭梯度法，mdp文件参数如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; LINES STARTING WITH ';' ARE COMMENTS
 title       = Minimization  ; Title of run
@@ -366,13 +482,25 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx mdrun -v -deffnm em2</pre>
 
 <p>做出来如这个图，图是否正确待考</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png" alt="potential2"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png" alt="potential2](http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png)" title="">
+                </div>
+                <div class="image-caption">potential2](http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png)</div>
+            </figure></p>
 <p>&nbsp;</p>
 <p>12.NVT平衡（温度平衡）</p>
 <p>限制配体：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genrestr -f TCD.gro -o posre_TCD.itp -fc 1000 1000 1000</pre>
 
-<p>在选择组过程中个人觉得选择system或者TCD均可<br><a href="http://kangsgo.com/wp-content/uploads/2015/12/3.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png" alt="3"></a></p>
+<p>在选择组过程中个人觉得选择system或者TCD均可<br>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/3.png" alt="3](http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png)" title="">
+                </div>
+                <div class="image-caption">3](http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png)</div>
+            </figure></p>
 <p>增加配体限制：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; Include ligand topology
 #include "TCD.itp"
@@ -397,7 +525,13 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx make_ndx -f em2.gro -o index.ndx</pre>
 
 <p>选择蛋白和配体分为一组</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/4.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png" alt="4"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/4.png" alt="4](http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png)" title="">
+                </div>
+                <div class="image-caption">4](http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png)</div>
+            </figure></p>
 <p>然后就可以热浴了～热浴的mdp如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NVT equilibration 
 define      = -DPOSRES  ; position restrain the protein and ligand
@@ -462,7 +596,13 @@ Performance:       16.672        1.440
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f nvt.edr -o template.xvg</pre>
 
 <p>选择15 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/template.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png" alt="template"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/template.png" alt="template](http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png)" title="">
+                </div>
+                <div class="image-caption">template](http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png)</div>
+            </figure></p>
 <p>13.NPT平衡<br>mdp文件如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NPT equilibration 
 define      = -DPOSRES  ; position restrain the protein and ligand
@@ -520,12 +660,24 @@ gmx mdrun -deffnm npt</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o pressure.xvg</pre>
 
 <p>选择 16 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png" alt="pressure"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png" alt="pressure](http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png)" title="">
+                </div>
+                <div class="image-caption">pressure](http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png)</div>
+            </figure></p>
 <p>再来看一下密度</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o density.xvg</pre>
 
 <p>选择 22 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/density.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png" alt="density"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/density.png" alt="density](http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png)" title="">
+                </div>
+                <div class="image-caption">density](http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png)</div>
+            </figure></p>
 <p>可以看出在1000左右，符合水的密度，个人觉得tip3p效果比spec水模型效果好</p>
 <p>14.成品MD</p>
 <p>一般MD需要100ns以上，但是我的电脑我怕受不了，就先50ns吧～大约需要3天-4天左右</p>
@@ -581,252 +733,306 @@ gen_vel     = no        ; assign velocities from Maxwell distribution</pre>
 gmx mdrun -deffnm md_0_1</pre>
 
 <p>经过2d12h的计算，终于完成了，即高兴又紧张。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/5.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png" alt="5"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/5.png" alt="5](http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png)" title="">
+                </div>
+                <div class="image-caption">5](http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png)</div>
+            </figure></p>
 <p>由于这个贴实在太长，另外开一贴</p>
 <p>参考文献：<a href="http://platinhom.github.io/2015/09/17/AutoCalcRESP/" target="_blank" rel="external">自动计算ESP和RESP电荷(AMBER and G09)</a></p>
 <p>参考文献：<a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=409&amp;highlight=GAFF" target="_blank" rel="external">小分子在GAFF立场GROMCA中的操作</a></p>
 <p>参考文献：<a href="http://jerkwin.github.io/2015/12/08/%E4%BD%BF%E7%94%A8AmberTools+ACPYPE+Gaussian%E5%88%9B%E5%BB%BA%E5%B0%8F%E5%88%86%E5%AD%90GAFF%E5%8A%9B%E5%9C%BA%E7%9A%84%E6%8B%93%E6%89%91%E6%96%87%E4%BB%B6/" target="_blank" rel="external">使用AmberTools+ACPYPE+Gaussian创建小分子GAFF力场的拓扑文件</a></p>
 <p>参考文献：<a href="http://jerkwin.github.io/GMX/GMXtut-5#TOC2" target="_blank" rel="external">蛋白质配体复合物</a></p>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.228Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/94.html" target="_blank" rel="external">http://kangsgo.com/94.html</a>
+        
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/94.html" data-id="cj8x084mr004lnora6c8hptt8" class="article-share-link" data-share="baidu" data-title="gromacs下蛋白-配体复合物模拟[GAFF]">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/94.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/106.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Gromacs共轭梯度法mdp设置
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/94.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&url=http://kangsgo.com/94.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/94.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/106.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Gromacs共轭梯度法mdp设置</h4>
+      </a>
+    </div>
   
-    <a href="/89.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Autodock与AutoDock vina利用pymol插件使用教程</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/89.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Autodock与AutoDock vina利用pymol插件使用教程</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="94.html" data-title="gromacs下蛋白-配体复合物模拟[GAFF]" data-url="http://kangsgo.com/94.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/94.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&url=http://kangsgo.com/94.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/94.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABVElEQVR42u3a0Q7DIAiF4b7/S3cPYCTngGSp/Fwt66Zfl2iZ8DxyvEusV9dPrlcPByxYF7HeMHaT7UC78fW5YMGazFKGU9Zy/F1lLliwYFUWf7wFwIIFq4MVbwF/2yBgwfo4K7ew3astuTwsWFew9FOd+uuW8y1YsD7Oes1wubmABWsaS1/A8ZGunkAb48OCNYZVP6itFD6348OCNYyVOzbS2xEOpNSwYA1guZPFqXM9gYYFazLLfdzmNgtjx4IFaxjLbSCobwrJbAIWrAEs/aCno7Zj/EKwYA1gxcc9yvahPKT192HBmsnKdQLoZRi9JQgWrGmsSsOB/sC2bwYWrGEsN7XtQJcCFqyLWMpkbrrstiZIJRZYsAaw3BaEswELFqwcSymrlG4VFixY5p/SXGkz2YoHC9bVLD3xVb6rV0mMmg8sWFezcm0BblGzJe2GBesG1g8ywe42OMO5vAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

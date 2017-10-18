@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小康博客">
 <meta property="og:url" content="http://kangsgo.com/page/8/index.html">
@@ -16,544 +30,481 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小康博客">
 <meta name="twitter:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">小康博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
 </header>
-    <div class="outer">
-      <section id="main">
-  
-    <article id="post-e8-be-93-e5-87-batrr-e7-b2-be-e5-ba-a6-e6-96-87-e7-ab-a0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/329.html" class="article-date">
-  <time datetime="2016-03-25T09:33:56.000Z" itemprop="datePublished">2016-03-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
+<header class="content-header index-header">
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/329.html">输出trr精度文章/制定帧数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>nstxout = 0 ; save coordinates every 2 ps<br>nstvout = 0 ; save velocities every 2 ps<br>4.6.x</p>
-<p>&nbsp;</p>
-<p>使用-b -e -dt 来控制指定帧数</p>
-<p>例：</p>
-<blockquote>
-<p>trjconv_mpi -f mdwholeNOjump.xtc -s 1stframe.pdb -b 49000 -e 50000 -dt 100 -n index.ndx -o lastwt.pdb</p>
-</blockquote>
-
-      
+    <div class="container fade-scale">
+        <h1 class="title">小康博客</h1>
+        <h5 class="subtitle">
+            
+                计算化学与分子模拟爱好者
+            
+        </h5>
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/329.html" data-id="cj8x084m8003wnorafwom438k" class="article-share-link" data-share="baidu" data-title="输出trr精度文章/制定帧数">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/329.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-be-93-e5-87-batrr-e7-b2-be-e5-ba-a6-e6-96-87-e7-ab-a0"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-25 17:33:56" datetime="2016-03-25T09:33:56.000Z"  itemprop="datePublished">2016-03-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/329.html">输出trr精度文章/制定帧数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        nstxout = 0 ; save coordinates every 2 psnstvout = 0 ; save velocities every 2 ps4.6.x
+&nbsp;
+使用-b -e -dt 来控制指定帧数
+例：
+
+trjconv_mpi -f mdwholeNOjump.xtc -s 1stframe.pdb -b 49000 -e 50000 -dt 100 -n i...
+    
+
+        <a href="/329.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e7-94-9f-e7-89-a9-e4-bf-a1-e6-81-af-e5-ad-a6-e5-88-86-e6-9e-90-e9-b8-9f-e7-b1-bbahr-e5-92-8c-e4-ba-8c-e6-81-b6-e8-8b-b1-e5-af-b9-e4-ba-8e-e8-a7-a3-e5-af-86"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e7-94-9f-e7-89-a9-e4-bf-a1-e6-81-af-e5-ad-a6-e5-88-86-e6-9e-90-e9-b8-9f-e7-b1-bbahr-e5-92-8c-e4-ba-8c-e6-81-b6-e8-8b-b1-e5-af-b9-e4-ba-8e-e8-a7-a3-e5-af-86" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/322.html" class="article-date">
-  <time datetime="2016-03-22T04:27:25.000Z" itemprop="datePublished">2016-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/未分类/">未分类</a>►<a class="article-category-link" href="/categories/未分类/杂项/">杂项</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-22 12:27:25" datetime="2016-03-22T04:27:25.000Z"  itemprop="datePublished">2016-03-22</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/322.html">[读书笔记]生物信息学分析鸟类AhR和二恶英对于解密亚型，配体和物种特应性激活之间的联系</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/">未分类</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/杂项/">杂项</a></li></ul></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文标题：In Silico Analysis of the Interaction of Avian Aryl Hydrocarbon Receptors and Dioxins to Decipher Isoform‑, Ligand‑, and Species-Specific Activations</p>
-<p>影响因子：5.4</p>
-<p>摘要：AhR调节有毒的TCDD和其他的二恶英类似物（DLCs）的应答。鸟类物种拥有多种AhR的亚型（AHR1，AHR1β和AHR2），其显示出物种特异行和亚型特异性对于配体的应答。依据鸟类AHRs的结构功能来解释配体的偏爱性，我们生成同源模型基于含有配体的人源HIF-2α（PDB 3H7W）。分子对接使用ASEDock对TCDD和其它的DLCs使用AHR1s和AHR2s表明用同类卤元素代替氯原子随着数量增加而结合能增加。可能的相互作用对于AHR的内源性配体，FICZ对于AHRs的相互作用能在鸟类AHRs中低于TCDD。分子动力学揭露mean square displacements在Ile324和Ser380对于在鸡中的TCDD结合的AHR1，对于TCDD最为敏感的物种，会更小对于其它的鸟类AHR1s，提示动力学稳定性对于这些氨基酸残基贡献对于TCDD具有偏爱性。对于AHR2，相应的残基( (Val/Ser or Val/Ala type))对于不同的TCDD敏感性没有可靠数据。利用立体的参考联系位点模型显示TCDD结合对于鸟类AHRs稳定性可能归功于溶剂化效应依赖于对应的两个氨基酸残基Ile324和Ser380在鸡的AHR1中特点不同。这次研究阐明在生物信息模拟中AHRs和配体们可以被用来预测亚型，配体和物种特异性之间的联系。</p>
-<p>简单介绍：在卵内和体外实验显示鸡对于DLCs物质为最敏感物种，黑脚信天翁和环颈雉为中度敏感，普通的鸬鹚和普通的燕鸥是最低敏感性物种。这些机理并不清楚。</p>
-<p>另外需要思考的有两点：</p>
-<p>第一点：it is not clear why the two amino acid residues in the LBD are critical for the interaction of TCDD−AHR1 and not for TCDD−AHR2.</p>
-<p>第二点：it is unknown why the Ile−Ser type of AHR1 is more sensitive to TCDD than other types of AHR1s.</p>
-<p>方法：</p>
-<p>数据和模板准备</p>
-<p>同源建模</p>
-<p>分子对接</p>
-<p>报告基因</p>
-<p>分子动力学/分子模拟</p>
-<p>&nbsp;</p>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/322.html" data-id="cj8x084l80030noranlfl347s" class="article-share-link" data-share="baidu" data-title="[读书笔记]生物信息学分析鸟类AhR和二恶英对于解密亚型，配体和物种特应性激活之间的联系">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/322.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/322.html">[读书笔记]生物信息学分析鸟类AhR和二恶英对于解密亚型，配体和物种特应性激活之间的联系</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        原文标题：In Silico Analysis of the Interaction of Avian Aryl Hydrocarbon Receptors and Dioxins to Decipher Isoform‑, Ligand‑, and Species-Specific Activations
+影响因子：5.4
+摘要：AhR调节有毒的TCDD和其他的二恶英类似物（DLCs）的应...
+    
+
+        <a href="/322.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e5-9c-a8pubmed-e4-b8-ad-e8-ae-be-e5-ae-9a-e5-bd-b1-e5-93-8d-e5-9b-a0-e5-ad-90-e7-ad-9b-e9-80-89"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-e5-9c-a8pubmed-e4-b8-ad-e8-ae-be-e5-ae-9a-e5-bd-b1-e5-93-8d-e5-9b-a0-e5-ad-90-e7-ad-9b-e9-80-89" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/310.html" class="article-date">
-  <time datetime="2016-03-22T03:37:57.000Z" itemprop="datePublished">2016-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-22 11:37:57" datetime="2016-03-22T03:37:57.000Z"  itemprop="datePublished">2016-03-22</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/310.html">在pubmed中设定影响因子筛选</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先下载2015年的sci的Excel，<a href="http://kangsgo.com/wp-content/uploads/2016/03/IF-2015.xlsx">IF-2015</a></p>
-<p>打开后选择影响因子大于你想要的影响因子（这里我们选择的大于5）的标题，如下图：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/捕获.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/捕获-300x246.png" alt="捕获"></a></p>
-<p>选择性粘贴进入word中</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/捕获3.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/捕获3-300x178.png" alt="捕获3"></a></p>
-<p>按Ctrl+H切换到替换模式，在替换中输入换行符“^p”，替换为”[journal] or “ 注意引号也要输入进入</p>
-<p>删除最后一个or “在第一个添加”</p>
-<p>进入ncbi的pumbed，点击mange Filters</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/捕获2.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/捕获2-300x189.png" alt="捕获2"></a></p>
-<p>创建顾客自定义Filters</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/捕获1.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/捕获1-300x220.png" alt="捕获"></a></p>
-<p>拷贝一下，完成！</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/捕获4.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/捕获4-300x75.png" alt="捕获"></a></p>
-<p>搜索的时候选择一下即可</p>
-<p>参考文献：生物信息学日课</p>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/310.html" data-id="cj8x084ke001znora5y7z2gx2" class="article-share-link" data-share="baidu" data-title="在pubmed中设定影响因子筛选">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/310.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/310.html">在pubmed中设定影响因子筛选</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        首先下载2015年的sci的Excel，IF-2015
+打开后选择影响因子大于你想要的影响因子（这里我们选择的大于5）的标题，如下图：
+[
+                
+                    
+                    
+                
+                捕获](http://kangsgo.com/wp-content/u...
+    
+
+        <a href="/310.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e5-8e-9f-e5-88-9bepock-e5-ae-98-e6-96-b9-e6-89-8b-e5-86-8c-e7-bf-bb-e8-af-91-e4-b8-8e-e7-90-86-e8-a7-a3"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-e5-8e-9f-e5-88-9bepock-e5-ae-98-e6-96-b9-e6-89-8b-e5-86-8c-e7-bf-bb-e8-af-91-e4-b8-8e-e7-90-86-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/306.html" class="article-date">
-  <time datetime="2016-03-09T09:55:52.000Z" itemprop="datePublished">2016-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/分子模拟/">分子模拟</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-09 17:55:52" datetime="2016-03-09T09:55:52.000Z"  itemprop="datePublished">2016-03-09</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/306.html">[原创]Epock官方手册翻译与理解</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Epock是一个可以动态计算结合腔大小的一个软件，由于有VMD的可视化软件，所以非常的容易上手，简单~</p>
-<p>官网地址：<a href="http://epock.bitbucket.org/" target="_blank" rel="external">点我查看</a></p>
-<p>翻译文档：<a href="http://kangsgo.com/wp-content/uploads/2016/03/翻译.pdf">点我下载</a></p>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/306.html" data-id="cj8x084k3001qnora8p8mf9xu" class="article-share-link" data-share="baidu" data-title="[原创]Epock官方手册翻译与理解">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/306.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/306.html">[原创]Epock官方手册翻译与理解</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Epock是一个可以动态计算结合腔大小的一个软件，由于有VMD的可视化软件，所以非常的容易上手，简单~
+官网地址：点我查看
+翻译文档：点我下载
+
+    
+
+        <a href="/306.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vmd-e6-93-8d-e4-bd-9c-e7-ac-94-e8-ae-b0"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-vmd-e6-93-8d-e4-bd-9c-e7-ac-94-e8-ae-b0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/303.html" class="article-date">
-  <time datetime="2016-03-08T05:42:19.000Z" itemprop="datePublished">2016-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-08 13:42:19" datetime="2016-03-08T05:42:19.000Z"  itemprop="datePublished">2016-03-08</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/303.html">VMD操作笔记</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.保存图片：</p>
-<p>File-&gt;Render-&gt;Start Rendering</p>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/303.html" data-id="cj8x084og006unoraqt7zkbll" class="article-share-link" data-share="baidu" data-title="VMD操作笔记">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/303.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/303.html">VMD操作笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1.保存图片：
+File-&gt;Render-&gt;Start Rendering
+
+    
+
+        <a href="/303.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-gromacs-e7-bb-ad-e8-b7-91-e9-97-ae-e9-a2-98"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-gromacs-e7-bb-ad-e8-b7-91-e9-97-ae-e9-a2-98" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/165.html" class="article-date">
-  <time datetime="2016-03-03T15:28:45.000Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-03 23:28:45" datetime="2016-03-03T15:28:45.000Z"  itemprop="datePublished">2016-03-03</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/165.html">gromacs续跑问题</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于我EVO跑了50ns并未平衡，所以还需要继续加跑时间查看，在网上查了一些续跑的资料，现在续跑分享给大家～</p>
-<p>1.重启模拟（未测试）</p>
-<p>适用范围，突然停机等等，有检查点生成的</p>
-<blockquote>
-<p>_mdrun -s md_0<em>1.tpr -cpi state.cpt –append </em>(不能改变核数)<br>以上 <em>state.cpt</em> 文件为最新生产的断点文件（ <em>mdrun</em> 会保存另外一个断点文件：_state<em>prev.cpt</em>，为上一个时刻保存的断点文件，双保险。）使用 “<em>-append</em> “ 的作用是将模拟输出添加到已有文件中，包括轨迹文件，记录文件，能量文件等，相同帧的信息将被后生产的信息覆盖。</p>
-</blockquote>
-<p>2.续跑！</p>
-<p>续跑50ns命令</p>
-<blockquote>
-<p>gmx convert-tpr -s md_0_1.tpr -f md_0_1.cpt -e md_0_1.edr -extend 50000  -o md_0_2.tpr<br>其中”-extend 1000”表示延长5000ps的模拟时间。</p>
-</blockquote>
-<p>原因和方法可以看这里：<a href="http://jerkwin.github.io/GMX/GMXprg#gmxmdrun:执行模拟简正分析或能量最小化翻译:王浩博" target="_blank" rel="external">gmx mdrun</a></p>
-<p>我写的如下：</p>
-<p>[完整]  mdrun -s next.tpr -cpi previous.cpt //参考：嘉晔老师</p>
-<p>看看续跑第0步的温度是不是和以前最后一步的温度一样, 一样的话, 说明使用了以前的速度, 否则的话, 是重新产生的速度, 你需要重新平衡, 失去了续跑的意义. 我每次都是使用保有速度的gro, mdp中gen_vel=no 重新创建tpr, 再mdrun, 麻烦点. 但不会出现问题 //参考:李继存老师</p>
-<p>[简写]  gmx mdrun -deffnm md_0_2.tpr</p>
-<p>-o  输出全精度轨迹，默认为traj.trr待考</p>
-<p>3.轨迹整合</p>
-<blockquote>
-<p>_trjcat -f traj1.trr traj2.trr…. __-o traj_all.trr</p>
-<p>eneconv -f ener1.edr ener2.edr… __-o ener<em>all.edr</em></p>
-</blockquote>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/165.html" data-id="cj8x084mu004pnorae97hgw4w" class="article-share-link" data-share="baidu" data-title="gromacs续跑问题">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/165.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/165.html">gromacs续跑问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于我EVO跑了50ns并未平衡，所以还需要继续加跑时间查看，在网上查了一些续跑的资料，现在续跑分享给大家～
+1.重启模拟（未测试）
+适用范围，突然停机等等，有检查点生成的
+
+_mdrun -s md_01.tpr -cpi state.cpt –append (不能改变核数)以上 state.cpt 文件为最新生产的断点文件（ mdrun 会保存另外一个断点文件：_stateprev.cp...
+    
+
+        <a href="/165.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-gmxpbsatool-e5-ae-89-e8-a3-85-e4-b8-8e-e4-bd-bf-e7-94-a8-e7-bb-8f-e9-aa-8c-e6-95-99-e7-a8-8b"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-gmxpbsatool-e5-ae-89-e8-a3-85-e4-b8-8e-e4-bd-bf-e7-94-a8-e7-bb-8f-e9-aa-8c-e6-95-99-e7-a8-8b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/295.html" class="article-date">
-  <time datetime="2016-03-01T04:03:05.000Z" itemprop="datePublished">2016-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-01 12:03:05" datetime="2016-03-01T04:03:05.000Z"  itemprop="datePublished">2016-03-01</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/295.html">GMXPBSAtool安装与使用经验教程</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于自己在使用G_mmbps时发现并不是那么准确,反复计算均未得到自己想要的结果,所以想试一下GMXPBSAtool得到的结果,但是安装和调试bug就花费了我一上午的时间,为了帮助大家更加快速的使用,我在这里总结一下经验分享给大家~</p>
-<h2 id="1-Gromacs安装"><a href="#1-Gromacs安装" class="headerlink" title="1.Gromacs安装"></a>1.Gromacs安装</h2><p>略<br>应该这个不可以使用mpi版本,自己测试也无法完成,若需要用mpi版本应该需要改bash脚本,至少将gromacs命令相应更改(PS:我使用的版本为5.0.2/5.0.6)<br>个人觉得应该可以安装一个版本不设置环境变量[!未测试!]</p>
-<h2 id="2-APBS安装"><a href="#2-APBS安装" class="headerlink" title="2.APBS安装"></a>2.APBS安装</h2><p>APBS下载<a href="https://github.com/Electrostatics/apbs-pdb2pqr/tree/1.4.1-binary-release" target="_blank" rel="external">点击此处查看</a><br>下载编译好的以及未编译的均可,若只是用于GMXPBSAtool可以不需要设置环境变量<br>我下载的1.3版本<br>命令如下:</p>
-<blockquote>
-<p>tar zxvf apbs-1.3-source.tar.gz</p>
-<p>cd apbs-1.3-source/</p>
-<p>./configure –prefix=/home/gromacs/md/apbs</p>
-<p>make</p>
-<p>make install</p>
-</blockquote>
-<h2 id="3-GMXPBSAtool"><a href="#3-GMXPBSAtool" class="headerlink" title="3.GMXPBSAtool"></a>3.GMXPBSAtool</h2><p><a href="http://gdriv.es/gmxpbsa" target="_blank" rel="external">GMXPBSAtool下载</a></p>
-<p>解压,在bash/zsh中设置:</p>
-<blockquote>
-<p>export GMXPBSAHOME=/home/gromacs/md/GMXPBSAtool</p>
-</blockquote>
-<h2 id="4-input参数配置"><a href="#4-input参数配置" class="headerlink" title="4.input参数配置"></a>4.input参数配置</h2><p>我配置的如下:</p>
-<p><pre>       #GENERAL</pre></p>
-<p>root      289</p>
-<p>multitrj      n<br>root_multitrj</p>
-<p>run                     1                               #options: integer</p>
-<p>RecoverJobs            y                                #options: y,n</p>
-<p>Cpath                  /home/gromacs/md/apbs/share/tools/manip<br>Apath                  /home/gromacs/md/apbs/bin<br>Gpath            /home/gromacs/md/gromacs/bin</p>
-<pre><code>#FFIELD
-</code></pre><p>use_topology            y                               #options: y,n<br>    itp_receptor  receptor.itp<br>    itp_ligand    TCD.itp<br>use_nonstd_ff           n                               #options: y,n<br>ffield                 5</p>
-<pre><code>#GROMACS VARIABLE
-</code></pre><p>complex                    protein_TCD<br>receptor                protein<br>ligand                  TCD</p>
-<p>skip                    1                               #options: integer<br>min                     n                               #options: y,n</p>
-<p>double_p                n                               #options: y,n</p>
-<pre><code>#APBS VARIABLE
-</code></pre><p>coulomb                  coul                     #options: coul,gmx</p>
-<p>linearized              n                               #options: y,n<br>precF                   1                               #options: integer 1,2,3(..)<br>temp                    300<br>bcfl                    sdh                             #options: sdh,mdh,focus<br>pdie                    2                               #options: integer, usually between 1 and 20</p>
-<pre><code>#QUEQUE VARIABLE
-</code></pre><p>cluster                 n                             #options: y,n<br>Q                       …                                     #necessary only if cluster=”y”!!</p>
-<p>mnp                     1                             #options: integer </p>
-<pre><code>#OUTPUT VARIABLE
-</code></pre><p>pdf                     n                               #options: y,n</p>
-<pre><code># ALANINE SCANNING
-</code></pre><p>cas                     n                               #options: y,n</p>
-<p><br>主要修改的地方有以下这么几点:</p>
-<h3 id="1-路径"><a href="#1-路径" class="headerlink" title="1).路径:"></a>1).路径:</h3><blockquote>
-<p>Cpath /home/gromacs/md/apbs/share/tools/manip</p>
-<p>;apbs的coulumb工具</p>
-<p>Apath /home/gromacs/md/apbs/bin</p>
-<p>;apbs目录</p>
-<p>Gpath /home/gromacs/md/gromacs/bin</p>
-<p>;gromacs目录</p>
-</blockquote>
-<h3 id="2-力场文件"><a href="#2-力场文件" class="headerlink" title="2).力场文件"></a>2).力场文件</h3><blockquote>
-<p>use_topology y #options: y,n</p>
-<p>itp_receptor receptor.itp</p>
-<p>itp_ligand TCD.itp</p>
-<p>use_nonstd_ff n #options: y,n</p>
-<p>ffield 5<br>由于我是做的受体配体,gromacs pdb2gmx不可以读小分子配体(无力场),所以use_topology,应该也可以改力场文件,加原子类型与电荷,但是自己修改不成功.注意需要放置topol.top文件,将topol.top中的蛋白数据提取出来,新建一个receptor.itp 否则会在后面报错.<br>ffield我选的amber5力场</p>
-</blockquote>
-<h3 id="3-Gromacs变量"><a href="#3-Gromacs变量" class="headerlink" title="3).Gromacs变量"></a>3).Gromacs变量</h3><blockquote>
-<p>complex protein_TCD</p>
-<p>receptor protein</p>
-<p>ligand TCD<br>在index.ndx中删除一个TCD,否则会报错</p>
-</blockquote>
-<h2 id="5-运行"><a href="#5-运行" class="headerlink" title="5.运行"></a>5.运行</h2><p>将轨迹文件处理后命名为npt.xtc</p>
-<p>tpr文件命名为npt.tpr</p>
-<p>放入289文件夹下(可以修改)</p>
-<blockquote>
-<p>1. cd EXAMPLE1</p>
-<p>2. $GMXPBSAHOME/gmxpbsa0.sh and wait few seconds to finish the calculations</p>
-<p>3. when the step 2. is done, type $GMXPBSAHOME/gmxpbsa1.sh and have a cup of coffe :)</p>
-<p>4. when the step 3. is done, type $GMXPBSAHOME/gmxpbsa2.sh and wait few seconds to finish the calculations<br>参考文献:<a href="http://jerkwin.github.io/GMX/GMXtut-9/#gmmpbsa" target="_blank" rel="external">GMXPBSATool</a></p>
-</blockquote>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/295.html" data-id="cj8x084mk004bnora6604vi9w" class="article-share-link" data-share="baidu" data-title="GMXPBSAtool安装与使用经验教程">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/295.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/295.html">GMXPBSAtool安装与使用经验教程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于自己在使用G_mmbps时发现并不是那么准确,反复计算均未得到自己想要的结果,所以想试一下GMXPBSAtool得到的结果,但是安装和调试bug就花费了我一上午的时间,为了帮助大家更加快速的使用,我在这里总结一下经验分享给大家~
+1.Gromacs安装略应该这个不可以使用mpi版本,自己测试也无法完成,若需要用mpi版本应该需要改bash脚本,至少将gromacs命令相应更改(PS:我使...
+    
+
+        <a href="/295.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-modeller-e5-a4-9a-e6-a8-a1-e7-89-88-e5-9f-ba-e4-ba-8e-e9-85-8d-e4-bd-93-loop-e7-8e-af-e4-bc-98-e5-8c-96-e7-ae-80-e7-95-a5-e6-95-99-e7-a8-8b"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-modeller-e5-a4-9a-e6-a8-a1-e7-89-88-e5-9f-ba-e4-ba-8e-e9-85-8d-e4-bd-93-loop-e7-8e-af-e4-bc-98-e5-8c-96-e7-ae-80-e7-95-a5-e6-95-99-e7-a8-8b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/280.html" class="article-date">
-  <time datetime="2016-02-27T05:26:29.000Z" itemprop="datePublished">2016-02-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-02-27 13:26:29" datetime="2016-02-27T05:26:29.000Z"  itemprop="datePublished">2016-02-27</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/280.html">Modeller多模版-基于配体-Loop环优化[简略教程]</a>
-    </h1>
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/280.html">Modeller多模版-基于配体-Loop环优化[简略教程]</a>
+    </h3>
   
 
-      </header>
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.先多模版比对</p>
-<pre>
+        1.先多模版比对
+
 # Illustrates the SALIGN multiple structure/sequence alignment
 
 from modeller import *
@@ -562,598 +513,260 @@ log.verbose()
 env = environ()
 env.io.atom_files_directory = './:../atom_files/'
 
-aln = alignment(env)
-for (code, chain) in (('3F1O', 'A'), ('3H7W', 'A'), ('3H82', 'A')):
-    mdl = model(env, file=code, model_segment=('FIRST:'+chain, 'LAST:'+chain))
-    aln.append_model(mdl, atom_files=code, align_codes=code+chain)
+aln = alignment(en...
+    
 
-for (weights, write_fit, whole) in (((1., 0., 0., 0., 1., 0.), False, True),
-                                    ((1., 0.5, 1., 1., 1., 0.), False, True),
-                                    ((1., 1., 1., 1., 1., 0.), True, False)):
-    aln.salign(rms_cutoff=3.5, normalize_pp_scores=False,
-               rr_file='$(LIB)/as1.sim.mat', overhang=30,
-               gap_penalties_1d=(-450, -50),
-               gap_penalties_3d=(0, 3), gap_gap_score=0, gap_residue_score=0,
-               dendrogram_file='fm00495.tree',
-               alignment_type='tree', # If 'progresive', the tree is not
-                                      # computed and all structues will be
-                                      # aligned sequentially to the first
-               feature_weights=weights, # For a multiple sequence alignment only
-                                        # the first feature needs to be non-zero
-               improve_alignment=True, fit=True, write_fit=write_fit,
-               write_whole_pdb=whole, output='ALIGNMENT QUALITY')
-
-aln.write(file='fm00495.pap', alignment_format='PAP')
-aln.write(file='fm00495.ali', alignment_format='PIR')
-
-aln.salign(rms_cutoff=1.0, normalize_pp_scores=False,
-           rr_file='$(LIB)/as1.sim.mat', overhang=30,
-           gap_penalties_1d=(-450, -50), gap_penalties_3d=(0, 3),
-           gap_gap_score=0, gap_residue_score=0, dendrogram_file='1is3A.tree',
-           alignment_type='progressive', feature_weights=[0]*6,
-           improve_alignment=False, fit=False, write_fit=True,
-           write_whole_pdb=False, output='QUALITY')
-</pre>
-File :salign.py
-
-结果如下:
-<pre>
- _aln.pos         10        20        30        40        50        60
-3F1OA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
-3H7WA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
-3H82A     EFKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
- _consrvd  *******************************************************************
-
- _aln.p   70        80        90       100       110
-3F1OA     VSGQYRMLAKHGGYVWLETQGTVIYN-----PQCIMCVNYVLSEIEK 
-3H7WA     VSGQYRMLAKHGGYVWLETQGTVIY------PQCIMCVNYVLSEIEK 
-3H82A     VSGQYRMLAKHGGYVWLETQGTVIYNPRNLQPQCIMCVNYVLSEIEK 
- _consrvd *************************      ****************
-</pre>
-File :fm00495.pap
-
-模版开搞：
-<pre>
-from modeller import *
-
-log.verbose()
-env = environ()
-
-env.libs.topology.read(file='$(LIB)/top_heav.lib')
-
-# Read aligned structure(s):
-aln = alignment(env)
-aln.append(file='fm00495.ali', align_codes='all')
-aln_block = len(aln)
-
-# Read aligned sequence(s):
-aln.append(file='musahr.ali', align_codes='musahr')
-
-# Structure sensitive variable gap penalty sequence-sequence alignment:
-aln.salign(output='', max_gap_length=20,
-           gap_function=True,   # to use structure-dependent gap penalty
-           alignment_type='PAIRWISE', align_block=aln_block,
-           feature_weights=(1., 0., 0., 0., 0., 0.), overhang=0,
-           gap_penalties_1d=(-450, 0),
-           gap_penalties_2d=(0.35, 1.2, 0.9, 1.2, 0.6, 8.6, 1.2, 0., 0.),
-           similarity_flag=True)
-
-aln.write(file='TvLDH-mult.ali', alignment_format='PIR')
-aln.write(file='TvLDH-mult.pap', alignment_format='PAP')
-</pre>
-File: align2d_mult.py
-
-注意序列尾巴标*
-
-<pre>
-from modeller import *
-from modeller.automodel import *
-
-env = environ()
-a = automodel(env, alnfile='TvLDH-mult.ali',
-              knowns=('3F1OA','3H7WA','3H82A'), sequence='mahr')
-a.starting_model = 1
-a.ending_model = 5
-a.make()
-</pre>
-File: model.py
-
-loop优化：
-<pre>
-# Loop refinement of an existing model
-from modeller import *
-from modeller.automodel import *
-
-log.verbose()
-env = environ()
-
-# directories for input atom files
-env.io.atom_files_directory = './:../atom_files'
-
-# Create a new class based on 'loopmodel' so that we can redefine
-# select_loop_atoms (necessary)
-class MyLoop(loopmodel):
-    # This routine picks the residues to be refined by loop modeling
-    def select_loop_atoms(self):
-        # 10 residue insertion 
-        return selection(self.residue_range('70', '80'))
-
-m = MyLoop(env,
-           inimodel='musahr1.pdb', # initial model of the target
-           sequence='mahr')          # code of the target
-
-m.loop.starting_model= 10           # index of the first loop model 
-m.loop.ending_model  = 15          # index of the last loop model
-m.loop.md_level = refine.very_fast # loop refinement method; this yields
-                                   # models quickly but of low quality;
-                                   # use refine.slow for better models
-
-m.make()
-</pre>
-
-<p>增加配体</p>
-<pre>
-from modeller import *
-from modeller.automodel import *
-
-env = environ()
-env.io.hetatm = True
-a = automodel(env, alnfile='TvLDH-1emd_bs.ali',
-              knowns=('3F1OA','3H7WA','3H82A'), sequence='mahr')
-a.starting_model = 20
-a.ending_model = 30
-a.make()
-</pre>
-
-<p>参考文献：<a href="http://salilab.org/modeller/tutorial/advanced.html" target="_blank" rel="external">官方教程多模版建模</a><br>参考文献:<a href="http://bioms.org/thread-1480-1-3.html" target="_blank" rel="external">Modeller 学习记录（四）</a></p>
-
-      
+        <a href="/280.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/280.html" data-id="cj8x084nm005nnoraf8ycedh7" class="article-share-link" data-share="baidu" data-title="Modeller多模版-基于配体-Loop环优化[简略教程]">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/280.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e4-bd-bf-e7-94-a8vmd-e7-bb-98-e7-94-bb-e8-b1-aa-e7-8c-aa-e5-9b-be"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-e4-bd-bf-e7-94-a8vmd-e7-bb-98-e7-94-bb-e8-b1-aa-e7-8c-aa-e5-9b-be" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/260.html" class="article-date">
-  <time datetime="2016-02-25T10:15:40.000Z" itemprop="datePublished">2016-02-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-02-25 18:15:40" datetime="2016-02-25T10:15:40.000Z"  itemprop="datePublished">2016-02-25</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/260.html">使用VMD绘画豪猪图</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文件下载地址：<a href="http://kangsgo.com/wp-content/uploads/2016/02/PorcupinePlot.zip">PorcupinePlot</a></p>
-<p>&nbsp;</p>
-<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>获得 extreme1.pdb 使用如下命令</p>
-<blockquote>
-<p>g_anaeig -s protein_CAlpha.pdb -f combinedItajectory.xtc -extr extreme1.pdb -first 1 -last 1 -nframes 50</p>
-</blockquote>
-<h4 id="Step2"><a href="#Step2" class="headerlink" title="Step2:"></a>Step2:</h4><p>使用文本编辑器，从extreme1.pdb保存第一个frame  改成”first_frame.pdb”<br>相似的把最后一个frame改为  “last_frame.pdb”</p>
-<h4 id="Step3"><a href="#Step3" class="headerlink" title="Step3:"></a>Step3:</h4><p>打开VMD, Load  first_frame.pdb in New Molecule.<br>相似的load, last frame 作为 a newmolecule.</p>
-<h4 id="Step4"><a href="#Step4" class="headerlink" title="Step4:"></a>Step4:</h4><p>打开 Tcl/Tk Console</p>
-<h4 id="Step5"><a href="#Step5" class="headerlink" title="Step5:"></a>Step5:</h4><p>输入”<strong>play Porcupine.tcl</strong>“ 并回车</p>
-<h4 id="Step6"><a href="#Step6" class="headerlink" title="Step6:"></a>Step6:</h4><p>然后在 VMD（主界面） Main, 点击 first_frame 并且在 console 中输入:<strong> atomselect top “name CA”</strong></p>
-<h4 id="step7"><a href="#step7" class="headerlink" title="step7:"></a>step7:</h4><p>Then in VMD Main, click on last_frame and type in console:<strong> atomselect top “name CA”</strong></p>
-<h4 id="Step8"><a href="#Step8" class="headerlink" title="Step8:"></a>Step8:</h4><p>然后输入</p>
-<blockquote>
-<p>porcupineplot::Diff atomselect1 atomselect0<br>最后的输入结果类似如下：</p>
-<p><pre>———————–<br>&gt;Main&lt; (ras-raf) 17 % atomselect top “name CA” atomselect0 &gt;Main&lt; (ras-raf) 20 % atomselect top “name CA” atomselect1 &gt;Main&lt; (ras-raf) 21 % porcupineplot::Diff atomselect1 atomselect0<br>running through 242 residues<br>drawing arrows for distances between 0.14418759278366697 and 5.825031451230942 (colors from scheme BGR)<br>drawing color scale bar<br>done<br></pre><br>在VMD中最终效果如下：</p>
-</blockquote>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/02/Demo_ras-raf.png"><img src="http://kangsgo.com/wp-content/uploads/2016/02/Demo_ras-raf-300x291.png" alt="Demo_ras-raf"></a></p>
-<p>&nbsp;</p>
-<blockquote>
-<p>注意：在<strong> g_covar</strong> 和<strong> g_anaeig</strong> 命令中选择protein而非Ca</p>
-<p>感谢GROMACS小组-李辉指正</p>
-</blockquote>
 
-      
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/260.html" data-id="cj8x084jt001bnoraqtn3cmmo" class="article-share-link" data-share="baidu" data-title="使用VMD绘画豪猪图">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/260.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/260.html">使用VMD绘画豪猪图</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        文件下载地址：PorcupinePlot
+&nbsp;
+Step 1:获得 extreme1.pdb 使用如下命令
+
+g_anaeig -s protein_CAlpha.pdb -f combinedItajectory.xtc -extr extreme1.pdb -first 1 -last 1 -nframes 50
+
+Step2:使用文本编辑器，从extreme1.pdb保存第一个...
+    
+
+        <a href="/260.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e4-bd-bf-e7-94-a8pymol-e7-9a-84modevectors-e8-84-9a-e6-9c-ac-e7-bb-98-e7-94-bb-e8-b1-aa-e7-8c-aa-e5-9b-be"
+  class="article-card article-type-post" itemprop="blogPost">
 
-  
-    <article id="post-e4-bd-bf-e7-94-a8pymol-e7-9a-84modevectors-e8-84-9a-e6-9c-ac-e7-bb-98-e7-94-bb-e8-b1-aa-e7-8c-aa-e5-9b-be" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/243.html" class="article-date">
-  <time datetime="2016-02-25T09:55:49.000Z" itemprop="datePublished">2016-02-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
+    <div class="post-meta">
+        <time class="post-time" title="2016-02-25 17:55:49" datetime="2016-02-25T09:55:49.000Z"  itemprop="datePublished">2016-02-25</time>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a>
-    </h1>
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文地址：<a href="http://www.pymolwiki.org/index.php/Modevectors" target="_blank" rel="external">点我查看</a>   英文好的建议看原文，我的英文不是很好，以免有翻译错误或者翻译不准确的地方</p>
-<p>脚本下载地址：<a href="http://kangsgo.com/wp-content/uploads/2016/02/modevectors.zip">modevectors</a></p>
-<p>使用：</p>
-<p>加载脚本使用run命令</p>
-<pre>modevectors first_obj_frame, last_obj_frame [,first_state=1 [,last_state=1 [,outname=modevectors \
-  [,head=1.0 [,tail=0.3 \[,head_length=1.5 [,headrgb=(1.0,1.0,1.0) [,tailrgb=(1.0,1.0,1.0) [,cutoff=4.0 
-  [,skip=0 [,cut=0.5 [,atom=CA [,stat=show [,factor=1.0 [,notail=0]]]]]]]]]]]]]]
-</pre>
-更多类型可以看pdf底部
 
-当脚本完成object会显示"modevectors" 可以通过 outname=modevectors 修改
 
-例子：
-<pre>modevectors 1E3M, 1W7A
-modevectors 1E3M, 1W7A, outname="arrows"
-modevectors 1E3M, 1W7A, atom="P"
-</pre>
-复制/粘贴 如下代码查看modevectors。此使用多个蛋白且箭头联系首尾
-<pre>import modevectors
-# fetch the PDBs from pdb.org
-fetch 1c3y, finish=1, multiplex=0, async=0
-# separate the first and last states of the NMR ensemble to individual objects
-split_states 1c3y, 1, 1
-split_states 1c3y, 23, 23
-hide
-# run the modevectors code
-modevectors 1c3y_0001, 1c3y_0023
-# just setup a nice representation
-as cartoon, 1c3y_0001 or 1c3y_0023
-show cgo, modevectors
-color marine, 1c3y_0001
-color purpleblue, 1c3y_0023
-</pre>
-附样式图片（编号1-13）：
-[![Mv_default](http://kangsgo.com/wp-content/uploads/2016/02/Mv_default-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_default.png)   [![Mv_fig2](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig2-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig2.png)
-
-[![Mv_fig3](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig3-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig3.png)   [![Mv_fig4](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig4-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig4.png)
-
-[![Mv_fig5](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig5-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig5.png)   [![Mv_fig6](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig6-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig6.png)
-
-[![Mv_fig7](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig7-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig7.png)   [![Mv_fig8](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig8-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig8.png)
-
-[![Mv_fig9](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig9-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig9.png)   [![Mv_fig10](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig10-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig10.png)
-
-[![Mv_fig11](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig11-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig11.png)   [![Mv_fig12](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig12-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig12.png)
-
-[![Mv_fig13](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig13-300x225.png)](http://kangsgo.com/wp-content/uploads/2016/02/Mv_fig13.png)
-
-图片代码：
-<pre>reinitialize
-import modevectors
-
-fetch 1c3y, async=0
-
-split_states 1c3y, 1, 1
-split_states 1c3y, 23, 23
-hide
-
-#This is the default setting (Fig.1)
-modevectors 1c3y_0001, 1c3y_0023
-
-#This is shows that the direction of the arrows is drawn from the 1c3y_0001 towards 1c3y_0023 (Fig.2)
-show cartoon, 1c3y_0023
-color red, 1c3y_0023
-
-#This controls the base radius of the cone/arrow head in angstroms (Fig.3)
-modevectors 1c3y_0001, 1c3y_0023, head=2.5
-
-#This controls the radius of the cylinders/arrow tails in angstroms (Fig.4)
-modevectors 1c3y_0001, 1c3y_0023, tail=0.75
-
-#This controls the length of the cone/arrow head in angstroms (Fig.5)
-#Note that this option does NOT increase the vector length but simply changes the tail length
-modevectors 1c3y_0001, 1c3y_0023, head_length=3.0
-
-#This controls the colour of the cone/arrow head using RGB values (Fig.6)
-modevectors 1c3y_0001, 1c3y_0023, headrgb=(1.0,0.0,0.0)
-
-#This controls the colour of the cylinder/arrow tails using RGB values (Fig.7)
-modevectors 1c3y_0001, 1c3y_0023, tailrgb=(1.0,0.0,0.0)
-
-#This controls the which vectors to show based on a specific cutoff value in angstroms.  Vector lengths that are less 
-#than the cutoff value will not be displayed (Fig.8)
-modevectors 1c3y_0001, 1c3y_0023, cutoff=30.0
-
-#This controls how many vectors to skip (integer value) and is useful when there are too many vectors showing.  
-#Skip=1 will show every other arrow (Fig.9)
-modevectors 1c3y_0001, 1c3y_0023, skip=1
-
-#This controls how much to cut from each vector (in angstroms).  Note that arrows will point in the opposite directions 
-#when too much is cutoff (resulting in a negative vector length) (Fig.10) and should be used with caution!
-modevectors 1c3y_0001, 1c3y_0023, cut=15.0
-
-#This controls which atom to draw a vector from (Fig.11).  Note that this is case-sensitive and is really only useful 
-#when atom=CA or when atom=P (for DNA backbones)
-modevectors 1c3y_0001, 1c3y_0023, atom=CB
-
-#This controls how much to multiple the length of each vector by (percentage increase/decrease) (Fig.12)
-#This example halves the length of each vector (50%)
-modevectors 1c3y_0001, 1c3y_0023, factor=0.5
-
-#This hides the statistics which count atoms skipped, atoms counted (number of arrows showing), and number of atoms 
-#that did not meet the cutoff and are not shown
-modevectors 1c3y_0001, 1c3y_0023, stat=hide
-
-#This example shows multiple options being used (Fig.13)
-modevectors 1c3y_0001, 1c3y_0023, head=2.0, tail=1.0, head_length=2.0, headrgb=(1.0,0.0,0.0), tailrgb=(0.0,0.0,1.0),
-cutoff=0.0,skip=0,cut=0,atom=CA,factor=0.8
-
-#Finally, this example hides all arrow tails and only uses arrow heads via the notail option(No Figure)
-modevectors 1c3y_0001, 1c3y_0023, head=2.0, cutoff=0.0,skip=0,cut=0,atom=CA,factor=0.8, notail=1
-</pre>
-      
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/243.html" data-id="cj8x084jq0018norak2dal0vf" class="article-share-link" data-share="baidu" data-title="使用Pymol的Modevectors脚本绘画豪猪图">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/243.html#ds-thread" class="article-comment-link">評論</a>
-      
+    
 
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        原文地址：点我查看   英文好的建议看原文，我的英文不是很好，以免有翻译错误或者翻译不准确的地方
+脚本下载地址：modevectors
+使用：
+加载脚本使用run命令
+modevectors first_obj_frame, last_obj_frame [,first_state=1 [,last_state=1 [,outname=modevectors \
+  [,head=1.0 [...
+    
+
+        <a href="/243.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
 </article>
 
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">下一頁 &raquo;</a>
-  </nav>
-</section>
-      
-      <aside id="sidebar">
-  
+        </li>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
+    </ul>
 
-  
     
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
 </nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+
+
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
-</div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/8/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/8/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/8/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/8/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWElEQVR42u3aQQ6DMAxEUe5/aSp1V6GYGZsg1f5ZISrKywI7sXMc8ji/43rnOla/HjsGLFiNWGc4rqz4Ncqz8btgwZrMioPC6q/18KG/CxYsWDFLDxPK9GDBgvVOgIAFC5bL0rej7tJ5+1oeFqwWrEq6da831rdgwfpb1pka+gY1+f+wYA1jrdLwUw0YvdQrPQALVlOWu7HUF8G5ZudP3IIFaxjrqYMCeovlJjzBgjWY5TYm60cNkttXWLDasZTPW0nY7iEDo6QLC9YYVmU2bovFaNjAgjWM5R4+cNOzPg27RgULViOW8pG7xwj0RsvSAAvWSFacmON0nmvV3LwFFqwxrB1HDXL3YcGazMotpiuFpEpAgQWrN6vSYnGTur6MhgVrJksJCsoxhVzogQULlsuq33msoQIL1kiWm3Td4hQsWLD2FY9yfUxYsKaxcoUk97oyAViwWrM+cOvkXKailQcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

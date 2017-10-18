@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>VMD粗粒化显示插件Bendix简单介绍 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 http://www.ks.uiuc.edu/Research/vmd/.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>VMD粗粒化显示插件Bendix简单介绍 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 http://www.ks.uiuc.edu/Research/vmd/.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMD粗粒化显示插件Bendix简单介绍">
 <meta property="og:url" content="http://kangsgo.com/700.html">
@@ -24,327 +38,489 @@
 <meta name="twitter:title" content="VMD粗粒化显示插件Bendix简单介绍">
 <meta name="twitter:description" content="VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 http://www.ks.uiuc.edu/Research/vmd/.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-0d3dbb3be65140e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VMD粗粒化显示插件Bendix简单介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
 </header>
-    <div class="outer">
-      <section id="main"><article id="post-e5-88-86-e5-ad-90-e6-a8-a1-e6-8b-9fvmd-e7-b2-97-e7-b2-92-e5-8c-96-e6-98-be-e7-a4-ba-e6-8f-92-e4-bb-b6bendix-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/700.html" class="article-date">
-  <time datetime="2017-08-24T01:19:52.000Z" itemprop="datePublished">2017-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a>
-  </div>
+<header class="content-header post-header">
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      VMD粗粒化显示插件Bendix简单介绍
-    </h1>
-  
+    <div class="container fade-scale">
+        <h1 class="title">VMD粗粒化显示插件Bendix简单介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-24T01:19:52.000Z" itemprop="datePublished" class="page-time">
+  2017-08-24
+</time>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 <a href="http://www.ks.uiuc.edu/Research/vmd/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/</a>.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒化模型。<br><br>先一饱眼福粗粒化模拟做出来的图：<br><img src="http://upload-images.jianshu.io/upload_images/903467-0d3dbb3be65140e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1： DPPC bilayer formation"><br><br>### 官方教程<br><br>这里对官方显示教程做一个简单的介绍：<br>首先下载官方示例包：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip</a><br>其中包含pdb文件（PDB ID：1PV7）和一个分析文件（pdb）以及一个分析轨迹文件（dcd）<br><br>### 1.VMD中一般螺旋表示<br><br>首先我们可以把背景设置为白色<strong>VMD Main &gt; Graphics &gt; Colours</strong>，选择<strong>Display</strong>，设置<strong>Background</strong>颜色为8 white<br>加载 1PV7_LacY.pdb。通过<strong>Graphics &gt;Representations</strong>设置为下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/903467-e31cf4b2dc5ca76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 2.Bendix中螺旋的功能图形的显示<br><br>从<strong>VMD Main&gt;Extensions&gt;Visualization&gt;Bendix</strong>中打开工具，保持默认设置，点击<strong>Draw</strong>按钮，结果如下：<br><img src="http://upload-images.jianshu.io/upload_images/903467-0ca1fa61779d0ba8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 3.设置成单一颜色<br><br>这个非常的简单，在Uniform color中设置 <strong>full selection</strong>即可，如果是多个蛋白，设置<strong>by chain</strong>即可显示不同颜色<br><img src="http://upload-images.jianshu.io/upload_images/903467-a8d57f0aa49a67cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 4.热图<br><br>显示热图仅需设置为Heatmap color即可，<strong>Scale</strong>选项默认为RGB，即Red-Green-Blue，<strong>Color threshold</strong>为颜色阈值。<br><img src="http://upload-images.jianshu.io/upload_images/903467-4b1472df77b14462.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 5. 绘制non-Bendices<br><br>仅需<strong>Rep 0</strong>修改为<strong>Tube</strong>即可<br><img src="http://upload-images.jianshu.io/upload_images/903467-42ad4ed2bdd5ad3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>完整的教程包括轨迹教程可以查阅官方文档：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html</a><br><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O1ZNROaYr+S4gOS4quWIhuWtkOWPr+inhuWMlueoi+W6jywg5a6D6YeH55So5LiJ57u0 5Zu+5b2i5oqA5pyv5Lul5Y+K5YaF572u6ISa5pys5p2l5a+555Sf54mp5aSn5YiG5a2Q5L2T57O7 6L+b6KGM5bGV56S6LCDliqjnlLvliLbkvZzlkozliIbmnpAuIFZNROWumOaWuee9keermSBodHRw Oi8vd3d3LmtzLnVpdWMuZWR1L1Jlc2VhcmNoL3ZtZC8u5YW25bGV56S655qE6JuL55m96Z2e5bi4 5ryC5Lqu77yM6ICM5LiU5piv5YWN6LS56L2v5Lu277yM5piv5LiOUHltb2zvvIxVQ1NGIENoaW1l cmHpvZDlkI3nmoTlj6/op4bljJbova/ku7bjgILkvYbmmK/nspfnspLljJbnmoTmmL7npLrmlYjm npzkuI3kvbPvvIzlpb3lnKjlj6/ku6XlnKhWTUQgMS45LjLku6XlkI7oh6rluKbnmoRCZW5kaXjm j5Lku7bnmoTluK7liqnkuIvmmL7npLrpnZ7luLjnvo7kuL3nmoTnspfnspLljJbmqKHlnovjgII8 L3A+PHA+5YWI5LiA6aWx55y856aP57KX57KS5YyW5qih5ouf5YGa5Ye65p2l55qE5Zu+77yaPC9w PjxwPiFb5Zu+54mHMe+8miBEUFBDIGJpbGF5ZXIgZm9ybWF0aW9uXShodHRwOi8vdXBsb2FkLWlt YWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LTBkM2RiYjNiZTY1MTQwZTgucG5n P2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48 cD4jIyMg5a6Y5pa55pWZ56iLPGJyPui/memHjOWvueWumOaWueaYvuekuuaVmeeoi+WBmuS4gOS4 queugOWNleeahOS7i+e7je+8mjxicj7pppblhYjkuIvovb3lrpjmlrnnpLrkvovljIXvvJpodHRw Oi8vc2JjYi5iaW9jaC5veC5hYy51ay9CZW5kaXgvZGF0YS90dXRvcmlhbF9maWxlcy56aXA8YnI+ 5YW25Lit5YyF5ZCrcGRi5paH5Lu277yIUERCIElE77yaMVBWN++8ieWSjOS4gOS4quWIhuaekOaW h+S7tu+8iHBkYu+8ieS7peWPiuS4gOS4quWIhuaekOi9qOi/ueaWh+S7tu+8iGRjZO+8iTwvcD48 cD4jIyMgMS5WTUTkuK3kuIDoiKzonrrml4vooajnpLo8YnI+6aaW5YWI5oiR5Lus5Y+v5Lul5oqK 6IOM5pmv6K6+572u5Li655m96ImyKipWTUQgTWFpbiAmZ3Q7IEdyYXBoaWNzICZndDsgQ29sb3Vy cyoq77yM6YCJ5oupKipEaXNwbGF5KirvvIzorr7nva4qKkJhY2tncm91bmQqKuminOiJsuS4ujgg d2hpdGU8L3A+PHA+5Yqg6L29IDFQVjdfTGFjWS5wZGLjgILpgJrov4cqKkdyYXBoaWNzICZndDtS ZXByZXNlbnRhdGlvbnMqKuiuvue9ruS4uuS4i+WbvuaJgOekuu+8mjwvcD48cD4hW10oaHR0cDov L3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny1lMzFjZjRiMmRj NWNhNzZhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cv MTI0MCk8L3A+PHA+IyMjIDIuQmVuZGl45Lit6J665peL55qE5Yqf6IO95Zu+5b2i55qE5pi+56S6 PGJyPuS7jioqVk1EIE1haW4mZ3Q7RXh0ZW5zaW9ucyZndDtWaXN1YWxpemF0aW9uJmd0O0JlbmRp eCoq5Lit5omT5byA5bel5YW377yM5L+d5oyB6buY6K6k6K6+572u77yM54K55Ye7KipEcmF3Kirm jInpkq7vvIznu5PmnpzlpoLkuIvvvJo8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmpp YW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMGNhMWZhNjE3NzlkMGJhOC5wbmc/aW1hZ2VN b2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIyAz Luiuvue9ruaIkOWNleS4gOminOiJsjxicj7ov5nkuKrpnZ7luLjnmoTnroDljZXvvIzlnKhVbmlm b3JtIGNvbG9y5Lit6K6+572uICoqZnVsbCBzZWxlY3Rpb24qKuWNs+WPr++8jOWmguaenOaYr+Wk muS4quibi+eZve+8jOiuvue9rioqYnkgY2hhaW4qKuWNs+WPr+aYvuekuuS4jeWQjOminOiJsjwv cD48cD4hW10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkw MzQ2Ny1hOGQ1N2YwYWE0OWE2N2NiLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdD aW1hZ2VWaWV3Mi8yL3cvMTI0MCk8L3A+PHA+IyMjIDQu54Ot5Zu+PGJyPuaYvuekuueDreWbvuS7 hemcgOiuvue9ruS4ukhlYXRtYXAgY29sb3LljbPlj6/vvIwqKlNjYWxlKirpgInpobnpu5jorqTk uLpSR0LvvIzljbNSZWQtR3JlZW4tQmx1Ze+8jCoqQ29sb3IgdGhyZXNob2xkKirkuLrpopzoibLp mIjlgLzjgII8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2Fk X2ltYWdlcy85MDM0NjctNGIxNDcyZGY3N2IxNDQ2Mi5wbmc/aW1hZ2VNb2dyMi9hdXRvLW9yaWVu dC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIzUuIOe7mOWItm5vbi1CZW5k aWNlczwvcD48cD7ku4XpnIAqKlJlcCAwKirkv67mlLnkuLoqKlR1YmUqKuWNs+WPrzwvcD48cD4h W10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny00 MmFkNGVkMmJkZDVhZDNkLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VW aWV3Mi8yL3cvMTI0MCk8L3A+PHA+PGJyIGRhdGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5a6M5pW0 55qE5pWZ56iL5YyF5ous6L2o6L+55pWZ56iL5Y+v5Lul5p+l6ZiF5a6Y5pa55paH5qGj77yaaHR0 cDovL3NiY2IuYmlvY2gub3guYWMudWsvQmVuZGl4L3R1dG9yaWFsLmh0bWw8L3A+PHA+PGJyIGRh dGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5pu05aSa5Y6f5Yib57K+5b2p6KeG6aKR5pWs6K+35YWz 5rOoKirnlJ/kv6HmnYLosIg6Kio8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5z aHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMjE3ZWU2OGNhYWE2NTRjMy5wbmc/aW1hZ2VNb2dy Mi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPg==">​</div><br></div>
-      
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a></li></ul></li></ul>
+
+            
+        </h5>
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/700.html" data-id="cj8x084jx001inora3ocq0hou" class="article-share-link" data-share="baidu" data-title="VMD粗粒化显示插件Bendix简单介绍">分享到</a>
-      
 
-      
-        <a href="http://kangsgo.com/700.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
     
-<nav id="article-nav">
-  
-    <a href="/706.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-e5-88-86-e5-ad-90-e6-a8-a1-e6-8b-9fvmd-e7-b2-97-e7-b2-92-e5-8c-96-e6-98-be-e7-a4-ba-e6-8f-92-e4-bb-b6bendix-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VMD粗粒化显示插件Bendix简单介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 <a href="http://www.ks.uiuc.edu/Research/vmd/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/</a>.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒化模型。<br><br>先一饱眼福粗粒化模拟做出来的图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-0d3dbb3be65140e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1： DPPC bilayer formation" title="">
+                </div>
+                <div class="image-caption">图片1： DPPC bilayer formation</div>
+            </figure><br><br>### 官方教程<br><br>这里对官方显示教程做一个简单的介绍：<br>首先下载官方示例包：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip</a><br>其中包含pdb文件（PDB ID：1PV7）和一个分析文件（pdb）以及一个分析轨迹文件（dcd）<br><br>### 1.VMD中一般螺旋表示<br><br>首先我们可以把背景设置为白色<strong>VMD Main &gt; Graphics &gt; Colours</strong>，选择<strong>Display</strong>，设置<strong>Background</strong>颜色为8 white<br>加载 1PV7_LacY.pdb。通过<strong>Graphics &gt;Representations</strong>设置为下图所示：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-e31cf4b2dc5ca76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 2.Bendix中螺旋的功能图形的显示<br><br>从<strong>VMD Main&gt;Extensions&gt;Visualization&gt;Bendix</strong>中打开工具，保持默认设置，点击<strong>Draw</strong>按钮，结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-0ca1fa61779d0ba8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 3.设置成单一颜色<br><br>这个非常的简单，在Uniform color中设置 <strong>full selection</strong>即可，如果是多个蛋白，设置<strong>by chain</strong>即可显示不同颜色<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-a8d57f0aa49a67cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 4.热图<br><br>显示热图仅需设置为Heatmap color即可，<strong>Scale</strong>选项默认为RGB，即Red-Green-Blue，<strong>Color threshold</strong>为颜色阈值。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-4b1472df77b14462.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 5. 绘制non-Bendices<br><br>仅需<strong>Rep 0</strong>修改为<strong>Tube</strong>即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-42ad4ed2bdd5ad3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>完整的教程包括轨迹教程可以查阅官方文档：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html</a><br><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O1ZNROaYr+S4gOS4quWIhuWtkOWPr+inhuWMlueoi+W6jywg5a6D6YeH55So5LiJ57u0 5Zu+5b2i5oqA5pyv5Lul5Y+K5YaF572u6ISa5pys5p2l5a+555Sf54mp5aSn5YiG5a2Q5L2T57O7 6L+b6KGM5bGV56S6LCDliqjnlLvliLbkvZzlkozliIbmnpAuIFZNROWumOaWuee9keermSBodHRw Oi8vd3d3LmtzLnVpdWMuZWR1L1Jlc2VhcmNoL3ZtZC8u5YW25bGV56S655qE6JuL55m96Z2e5bi4 5ryC5Lqu77yM6ICM5LiU5piv5YWN6LS56L2v5Lu277yM5piv5LiOUHltb2zvvIxVQ1NGIENoaW1l cmHpvZDlkI3nmoTlj6/op4bljJbova/ku7bjgILkvYbmmK/nspfnspLljJbnmoTmmL7npLrmlYjm npzkuI3kvbPvvIzlpb3lnKjlj6/ku6XlnKhWTUQgMS45LjLku6XlkI7oh6rluKbnmoRCZW5kaXjm j5Lku7bnmoTluK7liqnkuIvmmL7npLrpnZ7luLjnvo7kuL3nmoTnspfnspLljJbmqKHlnovjgII8 L3A+PHA+5YWI5LiA6aWx55y856aP57KX57KS5YyW5qih5ouf5YGa5Ye65p2l55qE5Zu+77yaPC9w PjxwPiFb5Zu+54mHMe+8miBEUFBDIGJpbGF5ZXIgZm9ybWF0aW9uXShodHRwOi8vdXBsb2FkLWlt YWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LTBkM2RiYjNiZTY1MTQwZTgucG5n P2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48 cD4jIyMg5a6Y5pa55pWZ56iLPGJyPui/memHjOWvueWumOaWueaYvuekuuaVmeeoi+WBmuS4gOS4 queugOWNleeahOS7i+e7je+8mjxicj7pppblhYjkuIvovb3lrpjmlrnnpLrkvovljIXvvJpodHRw Oi8vc2JjYi5iaW9jaC5veC5hYy51ay9CZW5kaXgvZGF0YS90dXRvcmlhbF9maWxlcy56aXA8YnI+ 5YW25Lit5YyF5ZCrcGRi5paH5Lu277yIUERCIElE77yaMVBWN++8ieWSjOS4gOS4quWIhuaekOaW h+S7tu+8iHBkYu+8ieS7peWPiuS4gOS4quWIhuaekOi9qOi/ueaWh+S7tu+8iGRjZO+8iTwvcD48 cD4jIyMgMS5WTUTkuK3kuIDoiKzonrrml4vooajnpLo8YnI+6aaW5YWI5oiR5Lus5Y+v5Lul5oqK 6IOM5pmv6K6+572u5Li655m96ImyKipWTUQgTWFpbiAmZ3Q7IEdyYXBoaWNzICZndDsgQ29sb3Vy cyoq77yM6YCJ5oupKipEaXNwbGF5KirvvIzorr7nva4qKkJhY2tncm91bmQqKuminOiJsuS4ujgg d2hpdGU8L3A+PHA+5Yqg6L29IDFQVjdfTGFjWS5wZGLjgILpgJrov4cqKkdyYXBoaWNzICZndDtS ZXByZXNlbnRhdGlvbnMqKuiuvue9ruS4uuS4i+WbvuaJgOekuu+8mjwvcD48cD4hW10oaHR0cDov L3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny1lMzFjZjRiMmRj NWNhNzZhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cv MTI0MCk8L3A+PHA+IyMjIDIuQmVuZGl45Lit6J665peL55qE5Yqf6IO95Zu+5b2i55qE5pi+56S6 PGJyPuS7jioqVk1EIE1haW4mZ3Q7RXh0ZW5zaW9ucyZndDtWaXN1YWxpemF0aW9uJmd0O0JlbmRp eCoq5Lit5omT5byA5bel5YW377yM5L+d5oyB6buY6K6k6K6+572u77yM54K55Ye7KipEcmF3Kirm jInpkq7vvIznu5PmnpzlpoLkuIvvvJo8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmpp YW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMGNhMWZhNjE3NzlkMGJhOC5wbmc/aW1hZ2VN b2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIyAz Luiuvue9ruaIkOWNleS4gOminOiJsjxicj7ov5nkuKrpnZ7luLjnmoTnroDljZXvvIzlnKhVbmlm b3JtIGNvbG9y5Lit6K6+572uICoqZnVsbCBzZWxlY3Rpb24qKuWNs+WPr++8jOWmguaenOaYr+Wk muS4quibi+eZve+8jOiuvue9rioqYnkgY2hhaW4qKuWNs+WPr+aYvuekuuS4jeWQjOminOiJsjwv cD48cD4hW10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkw MzQ2Ny1hOGQ1N2YwYWE0OWE2N2NiLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdD aW1hZ2VWaWV3Mi8yL3cvMTI0MCk8L3A+PHA+IyMjIDQu54Ot5Zu+PGJyPuaYvuekuueDreWbvuS7 hemcgOiuvue9ruS4ukhlYXRtYXAgY29sb3LljbPlj6/vvIwqKlNjYWxlKirpgInpobnpu5jorqTk uLpSR0LvvIzljbNSZWQtR3JlZW4tQmx1Ze+8jCoqQ29sb3IgdGhyZXNob2xkKirkuLrpopzoibLp mIjlgLzjgII8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2Fk X2ltYWdlcy85MDM0NjctNGIxNDcyZGY3N2IxNDQ2Mi5wbmc/aW1hZ2VNb2dyMi9hdXRvLW9yaWVu dC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIzUuIOe7mOWItm5vbi1CZW5k aWNlczwvcD48cD7ku4XpnIAqKlJlcCAwKirkv67mlLnkuLoqKlR1YmUqKuWNs+WPrzwvcD48cD4h W10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny00 MmFkNGVkMmJkZDVhZDNkLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VW aWV3Mi8yL3cvMTI0MCk8L3A+PHA+PGJyIGRhdGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5a6M5pW0 55qE5pWZ56iL5YyF5ous6L2o6L+55pWZ56iL5Y+v5Lul5p+l6ZiF5a6Y5pa55paH5qGj77yaaHR0 cDovL3NiY2IuYmlvY2gub3guYWMudWsvQmVuZGl4L3R1dG9yaWFsLmh0bWw8L3A+PHA+PGJyIGRh dGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5pu05aSa5Y6f5Yib57K+5b2p6KeG6aKR5pWs6K+35YWz 5rOoKirnlJ/kv6HmnYLosIg6Kio8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5z aHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMjE3ZWU2OGNhYWE2NTRjMy5wbmc/aW1hZ2VNb2dy Mi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPg==">​</div><br></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
         
-          Pymol 选择速查手册
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
         
-      </div>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/700.html" target="_blank" rel="external">http://kangsgo.com/700.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/700.html&title=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/700.html&title=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/700.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&url=http://kangsgo.com/700.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/700.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/706.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Pymol 选择速查手册</h4>
+      </a>
+    </div>
   
-    <a href="/694.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Gromacs 5.1.2做拉伸动力学的几点笔记</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/694.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Gromacs 5.1.2做拉伸动力学的几点笔记</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="700.html" data-title="VMD粗粒化显示插件Bendix简单介绍" data-url="http://kangsgo.com/700.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/700.html&title=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/700.html&title=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/700.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VMD粗粒化显示插件Bendix简单介绍》 — 小康博客&url=http://kangsgo.com/700.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/700.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABs0lEQVR42u3aS5KDIBQF0Ox/0/YCOjH3gqCVOowyIHJ08Ir3eb3idZyu/3vyp71WLFxc3GnuGOWI1/n+3ICLi7uf+yliJL8/HT+2/4sNFxf3wdw8hJ2HQlxc3N/gnv8rfzIuLu7zuUlykr/M+c5NuRouLu4EN69Srvu9pL6Li4s7xD3KlbRDriqzvjkdFxd3C7dNY5LjW3rdjsXFxb2V2xLHSqX5ubi4uPu57bXm2oGMQoKLi7ud27ZD2tJJ28R98wRcXNwt3BlifjXJA1lSfMHFxV3NnUpFhl6vbcpe9s1wcXHLSYn55Ges2NoGO1xc3NXcPEVJ6PkYVnsiLi7uXdyxUa0kMOVFkCKQ4eLiLuO2o1RjIa9Nfr7sxMXF3cjNyx/XNlnb0Q1cXNy7uG1QSygzxVlcXNzncJNhi5Y+eK2Z7+3g4uLG3KNc8+MaeTkVFxf3Lu5YeXQsSOXl1LFSCy4u7rXcmRJGnva0V6t6TgQXF3cB9zz05EFnrOtR52q4uLgP5iagtjFTjF/g4uI+hru/5IGLi3sXtx2tuIpefyxcXNwt3JnG59jIRTuugYuLu5H7B49c4jFK15jfAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>[转载]Gromacs中添加CHARMM力场 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转自贾壮老师博客:http://blog.sciencenet.cn/blog-794272-718384.html 待整理 CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中没有定">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>[转载]Gromacs中添加CHARMM力场 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="转自贾壮老师博客:http://blog.sciencenet.cn/blog-794272-718384.html 待整理 CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中没有定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[转载]Gromacs中添加CHARMM力场">
 <meta property="og:url" content="http://kangsgo.com/725.html">
@@ -35,130 +49,292 @@
 <meta name="twitter:title" content="[转载]Gromacs中添加CHARMM力场">
 <meta name="twitter:description" content="转自贾壮老师博客:http://blog.sciencenet.cn/blog-794272-718384.html 待整理 CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中没有定">
 <meta name="twitter:image" content="http://image.sciencenet.cn/album/201308/20/155104802mdy8wueeq0yuu.jpg">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-e8-bd-ac-e8-bd-bdgromacs-e4-b8-ad-e6-b7-bb-e5-8a-a0charmm-e5-8a-9b-e5-9c-ba" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/725.html" class="article-date">
-  <time datetime="2017-09-07T12:05:36.000Z" itemprop="datePublished">2017-09-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 class="article-title" itemprop="name">
-      [转载]Gromacs中添加CHARMM力场
-    </h1>
-  
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-      </header>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[转载]Gromacs中添加CHARMM力场</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[转载]Gromacs中添加CHARMM力场</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-07T12:05:36.000Z" itemprop="datePublished" class="page-time">
+  2017-09-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转自贾壮老师博客:<a href="http://blog.sciencenet.cn/blog-794272-718384.html" target="_blank" rel="external">http://blog.sciencenet.cn/blog-794272-718384.html</a></p>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-e8-bd-ac-e8-bd-bdgromacs-e4-b8-ad-e6-b7-bb-e5-8a-a0charmm-e5-8a-9b-e5-9c-ba"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[转载]Gromacs中添加CHARMM力场</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-07 20:05:36" datetime="2017-09-07T12:05:36.000Z"  itemprop="datePublished">2017-09-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>转自贾壮老师博客:<a href="http://blog.sciencenet.cn/blog-794272-718384.html" target="_blank" rel="external">http://blog.sciencenet.cn/blog-794272-718384.html</a></p>
 <p>待整理</p>
 <p>CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中没有定义力场参数的分子，如糖，就需要手动为Gromacs添加相关力场参数了。这些力场参数多数从文献中得到，并且一般都是CHARMM格式的，即.prm 和 .rtf 格式，如何将它们转换成Gromacs支持的格式呢？这篇文章会详细讲解转换过程，并且给出python脚本以供参考。</p>
 <p>首先分别讲解一下CHARMM软件和Gromacs软件如何完整定义一个分子的力场。在CHARMM软件中，主要通过2个文件来实现：.rtf 和.prm。</p>
 <p>.rtf 文件定义了原子类型、各类型原子的质量、原子偏电荷、分子的键连接以及氢键等，它的格式如图1。MASS是用来定义原子类型的，每一行都定义了一种原子类型。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155104802mdy8wueeq0yuu.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155104802mdy8wueeq0yuu.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><em>图<strong>1. TIP3</strong>水分子的<strong> .rtf </strong>文件，<strong>CHARMM</strong>中<strong>“</strong>！<strong>”</strong>后面的内容是注释</em></p>
 <p>MASS后面跟着原子编号、原子类型名、原子质量和元素符号。GROUP语句用来定义一个残基（也可以是单独的分子）：ATOM定义了残基中各原子的名字、所属的原子类型和该原子所带的偏电荷；BOND定义残基中原子的键连接情况，以原子对形式列出，如图1中的水分子定义了3个键OH2-H1、OH2-H2和H1-H2（最后一个键是SHAKE限制算法用到的）；ANGLE定义键角；DONOR和ACCEPTOR分别用来定义氢键供体和受体。</p>
 <p>.prm文件中定义了与能量相关的参数，如键伸缩能，键角、二面角的力常数以及范德华参数，图2给出了TIP3水分子的 .prm 文件。</p>
 <p>BONDS数据块是用来定义键伸缩振动能量的，用简谐振动来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155126rc41nd4derds14en.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155126rc41nd4derds14en.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>BONDS数据块每行有4个字段，前两个是成键原子的类型，后两个分别是公式中的K<sub>b</sub>（kcal/Å<sup>2</sup>/mol）和b<sup>0</sup>（Å）。</p>
 <p>ANGLES数据块用来定义键角振动，同样是用简谐振动来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155140ttg36s3j33ssb633.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155156zxkw0xldkbbiwxq6.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155140ttg36s3j33ssb633.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155156zxkw0xldkbbiwxq6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>ANGLES数据每行有5或7个字段，后者是加了Urey-Bradley项的。前3项是形成键角的原子的类型，后面4项分别对应公式中的K<sub>θ</sub>（kcal/度<sup>2</sup>/mol）、θ<sub>0</sub>（度）、K<sub>UB</sub>（kcal/Å<sup>2</sup>/mol）和b<sup>1-3,0</sup>（Å）。</p>
 <p>关于Urey-Bradley项的解释可以查看gromacs手册:<a href="http://jerkwin.github.io/GMX/GMXman-4/#428-urey-bradley势" target="_blank" rel="external">http://jerkwin.github.io/GMX/GMXman-4/#428-urey-bradley势</a></p>
 <p>DIHEDRALS数据块用来定义二面角振动，用余弦函数来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155208l6b0miozlq3rlngl.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155208l6b0miozlq3rlngl.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>DIHEDRALS数据块每行有7个字段，前4项是形成二面角的原子的类型，后面3项分别对应公式中的K<sub>φ</sub>（kcal/mol）、n（无单位）和δ（度）。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155223tedrsdetdiy16zhq.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155223tedrsdetdiy16zhq.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><em>图<strong>2. TIP3</strong>水分子的<strong> .prm </strong>文件</em></p>
 <p>IMPROPER数据块用来保证分子中原子共平面的，用简谐振动近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155247opohhnzjijzjoonl.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155247opohhnzjijzjoonl.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>IMPROPER数据块每行有7个字段，前4项是形成二面角的原子的类型，第5项对应公式中的Kω（kcal/度<sup>2</sup>/mol），第6项一般是0，暂时不知道干嘛用的，第7项对应公式中的ω0（度）。</p>
 <p>NONBONDED数据块用来定义非键作用，其中静电力可通过原子偏电荷求得，不需要额外参数，范德华力通常用L-J形式来描述：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155258etq3vnb3kq5qtws4.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155258etq3vnb3kq5qtws4.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>通常力场中只定义单个原子的ε和r<sup>min</sup>，成对原子的范德华力参数可以通过组合规则（combination rule）获得，常用的组合规则是ε<sub>i,j</sub> = sqrt(ε<sub>i</sub>×ε<sub>j</sub>)，r<sup>min</sup><sub>i,j</sub> = (r<sup>min</sup><sub>i</sub>+ r<sup>min</sup><sub>j</sub>)/2。另外CHARMM力场将1-4作用单独分出来描述，也采用L-J形式，只是ε和r<sup>min</sup>值有所不同。NONBONDED数据块每行有7个字段组成，第1个字段是原子类型，第2、5字段标识为ignored，通常是0，暂不知道干嘛用的，第3，4字段分别为vdw力的ε（kcal/mol）和r<sup>min</sup>/2（Å），第6，7字段分别为1-4作用的ε（kcal/mol）和r<sup>min</sup>/2（Å）。这里可以提前说明一下，Gromacs中1-4作用是以原子对的形式定义的，叫做pairtypes，转换时需要将CHARMM中的1-4作用通过组合规则两两组合生成pairtypes，这在后面还会详细讲到。</p>
 <p>下面讲一下Gromacs中力场文件的格式。Gromacs主要通过5个文件来定义：.rtp、.hdb、atomtypes.atp、ffbonded.itp和ffnonbonded.itp。</p>
 <p>.rtp文件用来定义残基（或分子）中原子所属的类型、原子偏电荷、键连接以及共平面原子，其余如键角和二面角是在这里不是必须的，程序一般通过原子类型生成，它将出现在ffbonded.itp文件中。图3是 .rtp 文件的一个示例，里面的注释很详尽，唯一需要说</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/1553175bacyapcuc1eaa6u.jpg" alt="tmp.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/1553175bacyapcuc1eaa6u.jpg" alt="tmp.png" title="">
+                </div>
+                <div class="image-caption">tmp.png</div>
+            </figure>
 <p><em>图<strong>3. </strong>甘氨酸的<strong> .rtp </strong>文件，<strong>Gromacs</strong>中<strong>“</strong>;<strong>”</strong>后的内容是注释</em></p>
 <p>明的是chargegroup项，同一个chargegroup中的原子偏电荷变化是以相同比例进行的，对于一个新加入的分子可简单的将每个原子划分到不同的chargegroup中。</p>
 <p>.hdb文件是用来给残基（或分子）加氢的，我们知道用X-衍射得到的蛋白结构中一般没有氢，pdb2gmx命令会查询.hdb文件中定义的加氢规则为蛋白加氢。如果你的小分子中氢原子已在 .rtp文件中定义了，就不需要用 .hdb文件来加氢。因为一般力场中都会详细定义蛋白各种参数，我们只需添加一些小分子，而小分子中的氢原子多在 .rtp文件中定义，很少用到 .hdb文件，所以这里不再讲 .hdb文件格式。</p>
 <p>atomtypes.atp文件中定义了力场中用到的所有原子类型，格式很简单，第一列是原子类型名，第二列是原子质量，如果你添加的分子用到了新的原子类型，就需要在这里添加相关信息。</p>
 <p>ffbonded.itp文件定义了力场中的键作用：键伸缩振动、键角、二面角振动（func=9）</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155334z4ydem0f8grpkedf.gif" alt="捕获.PNG"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155334z4ydem0f8grpkedf.gif" alt="捕获.PNG" title="">
+                </div>
+                <div class="image-caption">捕获.PNG</div>
+            </figure>
 <p><em>图<strong>4. ffbonded.itp</strong>文件格式</em></p>
 <p>以及IMPROPER（在Gromacs中称为dihedraltypes（func=2））。它们定义及算法与CHARMM中相同，只是公式的形式以及单位有差异：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155354w6r7wujct7qt7w3l.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155407c18kiqc06iq7ssmc.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155418b17q1e1aceaeet1y.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155430is5p2lsjj1fggj0g.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155354w6r7wujct7qt7w3l.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155407c18kiqc06iq7ssmc.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155418b17q1e1aceaeet1y.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155430is5p2lsjj1fggj0g.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>公式的差异表现在键长、键角、IMPROPER的简谐振动公式在Gromcas中多了一个系数1/2；单位的差异表现在CHARMM中能量单位为kcal，而Gromcas中使用kJ，CHARMM中长度单位为Å，而Gromacs中使用nm。参数从CHARMM转换到Gromacs规则如下：</p>
 <p>（1）       键伸缩振动：K<sub>gromacs</sub>= 2×K<sub>charmm</sub>×cal2j×100 （即K<sub>gromacs</sub> = 836.8×K<sub>charmm</sub>，其中cal2j =4.184是cal转换到J的转换系数）；b<sup>0</sup><sub>gromacs</sub> = b<sup>0</sup><sub>charmm</sub>/10。</p>
 <p>（2）       键角振动：K<sup>θ</sup><sub>gromacs</sub> = 2×K<sup>θ</sup><sub>charmm</sub>×cal2j（即K<sup>θ</sup><sub>gromacs</sub> = 8.368×K<sup>θ</sup><sub>charmm</sub>）；θ<sub>0</sub>不变；K<sup>UB</sup><sub>gromacs</sub> = 2×K<sup>UB</sup><sub>charmm</sub>×cal2j×100（即K<sup>UB</sup><sub>gromacs</sub> = 836.8×K<sup>UB</sup><sub>charmm</sub>）；b<sup>U</sup><sub>gromacs</sub> = b<sup>U</sup><sub>charmm</sub>/10。</p>
@@ -166,14 +342,32 @@
 <p>（4）       IMPROPER:K<sup>ξ</sup><sub>gromacs</sub> = 2×K<sup>ξ</sup><sub>charmm</sub>×cal2j（即K<sup>ξ</sup><sub>gromacs</sub> = 8.368×K<sup>ξ</sup><sub>charmm</sub>）；ξ<sup>0</sup>不变。</p>
 <p>值得注意的是这些参数在文件中位值不同，一定要弄清哪一列放哪个参数！</p>
 <p>ffnonbonded.itp定义了力场中的非键作用，因静电力可通过原子偏电荷和coulomb公式求的，所以这个文件主要定义范德华力（在atomtypes数据块中）。与CHARMM类似，Gromacs也对1-4作用进行单独处理，处理方式与CHARMM完全相同，1-4作用定义在pairtypes数据块中。Gromacs中描述范德华力的L-J公式与CHARMM中也有差异：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155447itq000zisllzs720.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155447itq000zisllzs720.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>在转换之前我们需将CHARMM和Gromacs中的L-J公式化成相同的形式：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/1555024patlhddbywtwiyd.gif" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/1555024patlhddbywtwiyd.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>非键作用的参数转换规则如下：</p>
 <p>ε<sub>gromacs</sub> = -ε<sub>charmm</sub>×cal2j（即ε<sub>gromacs</sub> = -4.184×ε<sub>charmm</sub>，不知道问什么CHARMM中加了负号）</p>
 <p>σ<sub>gromacs</sub> = 2×σ<sub>charmm</sub>/10/2<sup>1/6</sup>（即σ<sub>gromacs</sub> = 0.1781797436×σ<sub>charmm</sub>，CHARMM中记录的是r<sup>min</sup>/2）</p>
 <p>对于1-4作用，转换规则同上，只是Gromacs中通过组合规则（上文讲CHARMM时有提到）以原子对的形式记录在pairtypes数据块中，这需要自己计算添加。图5给出了一个转换示例，注意pairtypes是通过两两组合计算得到的，不区分先后，共6对。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155525i4nn1z7imk7nz71d.gif" alt="convert.PNG"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155525i4nn1z7imk7nz71d.gif" alt="convert.PNG" title="">
+                </div>
+                <div class="image-caption">convert.PNG</div>
+            </figure>
 <p><em>图<strong>5. </strong>非键作用转换示例</em></p>
 <p>对于简单分子可以手动转换并添加到Gromacs力场中，但是当分子较为复杂时手动转换将会变得非常繁琐并且容易出错，这时候就需要用脚本来进行批量处理。附件提供了用python写的转换脚本：</p>
 <p>cvt_bd.py: 键伸缩项转换，输入文件bonds，输出文件bonds.out</p>
@@ -202,245 +396,293 @@
 <p>以上所有操作都正确的话就可以用Gromacs模拟该分子了，Happy simulating！</p>
 <p><a href="http://blog.sciencenet.cn/home.php?mod=attachment&amp;id=40649" target="_blank" rel="external">convert_script.rar</a></p>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/725.html" target="_blank" rel="external">http://kangsgo.com/725.html</a>
+        
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/725.html" data-id="cj8x084lx003mnoral10vcxsq" class="article-share-link" data-share="baidu" data-title="[转载]Gromacs中添加CHARMM力场">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/725.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/77.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Amber17的安装
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/725.html&title=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/725.html&title=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/725.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&url=http://kangsgo.com/725.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/725.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/77.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Amber17的安装</h4>
+      </a>
+    </div>
   
-    <a href="/722.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Gromacs如何添加非标准残基进入力场</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/722.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Gromacs如何添加非标准残基进入力场</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="725.html" data-title="[转载]Gromacs中添加CHARMM力场" data-url="http://kangsgo.com/725.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/725.html&title=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/725.html&title=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/725.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]Gromacs中添加CHARMM力场》 — 小康博客&url=http://kangsgo.com/725.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/725.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3aS27DMAxF0ex/0w7QaWPlPlJiXeBqFBiGfZwBwd/rhc/1c8iV39fvnkbuLB65cuW2udfyENzd6++eQ67ffpJcuXIHuevgRT6AxJz180kAlStX7tO4adZBgppcuXL/O3edmqTJily5cp/PJcUPCWcktA3VanLlym1w04bpid8H+7ty5coNuVd4dpU6xbfLlSt3hMsHqP07tzVk5cqVO8KtNUTSkUmn/SpXrtxJbhqY+DoFSWvSZEiuXLkzXD7+rHVc0jIJvVeuXLmHuZxYa3DsCmEf4q5cuXKPcXl86I9XyfoFeqNcuXJHuOvUhCQ6aVGUtlblypU7z+UFCWlbdJomKPWRK1fuILdYiuB1CsKSK1fuE7i8IOmg+cd8CXly5cod4aZLVOnaBMHFf41cuXIPc3krs7acwcct6DPkypU7yO0kKGlbJG2PypUr96+4tdSEBy8+WC3uecmVK3crtz/ZTJe6yBN4aiVXrtxz3LSFURuf8BWNePIjV67cY1wSaGprGWkq8+UeuXLlPoybjlRrTdhtgUyuXLmDXDJqTZuwQeEkV67cQW6nScoRJDHa1haRK1funuJgW4EUlzRhwiRXrtxj3DclKd1EDvCfvAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

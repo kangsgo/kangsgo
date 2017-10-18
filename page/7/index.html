@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小康博客">
 <meta property="og:url" content="http://kangsgo.com/page/7/index.html">
@@ -16,947 +30,717 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小康博客">
 <meta name="twitter:description" content="Gromacs,Dock,Martini,Chimera,Pymol">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main">
-  
-    <article id="post-e8-bd-ac-e8-bd-bdlinux-screen-e5-91-bd-e4-bb-a4-e8-af-a6-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/376.html" class="article-date">
-  <time datetime="2016-05-10T04:08:36.000Z" itemprop="datePublished">2016-05-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/376.html">[转载]linux screen 命令详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：<a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="external">Tang的博文</a>非常不错，所以转载给自己留着备用</p>
-<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，因为它们执行的时间太长了。必须等待它们执行完毕，在此期间不能关掉窗口或者断开连接，否则这个任务就会被杀掉，一切半途而废了。</p>
-<h2 id="二、简介"><a href="#二、简介" class="headerlink" title="二、简介"></a>二、简介</h2><p>GNU Screen是一款由GNU计划开发的用于命令行终端切换的自由软件。用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。</p>
-<p>GNU Screen可以看作是窗口管理器的命令行界面版本。它提供了统一的管理多个会话的界面和相应的功能。</p>
-<h3 id="会话恢复"><a href="#会话恢复" class="headerlink" title="会话恢复"></a>会话恢复</h3><p>只要Screen本身没有终止，在其内部运行的会话都可以恢复。这一点对于远程登录的用户特别有用——即使网络连接中断，用户也不会失去对已经打开的命令行会话的控制。只要再次登录到主机上执行screen -r就可以恢复会话的运行。同样在暂时离开的时候，也可以执行分离命令detach，在保证里面的程序正常运行的情况下让Screen挂起（切换到后台）。这一点和图形界面下的VNC很相似。</p>
-<h3 id="多窗口"><a href="#多窗口" class="headerlink" title="多窗口"></a>多窗口</h3><p>在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。Screen实现了基本的文本操作，如复制粘贴等；还提供了类似滚动条的功能，可以查看窗口状况的历史记录。窗口还可以被分区和命名，还可以监视后台窗口的活动。<br>会话共享<br>Screen可以让一个或多个用户从不同终端多次登录一个会话，并共享会话的所有特性（比如可以看到完全相同的输出）。它同时提供了窗口访问权限的机制，可以对窗口进行密码保护。<br>GNU’s Screen 官方站点：<a href="http://www.gnu.org/software/screen/" target="_blank" rel="external">http://www.gnu.org/software/screen/</a></p>
-<h2 id="三、语法"><a href="#三、语法" class="headerlink" title="三、语法"></a>三、语法</h2><h1 id="screen-AmRvx-ls-wipe-d-lt-作业名称-gt-h-lt-行数-gt-r-lt-作业名称-gt-s-S-lt-作业名称-gt"><a href="#screen-AmRvx-ls-wipe-d-lt-作业名称-gt-h-lt-行数-gt-r-lt-作业名称-gt-s-S-lt-作业名称-gt" class="headerlink" title="screen [-AmRvx -ls -wipe][-d &lt;作业名称&gt;][-h &lt;行数&gt;][-r &lt;作业名称&gt;][-s ][-S &lt;作业名称&gt;]"></a>screen [-AmRvx -ls -wipe][-d &lt;作业名称&gt;][-h &lt;行数&gt;][-r &lt;作业名称&gt;][-s ][-S &lt;作业名称&gt;]</h1><p>参数说明</p>
-<p>-A 　将所有的视窗都调整为目前终端机的大小。<br>-d &lt;作业名称&gt; 　将指定的screen作业离线。<br>-h &lt;行数&gt; 　指定视窗的缓冲区行数。<br>-m 　即使目前已在作业中的screen作业，仍强制建立新的screen作业。<br>-r &lt;作业名称&gt; 　恢复离线的screen作业。<br>-R 　先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。<br>-s 　指定建立新视窗时，所要执行的shell。<br>-S &lt;作业名称&gt; 　指定screen作业的名称。<br>-v 　显示版本信息。<br>-x 　恢复之前离线的screen作业。<br>-ls或–list 　显示目前所有的screen作业。<br>-wipe 　检查目前所有的screen作业，并删除已经无法使用的screen作业。</p>
-<h2 id="四、常用screen参数"><a href="#四、常用screen参数" class="headerlink" title="四、常用screen参数"></a>四、常用screen参数</h2><p>screen -S yourname -&gt; 新建一个叫yourname的session<br>screen -ls -&gt; 列出当前所有的session<br>screen -r yourname -&gt; 回到yourname这个session<br>screen -d yourname -&gt; 远程detach某个session<br>screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</p>
-<p>在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。<br>C-a ? -&gt; 显示所有键绑定信息<br>C-a c -&gt; 创建一个新的运行shell的窗口并切换到该窗口<br>C-a n -&gt; Next，切换到下一个 window<br>C-a p -&gt; Previous，切换到前一个 window<br>C-a 0..9 -&gt; 切换到第 0..9 个 window<br>Ctrl+a [Space] -&gt; 由视窗0循序切换到视窗9<br>C-a C-a -&gt; 在两个最近使用的 window 间切换<br>C-a x -&gt; 锁住当前的 window，需用用户密码解锁<br>C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里，每个 window 内运行的 process (无论是前台/后台)都在继续执行，即使 logout 也不影响。<br>C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令则可回去。<br>C-a w -&gt; 显示所有窗口列表<br>C-a t -&gt; Time，显示当前时间，和系统的 load<br>C-a k -&gt; kill window，强行关闭当前的 window<br>C-a [ -&gt; 进入 copy mode，在 copy mode 下可以回滚、搜索、复制就像用使用 vi 一样<br>C-b Backward，PageUp<br>C-f Forward，PageDown<br>H(大写) High，将光标移至左上角<br>L Low，将光标移至左下角<br>0 移到行首<br>$ 行末<br>w forward one word，以字为单位往前移<br>b backward one word，以字为单位往后移<br>Space 第一次按为标记区起点，第二次按为终点<br>Esc 结束 copy mode<br>C-a ] -&gt; Paste，把刚刚在 copy mode 选定的内容贴上</p>
-<h2 id="五、使用-screen"><a href="#五、使用-screen" class="headerlink" title="五、使用 screen"></a>五、使用 screen</h2><h3 id="5-1-安装screen"><a href="#5-1-安装screen" class="headerlink" title="5.1 安装screen"></a>5.1 安装screen</h3><p>流行的Linux发行版（例如Red Hat Enterprise Linux）通常会自带screen实用程序，如果没有的话，可以从GNU screen的官方网站下载。</p>
-<p>[root@TS-DEV ~]# yum install screen<br>[root@TS-DEV ~]# rpm -qa|grep screen<br>screen-4.0.3-4.el5<br>[root@TS-DEV ~]#</p>
-<h3 id="5-2-创建一个新的窗口"><a href="#5-2-创建一个新的窗口" class="headerlink" title="5.2 创建一个新的窗口"></a>5.2 创建一个新的窗口</h3><p>安装完成后，直接敲命令screen就可以启动它。但是这样启动的screen会话没有名字，实践上推荐为每个screen会话取一个名字，方便分辨：</p>
-<p>[root@TS-DEV ~]# screen -S david<br>screen启动后，会创建第一个窗口，也就是窗口No. 0，并在其中打开一个系统默认的shell，一般都会是bash。所以你敲入命令screen之后，会立刻又返回到命令提示符，仿佛什么也没有发生似的，其实你已经进入Screen的世界了。当然，也可以在screen命令之后加入你喜欢的参数，使之直接打开你指定的程序，例如：</p>
-<p>[root@TS-DEV ~]# screen vi david.txt<br>screen创建一个执行vi david.txt的单窗口会话，退出vi 将退出该窗口/会话。</p>
-<h3 id="5-3-查看窗口和窗口名称"><a href="#5-3-查看窗口和窗口名称" class="headerlink" title="5.3 查看窗口和窗口名称"></a>5.3 查看窗口和窗口名称</h3><p>打开多个窗口后，可以使用快捷键C-a w列出当前所有窗口。如果使用文本终端，这个列表会列在屏幕左下角，如果使用X环境下的终端模拟器，这个列表会列在标题栏里。窗口列表的样子一般是这样：</p>
-<p>0$ bash 1-$ bash 2<em>$ bash<br>这个例子中我开启了三个窗口，其中</em>号表示当前位于窗口2，-号表示上一次切换窗口时位于窗口1。</p>
-<p>Screen默认会为窗口命名为编号和窗口中运行程序名的组合，上面的例子中窗口都是默认名字。练习了上面查看窗口的方法，你可能就希望各个窗口可以有不同的名字以方便区分了。可以使用快捷键C-a A来为当前窗口重命名，按下快捷键后，Screen会允许你为当前窗口输入新的名字，回车确认。</p>
-<h3 id="5-4-会话分离与恢复"><a href="#5-4-会话分离与恢复" class="headerlink" title="5.4 会话分离与恢复"></a>5.4 会话分离与恢复</h3><p>你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/david.txt文件：</p>
-<p>[root@TS-DEV ~]# screen vi /tmp/david.txt<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p>
-<h3 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h3><p><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg" alt="29144351-ff7e78c079a44f51ae44d48b6942b87f"></a></p>
-<p>半个小时之后回来了，找到该screen会话：</p>
-<p><pre>[root@TS-DEV ~]# screen -ls</pre><br><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg" alt="29144759-7cea9fc3f5f4481ab21df8bd017c88ef"></a></p>
-<h3 id="重新连接会话："><a href="#重新连接会话：" class="headerlink" title="重新连接会话："></a>重新连接会话：</h3><p><pre>[root@TS-DEV ~]# screen -r 12865</pre><br>一切都在。</p>
-<p>当然，如果你在另一台机器上没有分离一个Screen会话，就无从恢复会话了。</p>
-<p>这时可以使用下面命令强制将这个会话从它所在的终端分离，转移到新的终端上来：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/3.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg" alt="3"></a></p>
-<h3 id="5-5-清除dead-会话"><a href="#5-5-清除dead-会话" class="headerlink" title="5.5 清除dead 会话"></a>5.5 清除dead 会话</h3><p>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/4.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg" alt="4"></a></p>
-<h3 id="5-6-关闭或杀死窗口"><a href="#5-6-关闭或杀死窗口" class="headerlink" title="5.6 关闭或杀死窗口"></a>5.6 关闭或杀死窗口</h3><p>正常情况下，当你退出一个窗口中最后一个程序（通常是bash）后，这个窗口就关闭了。另一个关闭窗口的方法是使用C-a k，这个快捷键杀死当前的窗口，同时也将杀死这个窗口中正在运行的进程。</p>
-<p>如果一个Screen会话中最后一个窗口被关闭了，那么整个Screen会话也就退出了，screen进程会被终止。</p>
-<p>除了依次退出/杀死当前Screen会话中所有窗口这种方法之外，还可以使用快捷键C-a :，然后输入quit命令退出Screen会话。需要注意的是，这样退出会杀死所有窗口并退出其中运行的所有程序。其实C-a :这个快捷键允许用户直接输入的命令有很多，包括分屏可以输入split等，这也是实现Screen功能的一个途径，不过个人认为还是快捷键比较方便些。</p>
-<h2 id="六、screen-高级应用"><a href="#六、screen-高级应用" class="headerlink" title="六、screen 高级应用"></a>六、screen 高级应用</h2><h3 id="6-1-会话共享"><a href="#6-1-会话共享" class="headerlink" title="6.1 会话共享"></a>6.1 会话共享</h3><p>还有一种比较好玩的会话恢复，可以实现会话共享。假设你在和朋友在不同地点以相同用户登录一台机器，然后你创建一个screen会话，你朋友可以在他的终端上命令：</p>
-<p><pre>[root@TS-DEV ~]# screen -x</pre><br>这个命令会将你朋友的终端Attach到你的Screen会话上，并且你的终端不会被Detach。这样你就可以和朋友共享同一个会话了，如果你们当前又处于同一个窗口，那就相当于坐在同一个显示器前面，你的操作会同步演示给你朋友，你朋友的操作也会同步演示给你。当然，如果你们切换到这个会话的不同窗口中去，那还是可以分别进行不同的操作的。</p>
-<h3 id="6-2-会话锁定与解锁"><a href="#6-2-会话锁定与解锁" class="headerlink" title="6.2 会话锁定与解锁"></a>6.2 会话锁定与解锁</h3><p>Screen允许使用快捷键C-a s锁定会话。锁定以后，再进行任何输入屏幕都不会再有反应了。但是要注意虽然屏幕上看不到反应，但你的输入都会被Screen中的进程接收到。快捷键C-a q可以解锁一个会话。</p>
-<p>也可以使用C-a x锁定会话，不同的是这样锁定之后，会话会被Screen所属用户的密码保护，需要输入密码才能继续访问这个会话。</p>
-<h3 id="6-3-发送命令到screen会话"><a href="#6-3-发送命令到screen会话" class="headerlink" title="6.3 发送命令到screen会话"></a>6.3 发送命令到screen会话</h3><p>在Screen会话之外，可以通过screen命令操作一个Screen会话，这也为使用Screen作为脚本程序增加了便利。关于Screen在脚本中的应用超出了入门的范围，这里只看一个例子，体会一下在会话之外对Screen的操作：</p>
-<p><pre>[root@TS-DEV ~]# screen -S sandy -X screen ping www.baidu.com</pre><br>这个命令在一个叫做sandy的screen会话中创建一个新窗口，并在其中运行ping命令。</p>
-<h3 id="6-4-屏幕分割"><a href="#6-4-屏幕分割" class="headerlink" title="6.4 屏幕分割"></a>6.4 屏幕分割</h3><p>现在显示器那么大，将一个屏幕分割成不同区域显示不同的Screen窗口显然是个很酷的事情。可以使用快捷键C-a S将显示器水平分割，Screen 4.00.03版本以后，也支持垂直分屏，快捷键是C-a |。分屏以后，可以使用C-a 在各个区块间切换，每一区块上都可以创建窗口并在其中运行进程。</p>
-<p>可以用C-a X快捷键关闭当前焦点所在的屏幕区块，也可以用C-a Q关闭除当前区块之外其他的所有区块。关闭的区块中的窗口并不会关闭，还可以通过窗口切换找到它。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/5.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg" alt="5"></a></p>
-<h3 id="6-5-C-P模式和操作"><a href="#6-5-C-P模式和操作" class="headerlink" title="6.5 C/P模式和操作"></a>6.5 C/P模式和操作</h3><p>screen的另一个很强大的功能就是可以在不同窗口之间进行复制粘贴了。使用快捷键C-a 或者C-a [可以进入copy/paste模式，这个模式下可以像在vi中一样移动光标，并可以使用空格键设置标记。其实在这个模式下有很多类似vi的操作，譬如使用/进行搜索，使用y快速标记一行，使用w快速标记一个单词等。关于C/P模式下的高级操作，其文档的这一部分有比较详细的说明。</p>
-<p>一般情况下，可以移动光标到指定位置，按下空格设置一个开头标记，然后移动光标到结尾位置，按下空格设置第二个标记，同时会将两个标记之间的部分储存在copy/paste buffer中，并退出copy/paste模式。在正常模式下，可以使用快捷键C-a ]将储存在buffer中的内容粘贴到当前窗口。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/6.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg" alt="6"></a></p>
-<h3 id="6-6-更多screen功能"><a href="#6-6-更多screen功能" class="headerlink" title="6.6 更多screen功能"></a>6.6 更多screen功能</h3><p>同大多数UNIX程序一样，GNU Screen提供了丰富强大的定制功能。你可以在Screen的默认两级配置文件/etc/screenrc和$HOME/.screenrc中指定更多，例如设定screen选项，定制绑定键，设定screen会话自启动窗口，启用多用户模式，定制用户访问权限控制等等。如果你愿意的话，也可以自己指定screen配置文件。</p>
-<p>以多用户功能为例，screen默认是以单用户模式运行的，你需要在配置文件中指定multiuser on 来打开多用户模式，通过acl*（acladd,acldel,aclchg…）命令，你可以灵活配置其他用户访问你的screen会话。更多配置文件内容请参考screen的man页。</p>
-<p>转载自：Tang的<a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="external">linux screen 命令详解</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/376.html" data-id="cj8x084m7003unora0agzti2v" class="article-share-link" data-share="baidu" data-title="[转载]linux screen 命令详解">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/376.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gromacs-dppc-e8-86-9c-e5-88-9d-e4-bd-93-e9-aa-8c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/363.html" class="article-date">
-  <time datetime="2016-04-28T14:23:09.000Z" itemprop="datePublished">2016-04-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/363.html">gromacs DPPC膜初体验</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近一直在忙着我的论文修改，现在总算要告一段落了，马上要开启新的篇章，其中一个部分就是膜的体验，先准备学习以下gromacs李继存老师翻译的教程，这里记录一下学习的过程：</p>
-<p>DPPC膜中的KALP15：</p>
-<p>教程使用的文章是06年的一篇3.9分的文章，准备学习完以后参考一下他的分析步骤：<a href="http://www.sciencedirect.com/science/article/pii/S0006349506724171" target="_blank" rel="external">文献查看</a></p>
-<p>第一步：准备拓扑</p>
-<p>多肽如何准备的参考资料并未详细给出，由于我也是第一次学，自己也先跳过，你可以在文章底部中文教程下载也可以<a href="http://kangsgo.com/wp-content/uploads/2016/04/KALP-15_princ.pdb_.zip">KALP-15_princ.pdb</a></p>
-<p>1.pdb进行处理</p>
-<blockquote>
-<p>gmx pdb2gmx -f KALP-15_princ.pdb -o KALP-15_processed.gro -ignh -ter -water spc</p>
-</blockquote>
-<p>ignh选项指示gmx pdb2gmx忽略输出中的H原子. 默认情况下, xLeap会给出全原子结构(由于AMBER力场使用显式的氢). 在AMBER的命名约定中, 这些H原子的命名可能与GROMOS96力场中的不同. 如果让gmx pdb2gmx忽略输入的所有H原子, 它只会添加需要的那些.所以如果在蛋白配体复合物模拟中选用amber的话那么也不应该加-ignh选项，否则可能会干掉一些氢</p>
-<p>选择13：GROMOS96 53A6力场<br>两端不需要封端，所以均选择：None</p>
-<p>2.修改拓扑</p>
-<p>下载膜：<a href="http://wcm.ucalgary.ca/tieleman/downloads" target="_blank" rel="external">连接地址</a></p>
-<p><strong>dppc128.pdb</strong> - 含128个DPPC脂分子的双脂膜<br><strong>dppc.itp</strong> - DPPC的分子类型定义<br><strong>lipid.itp</strong> - Berger脂分子参数</p>
-<p>你也可以在我这里<a href="http://kangsgo.com/wp-content/uploads/2016/04/dppc.zip">dppc</a>下载好了的</p>
-<p>将gromos53a6.ff目录中文件复制出来，也可以在我这里下载已经打包好了的，<a href="http://kangsgo.com/wp-content/uploads/2016/04/gromos53a6_lipid.ff_.zip">gromos53a6_lipid.ff</a></p>
-<p>接下来, 将lipid.itp中的<code>[ atomtypes ]</code>, <code>[ nonbond_params ]</code>和<code>[ pairtypes ]</code>部分复制粘贴到<strong>ffnonbonded.itp</strong>中相应的行. 你可以发现<strong>lipid.itp</strong>中的<code>[ atomtypes ]</code>节缺少原子编号(<strong>at.num列</strong>), 因此添加上编号. 修改后的行应该是:</p>
-<pre>
-LO    8    15.9994      0.000     A  2.36400e-03 1.59000e-06 ;carbonyl O, OPLS
-LOM    8    15.9994      0.000     A  2.36400e-03 1.59000e-06 ;carboxyl O, OPLS
-LNL    7    14.0067      0.000     A  3.35300e-03 3.95100e-06 ;Nitrogen, OPLS
- LC    6    12.0110      0.000     A  4.88800e-03 1.35900e-05 ;Carbonyl C, OPLS
-LH1    6    13.0190      0.000     A  4.03100e-03 1.21400e-05 ;CH1, OPLS
-LH2    6    14.0270      0.000     A  7.00200e-03 2.48300e-05 ;CH2, OPLS
- LP   15    30.9738      0.000     A  9.16000e-03 2.50700e-05 ;phosphor, OPLS
-LOS    8    15.9994      0.000     A  2.56300e-03 1.86800e-06 ;ester oxygen, OPLS
-LP2    6    14.0270      0.000     A  5.87400e-03 2.26500e-05 ;RB CH2, Bergers LJ
-LP3    6    15.0350      0.000     A  8.77700e-03 3.38500e-05 ;RB CH3, Bergers LJ
-LC3    6    15.0350      0.000     A  9.35700e-03 3.60900e-05 ;CH3, OPLS
-LC2    6    14.0270      0.000     A  5.94700e-03 1.79000e-05 ;CH2, OPLS
-</pre>
-
-<p>在<code>[ nonbond_params ]</code>节中, 你可以看到一行<code>;; parameters for lipid-GROMOS interactions.</code>, 删除这一行以及所有后续行, 因为这些非键组合特定地用于已经废弃的ffgmx力场. 移除这些行后, 会根据GROMOS96 53A6力场的标准组合规则生成蛋白质和脂分子之间的相互作用参数. <strong>文件中也有涉及HW原子类型的非键相互作用, 由于它们都是零, 你也可以删除这些行, 否则请将HW重命名为H</strong>, 以便与GROMOS96 53A6的命名约定兼容. 如果你不进行重命名或移除这些行, 后面执行gmx grompp时会导致致命错误.</p>
-<p>追加<code>[ dihedraltypes ]</code>的内容到ffbonded.itp中相应的节. 这些行看起来差异很大, 但无关紧要. 它们是Ryckaert-Bellemans二面角, 与默认GROMOS96 53A6力场中使用的标准周期性二面角形式不同. 最后, 将topol.top文件中的#include语句由</p>
-<blockquote>
-<p>#include “gromos53a6.ff/forcefield.itp”</p>
-</blockquote>
-<p>修改为</p>
-<blockquote>
-<p>#include “gromos53a6_lipid.ff/forcefield.itp”</p>
-</blockquote>
-<p>最后, 我们需要包含DPPC分子的特定参数. 做法非常简单. 在你的topol.top文件中添加一行#include “dppc.itp”即可, 放在蛋白质位置限制部分的后面, 位置限制部分是蛋白质[ moleculetype ]定义的结束. 这些做法与在拓扑文件中添加任何其他小分子或溶剂类似. 在本节及整个教程中, 绿色文本表示你要添加的行, 其他文本(黑色)表示修改前拓扑中已有的内容.</p>
-<pre>
-; Include Position restraint file
-#ifdef POSRES
-#include "posre.itp"
-#endif
-
-; Include DPPC chain topology
-#include "dppc.itp"
-
-; Include water topology
-#include "gromos53a6_lipid.ff/spc.itp"
-</pre>
-
-<p>如果你正确地遵循了上面的所有步骤, 你就会得到一个全功能的力场, 可与gmx pdb2gmx一起用于处理其他膜蛋白. 这样做不必手动修改<code>topol.top</code>. 将新的<code>gromos53a6_lipid.ff</code>目录放于<strong>$GMXLIB</strong>下就可以在整个系统中使用这个力场了.</p>
-<p>3.定义单位晶胞并添加溶剂</p>
-<p>比起水中的蛋白质来, 为膜蛋白定义单位晶胞更复杂一些. 构建单位晶胞时有几个关键步骤:</p>
-<p>在相同的坐标系中对蛋白和膜进行取向<br>在蛋白周围堆积脂分子<br>使用水进行溶剂化</p>
-<p>1.蛋白质和膜的取向<br>(1) 使用gmx grompp对仅含有DPPC的体系生成.tpr文件. 你可以使用任何有效的.mdp文件, 相应于纯DPPC的拓扑文件. 这里是一个示例.mdp文件, 以及一个拓扑文件. 注意拓扑文件非常简单, 仅包含了dppc.itp和spc.itp, 用以读入DPPC和水的参数. 就这么简单! 运行gmx grompp:</p>
-<p>这里教程没有写命令，我暂时这么写：</p>
-<blockquote>
-<p>editconf_mpi -f dppc128-q.pdb -o dppc128.gro -princ</p>
-</blockquote>
-<p>选择2 DPP 正确与否待考</p>
-<blockquote>
-<p>gmx grompp -f minim.mdp -c dppc128.gro -p topol_dppc.top -o em.tpr</p>
-</blockquote>
-<p>你可能会得到一个致命错误, 像这样, 但在这种情况下对上面的命令可以安全地使用<code>-maxwarn 1</code>选项来忽略错误. 可以这样做的原因见这里. 请注意 这一步是使用topol_dppc.top的唯一一步, 此文件不能用于任何其他目的, 你不应该将它用于本教程中的 任何 剩余步骤</p>
-<p>对复杂的分子, 去除周期性的子程序可能会崩溃, 在这种情况下你可以使用gmx trjconv.但是后面教程里做了</p>
-<p>gmx grompp -f minim.mdp -c dppc128.gro -p topol_dppc.top -o em.tpr</p>
-<p>(2) 使用gmx trjconv移除周期性</p>
-<blockquote>
-<p>gmx trjconv -s em.tpr -f dppc128.gro -o dppc128_whole.gro -pbc mol -ur compact</p>
-</blockquote>
-<p>这一步产生的结构有一定的飞线，原因待考</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp"><img src="http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp" alt="vmdscene"></a></p>
-<p>现在查看下这个.gro文件的最后一行, 它对应于DPPC单位晶胞的x/y/z盒向量. 我们需要在相同的坐标系内调整KALP多肽的取向, 并将多肽的质心置于盒子的中心:</p>
-<blockquote>
-<p>gmx editconf -f KALP-15_processed.gro -o KALP_newbox.gro -c -box 6.41840 6.44350 6.59650</p>
-</blockquote>
-<p>2. 在蛋白四周堆积脂分子</p>
-<p>目前我发现, 围绕嵌入蛋白质堆积脂分子的最简单方法是InflateGRO方法(<a href="http://dx.doi.org/10.1016/j.ymeth.2006.08.006" target="_blank" rel="external">参考文献</a>), 你可以在这里<a href="http://kangsgo.com/wp-content/uploads/2016/04/inflategro.txt">inflategro</a>. 请注意, 我发布的代码是我自己保存的InflateGRO原始版本的副本, 而 不是 来自作者的InflateGRO2. 下载上面链接中的文件, 将其重命名为inflategro.pl再继续. 首先, 整合蛋白质和双脂层的结构文件:</p>
-<blockquote>
-<p>cat KALP_newbox.gro dppc128_whole.gro &gt; system.gro</p>
-</blockquote>
-<p>移除不需要的行(来自KALP结构的盒向量, 来自DPPC结构的标题信息), 并相应地更新坐标文件的第二行(总原子数).</p>
-<p>InflateGRO脚本的作者建议对蛋白质的重原子使用非常强的位置限制力, 以保证在EM过程中蛋白质的位置不发生改变. 在拓扑中添加新的#ifdef语句, 调用特殊的位置限制, 这样你的拓扑现在就包含类似下面的部分:</p>
-<pre>
-; Include Position restraint file
-#ifdef POSRES
-#include "posre.itp"
-#endif
-
-; Strong position restraints for InflateGRO
-#ifdef STRONG_POSRES
-#include "strong_posre.itp"
-#endif
-
-; Include DPPC chain topology
-#include "dppc.itp"
-
-; Include water topology
-#include "gromos53a6_lipid.ff/spc.itp"
-</pre>
-
-<p>现在就可以使用gmx genrestr生成新的位置限制文件:</p>
-<blockquote>
-<p>gmx genrestr -f KALP_newbox.gro -o strong_posre.itp -fc 100000 100000 100000</p>
-</blockquote>
-<p>在用于能量最小化的.mdp文件中, 添加一行define = -DSTRONG_POSRES以保证使用这些新的位置限制. 然后, 简单地按照InflateGRO的指示(包含在脚本自身中)做, 过程很简单. 对脂分子的位置使用因子4进行缩放:</p>
-<p>perl inflategro.pl system.gro 4 DPPC 14 system_inflated.gro 5 area.dat<br>由于InflateGRO脚本对命令行变量顺序的要求非常严格, 这里需要给出一个简略的说明:</p>
-<p>system.gro - 将要施加缩放的输入坐标文件的名称<br>4 - 施加的缩放因子, 值&gt;1表示扩增, 值&lt;1表示收缩/压缩<br>DPPC - 施加缩放的脂分子的残基名称<br>14 - 搜索脂分子的截断半径(单位为Å), 处于此半径内的脂分子会被删除<br>system_inflated.gro - 输出文件的名称<br>5 - 计算每个脂分子面积时所用的格点间距(单位为Å)<br>area.dat - 输出文件, 包含每个脂分子的面积信息, 对确定结构是否合适很有帮助</p>
-<p>记下删除了多少脂分子, 并相应地更新拓扑文件中[ molecules ]部分的内容. </p>
-<p>There are 1 lipids within cut-off range…<br>1 will be removed from the upper leaflet…<br>0 will be removed from the lower leaflet…</p>
-<p>貌似我的是1个<br>运行能量最小化. 然后, 使用因子0.95收缩脂分子(假定你使用了默认的名称, 能量最小化的结果文件为confout.gro):</p>
-<p>perl inflategro.pl confout.gro 0.95 DPPC 0 system_shrink1.gro 5 area_shrink1.dat</p>
-<p>在网上找到一个脚本，脚本如下：</p>
-<pre>
-perl inflategro.pl minimizedZ.gro 0.95 DPPC 0 shrinked1.gro 5 area_shrink1.dat
-
-grompp -f minim.mdp -c shrinked1.gro -p topol.top -o minimizedZ2.tpr
-
-mdrun -v -deffnm minimizedZ2
-
-for i in $(seq 1  20)
-
-do
-
-perl inflategro.pl minimizedZ2.gro 0.95 DPPC 0 shrinked2.gro 5 area_shrink1.dat $i
-
-grompp -f minim.mdp -c shrinked2.gro -p topol.top -o minimizedZ2.tpr $i
-
-mdrun -v -deffnm minimizedZ2 $i
-
-done
-</pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/363.html" data-id="cj8x084mn004gnorasugvd2fb" class="article-share-link" data-share="baidu" data-title="gromacs DPPC膜初体验">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/363.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e5-8e-bb-e9-99-a4-e8-86-9c-e8-9b-8b-e7-99-bd-e5-86-85-e7-9a-84-e6-b0-b4-e5-88-86-e5-ad-90-e8-84-9a-e6-9c-ac" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/360.html" class="article-date">
-  <time datetime="2016-04-27T04:33:53.000Z" itemprop="datePublished">2016-04-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/360.html">去除膜蛋白内的水分子脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><pre>set lipid [atomselect top “resname $lipres”];<br>set lipidbox [measure minmax $lipid];<br>set xmin [lindex [lindex $lipidbox 0] 0];<br>set xmax [lindex [lindex $lipidbox 1] 0];<br>set ymin [lindex [lindex $lipidbox 0] 1];<br>set ymax [lindex [lindex $lipidbox 1] 1];<br>set zmin [lindex [lindex $lipidbox 0] 2];<br>set zmax [lindex [lindex $lipidbox 1] 2];<br>set selA [atomselect top “same residue as water and z&gt;$zmin and z&lt;$zmax”] set selB [atomselect top “all not {same residue as water and z&gt;$zmin and z&lt;$zmax}”] puts “all not {same residue as water and z&gt;$zmin and z&lt;$zmax}”<br>set rmwatlen [llength [$selA get resid]];<br>set rmwatnum [expr $rmwatlen/3];</pre></p>
-<p>puts “remove water atom is $rmwatlen, and molecular is $rmwatnum”<br>$selB writepdb rmfinal.pdb</p>
-<p>set all [atomselect top water]<br>set allwat [expr [llength [$all get resid]]/3];</p>
-<p>set rmwatnum [expr $allwat-$rmwatnum];<br>puts “Original water molecules number is $allwat”<br>puts “Water molecules left $rmwatnum”;<br>$lipres替换成你要的磷脂resname<br><br>&nbsp;</p>
-<p>第一个脚本是可以单独抽取出来命名成你自己的脚本，比如test.tcl，然后在工作目录下直接source test.tcl就好，直接生成删除水后的pdb，注意修改里面lipids的resname，比如POPC、POPE等<br>第二个是加了命名空间的，调用需要加命名空间加函数名的</p>
-<p>第二个的可以新建一个文件夹，然后把sysTool.tcl和index的那个tcl放到一起，一个文件夹中，然后在vmd的安装目录下，有个vmd.rc的文件打开，在末尾加入source  d:/WorkSpace/MD/VMDScript/SysTool/sysTool.tcl<br>source  d:/WorkSpace/MD/VMDScript/SysTool/sysTool.tcl<br>注意source后直接写你的新建的那个文件夹名称<br>windows下注意斜杠和反斜杠的区别</p>
-<p>来源：刘胜堂@苏州</p>
-<p>如有侵权，请与博主联系</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/360.html" data-id="cj8x084k9001unoratrw93o0r" class="article-share-link" data-share="baidu" data-title="去除膜蛋白内的水分子脚本">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/360.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e8-9b-8b-e7-99-bd-e8-b4-a8-e4-b8-ad-e9-82-a3-e4-ba-9b-e6-b0-a8-e5-9f-ba-e9-85-b8-e6-88-96-e5-9f-ba-e5-9b-a2-e5-8f-af-e4-bb-a5-e7-bb-93-e5-90-88-e9-87-91-e5-b1-9e-e7-a6-bb-e5-ad-90" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/358.html" class="article-date">
-  <time datetime="2016-04-26T15:12:45.000Z" itemprop="datePublished">2016-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/358.html">蛋白质中那些氨基酸或基团可以结合金属离子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>蛋白质中那些氨基酸或基团可以结合金属离子<br>哪些氨基酸的侧链可与金属离子结合，这些配体属于软碱还是硬碱？</p>
-<p>&nbsp;</p>
-<p>A：蛋白质中最容易结合金属离子的大概是巯基（-SH）。这个也是很多金属离子毒性的来源。巯基在蛋白质中存在于半胱氨酸中。有时两个半胱氨酸通过脱氢形成二硫键（-S-S-）而使不同肽链连接起来。二硫键仍然具有结合金属离子的能力。</p>
-<p><div class="ext-info"></div><br>氨基、羟基等一切可提供孤对电子的均有可能与金属离子结合.</p>
-<p><div class="trace grace-trace"></div></p>
-<p><div class="ext-info"> 参考文献：<a href="http://www.zybang.com/question/906a76275e4b9649f6b5c6319a5e3a9c.html" target="_blank" rel="external">百度作业帮</a></div><br>&nbsp;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/358.html" data-id="cj8x084l0002tnoras3funlqe" class="article-share-link" data-share="baidu" data-title="蛋白质中那些氨基酸或基团可以结合金属离子">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/358.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spc-e6-b0-b4-e6-a8-a1-e5-9e-8b-e5-92-8ctip3p-e6-b0-b4-e6-a8-a1-e5-9e-8b-e7-9a-84-e5-8c-ba-e5-88-ab" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/355.html" class="article-date">
-  <time datetime="2016-04-26T08:24:03.000Z" itemprop="datePublished">2016-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/分子模拟/">分子模拟</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/355.html">spc水模型和tip3p水模型的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>来源：李颖@大工</p>
-<p>SPC Simple-point-charge 将水分子视为刚体分子，固定键长键角，仅O-O原子间有范德华作用，分子间原子对库仑静电作用。可以得到合理的水分子径向分布函数与气液共存性质，但模拟得到的扩散系数与实验值偏差较大 （误差200%-300%）</p>
-<p>TIP3P Transferable-intermolecular-potential,不考虑分子中各种高频率的振动。所有模型中应用最多， 亦常与其他力场合并用于生化系统计算</p>
-<p>项目 SPC TIP3P<br>R（OH）/A 1.0 0.9572<br>&lt;HOH/(°) 109.47 104.52<br>A<em>10^-3/（A^12</em>kcal/mol） 629.4 582.0<br>C/(A^6*kcal/mol) 625.5 595.0<br>qO -0.82 -0.834<br>qH 0.41 0.417<br>qM 0.0 0.0<br>R(OM)/A 0.0 0.0</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/355.html" data-id="cj8x084o8006inoraps75fo2s" class="article-share-link" data-share="baidu" data-title="spc水模型和tip3p水模型的区别">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/355.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e9-ab-98-e5-88-86-e5-88-86-e5-ad-90-e6-a8-a1-e6-8b-9f-e6-96-87-e7-ab-a0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/352.html" class="article-date">
-  <time datetime="2016-04-19T08:28:36.000Z" itemprop="datePublished">2016-04-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/352.html">[读书笔记]高分分子模拟文章</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标题：Molecular Dynamics and QM/MM Calculations predict the Substrate-Induced Gating of Cytochrome P450 BM3 and the Regio and Stereo-selctivity of Fatty Acid Hydroxylation</p>
-<p>摘要：通过scratch理论预测酶的活性。我们发现MD模拟和QM/MM计算脂肪酸羟化酶P450-BM3，预测脂肪酸激酶结合机制，其enantio/regio-selective 羟化反应通过激活种属酶？？，复合物Ⅰ.MD模拟展示底物进入设计氢键联系（Pro25，Glu43和Leu188），其诱导一个非常大的构象重排，通过拖拽A螺旋，β1折叠和F/G 环关闭底层通道.接下来，在底层通道的底部，残基Phe87控制位置选择通过限制底层链的卷缩（curl up）和并排复合物Ⅰ的CH2位置ω-1/ω-2/ω-3，同时阻止进入最末位置，ω-CH3. Phe87 控制构象选择性通过对映选择阻碍pro-S C-H 键，因此偏爱R-羟化作用。实际上，MD模拟突变Phe87Ala提示显著的ω-强化作用。研究发现，这远远超过了x-ray 结构的数据，阐述理论预测能力和其洞察力，能够潜在的使用作为实验的一部分对于P450-BM3最终位点选择C-H功能化能力。</p>
-<p>|翻译的很差····主要是给自己看的|</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/352.html" data-id="cj8x084ll0035noraa6jtcejq" class="article-share-link" data-share="baidu" data-title="[读书笔记]高分分子模拟文章">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/352.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e8-9b-8b-e7-99-bd-e6-b4-bb-e6-80-a7-e9-97-ae-e9-a2-98" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/347.html" class="article-date">
-  <time datetime="2016-04-11T16:35:47.000Z" itemprop="datePublished">2016-04-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/347.html">蛋白为什么在低温下也会变性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<p>W：In cold water, the protein is surrounded by ordered water molecules in the hydration shell.<br>Molecules in the shell are highly ordered and have  low energy.<br>Folding of a protein is (largely) driven by the entropic penalty of ordered water at room temperature (called the hydrophobic effect), whereas the low enthalpic contribution of these ordered water molecules is what drives cold denaturation.<br>It is due to this that during cold denaturation, there is release of heat, whereas heat is absorbed in heat denaturation.</p>
-<p>&nbsp;</p>
-<p>参考文献：<a href="https://www.quora.com/How-does-cold-denaturation-of-proteins-happen" target="_blank" rel="external">点我查看</a></p>
-<p>Bioms  QQ群</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/347.html" data-id="cj8x084kq002enorap36fq55b" class="article-share-link" data-share="baidu" data-title="蛋白为什么在低温下也会变性">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/347.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-smartdraw-e7-bb-98-e5-9b-be-e8-bd-af-e4-bb-b6-e5-ad-a6-e4-b9-a0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/345.html" class="article-date">
-  <time datetime="2016-04-08T03:39:41.000Z" itemprop="datePublished">2016-04-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/345.html">Smartdraw 绘图软件学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SmartDraw是世界上最流行的商业绘图软件。2006 年获美国政府司法部 (U.S. Department of Justice) 专用软件，2007获美国政府商务部 (US Department of Commence)选用。</p>
-<p>——摘自百度百科，软件待研究</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/345.html" data-id="cj8x084o7006gnorax74crxjr" class="article-share-link" data-share="baidu" data-title="Smartdraw 绘图软件学习">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/345.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e9-a3-9e-e5-a4-a9-e7-89-88-e7-94-a8vmd-e4-bd-9c-e5-9b-be" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/341.html" class="article-date">
-  <time datetime="2016-03-30T11:52:32.000Z" itemprop="datePublished">2016-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/绘图与可视化/">绘图与可视化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/341.html">飞天版用VMD作图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!--StartFragment -->
-<div>这个图你别show给其他人看了啊。还没有发表<br>分迪-飞天 2016/3/30 18:52:36<br>在Graphical Representations选择Material为EdgyShiny<br><br>在Display菜单栏下选择Rendermode为GLSL<br>出图的时候采用Tachyon渲染<br>在Display菜单栏下选Orthographic模式<br>分迪-飞天 2016/3/30 18:55:00<br>所有的Graphical Respresentations下的模式的resolution都要大于25<br>label不要用vmd直接画<br>分迪-飞天 2016/3/30 18:55:37<br>要用其他的软件做上<br>例如ppt</div>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/341.html" data-id="cj8x084mb0041nora7axhkudz" class="article-share-link" data-share="baidu" data-title="飞天版用VMD作图">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/341.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e8-bd-ac-e8-bd-bd-e5-88-a9-e7-94-a8pubreminer-e8-bf-9b-e8-a1-8c-e7-a7-91-e7-a0-94-e5-88-9d-e6-ad-a5-e9-80-89-e9-a2-98" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/333.html" class="article-date">
-  <time datetime="2016-03-28T10:03:53.000Z" itemprop="datePublished">2016-03-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/杂项/">杂项</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/333.html">[转载]利用PubReMiner进行科研初步选题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在科研动力看到一篇关于初步选题的文章，正好最近在找选题思路，所以就理一理，把内容结合自己的实际情况来做一遍，有兴趣的同学可以看文章原文：</p>
-<p>主要讲的内容为如何利用 PubReMiner 进行科研选题。</p>
-<p>粗略搜索</p>
-<p>首先要根据导师的意愿在 PubMed 中进行粗略的搜索。</p>
-<p>我的导师主要是想要我做分子模拟和实验相结合的内容，由于师兄主要从事芳香烃受体方面，分子模拟主要能够做突变以及和配体结合性的分析，所以自己先找的两个关键词是分子模拟（molecular simulation）与突变（Mutagenesis）<br>因此，要先在 PubMed 中进行一下粗略的搜索，看看当前有多少研究，并且可以把检索式保存下来，这样可以将来在 PubReMiner 中进行分析。</p>
-<p>好了，那就去 PubMed 吧，打开网址 <a href="http://www.ncbi.nlm.nih.gov/pubmed，记住不要一般搜索，要进行高级搜索。如果一般搜索的话，出来的文献太多。选择「Advaced」打开高级搜索选项。" target="_blank" rel="external">http://www.ncbi.nlm.nih.gov/pubmed，记住不要一般搜索，要进行高级搜索。如果一般搜索的话，出来的文献太多。选择「Advaced」打开高级搜索选项。</a></p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/03/QQ截图20160328182105.png"><img src="http://kangsgo.com/wp-content/uploads/2016/03/QQ截图20160328182105-300x63.png" alt="QQ截图20160328182105"></a></p>
-<p>只搜到两篇·····</p>
-<p>大家先看原文吧<a href="https://www.howsci.com/3039.html" target="_blank" rel="external">https://www.howsci.com/3039.html</a></p>
-<p>这里编辑代写</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/333.html" data-id="cj8x084lr003cnorah10fs9o5" class="article-share-link" data-share="baidu" data-title="[转载]利用PubReMiner进行科研初步选题">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/333.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">下一頁 &raquo;</a>
-  </nav>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
 </aside>
-      
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">小康博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">小康博客</h1>
+        <h5 class="subtitle">
+            
+                计算化学与分子模拟爱好者
+            
+        </h5>
     </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
-</div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
-
-
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
-</div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
     
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
-                
-        });
-</script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
-<script src="/js/script.js"></script>
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-bd-ac-e8-bd-bdlinux-screen-e5-91-bd-e4-bb-a4-e8-af-a6-e8-a7-a3"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-10 12:08:36" datetime="2016-05-10T04:08:36.000Z"  itemprop="datePublished">2016-05-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/376.html">[转载]linux screen 命令详解</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用
+一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远...
+    
+
+        <a href="/376.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-gromacs-dppc-e8-86-9c-e5-88-9d-e4-bd-93-e9-aa-8c"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-28 22:23:09" datetime="2016-04-28T14:23:09.000Z"  itemprop="datePublished">2016-04-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/363.html">gromacs DPPC膜初体验</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        最近一直在忙着我的论文修改，现在总算要告一段落了，马上要开启新的篇章，其中一个部分就是膜的体验，先准备学习以下gromacs李继存老师翻译的教程，这里记录一下学习的过程：
+DPPC膜中的KALP15：
+教程使用的文章是06年的一篇3.9分的文章，准备学习完以后参考一下他的分析步骤：文献查看
+第一步：准备拓扑
+多肽如何准备的参考资料并未详细给出，由于我也是第一次学，自己也先跳过，你可以在文章底...
+    
+
+        <a href="/363.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e5-8e-bb-e9-99-a4-e8-86-9c-e8-9b-8b-e7-99-bd-e5-86-85-e7-9a-84-e6-b0-b4-e5-88-86-e5-ad-90-e8-84-9a-e6-9c-ac"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-27 12:33:53" datetime="2016-04-27T04:33:53.000Z"  itemprop="datePublished">2016-04-27</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/360.html">去除膜蛋白内的水分子脚本</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        set lipid [atomselect top “resname $lipres”];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipidbox 1] 0];set ymin [lindex [lindex $lipidbo...
+    
+
+        <a href="/360.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-9b-8b-e7-99-bd-e8-b4-a8-e4-b8-ad-e9-82-a3-e4-ba-9b-e6-b0-a8-e5-9f-ba-e9-85-b8-e6-88-96-e5-9f-ba-e5-9b-a2-e5-8f-af-e4-bb-a5-e7-bb-93-e5-90-88-e9-87-91-e5-b1-9e-e7-a6-bb-e5-ad-90"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-26 23:12:45" datetime="2016-04-26T15:12:45.000Z"  itemprop="datePublished">2016-04-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/358.html">蛋白质中那些氨基酸或基团可以结合金属离子</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        蛋白质中那些氨基酸或基团可以结合金属离子哪些氨基酸的侧链可与金属离子结合，这些配体属于软碱还是硬碱？
+&nbsp;
+A：蛋白质中最容易结合金属离子的大概是巯基（-SH）。这个也是很多金属离子毒性的来源。巯基在蛋白质中存在于半胱氨酸中。有时两个半胱氨酸通过脱氢形成二硫键（-S-S-）而使不同肽链连接起来。二硫键仍然具有结合金属离子的能力。
+氨基、羟基等一切可提供孤对电子的均有可能与金属离子结合...
+    
+
+        <a href="/358.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-spc-e6-b0-b4-e6-a8-a1-e5-9e-8b-e5-92-8ctip3p-e6-b0-b4-e6-a8-a1-e5-9e-8b-e7-9a-84-e5-8c-ba-e5-88-ab"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-26 16:24:03" datetime="2016-04-26T08:24:03.000Z"  itemprop="datePublished">2016-04-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/355.html">spc水模型和tip3p水模型的区别</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        来源：李颖@大工
+SPC Simple-point-charge 将水分子视为刚体分子，固定键长键角，仅O-O原子间有范德华作用，分子间原子对库仑静电作用。可以得到合理的水分子径向分布函数与气液共存性质，但模拟得到的扩散系数与实验值偏差较大 （误差200%-300%）
+TIP3P Transferable-intermolecular-potential,不考虑分子中各种高频率的振动。所有模...
+    
+
+        <a href="/355.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e9-ab-98-e5-88-86-e5-88-86-e5-ad-90-e6-a8-a1-e6-8b-9f-e6-96-87-e7-ab-a0"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-19 16:28:36" datetime="2016-04-19T08:28:36.000Z"  itemprop="datePublished">2016-04-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/352.html">[读书笔记]高分分子模拟文章</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        标题：Molecular Dynamics and QM/MM Calculations predict the Substrate-Induced Gating of Cytochrome P450 BM3 and the Regio and Stereo-selctivity of Fatty Acid Hydroxylation
+摘要：通过scratch理论预测酶的活性。我们发现MD模...
+    
+
+        <a href="/352.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-9b-8b-e7-99-bd-e6-b4-bb-e6-80-a7-e9-97-ae-e9-a2-98"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-12 00:35:47" datetime="2016-04-11T16:35:47.000Z"  itemprop="datePublished">2016-04-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/347.html">蛋白为什么在低温下也会变性</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        &nbsp;
+W：In cold water, the protein is surrounded by ordered water molecules in the hydration shell.Molecules in the shell are highly ordered and have  low energy.Folding of a protein is (largely) ...
+    
+
+        <a href="/347.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-smartdraw-e7-bb-98-e5-9b-be-e8-bd-af-e4-bb-b6-e5-ad-a6-e4-b9-a0"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-08 11:39:41" datetime="2016-04-08T03:39:41.000Z"  itemprop="datePublished">2016-04-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/345.html">Smartdraw 绘图软件学习</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        SmartDraw是世界上最流行的商业绘图软件。2006 年获美国政府司法部 (U.S. Department of Justice) 专用软件，2007获美国政府商务部 (US Department of Commence)选用。
+——摘自百度百科，软件待研究
+
+    
+
+        <a href="/345.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e9-a3-9e-e5-a4-a9-e7-89-88-e7-94-a8vmd-e4-bd-9c-e5-9b-be"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-30 19:52:32" datetime="2016-03-30T11:52:32.000Z"  itemprop="datePublished">2016-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/341.html">飞天版用VMD作图</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+这个图你别show给其他人看了啊。还没有发表分迪-飞天 2016/3/30 18:52:36在Graphical Representations选择Material为EdgyShiny在Display菜单栏下选择Rendermode为GLSL出图的时候采用Tachyon渲染在Display菜单栏下选Orthographic模式分迪-飞天 2016/3/30 18:55:00所有的Graph...
+    
+
+        <a href="/341.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-bd-ac-e8-bd-bd-e5-88-a9-e7-94-a8pubreminer-e8-bf-9b-e8-a1-8c-e7-a7-91-e7-a0-94-e5-88-9d-e6-ad-a5-e9-80-89-e9-a2-98"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-28 18:03:53" datetime="2016-03-28T10:03:53.000Z"  itemprop="datePublished">2016-03-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/333.html">[转载]利用PubReMiner进行科研初步选题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        今天在科研动力看到一篇关于初步选题的文章，正好最近在找选题思路，所以就理一理，把内容结合自己的实际情况来做一遍，有兴趣的同学可以看文章原文：
+主要讲的内容为如何利用 PubReMiner 进行科研选题。
+粗略搜索
+首先要根据导师的意愿在 PubMed 中进行粗略的搜索。
+我的导师主要是想要我做分子模拟和实验相结合的内容，由于师兄主要从事芳香烃受体方面，分子模拟主要能够做突变以及和配体结合性的...
+    
+
+        <a href="/333.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
+    </div>
+</nav>
+
 
 </div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/7/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/7/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/7/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABYUlEQVR42u3aQZLDIAwFUd//0p6q2c4E9xdmEalZpVKJeSwMQtJ14XH/Dv6b+8+4TgxZshqx7uX4NOUnLvnvei5ZsiazyAu/fovXS+VzyZIlixy9a9DO8mTJklV73PrAliVLVsoiQTMKdsFR/XIsL0tWC1aaSNr5fDC/JUvW17Lu0kjR8fNlyRrGSi+iPI1LUk4PM8qSNYbFH5eGwrVi5z/7lixZY1jkEbWDPL3oxp0LsmS1YKW3yLTkeaRHSZasdqy0eJmmfUmQjS6usmS1Zr31bqa52RcutLJkNWWRg5ZPRhoR4nhBlqzWLB7skm/2FyNL1mTWfvNBmhh62D5kyRrDOtFqUCu9yJI1mVXbFE6E0cXcsyxZjVhkU0ibEniRBuWbZckaw0one6umKkuWrBqLF1rIwfxQ55ElSxa+au606AVxuixZA1i15gD++7RZQZasaaxaIokf5/sLkCWrNesHbwjkXPTkEKcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

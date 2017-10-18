@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>Martini 2.2P力场笔记 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;  阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.2的文献以及蛋白参数文献 3.此笔记对于Martini性能评测部分只关注了部分内容Mart">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Martini 2.2P力场笔记 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="&amp;nbsp;  阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.2的文献以及蛋白参数文献 3.此笔记对于Martini性能评测部分只关注了部分内容Mart">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Martini 2.2P力场笔记">
 <meta property="og:url" content="http://kangsgo.com/811.html">
@@ -26,88 +40,173 @@
 <meta name="twitter:title" content="Martini 2.2P力场笔记">
 <meta name="twitter:description" content="&amp;nbsp;  阅读前请注意: 1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为kangsgo@vip.qq.com  湖大-小康 2.由于我只关注蛋白模拟，故只查阅了Martini力场2.2的文献以及蛋白参数文献 3.此笔记对于Martini性能评测部分只关注了部分内容Mart">
 <meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2017/10/1.png">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-martini-2-2p-e5-8a-9b-e5-9c-ba-e7-ac-94-e8-ae-b0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/811.html" class="article-date">
-  <time datetime="2017-10-10T03:02:14.000Z" itemprop="datePublished">2017-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>►<a class="article-category-link" href="/categories/Gromacs/分子模拟/">分子模拟</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 class="article-title" itemprop="name">
-      Martini 2.2P力场笔记
-    </h1>
-  
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-      </header>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Martini 2.2P力场笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Martini 2.2P力场笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-10T03:02:14.000Z" itemprop="datePublished" class="page-time">
+  2017-10-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Martini-2-2的评价使用了如下的参考评价内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">Martini 2.2的评价使用了如下的参考评价内容:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#伞状采样（PS-文献中纳入为分区自由能中）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">伞状采样（PS:文献中纳入为分区自由能中）:</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#分区自由能-Partitioning-Free-Energy"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分区自由能(Partitioning Free Energy):</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#二聚化自由能（Dimerization-Free-Energy）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">二聚化自由能（Dimerization Free Energy）:</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#WW肽结合力（Binding-of-WW-Peptides）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">WW肽结合力（Binding of WW Peptides）:</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#优化方法和实验结果"><span class="post-toc-number">2.</span> <span class="post-toc-text">优化方法和实验结果:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-改变Phe-Trp和Pro的颗粒类型"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.改变Phe,Trp和Pro的颗粒类型</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-改变电荷偏移中心来改善电荷残基"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.改变电荷偏移中心来改善电荷残基</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#3-在溶解肽中测试新的参数"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3. 在溶解肽中测试新的参数</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-martini-2-2p-e5-8a-9b-e5-9c-ba-e7-ac-94-e8-ae-b0"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Martini 2.2P力场笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-10 11:02:14" datetime="2017-10-10T03:02:14.000Z"  itemprop="datePublished">2017-10-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>&nbsp;</p>
 <blockquote>
 <p><span style="color: #000000;">阅读前请注意:</span></p>
 <p><span style="color: #000000;">1.此文仅是我看Martini文献的一些总结，若需要使用Martini力场建议仔细的查看官网信息和相关文献。此文花费较大精力，若有什么意见或者建议欢迎发邮箱交流。邮箱为<strong>kangsgo@vip.qq.com  湖大-小康</strong></span></p>
@@ -124,21 +223,63 @@
 <h5 id="Martini-2-2的评价使用了如下的参考评价内容"><a href="#Martini-2-2的评价使用了如下的参考评价内容" class="headerlink" title="Martini 2.2的评价使用了如下的参考评价内容:"></a>Martini 2.2的评价使用了如下的参考评价内容:</h5><h6 id="伞状采样（PS-文献中纳入为分区自由能中）"><a href="#伞状采样（PS-文献中纳入为分区自由能中）" class="headerlink" title="伞状采样（PS:文献中纳入为分区自由能中）:"></a>伞状采样（PS:文献中纳入为分区自由能中）:</h6><p>对氨基酸残基侧链类似物（SCAs）进行了跨膜（DOPC膜）伞状采样，方法如同Martini 2.0文献中</p>
 <h6 id="分区自由能-Partitioning-Free-Energy"><a href="#分区自由能-Partitioning-Free-Energy" class="headerlink" title="分区自由能(Partitioning Free Energy):"></a>分区自由能(Partitioning Free Energy):</h6><p>SCAs在水和油（癸烷,decane）中的分区自由能使用热力学整合的方法计算。具体的为自由能和相应误差使用GROMACS的g_bar（gmx5以上对应的为 gmx bar）分析工具。分区自由能<span class="word">ΔG</span><span class="word">part 为水中的自由能减去油中的自由能。</span></p>
 <h6 id="二聚化自由能（Dimerization-Free-Energy）"><a href="#二聚化自由能（Dimerization-Free-Energy）" class="headerlink" title="二聚化自由能（Dimerization Free Energy）:"></a>二聚化自由能（Dimerization Free Energy）:</h6><p>也是进行一个另外一种伞状采样（大致为两个SCAs，拉动其中一个SCAs运动）。后经过如下公式计算ΔGdim:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/1.png)</div>
+            </figure></p>
 <p>其中kB为波尔兹曼（Boltzmann）约束，T为模拟温度，r为SCAs’ COM距离，rc 是二聚物-单体之间的cutoff（PMF达到第一个最大值的距离），Rmax是考虑的最大距离， v<span class="word">⌀为标准体积(1.66nm3，等于1mol L-1)，g(r)为径向分布函数（?回转半径？），其通过PMF可以如下计算:</span></p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/2.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/2.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/2.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/2.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/2.png)</div>
+            </figure></p>
 <h6 id="WW肽结合力（Binding-of-WW-Peptides）"><a href="#WW肽结合力（Binding-of-WW-Peptides）" class="headerlink" title="WW肽结合力（Binding of WW Peptides）:"></a>WW肽结合力（Binding of WW Peptides）:</h6><p>WW表示的为Wimlery-White，是一个五肽，序列为Ac-WLXLL，其中X为可变残基。<span class="word">ΔG</span><span class="word">WW获得主要是通过free energy perturbation（FEP）和multiple Bennett acceptance ratio（MBAR）相互联系的方法，计算公式为:</span></p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/3.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/3.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/3.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/3.png)</div>
+            </figure></p>
 <p>zs=1.0nm,zf=4.0nm，其定义分别为POCC/water限制和bulk water限制。数值使用的Simpson’s 规则计算。相关的X残基<span class="word">ΔΔG</span><span class="word">WW</span><span class="word">(X)的计算为ΔGWW(X)减去ΔGWW(Ala)</span></p>
 <h5 id="优化方法和实验结果"><a href="#优化方法和实验结果" class="headerlink" title="优化方法和实验结果:"></a>优化方法和实验结果:</h5><h6 id="1-改变Phe-Trp和Pro的颗粒类型"><a href="#1-改变Phe-Trp和Pro的颗粒类型" class="headerlink" title="1.改变Phe,Trp和Pro的颗粒类型"></a>1.改变Phe,Trp和Pro的颗粒类型</h6><p>作者第一个方法为通过改变Phe,Trp和Pro的颗粒类型，能够解决Martini 2.1力场中这三个原子类型疏水性太强的弱点，如下表:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/4.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/4.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/4.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/4.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/4.png)</div>
+            </figure></p>
 <p>其中ref为全原子模拟的结果，通过上表可以发现通过改变颗粒的类型可以使得结果有一定的提升。同时也不会影响伞状采样的结果，对于部分伞状采样的评价相比有更好的结果产生。如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/5.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/5.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/5.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/5.png)</div>
+            </figure></p>
 <h6 id="2-改变电荷偏移中心来改善电荷残基"><a href="#2-改变电荷偏移中心来改善电荷残基" class="headerlink" title="2.改变电荷偏移中心来改善电荷残基"></a>2.改变电荷偏移中心来改善电荷残基</h6><p>作者通过改变电荷偏移中心来改善电荷残基，在Martini 2.1和Martini 2.1P进行同电荷和异电荷残基的PMF实验时，结果如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/6.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/6.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/6.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/6.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/6.png)</div>
+            </figure></p>
 <p>可以发现，在Martini 2.1种，对于带相反电荷的残基仅仅捕捉到微弱的联系，然而，全原子力场表现出非常强的联系。相反，对于相同电荷残基，Martini 2.1预测了稳定的联系，而全原子模型则相反。当使用极性水模型以后（Martini 2.1P）,库伦联系下降为1/r,同时因为CG珠子拥有更大的大小（定义的范德华力为~0.26nm）限制了其接近电荷珠子到~0.5nm。然而全原子模型可以更加的接近。</p>
 <p>为了弥补这个问题，作者为带电侧链设计了一个替代模型，其中静电和范德华相互作用由两个不同的粒子承载。如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/7.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/7.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/7.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/7.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/7.png)</div>
+            </figure></p>
 <p>两个颗粒通过一个共约束的0.11nm长的键相互联系。使用这个偏移中心的设置，在Lys-Glu联系对的情况下，电荷可能更接近，并且相互作用增加约3倍（如图2）。但Lys-Lys联系对没有得到改善。</p>
 <p>对于其它珠子是否有改善还有待检验。</p>
 <p>同时作者还做了以下优化，由于自己用不到，仅在这里做简单介绍:</p>
@@ -147,7 +288,13 @@
 <li>提升骨架α螺旋和Ala和Gly多聚物序列的稳定性</li>
 </ol>
 <h6 id="3-在溶解肽中测试新的参数"><a href="#3-在溶解肽中测试新的参数" class="headerlink" title="3. 在溶解肽中测试新的参数"></a>3. 在溶解肽中测试新的参数</h6><p>作者进行了一条16肽的模拟（GCN4亮氨酸拉链，PDB code:2ZTA）,8号位（Lys）和12号位（Leu）残基突变为非极性的Asn，突变后的肽总共包含5个非极性氨基酸残基(<span class="word">Gln4,</span> <span class="word">Asn8,</span> <span class="word">Asn12,</span> <span class="word">Ser14,</span> <span class="word">Asn16</span>)和6个电荷残基(<span class="word">Lys3,</span> <span class="word">Glu6,</span> <span class="word">Asp7,</span> <span class="word">Glu9,</span> <span class="word">Glu10</span> <span class="word">and </span><span class="word">Lys14</span>),统计COM距离结果如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/8.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/8.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/8.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/8.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/8.png)</div>
+            </figure></p>
 <p>对于非极性氨基酸残基，Martini 2.1P和Martini 2.2P之间有两个方面不同，第一点，峰在短的距离（侧链指向彼此）和长的距离（侧链远离彼此），在Martini 2.2P中转变为一个更小的平均距离，这和全原子模拟更加匹配。第二点为分布更窄（Asn12−Ser14 and Ser14−Asn16）。对于带有相反电荷残基的Lys3-Glu6和Glu11-Lys15联系对，当使用Martini 2.2P时，在短距离处观察到的峰值变得更宽或完全消失。 对于带有相反（Glu6-Asp7）和相等电荷（Glu10-Glu11）direct neighbors，用新参数对相同的方向进行采样。 对于带有相反电荷的Asp7-Glu10残基对，新方向更近的距离被采样到，从而更好地再现了全原子模拟的分布。</p>
 <p>虽然这种特定肽的侧链的整体行为似乎已经随着我们的新模型而改善，但是也很清楚，我们的CG模型不能捕获使用原子模型时所看到的分布的一些细节。需要做更多的测试。</p>
 <p>文章最后还提到了考虑以后二级结构可以发生转变</p>
@@ -156,245 +303,293 @@
 <li>de Jong D H, Singh G, Bennett W F D, et al. <strong>Improved parameters for the martini coarse-grained protein force field</strong>[J]. Journal of Chemical Theory and Computation, 2012, 9(1): 687-697.</li>
 </ol>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/811.html" target="_blank" rel="external">http://kangsgo.com/811.html</a>
+        
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/811.html" data-id="cj8x084ne005bnoram3ztj1h1" class="article-share-link" data-share="baidu" data-title="Martini 2.2P力场笔记">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/811.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/cj8x084n5004znoraqb6bw62q.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/811.html&title=《Martini 2.2P力场笔记》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/811.html&title=《Martini 2.2P力场笔记》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/811.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Martini 2.2P力场笔记》 — 小康博客&url=http://kangsgo.com/811.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/811.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/cj8x20mgi0055j4ra9i9nhu7x.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
   
-    <a href="/770.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">MARTINI 2.0力场笔记</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/770.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">MARTINI 2.0力场笔记</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="811.html" data-title="Martini 2.2P力场笔记" data-url="http://kangsgo.com/811.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/811.html&title=《Martini 2.2P力场笔记》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/811.html&title=《Martini 2.2P力场笔记》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/811.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Martini 2.2P力场笔记》 — 小康博客&url=http://kangsgo.com/811.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/811.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3awa4CIQwFUP//p+dt3ci7pdBoclgZM8JxFk258HrF43kb79+sn8lnOzxwcXHb3Gc51gs8wUj+cDIDLi7uPPdTxVg/kzy/ZuUGXFzc7+cmZShvknBxcX+dm7Q+ycy4uLjfz022LutfnW19DuzVcHFxG9w8pbz3+Uq+i4uLu8V9iiMpZElIujdwcXFnuNUwtNro5EcphXVxcXEvczuHHKei0mTOKKPFxcW9zM0n7exNqg0QLi7uDDdvYpLCdOr6RfTicHFxr3GTUpJHqPlGKH+LH1McXFzcy9zq8gll7/t/jltwcXFHuJ3worp8uWytL37h4uKOcPONSue6VV7mCuUMFxf3KPcUKGl9Ou0ULi7uJDdpI5KIZO/JzeYJFxd3kFudKC9Je8cn0T0yXFzcEe5e6Fk9ZG0FKLi4uIPcZPlq2eoXx8IhCi4u7iFu52LlXhHcu+qBi4s7ya0Wl+qhSJXeiVpwcXHPcjvFq1/mCoEILi7uODcJPgrhRXCA2tqr4eLi/gg3aWX2CmiU7+Li4n4ZN4lT+ykHLi7uPLezfCcYrb4sXFzcGW61lOTbnmRTVI1dcHFxL3P/APYYUsFa61bLAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

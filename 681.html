@@ -1,12 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>LigParGen:配体OPLS/CM1A力场在线生成 | 小康博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14CM1A或1.14CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。该在线服务">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>LigParGen:配体OPLS/CM1A力场在线生成 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="&amp;gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14CM1A或1.14CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。该在线服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LigParGen:配体OPLS&#x2F;CM1A力场在线生成">
 <meta property="og:url" content="http://kangsgo.com/681.html">
@@ -27,88 +41,220 @@
 <meta name="twitter:title" content="LigParGen:配体OPLS&#x2F;CM1A力场在线生成">
 <meta name="twitter:description" content="&amp;gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14CM1A或1.14CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。该在线服务">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-84395c51d30fa58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-  
-    <link rel="alternative" href="/atom.xml" title="小康博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小康博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">计算化学与分子模拟爱好者</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="kangsgo.com">
-        </form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-ligpargen-e9-85-8d-e4-bd-93oplscm1a-e5-8a-9b-e5-9c-ba-e5-9c-a8-e7-ba-bf-e7-94-9f-e6-88-90" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/681.html" class="article-date">
-  <time datetime="2017-08-10T08:06:49.000Z" itemprop="datePublished">2017-08-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Gromacs/">Gromacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 class="article-title" itemprop="name">
-      LigParGen:配体OPLS/CM1A力场在线生成
-    </h1>
-  
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-      </header>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LigParGen:配体OPLS/CM1A力场在线生成</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LigParGen:配体OPLS/CM1A力场在线生成</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-10T08:06:49.000Z" itemprop="datePublished" class="page-time">
+  2017-08-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br>&gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14<em>CM1A或1.14</em>CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。<br><br>该在线服务器的使用方法非常的简单，并且使用的电荷计算模型1.14_CM1A在OPLS-AA力场中水化自由能计算（hydration free energies ，HFE）与实验具有良好的拟合效果，而改进的局部电荷校正（LBCC）方法更加提供了电荷的精确度，称之为1.14_CM1A-LBCC模型。在在线服务中，对于不带电的小分子提供1.14<em>CM1A和1.14</em>CM1A-LBCC模型，而带电荷的分子仅提供不放大1.14倍的CM1A模型。故带电荷的小分子还是最好使用GAFF力场制作方法。<br><br>LigParGen服务网址为:<a href="http://zarbi.chem.yale.edu/ligpargen/index.html" target="_blank" rel="external">http://zarbi.chem.yale.edu/ligpargen/index.html</a><br><br>### 理论基础<br><br>CM1A方法使用来自于电荷密度的Mulliken分布分析，而电荷密度获得的方式为AM1方法基于配体几何计算，<strong>*故配体几何的差别会导致电荷计算轻微差别，但影响不大。</strong><br>Mulliken电荷对原子A的计算方法大致如下(具体可以查看参考文献4)：<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-84395c51d30fa58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><em>q<sub>A</sub></em>是部分Mulliken 电荷，<em>Z<sub>A</sub></em>是原子A的中性电荷，<em>N<sub>A</sub></em>是原子A的电荷密度分布，计算方法如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-aa47d185302f7952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><img src="http://upload-images.jianshu.io/upload_images/903467-fa588b9afd167175.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><em>N</em>是分子的总电荷数，<em>C<sub>n,i </sub></em>为分子轨道系数，<em>χ<sub>n</sub></em> 和_S<sub>nk</sub>_QM多重积分，但1.14<em>CM1A电荷模型在苯环，醚类和酮类中参数不理想， 在426个有机分子的测试集中和实验数据相比mean unsigned error (MUE)达到1.5kcal/mol，而改进的局部电荷校正（LBCC）方法具有更好的效果。<br>作者进行了水化自由能（HFE）的评价，模拟的计算方法软件采用的NAMD，一共计算了10个分子，每个分子进行了36个窗口计算，每个窗口模拟1ns，力场采用OPLS-AA/1.14</em>CM1A-LBCC，水采用的TIP3P，完成参数请看底部的参考文献3。实验结果与模拟的结果拟合的较好，结果如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-b7fdd584e10762c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>说明模拟结果和实验结果拟合的非常棒！<br><br>### LigParGen使用方法<br><br>LigParGen的使用方法非常的简单:<br>首先上传MOL或者PDB文件或者SMILES Code:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-fd52863938451991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>当然也可以通过JSME自己画，如下图:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-a7230645a3b9eb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>首先点一下Make SMILES，画完以后再点击一下Make SMILES即可。<br><br>然后选择电荷模型，是否优化分子，分子电荷等选项。<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-1ffdccc41a3972cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>之后便可以下载不同软件需要用到的文件。软件的工作流程如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-bb4eb79ee176d86f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 蛋白配体复合物模拟<br><br>LigParGen提供了3种模拟软件的蛋白配体复合物模拟的方法，可以在官网上查看，我们这里翻译GROMACS的蛋白配体复合物模拟。<br><br>#### 1.准备蛋白配体系统<br><br>Gromacs，Chimera和python被要求安装。<br><br>##### 1.1 获得复合物<br><br>使用T4溶菌酶L99A与苯环分子复合物（PDB ID:4W52）作为教程，结构如下图，仅包含一条链<br><img src="http://upload-images.jianshu.io/upload_images/903467-dae3a85fe48cb4f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="T4 Lysozyme L99A with Benzene"><br><br>##### 1.2 模拟前的蛋白准备工作<br><br>清理蛋白使用Chimera的对接准备功能（dockprep ），增加缺失残基使用Dunbrack rotamer库，这一部并不会进行蛋白加氢，因为在后面pdb2gmx会对蛋白进行加氢。Chimera脚本如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">## PDB_FILE SHOULD THE COMPLETE PATH OF THE FILE<br>## REPLACE BNZ with LIGAND resname<br>## USAGE: Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br>import chimera<br>from DockPrep import prep<br>import Midas<br>import sys<br>import os<br>PDB_file = sys.argv[1]<br>lig_name = sys.argv[2]<br>os.system(‘grep ATOM %s &gt; %s_clean.pdb’%(PDB_file,PDB_file[:-4]))<br>os.system(‘grep %s %s &gt; %s.pdb’%(lig_name,PDB_file,lig_name))<br>protein=chimera.openModels.open(‘%s_clean.pdb’%PDB_file[:-4])<br>ligand=chimera.openModels.open(‘%s.pdb’%lig_name)<br>prep(protein,addHFunc=None,addCharges=False)<br>prep(ligand)<br>Midas.write(protein,None,”protein_clean.pdb”)<br>Midas.write(ligand,None,”ligand_wH.pdb”)</pre><br><br>使用脚本:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br></pre><br><br>生成的 protein_clean.pdb和ligand_wH.pdb将会在随后使用。<br><br>##### 1.3 准备配体<br><br>使用的方法如第2部分，后下载BNZ.gro（坐标文件）与BNZ.itp（拓扑文件）<br><br>#### 2 设置Gromacs模拟<br><br>##### 2.1 结合蛋白配体坐标<br><br><strong>其Gromacs版本使用的为4.6.5</strong>，若使用的为5.x或者2016版本可以具体查看李继存老师翻译的配体蛋白教程的后续命令。差别不大。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">pdb2gmx -f protein_clean.pdb -o protein_processed.gro -water spce<br></pre><br>两个蛋白的结合可以手动或者使用如下脚本完成:<br><pre class="EnlighterJSRAW" data-enlighter-language="python">import sys<br>pro_gro = sys.argv[1]<br>lig_gro = sys.argv[2]<br>pro = open(pro_gro,’r’).readlines()<br>lig = open(lig_gro,’r’).readlines()<br>pro_dat = [line.rstrip() for line in pro]<br>lig_dat = [line.rstrip() for line in lig]<br>tot_num = int(pro_dat[1])+int(lig_dat[1])<br>com_dat = [pro_dat[0],’%5d’%tot_num]+pro_dat[2:-1] + lig_dat[2:-1] + [pro_dat[-1]]<br>for line in com_dat: print line</pre><br><br>运行脚本<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">python combineGro_prot_lig.py protein_processed.gro BNZ.gro &gt; complex.gro<br></pre><br><br>##### 2.2 蛋白配体拓扑结合<br><br>我们对拓扑文件(topol.top)进行修改。<br>在<code>#include &quot;oplsaa.ff/forcefield.itp&quot;</code>后加上<code>#include &quot;BNZ.itp&quot;</code>行来merge蛋白和配体。在<code>Protein_chain_A 1</code>后加上<code>BNZ 1</code><br><br>##### 2.3 设置MD模拟<br><br>后面的部分与<a href="http://www.jianshu.com/p/5db734581718" target="_blank" rel="external">载脂蛋白模拟部分</a>类似:<br>首先增加水盒子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">editconf -f complex.gro -o complex_box.gro -c -d 1.0 -bt cubic<br></pre><br>填充水:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genbox -cp complex_box.gro -cs spc216.gro -o complex_box_wSPCE.gro -p topol.top<br></pre><br>增加原子:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/ions.mdp -c complex_box_wSPCE.gro -p topol.top -o ions.tpr<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genion -s ions.tpr -o complex_box_wSPCE_ions.gro  -p topol.top -pname NA -nname CL -nn 8<br></pre><br>能量最小化:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/em_real.mdp -c complex_box_wSPCE_ions.gro -p topol.top -o em.tpr<br>mdrun -v -deffnm em</pre><br><strong>一般般说来，在进行NVT模拟之前，用户需要增加配体的位置限制从而不会在加热过程中使得配体从蛋白中逃逸</strong><br>位置限制<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genrestr -f BNZ.gro -o posre_BNZ.itp -fc 1000 1000 1000<br></pre><br><br><strong>上面命令会使得posre_BNZ.itp生成，需要在</strong><code>#include &quot;oplsaa.ff/ions.itp&quot;</code><strong>上增加</strong><code>#include &quot;posre_BNZ.itp&quot;</code><strong>的内容</strong><br><strong>为了让蛋白配体系统一起进行温度计算，需要通过如下命令使得两者成为一个体系</strong><br><br> 平衡与正式模拟:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f nvt.mdp -c em.gro -p topol.top -n index.ndx -o nvt.tpr<br>mpirun.lsf mdrun -deffnm nvt<br>grompp -f npt.mdp -c nvt.gro -p topol.top -n index.ndx -o npt.tpr<br>mpirun.lsf mdrun -deffnm npt<br>grompp -f md.mdp -c npt.gro -p topol.top -n index.ndx -o md.tpr<br>mpirun.lsf mdrun -deffnm md</pre><br><br><strong>如果对配体为进行限制，那么NVT和NPT平衡设置文件中</strong><code>define = -DPOSRES ; position restrain the protein and ligand</code><strong>需要被移去</strong><br><br>模拟中用到的mdp文件可以在github上下载:<a href="https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS" target="_blank" rel="external">https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS</a><br><br>参考文献:<br><br>1.  Potential energy functions for atomic-level simulations of water and organic and biomolecular systems. Jorgensen, W. L.; Tirado-Rives, J. Proc. Nat. Acad. Sci. USA 2005, 102, 6665-6670<br><br>2.  1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations. Dodda, L. S.; Vilseck, J. Z.; Tirado-Rives, J.; Jorgensen, W. L. J. Phys. Chem. B. DOI:10.1021/acs.jpcb.7b00272<br><br>3.  LigParGen web server: An automatic OPLS-AA parameter generator for organic ligands. Nuc. Acids. Res., DOI: 10.1093/nar/gkx312<br><br>4.  Storer J W, Giesen D J, Cramer C J, et al. Class IV charge models: a new semiempirical approach in quantum chemistry.[J]. Journal of computer-aided molecular design, 1995, 9(1):87-110.<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O0xpZ1BhckdlbuaYr+S4gOS4quaPkOS+m+acieacuuWIhuWtkOaIluiAhemFjeS9k+WK
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-ligpargen-e9-85-8d-e4-bd-93oplscm1a-e5-8a-9b-e5-9c-ba-e5-9c-a8-e7-ba-bf-e7-94-9f-e6-88-90"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LigParGen:配体OPLS/CM1A力场在线生成</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-10 16:06:49" datetime="2017-08-10T08:06:49.000Z"  itemprop="datePublished">2017-08-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br>&gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14<em>CM1A或1.14</em>CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。<br><br>该在线服务器的使用方法非常的简单，并且使用的电荷计算模型1.14_CM1A在OPLS-AA力场中水化自由能计算（hydration free energies ，HFE）与实验具有良好的拟合效果，而改进的局部电荷校正（LBCC）方法更加提供了电荷的精确度，称之为1.14_CM1A-LBCC模型。在在线服务中，对于不带电的小分子提供1.14<em>CM1A和1.14</em>CM1A-LBCC模型，而带电荷的分子仅提供不放大1.14倍的CM1A模型。故带电荷的小分子还是最好使用GAFF力场制作方法。<br><br>LigParGen服务网址为:<a href="http://zarbi.chem.yale.edu/ligpargen/index.html" target="_blank" rel="external">http://zarbi.chem.yale.edu/ligpargen/index.html</a><br><br>### 理论基础<br><br>CM1A方法使用来自于电荷密度的Mulliken分布分析，而电荷密度获得的方式为AM1方法基于配体几何计算，<strong>*故配体几何的差别会导致电荷计算轻微差别，但影响不大。</strong><br>Mulliken电荷对原子A的计算方法大致如下(具体可以查看参考文献4)：<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-84395c51d30fa58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><em>q<sub>A</sub></em>是部分Mulliken 电荷，<em>Z<sub>A</sub></em>是原子A的中性电荷，<em>N<sub>A</sub></em>是原子A的电荷密度分布，计算方法如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-aa47d185302f7952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-fa588b9afd167175.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><em>N</em>是分子的总电荷数，<em>C<sub>n,i </sub></em>为分子轨道系数，<em>χ<sub>n</sub></em> 和_S<sub>nk</sub>_QM多重积分，但1.14<em>CM1A电荷模型在苯环，醚类和酮类中参数不理想， 在426个有机分子的测试集中和实验数据相比mean unsigned error (MUE)达到1.5kcal/mol，而改进的局部电荷校正（LBCC）方法具有更好的效果。<br>作者进行了水化自由能（HFE）的评价，模拟的计算方法软件采用的NAMD，一共计算了10个分子，每个分子进行了36个窗口计算，每个窗口模拟1ns，力场采用OPLS-AA/1.14</em>CM1A-LBCC，水采用的TIP3P，完成参数请看底部的参考文献3。实验结果与模拟的结果拟合的较好，结果如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-b7fdd584e10762c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>说明模拟结果和实验结果拟合的非常棒！<br><br>### LigParGen使用方法<br><br>LigParGen的使用方法非常的简单:<br>首先上传MOL或者PDB文件或者SMILES Code:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-fd52863938451991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>当然也可以通过JSME自己画，如下图:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-a7230645a3b9eb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>首先点一下Make SMILES，画完以后再点击一下Make SMILES即可。<br><br>然后选择电荷模型，是否优化分子，分子电荷等选项。<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-1ffdccc41a3972cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>之后便可以下载不同软件需要用到的文件。软件的工作流程如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-bb4eb79ee176d86f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 蛋白配体复合物模拟<br><br>LigParGen提供了3种模拟软件的蛋白配体复合物模拟的方法，可以在官网上查看，我们这里翻译GROMACS的蛋白配体复合物模拟。<br><br>#### 1.准备蛋白配体系统<br><br>Gromacs，Chimera和python被要求安装。<br><br>##### 1.1 获得复合物<br><br>使用T4溶菌酶L99A与苯环分子复合物（PDB ID:4W52）作为教程，结构如下图，仅包含一条链<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-dae3a85fe48cb4f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="T4 Lysozyme L99A with Benzene" title="">
+                </div>
+                <div class="image-caption">T4 Lysozyme L99A with Benzene</div>
+            </figure><br><br>##### 1.2 模拟前的蛋白准备工作<br><br>清理蛋白使用Chimera的对接准备功能（dockprep ），增加缺失残基使用Dunbrack rotamer库，这一部并不会进行蛋白加氢，因为在后面pdb2gmx会对蛋白进行加氢。Chimera脚本如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">## PDB_FILE SHOULD THE COMPLETE PATH OF THE FILE<br>## REPLACE BNZ with LIGAND resname<br>## USAGE: Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br>import chimera<br>from DockPrep import prep<br>import Midas<br>import sys<br>import os<br>PDB_file = sys.argv[1]<br>lig_name = sys.argv[2]<br>os.system(‘grep ATOM %s &gt; %s_clean.pdb’%(PDB_file,PDB_file[:-4]))<br>os.system(‘grep %s %s &gt; %s.pdb’%(lig_name,PDB_file,lig_name))<br>protein=chimera.openModels.open(‘%s_clean.pdb’%PDB_file[:-4])<br>ligand=chimera.openModels.open(‘%s.pdb’%lig_name)<br>prep(protein,addHFunc=None,addCharges=False)<br>prep(ligand)<br>Midas.write(protein,None,”protein_clean.pdb”)<br>Midas.write(ligand,None,”ligand_wH.pdb”)</pre><br><br>使用脚本:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br></pre><br><br>生成的 protein_clean.pdb和ligand_wH.pdb将会在随后使用。<br><br>##### 1.3 准备配体<br><br>使用的方法如第2部分，后下载BNZ.gro（坐标文件）与BNZ.itp（拓扑文件）<br><br>#### 2 设置Gromacs模拟<br><br>##### 2.1 结合蛋白配体坐标<br><br><strong>其Gromacs版本使用的为4.6.5</strong>，若使用的为5.x或者2016版本可以具体查看李继存老师翻译的配体蛋白教程的后续命令。差别不大。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">pdb2gmx -f protein_clean.pdb -o protein_processed.gro -water spce<br></pre><br>两个蛋白的结合可以手动或者使用如下脚本完成:<br><pre class="EnlighterJSRAW" data-enlighter-language="python">import sys<br>pro_gro = sys.argv[1]<br>lig_gro = sys.argv[2]<br>pro = open(pro_gro,’r’).readlines()<br>lig = open(lig_gro,’r’).readlines()<br>pro_dat = [line.rstrip() for line in pro]<br>lig_dat = [line.rstrip() for line in lig]<br>tot_num = int(pro_dat[1])+int(lig_dat[1])<br>com_dat = [pro_dat[0],’%5d’%tot_num]+pro_dat[2:-1] + lig_dat[2:-1] + [pro_dat[-1]]<br>for line in com_dat: print line</pre><br><br>运行脚本<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">python combineGro_prot_lig.py protein_processed.gro BNZ.gro &gt; complex.gro<br></pre><br><br>##### 2.2 蛋白配体拓扑结合<br><br>我们对拓扑文件(topol.top)进行修改。<br>在<code>#include &quot;oplsaa.ff/forcefield.itp&quot;</code>后加上<code>#include &quot;BNZ.itp&quot;</code>行来merge蛋白和配体。在<code>Protein_chain_A 1</code>后加上<code>BNZ 1</code><br><br>##### 2.3 设置MD模拟<br><br>后面的部分与<a href="http://www.jianshu.com/p/5db734581718" target="_blank" rel="external">载脂蛋白模拟部分</a>类似:<br>首先增加水盒子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">editconf -f complex.gro -o complex_box.gro -c -d 1.0 -bt cubic<br></pre><br>填充水:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genbox -cp complex_box.gro -cs spc216.gro -o complex_box_wSPCE.gro -p topol.top<br></pre><br>增加原子:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/ions.mdp -c complex_box_wSPCE.gro -p topol.top -o ions.tpr<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genion -s ions.tpr -o complex_box_wSPCE_ions.gro  -p topol.top -pname NA -nname CL -nn 8<br></pre><br>能量最小化:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/em_real.mdp -c complex_box_wSPCE_ions.gro -p topol.top -o em.tpr<br>mdrun -v -deffnm em</pre><br><strong>一般般说来，在进行NVT模拟之前，用户需要增加配体的位置限制从而不会在加热过程中使得配体从蛋白中逃逸</strong><br>位置限制<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genrestr -f BNZ.gro -o posre_BNZ.itp -fc 1000 1000 1000<br></pre><br><br><strong>上面命令会使得posre_BNZ.itp生成，需要在</strong><code>#include &quot;oplsaa.ff/ions.itp&quot;</code><strong>上增加</strong><code>#include &quot;posre_BNZ.itp&quot;</code><strong>的内容</strong><br><strong>为了让蛋白配体系统一起进行温度计算，需要通过如下命令使得两者成为一个体系</strong><br><br> 平衡与正式模拟:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f nvt.mdp -c em.gro -p topol.top -n index.ndx -o nvt.tpr<br>mpirun.lsf mdrun -deffnm nvt<br>grompp -f npt.mdp -c nvt.gro -p topol.top -n index.ndx -o npt.tpr<br>mpirun.lsf mdrun -deffnm npt<br>grompp -f md.mdp -c npt.gro -p topol.top -n index.ndx -o md.tpr<br>mpirun.lsf mdrun -deffnm md</pre><br><br><strong>如果对配体为进行限制，那么NVT和NPT平衡设置文件中</strong><code>define = -DPOSRES ; position restrain the protein and ligand</code><strong>需要被移去</strong><br><br>模拟中用到的mdp文件可以在github上下载:<a href="https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS" target="_blank" rel="external">https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS</a><br><br>参考文献:<br><br>1.  Potential energy functions for atomic-level simulations of water and organic and biomolecular systems. Jorgensen, W. L.; Tirado-Rives, J. Proc. Nat. Acad. Sci. USA 2005, 102, 6665-6670<br><br>2.  1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations. Dodda, L. S.; Vilseck, J. Z.; Tirado-Rives, J.; Jorgensen, W. L. J. Phys. Chem. B. DOI:10.1021/acs.jpcb.7b00272<br><br>3.  LigParGen web server: An automatic OPLS-AA parameter generator for organic ligands. Nuc. Acids. Res., DOI: 10.1093/nar/gkx312<br><br>4.  Storer J W, Giesen D J, Cramer C J, et al. Class IV charge models: a new semiempirical approach in quantum chemistry.[J]. Journal of computer-aided molecular design, 1995, 9(1):87-110.<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O0xpZ1BhckdlbuaYr+S4gOS4quaPkOS+m+acieacuuWIhuWtkOaIluiAhemFjeS9k+WK
 m+WcuueahOWcqOe6v+acjeWKoee9keerme+8jOWFtuiDveWkn+aPkOS+m+mUrumVv++8jOS6jOmd
 ouinkuS7peWPikxlbm5hcmQtSm9uZXMgT1BMUy1BQeWPguaVsO+8jOeUteiNt+eul+azleS4ujEu
 MTRcKkNNMUHmiJYxLjE0XCpDTTFBLUxCQ0PjgILnlJ/miJDnmoTphY3kvZPlipvlnLrlj6/ku6Xp
@@ -281,245 +427,293 @@ ZW4gRCBKLCBDcmFtZXIgQyBKLCBldCBhbC4gQ2xhc3MgSVYgY2hhcmdlIG1vZGVsczogYSBuZXcg
 c2VtaWVtcGlyaWNhbCBhcHByb2FjaCBpbiBxdWFudHVtIGNoZW1pc3RyeS5bSl0uIEpvdXJuYWwg
 b2YgY29tcHV0ZXItYWlkZWQgbW9sZWN1bGFyIGRlc2lnbiwgMTk5NSwgOSgxKTo4Ny0xMTAuPC9w
 PjxwPjwvcD4=">​</div><br></div>
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/681.html" target="_blank" rel="external">http://kangsgo.com/681.html</a>
+        
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://kangsgo.com/681.html" data-id="cj8x084n90053norahs2qmkrz" class="article-share-link" data-share="baidu" data-title="LigParGen:配体OPLS/CM1A力场在线生成">分享到</a>
-      
-
-      
-        <a href="http://kangsgo.com/681.html#ds-thread" class="article-comment-link">評論</a>
-      
-
-      
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/684.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          PLIP:蛋白配体联系分析工具
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/681.html&title=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/681.html&title=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/681.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&url=http://kangsgo.com/681.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/681.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/684.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PLIP:蛋白配体联系分析工具</h4>
+      </a>
+    </div>
   
-    <a href="/670.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">GROMACS之水中部分載脂蛋白</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/670.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">GROMACS之水中部分載脂蛋白</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="681.html" data-title="LigParGen:配体OPLS/CM1A力场在线生成" data-url="http://kangsgo.com/681.html"></div>
-  </section>
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/">Dock</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/">Gromacs</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/">Rosetta</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rosetta/分子模拟/">分子模拟</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/">分子模拟</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/分子模拟/绘图与可视化/">绘图与可视化</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据挖掘/">数据挖掘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/杂项/">杂项</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/科研辅助/">科研辅助</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自用脚本/">自用脚本</a><span class="category-list-count">1</span></li></ul>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-  </div>
-
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">歸檔</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/cj8x084n5004znoraqb6bw62q.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/811.html">Martini 2.2P力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/770.html">MARTINI 2.0力场笔记</a>
-          </li>
-        
-          <li>
-            <a href="/766.html">[转载]ubuntu16耳机没声音解决</a>
-          </li>
-        
-          <li>
-            <a href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情鏈接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
-          </li>
-        
-          <li>
-            <a href="http://reqianduan.com" target="_blank">热前端</a>
-          </li>
-        
-          <li>
-            <a href="http://yuancheng.work" target="_blank">远程.work</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 kangsgo<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
 
 
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
 
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
 
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
                 
-        });
-</script>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script src="/js/script.js"></script>
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/681.html&title=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/681.html&title=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/681.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LigParGen:配体OPLS/CM1A力场在线生成》 — 小康博客&url=http://kangsgo.com/681.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/681.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQW4DIQwF0N7/0tNtqjbo22bIVHqsogjBYxYWtvn6isf1Ml7/Wc/JV9s8cHFxx9xrOdZzeiv8PnCyAi4u7nnuu4ixnpNT3rFyAy4u7vO5VzB6R8LFxf3v3CRP6aVSuLi4T+AmqcukpJJccTbnari4uANub8u9v2+p7+Li4ra4V3Gsg9E6bPV2/LECLi7uEW41jcmhe9MnXFzc53DzUJXM7zVmylUcXFzcMTdpkPSKHbsuT3/cyHBxcT/E7f0zaaBGT7hwcXGPcNdXk7w5Onl+kT/ywMXFPcOdX2Umzy+qbRtcXNwz3DzEVENeklD1gh0uLu4ZbrW42Suh5q2UQoEVFxf3Bu46TOQNj94xkvZtIfnBxcXdxJ20WvNnGdUPEc3ExcW9mVtNcpLWbN5SLadbuLi4B7n5NtW26PxJFi4u7qe4SSCbB6zRLQwXF/cI9+7t8/AXrYmLi3uEO2mUzsNT8gmah8HFxR1ze8ErL3ZUU52oiYKLi3uEuw49SREkT5Y252q4uLiP4VbbIdXUq9D5wcXFfQA3KXDsLXng4uJ+itt8OjkujJY/Fi4u7hHupNzZK45Un2vg4uIe5H4DJzHDQvSyVLcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>
