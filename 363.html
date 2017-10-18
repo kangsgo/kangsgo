@@ -37,7 +37,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -60,7 +60,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -77,21 +77,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -99,13 +99,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -268,7 +261,13 @@ LC2    6    14.0270      0.000     A  5.94700e-03 1.79000e-05 ;CH2, OPLS
 <p>gmx trjconv -s em.tpr -f dppc128.gro -o dppc128_whole.gro -pbc mol -ur compact</p>
 </blockquote>
 <p>这一步产生的结构有一定的飞线，原因待考</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp"><img src="http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp" alt="vmdscene"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp" alt="vmdscene](http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp)" title="">
+                </div>
+                <div class="image-caption">vmdscene](http://kangsgo.com/wp-content/uploads/2016/04/vmdscene.bmp)</div>
+            </figure></p>
 <p>现在查看下这个.gro文件的最后一行, 它对应于DPPC单位晶胞的x/y/z盒向量. 我们需要在相同的坐标系内调整KALP多肽的取向, 并将多肽的质心置于盒子的中心:</p>
 <blockquote>
 <p>gmx editconf -f KALP-15_processed.gro -o KALP_newbox.gro -c -box 6.41840 6.44350 6.59650</p>
@@ -340,7 +339,7 @@ done
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/363.html" target="_blank" rel="external">http://kangsgo.com/363.html</a>
+        链接：<a href="/363.html" target="_blank" rel="external">http://kangsgo.com/363.html</a>
         
     </div>
     <footer>
@@ -567,7 +566,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -587,7 +586,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

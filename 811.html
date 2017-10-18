@@ -44,7 +44,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -67,7 +67,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -84,21 +84,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -106,13 +106,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -223,21 +216,63 @@
 <h5 id="Martini-2-2的评价使用了如下的参考评价内容"><a href="#Martini-2-2的评价使用了如下的参考评价内容" class="headerlink" title="Martini 2.2的评价使用了如下的参考评价内容:"></a>Martini 2.2的评价使用了如下的参考评价内容:</h5><h6 id="伞状采样（PS-文献中纳入为分区自由能中）"><a href="#伞状采样（PS-文献中纳入为分区自由能中）" class="headerlink" title="伞状采样（PS:文献中纳入为分区自由能中）:"></a>伞状采样（PS:文献中纳入为分区自由能中）:</h6><p>对氨基酸残基侧链类似物（SCAs）进行了跨膜（DOPC膜）伞状采样，方法如同Martini 2.0文献中</p>
 <h6 id="分区自由能-Partitioning-Free-Energy"><a href="#分区自由能-Partitioning-Free-Energy" class="headerlink" title="分区自由能(Partitioning Free Energy):"></a>分区自由能(Partitioning Free Energy):</h6><p>SCAs在水和油（癸烷,decane）中的分区自由能使用热力学整合的方法计算。具体的为自由能和相应误差使用GROMACS的g_bar（gmx5以上对应的为 gmx bar）分析工具。分区自由能<span class="word">ΔG</span><span class="word">part 为水中的自由能减去油中的自由能。</span></p>
 <h6 id="二聚化自由能（Dimerization-Free-Energy）"><a href="#二聚化自由能（Dimerization-Free-Energy）" class="headerlink" title="二聚化自由能（Dimerization Free Energy）:"></a>二聚化自由能（Dimerization Free Energy）:</h6><p>也是进行一个另外一种伞状采样（大致为两个SCAs，拉动其中一个SCAs运动）。后经过如下公式计算ΔGdim:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/1.png)</div>
+            </figure></p>
 <p>其中kB为波尔兹曼（Boltzmann）约束，T为模拟温度，r为SCAs’ COM距离，rc 是二聚物-单体之间的cutoff（PMF达到第一个最大值的距离），Rmax是考虑的最大距离， v<span class="word">⌀为标准体积(1.66nm3，等于1mol L-1)，g(r)为径向分布函数（?回转半径？），其通过PMF可以如下计算:</span></p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/2.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/2.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/2.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/2.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/2.png)</div>
+            </figure></p>
 <h6 id="WW肽结合力（Binding-of-WW-Peptides）"><a href="#WW肽结合力（Binding-of-WW-Peptides）" class="headerlink" title="WW肽结合力（Binding of WW Peptides）:"></a>WW肽结合力（Binding of WW Peptides）:</h6><p>WW表示的为Wimlery-White，是一个五肽，序列为Ac-WLXLL，其中X为可变残基。<span class="word">ΔG</span><span class="word">WW获得主要是通过free energy perturbation（FEP）和multiple Bennett acceptance ratio（MBAR）相互联系的方法，计算公式为:</span></p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/3.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/3.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/3.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/3.png)</div>
+            </figure></p>
 <p>zs=1.0nm,zf=4.0nm，其定义分别为POCC/water限制和bulk water限制。数值使用的Simpson’s 规则计算。相关的X残基<span class="word">ΔΔG</span><span class="word">WW</span><span class="word">(X)的计算为ΔGWW(X)减去ΔGWW(Ala)</span></p>
 <h5 id="优化方法和实验结果"><a href="#优化方法和实验结果" class="headerlink" title="优化方法和实验结果:"></a>优化方法和实验结果:</h5><h6 id="1-改变Phe-Trp和Pro的颗粒类型"><a href="#1-改变Phe-Trp和Pro的颗粒类型" class="headerlink" title="1.改变Phe,Trp和Pro的颗粒类型"></a>1.改变Phe,Trp和Pro的颗粒类型</h6><p>作者第一个方法为通过改变Phe,Trp和Pro的颗粒类型，能够解决Martini 2.1力场中这三个原子类型疏水性太强的弱点，如下表:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/4.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/4.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/4.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/4.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/4.png)</div>
+            </figure></p>
 <p>其中ref为全原子模拟的结果，通过上表可以发现通过改变颗粒的类型可以使得结果有一定的提升。同时也不会影响伞状采样的结果，对于部分伞状采样的评价相比有更好的结果产生。如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/5.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/5.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/5.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/5.png)</div>
+            </figure></p>
 <h6 id="2-改变电荷偏移中心来改善电荷残基"><a href="#2-改变电荷偏移中心来改善电荷残基" class="headerlink" title="2.改变电荷偏移中心来改善电荷残基"></a>2.改变电荷偏移中心来改善电荷残基</h6><p>作者通过改变电荷偏移中心来改善电荷残基，在Martini 2.1和Martini 2.1P进行同电荷和异电荷残基的PMF实验时，结果如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/6.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/6.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/6.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/6.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/6.png)</div>
+            </figure></p>
 <p>可以发现，在Martini 2.1种，对于带相反电荷的残基仅仅捕捉到微弱的联系，然而，全原子力场表现出非常强的联系。相反，对于相同电荷残基，Martini 2.1预测了稳定的联系，而全原子模型则相反。当使用极性水模型以后（Martini 2.1P）,库伦联系下降为1/r,同时因为CG珠子拥有更大的大小（定义的范德华力为~0.26nm）限制了其接近电荷珠子到~0.5nm。然而全原子模型可以更加的接近。</p>
 <p>为了弥补这个问题，作者为带电侧链设计了一个替代模型，其中静电和范德华相互作用由两个不同的粒子承载。如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/7.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/7.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/7.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/7.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/7.png)</div>
+            </figure></p>
 <p>两个颗粒通过一个共约束的0.11nm长的键相互联系。使用这个偏移中心的设置，在Lys-Glu联系对的情况下，电荷可能更接近，并且相互作用增加约3倍（如图2）。但Lys-Lys联系对没有得到改善。</p>
 <p>对于其它珠子是否有改善还有待检验。</p>
 <p>同时作者还做了以下优化，由于自己用不到，仅在这里做简单介绍:</p>
@@ -246,7 +281,13 @@
 <li>提升骨架α螺旋和Ala和Gly多聚物序列的稳定性</li>
 </ol>
 <h6 id="3-在溶解肽中测试新的参数"><a href="#3-在溶解肽中测试新的参数" class="headerlink" title="3. 在溶解肽中测试新的参数"></a>3. 在溶解肽中测试新的参数</h6><p>作者进行了一条16肽的模拟（GCN4亮氨酸拉链，PDB code:2ZTA）,8号位（Lys）和12号位（Leu）残基突变为非极性的Asn，突变后的肽总共包含5个非极性氨基酸残基(<span class="word">Gln4,</span> <span class="word">Asn8,</span> <span class="word">Asn12,</span> <span class="word">Ser14,</span> <span class="word">Asn16</span>)和6个电荷残基(<span class="word">Lys3,</span> <span class="word">Glu6,</span> <span class="word">Asp7,</span> <span class="word">Glu9,</span> <span class="word">Glu10</span> <span class="word">and </span><span class="word">Lys14</span>),统计COM距离结果如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/10/8.png"><img src="http://kangsgo.com/wp-content/uploads/2017/10/8.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/10/8.png" alt="](http://kangsgo.com/wp-content/uploads/2017/10/8.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/10/8.png)</div>
+            </figure></p>
 <p>对于非极性氨基酸残基，Martini 2.1P和Martini 2.2P之间有两个方面不同，第一点，峰在短的距离（侧链指向彼此）和长的距离（侧链远离彼此），在Martini 2.2P中转变为一个更小的平均距离，这和全原子模拟更加匹配。第二点为分布更窄（Asn12−Ser14 and Ser14−Asn16）。对于带有相反电荷残基的Lys3-Glu6和Glu11-Lys15联系对，当使用Martini 2.2P时，在短距离处观察到的峰值变得更宽或完全消失。 对于带有相反（Glu6-Asp7）和相等电荷（Glu10-Glu11）direct neighbors，用新参数对相同的方向进行采样。 对于带有相反电荷的Asp7-Glu10残基对，新方向更近的距离被采样到，从而更好地再现了全原子模拟的分布。</p>
 <p>虽然这种特定肽的侧链的整体行为似乎已经随着我们的新模型而改善，但是也很清楚，我们的CG模型不能捕获使用原子模型时所看到的分布的一些细节。需要做更多的测试。</p>
 <p>文章最后还提到了考虑以后二级结构可以发生转变</p>
@@ -266,7 +307,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/811.html" target="_blank" rel="external">http://kangsgo.com/811.html</a>
+        链接：<a href="/811.html" target="_blank" rel="external">http://kangsgo.com/811.html</a>
         
     </div>
     <footer>
@@ -342,7 +383,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/cj8x35kch0056israe5qeunho.html" id="post-prev" class="post-nav-link">
+      <a href="/cj8x3acu60057h8rauq8yd8g0.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Hello World</h4>
       </a>
@@ -493,7 +534,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -513,7 +554,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

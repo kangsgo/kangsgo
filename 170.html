@@ -27,19 +27,19 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="g_mmpbsa现在可以不编译直接用，非常的方便，现在提供了4.5.x，4.6.x和5.0.x三个版本，暂时不支持5.1以上版本。 1.安装教程 先从这里下载预编译版本  tar -zxvf g_mmpbsa.tar.gz cd bin sudo cp g_mmpbsa /usr/local/bin/. sudo cp energy2bfac /usr/local/bin/.也可以设置环境变量：e">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/2-300x215.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn-300x232.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/1.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn.png">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="g_mmpbsa 安装与使用笔记">
 <meta name="twitter:description" content="g_mmpbsa现在可以不编译直接用，非常的方便，现在提供了4.5.x，4.6.x和5.0.x三个版本，暂时不支持5.1以上版本。 1.安装教程 先从这里下载预编译版本  tar -zxvf g_mmpbsa.tar.gz cd bin sudo cp g_mmpbsa /usr/local/bin/. sudo cp energy2bfac /usr/local/bin/.也可以设置环境变量：e">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/01/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -62,7 +62,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -79,21 +79,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -101,13 +101,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -223,7 +216,13 @@
 <blockquote>
 <p>选择1|13  蛋白质和配体<br>跑完以后应该会得到如下文件：</p>
 </blockquote>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/1.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png" alt="1"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/01/1.png" alt="1](http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png)" title="">
+                </div>
+                <div class="image-caption">1](http://kangsgo.com/wp-content/uploads/2016/01/1-300x114.png)</div>
+            </figure></p>
 <p>3.平均结合能计算</p>
 <p>3.1 安装numby</p>
 <blockquote>
@@ -238,7 +237,13 @@
 <p>python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvg (or sasa.xvg)<br>其中括号以内取决于你的模型，若是一步法则为apolar.xvg</p>
 </blockquote>
 <p>我的到的结果如下：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/2.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/2-300x215.png" alt="2"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/01/2.png" alt="2](http://kangsgo.com/wp-content/uploads/2016/01/2-300x215.png)" title="">
+                </div>
+                <div class="image-caption">2](http://kangsgo.com/wp-content/uploads/2016/01/2-300x215.png)</div>
+            </figure></p>
 <p>得到的文件主要是两个date</p>
 <p>4.能量拆分</p>
 <blockquote>
@@ -247,7 +252,13 @@
 <p>Number of boot strap steps for average energy and standard error calculation.</p>
 <p>但是具体含义不清楚</p>
 <p>我得到的能量拆分图：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn.png"><img src="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn-300x232.png" alt="energyMapIn"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn.png" alt="energyMapIn](http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn-300x232.png)" title="">
+                </div>
+                <div class="image-caption">energyMapIn](http://kangsgo.com/wp-content/uploads/2016/01/energyMapIn-300x232.png)</div>
+            </figure></p>
 <p>建议复制文本用excel做，好看一些</p>
 <p>&nbsp;</p>
 <p>参考文献：<a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=1244&amp;highlight=mmpbs&amp;_dsign=cad7662c" target="_blank" rel="external">GROMACS 中 g_mmpbsa 工具使用详解</a></p>
@@ -266,7 +277,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/170.html" target="_blank" rel="external">http://kangsgo.com/170.html</a>
+        链接：<a href="/170.html" target="_blank" rel="external">http://kangsgo.com/170.html</a>
         
     </div>
     <footer>
@@ -493,7 +504,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -513,7 +524,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

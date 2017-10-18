@@ -38,7 +38,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -61,7 +61,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -78,21 +78,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -100,13 +100,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -214,7 +207,13 @@
 <li>怎样将柔性肽对接到蛋白</li>
 </ul>
 <h5 id="Rosetta中进行对接"><a href="#Rosetta中进行对接" class="headerlink" title="Rosetta中进行对接"></a>Rosetta中进行对接</h5><p>Rosetta中进行对接包含两个步骤。第一步，进行积极（aggresive）采样，方法使用的<a href="https://www.rosettacommons.org/demos/latest/tutorials/full_atom_vs_centroid/fullatom_centroid" target="_blank" rel="external">质心</a>模型。第二步采用全原子模型进行小范围的优化。（PS：质心模型相较于全原子模型保留蛋白主链原子，而侧链原子采用不同大小的单一赝原子表示，如图1）</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png)</div>
+            </figure></p>
 <p>它会在内部使用跳跃连接两个链的中心，沿着跳跃两条链被拉在了一起（滑动联系 slide into contact）。算法为<a href="https://www.rosettacommons.org/demos/latest/tutorials/fold_tree/fold_tree" target="_blank" rel="external">折叠树</a>算法，是一种优化移动的方法，Rosetta在能量最小化中也有使用。这里不作探讨，也不会影响使用。算法还是使用Baker课题组特别喜欢的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Core_Concepts/Core_Concepts#monte-carlo-sampling" target="_blank" rel="external">Monte Carlo</a>随机算法进行计算如下内容：</p>
 <ul>
 <li>平移（x,y,z方向）</li>
@@ -241,7 +240,13 @@
 <p>&nbsp;</p>
 <p>当然可以附加<code>ignore_unrecognized_res</code>在设置中从而删除PDB中的水和配体（当然也可以手动删除）</p>
 <h5 id="局部对接"><a href="#局部对接" class="headerlink" title="局部对接"></a>局部对接</h5><p>Rosetta在局部对接中有更加精确的结果，<strong>顾名思义，局部对接就是假设已知两个蛋白的结合（口袋）区域</strong>。首先我们需要将两个蛋白结合口袋大致的对着对方约10埃的位置，如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png)</div>
+            </figure></p>
 <p>我们进行如下的设置：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="null">-partners A_B
 -dock_pert 3 8</pre>
@@ -382,7 +387,7 @@ input_files/COL_D_ensemble/COL_D_0003.pdb.ppk
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/647.html" target="_blank" rel="external">http://kangsgo.com/647.html</a>
+        链接：<a href="/647.html" target="_blank" rel="external">http://kangsgo.com/647.html</a>
         
     </div>
     <footer>
@@ -609,7 +614,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -629,7 +634,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

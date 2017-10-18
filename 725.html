@@ -53,7 +53,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -76,7 +76,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -93,21 +93,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -115,13 +115,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -213,44 +206,128 @@
 <p>CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中没有定义力场参数的分子，如糖，就需要手动为Gromacs添加相关力场参数了。这些力场参数多数从文献中得到，并且一般都是CHARMM格式的，即.prm 和 .rtf 格式，如何将它们转换成Gromacs支持的格式呢？这篇文章会详细讲解转换过程，并且给出python脚本以供参考。</p>
 <p>首先分别讲解一下CHARMM软件和Gromacs软件如何完整定义一个分子的力场。在CHARMM软件中，主要通过2个文件来实现：.rtf 和.prm。</p>
 <p>.rtf 文件定义了原子类型、各类型原子的质量、原子偏电荷、分子的键连接以及氢键等，它的格式如图1。MASS是用来定义原子类型的，每一行都定义了一种原子类型。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155104802mdy8wueeq0yuu.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155104802mdy8wueeq0yuu.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><em>图<strong>1. TIP3</strong>水分子的<strong> .rtf </strong>文件，<strong>CHARMM</strong>中<strong>“</strong>！<strong>”</strong>后面的内容是注释</em></p>
 <p>MASS后面跟着原子编号、原子类型名、原子质量和元素符号。GROUP语句用来定义一个残基（也可以是单独的分子）：ATOM定义了残基中各原子的名字、所属的原子类型和该原子所带的偏电荷；BOND定义残基中原子的键连接情况，以原子对形式列出，如图1中的水分子定义了3个键OH2-H1、OH2-H2和H1-H2（最后一个键是SHAKE限制算法用到的）；ANGLE定义键角；DONOR和ACCEPTOR分别用来定义氢键供体和受体。</p>
 <p>.prm文件中定义了与能量相关的参数，如键伸缩能，键角、二面角的力常数以及范德华参数，图2给出了TIP3水分子的 .prm 文件。</p>
 <p>BONDS数据块是用来定义键伸缩振动能量的，用简谐振动来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155126rc41nd4derds14en.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155126rc41nd4derds14en.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>BONDS数据块每行有4个字段，前两个是成键原子的类型，后两个分别是公式中的K<sub>b</sub>（kcal/Å<sup>2</sup>/mol）和b<sup>0</sup>（Å）。</p>
 <p>ANGLES数据块用来定义键角振动，同样是用简谐振动来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155140ttg36s3j33ssb633.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155156zxkw0xldkbbiwxq6.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155140ttg36s3j33ssb633.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155156zxkw0xldkbbiwxq6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>ANGLES数据每行有5或7个字段，后者是加了Urey-Bradley项的。前3项是形成键角的原子的类型，后面4项分别对应公式中的K<sub>θ</sub>（kcal/度<sup>2</sup>/mol）、θ<sub>0</sub>（度）、K<sub>UB</sub>（kcal/Å<sup>2</sup>/mol）和b<sup>1-3,0</sup>（Å）。</p>
 <p>关于Urey-Bradley项的解释可以查看gromacs手册:<a href="http://jerkwin.github.io/GMX/GMXman-4/#428-urey-bradley势" target="_blank" rel="external">http://jerkwin.github.io/GMX/GMXman-4/#428-urey-bradley势</a></p>
 <p>DIHEDRALS数据块用来定义二面角振动，用余弦函数来近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155208l6b0miozlq3rlngl.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155208l6b0miozlq3rlngl.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>DIHEDRALS数据块每行有7个字段，前4项是形成二面角的原子的类型，后面3项分别对应公式中的K<sub>φ</sub>（kcal/mol）、n（无单位）和δ（度）。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155223tedrsdetdiy16zhq.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155223tedrsdetdiy16zhq.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><em>图<strong>2. TIP3</strong>水分子的<strong> .prm </strong>文件</em></p>
 <p>IMPROPER数据块用来保证分子中原子共平面的，用简谐振动近似：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155247opohhnzjijzjoonl.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155247opohhnzjijzjoonl.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>IMPROPER数据块每行有7个字段，前4项是形成二面角的原子的类型，第5项对应公式中的Kω（kcal/度<sup>2</sup>/mol），第6项一般是0，暂时不知道干嘛用的，第7项对应公式中的ω0（度）。</p>
 <p>NONBONDED数据块用来定义非键作用，其中静电力可通过原子偏电荷求得，不需要额外参数，范德华力通常用L-J形式来描述：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155258etq3vnb3kq5qtws4.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155258etq3vnb3kq5qtws4.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>通常力场中只定义单个原子的ε和r<sup>min</sup>，成对原子的范德华力参数可以通过组合规则（combination rule）获得，常用的组合规则是ε<sub>i,j</sub> = sqrt(ε<sub>i</sub>×ε<sub>j</sub>)，r<sup>min</sup><sub>i,j</sub> = (r<sup>min</sup><sub>i</sub>+ r<sup>min</sup><sub>j</sub>)/2。另外CHARMM力场将1-4作用单独分出来描述，也采用L-J形式，只是ε和r<sup>min</sup>值有所不同。NONBONDED数据块每行有7个字段组成，第1个字段是原子类型，第2、5字段标识为ignored，通常是0，暂不知道干嘛用的，第3，4字段分别为vdw力的ε（kcal/mol）和r<sup>min</sup>/2（Å），第6，7字段分别为1-4作用的ε（kcal/mol）和r<sup>min</sup>/2（Å）。这里可以提前说明一下，Gromacs中1-4作用是以原子对的形式定义的，叫做pairtypes，转换时需要将CHARMM中的1-4作用通过组合规则两两组合生成pairtypes，这在后面还会详细讲到。</p>
 <p>下面讲一下Gromacs中力场文件的格式。Gromacs主要通过5个文件来定义：.rtp、.hdb、atomtypes.atp、ffbonded.itp和ffnonbonded.itp。</p>
 <p>.rtp文件用来定义残基（或分子）中原子所属的类型、原子偏电荷、键连接以及共平面原子，其余如键角和二面角是在这里不是必须的，程序一般通过原子类型生成，它将出现在ffbonded.itp文件中。图3是 .rtp 文件的一个示例，里面的注释很详尽，唯一需要说</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/1553175bacyapcuc1eaa6u.jpg" alt="tmp.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/1553175bacyapcuc1eaa6u.jpg" alt="tmp.png" title="">
+                </div>
+                <div class="image-caption">tmp.png</div>
+            </figure>
 <p><em>图<strong>3. </strong>甘氨酸的<strong> .rtp </strong>文件，<strong>Gromacs</strong>中<strong>“</strong>;<strong>”</strong>后的内容是注释</em></p>
 <p>明的是chargegroup项，同一个chargegroup中的原子偏电荷变化是以相同比例进行的，对于一个新加入的分子可简单的将每个原子划分到不同的chargegroup中。</p>
 <p>.hdb文件是用来给残基（或分子）加氢的，我们知道用X-衍射得到的蛋白结构中一般没有氢，pdb2gmx命令会查询.hdb文件中定义的加氢规则为蛋白加氢。如果你的小分子中氢原子已在 .rtp文件中定义了，就不需要用 .hdb文件来加氢。因为一般力场中都会详细定义蛋白各种参数，我们只需添加一些小分子，而小分子中的氢原子多在 .rtp文件中定义，很少用到 .hdb文件，所以这里不再讲 .hdb文件格式。</p>
 <p>atomtypes.atp文件中定义了力场中用到的所有原子类型，格式很简单，第一列是原子类型名，第二列是原子质量，如果你添加的分子用到了新的原子类型，就需要在这里添加相关信息。</p>
 <p>ffbonded.itp文件定义了力场中的键作用：键伸缩振动、键角、二面角振动（func=9）</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155334z4ydem0f8grpkedf.gif" alt="捕获.PNG"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155334z4ydem0f8grpkedf.gif" alt="捕获.PNG" title="">
+                </div>
+                <div class="image-caption">捕获.PNG</div>
+            </figure>
 <p><em>图<strong>4. ffbonded.itp</strong>文件格式</em></p>
 <p>以及IMPROPER（在Gromacs中称为dihedraltypes（func=2））。它们定义及算法与CHARMM中相同，只是公式的形式以及单位有差异：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155354w6r7wujct7qt7w3l.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155407c18kiqc06iq7ssmc.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155418b17q1e1aceaeet1y.jpg" alt=""></p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155430is5p2lsjj1fggj0g.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155354w6r7wujct7qt7w3l.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155407c18kiqc06iq7ssmc.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155418b17q1e1aceaeet1y.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155430is5p2lsjj1fggj0g.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>公式的差异表现在键长、键角、IMPROPER的简谐振动公式在Gromcas中多了一个系数1/2；单位的差异表现在CHARMM中能量单位为kcal，而Gromcas中使用kJ，CHARMM中长度单位为Å，而Gromacs中使用nm。参数从CHARMM转换到Gromacs规则如下：</p>
 <p>（1）       键伸缩振动：K<sub>gromacs</sub>= 2×K<sub>charmm</sub>×cal2j×100 （即K<sub>gromacs</sub> = 836.8×K<sub>charmm</sub>，其中cal2j =4.184是cal转换到J的转换系数）；b<sup>0</sup><sub>gromacs</sub> = b<sup>0</sup><sub>charmm</sub>/10。</p>
 <p>（2）       键角振动：K<sup>θ</sup><sub>gromacs</sub> = 2×K<sup>θ</sup><sub>charmm</sub>×cal2j（即K<sup>θ</sup><sub>gromacs</sub> = 8.368×K<sup>θ</sup><sub>charmm</sub>）；θ<sub>0</sub>不变；K<sup>UB</sup><sub>gromacs</sub> = 2×K<sup>UB</sup><sub>charmm</sub>×cal2j×100（即K<sup>UB</sup><sub>gromacs</sub> = 836.8×K<sup>UB</sup><sub>charmm</sub>）；b<sup>U</sup><sub>gromacs</sub> = b<sup>U</sup><sub>charmm</sub>/10。</p>
@@ -258,14 +335,32 @@
 <p>（4）       IMPROPER:K<sup>ξ</sup><sub>gromacs</sub> = 2×K<sup>ξ</sup><sub>charmm</sub>×cal2j（即K<sup>ξ</sup><sub>gromacs</sub> = 8.368×K<sup>ξ</sup><sub>charmm</sub>）；ξ<sup>0</sup>不变。</p>
 <p>值得注意的是这些参数在文件中位值不同，一定要弄清哪一列放哪个参数！</p>
 <p>ffnonbonded.itp定义了力场中的非键作用，因静电力可通过原子偏电荷和coulomb公式求的，所以这个文件主要定义范德华力（在atomtypes数据块中）。与CHARMM类似，Gromacs也对1-4作用进行单独处理，处理方式与CHARMM完全相同，1-4作用定义在pairtypes数据块中。Gromacs中描述范德华力的L-J公式与CHARMM中也有差异：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155447itq000zisllzs720.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155447itq000zisllzs720.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>在转换之前我们需将CHARMM和Gromacs中的L-J公式化成相同的形式：</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/1555024patlhddbywtwiyd.gif" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/1555024patlhddbywtwiyd.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>非键作用的参数转换规则如下：</p>
 <p>ε<sub>gromacs</sub> = -ε<sub>charmm</sub>×cal2j（即ε<sub>gromacs</sub> = -4.184×ε<sub>charmm</sub>，不知道问什么CHARMM中加了负号）</p>
 <p>σ<sub>gromacs</sub> = 2×σ<sub>charmm</sub>/10/2<sup>1/6</sup>（即σ<sub>gromacs</sub> = 0.1781797436×σ<sub>charmm</sub>，CHARMM中记录的是r<sup>min</sup>/2）</p>
 <p>对于1-4作用，转换规则同上，只是Gromacs中通过组合规则（上文讲CHARMM时有提到）以原子对的形式记录在pairtypes数据块中，这需要自己计算添加。图5给出了一个转换示例，注意pairtypes是通过两两组合计算得到的，不区分先后，共6对。</p>
-<p><img src="http://image.sciencenet.cn/album/201308/20/155525i4nn1z7imk7nz71d.gif" alt="convert.PNG"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://image.sciencenet.cn/album/201308/20/155525i4nn1z7imk7nz71d.gif" alt="convert.PNG" title="">
+                </div>
+                <div class="image-caption">convert.PNG</div>
+            </figure>
 <p><em>图<strong>5. </strong>非键作用转换示例</em></p>
 <p>对于简单分子可以手动转换并添加到Gromacs力场中，但是当分子较为复杂时手动转换将会变得非常繁琐并且容易出错，这时候就需要用脚本来进行批量处理。附件提供了用python写的转换脚本：</p>
 <p>cvt_bd.py: 键伸缩项转换，输入文件bonds，输出文件bonds.out</p>
@@ -305,7 +400,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/725.html" target="_blank" rel="external">http://kangsgo.com/725.html</a>
+        链接：<a href="/725.html" target="_blank" rel="external">http://kangsgo.com/725.html</a>
         
     </div>
     <footer>
@@ -532,7 +627,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -552,7 +647,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

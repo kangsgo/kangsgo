@@ -37,7 +37,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -60,7 +60,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -77,21 +77,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -99,13 +99,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -203,7 +196,13 @@
 <p>3.antechamber -fi gout -i cro.log -rn CRO -fo ac -o cro_step2.ac -c resp -at amber #赋予resp电荷到新的ac文件中；</p>
 <p>4.文本操作将cro_step2.ac中的坐标以及电荷信息列覆盖到cro_step1.ac中，同时修改主链N原子的原子类型从NT到N，保存为cro_step3.ac；</p>
 <p>5.制作mc文件，格式如下图，参照cro_step3.ac文件制作；</p>
-<p><img src="http://img.blog.csdn.net/20161223104949294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMjMyNDEwOTU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161223104949294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMjMyNDEwOTU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>6.prepgen -i cro_step3.ac -o cro.prepin -m cro.mc -rn CRO #得到主链信息文件；</p>
 <p>7.parmchk2 -i cro.prepin -f prepi -p frcmod.cro -a Y -p $AMBERHOME/dat/leap/parm/parm10.dat #检查生成的参数信息，查看frcmod文件，若其中出现某一行参数为0且有 “ATTN,need revision” 标识则说明在parm10.dat中参数不完整需要用gaff进行补充；</p>
 <p>8.grep -v “ATTN” frcmod.cro &gt; frcmod1.cro #剔除不包含的参数，其余存成参数文件；</p>
@@ -221,7 +220,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/746.html" target="_blank" rel="external">http://kangsgo.com/746.html</a>
+        链接：<a href="/746.html" target="_blank" rel="external">http://kangsgo.com/746.html</a>
         
     </div>
     <footer>
@@ -448,7 +447,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -468,7 +467,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

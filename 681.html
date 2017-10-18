@@ -45,7 +45,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -68,7 +68,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -85,21 +85,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -107,13 +107,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -200,7 +193,61 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br>&gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14<em>CM1A或1.14</em>CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。<br><br>该在线服务器的使用方法非常的简单，并且使用的电荷计算模型1.14_CM1A在OPLS-AA力场中水化自由能计算（hydration free energies ，HFE）与实验具有良好的拟合效果，而改进的局部电荷校正（LBCC）方法更加提供了电荷的精确度，称之为1.14_CM1A-LBCC模型。在在线服务中，对于不带电的小分子提供1.14<em>CM1A和1.14</em>CM1A-LBCC模型，而带电荷的分子仅提供不放大1.14倍的CM1A模型。故带电荷的小分子还是最好使用GAFF力场制作方法。<br><br>LigParGen服务网址为:<a href="http://zarbi.chem.yale.edu/ligpargen/index.html" target="_blank" rel="external">http://zarbi.chem.yale.edu/ligpargen/index.html</a><br><br>### 理论基础<br><br>CM1A方法使用来自于电荷密度的Mulliken分布分析，而电荷密度获得的方式为AM1方法基于配体几何计算，<strong>*故配体几何的差别会导致电荷计算轻微差别，但影响不大。</strong><br>Mulliken电荷对原子A的计算方法大致如下(具体可以查看参考文献4)：<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-84395c51d30fa58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><em>q<sub>A</sub></em>是部分Mulliken 电荷，<em>Z<sub>A</sub></em>是原子A的中性电荷，<em>N<sub>A</sub></em>是原子A的电荷密度分布，计算方法如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-aa47d185302f7952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><img src="http://upload-images.jianshu.io/upload_images/903467-fa588b9afd167175.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br><em>N</em>是分子的总电荷数，<em>C<sub>n,i </sub></em>为分子轨道系数，<em>χ<sub>n</sub></em> 和_S<sub>nk</sub>_QM多重积分，但1.14<em>CM1A电荷模型在苯环，醚类和酮类中参数不理想， 在426个有机分子的测试集中和实验数据相比mean unsigned error (MUE)达到1.5kcal/mol，而改进的局部电荷校正（LBCC）方法具有更好的效果。<br>作者进行了水化自由能（HFE）的评价，模拟的计算方法软件采用的NAMD，一共计算了10个分子，每个分子进行了36个窗口计算，每个窗口模拟1ns，力场采用OPLS-AA/1.14</em>CM1A-LBCC，水采用的TIP3P，完成参数请看底部的参考文献3。实验结果与模拟的结果拟合的较好，结果如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-b7fdd584e10762c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>说明模拟结果和实验结果拟合的非常棒！<br><br>### LigParGen使用方法<br><br>LigParGen的使用方法非常的简单:<br>首先上传MOL或者PDB文件或者SMILES Code:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-fd52863938451991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>当然也可以通过JSME自己画，如下图:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-a7230645a3b9eb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>首先点一下Make SMILES，画完以后再点击一下Make SMILES即可。<br><br>然后选择电荷模型，是否优化分子，分子电荷等选项。<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-1ffdccc41a3972cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>之后便可以下载不同软件需要用到的文件。软件的工作流程如下:<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-bb4eb79ee176d86f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>### 蛋白配体复合物模拟<br><br>LigParGen提供了3种模拟软件的蛋白配体复合物模拟的方法，可以在官网上查看，我们这里翻译GROMACS的蛋白配体复合物模拟。<br><br>#### 1.准备蛋白配体系统<br><br>Gromacs，Chimera和python被要求安装。<br><br>##### 1.1 获得复合物<br><br>使用T4溶菌酶L99A与苯环分子复合物（PDB ID:4W52）作为教程，结构如下图，仅包含一条链<br><img src="http://upload-images.jianshu.io/upload_images/903467-dae3a85fe48cb4f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="T4 Lysozyme L99A with Benzene"><br><br>##### 1.2 模拟前的蛋白准备工作<br><br>清理蛋白使用Chimera的对接准备功能（dockprep ），增加缺失残基使用Dunbrack rotamer库，这一部并不会进行蛋白加氢，因为在后面pdb2gmx会对蛋白进行加氢。Chimera脚本如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">## PDB_FILE SHOULD THE COMPLETE PATH OF THE FILE<br>## REPLACE BNZ with LIGAND resname<br>## USAGE: Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br>import chimera<br>from DockPrep import prep<br>import Midas<br>import sys<br>import os<br>PDB_file = sys.argv[1]<br>lig_name = sys.argv[2]<br>os.system(‘grep ATOM %s &gt; %s_clean.pdb’%(PDB_file,PDB_file[:-4]))<br>os.system(‘grep %s %s &gt; %s.pdb’%(lig_name,PDB_file,lig_name))<br>protein=chimera.openModels.open(‘%s_clean.pdb’%PDB_file[:-4])<br>ligand=chimera.openModels.open(‘%s.pdb’%lig_name)<br>prep(protein,addHFunc=None,addCharges=False)<br>prep(ligand)<br>Midas.write(protein,None,”protein_clean.pdb”)<br>Midas.write(ligand,None,”ligand_wH.pdb”)</pre><br><br>使用脚本:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br></pre><br><br>生成的 protein_clean.pdb和ligand_wH.pdb将会在随后使用。<br><br>##### 1.3 准备配体<br><br>使用的方法如第2部分，后下载BNZ.gro（坐标文件）与BNZ.itp（拓扑文件）<br><br>#### 2 设置Gromacs模拟<br><br>##### 2.1 结合蛋白配体坐标<br><br><strong>其Gromacs版本使用的为4.6.5</strong>，若使用的为5.x或者2016版本可以具体查看李继存老师翻译的配体蛋白教程的后续命令。差别不大。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">pdb2gmx -f protein_clean.pdb -o protein_processed.gro -water spce<br></pre><br>两个蛋白的结合可以手动或者使用如下脚本完成:<br><pre class="EnlighterJSRAW" data-enlighter-language="python">import sys<br>pro_gro = sys.argv[1]<br>lig_gro = sys.argv[2]<br>pro = open(pro_gro,’r’).readlines()<br>lig = open(lig_gro,’r’).readlines()<br>pro_dat = [line.rstrip() for line in pro]<br>lig_dat = [line.rstrip() for line in lig]<br>tot_num = int(pro_dat[1])+int(lig_dat[1])<br>com_dat = [pro_dat[0],’%5d’%tot_num]+pro_dat[2:-1] + lig_dat[2:-1] + [pro_dat[-1]]<br>for line in com_dat: print line</pre><br><br>运行脚本<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">python combineGro_prot_lig.py protein_processed.gro BNZ.gro &gt; complex.gro<br></pre><br><br>##### 2.2 蛋白配体拓扑结合<br><br>我们对拓扑文件(topol.top)进行修改。<br>在<code>#include &quot;oplsaa.ff/forcefield.itp&quot;</code>后加上<code>#include &quot;BNZ.itp&quot;</code>行来merge蛋白和配体。在<code>Protein_chain_A 1</code>后加上<code>BNZ 1</code><br><br>##### 2.3 设置MD模拟<br><br>后面的部分与<a href="http://www.jianshu.com/p/5db734581718" target="_blank" rel="external">载脂蛋白模拟部分</a>类似:<br>首先增加水盒子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">editconf -f complex.gro -o complex_box.gro -c -d 1.0 -bt cubic<br></pre><br>填充水:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genbox -cp complex_box.gro -cs spc216.gro -o complex_box_wSPCE.gro -p topol.top<br></pre><br>增加原子:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/ions.mdp -c complex_box_wSPCE.gro -p topol.top -o ions.tpr<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genion -s ions.tpr -o complex_box_wSPCE_ions.gro  -p topol.top -pname NA -nname CL -nn 8<br></pre><br>能量最小化:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/em_real.mdp -c complex_box_wSPCE_ions.gro -p topol.top -o em.tpr<br>mdrun -v -deffnm em</pre><br><strong>一般般说来，在进行NVT模拟之前，用户需要增加配体的位置限制从而不会在加热过程中使得配体从蛋白中逃逸</strong><br>位置限制<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genrestr -f BNZ.gro -o posre_BNZ.itp -fc 1000 1000 1000<br></pre><br><br><strong>上面命令会使得posre_BNZ.itp生成，需要在</strong><code>#include &quot;oplsaa.ff/ions.itp&quot;</code><strong>上增加</strong><code>#include &quot;posre_BNZ.itp&quot;</code><strong>的内容</strong><br><strong>为了让蛋白配体系统一起进行温度计算，需要通过如下命令使得两者成为一个体系</strong><br><br> 平衡与正式模拟:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f nvt.mdp -c em.gro -p topol.top -n index.ndx -o nvt.tpr<br>mpirun.lsf mdrun -deffnm nvt<br>grompp -f npt.mdp -c nvt.gro -p topol.top -n index.ndx -o npt.tpr<br>mpirun.lsf mdrun -deffnm npt<br>grompp -f md.mdp -c npt.gro -p topol.top -n index.ndx -o md.tpr<br>mpirun.lsf mdrun -deffnm md</pre><br><br><strong>如果对配体为进行限制，那么NVT和NPT平衡设置文件中</strong><code>define = -DPOSRES ; position restrain the protein and ligand</code><strong>需要被移去</strong><br><br>模拟中用到的mdp文件可以在github上下载:<a href="https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS" target="_blank" rel="external">https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS</a><br><br>参考文献:<br><br>1.  Potential energy functions for atomic-level simulations of water and organic and biomolecular systems. Jorgensen, W. L.; Tirado-Rives, J. Proc. Nat. Acad. Sci. USA 2005, 102, 6665-6670<br><br>2.  1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations. Dodda, L. S.; Vilseck, J. Z.; Tirado-Rives, J.; Jorgensen, W. L. J. Phys. Chem. B. DOI:10.1021/acs.jpcb.7b00272<br><br>3.  LigParGen web server: An automatic OPLS-AA parameter generator for organic ligands. Nuc. Acids. Res., DOI: 10.1093/nar/gkx312<br><br>4.  Storer J W, Giesen D J, Cramer C J, et al. Class IV charge models: a new semiempirical approach in quantum chemistry.[J]. Journal of computer-aided molecular design, 1995, 9(1):87-110.<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O0xpZ1BhckdlbuaYr+S4gOS4quaPkOS+m+acieacuuWIhuWtkOaIluiAhemFjeS9k+WK
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br>&gt; LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14<em>CM1A或1.14</em>CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。<br><br>该在线服务器的使用方法非常的简单，并且使用的电荷计算模型1.14_CM1A在OPLS-AA力场中水化自由能计算（hydration free energies ，HFE）与实验具有良好的拟合效果，而改进的局部电荷校正（LBCC）方法更加提供了电荷的精确度，称之为1.14_CM1A-LBCC模型。在在线服务中，对于不带电的小分子提供1.14<em>CM1A和1.14</em>CM1A-LBCC模型，而带电荷的分子仅提供不放大1.14倍的CM1A模型。故带电荷的小分子还是最好使用GAFF力场制作方法。<br><br>LigParGen服务网址为:<a href="http://zarbi.chem.yale.edu/ligpargen/index.html" target="_blank" rel="external">http://zarbi.chem.yale.edu/ligpargen/index.html</a><br><br>### 理论基础<br><br>CM1A方法使用来自于电荷密度的Mulliken分布分析，而电荷密度获得的方式为AM1方法基于配体几何计算，<strong>*故配体几何的差别会导致电荷计算轻微差别，但影响不大。</strong><br>Mulliken电荷对原子A的计算方法大致如下(具体可以查看参考文献4)：<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-84395c51d30fa58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><em>q<sub>A</sub></em>是部分Mulliken 电荷，<em>Z<sub>A</sub></em>是原子A的中性电荷，<em>N<sub>A</sub></em>是原子A的电荷密度分布，计算方法如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-aa47d185302f7952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-fa588b9afd167175.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br><em>N</em>是分子的总电荷数，<em>C<sub>n,i </sub></em>为分子轨道系数，<em>χ<sub>n</sub></em> 和_S<sub>nk</sub>_QM多重积分，但1.14<em>CM1A电荷模型在苯环，醚类和酮类中参数不理想， 在426个有机分子的测试集中和实验数据相比mean unsigned error (MUE)达到1.5kcal/mol，而改进的局部电荷校正（LBCC）方法具有更好的效果。<br>作者进行了水化自由能（HFE）的评价，模拟的计算方法软件采用的NAMD，一共计算了10个分子，每个分子进行了36个窗口计算，每个窗口模拟1ns，力场采用OPLS-AA/1.14</em>CM1A-LBCC，水采用的TIP3P，完成参数请看底部的参考文献3。实验结果与模拟的结果拟合的较好，结果如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-b7fdd584e10762c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>说明模拟结果和实验结果拟合的非常棒！<br><br>### LigParGen使用方法<br><br>LigParGen的使用方法非常的简单:<br>首先上传MOL或者PDB文件或者SMILES Code:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-fd52863938451991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>当然也可以通过JSME自己画，如下图:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-a7230645a3b9eb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>首先点一下Make SMILES，画完以后再点击一下Make SMILES即可。<br><br>然后选择电荷模型，是否优化分子，分子电荷等选项。<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-1ffdccc41a3972cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>之后便可以下载不同软件需要用到的文件。软件的工作流程如下:<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-bb4eb79ee176d86f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><br>### 蛋白配体复合物模拟<br><br>LigParGen提供了3种模拟软件的蛋白配体复合物模拟的方法，可以在官网上查看，我们这里翻译GROMACS的蛋白配体复合物模拟。<br><br>#### 1.准备蛋白配体系统<br><br>Gromacs，Chimera和python被要求安装。<br><br>##### 1.1 获得复合物<br><br>使用T4溶菌酶L99A与苯环分子复合物（PDB ID:4W52）作为教程，结构如下图，仅包含一条链<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/903467-dae3a85fe48cb4f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="T4 Lysozyme L99A with Benzene" title="">
+                </div>
+                <div class="image-caption">T4 Lysozyme L99A with Benzene</div>
+            </figure><br><br>##### 1.2 模拟前的蛋白准备工作<br><br>清理蛋白使用Chimera的对接准备功能（dockprep ），增加缺失残基使用Dunbrack rotamer库，这一部并不会进行蛋白加氢，因为在后面pdb2gmx会对蛋白进行加氢。Chimera脚本如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">## PDB_FILE SHOULD THE COMPLETE PATH OF THE FILE<br>## REPLACE BNZ with LIGAND resname<br>## USAGE: Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br>import chimera<br>from DockPrep import prep<br>import Midas<br>import sys<br>import os<br>PDB_file = sys.argv[1]<br>lig_name = sys.argv[2]<br>os.system(‘grep ATOM %s &gt; %s_clean.pdb’%(PDB_file,PDB_file[:-4]))<br>os.system(‘grep %s %s &gt; %s.pdb’%(lig_name,PDB_file,lig_name))<br>protein=chimera.openModels.open(‘%s_clean.pdb’%PDB_file[:-4])<br>ligand=chimera.openModels.open(‘%s.pdb’%lig_name)<br>prep(protein,addHFunc=None,addCharges=False)<br>prep(ligand)<br>Midas.write(protein,None,”protein_clean.pdb”)<br>Midas.write(ligand,None,”ligand_wH.pdb”)</pre><br><br>使用脚本:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">Chimera –nogui –script “prep_prot_lig.py 4w52.pdb BNZ”<br></pre><br><br>生成的 protein_clean.pdb和ligand_wH.pdb将会在随后使用。<br><br>##### 1.3 准备配体<br><br>使用的方法如第2部分，后下载BNZ.gro（坐标文件）与BNZ.itp（拓扑文件）<br><br>#### 2 设置Gromacs模拟<br><br>##### 2.1 结合蛋白配体坐标<br><br><strong>其Gromacs版本使用的为4.6.5</strong>，若使用的为5.x或者2016版本可以具体查看李继存老师翻译的配体蛋白教程的后续命令。差别不大。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">pdb2gmx -f protein_clean.pdb -o protein_processed.gro -water spce<br></pre><br>两个蛋白的结合可以手动或者使用如下脚本完成:<br><pre class="EnlighterJSRAW" data-enlighter-language="python">import sys<br>pro_gro = sys.argv[1]<br>lig_gro = sys.argv[2]<br>pro = open(pro_gro,’r’).readlines()<br>lig = open(lig_gro,’r’).readlines()<br>pro_dat = [line.rstrip() for line in pro]<br>lig_dat = [line.rstrip() for line in lig]<br>tot_num = int(pro_dat[1])+int(lig_dat[1])<br>com_dat = [pro_dat[0],’%5d’%tot_num]+pro_dat[2:-1] + lig_dat[2:-1] + [pro_dat[-1]]<br>for line in com_dat: print line</pre><br><br>运行脚本<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">python combineGro_prot_lig.py protein_processed.gro BNZ.gro &gt; complex.gro<br></pre><br><br>##### 2.2 蛋白配体拓扑结合<br><br>我们对拓扑文件(topol.top)进行修改。<br>在<code>#include &quot;oplsaa.ff/forcefield.itp&quot;</code>后加上<code>#include &quot;BNZ.itp&quot;</code>行来merge蛋白和配体。在<code>Protein_chain_A 1</code>后加上<code>BNZ 1</code><br><br>##### 2.3 设置MD模拟<br><br>后面的部分与<a href="http://www.jianshu.com/p/5db734581718" target="_blank" rel="external">载脂蛋白模拟部分</a>类似:<br>首先增加水盒子:<br><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">editconf -f complex.gro -o complex_box.gro -c -d 1.0 -bt cubic<br></pre><br>填充水:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genbox -cp complex_box.gro -cs spc216.gro -o complex_box_wSPCE.gro -p topol.top<br></pre><br>增加原子:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/ions.mdp -c complex_box_wSPCE.gro -p topol.top -o ions.tpr<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genion -s ions.tpr -o complex_box_wSPCE_ions.gro  -p topol.top -pname NA -nname CL -nn 8<br></pre><br>能量最小化:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f MDP/em_real.mdp -c complex_box_wSPCE_ions.gro -p topol.top -o em.tpr<br>mdrun -v -deffnm em</pre><br><strong>一般般说来，在进行NVT模拟之前，用户需要增加配体的位置限制从而不会在加热过程中使得配体从蛋白中逃逸</strong><br>位置限制<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">genrestr -f BNZ.gro -o posre_BNZ.itp -fc 1000 1000 1000<br></pre><br><br><strong>上面命令会使得posre_BNZ.itp生成，需要在</strong><code>#include &quot;oplsaa.ff/ions.itp&quot;</code><strong>上增加</strong><code>#include &quot;posre_BNZ.itp&quot;</code><strong>的内容</strong><br><strong>为了让蛋白配体系统一起进行温度计算，需要通过如下命令使得两者成为一个体系</strong><br><br> 平衡与正式模拟:<br><pre class="EnlighterJSRAW" data-enlighter-language="shell">grompp -f nvt.mdp -c em.gro -p topol.top -n index.ndx -o nvt.tpr<br>mpirun.lsf mdrun -deffnm nvt<br>grompp -f npt.mdp -c nvt.gro -p topol.top -n index.ndx -o npt.tpr<br>mpirun.lsf mdrun -deffnm npt<br>grompp -f md.mdp -c npt.gro -p topol.top -n index.ndx -o md.tpr<br>mpirun.lsf mdrun -deffnm md</pre><br><br><strong>如果对配体为进行限制，那么NVT和NPT平衡设置文件中</strong><code>define = -DPOSRES ; position restrain the protein and ligand</code><strong>需要被移去</strong><br><br>模拟中用到的mdp文件可以在github上下载:<a href="https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS" target="_blank" rel="external">https://github.com/leelasd/ligpargen/tree/master/GMX_LP_MDPS</a><br><br>参考文献:<br><br>1.  Potential energy functions for atomic-level simulations of water and organic and biomolecular systems. Jorgensen, W. L.; Tirado-Rives, J. Proc. Nat. Acad. Sci. USA 2005, 102, 6665-6670<br><br>2.  1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations. Dodda, L. S.; Vilseck, J. Z.; Tirado-Rives, J.; Jorgensen, W. L. J. Phys. Chem. B. DOI:10.1021/acs.jpcb.7b00272<br><br>3.  LigParGen web server: An automatic OPLS-AA parameter generator for organic ligands. Nuc. Acids. Res., DOI: 10.1093/nar/gkx312<br><br>4.  Storer J W, Giesen D J, Cramer C J, et al. Class IV charge models: a new semiempirical approach in quantum chemistry.[J]. Journal of computer-aided molecular design, 1995, 9(1):87-110.<br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O0xpZ1BhckdlbuaYr+S4gOS4quaPkOS+m+acieacuuWIhuWtkOaIluiAhemFjeS9k+WK
 m+WcuueahOWcqOe6v+acjeWKoee9keerme+8jOWFtuiDveWkn+aPkOS+m+mUrumVv++8jOS6jOmd
 ouinkuS7peWPikxlbm5hcmQtSm9uZXMgT1BMUy1BQeWPguaVsO+8jOeUteiNt+eul+azleS4ujEu
 MTRcKkNNMUHmiJYxLjE0XCpDTTFBLUxCQ0PjgILnlJ/miJDnmoTphY3kvZPlipvlnLrlj6/ku6Xp
@@ -384,7 +431,7 @@ PjxwPjwvcD4=">​</div><br></div>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/681.html" target="_blank" rel="external">http://kangsgo.com/681.html</a>
+        链接：<a href="/681.html" target="_blank" rel="external">http://kangsgo.com/681.html</a>
         
     </div>
     <footer>
@@ -611,7 +658,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -631,7 +678,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

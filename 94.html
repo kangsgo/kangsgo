@@ -27,27 +27,27 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/topol.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/3.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/4.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/template.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/density.png">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/5.png">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -70,7 +70,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -87,21 +87,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -109,13 +109,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -305,7 +298,13 @@ TCD                 1</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr
 gmx mdrun -deffnm md_0_1</pre>
 
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png" alt="vmdscene"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/vmdscene.png" alt="vmdscene](http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png)" title="">
+                </div>
+                <div class="image-caption">vmdscene](http://kangsgo.com/wp-content/uploads/2015/12/vmdscene-300x256.png)</div>
+            </figure></p>
 <p>个人感觉盒子可以调小一些～</p>
 <p>10.添加离子</p>
 <p>教程使用了能量最小化的文件，我这里稍微改了一下</p>
@@ -335,7 +334,13 @@ pbc             = xyz       ; Periodic Boundary Conditions  周期性
 </pre>
 
 <p>我们这里还需要查看topol文件，看一下我们的体系电荷多少，需要补足电荷，可以看出我们需要补4个CL离子</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/topol.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png" alt="topol"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/topol.png" alt="topol](http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png)" title="">
+                </div>
+                <div class="image-caption">topol](http://kangsgo.com/wp-content/uploads/2015/12/topol-300x193.png)</div>
+            </figure></p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx grompp -f em.mdp -c solv.gro -p topol.top -o ions.tpr</pre>
 
 <p>做到这里会报错，我找了很久原因，后来查看amber力场文件，发现是大小写不同导致的<br>我们来看一下我们的TCD.itp文件</p>
@@ -370,7 +375,13 @@ pbc             = xyz       ; Periodic Boundary Conditions  周期性
 <p>#include “amber99sb-ildn-ligand.ff/forcefield.itp”</p>
 <p>topol文件其它引用力场的位置可修改可不修改，个人觉得最好修改</p>
 <p>&nbsp;</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png" alt="2"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/2.png" alt="2](http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png)" title="">
+                </div>
+                <div class="image-caption">2](http://kangsgo.com/wp-content/uploads/2015/12/2-300x148.png)</div>
+            </figure></p>
 <p>然后就是添加离子了</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nname CL -nn 4</pre>
 
@@ -426,7 +437,13 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f em.edr -o potential.xvg</pre>
 
 <p>选择 10 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png" alt="potential"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/potential.png" alt="potential](http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png)" title="">
+                </div>
+                <div class="image-caption">potential](http://kangsgo.com/wp-content/uploads/2015/12/potential-300x232.png)</div>
+            </figure></p>
 <p>再用共轭梯度法，mdp文件参数如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; LINES STARTING WITH ';' ARE COMMENTS
 title       = Minimization  ; Title of run
@@ -458,13 +475,25 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx mdrun -v -deffnm em2</pre>
 
 <p>做出来如这个图，图是否正确待考</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png" alt="potential2"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/potential2.png" alt="potential2](http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png)" title="">
+                </div>
+                <div class="image-caption">potential2](http://kangsgo.com/wp-content/uploads/2015/12/potential2-300x232.png)</div>
+            </figure></p>
 <p>&nbsp;</p>
 <p>12.NVT平衡（温度平衡）</p>
 <p>限制配体：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx genrestr -f TCD.gro -o posre_TCD.itp -fc 1000 1000 1000</pre>
 
-<p>在选择组过程中个人觉得选择system或者TCD均可<br><a href="http://kangsgo.com/wp-content/uploads/2015/12/3.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png" alt="3"></a></p>
+<p>在选择组过程中个人觉得选择system或者TCD均可<br>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/3.png" alt="3](http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png)" title="">
+                </div>
+                <div class="image-caption">3](http://kangsgo.com/wp-content/uploads/2015/12/3-300x148.png)</div>
+            </figure></p>
 <p>增加配体限制：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">; Include ligand topology
 #include "TCD.itp"
@@ -489,7 +518,13 @@ pbc             = xyz       ; Periodic Boundary Conditions</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx make_ndx -f em2.gro -o index.ndx</pre>
 
 <p>选择蛋白和配体分为一组</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/4.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png" alt="4"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/4.png" alt="4](http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png)" title="">
+                </div>
+                <div class="image-caption">4](http://kangsgo.com/wp-content/uploads/2015/12/4-300x148.png)</div>
+            </figure></p>
 <p>然后就可以热浴了～热浴的mdp如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NVT equilibration 
 define      = -DPOSRES  ; position restrain the protein and ligand
@@ -554,7 +589,13 @@ Performance:       16.672        1.440
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f nvt.edr -o template.xvg</pre>
 
 <p>选择15 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/template.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png" alt="template"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/template.png" alt="template](http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png)" title="">
+                </div>
+                <div class="image-caption">template](http://kangsgo.com/wp-content/uploads/2015/12/template-300x232.png)</div>
+            </figure></p>
 <p>13.NPT平衡<br>mdp文件如下：</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="no-highlight">title       = Protein-ligand complex NPT equilibration 
 define      = -DPOSRES  ; position restrain the protein and ligand
@@ -612,12 +653,24 @@ gmx mdrun -deffnm npt</pre>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o pressure.xvg</pre>
 
 <p>选择 16 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png" alt="pressure"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/pressure.png" alt="pressure](http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png)" title="">
+                </div>
+                <div class="image-caption">pressure](http://kangsgo.com/wp-content/uploads/2015/12/pressure-300x232.png)</div>
+            </figure></p>
 <p>再来看一下密度</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx energy -f npt.edr -o density.xvg</pre>
 
 <p>选择 22 0</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/density.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png" alt="density"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/density.png" alt="density](http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png)" title="">
+                </div>
+                <div class="image-caption">density](http://kangsgo.com/wp-content/uploads/2015/12/density-300x232.png)</div>
+            </figure></p>
 <p>可以看出在1000左右，符合水的密度，个人觉得tip3p效果比spec水模型效果好</p>
 <p>14.成品MD</p>
 <p>一般MD需要100ns以上，但是我的电脑我怕受不了，就先50ns吧～大约需要3天-4天左右</p>
@@ -673,7 +726,13 @@ gen_vel     = no        ; assign velocities from Maxwell distribution</pre>
 gmx mdrun -deffnm md_0_1</pre>
 
 <p>经过2d12h的计算，终于完成了，即高兴又紧张。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/5.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png" alt="5"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/5.png" alt="5](http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png)" title="">
+                </div>
+                <div class="image-caption">5](http://kangsgo.com/wp-content/uploads/2015/12/5-300x179.png)</div>
+            </figure></p>
 <p>由于这个贴实在太长，另外开一贴</p>
 <p>参考文献：<a href="http://platinhom.github.io/2015/09/17/AutoCalcRESP/" target="_blank" rel="external">自动计算ESP和RESP电荷(AMBER and G09)</a></p>
 <p>参考文献：<a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=409&amp;highlight=GAFF" target="_blank" rel="external">小分子在GAFF立场GROMCA中的操作</a></p>
@@ -691,7 +750,7 @@ gmx mdrun -deffnm md_0_1</pre>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/94.html" target="_blank" rel="external">http://kangsgo.com/94.html</a>
+        链接：<a href="/94.html" target="_blank" rel="external">http://kangsgo.com/94.html</a>
         
     </div>
     <footer>
@@ -918,7 +977,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -938,7 +997,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

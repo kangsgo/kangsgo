@@ -39,7 +39,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -62,7 +62,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -79,21 +79,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -101,13 +101,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -203,10 +196,22 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>此文档不完全翻译自官方从头预测文档<br>当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。</p>
 <p>官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算，但每个帐号只能计算一条序列，且要注意的是不能进行已知序列或者高相似度序列的计算，否则会ban ip，删号。因为从头结构预测时间太久太长。<br>官方地址如下：<a href="http://robetta.bakerlab.org/" target="_blank" rel="external">http://robetta.bakerlab.org/</a><br>网站截图如下：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/3-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/3-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/3-1.png)</div>
+            </figure></p>
 <p>网站截图</p>
 <p>该项目是伯克利分校搞的一个分布式系统项目BOINC，若你也想加入这个计算可以具体查看这一篇教程。<br>想与各位探讨的是个人觉得若单独拿一段序列进行从头计算然后拼接进模型中是不准确的，更好的方法是进行loop环的补全（若缺失部分为loop环），或者进行分子动力学模拟来预测。<br>官方的从头预测方法是采用的T4 溶菌酶（噬菌体中）的序列来进行的蛋白结构预测。并于解析了结构的蛋白PDB文件进行比较。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/2-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/2-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/2-1.png)</div>
+            </figure></p>
 <p>图文无关，纯粹好看</p>
 <p>###<br>1.准备输入文件</p>
 <p>需要：</p>
@@ -274,7 +279,13 @@ input_files/aa2LZMA09_05.200_v1_3 (9mer fragments)</pre>
 </pre>
 
 <p>然后可以对数据进行绘图，绘图的方法多种，也非常简单，后期会完整介绍。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/1-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/1-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/1-1.png)</div>
+            </figure></p>
 <p>图</p>
 <p>左图可以发现rmsd与score成相关性并且收敛，而右侧没有收敛，说明右侧的结果并不那么可靠</p>
 <h4 id="3-2-提取模型"><a href="#3-2-提取模型" class="headerlink" title="3.2 提取模型"></a>3.2 提取模型</h4><p>获得的结果中有一个二进制silent file（此要在设置中设置，这样生成的模型都压缩在一个文件中，可以节省空间更加美观，其实也可以不对其进行这个操作，详见Rosetta silent file一章）我们可以从中提取pdb文件，例如我们想提取得分最好的5个文件。</p>
@@ -298,7 +309,7 @@ input_files/aa2LZMA09_05.200_v1_3 (9mer fragments)</pre>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/657.html" target="_blank" rel="external">http://kangsgo.com/657.html</a>
+        链接：<a href="/657.html" target="_blank" rel="external">http://kangsgo.com/657.html</a>
         
     </div>
     <footer>
@@ -525,7 +536,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -545,7 +556,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

@@ -54,7 +54,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -77,7 +77,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -94,21 +94,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -116,13 +116,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -223,39 +216,123 @@
 <p>3.此笔记并未包含Martini力场性能测评部分，可能后续会加上<br>粗粒化（CG ）模拟在各种各样的模拟化技术中提供与全原子模型（AA model）相比更广的空间和时间尺度研究。在粗粒化模拟研究的早期一般运用在蒙特卡洛模拟上，这是一种基于概率的模拟算法，与经典模拟在理论上还是有大的差别，早期的CG模型其缺点是需要每次模拟前都进行参数的设置矫正，而Martini力场开发的初衷是更为提供一种能够进行普适应用的操作简单的力场。</p>
 </blockquote>
 <p>Martini的力场开发目的主要是应用于囊泡的形成，薄层相的转移，结构和膜的自组装等等，其比较关注于<strong>极性与非极性之间</strong>的相互转换/作用。Martini力场相比之前的力场模拟（2007年以前）有更多的能量”等级”和类型，与实验参数也拟合的更好，同时提供了环类物质的CG 模型的方法。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/1.gif"><img src="http://kangsgo.com/wp-content/uploads/2017/09/1.gif" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/1.gif" alt="](http://kangsgo.com/wp-content/uploads/2017/09/1.gif)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/1.gif)</div>
+            </figure></p>
 <h5 id="力场概述（2-0版本）："><a href="#力场概述（2-0版本）：" class="headerlink" title="力场概述（2.0版本）："></a>力场概述（2.0版本）：</h5><h6 id="联系位点："><a href="#联系位点：" class="headerlink" title="联系位点："></a>联系位点：</h6><p>Maritini力场与其他CG力场一样，均为4个heavy原子用一个单一珠子所联系。珠子主要有四种主要类型。polar（P），nonpolar（N），apolar（C）和charged（Q）。同时有18种亚型，比如按照成氢键能力用单字母分为（d=donor，a=acceptor，da=both，0=none）或者指示极性（1，最低极性，5，最高极性）</p>
 <p><strong>蛋白的原子类型:</strong></p>
 <p>蛋白残基中侧链表示:非极性残基Leu，Pro，Ile，Val，Cys和Met用C-类型颗粒表示。非极性残基Thr，Ser，Asn和Gln通过P-类型颗粒表示，氨基酸残基带有小的负电荷侧链Glu和Asp残基用Q-类型颗粒表示。正电荷氨基酸残基Arg和Lys采用带电荷的Q类型和不带电荷颗粒组成。带环芳香烃残基通过三（His，Phe和Tyr）或者四（Trp）个珠子来表示特别的环颗粒。Gly和Ala残基仅仅设置骨架颗粒。骨架参数依赖二级结构，如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/10.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/10.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/10.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/10.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/10.png)</div>
+            </figure></p>
 <p>在溶液中或者无规卷曲或者弯曲中，骨架拥有非常强的极性特征（P类型），在部分螺旋或者β折叠中，内部骨架键减少了极性特征的放大（N类型）。辅氨酸是低极性的因为其缺乏氢键供体能力。其全原子映射结果如下表:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/8.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/8.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/8.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/8.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/8.png)</div>
+            </figure></p>
 <h6 id="非键联系："><a href="#非键联系：" class="headerlink" title="非键联系："></a>非键联系：</h6><p>首先是Lennard-Jones(LJ)12-6势，公式如下:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/1-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/1-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/1-1.png)</div>
+            </figure></p>
 <p>其中r为原子对距离，ε(字母代考)与σ为势能参数，因原子的种类而异，具体可以查看陈正隆老师的分子模拟一书。在martini力场中统一为σ=0.47nm，除了两个特别的类rings和antifreeze以外,还有一个例外就是Q类型和大多数极性类型 ，其C1和C2 斥力σ范围扩展为0.62nm。这个变化利于带电粒子在非极性介质中利于生成水化层。完整的参数数据如下表：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/2.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/2.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/2.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/2.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/2.png)</div>
+            </figure></p>
 <p>除了LJ势能以外，电荷组（类型Q）还有完整的qi,j联系，通过库能势：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/3.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/3.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/3.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/3.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/3.png)</div>
+            </figure></p>
 <p>库能势与之前的比较准确性略有降低，主要是为了和之前的模型相比平衡增加的疏水强度。εr(字母代考)相对介电常数为15，与之前相比略微降低。</p>
 <h6 id="键联系："><a href="#键联系：" class="headerlink" title="键联系："></a>键联系：</h6><p>键的描述和上一个版本相比没有升级，主要还是微弱的简谐振动提供的。此项在陈正隆老师的书籍版本中译为键伸缩势能项。平均键长与σ相同，为0.47nm，约束力为Kbond=1250Kj*mol-1，公式如下:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/4.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/4.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/4.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/4.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/4.png)</div>
+            </figure></p>
 <p>键角的简谐震荡项，参数依据为与全原子模型相互比较,计算公式如下：</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/5.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/5.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/5.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/5.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/5.png)</div>
+            </figure></p>
 <p>一般情况下Kangle=25KJmol-1，θ0=180°，在涉及<span class="word">cis</span> <span class="word">double </span><span class="word">bond时，参数为Kangle=45KJmol-1（之前参数为35KJmol-1</span><span class="word">），θ0=120°，因为和全原子相比联系过于微弱。</span></p>
 <p><strong>蛋白的键联系:</strong></p>
 <p>蛋白的键长，键角，二面角和他们各自的力场约束统计起来作为键参数的参考。这些参数来源于PDB库中近2000个蛋白作为数据集。蛋白的二级结构来源于DSSP项目。计算的键长，键角和二面角如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/11.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/11.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/11.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/11.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/11.png)</div>
+            </figure></p>
 <p>PDB数据库中的参数分布如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/12.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/12.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/12.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/12.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/12.png)</div>
+            </figure></p>
 <h6 id="环化物参数"><a href="#环化物参数" class="headerlink" title="环化物参数:"></a>环化物参数:</h6><p>对于环化物，4个原子称为1个珠子是不怎么适用的，最佳为2个或者3个位1个珠子，具体可以查看文章中给的环己烷，苯环等的例子。由于会照成很大CG珠子密度，因此这些参数需要差别对待。特别的设置标签为“S”,其LJ势能的σ也是不同的，σ=0.43nm,ε(字母代考)缩小至75%。环的话<strong>分子内的</strong>LJ不适合该体系，而更换improper dihedral angle势来合理的解释。其公式如下:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/6.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/6.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/6.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/6.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/6.png)</div>
+            </figure></p>
 <p><span class="word">θ的角度由i,j,k和j,k,l构成，θid则为平均角度，力场约束为Kid。</span></p>
 <h6 id="二面角（dihedral-angle）参数-蛋白"><a href="#二面角（dihedral-angle）参数-蛋白" class="headerlink" title="二面角（dihedral angle）参数(蛋白):"></a>二面角（dihedral angle）参数(蛋白):</h6><p>对于氨基酸残基还有两个二面角势,其中improper 二面角势 Vid主要被用来阻止平面组的面外扭曲。Proper二面势Vd被使用来约束肽骨架的二级结构。这是一个非常重要的点，因此，若有蛋白序列二级结构的改变是不适合这个模型的（分别为公式5,6），公式如下:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/7.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/7.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/7.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/7.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/7.png)</div>
+            </figure></p>
 <p>二面角参数仅仅在四个联系的珠子拥有相同的二级结构（螺旋或者延长(extended)），下表统计了所有侧链的键长和联系约束。</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/9.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/9.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/9.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/9.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/9.png)</div>
+            </figure></p>
 <p>键角统计如下表:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/13-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/13-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/13-1.png)</div>
+            </figure></p>
 <h6 id="抗凝剂参数"><a href="#抗凝剂参数" class="headerlink" title="抗凝剂参数:"></a>抗凝剂参数:</h6><p>由于水模型是P4颗粒，相对于真实的水更容易freezing，故需要Antifreez参数。CG 水在280到300K可能会freezes。freezing是一个核驱动的过程，一般CG水能够保留其流动性(fluid)非常长的时间，但是一旦成核形成，将会很快速的形成，在固态表面甚至膜表面可能都会加速水的freeze。若研究更低温度同样如此，故需要增加水的无序程度。引入抗凝剂BigP4，LJ参数从0.47nm改为0.57nm，为了避免相的分离，BP4-P4联系上升为等级“O”。其他按照正常颗粒。当加入抗凝剂以后会对液体平衡性产生一定的影响,但作者对膜水体系进行分析，发现在膜表面积，形成gel phase的转移温度，膜分子的横向扩散长度都没有很大的影响，故认为为可接受范围之内。</p>
 <h6 id="模拟参数"><a href="#模拟参数" class="headerlink" title="模拟参数:"></a>模拟参数:</h6><p>对于模拟参数，非键联系的cut off距离设置为rcut=1.2nm。为了避免产生不必要的噪音，使用GROMACS 的标准偏移功能，<strong>其中能量和约束力设置在截止距离处消失</strong>。LJ势能的偏移从rshift=0.9nm到rcut。静电势偏移从rshift=0.0nm到rcut。静电势的偏移会对模拟距离依赖性的screening<strong>造成影响</strong>。neighbor list可以升到10 steps， <span class="word">neighbor</span> <span class="word">list</span> <span class="word">cutoff设置等于rcut。模拟步长可以升至dt=40fs。当然设置成25fs到30fs可能会更加稳定。选择时间步长的不同对自由能有一定的影响，影响约为5%。（从40到5fs），所以说影响不是很大。</span></p>
 <p>对于粗粒化模拟时间因子一般扩大为2到10倍，文献中默认的时间因子为4（注:文献1如是说，文献3说的为2到8倍，但时间因子均说的为4），即CG模型模拟10ns，实际上相当于现实中40ns，可以粗略的乘以4。产生这个现象的原因是CG模型相对于AA模型联系更加的平滑。</p>
@@ -274,12 +351,36 @@
 <p>这段我也不是很懂，原文如下:</p>
 <p><strong>Keeping in mind the difficulty of model-ing of ions already with AA force fields, the CG ion force field is only qualitatively accurate</strong></p>
 <h5 id="Martini力场性能测评部分结果"><a href="#Martini力场性能测评部分结果" class="headerlink" title="Martini力场性能测评部分结果:"></a>Martini力场性能测评部分结果:</h5><h6 id="氨基酸残基侧链在DOPC膜上跨膜研究"><a href="#氨基酸残基侧链在DOPC膜上跨膜研究" class="headerlink" title="氨基酸残基侧链在DOPC膜上跨膜研究"></a>氨基酸残基侧链在DOPC膜上跨膜研究</h6><p>对不同侧链从DOPC膜中拉出（PMF）研究，将CG模型和全原子模型进行比较，研究结果表明疏水性氨基酸与全原子模拟相比有非常好的吻合，特别是barrier方面。如图中的leucine，isoleucine和valine。对于tryptophan和tyrosine，barrier在全原子profiles中不存在，且在CGprofiles低于5KJ/mol。且最小区域和全原子模拟拟合较好。对于极性氨基酸残基，对于全原子模型和CG模型，也有合理的分布。电荷残基在全原子模拟和CG模拟之间显示了非常大的不同。对于CG模型，其在进入膜中的自由能惩罚被严重低估，但是还是仍然高的（glu，asp和arg超过40，lys超过35）进入膜的数量是可以忽略不计的，换而言之其对于入膜这个时间是没有影响的，但是其他影响是有可能的，这也是力场需要改进的地方。完整的PMF结果如下图:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/14-1.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/14-1.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/14-1.png)</div>
+            </figure></p>
 <p>但是需要注意的是与其相比较的全原子力场为OPLSAA力场，OPLSAA在全原子力场中对于蛋白的表现也并不是那么的好，其对于蛋白是用的老的amber力场，且开发的人较少，长时间未开发（来源:GROMACS中文组-李继存老师）</p>
 <h6 id="氨基酸残基联系常数"><a href="#氨基酸残基联系常数" class="headerlink" title="氨基酸残基联系常数:"></a>氨基酸残基联系常数:</h6><p>氨基酸残基i和j的定义如下:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/15.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/15.png" alt=""></a></p>
-<p>其中1 / C是校正系统中物种浓度的因子,P(x)是在X状态下找到的概率。其中<a href="http://kangsgo.com/wp-content/uploads/2017/09/16.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/16.png" alt=""></a>，NA是Avogadro’s 数，V是盒子的体积。bound和unbound状态通过计算复合物溶液可及表面（solvent accessible surface area ASA）的不同。当ASA低于阈值的话表示两个残基是联系的，若高出阈值则定义为不联系，阈值的选择来自ASA的直方图分布。得到的结果如下表:</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2017/09/17.png"><img src="http://kangsgo.com/wp-content/uploads/2017/09/17.png" alt=""></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/15.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/15.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/15.png)</div>
+            </figure></p>
+<p>其中1 / C是校正系统中物种浓度的因子,P(x)是在X状态下找到的概率。其中[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/16.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/16.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/16.png)</div>
+            </figure>，NA是Avogadro’s 数，V是盒子的体积。bound和unbound状态通过计算复合物溶液可及表面（solvent accessible surface area ASA）的不同。当ASA低于阈值的话表示两个残基是联系的，若高出阈值则定义为不联系，阈值的选择来自ASA的直方图分布。得到的结果如下表:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2017/09/17.png" alt="](http://kangsgo.com/wp-content/uploads/2017/09/17.png)" title="">
+                </div>
+                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/09/17.png)</div>
+            </figure></p>
 <p>可以发现CG模型和全原子模拟的比例是一样的，但是CG模型较全原子模型数值有低估。</p>
 <h5 id="Martini力场的限制"><a href="#Martini力场的限制" class="headerlink" title="Martini力场的限制:"></a>Martini力场的限制:</h5><p>1.参数对于固体相并不是那么准确，相比液体相来说固体和气体相显得太稳定</p>
 <p>2.内在熵变会丢失，温度依赖性受到了影响。Martini模型，也许在大多数CG方法中一样遇到的另一个困难是将极性和带电荷的化合物分配成低介电常数。因为极性物质的相互作用强度在非极性环境中会被低估。</p>
@@ -306,7 +407,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/770.html" target="_blank" rel="external">http://kangsgo.com/770.html</a>
+        链接：<a href="/770.html" target="_blank" rel="external">http://kangsgo.com/770.html</a>
         
     </div>
     <footer>
@@ -533,7 +634,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -553,7 +654,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 

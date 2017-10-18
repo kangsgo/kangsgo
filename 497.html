@@ -27,18 +27,18 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。（最后发现还是无法这么弄） LigPlot+是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab-300x246.gif">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/09/key-300x39.gif">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab.gif">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/09/key.gif">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LigPlot+官方手册初译">
 <meta name="twitter:description" content="由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。（最后发现还是无法这么弄） LigPlot+是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab-300x246.gif">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab.gif">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -61,7 +61,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -78,21 +78,21 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                Tags
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                Categories
+                分类
               </a>
             </li>
         
@@ -100,13 +100,6 @@
               <a href="https://github.com/kangsgo" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
               </a>
             </li>
         
@@ -199,13 +192,25 @@
 <p><em><strong>DIMPLOT</strong> </em>绘制选择的蛋白蛋白或者结构域结构域表面的相互联系</p>
 <p>File-&gt;Open-&gt;PDB File</p>
 <p>我们着重介绍LIGPLOT</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab.gif"><img src="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab-300x246.gif" alt="ligplot_tab"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab.gif" alt="ligplot_tab](http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab-300x246.gif)" title="">
+                </div>
+                <div class="image-caption">ligplot_tab](http://kangsgo.com/wp-content/uploads/2016/09/ligplot_tab-300x246.gif)</div>
+            </figure></p>
 <p>1.选择配体，你希望绘制的，在如上清单里</p>
 <p>另一个方法就是你可以输入你在盒子里想要的残基范围。残基范围能够在如下中选择：</p>
 <p>例子</p>
 <p>18 20 A 残基范围：起始-结束残基，链ID，如果连ID为空则被忽略</p>
 <p>NAG 18 MAN 20 A 残基名称和数量，增加连ID</p>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/09/key.gif"><img src="http://kangsgo.com/wp-content/uploads/2016/09/key-300x39.gif" alt="key"></a></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://kangsgo.com/wp-content/uploads/2016/09/key.gif" alt="key](http://kangsgo.com/wp-content/uploads/2016/09/key-300x39.gif)" title="">
+                </div>
+                <div class="image-caption">key](http://kangsgo.com/wp-content/uploads/2016/09/key-300x39.gif)</div>
+            </figure></p>
 <p>如上为图形的标志</p>
 
         </div>
@@ -219,7 +224,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/497.html" target="_blank" rel="external">http://kangsgo.com/497.html</a>
+        链接：<a href="/497.html" target="_blank" rel="external">http://kangsgo.com/497.html</a>
         
     </div>
     <footer>
@@ -446,7 +451,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -466,7 +471,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.js" async></script>
 
 
 
