@@ -34,7 +34,7 @@
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -155,6 +155,66 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-e8-87-aa-e7-94-a8-e8-84-9a-e6-9c-ac-e5-88-86-e4-ba-ab"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-09-16 16:05:29" datetime="2016-09-16T08:05:29.000Z"  itemprop="datePublished">2016-09-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/440.html">自用脚本分享</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        计算G_mmpbsa#!/bin/bash
+# author:kangsgo
+# method:
+# loop 后面为文件夹变量,表示进入哪个文件夹
+# trj_125-150ns.xtc 轨迹变量
+for loop in achmd bnf318 qna tcdd
+do
+echo "开始执行!";
+echo "进入第一个目录:$loop!";
+cd /home/gromacs/shiyan/$loop
+echo "进行一步计算"
+echo -e "1\n13\n"|g_mmpbsa -f trj_125-150ns.xtc -s npt.tpr -n index.ndx -i canshu/pbsa.mdp -pdie 2 -pbsa -decomp
+echo "开始能量拆分"
+python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvg
+python3 MmPbSaDecomp.py -bs -nbs 2000 -m contrib_MM.dat -p contrib_pol.dat -a contrib_apol.dat
+echo "完成"
+done
+
+&nbsp;
+计算rmsf，并且处理轨迹
+    
+
+        <a href="/440.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-django-shop-e6-96-87-e6-a1-a3-e6-b5-85-e5-b0-9d"
@@ -559,52 +619,6 @@ http://bbs.ngacn.cc/read.php?tid=8192610
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-bio3d"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-05-10 22:13:38" datetime="2016-05-10T14:13:38.000Z"  itemprop="datePublished">2016-05-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/386.html">Bio3D安装</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        感谢厦大-Ares 提供这么好的工具信息
-官方安装地址：点我查看
-可以看出ubuntu的安装最简单的方式如下：
-
-apt-get install r-base-core netcdf-bin libnetcdf-dev libxml2-dev \
-libcurl3-dev seaview muscle pymol但是ubuntu的R编译包为3.0.2，bio3D要求为3.1+ 所以R需要自己...
-    
-
-        <a href="/386.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
@@ -705,7 +719,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.js"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -725,7 +739,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.js" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
