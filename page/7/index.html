@@ -16,8 +16,6 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="theme-color" content="#3F51B5">
-    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -33,8 +31,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -50,68 +48,19 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:undefined" class="mail">
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-link"></i>
-                测试
-              </a>
-            </li>
         
       </ul>
     </div>
@@ -126,20 +75,6 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
         
     </div>
 </header>
@@ -192,8 +127,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用
-一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远...
+        由于做MD,近期搞了一个linux的小型服务器，用来协...
     
 
         <a href="/376.html" class="post-more waves-effect waves-button">
@@ -234,11 +168,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        最近一直在忙着我的论文修改，现在总算要告一段落了，马上要开启新的篇章，其中一个部分就是膜的体验，先准备学习以下gromacs李继存老师翻译的教程，这里记录一下学习的过程：
-DPPC膜中的KALP15：
-教程使用的文章是06年的一篇3.9分的文章，准备学习完以后参考一下他的分析步骤：文献查看
-第一步：准备拓扑
-多肽如何准备的参考资料并未详细给出，由于我也是第一次学，自己也先跳过，你可以在文章底...
+        最近一直在忙着我的论文修改，现在总算要告一段落了，马上...
     
 
         <a href="/363.html" class="post-more waves-effect waves-button">
@@ -279,7 +209,7 @@ DPPC膜中的KALP15：
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        set lipid [atomselect top “resname $lipres”];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipidbox 1] 0];set ymin [lindex [lindex $lipidbo...
+        set lipid [atomselect top “...
     
 
         <a href="/360.html" class="post-more waves-effect waves-button">
@@ -320,10 +250,7 @@ DPPC膜中的KALP15：
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        蛋白质中那些氨基酸或基团可以结合金属离子哪些氨基酸的侧链可与金属离子结合，这些配体属于软碱还是硬碱？
-&nbsp;
-A：蛋白质中最容易结合金属离子的大概是巯基（-SH）。这个也是很多金属离子毒性的来源。巯基在蛋白质中存在于半胱氨酸中。有时两个半胱氨酸通过脱氢形成二硫键（-S-S-）而使不同肽链连接起来。二硫键仍然具有结合金属离子的能力。
-氨基、羟基等一切可提供孤对电子的均有可能与金属离子结合...
+        蛋白质中那些氨基酸或基团可以结合金属离子哪些氨基酸的侧...
     
 
         <a href="/358.html" class="post-more waves-effect waves-button">
@@ -365,8 +292,7 @@ A：蛋白质中最容易结合金属离子的大概是巯基（-SH）。这个�
 
     
         来源：李颖@大工
-SPC Simple-point-charge 将水分子视为刚体分子，固定键长键角，仅O-O原子间有范德华作用，分子间原子对库仑静电作用。可以得到合理的水分子径向分布函数与气液共存性质，但模拟得到的扩散系数与实验值偏差较大 （误差200%-300%）
-TIP3P Transferable-intermolecular-potential,不考虑分子中各种高频率的振动。所有模...
+SPC Simple-point-c...
     
 
         <a href="/355.html" class="post-more waves-effect waves-button">
@@ -407,8 +333,7 @@ TIP3P Transferable-intermolecular-potential,不考虑分子中各种高频率的
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        标题：Molecular Dynamics and QM/MM Calculations predict the Substrate-Induced Gating of Cytochrome P450 BM3 and the Regio and Stereo-selctivity of Fatty Acid Hydroxylation
-摘要：通过scratch理论预测酶的活性。我们发现MD模...
+        标题：Molecular Dynamics and Q...
     
 
         <a href="/352.html" class="post-more waves-effect waves-button">
@@ -450,7 +375,7 @@ TIP3P Transferable-intermolecular-potential,不考虑分子中各种高频率的
 
     
         &nbsp;
-W：In cold water, the protein is surrounded by ordered water molecules in the hydration shell.Molecules in the shell are highly ordered and have  low energy.Folding of a protein is (largely) ...
+W：In cold water, the...
     
 
         <a href="/347.html" class="post-more waves-effect waves-button">
@@ -491,9 +416,7 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        SmartDraw是世界上最流行的商业绘图软件。2006 年获美国政府司法部 (U.S. Department of Justice) 专用软件，2007获美国政府商务部 (US Department of Commence)选用。
-——摘自百度百科，软件待研究
-
+        SmartDraw是世界上最流行的商业绘图软件。200...
     
 
         <a href="/345.html" class="post-more waves-effect waves-button">
@@ -535,7 +458,7 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
 
     
         
-这个图你别show给其他人看了啊。还没有发表分迪-飞天 2016/3/30 18:52:36在Graphical Representations选择Material为EdgyShiny在Display菜单栏下选择Rendermode为GLSL出图的时候采用Tachyon渲染在Display菜单栏下选Orthographic模式分迪-飞天 2016/3/30 18:55:00所有的Graph...
+这个图你别show给其他人看了啊。还没有发表分迪-飞...
     
 
         <a href="/341.html" class="post-more waves-effect waves-button">
@@ -576,11 +499,7 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        今天在科研动力看到一篇关于初步选题的文章，正好最近在找选题思路，所以就理一理，把内容结合自己的实际情况来做一遍，有兴趣的同学可以看文章原文：
-主要讲的内容为如何利用 PubReMiner 进行科研选题。
-粗略搜索
-首先要根据导师的意愿在 PubMed 中进行粗略的搜索。
-我的导师主要是想要我做分子模拟和实验相结合的内容，由于师兄主要从事芳香烃受体方面，分子模拟主要能够做突变以及和配体结合性的...
+        今天在科研动力看到一篇关于初步选题的文章，正好最近在找...
     
 
         <a href="/333.html" class="post-more waves-effect waves-button">
@@ -607,15 +526,6 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -625,7 +535,7 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -639,106 +549,21 @@ W：In cold water, the protein is surrounded by ordered water molecules in the h
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/7/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/7/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/7/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/7/&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/7/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABYUlEQVR42u3aQZLDIAwFUd//0p6q2c4E9xdmEalZpVKJeSwMQtJ14XH/Dv6b+8+4TgxZshqx7uX4NOUnLvnvei5ZsiazyAu/fovXS+VzyZIlixy9a9DO8mTJklV73PrAliVLVsoiQTMKdsFR/XIsL0tWC1aaSNr5fDC/JUvW17Lu0kjR8fNlyRrGSi+iPI1LUk4PM8qSNYbFH5eGwrVi5z/7lixZY1jkEbWDPL3oxp0LsmS1YKW3yLTkeaRHSZasdqy0eJmmfUmQjS6usmS1Zr31bqa52RcutLJkNWWRg5ZPRhoR4nhBlqzWLB7skm/2FyNL1mTWfvNBmhh62D5kyRrDOtFqUCu9yJI1mVXbFE6E0cXcsyxZjVhkU0ibEniRBuWbZckaw0one6umKkuWrBqLF1rIwfxQ55ElSxa+au606AVxuixZA1i15gD++7RZQZasaaxaIokf5/sLkCWrNesHbwjkXPTkEKcAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: , REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/main.min.js?v=1.6.16"></script>
 
 
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

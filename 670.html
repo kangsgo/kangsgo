@@ -16,16 +16,14 @@
     <title>GROMACS之水中部分載脂蛋白 | 小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="theme-color" content="#3F51B5">
-    
     
     <meta name="keywords" content="">
-    <meta name="description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
+    <meta name="description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GROMACS之水中部分載脂蛋白">
 <meta property="og:url" content="http://kangsgo.com/670.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
+<meta property="og:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -38,13 +36,13 @@
 <meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GROMACS之水中部分載脂蛋白">
-<meta name="twitter:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程">
+<meta name="twitter:description" content="&amp;gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。首先看一下GROMACS做MD的一般流程### 下载PDB文件首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter n">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -55,73 +53,24 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:undefined" class="mail">
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-link"></i>
-                测试
-              </a>
-            </li>
         
       </ul>
     </div>
@@ -136,20 +85,6 @@
         </a>
         <div class="flex-col header-title ellipsis">GROMACS之水中部分載脂蛋白</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
         
     </div>
 </header>
@@ -192,62 +127,10 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>&gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。<br><br>首先看一下GROMACS做MD的一般流程<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GROMACS MD一般流程" title="">
-                </div>
-                <div class="image-caption">GROMACS MD一般流程</div>
-            </figure><br><br>### 下载PDB文件<br><br>首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter notebook编写，若在终端运行的话无需加out=!{}<br>例如：out=!{“ls”},在终端运行只需要为ls即可<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“wget <a href="http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}" target="_blank" rel="external">http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}</a><br></pre><br><br>### 生成蛋白拓扑（Topology文件）<br><br>在用GROMACS的程序对pdb文件进行处理前, 要做许多检查, 以保证pdb文件的完整性. 根据pdb文件的不同, 要进行不同的处理. 需要处理的方面包括但不限于:<br><br>&gt; -氢原子<br>&gt; -C端氧原子<br>&gt; -结晶水<br>&gt; -缺失原子/残基/侧链<br>&gt; -二硫键<br>&gt; -带电残基<br><br>请在进行下一步之前仔细简单是否有错误，如教程蜘蛛肽需要进行末尾蛋白的补全，如删除蛋白中本身含有的结晶水等等工作。<br>在本例中你需要从20个模型中获取单一模型，可以使用例如<code>pymol</code>进行操作。<br>下一步需要注意的是我们需要<code>-ignh</code>进行删除pdb中的氢，然后gmx进行自动加氢。我们将其修改为fws.pdb<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx pdb2gmx -f fws.pdb -ignh -o 1ODQ_processed.gro -water spce<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">····<br><br>    Select the Force Field:<br>    From ‘/usr/share/gromacs/top’:<br>     1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)<br>     2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)<br>     3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)<br>     4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)<br>     5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)<br>     6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)<br>     7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)<br>     8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)<br>     9: GROMOS96 43a1 force field<br>    10: GROMOS96 43a2 force field (improved alkane dihedrals)<br>    11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)<br>    12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)<br>    13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)<br>    14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)<br>    15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</pre><br>&nbsp;<br><br>力场包含了将要写入到拓扑文件中的信息. 这个选择非常重要! 你必须仔细了解每个力场, 并决定哪个力场最适用于你的体系. 在本教程中, 我们选gromos联合原子力场, 因此在命令提示行中输入<code>14</code>, 然后回车.由于在jupyter中shell交互不是很方便，所以我们采用的是在尾部<code>&amp;lt;&amp;lt;EOF\n14\nEOF</code>的方式进行交互，下面的情况类似，不再申明，<strong>即大家在实际操作中在shell终端输入前面的命令，后面选择的选项与后面命令类似</strong>。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx pdb2gmx -f fws.pdb -ignh -o fws_processed.gro -water spce &lt;&lt;EOF\n14\nEOF”}<br></pre><br>&nbsp;<br><br>### 定义单位盒子并填充溶剂<br><br>教程中是需要模拟一个简单的水溶液分子，定义模拟用的盒子并添加溶剂分为两步完成：<br>1.使用<code>editconf</code>模块定义盒子的尺寸<br>2.使用<code>solvate</code>模块想盒子中填充水<br>首先我们来定义盒子，本教程用的正方形盒子，其实盒子种类很多，一般使用菱形十二面体晶胞，其可以节省许多水分子，从而节省计算量。<code>-c</code>表示分子在盒子的中心部分。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx editconf -f fws_processed.gro -o fws_newbox.gro -c -d 1.0 -bt cubic”}<br></pre><br>我们可以在vmd或者pymol中查看分子的情况，在用shell交互中下面块的内容不需要输入，转而使用<code>vmd fws_newbox.gro</code>或者<code>pymol fws_newbox.gro</code>进行查看<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用，真正进行学习时直接vmd或者pymol查看<br>from IPythonTweaks import <em></em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">#演示使用<br>pymolPlotStructure(“fws_newbox.gro”)</pre><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_11_0.png" title="">
-                </div>
-                <div class="image-caption">output_11_0.png</div>
-            </figure><br><br>之后我们进行溶剂分子的增加<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx solvate -cp fws_newbox.gro -cs spc216.gro -o fws_solv.gro -p topol.top”}<br></pre><br><br>同样我们也可以进行可视化查看<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>pymolPlotStructure(“fws_solv.gro”)</pre><br>&nbsp;<br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-56a9f9532ac746ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_15_0.png" title="">
-                </div>
-                <div class="image-caption">output_15_0.png</div>
-            </figure><br><br>### 增加离子<br><br>现在我们已经有了一个带电荷的溶液体系，<code>其实在pdb2gmx</code>程序的输出文件会显示带了多少电荷，如果没有查看到我们可以查看一下<code>topol.top</code>文件中<code>[ atoms ]</code>指令的的最后一行, 它应该含有<code>qtot 0</code>这一信息. 由于生命体系中不存在净电荷, 所以我们必须往我们体系中添加离子, 以保证总电荷为零.虽然电荷为0，我们还是增加一下0个离子，作为演示的作用。<br>首先我们创建一个ions.mdp的文件，并输入如下内容：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)</pre><br>&nbsp;<br><br>使用如下命令来产生<code>.tpr</code>文件<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“ions.mdp”,”w”)<br>file.write(“””<br>; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f ions.mdp -c fws_solv.gro -p topol.top -o ions.tpr”}<br>out=!{“gmx genion -s ions.tpr -o fws_solv_ions.gro -p topol.top -pname NA -nname CL -nn 0 &lt;&lt;EOF\n13\nEOF”}</pre><br>&nbsp;<br><br>### 能量最小化<br><br>现在, 我们已经添加了溶剂分子和离子, 得到了一个电中性的体系. 在开始动力学模拟之前, 我们必须保证体系的结构正常, 原子之间的距离不会过近, 几何构型合理. 对结构进行弛豫可以达到这些要求, 这个过程称为能量最小化(EM, energy minimization).<br><br>能量最小化过程与添加离子过程差不多. 我们要再次使用<code>grompp</code>将结构, 拓扑和模拟参数写入一个二进制的输入文件中(.tpr), 但这次我们不需要将<code>.tpr</code>文件传递给<code>genion</code>, 而是使用GROMACS MD引擎的<code>mdrun</code>模块来进行能量最小化.<br>能量最小化的<code>mdp</code>文件参数与解释如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; 传递给预处理器的一些定义<br>define          = -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量<br><br>; 模拟类型, 结束控制, 输出控制参数<br>integrator      = steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>emtol           = 500.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>emstep          = 0.01          ; 初始步长(nm)<br>nsteps          = 1000          ; 在能量最小化中, 指定最大迭代次数<br>nstenergy       = 1             ; 能量写出频率<br>energygrps      = System        ; 要写出的能量组<br><br>; 近邻列表, 相互作用计算参数<br>nstlist         = 1             ; 更新近邻列表的频率. 1表示每步都更新<br>ns_type         = grid          ; 近邻列表确定方法(simple或grid)<br>coulombtype     = PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>rlist           = 1.0           ; 短程力近邻列表的截断值<br>rcoulomb        = 1.0           ; 长程库仑力的截断值<br>vdwtype         = cut-off       ; 计算范德华作用的方法<br>rvdw            = 1.0           ; 范德华距离截断值<br>constraints     = none          ; 设置模型中使用的约束<br>pbc             = xyz           ; 3维周期性边界条件</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“minim.mdp”,”w”)<br>file.write(“””<br>; minim.mdp - used as input into grompp to generate em.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f minim.mdp -c fws_solv_ions.gro -p topol.top -o em.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm em”}<br></pre><br>&nbsp;<br><br>我们可以使用grace打开查看，若没有安装可以使用<code>sudo apt-get install grace</code>进行安装，为了演示方便我们直接在内部作图：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f em.edr -o energy.xvg&lt;&lt;EOF\n10\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”energy.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-e869284ee2c703d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_27_0.png" title="">
-                </div>
-                <div class="image-caption">output_27_0.png</div>
-            </figure><br><br>### NVT平衡<br><br>EM可保证我们的初始结构在几何构型和溶剂分子取向等方面都合理. 为了开始真正的动力学模拟, 我们必须对蛋白质周围的溶剂和离子进行平衡. 如果我们在这时就尝试进行非限制的动力学模拟, 体系可能会崩溃. 原因在于我们基本上只是优化了溶剂分子自身, 而没有考虑溶质. 我们需要将体系置于设定的模拟温度下, 以确定溶质(蛋白质)的合理取向. 达到正确的温度(基于动能)之后, 我们要对体系施加压力直到它达到合适的密度.<br><br>还记得好久以前我们用<code>db2gmx</code>生成的<code>osre.itp</code>文件么? 现在它要派上用场了. <code>posre.itp</code>文件的目的在于对蛋白质中的重原子(非氢原子)施加位置限制(position restraining)力. 这些原子不会移动, 除非增加非常大的能量. 位置限制的用途在于, 我们可以平衡蛋白质周围的溶剂分子, 而不引起蛋白质结构的变化.<br><br>平衡往往分两个阶段进行. 第一个阶段在NVT系综(粒子数, 体积和温度都是恒定的)下进行. 这个系综也被称为等温等容系综或正则系综. 这个过程的需要的时间与体系的构成有关, 但在NVT系综中, 体系的温度应达到预期值并基本保持不变. 如果温度仍然没有稳定, 那就需要更多的时间. 通常情况下, 50 ps到100 ps就足够了,为了节约时间，我们仅进行2ps的NVT。<br><code>nvt.mdp</code>的设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2  1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘nvt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2 <em> 1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed<br>“””)<br>file.close()</em></pre><br>接下来与能量最小化情况类似：<br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f nvt.mdp -c em.gro -p topol.top -o nvt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm nvt”}<br></pre><br>&nbsp;<br><br>由于模拟的时间比较短，我一会儿就模拟好了<br>让我们来分析温度变化情况, 再次使用<code>energy</code>模块：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f nvt.edr -o nvt.xvg&lt;&lt;EOF\n15\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”nvt.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-42c51cc3e29a1ed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br><br>由于这里<code>nstxout</code>记录值过大所以只有两个点，应该把值设置更小，从而产生如下结果<br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-5d8239bcb5b0786b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="temp3.png" title="">
-                </div>
-                <div class="image-caption">temp3.png</div>
-            </figure><br><br>前一步的NVT平衡稳定了体系的温度. 在采集数据之前, 我们还需要稳定体系的压力(因此还包括密度). 压力平衡是在NPT系综下进行的, 其中粒子数, 压力和温度都保持不变. 这个系综也被称为等温等压系综, 最接近实验条件.<br>一般建议设置的模拟时长为1ns，但是由于时间关系，这里仅模拟10ps<br><code>npt.mdp</code>设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2  5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘npt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2 <em> 5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -o npt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm npt”}<br></pre><br>&nbsp;<br><br>我们可以通过压力和密度检测来看模拟是否平衡：<br><br>&nbsp;<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#压力<br>out=!{“gmx energy -f npt.edr -o pressure.xvg&lt;&lt;EOF\n16\n0\nEOF”}<br>#密度<br>out=!{“gmx energy -f npt.edr -o density.xvg&lt;&lt;EOF\n22\n0\nEOF”}</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”pressure.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-0b3e2f17ca1c67fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_43_0.png" title="">
-                </div>
-                <div class="image-caption">output_43_0.png</div>
-            </figure><br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”density.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/903467-8012dcf833f90e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_44_0.png" title="">
-                </div>
-                <div class="image-caption">output_44_0.png</div>
-            </figure><br><br>### 成品MD<br><br>随着两个平衡阶段的完成, 体系已经在需要的温度和压强下平衡好了. 我们现在可以放开位置限制并进行成品MD以收集数据了. 这个过程跟前面的类似. 运行<code>grompp</code>时, 我们还要用到检查点文件(在这种情况下,其中包含了压力耦合信息). 我们要进行一个1 ns的MD模拟, 所用的参数文件如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">title       = OPLS MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2  500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘md.mdp’,’w’)<br>file.write(“””<br>title       = OPLS Lysozyme MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2 * 500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx mdrun -v -deffnm md_0_1<br></pre><br>&nbsp;<br><br>具体的分析方法与内容我们下次分享<br><br></div>
+            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>&gt; 今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换，即将載脂蛋白替换了溶菌酶，实际上是一样的。<br><br>首先看一下GROMACS做MD的一般流程<br><img src="http://upload-images.jianshu.io/upload_images/903467-9d92f16d970298b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GROMACS MD一般流程"><br><br>### 下载PDB文件<br><br>首先我们在PDB数据库下载小肽的PDB文件，注意我采用的为jupyter notebook编写，若在终端运行的话无需加out=!{}<br>例如：out=!{“ls”},在终端运行只需要为ls即可<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“wget <a href="http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}" target="_blank" rel="external">http://www.rcsb.org/pdb/files/1ODQ.pdb&quot;}</a><br></pre><br><br>### 生成蛋白拓扑（Topology文件）<br><br>在用GROMACS的程序对pdb文件进行处理前, 要做许多检查, 以保证pdb文件的完整性. 根据pdb文件的不同, 要进行不同的处理. 需要处理的方面包括但不限于:<br><br>&gt; -氢原子<br>&gt; -C端氧原子<br>&gt; -结晶水<br>&gt; -缺失原子/残基/侧链<br>&gt; -二硫键<br>&gt; -带电残基<br><br>请在进行下一步之前仔细简单是否有错误，如教程蜘蛛肽需要进行末尾蛋白的补全，如删除蛋白中本身含有的结晶水等等工作。<br>在本例中你需要从20个模型中获取单一模型，可以使用例如<code>pymol</code>进行操作。<br>下一步需要注意的是我们需要<code>-ignh</code>进行删除pdb中的氢，然后gmx进行自动加氢。我们将其修改为fws.pdb<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx pdb2gmx -f fws.pdb -ignh -o 1ODQ_processed.gro -water spce<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">····<br><br>    Select the Force Field:<br>    From ‘/usr/share/gromacs/top’:<br>     1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)<br>     2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)<br>     3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)<br>     4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)<br>     5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)<br>     6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)<br>     7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)<br>     8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)<br>     9: GROMOS96 43a1 force field<br>    10: GROMOS96 43a2 force field (improved alkane dihedrals)<br>    11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)<br>    12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)<br>    13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)<br>    14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)<br>    15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</pre><br>&nbsp;<br><br>力场包含了将要写入到拓扑文件中的信息. 这个选择非常重要! 你必须仔细了解每个力场, 并决定哪个力场最适用于你的体系. 在本教程中, 我们选gromos联合原子力场, 因此在命令提示行中输入<code>14</code>, 然后回车.由于在jupyter中shell交互不是很方便，所以我们采用的是在尾部<code>&amp;lt;&amp;lt;EOF\n14\nEOF</code>的方式进行交互，下面的情况类似，不再申明，<strong>即大家在实际操作中在shell终端输入前面的命令，后面选择的选项与后面命令类似</strong>。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx pdb2gmx -f fws.pdb -ignh -o fws_processed.gro -water spce &lt;&lt;EOF\n14\nEOF”}<br></pre><br>&nbsp;<br><br>### 定义单位盒子并填充溶剂<br><br>教程中是需要模拟一个简单的水溶液分子，定义模拟用的盒子并添加溶剂分为两步完成：<br>1.使用<code>editconf</code>模块定义盒子的尺寸<br>2.使用<code>solvate</code>模块想盒子中填充水<br>首先我们来定义盒子，本教程用的正方形盒子，其实盒子种类很多，一般使用菱形十二面体晶胞，其可以节省许多水分子，从而节省计算量。<code>-c</code>表示分子在盒子的中心部分。<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx editconf -f fws_processed.gro -o fws_newbox.gro -c -d 1.0 -bt cubic”}<br></pre><br>我们可以在vmd或者pymol中查看分子的情况，在用shell交互中下面块的内容不需要输入，转而使用<code>vmd fws_newbox.gro</code>或者<code>pymol fws_newbox.gro</code>进行查看<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用，真正进行学习时直接vmd或者pymol查看<br>from IPythonTweaks import <em></em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="null">#演示使用<br>pymolPlotStructure(“fws_newbox.gro”)</pre><br><img src="http://upload-images.jianshu.io/upload_images/903467-a7de26568fbb641d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_11_0.png"><br><br>之后我们进行溶剂分子的增加<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx solvate -cp fws_newbox.gro -cs spc216.gro -o fws_solv.gro -p topol.top”}<br></pre><br><br>同样我们也可以进行可视化查看<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>pymolPlotStructure(“fws_solv.gro”)</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-56a9f9532ac746ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_15_0.png"><br><br>### 增加离子<br><br>现在我们已经有了一个带电荷的溶液体系，<code>其实在pdb2gmx</code>程序的输出文件会显示带了多少电荷，如果没有查看到我们可以查看一下<code>topol.top</code>文件中<code>[ atoms ]</code>指令的的最后一行, 它应该含有<code>qtot 0</code>这一信息. 由于生命体系中不存在净电荷, 所以我们必须往我们体系中添加离子, 以保证总电荷为零.虽然电荷为0，我们还是增加一下0个离子，作为演示的作用。<br>首先我们创建一个ions.mdp的文件，并输入如下内容：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)</pre><br>&nbsp;<br><br>使用如下命令来产生<code>.tpr</code>文件<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“ions.mdp”,”w”)<br>file.write(“””<br>; ions.mdp - used as input into grompp to generate ions.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f ions.mdp -c fws_solv.gro -p topol.top -o ions.tpr”}<br>out=!{“gmx genion -s ions.tpr -o fws_solv_ions.gro -p topol.top -pname NA -nname CL -nn 0 &lt;&lt;EOF\n13\nEOF”}</pre><br>&nbsp;<br><br>### 能量最小化<br><br>现在, 我们已经添加了溶剂分子和离子, 得到了一个电中性的体系. 在开始动力学模拟之前, 我们必须保证体系的结构正常, 原子之间的距离不会过近, 几何构型合理. 对结构进行弛豫可以达到这些要求, 这个过程称为能量最小化(EM, energy minimization).<br><br>能量最小化过程与添加离子过程差不多. 我们要再次使用<code>grompp</code>将结构, 拓扑和模拟参数写入一个二进制的输入文件中(.tpr), 但这次我们不需要将<code>.tpr</code>文件传递给<code>genion</code>, 而是使用GROMACS MD引擎的<code>mdrun</code>模块来进行能量最小化.<br>能量最小化的<code>mdp</code>文件参数与解释如下<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">; 传递给预处理器的一些定义<br>define          = -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量<br><br>; 模拟类型, 结束控制, 输出控制参数<br>integrator      = steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>emtol           = 500.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>emstep          = 0.01          ; 初始步长(nm)<br>nsteps          = 1000          ; 在能量最小化中, 指定最大迭代次数<br>nstenergy       = 1             ; 能量写出频率<br>energygrps      = System        ; 要写出的能量组<br><br>; 近邻列表, 相互作用计算参数<br>nstlist         = 1             ; 更新近邻列表的频率. 1表示每步都更新<br>ns_type         = grid          ; 近邻列表确定方法(simple或grid)<br>coulombtype     = PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>rlist           = 1.0           ; 短程力近邻列表的截断值<br>rcoulomb        = 1.0           ; 长程库仑力的截断值<br>vdwtype         = cut-off       ; 计算范德华作用的方法<br>rvdw            = 1.0           ; 范德华距离截断值<br>constraints     = none          ; 设置模型中使用的约束<br>pbc             = xyz           ; 3维周期性边界条件</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(“minim.mdp”,”w”)<br>file.write(“””<br>; minim.mdp - used as input into grompp to generate em.tpr<br>; Parameters describing what to do, when to stop and what to save<br>integrator    = steep        ; Algorithm (steep = steepest descent minimization)<br>emtol        = 1000.0      ; Stop minimization when the maximum force &lt; 1000.0 kJ/mol/nm<br>emstep          = 0.01          ; Energy step size<br>nsteps        = 50000          ; Maximum number of (minimization) steps to perform<br><br>; Parameters describing how to find the neighbors of each atom and how to calculate the interactions<br>nstlist        = 1        ; Frequency to update the neighbor list and long range forces<br>ns_type        = grid        ; Method to determine neighbor list (simple, grid)<br>rlist        = 1.0        ; Cut-off for making neighbor list (short range forces)<br>coulombtype    = PME        ; Treatment of long range electrostatic interactions<br>rcoulomb    = 1.0        ; Short-range electrostatic cut-off<br>rvdw        = 1.0        ; Short-range Van der Waals cut-off<br>pbc        = xyz         ; Periodic Boundary Conditions (yes/no)<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f minim.mdp -c fws_solv_ions.gro -p topol.top -o em.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm em”}<br></pre><br>&nbsp;<br><br>我们可以使用grace打开查看，若没有安装可以使用<code>sudo apt-get install grace</code>进行安装，为了演示方便我们直接在内部作图：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f em.edr -o energy.xvg&lt;&lt;EOF\n10\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”energy.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br><br><img src="http://upload-images.jianshu.io/upload_images/903467-e869284ee2c703d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_27_0.png"><br><br>### NVT平衡<br><br>EM可保证我们的初始结构在几何构型和溶剂分子取向等方面都合理. 为了开始真正的动力学模拟, 我们必须对蛋白质周围的溶剂和离子进行平衡. 如果我们在这时就尝试进行非限制的动力学模拟, 体系可能会崩溃. 原因在于我们基本上只是优化了溶剂分子自身, 而没有考虑溶质. 我们需要将体系置于设定的模拟温度下, 以确定溶质(蛋白质)的合理取向. 达到正确的温度(基于动能)之后, 我们要对体系施加压力直到它达到合适的密度.<br><br>还记得好久以前我们用<code>db2gmx</code>生成的<code>osre.itp</code>文件么? 现在它要派上用场了. <code>posre.itp</code>文件的目的在于对蛋白质中的重原子(非氢原子)施加位置限制(position restraining)力. 这些原子不会移动, 除非增加非常大的能量. 位置限制的用途在于, 我们可以平衡蛋白质周围的溶剂分子, 而不引起蛋白质结构的变化.<br><br>平衡往往分两个阶段进行. 第一个阶段在NVT系综(粒子数, 体积和温度都是恒定的)下进行. 这个系综也被称为等温等容系综或正则系综. 这个过程的需要的时间与体系的构成有关, 但在NVT系综中, 体系的温度应达到预期值并基本保持不变. 如果温度仍然没有稳定, 那就需要更多的时间. 通常情况下, 50 ps到100 ps就足够了,为了节约时间，我们仅进行2ps的NVT。<br><code>nvt.mdp</code>的设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2  1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘nvt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS  NVT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 1000     ; 2 <em> 1000 = 2 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 500       ; save coordinates every 1.0 ps<br>nstvout     = 500       ; save velocities every 1.0 ps<br>nstenergy   = 500       ; save energies every 1.0 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = no        ; first dynamics run<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4     ; cubic interpolation<br>fourierspacing  = 0.16  ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is off<br>pcoupl      = no        ; no pressure coupling in NVT<br>; Periodic boundary conditions<br>pbc     = xyz           ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = yes       ; assign velocities from Maxwell distribution<br>gen_temp    = 300       ; temperature for Maxwell distribution<br>gen_seed    = -1        ; generate a random seed<br>“””)<br>file.close()</em></pre><br>接下来与能量最小化情况类似：<br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f nvt.mdp -c em.gro -p topol.top -o nvt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm nvt”}<br></pre><br>&nbsp;<br><br>由于模拟的时间比较短，我一会儿就模拟好了<br>让我们来分析温度变化情况, 再次使用<code>energy</code>模块：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx energy -f nvt.edr -o nvt.xvg&lt;&lt;EOF\n15\n0\nEOF”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”nvt.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-42c51cc3e29a1ed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><br>由于这里<code>nstxout</code>记录值过大所以只有两个点，应该把值设置更小，从而产生如下结果<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-5d8239bcb5b0786b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="temp3.png"><br><br>前一步的NVT平衡稳定了体系的温度. 在采集数据之前, 我们还需要稳定体系的压力(因此还包括密度). 压力平衡是在NPT系综下进行的, 其中粒子数, 压力和温度都保持不变. 这个系综也被称为等温等压系综, 最接近实验条件.<br>一般建议设置的模拟时长为1ns，但是由于时间关系，这里仅模拟10ps<br><code>npt.mdp</code>设置如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="md">title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2  5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘npt.mdp’,’w’)<br>file.write(“””<br>title       = OPLS NPT equilibration<br>define      = -DPOSRES  ; position restrain the protein<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 5000     ; 2 <em> 5000 = 10 ps<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout     = 50       ; save coordinates every 0.1 ps<br>nstvout     = 50       ; save velocities every 0.1 ps<br>nstenergy   = 50       ; save energies every 0.1 ps<br>nstlog      = 500       ; update log file every 1.0 ps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NVT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>refcoord_scaling    = com<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</em></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -p topol.top -o npt.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx mdrun -v -deffnm npt”}<br></pre><br>&nbsp;<br><br>我们可以通过压力和密度检测来看模拟是否平衡：<br><br>&nbsp;<br><pre class="EnlighterJSRAW" data-enlighter-language="python">#压力<br>out=!{“gmx energy -f npt.edr -o pressure.xvg&lt;&lt;EOF\n16\n0\nEOF”}<br>#密度<br>out=!{“gmx energy -f npt.edr -o density.xvg&lt;&lt;EOF\n22\n0\nEOF”}</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”pressure.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-0b3e2f17ca1c67fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_43_0.png"><br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>fig,ax=plt.subplots()<br>plotXVG(ax,”density.xvg”)<br>ppl.legend(ax)<br>plt.show()</pre><br>&nbsp;<br><br><img src="http://upload-images.jianshu.io/upload_images/903467-8012dcf833f90e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="output_44_0.png"><br><br>### 成品MD<br><br>随着两个平衡阶段的完成, 体系已经在需要的温度和压强下平衡好了. 我们现在可以放开位置限制并进行成品MD以收集数据了. 这个过程跟前面的类似. 运行<code>grompp</code>时, 我们还要用到检查点文件(在这种情况下,其中包含了压力耦合信息). 我们要进行一个1 ns的MD模拟, 所用的参数文件如下：<br><br><pre class="EnlighterJSRAW" data-enlighter-language="python">title       = OPLS MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2  500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">#演示使用<br>file=open(‘md.mdp’,’w’)<br>file.write(“””<br>title       = OPLS Lysozyme MD simulation<br>; Run parameters<br>integrator  = md        ; leap-frog integrator<br>nsteps      = 500000    ; 2 * 500000 = 1000 ps (1 ns)<br>dt          = 0.002     ; 2 fs<br>; Output control<br>nstxout             = 5000      ; save coordinates every 10.0 ps<br>nstvout             = 5000      ; save velocities every 10.0 ps<br>nstenergy           = 5000      ; save energies every 10.0 ps<br>nstlog              = 5000      ; update log file every 10.0 ps<br>nstxout-compressed  = 5000      ; save compressed coordinates every 10.0 ps<br>                                ; nstxout-compressed replaces nstxtcout<br>compressed-x-grps   = System    ; replaces xtc-grps<br>; Bond parameters<br>continuation            = yes       ; Restarting after NPT<br>constraint_algorithm    = lincs     ; holonomic constraints<br>constraints             = all-bonds ; all bonds (even heavy atom-H bonds) constrained<br>lincs_iter              = 1         ; accuracy of LINCS<br>lincs_order             = 4         ; also related to accuracy<br>; Neighborsearching<br>cutoff-scheme   = Verlet<br>ns_type         = grid      ; search neighboring grid cells<br>nstlist         = 10        ; 20 fs, largely irrelevant with Verlet scheme<br>rcoulomb        = 1.0       ; short-range electrostatic cutoff (in nm)<br>rvdw            = 1.0       ; short-range van der Waals cutoff (in nm)<br>; Electrostatics<br>coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics<br>pme_order       = 4         ; cubic interpolation<br>fourierspacing  = 0.16      ; grid spacing for FFT<br>; Temperature coupling is on<br>tcoupl      = V-rescale             ; modified Berendsen thermostat<br>tc-grps     = Protein Non-Protein   ; two coupling groups - more accurate<br>tau_t       = 0.1     0.1           ; time constant, in ps<br>ref_t       = 300     300           ; reference temperature, one for each group, in K<br>; Pressure coupling is on<br>pcoupl              = Parrinello-Rahman     ; Pressure coupling on in NPT<br>pcoupltype          = isotropic             ; uniform scaling of box vectors<br>tau_p               = 2.0                   ; time constant, in ps<br>ref_p               = 1.0                   ; reference pressure, in bar<br>compressibility     = 4.5e-5                ; isothermal compressibility of water, bar^-1<br>; Periodic boundary conditions<br>pbc     = xyz       ; 3-D PBC<br>; Dispersion correction<br>DispCorr    = EnerPres  ; account for cut-off vdW scheme<br>; Velocity generation<br>gen_vel     = no        ; Velocity generation is off<br>“””)<br>file.close()</pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">out=!{“gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr”}<br></pre><br><pre class="EnlighterJSRAW" data-enlighter-language="python">!gmx mdrun -v -deffnm md_0_1<br></pre><br>&nbsp;<br><br>具体的分析方法与内容我们下次分享<br><br></div>
 
 <p>参考文献:  <a href="http://jerkwin.coding.me/GMX/GMXtut-1/#%E6%A6%82%E8%BF%B0" target="_blank" rel="external">GROMACS教程之水中的溶菌酶</a></p>
 <p><a href="https://github.com/lupoglaz/GromacsIPython" target="_blank" rel="external">GromacsIPython</a></p>
@@ -257,79 +140,24 @@
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
-</span><br>
 
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/670.html" target="_blank" rel="external">http://kangsgo.com/670.html</a>
         
     </div>
     <footer>
         <a href="http://kangsgo.com">
-            <img src="/img/avatar.jpg" alt="kangsgo">
+            <img src="/" alt="kangsgo">
             kangsgo
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
             
 
             
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/670.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GROMACS之水中部分載脂蛋白》 — 小康博客&url=http://kangsgo.com/670.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/670.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
 
 
         </div>
@@ -372,32 +200,6 @@
 
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
 
 
 </div>
@@ -405,15 +207,6 @@
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -423,7 +216,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -437,106 +230,21 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/670.html&title=《GROMACS之水中部分載脂蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/670.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GROMACS之水中部分載脂蛋白》 — 小康博客&url=http://kangsgo.com/670.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/670.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aS24DIRAFQN//0hMpq0QR49c04IlUrCzbYwovWvTn9YrX9b1+vv77zuip0TdHTy1YuLi4be51u/rc0XdGvzky4OLinufmm93TR9vnAe6NDRcX92Hc+0vJXKjCxcX979xqSnN/SFxc3Odzk0BzH5juLzH5wZblari4uA3uXMF07evt9V1cXNxFXYl8JYGpvyMuLu4Zbl7ySJKluafyEgkuLu4Zbie9SbbsJ0i/3sHFxT3CrSYkyfbJATrlGFxc3N3cZHAqvwAlISl/qvy/4uLibuPmjc/8+rIqqOHi4p7n5hea/jHy3Qv1GFxc3EXczgXlTUY1NaJRMODi4h7n5iGsUyJJiLi4uOe5UcrRaI0khZVCCoSLi3uEuyoFKoxVxYePmqy4uLjbuPl4VqeokV+homPg4uIe4Sas6pWlkzLlfyIuLu4+7qoxi6S9+iouXFzck9yruOZGK6oXneGnuLi4R7hzka86zjU3ioGLi/tZbh68csTcINeyVisuLu4i7qriSF4umQuduLi4z+RWWynJlagwvIWLi/sw7lzYqh670OfBxcXdzK0WSfMWSz6wVe754OLibuPOpSL7KJPjWbi4uGu4X4I6vlVd8791AAAAAElFTkSuQmCC" alt="微信分享二维码">
-</div>
-
-
-
-
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: , REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/main.min.js?v=1.6.16"></script>
 
 
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

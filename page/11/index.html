@@ -16,8 +16,6 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="theme-color" content="#3F51B5">
-    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -33,8 +31,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -50,68 +48,19 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:undefined" class="mail">
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-link"></i>
-                测试
-              </a>
-            </li>
         
       </ul>
     </div>
@@ -126,20 +75,6 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
         
     </div>
 </header>
@@ -192,13 +127,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        今天晚上为了安装CUDA弄了半天，一切都是为了省那么1G的流量，哎，学校按照流量收费真的花不起啊～
-由于CUDA需要进入tty来解决，但是我电脑打开偏偏又黑屏，找到好久才找到一个解决办法：
-
-编辑/etc/default/grub
-修改GRUB_CMDLINE_LINUX_DEFAULT的值为nomodeset
-更新grub：sudo update-grub
-重启参考文章：安装NVidia显...
+        今天晚上为了安装CUDA弄了半天，一切都是为了省那么1...
     
 
         <a href="/55.html" class="post-more waves-effect waves-button">
@@ -239,9 +168,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Pymol是一个开放源码，由使用者赞助的分子三维结构显示软件，由Warren Lyford DeLano编写，并且由DeLano Scientific LLC负责商业发行。
-Pymol被用来创作高品质的分子（特别是生物大分子如蛋白质）三维结构。据软件作者宣称，在所有正式发表的科学论文中的蛋白质结构图像中，有四分之一是使用Pymol来制作的。
-Pymol名字的来源：“Py”表示该软件基于pyt...
+        Pymol是一个开放源码，由使用者赞助的分子三维结构显...
     
 
         <a href="/47.html" class="post-more waves-effect waves-button">
@@ -282,16 +209,7 @@ Pymol名字的来源：“Py”表示该软件基于pyt...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        由于gromacs，amber等都需要CUDA的安装，所以我们将其额外的提出来讲解其安装
-点击下载：CUDA驱动
-我的选择如下：
-第一个和第二个为本地安装，第三个为在线安装
-[
-                
-                    
-                    
-                
-                深度截图201512030027...
+        由于gromacs，amber等都需要CUDA的安装，...
     
 
         <a href="/40.html" class="post-more waves-effect waves-button">
@@ -332,13 +250,7 @@ Pymol名字的来源：“Py”表示该软件基于pyt...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        gromacs 5以上安装版本的流程与方法是一样的，乃至于4.6X版本同样可以使用这种方法，我这里以5.0.2版本为例进行的安装。
-默认安装在各位文件夹（我的用户名kangsgo）的mdinstall下：
-一.预先安装：
-sudo apt-get install gcc
-sudo apt-get install g++
-sudo apt-get install gfortran
-PS：若你只...
+        gromacs 5以上安装版本的流程与方法是一样的，乃...
     
 
         <a href="/31.html" class="post-more waves-effect waves-button">
@@ -379,14 +291,7 @@ PS：若你只...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Sci-hub是一个非常好用的下载文献的在线网站，只需要输入DOI号或者连接，就会析出想要的文章 （不是全部）。方法也很简单：
-SCI-HUB地址：sci-hub.io
-首先搜索到你需要的论文DOI号：[
-                
-                    
-                    
-                
-                图片...
+        Sci-hub是一个非常好用的下载文献的在线网站，只需...
     
 
         <a href="/10.html" class="post-more waves-effect waves-button">
@@ -427,8 +332,7 @@ SCI-HUB地址：sci-hub.io
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        欢迎使用WordPress。这是您的第一篇文章。编辑或删除它，然后开始写作吧！
-
+        欢迎使用WordPress。这是您的第一篇文章。编辑或...
     
 
         <a href="/1.html" class="post-more waves-effect waves-button">
@@ -455,15 +359,6 @@ SCI-HUB地址：sci-hub.io
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -473,7 +368,7 @@ SCI-HUB地址：sci-hub.io
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -487,106 +382,21 @@ SCI-HUB地址：sci-hub.io
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/11/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/11/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/11/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/11/&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/11/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0klEQVR42u3aQY7EIAwF0b7/pTPSbEfQ9W2MMlKxaqUTeMnCMjafDx7P7yBXyJ376weGXLly29xnO/5Ovfo3faXVDKt75MqVe5+7DzT7FyAxZzVnHOzkypX7Mi4JW8sABAKZXLly/yO3hibPypUr951cvgBffp8Gje/V5MqV2+CmBdOJ34P1Xbly5YbcJxy8EUKeileXK1fuFS5voPLEhczZ2Q7JlSt3mpsWRDohjyc0QQiTK1fuALcfjGoJDW/EBtskuXLlHuKmZc00PNW2QMtn5cqVe4VbK4zy1KfWuA0+ily5cse4nWMWPDCRtAZte+TKlTvMTQsZJJylXysufMiVK/ciN124s7FJt1WoJyxXrtxDXJKyTJ+VqpVQ5cqVO8fdB6/+xoYHRJRayZUr9wq3Vrg8Ram1YOXKlTvNJTd1UpM0zH15Dbly5V7knj14UeznkJKuXLlyL3LTogZfuFNOPVaDkStXbj1ifNKF+VEqHvL6BVy5cuWe4vLg1SmnkmIKemG5cuVe5PJtTBqM0lTmyz1y5cp9GTdttfLZgiRJrly5r+emLRaSygQnyOTKlTvMrR2e4KkPOnR1tiwiV67cBrdTMK01XzuHM+TKlTvM/QGSWt1E5JIO4gAAAABJRU5ErkJggg==" alt="微信分享二维码">
-</div>
-
-
-
-
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: , REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/main.min.js?v=1.6.16"></script>
 
 
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

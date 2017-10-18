@@ -16,8 +16,6 @@
     <title>[转载]linux screen 命令详解 | 小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="theme-color" content="#3F51B5">
-    
     
     <meta name="keywords" content="">
     <meta name="description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
@@ -27,22 +25,22 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef.jpg">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/3.jpg">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/4.jpg">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/5.jpg">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/6.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg">
+<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg">
 <meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转载]linux screen 命令详解">
 <meta name="twitter:description" content="由于做MD,近期搞了一个linux的小型服务器，用来协助跑MD,但是关闭putty之后相当于终端关闭了，以前用过screen，所以现在重新了解一下：Tang的博文非常不错，所以转载给自己留着备用 一、背景系统管理员经常需要SSH 或者telent 远程登录到Linux 服务器，经常运行一些需要很长时间才能完成的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg">
+<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -53,73 +51,24 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:undefined" class="mail">
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-link"></i>
-                测试
-              </a>
-            </li>
         
       </ul>
     </div>
@@ -134,20 +83,6 @@
         </a>
         <div class="flex-col header-title ellipsis">[转载]linux screen 命令详解</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
         
     </div>
 </header>
@@ -176,13 +111,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#会话恢复"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">会话恢复</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多窗口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">多窗口</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、语法"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、语法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#screen-AmRvx-ls-wipe-d-lt-作业名称-gt-h-lt-行数-gt-r-lt-作业名称-gt-s-S-lt-作业名称-gt"><span class="post-toc-number"></span> <span class="post-toc-text">screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s ][-S <作业名称>]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、常用screen参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">四、常用screen参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、使用-screen"><span class="post-toc-number">2.</span> <span class="post-toc-text">五、使用 screen</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-安装screen"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">5.1 安装screen</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-创建一个新的窗口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">5.2 创建一个新的窗口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-查看窗口和窗口名称"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">5.3 查看窗口和窗口名称</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-会话分离与恢复"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">5.4 会话分离与恢复</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#暂时中断会话"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">暂时中断会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重新连接会话："><span class="post-toc-number">2.6.</span> <span class="post-toc-text">重新连接会话：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-5-清除dead-会话"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">5.5 清除dead 会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-6-关闭或杀死窗口"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">5.6 关闭或杀死窗口</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、screen-高级应用"><span class="post-toc-number">3.</span> <span class="post-toc-text">六、screen 高级应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-1-会话共享"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">6.1 会话共享</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-会话锁定与解锁"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">6.2 会话锁定与解锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-发送命令到screen会话"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">6.3 发送命令到screen会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-4-屏幕分割"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">6.4 屏幕分割</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-5-C-P模式和操作"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">6.5 C/P模式和操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-6-更多screen功能"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">6.6 更多screen功能</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-    
 <article id="post-e8-bd-ac-e8-bd-bdlinux-screen-e5-91-bd-e4-bb-a4-e8-af-a6-e8-a7-a3"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -197,10 +125,6 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -224,39 +148,15 @@
 <p>Screen默认会为窗口命名为编号和窗口中运行程序名的组合，上面的例子中窗口都是默认名字。练习了上面查看窗口的方法，你可能就希望各个窗口可以有不同的名字以方便区分了。可以使用快捷键C-a A来为当前窗口重命名，按下快捷键后，Screen会允许你为当前窗口输入新的名字，回车确认。</p>
 <h3 id="5-4-会话分离与恢复"><a href="#5-4-会话分离与恢复" class="headerlink" title="5.4 会话分离与恢复"></a>5.4 会话分离与恢复</h3><p>你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/david.txt文件：</p>
 <p>[root@TS-DEV ~]# screen vi /tmp/david.txt<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p>
-<h3 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h3><p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg" alt="29144351-ff7e78c079a44f51ae44d48b6942b87f](http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg)" title="">
-                </div>
-                <div class="image-caption">29144351-ff7e78c079a44f51ae44d48b6942b87f](http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg)</div>
-            </figure></p>
+<h3 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h3><p><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144351-ff7e78c079a44f51ae44d48b6942b87f-300x136.jpg" alt="29144351-ff7e78c079a44f51ae44d48b6942b87f"></a></p>
 <p>半个小时之后回来了，找到该screen会话：</p>
-<p><pre>[root@TS-DEV ~]# screen -ls</pre><br>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef.jpg" alt="29144759-7cea9fc3f5f4481ab21df8bd017c88ef](http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg)" title="">
-                </div>
-                <div class="image-caption">29144759-7cea9fc3f5f4481ab21df8bd017c88ef](http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg)</div>
-            </figure></p>
+<p><pre>[root@TS-DEV ~]# screen -ls</pre><br><a href="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/29144759-7cea9fc3f5f4481ab21df8bd017c88ef-300x39.jpg" alt="29144759-7cea9fc3f5f4481ab21df8bd017c88ef"></a></p>
 <h3 id="重新连接会话："><a href="#重新连接会话：" class="headerlink" title="重新连接会话："></a>重新连接会话：</h3><p><pre>[root@TS-DEV ~]# screen -r 12865</pre><br>一切都在。</p>
 <p>当然，如果你在另一台机器上没有分离一个Screen会话，就无从恢复会话了。</p>
 <p>这时可以使用下面命令强制将这个会话从它所在的终端分离，转移到新的终端上来：</p>
-<p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/3.jpg" alt="3](http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg)" title="">
-                </div>
-                <div class="image-caption">3](http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg)</div>
-            </figure></p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/3.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/3-300x96.jpg" alt="3"></a></p>
 <h3 id="5-5-清除dead-会话"><a href="#5-5-清除dead-会话" class="headerlink" title="5.5 清除dead 会话"></a>5.5 清除dead 会话</h3><p>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话：</p>
-<p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/4.jpg" alt="4](http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg)" title="">
-                </div>
-                <div class="image-caption">4](http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg)</div>
-            </figure></p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/4.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/4-300x195.jpg" alt="4"></a></p>
 <h3 id="5-6-关闭或杀死窗口"><a href="#5-6-关闭或杀死窗口" class="headerlink" title="5.6 关闭或杀死窗口"></a>5.6 关闭或杀死窗口</h3><p>正常情况下，当你退出一个窗口中最后一个程序（通常是bash）后，这个窗口就关闭了。另一个关闭窗口的方法是使用C-a k，这个快捷键杀死当前的窗口，同时也将杀死这个窗口中正在运行的进程。</p>
 <p>如果一个Screen会话中最后一个窗口被关闭了，那么整个Screen会话也就退出了，screen进程会被终止。</p>
 <p>除了依次退出/杀死当前Screen会话中所有窗口这种方法之外，还可以使用快捷键C-a :，然后输入quit命令退出Screen会话。需要注意的是，这样退出会杀死所有窗口并退出其中运行的所有程序。其实C-a :这个快捷键允许用户直接输入的命令有很多，包括分屏可以输入split等，这也是实现Screen功能的一个途径，不过个人认为还是快捷键比较方便些。</p>
@@ -268,22 +168,10 @@
 <p><pre>[root@TS-DEV ~]# screen -S sandy -X screen ping www.baidu.com</pre><br>这个命令在一个叫做sandy的screen会话中创建一个新窗口，并在其中运行ping命令。</p>
 <h3 id="6-4-屏幕分割"><a href="#6-4-屏幕分割" class="headerlink" title="6.4 屏幕分割"></a>6.4 屏幕分割</h3><p>现在显示器那么大，将一个屏幕分割成不同区域显示不同的Screen窗口显然是个很酷的事情。可以使用快捷键C-a S将显示器水平分割，Screen 4.00.03版本以后，也支持垂直分屏，快捷键是C-a |。分屏以后，可以使用C-a 在各个区块间切换，每一区块上都可以创建窗口并在其中运行进程。</p>
 <p>可以用C-a X快捷键关闭当前焦点所在的屏幕区块，也可以用C-a Q关闭除当前区块之外其他的所有区块。关闭的区块中的窗口并不会关闭，还可以通过窗口切换找到它。</p>
-<p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/5.jpg" alt="5](http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg)" title="">
-                </div>
-                <div class="image-caption">5](http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg)</div>
-            </figure></p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/5.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/5-300x155.jpg" alt="5"></a></p>
 <h3 id="6-5-C-P模式和操作"><a href="#6-5-C-P模式和操作" class="headerlink" title="6.5 C/P模式和操作"></a>6.5 C/P模式和操作</h3><p>screen的另一个很强大的功能就是可以在不同窗口之间进行复制粘贴了。使用快捷键C-a 或者C-a [可以进入copy/paste模式，这个模式下可以像在vi中一样移动光标，并可以使用空格键设置标记。其实在这个模式下有很多类似vi的操作，譬如使用/进行搜索，使用y快速标记一行，使用w快速标记一个单词等。关于C/P模式下的高级操作，其文档的这一部分有比较详细的说明。</p>
 <p>一般情况下，可以移动光标到指定位置，按下空格设置一个开头标记，然后移动光标到结尾位置，按下空格设置第二个标记，同时会将两个标记之间的部分储存在copy/paste buffer中，并退出copy/paste模式。在正常模式下，可以使用快捷键C-a ]将储存在buffer中的内容粘贴到当前窗口。</p>
-<p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2016/05/6.jpg" alt="6](http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg)" title="">
-                </div>
-                <div class="image-caption">6](http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg)</div>
-            </figure></p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2016/05/6.jpg"><img src="http://kangsgo.com/wp-content/uploads/2016/05/6-300x155.jpg" alt="6"></a></p>
 <h3 id="6-6-更多screen功能"><a href="#6-6-更多screen功能" class="headerlink" title="6.6 更多screen功能"></a>6.6 更多screen功能</h3><p>同大多数UNIX程序一样，GNU Screen提供了丰富强大的定制功能。你可以在Screen的默认两级配置文件/etc/screenrc和$HOME/.screenrc中指定更多，例如设定screen选项，定制绑定键，设定screen会话自启动窗口，启用多用户模式，定制用户访问权限控制等等。如果你愿意的话，也可以自己指定screen配置文件。</p>
 <p>以多用户功能为例，screen默认是以单用户模式运行的，你需要在配置文件中指定multiuser on 来打开多用户模式，通过acl*（acladd,acldel,aclchg…）命令，你可以灵活配置其他用户访问你的screen会话。更多配置文件内容请参考screen的man页。</p>
 <p>转载自：Tang的<a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="external">linux screen 命令详解</a></p>
@@ -293,79 +181,24 @@
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.230Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
-</span><br>
 
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/376.html" target="_blank" rel="external">http://kangsgo.com/376.html</a>
         
     </div>
     <footer>
         <a href="http://kangsgo.com">
-            <img src="/img/avatar.jpg" alt="kangsgo">
+            <img src="/" alt="kangsgo">
             kangsgo
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
             
 
             
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/376.html&title=《[转载]linux screen 命令详解》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/376.html&title=《[转载]linux screen 命令详解》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/376.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]linux screen 命令详解》 — 小康博客&url=http://kangsgo.com/376.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/376.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
 
 
         </div>
@@ -408,32 +241,6 @@
 
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
 
 
 </div>
@@ -441,15 +248,6 @@
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -459,7 +257,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -473,106 +271,21 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/376.html&title=《[转载]linux screen 命令详解》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/376.html&title=《[转载]linux screen 命令详解》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/376.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]linux screen 命令详解》 — 小康博客&url=http://kangsgo.com/376.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/376.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aQW4DIQwF0Nz/0uk2UtTJtw1kIj1W1YTCY2Nh48cjHs+X8frl/dfX7/lqiwcuLu6Y+7wcyZzJCrkBFxf3PPe/iHE9Jw9zvfVxcXF/hfs+PwlA8yPh4uL+Cvc6jbn+jouLe39ukpxUub1jL8vVcHFxB9y8Srnv7y31XVxc3BZ3XvqcX4AKu+Pi4h7h5gEl3/g6/FUDGS4u7re4ScGi93TagxaSH1xc3A3cHqv6oFJd88ONDBcXdzO3er1INqg+yq66DOHi4u7gJqlLL2BVDx8lP7i4uNu41ZSmeu2otmV8CIK4uLhHuEmQqgajvMzRXB8XF/cIN7noVMud+eEnDZ24uLg7uJNLTJ7w9FKpKPnBxcXdwO2lH3mhs5oUNWfi4uJu4M6LnpNH1qS160MtBxcXdzN3bTkjKoBWd8TFxb0Bd9KGVb3QRPNxcXE3c5/FkaRD1ZaOPGXCxcU9w60Gl7WtGEmwax4GFxd3zF1VwliV6nzYBRcX9yA337hXYF320IKLi3tLbl4qzf+30H6Bi4t7S24CWlvywMXF/Ra31zqZH3W+Ai4u7knu5OGzt1m1XQMXF/cg9w+2Arloh9W6JAAAAABJRU5ErkJggg==" alt="微信分享二维码">
-</div>
-
-
-
-
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: , REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/main.min.js?v=1.6.16"></script>
 
 
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

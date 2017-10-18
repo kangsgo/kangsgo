@@ -16,8 +16,6 @@
     <title>gromacs5.0+的详细安装 | 小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="theme-color" content="#3F51B5">
-    
     
     <meta name="keywords" content="">
     <meta name="description" content="gromacs 5以上安装版本的流程与方法是一样的，乃至于4.6X版本同样可以使用这种方法，我这里以5.0.2版本为例进行的安装。 默认安装在各位文件夹（我的用户名kangsgo）的mdinstall下： 一.预先安装： sudo apt-get install gcc sudo apt-get install g++ sudo apt-get install gfortran PS：若你只需要安">
@@ -36,8 +34,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,73 +46,24 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:undefined" class="mail">
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-link"></i>
-                测试
-              </a>
-            </li>
         
       </ul>
     </div>
@@ -129,20 +78,6 @@
         </a>
         <div class="flex-col header-title ellipsis">gromacs5.0+的详细安装</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
         
     </div>
 </header>
@@ -171,13 +106,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-预先安装："><span class="post-toc-number">1.</span> <span class="post-toc-text">一.预先安装：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-安装cmake"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.安装cmake</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案一：直接apt-get"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">方案一：直接apt-get</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案二：本地安装"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">方案二：本地安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进入文件目录："><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">1.进入文件目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-解压缩："><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">2.解压缩：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-进入目录："><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">3.进入目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-设置，附加安装路径，我将其安装在cmake文件夹下"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">4.设置，附加安装路径，我将其安装在cmake文件夹下</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-安装"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">5.安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-设置路径"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">6.设置路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-查看是否安装好"><span class="post-toc-number">2.2.7.</span> <span class="post-toc-text">6*.查看是否安装好</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三-安装fftw"><span class="post-toc-number">3.</span> <span class="post-toc-text">三.安装fftw</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案一-gromacs安装时集成-推荐"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">方案一.gromacs安装时集成[推荐]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案二-自行编译安装"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">方案二.自行编译安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四-安装openmpi"><span class="post-toc-number">4.</span> <span class="post-toc-text">四.安装openmpi</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-同样先要进入开始放置下载的目录："><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">1.同样先要进入开始放置下载的目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-解压缩和进入目录-将其安装在openmpi目录下："><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">2.解压缩和进入目录,将其安装在openmpi目录下：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-安装："><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">3.安装：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-路径设置："><span class="post-toc-number">4.0.4.</span> <span class="post-toc-text">4.路径设置：</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#openmpi"><span class="post-toc-number"></span> <span class="post-toc-text">openmpi</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五-CUDA驱动安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">五.CUDA驱动安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CUDA"><span class="post-toc-number"></span> <span class="post-toc-text">CUDA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六-GROMACS的安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">六.GROMACS的安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进入目录解压进入目录（由于是给予新手帮助，原谅我啰嗦）"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">1.进入目录解压进入目录（由于是给予新手帮助，原谅我啰嗦）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-创建文件夹："><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2.创建文件夹：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-进入文件夹"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">3.进入文件夹</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-编译"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">4.编译</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-安装-1"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">5.安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-设置路径-1"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">6.设置路径</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gromacs"><span class="post-toc-number"></span> <span class="post-toc-text">gromacs</span></a>
-        </nav>
-    </aside>
-    
 <article id="post-gromacs5-0-e7-9a-84-e8-af-a6-e7-bb-86-e5-ae-89-e8-a3-85"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -192,10 +120,6 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -296,13 +220,7 @@
 <p>source ~/.zshrc<br>到此gromacs安装到此结束！</p>
 </blockquote>
 <p>可能每个人软件命令有一些不同，原因不详：</p>
-<p>[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203050352.png" alt="深度截图20151203050352](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203050352.png)" title="">
-                </div>
-                <div class="image-caption">深度截图20151203050352](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203050352.png)</div>
-            </figure></p>
+<p><a href="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203050352.png"><img src="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203050352.png" alt="深度截图20151203050352"></a></p>
 <p>参考文章：1.<span id="thread_subject"><a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=1500&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D127" target="_blank" rel="external">【致谢飞天大神及各位坛友】ubuntu、gromacs、g_mmpbsa的安装</a></span></p>
 <ol>
 <li><span id="thread_subject"><a href="http://bioms.org/forum.php?mod=viewthread&amp;tid=1983&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D126" target="_blank" rel="external">GMX在ubuntu系统下的安装，小编个人的安装经验仅供参考！</a></span></li>
@@ -316,79 +234,24 @@
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.228Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
-</span><br>
 
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/31.html" target="_blank" rel="external">http://kangsgo.com/31.html</a>
         
     </div>
     <footer>
         <a href="http://kangsgo.com">
-            <img src="/img/avatar.jpg" alt="kangsgo">
+            <img src="/" alt="kangsgo">
             kangsgo
         </a>
     </footer>
 </blockquote>
 
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
 
 
         <div class="post-footer">
             
 
             
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/31.html&title=《gromacs5.0+的详细安装》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/31.html&title=《gromacs5.0+的详细安装》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/31.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gromacs5.0+的详细安装》 — 小康博客&url=http://kangsgo.com/31.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/31.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
 
 
         </div>
@@ -431,32 +294,6 @@
 
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
 
 
 </div>
@@ -464,15 +301,6 @@
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -482,7 +310,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2017</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -496,106 +324,21 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/31.html&title=《gromacs5.0+的详细安装》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/31.html&title=《gromacs5.0+的详细安装》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/31.html" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gromacs5.0+的详细安装》 — 小康博客&url=http://kangsgo.com/31.html&via=http://kangsgo.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/31.html" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABXElEQVR42u3awQ6CQAyEYd7/pTHxZKLU6RTQ7Px7MkTdj4PdOnTb5LU/V/f169quWLBgLcTay/W+5dFn6yv6XrBgJbP0olCz6gKh7AULFqya5R3GsGDBuq5AeBRYsGDVLKVpVjZQjuqTe3lYsJZgXRckKTfwg3wLFqw/Y+2DNY+NDr8ZFqwwVh0GKb9f5bp32MOClclSwiO9IfYedn4oELBgBbCUg7YbGyk38KWswIIVyapD2zrMrTc2iwUsWJGs7mCBMkyg33C7bsGCtRyrm6zOy8fkgQ0sWAksfYhHH0TojimYKRcsWEuwvGbXO7yVd8KCBaubB9dN9qQCwIKVwzJHAU56xHJYJmDBCmN5Q3h6zDQJjmHBSmN129/Jn169jYYFK5OlN8eTRrkRHMOCBUtgedBGowwLFixrcKdxDCsFBRasSJY+HOA9aGkf7bBghbHuCZL0YBcWrDDWA1pVnKTZ4syUAAAAAElFTkSuQmCC" alt="微信分享二维码">
-</div>
-
-
-
-
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: , REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/main.min.js?v=1.6.16"></script>
 
 
 
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 
