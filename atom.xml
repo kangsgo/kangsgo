@@ -41,6 +41,27 @@
   </entry>
   
   <entry>
+    <title>Gromacs笔记</title>
+    <link href="http://kangsgo.com/87.html"/>
+    <id>http://kangsgo.com/87.html</id>
+    <published>9999-10-03T18:32:44.000Z</published>
+    <updated>2017-10-29T05:36:32.573Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-安装篇"><a href="#一-安装篇" class="headerlink" title="一.安装篇"></a>一.安装篇</h2><p><a href="http://kangsgo.com/31.html">http://kangsgo.com/31.html</a></p><p><a href="http://kangsgo.com/577.html">http://kangsgo.com/577.html</a></p><h3 id="二-完整教程"><a href="#二-完整教程" class="headerlink" title="二.完整教程"></a>二.完整教程</h3><p><a href="http://kangsgo.com/670.html">http://kangsgo.com/670.html</a></p><p><a href="http://kangsgo.com/681.html">http://kangsgo.com/681.html</a></p><p><a href="http://kangsgo.com/94.html">http://kangsgo.com/94.html</a></p><p><a href="http://kangsgo.com/156.html">http://kangsgo.com/156.html</a></p><p><a href="http://kangsgo.com/694.html">http://kangsgo.com/694.html</a></p><h4 id="三-小技巧合集"><a href="#三-小技巧合集" class="headerlink" title="三.小技巧合集"></a>三.小技巧合集</h4><p><a href="http://kangsgo.com/106.html">http://kangsgo.com/106.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一-安装篇&quot;&gt;&lt;a href=&quot;#一-安装篇&quot; class=&quot;headerlink&quot; title=&quot;一.安装篇&quot;&gt;&lt;/a&gt;一.安装篇&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://kangsgo.com/31.html&quot;&gt;http://kangsgo.com/31
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>chimera制作旋转动画</title>
     <link href="http://kangsgo.com/834.html"/>
     <id>http://kangsgo.com/834.html</id>
@@ -110,9 +131,9 @@
       <category term="分子对接" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/"/>
     
     
-      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
-    
       <category term="Dock" scheme="http://kangsgo.com/tags/Dock/"/>
+    
+      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -324,9 +345,9 @@
       <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
     
     
-      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
-    
       <category term="amber" scheme="http://kangsgo.com/tags/amber/"/>
+    
+      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
     
   </entry>
   
@@ -511,32 +532,6 @@
       <category term="粗粒化" scheme="http://kangsgo.com/tags/%E7%B2%97%E7%B2%92%E5%8C%96/"/>
     
       <category term="VMD" scheme="http://kangsgo.com/tags/VMD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gromacs 5.1.2做拉伸动力学的几点笔记</title>
-    <link href="http://kangsgo.com/694.html"/>
-    <id>http://kangsgo.com/694.html</id>
-    <published>2017-08-19T07:14:18.000Z</published>
-    <updated>2017-10-28T15:04:45.815Z</updated>
-    
-    <content type="html"><![CDATA[<p>因为后期实验需要用到，最近几天在学习拉伸动力学模拟，虽然拉伸动力学教程为5.X版本，但是自5.1版本对于pull模块还是有较大的变化，这里和大家分享一下其中遇到的问题和我自己的解决方法。</p><p><strong>英文版已经升级到5.1最新了，可能用5.1版本不会遇到这些问题</strong></p><p>首先第一条就遇到了一点小问题</p><pre class="EnlighterJSRAW" data-enlighter-language="shell">gmx pdb2gmx -f input.pdb -ignh -ter -o complex.gro</pre><p>其提示选择什么水模型，我选择的SPC模型，个人觉得加<code>-water tip3p</code>更佳？因为不知道最后采用的什么水模型。也没要TIP3P，TIP4P之类的选项让人没有底。</p><p>在进行构型生成的时候，会有一系列的错误，我们首先来看教程中的</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">; Pull code</div><div class="line">pull = yes</div><div class="line">pull_ngroups = 2</div><div class="line">pull_ncoords = 1</div><div class="line">pull_group1_name = Chain_A</div><div class="line">pull_group2_name = Chain_B</div><div class="line">pull_coord1_type = umbrella ; harmonic biasing force</div><div class="line">pull_coord1_geometry = distance ; simple distance increase</div><div class="line">pull_coord1_groups = 1 2</div><div class="line">pull_coord1_dim = N N Y</div><div class="line">pull_coord1_rate = 0.01 ; 0.01 nm per ps = 10 nm per ns</div><div class="line">pull_coord1_k = 1000 ; kJ mol^-1 nm^-2</div><div class="line">pull_start = yes ; define initial COM distance &amp;gt; 0</div></pre></td></tr></table></figure><p>第一个为pull_start提示的warning，现在该参数在新版中已经没有，需要改成<code>pull_coord1_start</code> （英文版本已经改过来了）<br>参考的为：<a href="https://mailman-1.sys.kth.se/pipermail/gromacs.org_gmx-users/2016-March/104109.html" target="_blank" rel="external">https://mailman-1.sys.kth.se/pipermail/gromacs.org_gmx-users/2016-March/104109.html</a></p><p><code>NOTE 1</code>提示的没有设置特定的<code>cutoff-scheme</code>的值，<code>cutoff-scheme</code>gromacs中只有group方案和Verlet方案，group方案较老，可能新的版本已经不存在了，同时速度也较差，具体可以查看。<a href="http://www.gromacs.org/Documentation/Cut-off_schemes" target="_blank" rel="external">http://www.gromacs.org/Documentation/Cut-off_schemes</a></p><p><code>nstlist</code>可以设置超过10，因为在Verlet算法中nstlist不影响精确度</p><p><code>leapfrog does not yet support Nose-Hoover chains, nhchainlength reset to 1</code>这个问题有人说无关紧要，有人说可以<br><a href="http://gromacs.org_gmx-users.maillist.sys.kth.narkive.com/cXo18Y84/dr-lemkul-s-umbrella-sampling-tutorial-grompp-note-on-leap-frog-nose-hoover" target="_blank" rel="external">http://gromacs.org_gmx-users.maillist.sys.kth.narkive.com/cXo18Y84/dr-lemkul-s-umbrella-sampling-tutorial-grompp-note-on-leap-frog-nose-hoover</a></p><p><code>nstcomm &amp;amp;lt; nstcalcenergy defeats the purpose of nstcalcenergy, setting nstcomm to nstcalcenergy</code>中nstomm选项是用来去除质心的整体运动的，如果不使用的话，体系整体会有平动速度，沿某一方向平移，去除后就没有这种现象了，轨迹看起来也正常一些。一个办法是不去管他（我的方法），另外一个可以nstcalcenergy设置为10</p><p><code>distances.pl</code>脚本李老师翻译的版本中<code>gmx distance</code>中<code>-oaxy</code>命令已经过时，可以使用英文网站上的perl脚本，但是我使用还是会有阅读不全的问题，好像是阻塞的缘故，但是自己不会用perl就重新用python写了一个，如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*-coding:utf-8-*-</span></div><div class="line"></div><div class="line"><span class="comment"># usage:python distances.py [filenum=501]</span></div><div class="line"><span class="comment"># example:python distances.py</span></div><div class="line"></div><div class="line">import os,re,sys</div><div class="line"></div><div class="line">try:</div><div class="line">num=int(sys.argv[1])</div><div class="line">except:</div><div class="line">num=501</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num):</div><div class="line">cmd=<span class="string">"gmx distance -s pull.tpr -f conf%s.gro -n index.ndx -oall dist%s.xvg -select \'com of group \"Chain_A\" plus com of group \"Chain_B\"\' "</span> %(str(i),str(i))</div><div class="line">os.system(cmd)</div><div class="line"></div><div class="line">output=open(<span class="string">'summary_distances.dat'</span>,<span class="string">'a'</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num):</div><div class="line">file=<span class="string">'dist'</span>+str(i)+<span class="string">'.xvg'</span></div><div class="line"><span class="keyword">if</span> os.path.exists(file):</div><div class="line">input=open(file,<span class="string">'r'</span>)</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> input:</div><div class="line"><span class="keyword">if</span> re.match(r<span class="string">'^[#@]'</span>,line):</div><div class="line">pass</div><div class="line"><span class="keyword">else</span>:</div><div class="line">num,distance=line.split()</div><div class="line"><span class="comment">#print(distance)</span></div><div class="line">output.write(str(i)+<span class="string">"\t"</span>)</div><div class="line">output.write(distance)</div><div class="line">output.write(<span class="string">'\n'</span>)</div><div class="line">input.close()</div><div class="line">output.close()</div></pre></td></tr></table></figure><p><code>setupUmbrella.py</code>python版本为2.x，像我这种用3版本的就尴尬了，又不想重新写，就用conda环境包弄一下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda create --name python2 python=2.7</div><div class="line"><span class="built_in">source</span> activate python</div></pre></td></tr></table></figure></p><p>&nbsp;</p><p><code>run-umbrella.sh</code>中需要前面需要加<code>gmx</code>，如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># Short equilibration</span></div><div class="line">gmx grompp -f npt_umbrella.mdp -c confXXX.gro -p topol.top -n index.ndx -o nptXXX.tpr</div><div class="line">gmx mdrun -deffnm nptXXX</div><div class="line"><span class="comment"># Umbrella run</span></div><div class="line">gmx grompp -f md_umbrella.mdp -c nptXXX.gro -t nptXXX.cpt -p topol.top -n index.ndx -o umbrellaXXX.tpr</div><div class="line">gmx mdrun -deffnm umbrellaXXX -pf pullf-umbrellaXXX.xvg -px pullx-umbrellaXXX.xvg</div></pre></td></tr></table></figure><p>后面也是<code>pull_coord1_start</code>的问题，修改一下即可</p><p>&nbsp;</p><p>&nbsp;</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;因为后期实验需要用到，最近几天在学习拉伸动力学模拟，虽然拉伸动力学教程为5.X版本，但是自5.1版本对于pull模块还是有较大的变化，这里和大家分享一下其中遇到的问题和我自己的解决方法。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;英文版已经升级到5.1最新了，可能用5.1版本不会遇到这
-      
-    
-    </summary>
-    
-      <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
-    
-    
-      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
     
   </entry>
   
