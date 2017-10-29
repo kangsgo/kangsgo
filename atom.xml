@@ -131,9 +131,9 @@
       <category term="分子对接" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/"/>
     
     
-      <category term="Dock" scheme="http://kangsgo.com/tags/Dock/"/>
-    
       <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="Dock" scheme="http://kangsgo.com/tags/Dock/"/>
     
   </entry>
   
@@ -345,9 +345,9 @@
       <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
     
     
-      <category term="amber" scheme="http://kangsgo.com/tags/amber/"/>
-    
       <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
+    
+      <category term="amber" scheme="http://kangsgo.com/tags/amber/"/>
     
   </entry>
   
