@@ -19,15 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Gromacs">
     <meta name="description" content="由于gromacs需要二面角参数，然而文献中给的CHARMM力场的二面角力场不够，正好看到amber有非标准残基的制作，所以想看一下能不能出坑，没想到一坑比一坑高，爬出一个坑又掉进另外一个坑，坑坑相连，所以在这里把amber非标准残基的小坑给理清楚，给后来人，当然等我非标准氨基酸残基系统的跑完以后会分享给大家完整的流程，大家同样可以看一下是否可以跑出来。 问题1在使用如下命令生成bcc电荷时发生了">
+<meta name="keywords" content="Gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="amber非标准残基生成的小坑">
 <meta property="og:url" content="http://kangsgo.com/748.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="由于gromacs需要二面角参数，然而文献中给的CHARMM力场的二面角力场不够，正好看到amber有非标准残基的制作，所以想看一下能不能出坑，没想到一坑比一坑高，爬出一个坑又掉进另外一个坑，坑坑相连，所以在这里把amber非标准残基的小坑给理清楚，给后来人，当然等我非标准氨基酸残基系统的跑完以后会分享给大家完整的流程，大家同样可以看一下是否可以跑出来。 问题1在使用如下命令生成bcc电荷时发生了">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:00:17.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="amber非标准残基生成的小坑">
 <meta name="twitter:description" content="由于gromacs需要二面角参数，然而文献中给的CHARMM力场的二面角力场不够，正好看到amber有非标准残基的制作，所以想看一下能不能出坑，没想到一坑比一坑高，爬出一个坑又掉进另外一个坑，坑坑相连，所以在这里把amber非标准残基的小坑给理清楚，给后来人，当然等我非标准氨基酸残基系统的跑完以后会分享给大家完整的流程，大家同样可以看一下是否可以跑出来。 问题1在使用如下命令生成bcc电荷时发生了">
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
             
         </h5>
@@ -169,7 +170,7 @@
         </nav>
     </aside>
     
-<article id="post-amber-e9-9d-9e-e6-a0-87-e5-87-86-e6-ae-8b-e5-9f-ba-e7-94-9f-e6-88-90-e7-9a-84-e5-b0-8f-e5-9d-91"
+<article id="post-amber非标准残基生成的小坑"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -178,7 +179,7 @@
             <time class="post-time" title="2017-09-13 15:10:59" datetime="2017-09-13T07:10:59.000Z"  itemprop="datePublished">2017-09-13</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -192,58 +193,28 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>由于gromacs需要二面角参数，然而文献中给的CHARMM力场的二面角力场不够，正好看到amber有非标准残基的制作，所以想看一下能不能出坑，没想到一坑比一坑高，爬出一个坑又掉进另外一个坑，坑坑相连，所以在这里把amber非标准残基的小坑给理清楚，给后来人，当然等我非标准氨基酸残基系统的跑完以后会分享给大家完整的流程，大家同样可以看一下是否可以跑出来。</p>
 <h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><p>在使用如下命令生成bcc电荷时发生了报错</p>
-<blockquote>
-<div class="code_box">antechamber -fi ccif -i CRO.cif -bk CRO -fo ac -o cro.ac -c bcc -at amber</div>
-
-</blockquote>
-<div>错误信息如下：</div>
-
-<blockquote>
-<div>/Residue CRO has a type of LINKING. Quitting/</div>
-
-</blockquote>
-<div>解决办法为删除含有LINKING那一行。</div>
-
-<div></div>
-
-<h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><div></div>
-
-<div>但是有出现了另外一个问题</div>
-
-<blockquote>
-<div>processor.acdoctor mode is on: check and diagnosis problems in the input<br>file.antechamber: mmcif.c:70: rmmcif: Assertion `col2 &gt;= 0’ failed.Aborted<br>(core dumped)*</div>
-
-</blockquote>
-<div>这个问题在2017年8月提交的错误邮件，所以说应该是AmberTools17工具新的问题，可能老版本没有问题</div>
-
-<div></div>
-
-<div>这个解决办法稍微复杂一些，方法如下:</div>
-
-<div>在<strong>$AMBERHOME/AmberTools/src/antechamber</strong> 下的<strong>mmcif.c</strong>中的第68行那一段进行编辑，可以对那一段使用<strong>*</strong>进行注释，</div>
-
-<div>然后在该目录下进行重新编译</div>
-
-<blockquote>
-<div>make install</div>
-
-</blockquote>
-<div>至此两个问题都可以得到解决，跑出来的文件也是一样的。</div>
-
-<div></div>
-
-<div></div>
-
-<div>参考:<a href="http://archive.ambermd.org/201608/0419.html" target="_blank" rel="external">[AMBER] Tutorial B5 - Loading CRO from ccif file</a></div>
-
-<div>       <a href="http://archive.ambermd.org/201708/0312.html" target="_blank" rel="external"> [AMBER] Error while running antechamber for modified amino acid residue</a></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">antechamber -<span class="keyword">fi</span> ccif -i CRO.cif -bk CRO -fo ac -o cro.ac -c bcc -at amber</div></pre></td></tr></table></figure>
+<p>错误信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Residue CRO has a type of LINKING. Quitting/</div></pre></td></tr></table></figure>
+<p>解决办法为删除含有LINKING那一行。</p>
+<h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><p>但是有出现了另外一个问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">processor.acdoctor mode is on: check and diagnosis problems in the input</div><div class="line">file.antechamber: mmcif.c:70: rmmcif: Assertion `col2 &amp;gt;= 0&apos; failed.Aborted</div><div class="line">(core dumped)*</div></pre></td></tr></table></figure>
+<p>这个问题在2017年8月提交的错误邮件，所以说应该是AmberTools17工具新的问题，可能老版本没有问题</p>
+<p>这个解决办法稍微复杂一些，方法如下:</p>
+<p>在<strong>$AMBERHOME/AmberTools/src/antechamber</strong> 下的<strong>mmcif.c</strong>中的第68行那一段进行编辑，可以对那一段使用<strong>*</strong>进行注释，</p>
+<p>然后在该目录下进行重新编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make install</div></pre></td></tr></table></figure>
+<p>至此两个问题都可以得到解决，跑出来的文件也是一样的。</p>
+<p>参考:<a href="http://archive.ambermd.org/201608/0419.html" target="_blank" rel="external">[AMBER] Tutorial B5 - Loading CRO from ccif file</a></p>
+<pre><code>[ [AMBER] Error while running antechamber for modified amino acid residue](http://archive.ambermd.org/201708/0312.html)&lt;/div&gt;
+</code></pre>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:00:17.249Z" itemprop="dateUpdated">2017-10-29 11:00:17</time>
 </span><br>
 
 
@@ -268,6 +239,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
 
             
 <div class="page-share-wrap">

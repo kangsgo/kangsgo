@@ -1,0 +1,30 @@
+draw color blue
+set rkp1 [atomselect 1 "name CA"]
+set rkp0 [atomselect 0 "name CA"]
+set matrix [measure fit  $rkp1 $rkp0]
+$rkp1 move $matrix
+set rks1 [atomselect 1 "resid 2 and name CA"]
+set rks0 [atomselect 0 "resid 2 and name CA"]
+set rkv1 [lindex [$rks1 get {x y z}] 0]
+set rkv0 [lindex [$rks0 get {x y z}] 0]
+graphics 0 cone $rks0 $rks1 radius 0.35
+puts $rks0
+graphics 0 cone $rkv0 $rkv1 radius 0.35
+set rkv3 vecsub [[vecscale 2.0 $rkv1][vecscale 1.0 $rkv0]]
+set rkv3 vecsub {[vecscale 2.0 $rkv1][vecscale 1.0 $rkv0]}
+set rkv3 { vecsub [vecscale 2.0 $rkv1][vecscale 1.0 $rkv0]}
+puts $rkv3
+vecscale 2.0 $rkv1
+vecsub [vecscale 2.0 $rkv1][vecscale 1.0 $rkv0]
+set vec1 vecscale 2.0 $rkv1
+set vstart1 vecscale 2.0 $rkv1
+set vstart1 [vecscale 2.0 $rkv1]
+set vstart0 [vecscale 1.0 $rkv0]
+set vstart2 [vecsub $vstart1 $vstart0]
+graphics 0 cone $vstart2 $vstart0 radius 0.35
+set vstart1 [vecscale 9.0 $rkv1]
+set vstart0 [vecscale 8.0 $rkv0]
+set vstart2 [vecsub $vstart1 $vstart0]
+graphics 0 cone $vstart2 $vstart0 radius 0.35
+graphics 0 cone $vstart2 $rks0 radius 0.35
+graphics 0 cone $vstart2 $rkv0 radius 0.35

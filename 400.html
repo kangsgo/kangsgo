@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda  # 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.sh bash Anaconda3-2.5.0-Linux-x8">
+    <meta name="keywords" content="软件安装,gromacs">
+    <meta name="description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda123# 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.shbash Anaconda3-2.5.0-Linux-x86">
+<meta name="keywords" content="软件安装,gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mdtraj安装">
 <meta property="og:url" content="http://kangsgo.com/400.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda  # 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.sh bash Anaconda3-2.5.0-Linux-x8">
+<meta property="og:description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda123# 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.shbash Anaconda3-2.5.0-Linux-x86">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
+<meta property="og:updated_time" content="2017-10-28T03:56:32.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mdtraj安装">
-<meta name="twitter:description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda  # 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.sh bash Anaconda3-2.5.0-Linux-x8">
+<meta name="twitter:description" content="mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda123# 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.shbash Anaconda3-2.5.0-Linux-x86">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -162,7 +163,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-mdtraj-e5-ae-89-e8-a3-85"
+<article id="post-mdtraj安装"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -183,27 +184,15 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda</p>
-<pre>
-# 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7
-wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.sh
-bash Anaconda3-2.5.0-Linux-x86_64.sh
-</pre>
-
+            <p>mdtraj安装有两种方式，一种是用conda，比较方便省事，先安装conda<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下载时要看清楚 Anaconda3 还是 2，对应的是 Python 3.5 和 2.7</span></div><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/Anaconda3-2.5.0-Linux-x86_64.sh</div><div class="line">bash Anaconda3-2.5.0-Linux-x86_64.sh</div></pre></td></tr></table></figure></p>
 <p>设置安装目录以及添加环境变量到bashrc</p>
 <p>若使用的为zshrc的话自己需要改一下，修改办法可以查阅我之前的博文</p>
 <p>然后：</p>
-<blockquote>
-<p>conda install -c omnia mdtraj</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda install -c omnia mdtraj</div></pre></td></tr></table></figure>
 <p>另外一个办法就是用pip安装，我选用的这个方法：</p>
-<blockquote>
-<p>pip install numpy cython</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install numpy cython</div></pre></td></tr></table></figure>
 <p>因为我直接安装报错，提示以上两个版本不够，所以先安装numpy和cython</p>
-<blockquote>
-<p>pip install mdtraj -i <a href="https://pypi.douban.com/simple" target="_blank" rel="external">https://pypi.douban.com/simple</a></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mdtraj -i https://pypi.douban.com/simple</div></pre></td></tr></table></figure>
 <p>选用的是豆瓣源，因为官方老是下载不下来````</p>
 <p>镜像可以参考：</p>
 <pre>
@@ -218,7 +207,7 @@ http://pypi.mirrors.ustc.edu.cn/  中国科学技术大学
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.230Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T03:56:32.622Z" itemprop="dateUpdated">2017-10-28 11:56:32</time>
 </span><br>
 
 
@@ -243,6 +232,8 @@ http://pypi.mirrors.ustc.edu.cn/  中国科学技术大学
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
 
             
 <div class="page-share-wrap">

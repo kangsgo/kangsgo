@@ -19,16 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="VMD,粗粒化">
+    <meta name="keywords" content="粗粒化,VMD">
     <meta name="description" content="此篇文章是简单的归纳总结官网的Rendering CG bonds &amp;amp; constraints with VMD, 查看的时候的时间为16 August 2017，请注意时效性。 该脚本分为两个版本，一个是gromacs5以前版本，一个是gromacs5版本（包括2016），以下均以cg_bonds-v5.tcl为例 使用方法：使用的方法与VMD其他脚本类似，即source一下即可  so">
-<meta name="keywords" content="VMD,粗粒化">
+<meta name="keywords" content="粗粒化,VMD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMD可视化粗粒化力场简单介绍">
 <meta property="og:url" content="http://kangsgo.com/759.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="此篇文章是简单的归纳总结官网的Rendering CG bonds &amp;amp; constraints with VMD, 查看的时候的时间为16 August 2017，请注意时效性。 该脚本分为两个版本，一个是gromacs5以前版本，一个是gromacs5版本（包括2016），以下均以cg_bonds-v5.tcl为例 使用方法：使用的方法与VMD其他脚本类似，即source一下即可  so">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T14:22:29.201Z">
+<meta property="og:updated_time" content="2017-10-28T03:26:25.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VMD可视化粗粒化力场简单介绍">
 <meta name="twitter:description" content="此篇文章是简单的归纳总结官网的Rendering CG bonds &amp;amp; constraints with VMD, 查看的时候的时间为16 August 2017，请注意时效性。 该脚本分为两个版本，一个是gromacs5以前版本，一个是gromacs5版本（包括2016），以下均以cg_bonds-v5.tcl为例 使用方法：使用的方法与VMD其他脚本类似，即source一下即可  so">
@@ -210,17 +210,14 @@
 <p>-mat              “Opaque”       对于elnedyn键的材料</p>
 <p>-rad               0.2               elastic键半径</p>
 <p>-res                6                 elastic键分辨率</p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4><blockquote>
-<p><span style="color: #808080;">user@machine $</span> vmd protein.gro<br><span style="color: #808080;">vmd &gt;</span>  source /home/user/scripts/cg_bonds.tcl<br><span style="color: #808080;">vmd &gt;</span>  cg_bonds -top system.top -topoltype “elastic”<br><span style="color: #808080;">vmd &gt;</span>  cg_bonds -gmx /home/user/bin/gmx-4.5.4/bin/gmxdump -tpr dyn.tpr -net “elastic” -cutoff 12.0 -color “orange” -mat “AOChalky” -res 12 -rad 0.1 -topoltype “elastic”<br><span style="color: #808080;">vmd &gt;</span> cg_delete_elastic_bonds</p>
-</blockquote>
-
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">user@machine $ vmd protein.gro</div><div class="line">vmd &gt;  source /home/user/scripts/cg_bonds.tcl</div><div class="line">vmd &gt;  cg_bonds -top system.top -topoltype “elastic”</div><div class="line">vmd &gt;  cg_bonds -gmx /home/user/bin/gmx-4.5.4/bin/gmxdump -tpr dyn.tpr -net “elastic” -cutoff 12.0 -color “orange” -mat “AOChalky” -res 12 -rad 0.1 -topoltype “elastic”</div><div class="line">vmd &gt; cg_delete_elastic_bonds</div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T14:22:29.201Z" itemprop="dateUpdated">2017-10-18 22:22:29</time>
+    Last updated: <time datetime="2017-10-28T03:26:25.393Z" itemprop="dateUpdated">2017-10-28 11:26:25</time>
 </span><br>
 
 

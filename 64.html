@@ -19,21 +19,22 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Autodock,Dock,软件安装">
     <meta name="description" content="文章经：天理-小新发表的修改而成 大家对于audodock及autodocktools的安装问题及运行错误问题，就发到本帖子中，以方便大家以后参阅，谢谢%￥在此建议大家使用linux系统安装运行autodock和ADT因为:  1、win下的运行速度比linux下的运行速度慢 2、win下运行容易出错，第一次可能在win下运行成功，第二次可能生存的dlg文件很大，win下的autodock 不停的">
+<meta name="keywords" content="Autodock,Dock,软件安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ADT和Autodock&#x2F;vina的安装">
 <meta property="og:url" content="http://kangsgo.com/64.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="文章经：天理-小新发表的修改而成 大家对于audodock及autodocktools的安装问题及运行错误问题，就发到本帖子中，以方便大家以后参阅，谢谢%￥在此建议大家使用linux系统安装运行autodock和ADT因为:  1、win下的运行速度比linux下的运行速度慢 2、win下运行容易出错，第一次可能在win下运行成功，第二次可能生存的dlg文件很大，win下的autodock 不停的">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225152.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225234.png">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.228Z">
+<meta property="og:image" content="http://kangsgo.com/images/2015/12/深度截图20151203225152.png">
+<meta property="og:image" content="http://kangsgo.com/images/2015/12/深度截图20151203225234.png">
+<meta property="og:updated_time" content="2017-10-29T03:02:10.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ADT和Autodock&#x2F;vina的安装">
 <meta name="twitter:description" content="文章经：天理-小新发表的修改而成 大家对于audodock及autodocktools的安装问题及运行错误问题，就发到本帖子中，以方便大家以后参阅，谢谢%￥在此建议大家使用linux系统安装运行autodock和ADT因为:  1、win下的运行速度比linux下的运行速度慢 2、win下运行容易出错，第一次可能在win下运行成功，第二次可能生存的dlg文件很大，win下的autodock 不停的">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225152.png">
+<meta name="twitter:image" content="http://kangsgo.com/images/2015/12/深度截图20151203225152.png">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -151,7 +152,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/">Dock</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
 
             
         </h5>
@@ -172,7 +173,7 @@
         </nav>
     </aside>
     
-<article id="post-adt-e5-92-8cautodockvina-e7-9a-84-e5-ae-89-e8-a3-85"
+<article id="post-ADT和Autodockvina的安装"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -181,7 +182,7 @@
             <time class="post-time" title="2015-12-03 22:54:46" datetime="2015-12-03T14:54:46.000Z"  itemprop="datePublished">2015-12-03</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/">Dock</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/分子模拟/">分子模拟</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
 
 
 
@@ -200,52 +201,39 @@
 <p>2、win下运行容易出错，第一次可能在win下运行成功，第二次可能生存的dlg文件很大，win下的autodock 不停的运行下去。<br>对于linux系统的AutoDock/Vina和ADT的安装如下（有关win下安装的我就不写了，我不推荐）：</p>
 </blockquote>
 <h2 id="一-AutoDock-Vina的安装"><a href="#一-AutoDock-Vina的安装" class="headerlink" title="一.AutoDock Vina的安装"></a>一.AutoDock Vina的安装</h2><h4 id="1-进入目录"><a href="#1-进入目录" class="headerlink" title="1.进入目录"></a>1.进入目录</h4><p>本人默认安装在（kangsgo的主目录的mdinstall/dock文件夹下）</p>
-<blockquote>
-<p>cd /home/kangsgo/mdinstall/dock/</p>
-</blockquote>
-<h4 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h4><blockquote>
-<p>tar xvzf autodock_vina_1_1_2_linux_x86.tgz</p>
-</blockquote>
-<h4 id="3-进入目录"><a href="#3-进入目录" class="headerlink" title="3.进入目录"></a>3.进入目录</h4><blockquote>
-<p>cd  autodock_vina_1_1_2_linux_x86/bin</p>
-</blockquote>
-<h4 id="4-移动"><a href="#4-移动" class="headerlink" title="4.移动"></a>4.移动</h4><blockquote>
-<p>sudo mv vina /usr/local/bin</p>
-<p>sudo mv vina_split /usr/local/bin</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /home/kangsgo/mdinstall/dock/</div></pre></td></tr></table></figure>
+<h4 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xvzf autodock_vina_1_1_2_linux_x86.tgz</div></pre></td></tr></table></figure>
+<h4 id="3-进入目录"><a href="#3-进入目录" class="headerlink" title="3.进入目录"></a>3.进入目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span>  autodock_vina_1_1_2_linux_x86/bin</div></pre></td></tr></table></figure>
+<h4 id="4-移动"><a href="#4-移动" class="headerlink" title="4.移动"></a>4.移动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo mv vina /usr/<span class="built_in">local</span>/bin </div><div class="line"></div><div class="line">sudo mv vina_split /usr/<span class="built_in">local</span>/bin</div></pre></td></tr></table></figure>
 <h2 id="二-AutoDock安装一模一样，这里就不再啰嗦"><a href="#二-AutoDock安装一模一样，这里就不再啰嗦" class="headerlink" title="二.AutoDock安装一模一样，这里就不再啰嗦"></a>二.AutoDock安装一模一样，这里就不再啰嗦</h2><p>解压缩的命令应该是这样的：</p>
-<blockquote>
-<p>tar -xvf autodocksuite-4.2.6-x86_64Linux2.tar</p>
-</blockquote>
-<h2 id="三-AutoDockTools安装"><a href="#三-AutoDockTools安装" class="headerlink" title="三. AutoDockTools安装"></a>三. AutoDockTools安装</h2><h4 id="1-增加权限："><a href="#1-增加权限：" class="headerlink" title="1.增加权限："></a>1.增加权限：</h4><blockquote>
-<p>chmod +x  MGLTools-1.5.4-Linux-x86-Install</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf autodocksuite-4.2.6-x86_64Linux2.tar</div></pre></td></tr></table></figure>
+<h2 id="三-AutoDockTools安装"><a href="#三-AutoDockTools安装" class="headerlink" title="三. AutoDockTools安装"></a>三. AutoDockTools安装</h2><h4 id="1-增加权限："><a href="#1-增加权限：" class="headerlink" title="1.增加权限："></a>1.增加权限：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x  MGLTools-1.5.4-Linux-x86-Install</div></pre></td></tr></table></figure>
 <h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h4><blockquote>
-<p>双击 MGLTools-1.5.4-Linux-x86-Install 图标，一直默认点击下去就可成功安装<br>[<figure class="image-bubble">
+<p>双击 MGLTools-1.5.4-Linux-x86-Install 图标，一直默认点击下去就可成功安装</p>
+</blockquote>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225152.png" alt="深度截图20151203225152](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225152.png)" title="">
+                    <img src="/images/2015/12/深度截图20151203225152.png" alt="深度截图20151203225152" title="">
                 </div>
-                <div class="image-caption">深度截图20151203225152](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225152.png)</div>
-            </figure></p>
-</blockquote>
+                <div class="image-caption">深度截图20151203225152</div>
+            </figure>
 <p>安装完后既可以直接打开，若需要在终端中可以使用可以设置环境变量具体可以查看gromacs的安装教程，这里就不再累述。</p>
 <p>&nbsp;</p>
-<p>[<figure class="image-bubble">
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225234.png" alt="深度截图20151203225234](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225234.png)" title="">
+                    <img src="/images/2015/12/深度截图20151203225234.png" alt="深度截图20151203225234" title="">
                 </div>
-                <div class="image-caption">深度截图20151203225234](http://kangsgo.com/wp-content/uploads/2015/12/深度截图20151203225234.png)</div>
-            </figure></p>
-
+                <div class="image-caption">深度截图20151203225234</div>
+            </figure>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.228Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:02:10.578Z" itemprop="dateUpdated">2017-10-29 11:02:10</time>
 </span><br>
 
 
@@ -270,6 +258,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
 
             
 <div class="page-share-wrap">

@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压  unzip gaosi09-D01.zip mv g09D01 g09 cd g09 mkdir scratch gedit ~/.bashrc  在里面加入  export g09root=/home/kangsg">
+    <meta name="keywords" content="软件安装,Gaussian">
+    <meta name="description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压 123456789unzip gaosi09-D01.zipmv g09D01 g09cd g09mkdir scratchgedit ~/.bashrc 在里面加入 123export g09root=/home/k">
+<meta name="keywords" content="软件安装,Gaussian">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux安装GAUSSIAN 09（G09）和GVIEW简略版">
 <meta property="og:url" content="http://kangsgo.com/83.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压  unzip gaosi09-D01.zip mv g09D01 g09 cd g09 mkdir scratch gedit ~/.bashrc  在里面加入  export g09root=/home/kangsg">
+<meta property="og:description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压 123456789unzip gaosi09-D01.zipmv g09D01 g09cd g09mkdir scratchgedit ~/.bashrc 在里面加入 123export g09root=/home/k">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-28T04:02:32.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux安装GAUSSIAN 09（G09）和GVIEW简略版">
-<meta name="twitter:description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压  unzip gaosi09-D01.zip mv g09D01 g09 cd g09 mkdir scratch gedit ~/.bashrc  在里面加入  export g09root=/home/kangsg">
+<meta name="twitter:description" content="首发时间: 2015年12月9日 更新时间:2017年9月13日 一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同 首先解压 123456789unzip gaosi09-D01.zipmv g09D01 g09cd g09mkdir scratchgedit ~/.bashrc 在里面加入 123export g09root=/home/k">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -169,7 +170,7 @@
         </nav>
     </aside>
     
-<article id="post-linux-e5-ae-89-e8-a3-85gaussian-09-ef-bc-88g09-ef-bc-89-e5-92-8cgview-e7-ae-80-e7-95-a5-e7-89-88"
+<article id="post-linux安装GAUSSIAN 09（G09）和GVIEW简略版"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -194,35 +195,17 @@
 <p>更新时间:2017年9月13日</p>
 <h3 id="一、安装Linux版Gaussian"><a href="#一、安装Linux版Gaussian" class="headerlink" title="一、安装Linux版Gaussian"></a>一、安装Linux版Gaussian</h3><p>例如安装在<strong>/home/kangsgo/install/g09</strong>下，下同</p>
 <p>首先解压</p>
-<blockquote>
-<p>unzip gaosi09-D01.zip</p>
-<p>mv g09D01 g09</p>
-<p>cd g09</p>
-<p>mkdir scratch</p>
-<p>gedit ~/.bashrc</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">unzip gaosi09-D01.zip</div><div class="line"></div><div class="line">mv g09D01 g09</div><div class="line"></div><div class="line"><span class="built_in">cd</span> g09</div><div class="line"></div><div class="line">mkdir scratch</div><div class="line"></div><div class="line">gedit ~/.bashrc</div></pre></td></tr></table></figure>
 <p>在里面加入</p>
-<blockquote>
-<p>export g09root=/home/kangsgo/install</p>
-<p>export GAUSS_SCRDIR=/home/kangsgo/install/g09/scratch</p>
-<p>source /home/kangsgo/install/g09/bsd/g09.profile</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> g09root=/home/kangsgo/install</div><div class="line"><span class="built_in">export</span> GAUSS_SCRDIR=/home/kangsgo/install/g09/scratch</div><div class="line"><span class="built_in">source</span> /home/kangsgo/install/g09/bsd/g09.profile</div></pre></td></tr></table></figure>
 <p>接下来可以在/home/kangsgo/g09/Default.Route中设置默认参数（需要自己创建），如：</p>
-<blockquote>
-<p>-M- 12000MB</p>
-<p>-P- 8</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-M- 12000MB</div><div class="line">-P- 8</div></pre></td></tr></table></figure>
 <p>在<strong>/home/kangsgo/install/g09/</strong>目录下运行：</p>
-<blockquote>
-<p>chmod 750 -R *</p>
-<p>source ~/.bashrc</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod 750 -R *</div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
 <p>大工告成！</p>
 <p>本段来自于：<a href="http://bbs.keinsci.com/thread-5493-1-1.html" target="_blank" rel="external">计算化学公社</a></p>
 <h3 id="二、安装gview"><a href="#二、安装gview" class="headerlink" title="二、安装gview"></a>二、安装gview</h3><p>在.bashrc末尾加上以下内容:</p>
-<blockquote>
-<p>export GV_DIR=/home/kangsgo/install/g09/gv/<br>export LIBPATH=/home/kangsgo/install/g09/gv/lib<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/kangsgo/install/g09/gv/lib<br>PATH=$PATH:/home/kangsgo/install/g09/gv/</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> GV_DIR=/home/kangsgo/install/g09/gv/</div><div class="line"><span class="built_in">export</span> LIBPATH=/home/kangsgo/install/g09/gv/lib</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/home/kangsgo/install/g09/gv/lib</div><div class="line">PATH=<span class="variable">$PATH</span>:/home/kangsgo/install/g09/gv/</div></pre></td></tr></table></figure>
 <p>转载自：<a href="http://bbs.keinsci.com/thread-5493-1-1.html" target="_blank" rel="external">计算化学公社</a></p>
 
         </div>
@@ -231,7 +214,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T04:02:32.844Z" itemprop="dateUpdated">2017-10-28 12:02:32</time>
 </span><br>
 
 
@@ -256,6 +239,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
 
             
 <div class="page-share-wrap">

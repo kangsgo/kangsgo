@@ -19,8 +19,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Gromacs,粗粒化,VMD">
     <meta name="description" content="VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 http://www.ks.uiuc.edu/Research/vmd/.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒">
+<meta name="keywords" content="Gromacs,粗粒化,VMD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMD粗粒化显示插件Bendix简单介绍">
 <meta property="og:url" content="http://kangsgo.com/700.html">
@@ -33,7 +34,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-a8d57f0aa49a67cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-4b1472df77b14462.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/903467-42ad4ed2bdd5ad3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-28T15:07:43.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VMD粗粒化显示插件Bendix简单介绍">
 <meta name="twitter:description" content="VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 http://www.ks.uiuc.edu/Research/vmd/.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒">
@@ -155,7 +156,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
             
         </h5>
@@ -169,7 +170,14 @@
 
 <div class="container body-wrap">
     
-<article id="post-e5-88-86-e5-ad-90-e6-a8-a1-e6-8b-9fvmd-e7-b2-97-e7-b2-92-e5-8c-96-e6-98-be-e7-a4-ba-e6-8f-92-e4-bb-b6bendix-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#官方教程"><span class="post-toc-number">1.</span> <span class="post-toc-text">官方教程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-VMD中一般螺旋表示"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.VMD中一般螺旋表示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Bendix中螺旋的功能图形的显示"><span class="post-toc-number">3.</span> <span class="post-toc-text">2.Bendix中螺旋的功能图形的显示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-设置成单一颜色"><span class="post-toc-number">4.</span> <span class="post-toc-text">3.设置成单一颜色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-热图"><span class="post-toc-number">5.</span> <span class="post-toc-text">4.热图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-绘制non-Bendices"><span class="post-toc-number">6.</span> <span class="post-toc-text">5. 绘制non-Bendices</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-VMD粗粒化显示插件Bendix简单介绍"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -178,7 +186,7 @@
             <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/绘图与可视化/">绘图与可视化</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
 
 
@@ -190,50 +198,59 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <div class="markdown-here-wrapper" data-md-url="http://kangsgo.com/wp-admin/post-new.php"><br><br>VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 <a href="http://www.ks.uiuc.edu/Research/vmd/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/</a>.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒化模型。<br><br>先一饱眼福粗粒化模拟做出来的图：<br><figure class="image-bubble">
+            <p>VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 <a href="http://www.ks.uiuc.edu/Research/vmd/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/</a>.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒化模型。</p>
+<p>先一饱眼福粗粒化模拟做出来的图：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-0d3dbb3be65140e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1： DPPC bilayer formation" title="">
                 </div>
                 <div class="image-caption">图片1： DPPC bilayer formation</div>
-            </figure><br><br>### 官方教程<br><br>这里对官方显示教程做一个简单的介绍：<br>首先下载官方示例包：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip</a><br>其中包含pdb文件（PDB ID：1PV7）和一个分析文件（pdb）以及一个分析轨迹文件（dcd）<br><br>### 1.VMD中一般螺旋表示<br><br>首先我们可以把背景设置为白色<strong>VMD Main &gt; Graphics &gt; Colours</strong>，选择<strong>Display</strong>，设置<strong>Background</strong>颜色为8 white<br>加载 1PV7_LacY.pdb。通过<strong>Graphics &gt;Representations</strong>设置为下图所示：<br><figure class="image-bubble">
+            </figure></p>
+<h3 id="官方教程"><a href="#官方教程" class="headerlink" title="官方教程"></a>官方教程</h3><p>这里对官方显示教程做一个简单的介绍：<br>首先下载官方示例包：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip</a><br>其中包含pdb文件（PDB ID：1PV7）和一个分析文件（pdb）以及一个分析轨迹文件（dcd）</p>
+<h3 id="1-VMD中一般螺旋表示"><a href="#1-VMD中一般螺旋表示" class="headerlink" title="1.VMD中一般螺旋表示"></a>1.VMD中一般螺旋表示</h3><p>首先我们可以把背景设置为白色<strong>VMD Main &gt; Graphics &gt; Colours</strong>，选择<strong>Display</strong>，设置<strong>Background</strong>颜色为8 white<br>加载 1PV7_LacY.pdb。通过<strong>Graphics &gt;Representations</strong>设置为下图所示：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-e31cf4b2dc5ca76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br><br>### 2.Bendix中螺旋的功能图形的显示<br><br>从<strong>VMD Main&gt;Extensions&gt;Visualization&gt;Bendix</strong>中打开工具，保持默认设置，点击<strong>Draw</strong>按钮，结果如下：<br><figure class="image-bubble">
+            </figure></p>
+<h3 id="2-Bendix中螺旋的功能图形的显示"><a href="#2-Bendix中螺旋的功能图形的显示" class="headerlink" title="2.Bendix中螺旋的功能图形的显示"></a>2.Bendix中螺旋的功能图形的显示</h3><p>从<strong>VMD Main&gt;Extensions&gt;Visualization&gt;Bendix</strong>中打开工具，保持默认设置，点击<strong>Draw</strong>按钮，结果如下：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-0ca1fa61779d0ba8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br><br>### 3.设置成单一颜色<br><br>这个非常的简单，在Uniform color中设置 <strong>full selection</strong>即可，如果是多个蛋白，设置<strong>by chain</strong>即可显示不同颜色<br><figure class="image-bubble">
+            </figure></p>
+<h3 id="3-设置成单一颜色"><a href="#3-设置成单一颜色" class="headerlink" title="3.设置成单一颜色"></a>3.设置成单一颜色</h3><p>这个非常的简单，在Uniform color中设置 <strong>full selection</strong>即可，如果是多个蛋白，设置<strong>by chain</strong>即可显示不同颜色<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-a8d57f0aa49a67cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br><br>### 4.热图<br><br>显示热图仅需设置为Heatmap color即可，<strong>Scale</strong>选项默认为RGB，即Red-Green-Blue，<strong>Color threshold</strong>为颜色阈值。<br><figure class="image-bubble">
+            </figure></p>
+<h3 id="4-热图"><a href="#4-热图" class="headerlink" title="4.热图"></a>4.热图</h3><p>显示热图仅需设置为Heatmap color即可，<strong>Scale</strong>选项默认为RGB，即Red-Green-Blue，<strong>Color threshold</strong>为颜色阈值。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-4b1472df77b14462.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br><br>### 5. 绘制non-Bendices<br><br>仅需<strong>Rep 0</strong>修改为<strong>Tube</strong>即可<br><figure class="image-bubble">
+            </figure></p>
+<h3 id="5-绘制non-Bendices"><a href="#5-绘制non-Bendices" class="headerlink" title="5. 绘制non-Bendices"></a>5. 绘制non-Bendices</h3><p>仅需<strong>Rep 0</strong>修改为<strong>Tube</strong>即可<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/903467-42ad4ed2bdd5ad3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br><br>完整的教程包括轨迹教程可以查阅官方文档：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html</a><br><br><div style="height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; font-size: 0em; padding: 0; margin: 0;" title="MDH:PHA+Jmd0O1ZNROaYr+S4gOS4quWIhuWtkOWPr+inhuWMlueoi+W6jywg5a6D6YeH55So5LiJ57u0 5Zu+5b2i5oqA5pyv5Lul5Y+K5YaF572u6ISa5pys5p2l5a+555Sf54mp5aSn5YiG5a2Q5L2T57O7 6L+b6KGM5bGV56S6LCDliqjnlLvliLbkvZzlkozliIbmnpAuIFZNROWumOaWuee9keermSBodHRw Oi8vd3d3LmtzLnVpdWMuZWR1L1Jlc2VhcmNoL3ZtZC8u5YW25bGV56S655qE6JuL55m96Z2e5bi4 5ryC5Lqu77yM6ICM5LiU5piv5YWN6LS56L2v5Lu277yM5piv5LiOUHltb2zvvIxVQ1NGIENoaW1l cmHpvZDlkI3nmoTlj6/op4bljJbova/ku7bjgILkvYbmmK/nspfnspLljJbnmoTmmL7npLrmlYjm npzkuI3kvbPvvIzlpb3lnKjlj6/ku6XlnKhWTUQgMS45LjLku6XlkI7oh6rluKbnmoRCZW5kaXjm j5Lku7bnmoTluK7liqnkuIvmmL7npLrpnZ7luLjnvo7kuL3nmoTnspfnspLljJbmqKHlnovjgII8 L3A+PHA+5YWI5LiA6aWx55y856aP57KX57KS5YyW5qih5ouf5YGa5Ye65p2l55qE5Zu+77yaPC9w PjxwPiFb5Zu+54mHMe+8miBEUFBDIGJpbGF5ZXIgZm9ybWF0aW9uXShodHRwOi8vdXBsb2FkLWlt YWdlcy5qaWFuc2h1LmlvL3VwbG9hZF9pbWFnZXMvOTAzNDY3LTBkM2RiYjNiZTY1MTQwZTgucG5n P2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXAlN0NpbWFnZVZpZXcyLzIvdy8xMjQwKTwvcD48 cD4jIyMg5a6Y5pa55pWZ56iLPGJyPui/memHjOWvueWumOaWueaYvuekuuaVmeeoi+WBmuS4gOS4 queugOWNleeahOS7i+e7je+8mjxicj7pppblhYjkuIvovb3lrpjmlrnnpLrkvovljIXvvJpodHRw Oi8vc2JjYi5iaW9jaC5veC5hYy51ay9CZW5kaXgvZGF0YS90dXRvcmlhbF9maWxlcy56aXA8YnI+ 5YW25Lit5YyF5ZCrcGRi5paH5Lu277yIUERCIElE77yaMVBWN++8ieWSjOS4gOS4quWIhuaekOaW h+S7tu+8iHBkYu+8ieS7peWPiuS4gOS4quWIhuaekOi9qOi/ueaWh+S7tu+8iGRjZO+8iTwvcD48 cD4jIyMgMS5WTUTkuK3kuIDoiKzonrrml4vooajnpLo8YnI+6aaW5YWI5oiR5Lus5Y+v5Lul5oqK 6IOM5pmv6K6+572u5Li655m96ImyKipWTUQgTWFpbiAmZ3Q7IEdyYXBoaWNzICZndDsgQ29sb3Vy cyoq77yM6YCJ5oupKipEaXNwbGF5KirvvIzorr7nva4qKkJhY2tncm91bmQqKuminOiJsuS4ujgg d2hpdGU8L3A+PHA+5Yqg6L29IDFQVjdfTGFjWS5wZGLjgILpgJrov4cqKkdyYXBoaWNzICZndDtS ZXByZXNlbnRhdGlvbnMqKuiuvue9ruS4uuS4i+WbvuaJgOekuu+8mjwvcD48cD4hW10oaHR0cDov L3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny1lMzFjZjRiMmRj NWNhNzZhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cv MTI0MCk8L3A+PHA+IyMjIDIuQmVuZGl45Lit6J665peL55qE5Yqf6IO95Zu+5b2i55qE5pi+56S6 PGJyPuS7jioqVk1EIE1haW4mZ3Q7RXh0ZW5zaW9ucyZndDtWaXN1YWxpemF0aW9uJmd0O0JlbmRp eCoq5Lit5omT5byA5bel5YW377yM5L+d5oyB6buY6K6k6K6+572u77yM54K55Ye7KipEcmF3Kirm jInpkq7vvIznu5PmnpzlpoLkuIvvvJo8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmpp YW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMGNhMWZhNjE3NzlkMGJhOC5wbmc/aW1hZ2VN b2dyMi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIyAz Luiuvue9ruaIkOWNleS4gOminOiJsjxicj7ov5nkuKrpnZ7luLjnmoTnroDljZXvvIzlnKhVbmlm b3JtIGNvbG9y5Lit6K6+572uICoqZnVsbCBzZWxlY3Rpb24qKuWNs+WPr++8jOWmguaenOaYr+Wk muS4quibi+eZve+8jOiuvue9rioqYnkgY2hhaW4qKuWNs+WPr+aYvuekuuS4jeWQjOminOiJsjwv cD48cD4hW10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkw MzQ2Ny1hOGQ1N2YwYWE0OWE2N2NiLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdD aW1hZ2VWaWV3Mi8yL3cvMTI0MCk8L3A+PHA+IyMjIDQu54Ot5Zu+PGJyPuaYvuekuueDreWbvuS7 hemcgOiuvue9ruS4ukhlYXRtYXAgY29sb3LljbPlj6/vvIwqKlNjYWxlKirpgInpobnpu5jorqTk uLpSR0LvvIzljbNSZWQtR3JlZW4tQmx1Ze+8jCoqQ29sb3IgdGhyZXNob2xkKirkuLrpopzoibLp mIjlgLzjgII8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2Fk X2ltYWdlcy85MDM0NjctNGIxNDcyZGY3N2IxNDQ2Mi5wbmc/aW1hZ2VNb2dyMi9hdXRvLW9yaWVu dC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPjxwPiMjIzUuIOe7mOWItm5vbi1CZW5k aWNlczwvcD48cD7ku4XpnIAqKlJlcCAwKirkv67mlLnkuLoqKlR1YmUqKuWNs+WPrzwvcD48cD4h W10oaHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkwMzQ2Ny00 MmFkNGVkMmJkZDVhZDNkLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VW aWV3Mi8yL3cvMTI0MCk8L3A+PHA+PGJyIGRhdGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5a6M5pW0 55qE5pWZ56iL5YyF5ous6L2o6L+55pWZ56iL5Y+v5Lul5p+l6ZiF5a6Y5pa55paH5qGj77yaaHR0 cDovL3NiY2IuYmlvY2gub3guYWMudWsvQmVuZGl4L3R1dG9yaWFsLmh0bWw8L3A+PHA+PGJyIGRh dGEtbWNlLWJvZ3VzPSIxIj48L3A+PHA+5pu05aSa5Y6f5Yib57K+5b2p6KeG6aKR5pWs6K+35YWz 5rOoKirnlJ/kv6HmnYLosIg6Kio8L3A+PHA+IVtdKGh0dHA6Ly91cGxvYWQtaW1hZ2VzLmppYW5z aHUuaW8vdXBsb2FkX2ltYWdlcy85MDM0NjctMjE3ZWU2OGNhYWE2NTRjMy5wbmc/aW1hZ2VNb2dy Mi9hdXRvLW9yaWVudC9zdHJpcCU3Q2ltYWdlVmlldzIvMi93LzEyNDApPC9wPg==">​</div><br></div>
+            </figure></p>
+<p>完整的教程包括轨迹教程可以查阅官方文档：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html</a></p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T15:07:43.095Z" itemprop="dateUpdated">2017-10-28 23:07:43</time>
 </span><br>
 
 
@@ -258,6 +275,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
+
 
             
 <div class="page-share-wrap">

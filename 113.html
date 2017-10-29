@@ -20,18 +20,18 @@
     
     
     <meta name="keywords" content="安装">
-    <meta name="description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了  /home/kangsgo/mdinstall/plot/ 文件夹下解压文件tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz c">
+    <meta name="description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了1/home/kangsgo/mdinstall/plot/ 文件夹下 解压文件12tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz">
 <meta name="keywords" content="安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMD安装教程">
 <meta property="og:url" content="http://kangsgo.com/113.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了  /home/kangsgo/mdinstall/plot/ 文件夹下解压文件tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz c">
+<meta property="og:description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了1/home/kangsgo/mdinstall/plot/ 文件夹下 解压文件12tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T14:21:52.017Z">
+<meta property="og:updated_time" content="2017-10-28T03:29:16.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VMD安装教程">
-<meta name="twitter:description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了  /home/kangsgo/mdinstall/plot/ 文件夹下解压文件tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz c">
+<meta name="twitter:description" content="网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。 软件下载地址：点我下载 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX 下载后我放在了1/home/kangsgo/mdinstall/plot/ 文件夹下 解压文件12tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -163,13 +163,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Directory-where-VMD-startup-script-is-installed-should-be-in-users’-paths"><span class="post-toc-number">1.</span> <span class="post-toc-text">Directory where VMD startup script is installed, should be in users’ paths.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Directory-where-VMD-files-and-executables-are-installed"><span class="post-toc-number">2.</span> <span class="post-toc-text">Directory where VMD files and executables are installed</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vmd"><span class="post-toc-number">3.</span> <span class="post-toc-text">vmd</span></a></li></ol>
-        </nav>
-    </aside>
-    
 <article id="post-vmd安装教程"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -194,21 +187,19 @@
             <p>网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。</p>
 <p>软件下载地址：<a href="http://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD" target="_blank" rel="external">点我下载</a></p>
 <p>我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX</p>
-<p>下载后我放在了</p>
-<blockquote>
-<p>/home/kangsgo/mdinstall/plot/ 文件夹下<br>解压文件<br>tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz</p>
-<p>cd vmd-1.9.2<br>修改编译脚本：</p>
-</blockquote>
-<p>gedit configure</p>
-<p>修改两行变为：</p>
-<blockquote>
-<h1 id="Directory-where-VMD-startup-script-is-installed-should-be-in-users’-paths"><a href="#Directory-where-VMD-startup-script-is-installed-should-be-in-users’-paths" class="headerlink" title="Directory where VMD startup script is installed, should be in users’ paths."></a>Directory where VMD startup script is installed, should be in users’ paths.</h1><p>$install_bin_dir=”/home/kangsgo/mdinstall/plot/vmd-1.9.2/bin”;</p>
+<p>下载后我放在了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/kangsgo/mdinstall/plot/ 文件夹下</div></pre></td></tr></table></figure></p>
+<p>解压文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.gz</div><div class="line">cd vmd-1.9.2</div></pre></td></tr></table></figure></p>
+<p>修改编译脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit configure</div></pre></td></tr></table></figure>
+<p>修改两行变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Directory where VMD startup script is installed, should be in users’ paths.</div><div class="line">$install_bin_dir=”/home/kangsgo/mdinstall/plot/vmd-1.9.2/bin”;</div></pre></td></tr></table></figure></p>
 <p><span style="color: #ff0000;">→修改成刚刚解压的文件夹中bin的目录；</span></p>
-<h1 id="Directory-where-VMD-files-and-executables-are-installed"><a href="#Directory-where-VMD-files-and-executables-are-installed" class="headerlink" title="Directory where VMD files and executables are installed"></a>Directory where VMD files and executables are installed</h1><p>$install_library_dir=”/home/kangsgo/mdinstall/plot/vmd-1.9.2/lib/$install_name”;</p>
-<p><span style="color: #ff0000;">→修改成刚刚解压的文件夹中lib的目录；</span><br>编译设置：<br>./configure LINUXAMD64<br>尾缀意义不详<br>cd src</p>
-<p>make install<br>在zshrc中添加一行（具体添加方法查看以前文章）</p>
-<h1 id="vmd"><a href="#vmd" class="headerlink" title="vmd"></a>vmd</h1><p>export PATH=”$PATH:/home/kangsgo/mdinstall/plot/vmd-1.9.2/bin/:.”<br>参考文献：<a href="http://kangsgo.com/64.html">VMD-LINUX64安装教程</a></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Directory where VMD files and executables are installed</div><div class="line">$install_library_dir=”/home/kangsgo/mdinstall/plot/vmd-1.9.2/lib/$install_name”;</div></pre></td></tr></table></figure>
+<p><span style="color: #ff0000;">→修改成刚刚解压的文件夹中lib的目录；</span><br>编译设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure LINUXAMD64</div></pre></td></tr></table></figure>
+<p>尾缀意义不详</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd src</div><div class="line"></div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>在zshrc中添加一行（具体添加方法查看以前文章）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># vmd</div><div class="line">export PATH=”$PATH:/home/kangsgo/mdinstall/plot/vmd-1.9.2/bin/:.”</div></pre></td></tr></table></figure></p>
+<p>参考文献：<a href="http://kangsgo.com/64.html">VMD-LINUX64安装教程</a></p>
 
         </div>
 
@@ -216,7 +207,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T14:21:52.017Z" itemprop="dateUpdated">2017-10-18 22:21:52</time>
+    Last updated: <time datetime="2017-10-28T03:29:16.960Z" itemprop="dateUpdated">2017-10-28 11:29:16</time>
 </span><br>
 
 

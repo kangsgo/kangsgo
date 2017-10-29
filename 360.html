@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="set lipid [atomselect top “resname $lipres”];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipidbox 1] 0];set ymin [lindex [lindex $lipidbox 0">
+    <meta name="keywords" content="Gromacs">
+    <meta name="description" content="1234567891011121314151617181920212223set lipid [atomselect top &amp;quot;resname $lipres&amp;quot;];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipi">
+<meta name="keywords" content="Gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="去除膜蛋白内的水分子脚本">
 <meta property="og:url" content="http://kangsgo.com/360.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="set lipid [atomselect top “resname $lipres”];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipidbox 1] 0];set ymin [lindex [lindex $lipidbox 0">
+<meta property="og:description" content="1234567891011121314151617181920212223set lipid [atomselect top &amp;quot;resname $lipres&amp;quot;];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipi">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
+<meta property="og:updated_time" content="2017-10-28T15:09:14.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="去除膜蛋白内的水分子脚本">
-<meta name="twitter:description" content="set lipid [atomselect top “resname $lipres”];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipidbox 1] 0];set ymin [lindex [lindex $lipidbox 0">
+<meta name="twitter:description" content="1234567891011121314151617181920212223set lipid [atomselect top &amp;quot;resname $lipres&amp;quot;];set lipidbox [measure minmax $lipid];set xmin [lindex [lindex $lipidbox 0] 0];set xmax [lindex [lindex $lipi">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
             
         </h5>
@@ -162,7 +163,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-e5-8e-bb-e9-99-a4-e8-86-9c-e8-9b-8b-e7-99-bd-e5-86-85-e7-9a-84-e6-b0-b4-e5-88-86-e5-ad-90-e8-84-9a-e6-9c-ac"
+<article id="post-去除膜蛋白内的水分子脚本"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -171,7 +172,7 @@
             <time class="post-time" title="2016-04-27 12:33:53" datetime="2016-04-27T04:33:53.000Z"  itemprop="datePublished">2016-04-27</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -183,10 +184,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><pre>set lipid [atomselect top “resname $lipres”];<br>set lipidbox [measure minmax $lipid];<br>set xmin [lindex [lindex $lipidbox 0] 0];<br>set xmax [lindex [lindex $lipidbox 1] 0];<br>set ymin [lindex [lindex $lipidbox 0] 1];<br>set ymax [lindex [lindex $lipidbox 1] 1];<br>set zmin [lindex [lindex $lipidbox 0] 2];<br>set zmax [lindex [lindex $lipidbox 1] 2];<br>set selA [atomselect top “same residue as water and z&gt;$zmin and z&lt;$zmax”] set selB [atomselect top “all not {same residue as water and z&gt;$zmin and z&lt;$zmax}”] puts “all not {same residue as water and z&gt;$zmin and z&lt;$zmax}”<br>set rmwatlen [llength [$selA get resid]];<br>set rmwatnum [expr $rmwatlen/3];</pre></p>
-<p>puts “remove water atom is $rmwatlen, and molecular is $rmwatnum”<br>$selB writepdb rmfinal.pdb</p>
-<p>set all [atomselect top water]<br>set allwat [expr [llength [$all get resid]]/3];</p>
-<p>set rmwatnum [expr $allwat-$rmwatnum];<br>puts “Original water molecules number is $allwat”<br>puts “Water molecules left $rmwatnum”;<br>$lipres替换成你要的磷脂resname<br><br>&nbsp;</p>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">set lipid [atomselect top &quot;resname $lipres&quot;];</div><div class="line">set lipidbox [measure minmax $lipid];</div><div class="line">set xmin [lindex [lindex $lipidbox 0] 0];</div><div class="line">set xmax [lindex [lindex $lipidbox 1] 0];</div><div class="line">set ymin [lindex [lindex $lipidbox 0] 1];</div><div class="line">set ymax [lindex [lindex $lipidbox 1] 1];</div><div class="line">set zmin [lindex [lindex $lipidbox 0] 2];</div><div class="line">set zmax [lindex [lindex $lipidbox 1] 2];</div><div class="line">set selA [atomselect top &quot;same residue as water and z&gt;$zmin and z&lt;$zmax&quot;] set selB [atomselect top &quot;all not &#123;same residue as water and z&gt;$zmin and z&lt;$zmax&#125;&quot;] puts &quot;all not &#123;same residue as water and z&gt;$zmin and z&lt;$zmax&#125;&quot;</div><div class="line">set rmwatlen [llength [$selA get resid]];</div><div class="line">set rmwatnum [expr $rmwatlen/3];</div><div class="line"></div><div class="line"></div><div class="line">puts &quot;remove water atom is $rmwatlen, and molecular is $rmwatnum&quot;</div><div class="line">$selB writepdb rmfinal.pdb</div><div class="line"></div><div class="line">set all [atomselect top water]</div><div class="line">set allwat [expr [llength [$all get resid]]/3];</div><div class="line"></div><div class="line">set rmwatnum [expr $allwat-$rmwatnum];</div><div class="line">puts &quot;Original water molecules number is $allwat&quot;</div><div class="line">puts &quot;Water molecules left $rmwatnum&quot;;</div><div class="line">$lipres替换成你要的磷脂resname</div></pre></td></tr></table></figure>
 <p>第一个脚本是可以单独抽取出来命名成你自己的脚本，比如test.tcl，然后在工作目录下直接source test.tcl就好，直接生成删除水后的pdb，注意修改里面lipids的resname，比如POPC、POPE等<br>第二个是加了命名空间的，调用需要加命名空间加函数名的</p>
 <p>第二个的可以新建一个文件夹，然后把sysTool.tcl和index的那个tcl放到一起，一个文件夹中，然后在vmd的安装目录下，有个vmd.rc的文件打开，在末尾加入source  d:/WorkSpace/MD/VMDScript/SysTool/sysTool.tcl<br>source  d:/WorkSpace/MD/VMDScript/SysTool/sysTool.tcl<br>注意source后直接写你的新建的那个文件夹名称<br>windows下注意斜杠和反斜杠的区别</p>
 <p>来源：刘胜堂@苏州</p>
@@ -198,7 +196,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.230Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T15:09:14.347Z" itemprop="dateUpdated">2017-10-28 23:09:14</time>
 </span><br>
 
 
@@ -223,6 +221,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
 
             
 <div class="page-share-wrap">

@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="计算G_mmpbsa#!/bin/bash # author:kangsgo # method: # loop 后面为文件夹变量,表示进入哪个文件夹 # trj_125-150ns.xtc 轨迹变量 for loop in achmd bnf318 qna tcdd do echo &quot;开始执行!&quot;; echo &quot;进入第一个目录:$loop!&quot;; cd /home/gromacs/shiyan/$l">
+    <meta name="keywords" content="Gromacs">
+    <meta name="description" content="计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop 后面为文件夹变量,表示进入哪个文件夹# trj_125-150ns.xtc 轨迹变量for loop in achmd bnf318 qna tcdddoecho &quot;开始执行!&quot;;echo &quot;进入第一个目录:$loop!&quot;;cd /home/g">
+<meta name="keywords" content="Gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自用脚本分享">
 <meta property="og:url" content="http://kangsgo.com/440.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="计算G_mmpbsa#!/bin/bash # author:kangsgo # method: # loop 后面为文件夹变量,表示进入哪个文件夹 # trj_125-150ns.xtc 轨迹变量 for loop in achmd bnf318 qna tcdd do echo &quot;开始执行!&quot;; echo &quot;进入第一个目录:$loop!&quot;; cd /home/gromacs/shiyan/$l">
+<meta property="og:description" content="计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop 后面为文件夹变量,表示进入哪个文件夹# trj_125-150ns.xtc 轨迹变量for loop in achmd bnf318 qna tcdddoecho &quot;开始执行!&quot;;echo &quot;进入第一个目录:$loop!&quot;;cd /home/g">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:31:50.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自用脚本分享">
-<meta name="twitter:description" content="计算G_mmpbsa#!/bin/bash # author:kangsgo # method: # loop 后面为文件夹变量,表示进入哪个文件夹 # trj_125-150ns.xtc 轨迹变量 for loop in achmd bnf318 qna tcdd do echo &quot;开始执行!&quot;; echo &quot;进入第一个目录:$loop!&quot;; cd /home/gromacs/shiyan/$l">
+<meta name="twitter:description" content="计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop 后面为文件夹变量,表示进入哪个文件夹# trj_125-150ns.xtc 轨迹变量for loop in achmd bnf318 qna tcdddoecho &quot;开始执行!&quot;;echo &quot;进入第一个目录:$loop!&quot;;cd /home/g">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
             
         </h5>
@@ -169,7 +170,7 @@
         </nav>
     </aside>
     
-<article id="post-e8-87-aa-e7-94-a8-e8-84-9a-e6-9c-ac-e5-88-86-e4-ba-ab"
+<article id="post-自用脚本分享"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -178,7 +179,7 @@
             <time class="post-time" title="2016-09-16 16:05:29" datetime="2016-09-16T08:05:29.000Z"  itemprop="datePublished">2016-09-16</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/自用脚本/">自用脚本</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
 
 
@@ -190,50 +191,10 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="计算G-mmpbsa"><a href="#计算G-mmpbsa" class="headerlink" title="计算G_mmpbsa"></a>计算G_mmpbsa</h3><pre class="EnlighterJSRAW" data-enlighter-language="null">#!/bin/bash
-# author:kangsgo
-# method:
-# loop 后面为文件夹变量,表示进入哪个文件夹
-# trj_125-150ns.xtc 轨迹变量
-for loop in achmd bnf318 qna tcdd
-do
-echo "开始执行!";
-echo "进入第一个目录:$loop!";
-cd /home/gromacs/shiyan/$loop
-echo "进行一步计算"
-echo -e "1\n13\n"|g_mmpbsa -f trj_125-150ns.xtc -s npt.tpr -n index.ndx -i canshu/pbsa.mdp -pdie 2 -pbsa -decomp
-echo "开始能量拆分"
-python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvg
-python3 MmPbSaDecomp.py -bs -nbs 2000 -m contrib_MM.dat -p contrib_pol.dat -a contrib_apol.dat
-echo "完成"
-done</pre>
-
+            <h3 id="计算G-mmpbsa"><a href="#计算G-mmpbsa" class="headerlink" title="计算G_mmpbsa"></a>计算G_mmpbsa</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># author:kangsgo</span></div><div class="line"><span class="comment"># method:</span></div><div class="line"><span class="comment"># loop 后面为文件夹变量,表示进入哪个文件夹</span></div><div class="line"><span class="comment"># trj_125-150ns.xtc 轨迹变量</span></div><div class="line"><span class="keyword">for</span> loop <span class="keyword">in</span> achmd bnf318 qna tcdd</div><div class="line"><span class="keyword">do</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"开始执行!"</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">"进入第一个目录:<span class="variable">$loop</span>!"</span>;</div><div class="line"><span class="built_in">cd</span> /home/gromacs/shiyan/<span class="variable">$loop</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"进行一步计算"</span></div><div class="line"><span class="built_in">echo</span> -e <span class="string">"1\n13\n"</span>|g_mmpbsa -f trj_125-150ns.xtc -s npt.tpr -n index.ndx -i canshu/pbsa.mdp -pdie 2 -pbsa -decomp</div><div class="line"><span class="built_in">echo</span> <span class="string">"开始能量拆分"</span></div><div class="line">python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvg</div><div class="line">python3 MmPbSaDecomp.py -bs -nbs 2000 -m contrib_MM.dat -p contrib_pol.dat -a contrib_apol.dat</div><div class="line"><span class="built_in">echo</span> <span class="string">"完成"</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 <h3 id="计算rmsf，并且处理轨迹"><a href="#计算rmsf，并且处理轨迹" class="headerlink" title="计算rmsf，并且处理轨迹"></a>计算rmsf，并且处理轨迹</h3><a id="more"></a>
-<pre class="EnlighterJSRAW" data-enlighter-language="null">#!/bin/bash
-# author:kangsgo
-# name: rmsf处理脚本
-# method:
-# loop 后面为文件夹变量,表示进入哪个文件夹
-# trj_120-150ns.xtc 轨迹变量
-
-for loop in bnf bnf318 ch qna tcdd
-do
-echo "开始执行";
-echo "进入第一个目录$loop";
-cd /home/kangsgo/shiyan/chuli/$loop
-echo "转换轨迹";
-trjconv_mpi -f mdwholeNOjump.xtc -o trj_120-150ns -b 120000 -e 150000
-echo "转换完成,开始转换500个单位轨迹";
-trjconv_mpi -f mdwholeNOjump.xtc -o md200skip -dt 200
-echo "转换完成,开始转换100个单位轨迹";
-trjconv_mpi -f mdwholeNOjump.xtc -o md1000skip -dt 1000
-echo "rmsf计算"
-echo -e "3\n"|gmx_mpi rmsf -s md_0_1.tpr -f trj_120-150ns.xtc -o rmsf.xvg -oq rmsf.pdb -res
-done
-
-echo "全部完成"</pre>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># author:kangsgo</div><div class="line"># name: rmsf处理脚本</div><div class="line"># method:</div><div class="line"># loop 后面为文件夹变量,表示进入哪个文件夹</div><div class="line"># trj_120-150ns.xtc 轨迹变量</div><div class="line"></div><div class="line">for loop in bnf bnf318 ch qna tcdd</div><div class="line">do</div><div class="line">echo &quot;开始执行&quot;;</div><div class="line">echo &quot;进入第一个目录$loop&quot;;</div><div class="line">cd /home/kangsgo/shiyan/chuli/$loop</div><div class="line">echo &quot;转换轨迹&quot;;</div><div class="line">trjconv_mpi -f mdwholeNOjump.xtc -o trj_120-150ns -b 120000 -e 150000</div><div class="line">echo &quot;转换完成,开始转换500个单位轨迹&quot;;</div><div class="line">trjconv_mpi -f mdwholeNOjump.xtc -o md200skip -dt 200</div><div class="line">echo &quot;转换完成,开始转换100个单位轨迹&quot;;</div><div class="line">trjconv_mpi -f mdwholeNOjump.xtc -o md1000skip -dt 1000</div><div class="line">echo &quot;rmsf计算&quot;</div><div class="line">echo -e &quot;3\n&quot;|gmx_mpi rmsf -s md_0_1.tpr -f trj_120-150ns.xtc -o rmsf.xvg -oq rmsf.pdb -res</div><div class="line">done</div><div class="line"></div><div class="line">echo &quot;全部完成&quot;</div></pre></td></tr></table></figure>
 <p>&nbsp;</p>
 
         </div>
@@ -242,7 +203,7 @@ echo "全部完成"</pre>
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:31:50.582Z" itemprop="dateUpdated">2017-10-29 11:31:50</time>
 </span><br>
 
 
@@ -267,6 +228,8 @@ echo "全部完成"</pre>
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -285,11 +248,7 @@ echo "全部完成"</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/440.html&title=《自用脚本分享》 — 小康博客&source=计算G_mmpbsa#!/bin/bash
-# author:kangsgo
-# method:
-# loop 后面为文件夹变量,表示进入哪个文件夹
-# ..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/440.html&title=《自用脚本分享》 — 小康博客&source=计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -439,11 +398,7 @@ echo "全部完成"</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/440.html&title=《自用脚本分享》 — 小康博客&source=计算G_mmpbsa#!/bin/bash
-# author:kangsgo
-# method:
-# loop 后面为文件夹变量,表示进入哪个文件夹
-# ..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/440.html&title=《自用脚本分享》 — 小康博客&source=计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png">
-<meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png">
-<meta property="og:updated_time" content="2017-10-18T14:35:01.866Z">
+<meta property="og:image" content="http://kangsgo.com/images/2017/06/903467-767a91d7bd2d41c3.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/06/903467-33c568823e66d355.png">
+<meta property="og:updated_time" content="2017-10-28T03:39:11.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rosetta蛋白蛋白对接">
 <meta name="twitter:description" content="蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。  蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但没有评">
-<meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png">
+<meta name="twitter:image" content="http://kangsgo.com/images/2017/06/903467-767a91d7bd2d41c3.png">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -208,13 +208,13 @@
 <li>怎样将柔性肽对接到蛋白</li>
 </ul>
 <h5 id="Rosetta中进行对接"><a href="#Rosetta中进行对接" class="headerlink" title="Rosetta中进行对接"></a>Rosetta中进行对接</h5><p>Rosetta中进行对接包含两个步骤。第一步，进行积极（aggresive）采样，方法使用的<a href="https://www.rosettacommons.org/demos/latest/tutorials/full_atom_vs_centroid/fullatom_centroid" target="_blank" rel="external">质心</a>模型。第二步采用全原子模型进行小范围的优化。（PS：质心模型相较于全原子模型保留蛋白主链原子，而侧链原子采用不同大小的单一赝原子表示，如图1）</p>
-<p>[<figure class="image-bubble">
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png" alt="](http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png)" title="">
+                    <img src="/images/2017/06/903467-767a91d7bd2d41c3.png" alt="" title="">
                 </div>
-                <div class="image-caption">](http://kangsgo.com/wp-content/uploads/2017/06/903467-767a91d7bd2d41c3.png)</div>
-            </figure></p>
+                <div class="image-caption"></div>
+            </figure>
 <p>它会在内部使用跳跃连接两个链的中心，沿着跳跃两条链被拉在了一起（滑动联系 slide into contact）。算法为<a href="https://www.rosettacommons.org/demos/latest/tutorials/fold_tree/fold_tree" target="_blank" rel="external">折叠树</a>算法，是一种优化移动的方法，Rosetta在能量最小化中也有使用。这里不作探讨，也不会影响使用。算法还是使用Baker课题组特别喜欢的<a href="https://www.rosettacommons.org/demos/latest/tutorials/Core_Concepts/Core_Concepts#monte-carlo-sampling" target="_blank" rel="external">Monte Carlo</a>随机算法进行计算如下内容：</p>
 <ul>
 <li>平移（x,y,z方向）</li>
@@ -231,7 +231,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2017/06/903467-33c568823e66d355.png" alt="" title="">
+                    <img src="/images/2017/06/903467-33c568823e66d355.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -280,7 +280,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T14:35:01.866Z" itemprop="dateUpdated">2017-10-18 22:35:01</time>
+    Last updated: <time datetime="2017-10-28T03:39:11.650Z" itemprop="dateUpdated">2017-10-28 11:39:11</time>
 </span><br>
 
 

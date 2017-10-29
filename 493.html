@@ -19,15 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Gromacs">
     <meta name="description" content="个人觉得默认的do_dssp绘图出来的并不好看,还需要自行ps处理,查看了一下原来第二步xpm2ps的时候可以进行设置,具体可以看官方说明.自己捣鼓了一下发现m2p的输入文件如下设置比较美观:">
+<meta name="keywords" content="Gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="do_dssp 绘图记录">
 <meta property="og:url" content="http://kangsgo.com/493.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="个人觉得默认的do_dssp绘图出来的并不好看,还需要自行ps处理,查看了一下原来第二步xpm2ps的时候可以进行设置,具体可以看官方说明.自己捣鼓了一下发现m2p的输入文件如下设置比较美观:">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:11:23.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="do_dssp 绘图记录">
 <meta name="twitter:description" content="个人觉得默认的do_dssp绘图出来的并不好看,还需要自行ps处理,查看了一下原来第二步xpm2ps的时候可以进行设置,具体可以看官方说明.自己捣鼓了一下发现m2p的输入文件如下设置比较美观:">
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
             
         </h5>
@@ -162,14 +163,7 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#author-kangsgo"><span class="post-toc-number">1.</span> <span class="post-toc-text">author:kangsgo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#method"><span class="post-toc-number">2.</span> <span class="post-toc-text">method:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#loop-后面为文件夹变量-表示进入哪个文件夹"><span class="post-toc-number">3.</span> <span class="post-toc-text">loop 后面为文件夹变量,表示进入哪个文件夹</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#trj-125-150ns-xtc-轨迹变量"><span class="post-toc-number">4.</span> <span class="post-toc-text">trj_125-150ns.xtc 轨迹变量</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-do-dssp-e7-bb-98-e5-9b-be-e8-ae-b0-e5-bd-95"
+<article id="post-do_dssp 绘图记录"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -178,7 +172,7 @@
             <time class="post-time" title="2016-09-19 21:49:34" datetime="2016-09-19T13:49:34.000Z"  itemprop="datePublished">2016-09-19</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/绘图与可视化/">绘图与可视化</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -192,63 +186,17 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>个人觉得默认的do_dssp绘图出来的并不好看,还需要自行ps处理,查看了一下原来第二步<strong><span style="color: #ff0000;">xpm2ps</span></strong>的时候可以进行设置,具体可以看<a href="http://manual.gromacs.org/programs/gmx-xpm2ps.html" target="_blank" rel="external">官方说明</a>.自己捣鼓了一下发现<strong><span style="color: #008000;">m2p</span></strong>的输入文件如下设置比较美观:</p>
 <a id="more"></a>
-<p><a href="http://kangsgo.com/wp-content/uploads/2016/09/m2p.m2p.zip">m2p-m2p</a>:</p>
-<blockquote>
-<p>; Command line options of xpm2ps override the parameters in this file</p>
-<p>black&amp;white = no                                ; Obsolete</p>
-<p>titlefont = Times-Roman                     ; A PostScript Font</p>
-<p>titlefontsize = 42                                  ; Font size (pt)</p>
-<p>legend = yes                                         ; Show the legend</p>
-<p>legendfont = Times-Roman                 ; A PostScript Font</p>
-<p>legendlabel =                                        ; Used when there is none in the .xpm</p>
-<p>legend2label =                                      ; Used when merging two xpm’s</p>
-<p>legendfontsize = 36                              ; Font size (pt)</p>
-<p>xbox = 2.0                                             ; x-size of a matrix element</p>
-<p>ybox = 2.0                                             ; y-size of a matrix element</p>
-<p>matrixspacing = 2.0                              ; Space between 2 matrices</p>
-<p>xoffset = 0.0                                          ; Between matrix and bounding box</p>
-<p>yoffset = 0.0                                          ; Between matrix and bounding box</p>
-<p>x-major = 20000                                   ; Major ticks on x axis every .. frames</p>
-<p>x-minor = 5                                           ; Id. Minor ticks</p>
-<p>x-firstmajor = 0                                     ; First frame for major tick</p>
-<p>x-majorat0 = no                                    ; Major tick at first frame</p>
-<p>x-majorticklen = 8.0                              ; x-majorticklength</p>
-<p>x-minorticklen = 4.0                             ; x-minorticklength</p>
-<p>x-label =                                                ; Used when there is none in the .xpm</p>
-<p>x-fontsize = 36                                      ; Font size (pt)</p>
-<p>x-font = Times-Roman                         ; A PostScript Font</p>
-<p>x-tickfontsize = 30                               ; Font size (pt)</p>
-<p>x-tickfont = Helvetica                          ; A PostScript Font</p>
-<p>y-major = 20</p>
-<p>y-minor = 5</p>
-<p>y-firstmajor = 0</p>
-<p>y-majorat0 = no</p>
-<p>y-majorticklen = 8.0</p>
-<p>y-minorticklen = 4.0</p>
-<p>y-label =</p>
-<p>y-fontsize = 36</p>
-<p>y-font = Times-Roman</p>
-<p>y-tickfontsize = 30</p>
-<p>y-tickfont = Helvetica<br><a href="http://kangsgo.com/wp-content/uploads/2016/09/dssp.sh_.zip">dssp-sh</a>如下:</p>
-<p>#!/bin/bash</p>
-<h1 id="author-kangsgo"><a href="#author-kangsgo" class="headerlink" title="author:kangsgo"></a>author:kangsgo</h1><h1 id="method"><a href="#method" class="headerlink" title="method:"></a>method:</h1><h1 id="loop-后面为文件夹变量-表示进入哪个文件夹"><a href="#loop-后面为文件夹变量-表示进入哪个文件夹" class="headerlink" title="loop 后面为文件夹变量,表示进入哪个文件夹"></a>loop 后面为文件夹变量,表示进入哪个文件夹</h1><h1 id="trj-125-150ns-xtc-轨迹变量"><a href="#trj-125-150ns-xtc-轨迹变量" class="headerlink" title="trj_125-150ns.xtc 轨迹变量"></a>trj_125-150ns.xtc 轨迹变量</h1><p>for loop in achmd bnf318 qna tcdd</p>
-<p>do</p>
-<p>echo “开始运行”</p>
-<p>cp m2p.m2p /home/gromacs/shiyan/$loop</p>
-<p>cd /home/gromacs/shiyan/$loop</p>
-<p>do_dssp -f md200skip.xtc -s npt.tpr -n index.ndx -o fwss.xpm</p>
-<p>xpm2ps -f fwss.xpm -o fwss.eps -by 2 -bx 1 -di m2p.m2p</p>
-<p>convert fwss.eps $loop.bmp</p>
-<p>done<br>&nbsp;</p>
-</blockquote>
-
+<p><a href="/images/2016/09/m2p.m2p.zip">m2p-m2p</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">; Command line options of xpm2ps override the parameters <span class="keyword">in</span> this file</div><div class="line">black&amp;white = no                                ; Obsolete</div><div class="line">titlefont = Times-Roman                     ; A PostScript Font</div><div class="line">titlefontsize = 42                                  ; Font size (pt)</div><div class="line">legend = yes                                         ; Show the legend</div><div class="line">legendfont = Times-Roman                 ; A PostScript Font</div><div class="line">legendlabel =                                        ; Used when there is none <span class="keyword">in</span> the .xpm</div><div class="line">legend2label =                                      ; Used when merging two xpm’s</div><div class="line">legendfontsize = 36                              ; Font size (pt)</div><div class="line">xbox = 2.0                                             ; x-size of a matrix element</div><div class="line">ybox = 2.0                                             ; y-size of a matrix element</div><div class="line">matrixspacing = 2.0                              ; Space between 2 matrices</div><div class="line">xoffset = 0.0                                          ; Between matrix and bounding box</div><div class="line">yoffset = 0.0                                          ; Between matrix and bounding box</div><div class="line">x-major = 20000                                   ; Major ticks on x axis every .. frames</div><div class="line">x-minor = 5                                           ; Id. Minor ticks</div><div class="line">x-firstmajor = 0                                     ; First frame <span class="keyword">for</span> major tick</div><div class="line">x-majorat0 = no                                    ; Major tick at first frame</div><div class="line">x-majorticklen = 8.0                              ; x-majorticklength</div><div class="line">x-minorticklen = 4.0                             ; x-minorticklength</div><div class="line">x-label =                                                ; Used when there is none <span class="keyword">in</span> the .xpm</div><div class="line">x-fontsize = 36                                      ; Font size (pt)</div><div class="line">x-font = Times-Roman                         ; A PostScript Font</div><div class="line">x-tickfontsize = 30                               ; Font size (pt)</div><div class="line">x-tickfont = Helvetica                          ; A PostScript Font</div><div class="line">y-major = 20</div><div class="line">y-minor = 5</div><div class="line">y-firstmajor = 0</div><div class="line">y-majorat0 = no</div><div class="line">y-majorticklen = 8.0</div><div class="line">y-minorticklen = 4.0</div><div class="line">y-label =</div><div class="line">y-fontsize = 36</div><div class="line">y-font = Times-Roman</div><div class="line">y-tickfontsize = 30</div><div class="line">y-tickfont = Helvetica</div></pre></td></tr></table></figure>
+<p><a href="/images/2016/09/dssp.sh_.zip">dssp-sh</a>如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># author:kangsgo</span></div><div class="line"><span class="comment"># method:</span></div><div class="line"><span class="comment"># loop 后面为文件夹变量,表示进入哪个文件夹</span></div><div class="line"><span class="comment"># trj_125-150ns.xtc 轨迹变量</span></div><div class="line"><span class="keyword">for</span> loop <span class="keyword">in</span> achmd bnf318 qna tcdd</div><div class="line"><span class="keyword">do</span></div><div class="line"><span class="built_in">echo</span> “开始运行”</div><div class="line">cp m2p.m2p /home/gromacs/shiyan/<span class="variable">$loop</span></div><div class="line"><span class="built_in">cd</span> /home/gromacs/shiyan/<span class="variable">$loop</span></div><div class="line">do_dssp -f md200skip.xtc -s npt.tpr -n index.ndx -o fwss.xpm</div><div class="line">xpm2ps -f fwss.xpm -o fwss.eps -by 2 -bx 1 -di m2p.m2p</div><div class="line">convert fwss.eps <span class="variable">$loop</span>.bmp</div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:11:23.256Z" itemprop="dateUpdated">2017-10-29 11:11:23</time>
 </span><br>
 
 
@@ -273,6 +221,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
 
             
 <div class="page-share-wrap">

@@ -19,19 +19,20 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录： cd /home/kangsgo/mdinstall/md  2.解压 tar xvfj AmberTools17.tar.bz2tar">
+    <meta name="keywords" content="软件安装,amber">
+    <meta name="description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录：1cd /home/kangsgo/mdinstall/md 2.解压12345tar xvfj AmberTools17.tar.bz2">
+<meta name="keywords" content="软件安装,amber">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amber17的安装">
 <meta property="og:url" content="http://kangsgo.com/77.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录： cd /home/kangsgo/mdinstall/md  2.解压 tar xvfj AmberTools17.tar.bz2tar">
+<meta property="og:description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录：1cd /home/kangsgo/mdinstall/md 2.解压12345tar xvfj AmberTools17.tar.bz2">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://kangsgo.com/wp-content/uploads/2015/12/1.png">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:01:56.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Amber17的安装">
-<meta name="twitter:description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录： cd /home/kangsgo/mdinstall/md  2.解压 tar xvfj AmberTools17.tar.bz2tar">
+<meta name="twitter:description" content="首次版本:2015-12-3 更新日期:2017-9-11 首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个 我们以将amber安装在/home/kangsgo/mdinstall/md下为例： 1.进入目录：1cd /home/kangsgo/mdinstall/md 2.解压12345tar xvfj AmberTools17.tar.bz2">
 <meta name="twitter:image" content="http://kangsgo.com/wp-content/uploads/2015/12/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
@@ -167,11 +168,11 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进入目录："><span class="post-toc-number">1.</span> <span class="post-toc-text">1.进入目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-解压"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.解压</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-设置环境变量："><span class="post-toc-number">3.</span> <span class="post-toc-text">3.设置环境变量：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-预编译："><span class="post-toc-number">4.</span> <span class="post-toc-text">4.预编译：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-进入目录："><span class="post-toc-number">5.</span> <span class="post-toc-text">5.进入目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-设置"><span class="post-toc-number">6.</span> <span class="post-toc-text">6.设置</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#提示安装miniconda选择安装-不会与自己安装的conda发生冲突，因为其不会写入环境变量"><span class="post-toc-number"></span> <span class="post-toc-text">(提示安装miniconda选择安装,不会与自己安装的conda发生冲突，因为其不会写入环境变量)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#若是编写脚本安装可以输入yes自动接收协议，如下"><span class="post-toc-number"></span> <span class="post-toc-text">若是编写脚本安装可以输入yes自动接收协议，如下</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-设置环境变量："><span class="post-toc-number">1.</span> <span class="post-toc-text">7.设置环境变量：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-安装："><span class="post-toc-number">2.</span> <span class="post-toc-text">8.安装：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-测试："><span class="post-toc-number">3.</span> <span class="post-toc-text">9.测试：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-设置环境变量"><span class="post-toc-number">4.</span> <span class="post-toc-text">10.设置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-多线程的安装"><span class="post-toc-number">5.</span> <span class="post-toc-text">11.多线程的安装</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进入目录："><span class="post-toc-number">1.</span> <span class="post-toc-text">1.进入目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-解压"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.解压</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-设置环境变量："><span class="post-toc-number">3.</span> <span class="post-toc-text">3.设置环境变量：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-预编译："><span class="post-toc-number">4.</span> <span class="post-toc-text">4.预编译：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-进入目录："><span class="post-toc-number">5.</span> <span class="post-toc-text">5.进入目录：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-设置"><span class="post-toc-number">6.</span> <span class="post-toc-text">6.设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-设置环境变量："><span class="post-toc-number">7.</span> <span class="post-toc-text">7.设置环境变量：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-安装："><span class="post-toc-number">8.</span> <span class="post-toc-text">8.安装：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-测试："><span class="post-toc-number">9.</span> <span class="post-toc-text">9.测试：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-设置环境变量"><span class="post-toc-number">10.</span> <span class="post-toc-text">10.设置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-多线程的安装"><span class="post-toc-number">11.</span> <span class="post-toc-text">11.多线程的安装</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-amber15-e7-9a-84-e5-ae-89-e8-a3-85"
+<article id="post-Amber17的安装"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -196,66 +197,36 @@
 <p>更新日期:2017-9-11</p>
 <p>首先您可能需要安装<a href="http://kangsgo.com/40.html">CUDA</a>和<a href="http://kangsgo.com/31.html">Openmpi</a> 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个</p>
 <p>我们以将amber安装在/home/kangsgo/mdinstall/md下为例：</p>
-<h4 id="1-进入目录："><a href="#1-进入目录：" class="headerlink" title="1.进入目录："></a>1.进入目录：</h4><blockquote>
-<p>cd /home/kangsgo/mdinstall/md</p>
-</blockquote>
-<h4 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h4><blockquote>
-<p>tar xvfj AmberTools17.tar.bz2<br>tar xvfj Amber16.tar.bz2</p>
-<p>#（注意：amber16需要购买,购买amber16后可以使用GPU加速，价格为500美金）</p>
-<p>#（注意:虽然AmberTools17，但解压以后为amber16文件夹）</p>
-</blockquote>
-<h4 id="3-设置环境变量："><a href="#3-设置环境变量：" class="headerlink" title="3.设置环境变量："></a>3.设置环境变量：</h4><blockquote>
-<p>export AMBERHOME=/home/kangsgo/mdinstall/md/amber16   # (for <span style="color: #ff0000;">bash</span>,<span style="color: #ff0000;">zsh</span>,ksh,etc.)</p>
-<p><del>setenv AMBERHOME /home/kangsgo/mdinstall/md/amber16  # (for csh,tcsh 一般不是这些终端)</del></p>
-</blockquote>
-<h4 id="4-预编译："><a href="#4-预编译：" class="headerlink" title="4.预编译："></a>4.预编译：</h4><blockquote>
-<p>sudo apt-get install csh flex gfortran g++ xorg-dev \<br>zlib1g-dev libbz2-dev patch python-tk python-matplotlib</p>
-</blockquote>
-<h4 id="5-进入目录："><a href="#5-进入目录：" class="headerlink" title="5.进入目录："></a>5.进入目录：</h4><blockquote>
-<p>cd $AMBERHOME（也可以输入：/home/kangsgo/mdinstall/md/amber16 绝对路径）</p>
-</blockquote>
+<h4 id="1-进入目录："><a href="#1-进入目录：" class="headerlink" title="1.进入目录："></a>1.进入目录：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /home/kangsgo/mdinstall/md</div></pre></td></tr></table></figure>
+<h4 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar xvfj AmberTools17.tar.bz2</div><div class="line">tar xvfj Amber16.tar.bz2</div><div class="line"><span class="comment">#（注意：amber16需要购买,购买amber16后可以使用GPU加速，价格为500美金）</span></div><div class="line"></div><div class="line"><span class="comment">#（注意:虽然AmberTools17，但解压以后为amber16文件夹）</span></div></pre></td></tr></table></figure>
+<h4 id="3-设置环境变量："><a href="#3-设置环境变量：" class="headerlink" title="3.设置环境变量："></a>3.设置环境变量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> AMBERHOME=/home/kangsgo/mdinstall/md/amber16   <span class="comment"># (for bash,zsh,ksh,etc.)</span></div><div class="line"></div><div class="line">setenv AMBERHOME /home/kangsgo/mdinstall/md/amber16  <span class="comment"># (for csh,tcsh 一般不是这些终端)</span></div></pre></td></tr></table></figure>
+<h4 id="4-预编译："><a href="#4-预编译：" class="headerlink" title="4.预编译："></a>4.预编译：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install csh flex gfortran g++ xorg-dev \</div><div class="line">zlib1g-dev libbz2-dev patch python-tk python-matplotlib</div></pre></td></tr></table></figure>
+<h4 id="5-进入目录："><a href="#5-进入目录：" class="headerlink" title="5.进入目录："></a>5.进入目录：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="variable">$AMBERHOME</span>（也可以输入：/home/kangsgo/mdinstall/md/amber16 绝对路径）</div></pre></td></tr></table></figure>
 <h4 id="6-设置"><a href="#6-设置" class="headerlink" title="6.设置"></a>6.设置</h4><p>一般采用默认安装即可：</p>
-<blockquote>
-<p>./configure gnu</p>
-<h1 id="提示安装miniconda选择安装-不会与自己安装的conda发生冲突，因为其不会写入环境变量"><a href="#提示安装miniconda选择安装-不会与自己安装的conda发生冲突，因为其不会写入环境变量" class="headerlink" title="(提示安装miniconda选择安装,不会与自己安装的conda发生冲突，因为其不会写入环境变量)"></a>(提示安装miniconda选择安装,不会与自己安装的conda发生冲突，因为其不会写入环境变量)</h1><h1 id="若是编写脚本安装可以输入yes自动接收协议，如下"><a href="#若是编写脚本安装可以输入yes自动接收协议，如下" class="headerlink" title="若是编写脚本安装可以输入yes自动接收协议，如下"></a>若是编写脚本安装可以输入yes自动接收协议，如下</h1><p>yes | ./configure gnu</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">./configure gnu</div><div class="line"></div><div class="line"><span class="comment"># (提示安装miniconda选择安装,不会与自己安装的conda发生冲突，因为其不会写入环境变量)</span></div><div class="line"></div><div class="line"><span class="comment"># 若是编写脚本安装可以输入yes自动接收协议，如下</span></div><div class="line"></div><div class="line">yes | ./configure gnu</div></pre></td></tr></table></figure>
 <p>这一步不要安装并行选项，并行需要在后面第10步再进行安装。</p>
-<h4 id="7-设置环境变量："><a href="#7-设置环境变量：" class="headerlink" title="7.设置环境变量："></a>7.设置环境变量：</h4><blockquote>
-<p>source /home/kangsgo/mdinstall/md/amber16/amber.sh # for bash, zsh, ksh, etc.<br>source /home/kangsgo/mdinstall/md/amber16/amber.csh # for csh, tcsh</p>
-</blockquote>
-<h4 id="8-安装："><a href="#8-安装：" class="headerlink" title="8.安装："></a>8.安装：</h4><blockquote>
-<p>make install</p>
-</blockquote>
+<h4 id="7-设置环境变量："><a href="#7-设置环境变量：" class="headerlink" title="7.设置环境变量："></a>7.设置环境变量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /home/kangsgo/mdinstall/md/amber16/amber.sh <span class="comment"># for bash, zsh, ksh, etc.</span></div><div class="line"><span class="built_in">source</span> /home/kangsgo/mdinstall/md/amber16/amber.csh <span class="comment"># for csh, tcsh</span></div></pre></td></tr></table></figure>
+<h4 id="8-安装："><a href="#8-安装：" class="headerlink" title="8.安装："></a>8.安装：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make install</div></pre></td></tr></table></figure>
 <p>如果你没有amber16，那么最后会显示</p>
 <p>/home/kangsgo/install/amber16/src/Makefile not found, or -noamber was set.</p>
 <p>这是正常现象</p>
-<h4 id="9-测试："><a href="#9-测试：" class="headerlink" title="9.测试："></a>9.测试：</h4><blockquote>
-<p>make test</p>
-</blockquote>
+<h4 id="9-测试："><a href="#9-测试：" class="headerlink" title="9.测试："></a>9.测试：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make <span class="built_in">test</span></div></pre></td></tr></table></figure>
 <p>注:这一步我报错了，但是终端给了提示</p>
-<p>test -f /home/kangsgo/install/amber16/amber.sh &amp;&amp; source /home/kangsgo/install/amber16/amber.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test -f /home/kangsgo/install/amber16/amber.sh &amp;&amp; source /home/kangsgo/install/amber16/amber.sh</div></pre></td></tr></table></figure>
 <p>输入以上命令后再 make test就成功了</p>
 <p>这一步时间较久，可以能1个小时还没有完成，特别是经常屏幕没有反应这是正常现象不需要惊慌。</p>
 <h4 id="10-设置环境变量"><a href="#10-设置环境变量" class="headerlink" title="10.设置环境变量"></a>10.设置环境变量</h4><p>以下是我自己的写法:</p>
-<blockquote>
-<p>source /home/kangsgo/install/amber16/amber.sh</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /home/kangsgo/install/amber16/amber.sh</div></pre></td></tr></table></figure>
 <h4 id="11-多线程的安装"><a href="#11-多线程的安装" class="headerlink" title="11.多线程的安装"></a>11.多线程的安装</h4><p>“由于未用到，只是照搬教程”</p>
-<blockquote>
-<p>cd $AMBERHOME</p>
-<p>./configure -mpi &lt;…other options…&gt;&lt;compiler-choice&gt;</p>
-<p>make install</p>
-<p>export DO_PARALLEL=”mpirun -np 2”  #核心数可以修改</p>
-<p>make test</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="variable">$AMBERHOME</span></div><div class="line"></div><div class="line">./configure -mpi &lt;…other options…&gt;&lt;compiler-choice&gt;</div><div class="line"></div><div class="line">make install</div><div class="line"></div><div class="line"><span class="built_in">export</span> DO_PARALLEL=”mpirun -np 2″  <span class="comment">#核心数可以修改</span></div><div class="line"></div><div class="line">make <span class="built_in">test</span></div></pre></td></tr></table></figure>
 <p>&nbsp;</p>
-<p>[<figure class="image-bubble">
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/1.png" alt="1](http://kangsgo.com/wp-content/uploads/2015/12/1-717x1024.png)" title="">
+                    <img src="http://kangsgo.com/wp-content/uploads/2015/12/1.png" alt="1" title="">
                 </div>
-                <div class="image-caption">1](http://kangsgo.com/wp-content/uploads/2015/12/1-717x1024.png)</div>
-            </figure></p>
+                <div class="image-caption">1</div>
+            </figure>
 <p>参考文献：Amber17官方教程</p>
 
         </div>
@@ -264,7 +235,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:01:56.042Z" itemprop="dateUpdated">2017-10-29 11:01:56</time>
 </span><br>
 
 
@@ -289,6 +260,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
 
             
 <div class="page-share-wrap">

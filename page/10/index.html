@@ -157,7 +157,7 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-e5-b8-a6-e5-b8-90-e5-8f-b7-e7-a6-bb-e7-ba-bf-e4-b8-8b-e8-bd-bd-e5-8a-9e-e6-b3-95"
+            <article id="post-带帐号离线下载办法"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -203,14 +203,14 @@ wget http://user:passwd@url.com/xxx.files.tar.gz
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-gromacs-e4-b8-8b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-a4-8d-e5-90-88-e7-89-a9-e5-88-86-e6-9e-90"
+            <article id="post-gromacs下蛋白配体复合物分析"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2016-01-05 23:46:44" datetime="2016-01-05T15:46:44.000Z"  itemprop="datePublished">2016-01-05</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -232,15 +232,25 @@ wget http://user:passwd@url.com/xxx.files.tar.gz
 
     
         此是记录的按照前面做了以后
-废话不多说，先调整周期性
+废话不多说，先调整周期性1trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
+全部选择
 
-trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact全部选择0(“System”)老规矩，作图gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd.xvg -tu ns全部选择碳链骨架4(“Backbone”)xmgrace作图以后，让人紧张的情绪膨胀
+0(“System”)
 
+老规矩，作图
+1gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd.xvg -tu ns
+全...
     
 
         <a href="/156.html" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
     </div>
     
 </article>
@@ -292,14 +302,14 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-autodock-vina-e5-ae-98-e6-96-b9-e6-95-99-e7-a8-8b-e8-a7-86-e9-a2-91"
+            <article id="post-autodock vina官方教程视频"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2016-01-02 16:10:50" datetime="2016-01-02T08:10:50.000Z"  itemprop="datePublished">2016-01-02</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/">Dock</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
 
 
 
@@ -330,12 +340,18 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
         </a>
     </div>
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li></ul>
+
+    </div>
+    
 </article>
 
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-gromacs-mdp-e6-96-87-e4-bb-b6-e5-8f-82-e6-95-b0"
+            <article id="post-gromacsmdp文件参数"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -418,9 +434,8 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
         网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。
 软件下载地址：点我下载
 我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX
-下载后我放在了
-
-/home/kangsgo/mdinstall/plot/ 文件夹下解压文件tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar.g...
+下载后我放在了1/home/kangsgo/mdinstall/plot/ 文件夹下
+解压文件12tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar...
     
 
         <a href="/113.html" class="post-more waves-effect waves-button">
@@ -439,14 +454,14 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-gromacs-e5-85-b1-e8-bd-ad-e6-a2-af-e5-ba-a6-e6-b3-95mdp-e8-ae-be-e7-bd-ae"
+            <article id="post-Gromacs共轭梯度法mdp设置"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2015-12-15 23:44:55" datetime="2015-12-15T15:44:55.000Z"  itemprop="datePublished">2015-12-15</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -467,15 +482,8 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        来源：嘉晔@武汉&nbsp;
-&nbsp;
-[
-                
-                    
-                    
-                
-                共轭梯度法](http://kangsgo.com/wp-content/uploads/2015/12/共轭梯度法.png)
-            
+        来源：嘉晔@武汉
+
 
     
 
@@ -484,19 +492,25 @@ trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
         </a>
     </div>
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
 </article>
 
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-gromacs-e4-b8-8b-e8-9b-8b-e7-99-bd-e9-85-8d-e4-bd-93-e5-a4-8d-e5-90-88-e7-89-a9-e6-a8-a1-e6-8b-9fgaff"
+            <article id="post-gromacs下蛋白-配体复合物模拟[GAFF]"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2015-12-05 16:10:06" datetime="2015-12-05T08:10:06.000Z"  itemprop="datePublished">2015-12-05</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/分子模拟/">分子模拟</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -529,19 +543,25 @@ mdp文件建议从压缩包中的进行修改，以免直接复制导致换行�
         </a>
     </div>
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
 </article>
 
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-autodock-e4-b8-8eautodock-vina-e5-88-a9-e7-94-a8pymol-e6-8f-92-e4-bb-b6-e4-bd-bf-e7-94-a8-e6-95-99-e7-a8-8b"
+            <article id="post-Autodock与AutoDock vina利用pymol插件使用教程"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2015-12-04 21:12:53" datetime="2015-12-04T13:12:53.000Z"  itemprop="datePublished">2015-12-04</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Dock/">Dock</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
 
 
 
@@ -576,12 +596,18 @@ mdp文件建议从压缩包中的进行修改，以免直接复制导致换行�
         </a>
     </div>
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li></ul>
+
+    </div>
+    
 </article>
 
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-pymol-e6-8f-92-e4-bb-b6-ef-bc-9aautodockvina"
+            <article id="post-Pymol插件AutodockVina"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -618,6 +644,12 @@ mdp文件建议从压缩包中的进行修改，以免直接复制导致换行�
         <a href="/68.html" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
     </div>
     
 </article>

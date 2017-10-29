@@ -19,15 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Pymol">
     <meta name="description" content="Rotkit是一个pymol小脚本工具包，依稀记得还是大四的时候有人在bioms群里出售一个脚本，可以将配体周围的氨基酸残基进行突变，然后进行突变对接或者分析，来简单的查看突变对配体与蛋白之间的相互影响。当时觉得非常的高达上，今天查看Pymol的时候发现这个小脚本就可以非常容易的实现这个功能，当然pymol的功能不仅仅如此，还有更多的功能。 这个脚本套件是一个小的脚本合集，能够精确的将小分子放在你">
+<meta name="keywords" content="Pymol">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pymol小脚本之Rotkit">
 <meta property="og:url" content="http://kangsgo.com/714.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="Rotkit是一个pymol小脚本工具包，依稀记得还是大四的时候有人在bioms群里出售一个脚本，可以将配体周围的氨基酸残基进行突变，然后进行突变对接或者分析，来简单的查看突变对配体与蛋白之间的相互影响。当时觉得非常的高达上，今天查看Pymol的时候发现这个小脚本就可以非常容易的实现这个功能，当然pymol的功能不仅仅如此，还有更多的功能。 这个脚本套件是一个小的脚本合集，能够精确的将小分子放在你">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-28T03:49:13.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pymol小脚本之Rotkit">
 <meta name="twitter:description" content="Rotkit是一个pymol小脚本工具包，依稀记得还是大四的时候有人在bioms群里出售一个脚本，可以将配体周围的氨基酸残基进行突变，然后进行突变对接或者分析，来简单的查看突变对配体与蛋白之间的相互影响。当时觉得非常的高达上，今天查看Pymol的时候发现这个小脚本就可以非常容易的实现这个功能，当然pymol的功能不仅仅如此，还有更多的功能。 这个脚本套件是一个小的脚本合集，能够精确的将小分子放在你">
@@ -169,7 +170,7 @@
         </nav>
     </aside>
     
-<article id="post-pymol-e5-b0-8f-e8-84-9a-e6-9c-ac-e4-b9-8brotkit"
+<article id="post-Pymol小脚本之Rotkit"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -192,401 +193,19 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>Rotkit是一个pymol小脚本工具包，依稀记得还是大四的时候有人在bioms群里出售一个脚本，可以将配体周围的氨基酸残基进行突变，然后进行突变对接或者分析，来简单的查看突变对配体与蛋白之间的相互影响。当时觉得非常的高达上，今天查看Pymol的时候发现这个小脚本就可以非常容易的实现这个功能，当然pymol的功能不仅仅如此，还有更多的功能。</p>
 <p>这个脚本套件是一个小的脚本合集，能够精确的将小分子放在你想要的蛋白质上。（虽然官方介绍这么说，但是还是要强调一下功能远不止如此）</p>
-<h3 id="PyMOL可用的脚本功能"><a href="#PyMOL可用的脚本功能" class="headerlink" title="PyMOL可用的脚本功能"></a>PyMOL可用的脚本功能</h3><pre class="EnlighterJSRAW" data-enlighter-language="python">rotateline(Pos1,Pos2,degangle,molecule):
-     "Pos1&gt;Pos2"定义了一个“分子”将旋转“degangle”的度数
-      rotateline Pos1=P513C_CA, Pos2=P513C_CB, degangle=5, molecule=Atto590
-     rotateline Pos1=dyeatom87, Pos2=dyeatom85, degangle=10, molecule=Atto590
-
-mutate(molecule,chain,resi,target="CYS",mutframe="1"):
-    突变目标一个/分子/链/残基，并且选择最可能的帧
-     mutate 1HP1, chain=A, resi=515, target=CYS, mutframe=1
-
-toline(Pos1,Pos2,atom,molecule,dist=1):
-    平移分子原子，1 埃的距离，方向为Pos1&gt;Pos2
-    toline Pos1=P513C_CA, Pos2=P513C_CB, atom=dyeatom87, molecule=Atto590, dist=3</pre>
-
-<h4 id="通过rotkit-functionname"><a href="#通过rotkit-functionname" class="headerlink" title="通过rotkit.functionname"></a>通过rotkit.functionname</h4><pre class="EnlighterJSRAW" data-enlighter-language="python">printMat(matrix):
-    打印 TTT matrix 格式. (4X4)
-getxyz(Sel):
-    输出一个列表[x,y,z]，为浮点数
-vector(Sel1,Sel2):
-   寻找两个点的向量
-vectorstr(vector):
-   将vector的格式转换为str格式（开始为列表格式）
-transmat(vector,dist=1):
-   根据输入向量制作TTT转换矩阵。 矢量乘以距离。
-unitvector(vector):
-   将vector变为单位矢量
-radangle(angle):
-   转换角度变为弧度（radians）
-rotmat(angle,vectornorm,pointcoord):
-   围绕一个坐标点进行旋转
-point.crossprod(Vector1, Vector2):
-   两个向量进行矢量积
-crosspoint(Pos1, crossprod):
-Returns the endpoint for the Position plus the crossproduct vector. Suitable if one would like to rotate around a crossvector.</pre>
-
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例1-对结构进行旋转"><a href="#示例1-对结构进行旋转" class="headerlink" title="示例1-对结构进行旋转"></a>示例1-对结构进行旋转</h3><pre class="EnlighterJSRAW" data-enlighter-language="python">reinitialize
-import rotkit
-
-fetch 1HP1, async=0
-show_as cartoon, 1HP1
-show_as sticks, 1HP1 and resn ATP
-
-###################### Make rotation axis #################
-pseudoatom axisA, vdw=1.0
-pseudoatom axisB, vdw=1.0
-rotkit.toline("/1HP1//A/477/C","/1HP1//A/423/CG1","axisA","axisA",20)
-rotkit.toline("/1HP1//A/423/CG1","/1HP1//A/477/C","axisB","axisB",5)
-show spheres, axisA or axisB 
-label axisA, "axisA" 
-label axisB, "axisB" 
-dist rotaxis, axisA, axisB
-color green, rotaxis
-set dash_width, 5
-set dash_gap, 0
-hide label, rotaxis
-
-## Create rotate states of 1HP1
-create 1HP1_rot, 1HP1, 1, 1
-python
-ang_incr = 1
-anglerange = range(2,98,ang_incr)
-nrstates = len(anglerange)+1
-states = 1
-for angle in anglerange:
-  states += 1
-  rot_1HP1 = "1HP1_rot_%s"%angle
-  cmd.create(rot_1HP1,"(1HP1 and resi 363-550) or (1HP1 and resn ATP)")
-  rotkit.rotateline("axisA","axisB",-(angle-1),rot_1HP1)    
-  cmd.create("1HP1_rot",rot_1HP1,1,states)
-  cmd.create("1HP1_rot",rot_1HP1,1,2*nrstates-states)
-  cmd.delete(rot_1HP1)
-python end
-hide cartoon, (1HP1 and resi 363-550)
-hide sticks, (1HP1 and resn ATP)
-mplay</pre>
-
-<h3 id="示例2-模拟染料的自由度"><a href="#示例2-模拟染料的自由度" class="headerlink" title="示例2-模拟染料的自由度"></a>示例2-模拟染料的自由度</h3><pre class="EnlighterJSRAW" data-enlighter-language="python">reinitialize
-import rotkit
-
-fetch 1HP1, async=0
-show_as cartoon, 1HP1
-show_as sticks, 1HP1 and resn ATP
-set auto_zoom, off
-
-###################### Make rotation axis #################
-pseudoatom axisA, vdw=1.0
-pseudoatom axisB, vdw=1.0
-rotkit.toline("/1HP1//A/477/C","/1HP1//A/423/CG1","axisA","axisA",20)
-rotkit.toline("/1HP1//A/423/CG1","/1HP1//A/477/C","axisB","axisB",5)
-show spheres, axisA or axisB 
-label axisA, "axisA" 
-label axisB, "axisB" 
-dist rotaxis, axisA, axisB
-color green, rotaxis
-set dash_width, 5
-set dash_gap, 0
-hide label, rotaxis
-
-####################### Create rotate states of dye atoms ###################
-##### First mutate, the mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done
-rotkit.mutate("1HP1", chain="A", resi=308, target="CYS", mutframe=1)
-cmd.refresh()
-rotkit.mutate("1HP1", chain="A", resi=513, target="CYS", mutframe=1)
-cmd.refresh()
-
-##### Create simulated dye movement atoms
-pseudoatom Donor, vdw=0.5
-pseudoatom Acceptor, vdw=0.5
-show spheres, Donor or Acceptor 
-rotkit.toline("1HP1 and resi 308 and name CA","1HP1 and resi 308 and name SG","Donor","Donor",15.0)
-rotkit.toline("1HP1 and resi 513 and name CA","1HP1 and resi 513 and name SG","Acceptor","Acceptor",15.0)
-
-python
-Dye_ang_incr = 6
-Donor_angle_range = range(0,359,Dye_ang_incr)
-Acceptor_angle_range = range(0,359,Dye_ang_incr)
-nrstates = len(Donor_angle_range)+1
-Donor_states = 1
-Acceptor_states = 1
-for Donor_angle in Donor_angle_range:
-    Donor_states += 1
-    Donor_angle_name="Donor_%s"%(Donor_angle)
-    cmd.create(Donor_angle_name,"Donor")
-    rotkit.rotateline("1HP1 and resi 308 and name CA","1HP1 and resi 308 and name CB",Donor_angle,Donor_angle_name)
-    # Save it as states in Donor
-    cmd.create("Donor",Donor_angle_name,1,Donor_states)
-    cmd.create("Donor",Donor_angle_name,1,2*nrstates-Donor_states)
-    cmd.group("All_Donors",Donor_angle_name)
-for Acceptor_angle in Acceptor_angle_range:
-    Acceptor_states += 1
-    Acceptor_angle_name="Acceptor_%s"%(Acceptor_angle)
-    cmd.create(Acceptor_angle_name,"Acceptor")
-    rotkit.rotateline("1HP1 and resi 513 and name CA","1HP1 and resi 513 and name CB",Acceptor_angle,Acceptor_angle_name)
-    # Save it as states in Acceptor
-    cmd.create("Acceptor",Acceptor_angle_name,1,Acceptor_states)
-    cmd.create("Acceptor",Acceptor_angle_name,1,2*nrstates-Acceptor_states)
-    cmd.group("All_Acceptors",Acceptor_angle_name)
-python end
-disable All_Donors
-disable All_Acceptors
-cmd.create("Donor","All_Donors",1,1)
-cmd.create("Acceptor","All_Acceptors",1,1)
-mplay</pre>
-
-<h3 id="示例3-创建距离分布直方图"><a href="#示例3-创建距离分布直方图" class="headerlink" title="示例3-创建距离分布直方图"></a>示例3-创建距离分布直方图</h3><pre class="EnlighterJSRAW" data-enlighter-language="python">reinitialize
-import rotkit
-
-fetch 1HP1, async=0
-show_as cartoon, 1HP1
-show_as sticks, 1HP1 and resn ATP
-set auto_zoom, off
-
-####################### Create rotate states of dye atoms ###################
-##### First mutate, the mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done
-rotkit.mutate("1HP1", chain="A", resi=308, target="CYS", mutframe=1)
-cmd.refresh()
-rotkit.mutate("1HP1", chain="A", resi=513, target="CYS", mutframe=1)
-cmd.refresh()
-
-##### Create simulated dye movement atoms
-pseudoatom Donor, vdw=0.5
-pseudoatom Acceptor, vdw=0.5
-show spheres, Donor or Acceptor 
-rotkit.toline("1HP1 and resi 308 and name CA","1HP1 and resi 308 and name SG","Donor","Donor",15.0)
-rotkit.toline("1HP1 and resi 513 and name CA","1HP1 and resi 513 and name SG","Acceptor","Acceptor",15.0)
-
-python
-Dye_ang_incr = 6
-Donor_angle_range = range(0,359,Dye_ang_incr)
-Acceptor_angle_range = range(0,359,Dye_ang_incr)
-Donor_names = []
-Acceptor_names = []
-for Donor_angle in Donor_angle_range:
-    Donor_angle_name="Donor_%s"%(Donor_angle)
-    Donor_names.append([Donor_angle,Donor_angle_name])
-    cmd.create(Donor_angle_name,"Donor")
-    rotkit.rotateline("1HP1 and resi 308 and name CA","1HP1 and resi 308 and name CB",Donor_angle,Donor_angle_name)
-    cmd.group("All_Donors",Donor_angle_name)
-for Acceptor_angle in Acceptor_angle_range:
-    Acceptor_angle_name="Acceptor_%s"%(Acceptor_angle)
-    Acceptor_names.append([Acceptor_angle,Acceptor_angle_name])
-    cmd.create(Acceptor_angle_name,"Acceptor")
-    rotkit.rotateline("1HP1 and resi 513 and name CA","1HP1 and resi 513 and name CB",Acceptor_angle,Acceptor_angle_name)
-    cmd.group("All_Acceptors",Acceptor_angle_name)
-python end
-disable All_Donors
-disable All_Acceptors
-cmd.create("Donor","All_Donors")
-cmd.create("Acceptor","All_Acceptors")
-cmd.refresh()
-
-# Make a distribution for the Open case
-Don_Acc_distribution = []
-python
-for Don in Donor_names:
-    for Acc in Acceptor_names:
-        distname = "%s_%s"%(Don[1],Acc[1])
-        distance = cmd.dist(distname,Don[1],Acc[1])
-        Don_Acc_distribution.append([Don[0], Acc[1], distance])
-        cmd.delete(distname)
-python end
-Newdir=rotkit.createdirs("results_rotkit")
-os.chdir(Newdir) 
-rotkit.makehistogram(Don_Acc_distribution,dataname="Don_Acc_Open",datalistindex=2,nrbins=100,binrange=[0,0])
-
-# Make a distribution for angle range
-cmd.create("Acceptor_rot","All_Acceptors")
-python
-ang_incr = 1
-anglerange = range(2,98,ang_incr)
-nrstates = len(anglerange)+1
-states = 1
-for angle in anglerange:
-    states += 1
-    rot_Acceptor = "Acceptor_rot_%s"%angle
-    cmd.create(rot_Acceptor,"Acceptor_rot")
-    rotkit.rotateline("/1HP1//A/423/CG1","/1HP1//A/477/C",-(angle-1),rot_Acceptor)  
-    cmd.create("Acceptor_rot",rot_Acceptor,1,states)
-    cmd.create("Acceptor_rot",rot_Acceptor,1,2*nrstates-states)
-    cmd.delete(rot_Acceptor)
-    for Acc in Acceptor_names:
-        rotkit.rotateline("/1HP1//A/423/CG1","/1HP1//A/477/C",(angle-1),Acc[1])
-python end
-mplay</pre>
-
-<h3 id="示例5-功能向导文件"><a href="#示例5-功能向导文件" class="headerlink" title="示例5-功能向导文件"></a>示例5-功能向导文件</h3><pre class="EnlighterJSRAW" data-enlighter-language="python">reinitialize
-import rotkit
-
-fetch 1HP1, async=0
-python
-if 'PYMOL_GIT_MOD' in os.environ:
-    example_dir = os.path.join(os.path.split(os.environ['PYMOL_GIT_MOD'])[0],"files_for_examples")
-    cmd.load(os.path.join(example_dir,"Atto590.pdb"))
-else:
-    cmd.load("Atto590.pdb")
-python end
-# Make sure everything is loaded before we continue
-cmd.refresh()
-
-### Get the names of the loaded objects
-protname = cmd.get_names()[0]
-molname = cmd.get_names()[1]
-
-### Make the names we are going to use
-protselectCB="%s and resi 308 and name CB"%protname
-protnameselectCB="K308CB"
-protselectCA="%s and resi 308 and name CA"%protname
-protnameselectCA="K308CA"
-molselect13="%s and id 13"%molname
-molnameselect13="dyeatom13"
-molselect12="%s and id 12"%molname
-molnameselect12="dyeatom12"
-
-### Make some selections
-cmd.select("%s"%protnameselectCB,"%s"%protselectCB)
-cmd.select("%s"%protnameselectCA,"%s"%protselectCA)
-cmd.select("%s"%molnameselect13,"%s"%molselect13)
-cmd.label("%s"%molnameselect13,"13")
-cmd.select("%s"%molnameselect12,"%s"%molselect12)
-cmd.label("%s"%molnameselect12,"12")
-
-### Make nice representations
-cmd.show_as("cartoon","%s"%protname)
-cmd.show("sticks","byres %s"%protnameselectCB)
-
-##### PART I: Use of functions #####
-### This view will take you to the first part
-set_view (\
-     0.377224118,    0.880101919,   -0.288305759,\
-     0.661396861,   -0.473919988,   -0.581338286,\
-    -0.648268998,    0.028612033,   -0.760871351,\
-     0.000000000,    0.000000000,  -56.408561707,\
-    19.480533600,   34.572898865,    6.978204727,\
-    46.615653992,   66.201446533,  -20.000001907 )
-
-#### Just unhash each part for itself, as you continue through
-### To print a objects TTT matrix in a readable format
-rotkit.printMat(cmd.get_object_matrix(molname))
-
-##### We want to move the dye to a desired location, and rotate it to a view we desire
-##### First get the vector bewteen the dyeatom and the protein atom
-diffvector = rotkit.vector("%s"%molselect13,"%s"%protnameselectCB)
-##### Then move the dye
-move = rotkit.transmat(diffvector)
-##### print the matrix for fun
-rotkit.printMat(move)
-##### Move the dye
-cmd.transform_selection("%s"%molname,move)
-
-##### Now we want to displace the dye in the CA-CB bond direction
-##### First find the vector/direction to displace it in. From A -&gt; B
-diffvector = rotkit.vector("%s"%protnameselectCA,"%s"%protnameselectCB)
-##### Make the vector so its lenth is equal 1
-uvector = rotkit.unitvector(diffvector)[0]
-##### Make the move translation matrix, and we multiply the matrix with 3, so it moves 3 Angstrom
-move = rotkit.transmat(uvector,3)
-##### Print the matrix
-rotkit.printMat(move)
-##### Displace it in the CA-CB direction
-cmd.transform_selection("%s"%molname,move)
-
-##### Now we want to rotate it a single time. We convert 40 degress to radians
-##### The input is the angle, the line to rotate around, and a point where the line goes through
-CBxyz = rotkit.getxyz("%s"%protnameselectCB)[0]
-rmat = rotkit.rotmat(rotkit.radangle(40),uvector,CBxyz)
-rotkit.printMat(rmat)
-##### Copy paste this line into pymol to see it manually
-cmd.transform_selection("%s"%molname,rmat)
-
-##### We are not quite satisfied, we want to rotate it around its own bond
-##### So we rotate in around its own 13 -&gt; 12 bonds
-diffvector = rotkit.vector("%s"%molnameselect13,"%s"%molnameselect12)
-uvector = rotkit.unitvector(diffvector)[0]
-xyz12 = rotkit.getxyz("%s"%molnameselect12)[0]
-rmat = rotkit.rotmat(rotkit.radangle(10),uvector,xyz12)
-##### Copy paste this line into pymol to see it manually
-cmd.transform_selection("%s"%molname,rmat)
-
-##### Now, lets make a function that collects all these call in one function
-##### We only want to define two positions that defines the line, the angle and the object to rotate
-rotkit.rotateline("%s"%molnameselect13,"%s"%molnameselect12,180,"%s"%molname)
-##### This is made as a pymol command as well. I first print the names that we should write manually in the consol
-print("rotateline Pos1=%s, Pos2=%s, degangle=15, molecule=%s"%(molnameselect13, molnameselect12, molname))
-
-##### To illustate best, we create som copies of the dye
-python
-anglerange = range(90,360,90)
-for angle in anglerange:
-    ### Make a suitable name for the new molecule
-    molanglename="%s%s"%(molname,angle)
-    ### Now make a copy
-    cmd.create(molanglename,molname)
-    cmd.label("%s and id 12"%molanglename,"12")
-    cmd.label("%s and id 13"%molanglename,"13")
-    ### Rotate the copy
-    rotkit.rotateline("%s"%protnameselectCB,"%s"%molnameselect13,angle,"%s"%molanglename)
-python end
-
-####### End of PART I ####
-####### PART II: More advanced functions #####
-##### This view will take you to the second part
-set_view (\
-     0.723298192,    0.467510879,    0.508201897,\
-     0.371686131,   -0.883831143,    0.284063697,\
-     0.581970334,   -0.016570913,   -0.813038886,\
-     0.000000000,    0.000000000,  -76.609786987,\
-    11.790571213,   64.992294312,   20.803859711,\
-   -31.181428909,  184.401092529,  -20.000001907 )
-
-##### We can fast mutate a protein. frame 1 is the most probable mutation
-rotkit.mutate(protname, chain="A", resi=513, target="CYS", mutframe=1)
-##### The mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done
-cmd.refresh()
-##### This is made as a pymol command as well. I first print the names that we should write manually in the consol
-print("mutate %s, chain=%s, resi=%s, target=CYS, mutframe=1"%(protname, "A", 515))
-
-##### We now make some selections for this mutation
-protselectCBcys="%s and resi 513 and name CB"%protname
-protnameselectCBcys="P513C_CB"
-protselectCAcys="%s and resi 513 and name CA"%protname
-protnameselectCAcys="P513C_CA"
-cmd.select("%s"%protnameselectCBcys,"%s"%protselectCBcys)
-cmd.select("%s"%protnameselectCAcys,"%s"%protselectCAcys)
-
-##### Now, lets make a function that collects all the commands to put on an atom on the same line defined by two points
-##### The input is the two points that define the line, the atom of a molecule to be put on the line, and the distance to move
-rotkit.toline(protnameselectCAcys,protnameselectCBcys,molnameselect13,molname,3)
-rotkit.rotateline(protnameselectCAcys,protnameselectCBcys,180,molname)
-rotkit.rotateline(molnameselect13,molnameselect12,10,molname)
-print("toline Pos1=%s, Pos2=%s, atom=%s, molecule=%s, dist=%s"%(protnameselectCAcys,protnameselectCBcys,molnameselect13,molname,3))
-print("rotateline Pos1=%s, Pos2=%s, degangle=180, molecule=%s"%(protnameselectCAcys, protnameselectCBcys, molname))
-print("rotateline Pos1=%s, Pos2=%s, degangle=10, molecule=%s"%(molnameselect13, molnameselect12, molname))
-cmd.refresh()
-####### End of PART II ####
-
-####### Now we make a cross product ####
-molselect14="%s and id 14"%molname
-molnameselect14="dyeatom14"
-cmd.select("%s"%molnameselect14,"%s"%molselect14)
-cmd.label("%s"%molnameselect14,"14")
-
-cross = rotkit.crossprod(rotkit.vector(molselect13,molselect12),rotkit.vector(molselect13,molselect14))
-unity_cross = rotkit.unitvector(cross)[0]
-point_cross = rotkit.crosspoint(molselect13,cross)
-rotkit.rotateline(molnameselect13,point_cross,180,molname)
-print("rotateline Pos1=%s, Pos2=%s, degangle=10, molecule=%s"%(molnameselect13, point_cross, molname))</pre>
-
-<p>&nbsp;</p>
-
+<h3 id="PyMOL可用的脚本功能"><a href="#PyMOL可用的脚本功能" class="headerlink" title="PyMOL可用的脚本功能"></a>PyMOL可用的脚本功能</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">rotateline(Pos1,Pos2,degangle,molecule):</div><div class="line">     <span class="string">"Pos1&gt;Pos2"</span>定义了一个“分子”将旋转“degangle”的度数</div><div class="line">      rotateline Pos1=P513C_CA, Pos2=P513C_CB, degangle=<span class="number">5</span>, molecule=Atto590</div><div class="line">     rotateline Pos1=dyeatom87, Pos2=dyeatom85, degangle=<span class="number">10</span>, molecule=Atto590</div><div class="line">mutate(molecule,chain,resi,target=<span class="string">"CYS"</span>,mutframe=<span class="string">"1"</span>):</div><div class="line">    突变目标一个/分子/链/残基，并且选择最可能的帧</div><div class="line">     mutate <span class="number">1</span>HP1, chain=A, resi=<span class="number">515</span>, target=CYS, mutframe=<span class="number">1</span></div><div class="line">toline(Pos1,Pos2,atom,molecule,dist=<span class="number">1</span>):</div><div class="line">    平移分子原子，<span class="number">1</span> 埃的距离，方向为Pos1&gt;Pos2</div><div class="line">    toline Pos1=P513C_CA, Pos2=P513C_CB, atom=dyeatom87, molecule=Atto590, dist=<span class="number">3</span></div></pre></td></tr></table></figure>
+<h4 id="通过rotkit-functionname"><a href="#通过rotkit-functionname" class="headerlink" title="通过rotkit.functionname"></a>通过rotkit.functionname</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">printMat(matrix):</div><div class="line">    打印 TTT matrix 格式. (<span class="number">4</span>X4)</div><div class="line">getxyz(Sel):</div><div class="line">    输出一个列表[x,y,z]，为浮点数</div><div class="line">vector(Sel1,Sel2):</div><div class="line">   寻找两个点的向量</div><div class="line">vectorstr(vector):</div><div class="line">   将vector的格式转换为str格式（开始为列表格式）</div><div class="line">transmat(vector,dist=<span class="number">1</span>):</div><div class="line">   根据输入向量制作TTT转换矩阵。 矢量乘以距离。</div><div class="line">unitvector(vector):</div><div class="line">   将vector变为单位矢量</div><div class="line">radangle(angle):</div><div class="line">   转换角度变为弧度（radians）</div><div class="line">rotmat(angle,vectornorm,pointcoord):</div><div class="line">   围绕一个坐标点进行旋转</div><div class="line">point.crossprod(Vector1, Vector2):</div><div class="line">   两个向量进行矢量积</div><div class="line">crosspoint(Pos1, crossprod):</div><div class="line">Returns the endpoint <span class="keyword">for</span> the Position plus the crossproduct vector. Suitable <span class="keyword">if</span> one would like to rotate around a crossvector.</div></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例1-对结构进行旋转"><a href="#示例1-对结构进行旋转" class="headerlink" title="示例1-对结构进行旋转"></a>示例1-对结构进行旋转</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">reinitialize</div><div class="line"><span class="keyword">import</span> rotkit</div><div class="line"> </div><div class="line">fetch <span class="number">1</span>HP1, <span class="keyword">async</span>=<span class="number">0</span></div><div class="line">show_as cartoon, <span class="number">1</span>HP1</div><div class="line">show_as sticks, <span class="number">1</span>HP1 <span class="keyword">and</span> resn ATP</div><div class="line"> </div><div class="line"><span class="comment">###################### Make rotation axis #################</span></div><div class="line">pseudoatom axisA, vdw=<span class="number">1.0</span></div><div class="line">pseudoatom axisB, vdw=<span class="number">1.0</span></div><div class="line">rotkit.toline(<span class="string">"/1HP1//A/477/C"</span>,<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"axisA"</span>,<span class="string">"axisA"</span>,<span class="number">20</span>)</div><div class="line">rotkit.toline(<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"/1HP1//A/477/C"</span>,<span class="string">"axisB"</span>,<span class="string">"axisB"</span>,<span class="number">5</span>)</div><div class="line">show spheres, axisA <span class="keyword">or</span> axisB </div><div class="line">label axisA, <span class="string">"axisA"</span> </div><div class="line">label axisB, <span class="string">"axisB"</span> </div><div class="line">dist rotaxis, axisA, axisB</div><div class="line">color green, rotaxis</div><div class="line">set dash_width, <span class="number">5</span></div><div class="line">set dash_gap, <span class="number">0</span></div><div class="line">hide label, rotaxis</div><div class="line"> </div><div class="line"><span class="comment">## Create rotate states of 1HP1</span></div><div class="line">create <span class="number">1</span>HP1_rot, <span class="number">1</span>HP1, <span class="number">1</span>, <span class="number">1</span></div><div class="line">python</div><div class="line">ang_incr = <span class="number">1</span></div><div class="line">anglerange = range(<span class="number">2</span>,<span class="number">98</span>,ang_incr)</div><div class="line">nrstates = len(anglerange)+<span class="number">1</span></div><div class="line">states = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> angle <span class="keyword">in</span> anglerange:</div><div class="line">  states += <span class="number">1</span></div><div class="line">  rot_1HP1 = <span class="string">"1HP1_rot_%s"</span>%angle</div><div class="line">  cmd.create(rot_1HP1,<span class="string">"(1HP1 and resi 363-550) or (1HP1 and resn ATP)"</span>)</div><div class="line">  rotkit.rotateline(<span class="string">"axisA"</span>,<span class="string">"axisB"</span>,-(angle<span class="number">-1</span>),rot_1HP1)    </div><div class="line">  cmd.create(<span class="string">"1HP1_rot"</span>,rot_1HP1,<span class="number">1</span>,states)</div><div class="line">  cmd.create(<span class="string">"1HP1_rot"</span>,rot_1HP1,<span class="number">1</span>,<span class="number">2</span>*nrstates-states)</div><div class="line">  cmd.delete(rot_1HP1)</div><div class="line">python end</div><div class="line">hide cartoon, (<span class="number">1</span>HP1 <span class="keyword">and</span> resi <span class="number">363</span><span class="number">-550</span>)</div><div class="line">hide sticks, (<span class="number">1</span>HP1 <span class="keyword">and</span> resn ATP)</div><div class="line">mplay</div></pre></td></tr></table></figure>
+<h3 id="示例2-模拟染料的自由度"><a href="#示例2-模拟染料的自由度" class="headerlink" title="示例2-模拟染料的自由度"></a>示例2-模拟染料的自由度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">reinitialize</div><div class="line"><span class="keyword">import</span> rotkit</div><div class="line"> </div><div class="line">fetch <span class="number">1</span>HP1, <span class="keyword">async</span>=<span class="number">0</span></div><div class="line">show_as cartoon, <span class="number">1</span>HP1</div><div class="line">show_as sticks, <span class="number">1</span>HP1 <span class="keyword">and</span> resn ATP</div><div class="line">set auto_zoom, off</div><div class="line"> </div><div class="line"><span class="comment">###################### Make rotation axis #################</span></div><div class="line">pseudoatom axisA, vdw=<span class="number">1.0</span></div><div class="line">pseudoatom axisB, vdw=<span class="number">1.0</span></div><div class="line">rotkit.toline(<span class="string">"/1HP1//A/477/C"</span>,<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"axisA"</span>,<span class="string">"axisA"</span>,<span class="number">20</span>)</div><div class="line">rotkit.toline(<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"/1HP1//A/477/C"</span>,<span class="string">"axisB"</span>,<span class="string">"axisB"</span>,<span class="number">5</span>)</div><div class="line">show spheres, axisA <span class="keyword">or</span> axisB </div><div class="line">label axisA, <span class="string">"axisA"</span> </div><div class="line">label axisB, <span class="string">"axisB"</span> </div><div class="line">dist rotaxis, axisA, axisB</div><div class="line">color green, rotaxis</div><div class="line">set dash_width, <span class="number">5</span></div><div class="line">set dash_gap, <span class="number">0</span></div><div class="line">hide label, rotaxis</div><div class="line"> </div><div class="line"><span class="comment">####################### Create rotate states of dye atoms ###################</span></div><div class="line"><span class="comment">##### First mutate, the mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done</span></div><div class="line">rotkit.mutate(<span class="string">"1HP1"</span>, chain=<span class="string">"A"</span>, resi=<span class="number">308</span>, target=<span class="string">"CYS"</span>, mutframe=<span class="number">1</span>)</div><div class="line">cmd.refresh()</div><div class="line">rotkit.mutate(<span class="string">"1HP1"</span>, chain=<span class="string">"A"</span>, resi=<span class="number">513</span>, target=<span class="string">"CYS"</span>, mutframe=<span class="number">1</span>)</div><div class="line">cmd.refresh()</div><div class="line"> </div><div class="line"><span class="comment">##### Create simulated dye movement atoms</span></div><div class="line">pseudoatom Donor, vdw=<span class="number">0.5</span></div><div class="line">pseudoatom Acceptor, vdw=<span class="number">0.5</span></div><div class="line">show spheres, Donor <span class="keyword">or</span> Acceptor </div><div class="line">rotkit.toline(<span class="string">"1HP1 and resi 308 and name CA"</span>,<span class="string">"1HP1 and resi 308 and name SG"</span>,<span class="string">"Donor"</span>,<span class="string">"Donor"</span>,<span class="number">15.0</span>)</div><div class="line">rotkit.toline(<span class="string">"1HP1 and resi 513 and name CA"</span>,<span class="string">"1HP1 and resi 513 and name SG"</span>,<span class="string">"Acceptor"</span>,<span class="string">"Acceptor"</span>,<span class="number">15.0</span>)</div><div class="line"> </div><div class="line">python</div><div class="line">Dye_ang_incr = <span class="number">6</span></div><div class="line">Donor_angle_range = range(<span class="number">0</span>,<span class="number">359</span>,Dye_ang_incr)</div><div class="line">Acceptor_angle_range = range(<span class="number">0</span>,<span class="number">359</span>,Dye_ang_incr)</div><div class="line">nrstates = len(Donor_angle_range)+<span class="number">1</span></div><div class="line">Donor_states = <span class="number">1</span></div><div class="line">Acceptor_states = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> Donor_angle <span class="keyword">in</span> Donor_angle_range:</div><div class="line">    Donor_states += <span class="number">1</span></div><div class="line">    Donor_angle_name=<span class="string">"Donor_%s"</span>%(Donor_angle)</div><div class="line">    cmd.create(Donor_angle_name,<span class="string">"Donor"</span>)</div><div class="line">    rotkit.rotateline(<span class="string">"1HP1 and resi 308 and name CA"</span>,<span class="string">"1HP1 and resi 308 and name CB"</span>,Donor_angle,Donor_angle_name)</div><div class="line">    <span class="comment"># Save it as states in Donor</span></div><div class="line">    cmd.create(<span class="string">"Donor"</span>,Donor_angle_name,<span class="number">1</span>,Donor_states)</div><div class="line">    cmd.create(<span class="string">"Donor"</span>,Donor_angle_name,<span class="number">1</span>,<span class="number">2</span>*nrstates-Donor_states)</div><div class="line">    cmd.group(<span class="string">"All_Donors"</span>,Donor_angle_name)</div><div class="line"><span class="keyword">for</span> Acceptor_angle <span class="keyword">in</span> Acceptor_angle_range:</div><div class="line">    Acceptor_states += <span class="number">1</span></div><div class="line">    Acceptor_angle_name=<span class="string">"Acceptor_%s"</span>%(Acceptor_angle)</div><div class="line">    cmd.create(Acceptor_angle_name,<span class="string">"Acceptor"</span>)</div><div class="line">    rotkit.rotateline(<span class="string">"1HP1 and resi 513 and name CA"</span>,<span class="string">"1HP1 and resi 513 and name CB"</span>,Acceptor_angle,Acceptor_angle_name)</div><div class="line">    <span class="comment"># Save it as states in Acceptor</span></div><div class="line">    cmd.create(<span class="string">"Acceptor"</span>,Acceptor_angle_name,<span class="number">1</span>,Acceptor_states)</div><div class="line">    cmd.create(<span class="string">"Acceptor"</span>,Acceptor_angle_name,<span class="number">1</span>,<span class="number">2</span>*nrstates-Acceptor_states)</div><div class="line">    cmd.group(<span class="string">"All_Acceptors"</span>,Acceptor_angle_name)</div><div class="line">python end</div><div class="line">disable All_Donors</div><div class="line">disable All_Acceptors</div><div class="line">cmd.create(<span class="string">"Donor"</span>,<span class="string">"All_Donors"</span>,<span class="number">1</span>,<span class="number">1</span>)</div><div class="line">cmd.create(<span class="string">"Acceptor"</span>,<span class="string">"All_Acceptors"</span>,<span class="number">1</span>,<span class="number">1</span>)</div><div class="line">mplay</div></pre></td></tr></table></figure>
+<h3 id="示例3-创建距离分布直方图"><a href="#示例3-创建距离分布直方图" class="headerlink" title="示例3-创建距离分布直方图"></a>示例3-创建距离分布直方图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">reinitialize</div><div class="line"><span class="keyword">import</span> rotkit</div><div class="line"> </div><div class="line">fetch <span class="number">1</span>HP1, <span class="keyword">async</span>=<span class="number">0</span></div><div class="line">show_as cartoon, <span class="number">1</span>HP1</div><div class="line">show_as sticks, <span class="number">1</span>HP1 <span class="keyword">and</span> resn ATP</div><div class="line">set auto_zoom, off</div><div class="line"> </div><div class="line"><span class="comment">####################### Create rotate states of dye atoms ###################</span></div><div class="line"><span class="comment">##### First mutate, the mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done</span></div><div class="line">rotkit.mutate(<span class="string">"1HP1"</span>, chain=<span class="string">"A"</span>, resi=<span class="number">308</span>, target=<span class="string">"CYS"</span>, mutframe=<span class="number">1</span>)</div><div class="line">cmd.refresh()</div><div class="line">rotkit.mutate(<span class="string">"1HP1"</span>, chain=<span class="string">"A"</span>, resi=<span class="number">513</span>, target=<span class="string">"CYS"</span>, mutframe=<span class="number">1</span>)</div><div class="line">cmd.refresh()</div><div class="line"> </div><div class="line"><span class="comment">##### Create simulated dye movement atoms</span></div><div class="line">pseudoatom Donor, vdw=<span class="number">0.5</span></div><div class="line">pseudoatom Acceptor, vdw=<span class="number">0.5</span></div><div class="line">show spheres, Donor <span class="keyword">or</span> Acceptor </div><div class="line">rotkit.toline(<span class="string">"1HP1 and resi 308 and name CA"</span>,<span class="string">"1HP1 and resi 308 and name SG"</span>,<span class="string">"Donor"</span>,<span class="string">"Donor"</span>,<span class="number">15.0</span>)</div><div class="line">rotkit.toline(<span class="string">"1HP1 and resi 513 and name CA"</span>,<span class="string">"1HP1 and resi 513 and name SG"</span>,<span class="string">"Acceptor"</span>,<span class="string">"Acceptor"</span>,<span class="number">15.0</span>)</div><div class="line"> </div><div class="line">python</div><div class="line">Dye_ang_incr = <span class="number">6</span></div><div class="line">Donor_angle_range = range(<span class="number">0</span>,<span class="number">359</span>,Dye_ang_incr)</div><div class="line">Acceptor_angle_range = range(<span class="number">0</span>,<span class="number">359</span>,Dye_ang_incr)</div><div class="line">Donor_names = []</div><div class="line">Acceptor_names = []</div><div class="line"><span class="keyword">for</span> Donor_angle <span class="keyword">in</span> Donor_angle_range:</div><div class="line">    Donor_angle_name=<span class="string">"Donor_%s"</span>%(Donor_angle)</div><div class="line">    Donor_names.append([Donor_angle,Donor_angle_name])</div><div class="line">    cmd.create(Donor_angle_name,<span class="string">"Donor"</span>)</div><div class="line">    rotkit.rotateline(<span class="string">"1HP1 and resi 308 and name CA"</span>,<span class="string">"1HP1 and resi 308 and name CB"</span>,Donor_angle,Donor_angle_name)</div><div class="line">    cmd.group(<span class="string">"All_Donors"</span>,Donor_angle_name)</div><div class="line"><span class="keyword">for</span> Acceptor_angle <span class="keyword">in</span> Acceptor_angle_range:</div><div class="line">    Acceptor_angle_name=<span class="string">"Acceptor_%s"</span>%(Acceptor_angle)</div><div class="line">    Acceptor_names.append([Acceptor_angle,Acceptor_angle_name])</div><div class="line">    cmd.create(Acceptor_angle_name,<span class="string">"Acceptor"</span>)</div><div class="line">    rotkit.rotateline(<span class="string">"1HP1 and resi 513 and name CA"</span>,<span class="string">"1HP1 and resi 513 and name CB"</span>,Acceptor_angle,Acceptor_angle_name)</div><div class="line">    cmd.group(<span class="string">"All_Acceptors"</span>,Acceptor_angle_name)</div><div class="line">python end</div><div class="line">disable All_Donors</div><div class="line">disable All_Acceptors</div><div class="line">cmd.create(<span class="string">"Donor"</span>,<span class="string">"All_Donors"</span>)</div><div class="line">cmd.create(<span class="string">"Acceptor"</span>,<span class="string">"All_Acceptors"</span>)</div><div class="line">cmd.refresh()</div><div class="line"> </div><div class="line"><span class="comment"># Make a distribution for the Open case</span></div><div class="line">Don_Acc_distribution = []</div><div class="line">python</div><div class="line"><span class="keyword">for</span> Don <span class="keyword">in</span> Donor_names:</div><div class="line">    <span class="keyword">for</span> Acc <span class="keyword">in</span> Acceptor_names:</div><div class="line">        distname = <span class="string">"%s_%s"</span>%(Don[<span class="number">1</span>],Acc[<span class="number">1</span>])</div><div class="line">        distance = cmd.dist(distname,Don[<span class="number">1</span>],Acc[<span class="number">1</span>])</div><div class="line">        Don_Acc_distribution.append([Don[<span class="number">0</span>], Acc[<span class="number">1</span>], distance])</div><div class="line">        cmd.delete(distname)</div><div class="line">python end</div><div class="line">Newdir=rotkit.createdirs(<span class="string">"results_rotkit"</span>)</div><div class="line">os.chdir(Newdir) </div><div class="line">rotkit.makehistogram(Don_Acc_distribution,dataname=<span class="string">"Don_Acc_Open"</span>,datalistindex=<span class="number">2</span>,nrbins=<span class="number">100</span>,binrange=[<span class="number">0</span>,<span class="number">0</span>])</div><div class="line"> </div><div class="line"><span class="comment"># Make a distribution for angle range</span></div><div class="line">cmd.create(<span class="string">"Acceptor_rot"</span>,<span class="string">"All_Acceptors"</span>)</div><div class="line">python</div><div class="line">ang_incr = <span class="number">1</span></div><div class="line">anglerange = range(<span class="number">2</span>,<span class="number">98</span>,ang_incr)</div><div class="line">nrstates = len(anglerange)+<span class="number">1</span></div><div class="line">states = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> angle <span class="keyword">in</span> anglerange:</div><div class="line">    states += <span class="number">1</span></div><div class="line">    rot_Acceptor = <span class="string">"Acceptor_rot_%s"</span>%angle</div><div class="line">    cmd.create(rot_Acceptor,<span class="string">"Acceptor_rot"</span>)</div><div class="line">    rotkit.rotateline(<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"/1HP1//A/477/C"</span>,-(angle<span class="number">-1</span>),rot_Acceptor)  </div><div class="line">    cmd.create(<span class="string">"Acceptor_rot"</span>,rot_Acceptor,<span class="number">1</span>,states)</div><div class="line">    cmd.create(<span class="string">"Acceptor_rot"</span>,rot_Acceptor,<span class="number">1</span>,<span class="number">2</span>*nrstates-states)</div><div class="line">    cmd.delete(rot_Acceptor)</div><div class="line">    <span class="keyword">for</span> Acc <span class="keyword">in</span> Acceptor_names:</div><div class="line">        rotkit.rotateline(<span class="string">"/1HP1//A/423/CG1"</span>,<span class="string">"/1HP1//A/477/C"</span>,(angle<span class="number">-1</span>),Acc[<span class="number">1</span>])</div><div class="line">python end</div><div class="line">mplay</div></pre></td></tr></table></figure>
+<h3 id="示例5-功能向导文件"><a href="#示例5-功能向导文件" class="headerlink" title="示例5-功能向导文件"></a>示例5-功能向导文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div></pre></td><td class="code"><pre><div class="line">reinitialize</div><div class="line"><span class="keyword">import</span> rotkit</div><div class="line">fetch <span class="number">1</span>HP1, <span class="keyword">async</span>=<span class="number">0</span></div><div class="line">python</div><div class="line"><span class="keyword">if</span> <span class="string">'PYMOL_GIT_MOD'</span> <span class="keyword">in</span> os.environ:</div><div class="line">    example_dir = os.path.join(os.path.split(os.environ[<span class="string">'PYMOL_GIT_MOD'</span>])[<span class="number">0</span>],<span class="string">"files_for_examples"</span>)</div><div class="line">    cmd.load(os.path.join(example_dir,<span class="string">"Atto590.pdb"</span>))</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    cmd.load(<span class="string">"Atto590.pdb"</span>)</div><div class="line">python end</div><div class="line"><span class="comment"># Make sure everything is loaded before we continue</span></div><div class="line">cmd.refresh()</div><div class="line"> </div><div class="line"><span class="comment">### Get the names of the loaded objects</span></div><div class="line">protname = cmd.get_names()[<span class="number">0</span>]</div><div class="line">molname = cmd.get_names()[<span class="number">1</span>]</div><div class="line"> </div><div class="line"><span class="comment">### Make the names we are going to use</span></div><div class="line">protselectCB=<span class="string">"%s and resi 308 and name CB"</span>%protname</div><div class="line">protnameselectCB=<span class="string">"K308CB"</span></div><div class="line">protselectCA=<span class="string">"%s and resi 308 and name CA"</span>%protname</div><div class="line">protnameselectCA=<span class="string">"K308CA"</span></div><div class="line">molselect13=<span class="string">"%s and id 13"</span>%molname</div><div class="line">molnameselect13=<span class="string">"dyeatom13"</span></div><div class="line">molselect12=<span class="string">"%s and id 12"</span>%molname</div><div class="line">molnameselect12=<span class="string">"dyeatom12"</span></div><div class="line"> </div><div class="line"><span class="comment">### Make some selections</span></div><div class="line">cmd.select(<span class="string">"%s"</span>%protnameselectCB,<span class="string">"%s"</span>%protselectCB)</div><div class="line">cmd.select(<span class="string">"%s"</span>%protnameselectCA,<span class="string">"%s"</span>%protselectCA)</div><div class="line">cmd.select(<span class="string">"%s"</span>%molnameselect13,<span class="string">"%s"</span>%molselect13)</div><div class="line">cmd.label(<span class="string">"%s"</span>%molnameselect13,<span class="string">"13"</span>)</div><div class="line">cmd.select(<span class="string">"%s"</span>%molnameselect12,<span class="string">"%s"</span>%molselect12)</div><div class="line">cmd.label(<span class="string">"%s"</span>%molnameselect12,<span class="string">"12"</span>)</div><div class="line"> </div><div class="line"><span class="comment">### Make nice representations</span></div><div class="line">cmd.show_as(<span class="string">"cartoon"</span>,<span class="string">"%s"</span>%protname)</div><div class="line">cmd.show(<span class="string">"sticks"</span>,<span class="string">"byres %s"</span>%protnameselectCB)</div><div class="line"> </div><div class="line"><span class="comment">##### PART I: Use of functions #####</span></div><div class="line"><span class="comment">### This view will take you to the first part</span></div><div class="line">set_view (\</div><div class="line">     <span class="number">0.377224118</span>,    <span class="number">0.880101919</span>,   <span class="number">-0.288305759</span>,\</div><div class="line">     <span class="number">0.661396861</span>,   <span class="number">-0.473919988</span>,   <span class="number">-0.581338286</span>,\</div><div class="line">    <span class="number">-0.648268998</span>,    <span class="number">0.028612033</span>,   <span class="number">-0.760871351</span>,\</div><div class="line">     <span class="number">0.000000000</span>,    <span class="number">0.000000000</span>,  <span class="number">-56.408561707</span>,\</div><div class="line">    <span class="number">19.480533600</span>,   <span class="number">34.572898865</span>,    <span class="number">6.978204727</span>,\</div><div class="line">    <span class="number">46.615653992</span>,   <span class="number">66.201446533</span>,  <span class="number">-20.000001907</span> )</div><div class="line"> </div><div class="line"><span class="comment">#### Just unhash each part for itself, as you continue through</span></div><div class="line"><span class="comment">### To print a objects TTT matrix in a readable format</span></div><div class="line">rotkit.printMat(cmd.get_object_matrix(molname))</div><div class="line"> </div><div class="line"><span class="comment">##### We want to move the dye to a desired location, and rotate it to a view we desire</span></div><div class="line"><span class="comment">##### First get the vector bewteen the dyeatom and the protein atom</span></div><div class="line">diffvector = rotkit.vector(<span class="string">"%s"</span>%molselect13,<span class="string">"%s"</span>%protnameselectCB)</div><div class="line"><span class="comment">##### Then move the dye</span></div><div class="line">move = rotkit.transmat(diffvector)</div><div class="line"><span class="comment">##### print the matrix for fun</span></div><div class="line">rotkit.printMat(move)</div><div class="line"><span class="comment">##### Move the dye</span></div><div class="line">cmd.transform_selection(<span class="string">"%s"</span>%molname,move)</div><div class="line"> </div><div class="line"><span class="comment">##### Now we want to displace the dye in the CA-CB bond direction</span></div><div class="line"><span class="comment">##### First find the vector/direction to displace it in. From A -&gt; B</span></div><div class="line">diffvector = rotkit.vector(<span class="string">"%s"</span>%protnameselectCA,<span class="string">"%s"</span>%protnameselectCB)</div><div class="line"><span class="comment">##### Make the vector so its lenth is equal 1</span></div><div class="line">uvector = rotkit.unitvector(diffvector)[<span class="number">0</span>]</div><div class="line"><span class="comment">##### Make the move translation matrix, and we multiply the matrix with 3, so it moves 3 Angstrom</span></div><div class="line">move = rotkit.transmat(uvector,<span class="number">3</span>)</div><div class="line"><span class="comment">##### Print the matrix</span></div><div class="line">rotkit.printMat(move)</div><div class="line"><span class="comment">##### Displace it in the CA-CB direction</span></div><div class="line">cmd.transform_selection(<span class="string">"%s"</span>%molname,move)</div><div class="line"> </div><div class="line"><span class="comment">##### Now we want to rotate it a single time. We convert 40 degress to radians</span></div><div class="line"><span class="comment">##### The input is the angle, the line to rotate around, and a point where the line goes through</span></div><div class="line">CBxyz = rotkit.getxyz(<span class="string">"%s"</span>%protnameselectCB)[<span class="number">0</span>]</div><div class="line">rmat = rotkit.rotmat(rotkit.radangle(<span class="number">40</span>),uvector,CBxyz)</div><div class="line">rotkit.printMat(rmat)</div><div class="line"><span class="comment">##### Copy paste this line into pymol to see it manually</span></div><div class="line">cmd.transform_selection(<span class="string">"%s"</span>%molname,rmat)</div><div class="line"> </div><div class="line"><span class="comment">##### We are not quite satisfied, we want to rotate it around its own bond</span></div><div class="line"><span class="comment">##### So we rotate in around its own 13 -&gt; 12 bonds</span></div><div class="line">diffvector = rotkit.vector(<span class="string">"%s"</span>%molnameselect13,<span class="string">"%s"</span>%molnameselect12)</div><div class="line">uvector = rotkit.unitvector(diffvector)[<span class="number">0</span>]</div><div class="line">xyz12 = rotkit.getxyz(<span class="string">"%s"</span>%molnameselect12)[<span class="number">0</span>]</div><div class="line">rmat = rotkit.rotmat(rotkit.radangle(<span class="number">10</span>),uvector,xyz12)</div><div class="line"><span class="comment">##### Copy paste this line into pymol to see it manually</span></div><div class="line">cmd.transform_selection(<span class="string">"%s"</span>%molname,rmat)</div><div class="line"> </div><div class="line"><span class="comment">##### Now, lets make a function that collects all these call in one function</span></div><div class="line"><span class="comment">##### We only want to define two positions that defines the line, the angle and the object to rotate</span></div><div class="line">rotkit.rotateline(<span class="string">"%s"</span>%molnameselect13,<span class="string">"%s"</span>%molnameselect12,<span class="number">180</span>,<span class="string">"%s"</span>%molname)</div><div class="line"><span class="comment">##### This is made as a pymol command as well. I first print the names that we should write manually in the consol</span></div><div class="line">print(<span class="string">"rotateline Pos1=%s, Pos2=%s, degangle=15, molecule=%s"</span>%(molnameselect13, molnameselect12, molname))</div><div class="line"> </div><div class="line"><span class="comment">##### To illustate best, we create som copies of the dye</span></div><div class="line">python</div><div class="line">anglerange = range(<span class="number">90</span>,<span class="number">360</span>,<span class="number">90</span>)</div><div class="line"><span class="keyword">for</span> angle <span class="keyword">in</span> anglerange:</div><div class="line">    <span class="comment">### Make a suitable name for the new molecule</span></div><div class="line">    molanglename=<span class="string">"%s%s"</span>%(molname,angle)</div><div class="line">    <span class="comment">### Now make a copy</span></div><div class="line">    cmd.create(molanglename,molname)</div><div class="line">    cmd.label(<span class="string">"%s and id 12"</span>%molanglename,<span class="string">"12"</span>)</div><div class="line">    cmd.label(<span class="string">"%s and id 13"</span>%molanglename,<span class="string">"13"</span>)</div><div class="line">    <span class="comment">### Rotate the copy</span></div><div class="line">    rotkit.rotateline(<span class="string">"%s"</span>%protnameselectCB,<span class="string">"%s"</span>%molnameselect13,angle,<span class="string">"%s"</span>%molanglename)</div><div class="line">python end</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="comment">####### End of PART I ####</span></div><div class="line"><span class="comment">####### PART II: More advanced functions #####</span></div><div class="line"><span class="comment">##### This view will take you to the second part</span></div><div class="line">set_view (\</div><div class="line">     <span class="number">0.723298192</span>,    <span class="number">0.467510879</span>,    <span class="number">0.508201897</span>,\</div><div class="line">     <span class="number">0.371686131</span>,   <span class="number">-0.883831143</span>,    <span class="number">0.284063697</span>,\</div><div class="line">     <span class="number">0.581970334</span>,   <span class="number">-0.016570913</span>,   <span class="number">-0.813038886</span>,\</div><div class="line">     <span class="number">0.000000000</span>,    <span class="number">0.000000000</span>,  <span class="number">-76.609786987</span>,\</div><div class="line">    <span class="number">11.790571213</span>,   <span class="number">64.992294312</span>,   <span class="number">20.803859711</span>,\</div><div class="line">   <span class="number">-31.181428909</span>,  <span class="number">184.401092529</span>,  <span class="number">-20.000001907</span> )</div><div class="line"> </div><div class="line"><span class="comment">##### We can fast mutate a protein. frame 1 is the most probable mutation</span></div><div class="line">rotkit.mutate(protname, chain=<span class="string">"A"</span>, resi=<span class="number">513</span>, target=<span class="string">"CYS"</span>, mutframe=<span class="number">1</span>)</div><div class="line"><span class="comment">##### The mutate functions take 0.2 seconds, so we put in a refesh command to wait for everything is done</span></div><div class="line">cmd.refresh()</div><div class="line"><span class="comment">##### This is made as a pymol command as well. I first print the names that we should write manually in the consol</span></div><div class="line">print(<span class="string">"mutate %s, chain=%s, resi=%s, target=CYS, mutframe=1"</span>%(protname, <span class="string">"A"</span>, <span class="number">515</span>))</div><div class="line"> </div><div class="line"><span class="comment">##### We now make some selections for this mutation</span></div><div class="line">protselectCBcys=<span class="string">"%s and resi 513 and name CB"</span>%protname</div><div class="line">protnameselectCBcys=<span class="string">"P513C_CB"</span></div><div class="line">protselectCAcys=<span class="string">"%s and resi 513 and name CA"</span>%protname</div><div class="line">protnameselectCAcys=<span class="string">"P513C_CA"</span></div><div class="line">cmd.select(<span class="string">"%s"</span>%protnameselectCBcys,<span class="string">"%s"</span>%protselectCBcys)</div><div class="line">cmd.select(<span class="string">"%s"</span>%protnameselectCAcys,<span class="string">"%s"</span>%protselectCAcys)</div><div class="line"> </div><div class="line"><span class="comment">##### Now, lets make a function that collects all the commands to put on an atom on the same line defined by two points</span></div><div class="line"><span class="comment">##### The input is the two points that define the line, the atom of a molecule to be put on the line, and the distance to move</span></div><div class="line">rotkit.toline(protnameselectCAcys,protnameselectCBcys,molnameselect13,molname,<span class="number">3</span>)</div><div class="line">rotkit.rotateline(protnameselectCAcys,protnameselectCBcys,<span class="number">180</span>,molname)</div><div class="line">rotkit.rotateline(molnameselect13,molnameselect12,<span class="number">10</span>,molname)</div><div class="line">print(<span class="string">"toline Pos1=%s, Pos2=%s, atom=%s, molecule=%s, dist=%s"</span>%(protnameselectCAcys,protnameselectCBcys,molnameselect13,molname,<span class="number">3</span>))</div><div class="line">print(<span class="string">"rotateline Pos1=%s, Pos2=%s, degangle=180, molecule=%s"</span>%(protnameselectCAcys, protnameselectCBcys, molname))</div><div class="line">print(<span class="string">"rotateline Pos1=%s, Pos2=%s, degangle=10, molecule=%s"</span>%(molnameselect13, molnameselect12, molname))</div><div class="line">cmd.refresh()</div><div class="line"><span class="comment">####### End of PART II ####</span></div><div class="line"> </div><div class="line"><span class="comment">####### Now we make a cross product ####</span></div><div class="line">molselect14=<span class="string">"%s and id 14"</span>%molname</div><div class="line">molnameselect14=<span class="string">"dyeatom14"</span></div><div class="line">cmd.select(<span class="string">"%s"</span>%molnameselect14,<span class="string">"%s"</span>%molselect14)</div><div class="line">cmd.label(<span class="string">"%s"</span>%molnameselect14,<span class="string">"14"</span>)</div><div class="line"> </div><div class="line">cross = rotkit.crossprod(rotkit.vector(molselect13,molselect12),rotkit.vector(molselect13,molselect14))</div><div class="line">unity_cross = rotkit.unitvector(cross)[<span class="number">0</span>]</div><div class="line">point_cross = rotkit.crosspoint(molselect13,cross)</div><div class="line">rotkit.rotateline(molnameselect13,point_cross,<span class="number">180</span>,molname)</div><div class="line">print(<span class="string">"rotateline Pos1=%s, Pos2=%s, degangle=10, molecule=%s"</span>%(molnameselect13, point_cross, molname))</div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T03:49:13.010Z" itemprop="dateUpdated">2017-10-28 11:49:13</time>
 </span><br>
 
 
@@ -611,6 +230,8 @@ print("rotateline Pos1=%s, Pos2=%s, degangle=10, molecule=%s"%(molnameselect13, 
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
 
             
 <div class="page-share-wrap">

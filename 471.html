@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="mdpout_descriptors文件项目过多，虽然可以直接用R进行作图，无奈我不会使用R，所以网上半摸索学习pandas写了一个简单的方法处理文本，如下：">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:25:59.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用pandas处理mdpout_descriptors文件">
 <meta name="twitter:description" content="mdpout_descriptors文件项目过多，虽然可以直接用R进行作图，无奈我不会使用R，所以网上半摸索学习pandas写了一个简单的方法处理文本，如下：">
@@ -148,7 +148,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/">未分类</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
 
             
         </h5>
@@ -162,14 +162,7 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#author-kangsgo"><span class="post-toc-number">1.</span> <span class="post-toc-text">author:kangsgo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#fepocket2-volume-拆分工具"><span class="post-toc-number">2.</span> <span class="post-toc-text">fepocket2 volume 拆分工具</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ref-http-blog-sina-com-cn-s-blog-a73687bc0101eenc-html"><span class="post-toc-number">3.</span> <span class="post-toc-text">ref:http://blog.sina.com.cn/s/blog_a73687bc0101eenc.html</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-e5-88-a9-e7-94-a8pandas-e5-a4-84-e7-90-86mdpout-descriptors-e6-96-87-e4-bb-b6"
+<article id="post-利用pandas处理mdpout_descriptors文件"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -178,7 +171,7 @@
             <time class="post-time" title="2016-09-18 00:06:57" datetime="2016-09-17T16:06:57.000Z"  itemprop="datePublished">2016-09-18</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/">未分类</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
 
 
 
@@ -192,20 +185,14 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>mdpout_descriptors文件项目过多，虽然可以直接用R进行作图，无奈我不会使用R，所以网上半摸索学习pandas写了一个简单的方法处理文本，如下：</p>
 <a id="more"></a>
-<p>#coding=utf-8</p>
-<h1 id="author-kangsgo"><a href="#author-kangsgo" class="headerlink" title="author:kangsgo"></a>author:kangsgo</h1><h1 id="fepocket2-volume-拆分工具"><a href="#fepocket2-volume-拆分工具" class="headerlink" title="fepocket2 volume 拆分工具"></a>fepocket2 volume 拆分工具</h1><h1 id="ref-http-blog-sina-com-cn-s-blog-a73687bc0101eenc-html"><a href="#ref-http-blog-sina-com-cn-s-blog-a73687bc0101eenc-html" class="headerlink" title="ref:http://blog.sina.com.cn/s/blog_a73687bc0101eenc.html"></a>ref:<a href="http://blog.sina.com.cn/s/blog_a73687bc0101eenc.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_a73687bc0101eenc.html</a></h1><p>import pandas as pd</p>
-<p>id = pd.read_table(“mdpout_descriptors.txt”,sep=” +”,engine=’python’)<br>name2=id[‘snapshot’]<br>time=id[‘pock_volume’]</p>
-<p>#method1<br>pd.concat([name2,time],axis=1).to_csv(‘volume.txt’,sep=” “,index=False)</p>
-<p>#method2 先全读进来，然后 df.iloc[:,[:3]]</p>
-<p>#<a href="https://www.v2ex.com/t/306789#reply2" target="_blank" rel="external">https://www.v2ex.com/t/306789#reply2</a></p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="comment"># author:kangsgo</span></div><div class="line"><span class="comment"># fepocket2 volume 拆分工具</span></div><div class="line"><span class="comment"># ref:http://blog.sina.com.cn/s/blog_a73687bc0101eenc.html</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"></div><div class="line">id = pd.read_table(<span class="string">"mdpout_descriptors.txt"</span>,sep=<span class="string">" +"</span>,engine=<span class="string">'python'</span>)</div><div class="line">name2=id[<span class="string">'snapshot'</span>]</div><div class="line">time=id[<span class="string">'pock_volume'</span>]</div><div class="line"><span class="comment">#method1</span></div><div class="line">pd.concat([name2,time],axis=<span class="number">1</span>).to_csv(<span class="string">'volume.txt'</span>,sep=<span class="string">" "</span>,index=<span class="keyword">False</span>)</div><div class="line"><span class="comment">#method2 先全读进来，然后 df.iloc[:,[:3]]</span></div><div class="line"><span class="comment">#https://www.v2ex.com/t/306789#reply2</span></div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:25:59.752Z" itemprop="dateUpdated">2017-10-29 11:25:59</time>
 </span><br>
 
 

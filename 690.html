@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="GromacsWrapper是一个调用Gromacs工具的封装Python包，其能够完美的通过python脚本来运行gromacs工具。其相比shell脚本在错误处理和结构检测中更具优势，同时其模块化以及代码的循环利用也是该软件包的一大特色。其支持的gromacs版本有（v4.6.x, v5.x, and 2016.x）笔者写这篇文章时版本为0.6.2，版本更新请查看最新文档  一、安装1.快速">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-28T04:05:54.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GromacsWrapper:Gromacs的Python框架包">
 <meta name="twitter:description" content="GromacsWrapper是一个调用Gromacs工具的封装Python包，其能够完美的通过python脚本来运行gromacs工具。其相比shell脚本在错误处理和结构检测中更具优势，同时其模块化以及代码的循环利用也是该软件包的一大特色。其支持的gromacs版本有（v4.6.x, v5.x, and 2016.x）笔者写这篇文章时版本为0.6.2，版本更新请查看最新文档  一、安装1.快速">
@@ -169,7 +169,7 @@
         </nav>
     </aside>
     
-<article id="post-gromacswrappergromacs-e7-9a-84python-e6-a1-86-e6-9e-b6-e5-8c-85"
+<article id="post-GromacsWrapperGromacs的Python框架包"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -193,89 +193,16 @@
             <blockquote>
 <p><strong>GromacsWrapper</strong>是一个调用Gromacs工具的封装Python包，其能够完美的通过python脚本来运行gromacs工具。<strong>其相比shell脚本在错误处理和结构检测中更具优势，同时其模块化以及代码的循环利用也是该软件包的一大特色</strong>。<br>其支持的<code>gromacs版本</code>有（v4.6.x, v5.x, and 2016.x）<br>笔者写这篇文章时版本为<code>0.6.2</code>，版本更新请查看最新文档</p>
 </blockquote>
-<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><h4 id="1-快速安装"><a href="#1-快速安装" class="headerlink" title="1.快速安装"></a>1.快速安装</h4><p>建议使用这个方法，简单方便:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell">pip install GromacsWrapper
-</pre>
-
-<h4 id="2-手动安装"><a href="#2-手动安装" class="headerlink" title="2.手动安装"></a>2.手动安装</h4><p>如果你更加喜欢下载安装，可以进入<a href="https://github.com/Becksteinlab/GromacsWrapper/releases" target="_blank" rel="external">https://github.com/Becksteinlab/GromacsWrapper/releases</a>下载安装，笔者写此篇文章时版本为0.6.2</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell">pip install GromacsWrapper-0.6.2.tar.gz
-</pre>
-
-<p>或者下载下来本地安装:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell">tar -zxvf GromacsWrapper-0.6.2.tar.gz
-cd GromacsWrapper-0.6.2
-python setup.py install</pre>
-
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><h4 id="1-快速安装"><a href="#1-快速安装" class="headerlink" title="1.快速安装"></a>1.快速安装</h4><p>建议使用这个方法，简单方便:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install GromacsWrapper</div></pre></td></tr></table></figure></p>
+<h4 id="2-手动安装"><a href="#2-手动安装" class="headerlink" title="2.手动安装"></a>2.手动安装</h4><p>如果你更加喜欢下载安装，可以进入<a href="https://github.com/Becksteinlab/GromacsWrapper/releases" target="_blank" rel="external">https://github.com/Becksteinlab/GromacsWrapper/releases</a>下载安装，笔者写此篇文章时版本为0.6.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install GromacsWrapper-0.6.2.tar.gz</div></pre></td></tr></table></figure></p>
+<p>或者下载下来本地安装:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar -zxvf GromacsWrapper-0.6.2.tar.gz</div><div class="line">cd GromacsWrapper-0.6.2</div><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
 <h4 id="3-要求"><a href="#3-要求" class="headerlink" title="3.要求"></a>3.要求</h4><p>GromacsWrapper包需要使用python2.7版本，同时需要<code>numpy</code>,<code>matplotlib</code>以及<code>scipy</code>和<code>RecSQL</code>的支持，同时官网强烈推荐<code>ipython</code>的安装，所以强烈建议下载一个<code>Anconda</code><br>若还没有使用过anconda建议看一下先前的<a href="http://www.jianshu.com/p/05ca0edb90c1" target="_blank" rel="external">一篇文章</a><br>我们仅需要创建一个新的python环境，然后pip RecSQL，conda安装以上包即可。</p>
-<p>简单代码可以参考如下,也可以当作是一个温故知新吧：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="shell">#配置环境与安装
-conda create --name gromacsw python=2.7 matplotlib scipy numpy jupyter
-#激活环境
-source activate gromacsw
-#安装剩余依赖与软件
-pip install recsql
-pip install GromacsWrapper</pre>
-
-<h3 id="二、设置"><a href="#二、设置" class="headerlink" title="二、设置"></a>二、设置</h3><p><code>GromacsWrapper</code>安装好以后我们需要对其进行设置，从而能够使得其来阅读与操作。<br>其<code>gromacswarapper.cfg</code>在模块根目录可以查看到，例如我安装的位于<code>miniconda3/envs/gromacsw/lib/python2.7/site-packages/gromacs/templates</code>目录下。在首次导入时，将会提示你进行设置，设置的方法也非常的简单。</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="python">import gromacs
-gromacs.config.setup()</pre>
-
-<p>其将会在<code>~/.gromacswrapper.cfg</code>创建一个设置文件，同时会创建一个<code>~/.gromacswapper</code>的目录文件，那么你可以对其进行编辑了，以下为具体的设置内容与解释：</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="null">[DEFAULT]
-
-# 存储用户模板与rc文件.
-configdir = ~/.gromacswrapper
-
-# 存储用户系统脚本.
-qscriptdir = %(configdir)s/qscripts
-
-# 存储用户模板例如mdp文件.
-templatesdir = %(configdir)s/templates
-
-# 存储用户管理设置文件
-managerdir = %(configdir)s/managers
-
-[Gromacs]
-# gromacs安装的版本.
-# gromacs路径
-## GMXRC = /usr/local/gromacs/bin/GMXRC
-#如果为空默认先搜索gromacs5，然后是gromacs4
-##release = 5.1.2
-
-# Gromacs工具所有的工具名
-#编辑此列表仅在重新加载软件包时才起作用。.
-# - for Gromacs 4: Generated with 'ls [^Gac]*' from the Gromacs bin dir
-## tools = ...
-# - 对于Gromacs5版本，仅需设置如下即可
-## tools = gmx gmx_d
-
-# 哪些工具可用作为 gromacs.NAME
-# 一般不需要修改
-## groups = tools
-
-[Logging]
-# 在当前目录下写下什么日志文件
-logfilename = gromacs.log
-
-# 日志文件等级 (see Python's logging module for details)
-#
-# ERROR    only fatal errors
-# WARN     only warnings
-# INFO     interesting messages
-# DEBUG    everything
-# 
-# 写在屏幕上什么内容
-loglevel_console = INFO
-# file     什么消息写在日志文件中
-loglevel_file = DEBUG</pre>
-
+<p>简单代码可以参考如下,也可以当作是一个温故知新吧：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#配置环境与安装</span></div><div class="line">conda create --name gromacsw python=2.7 matplotlib scipy numpy jupyter</div><div class="line"><span class="comment">#激活环境</span></div><div class="line"><span class="built_in">source</span> activate gromacsw</div><div class="line"><span class="comment">#安装剩余依赖与软件</span></div><div class="line">pip install recsql</div><div class="line">pip install GromacsWrapper</div></pre></td></tr></table></figure></p>
+<h3 id="二、设置"><a href="#二、设置" class="headerlink" title="二、设置"></a>二、设置</h3><p><code>GromacsWrapper</code>安装好以后我们需要对其进行设置，从而能够使得其来阅读与操作。<br>其<code>gromacswarapper.cfg</code>在模块根目录可以查看到，例如我安装的位于<code>miniconda3/envs/gromacsw/lib/python2.7/site-packages/gromacs/templates</code>目录下。在首次导入时，将会提示你进行设置，设置的方法也非常的简单。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> gromacs</div><div class="line">gromacs.config.setup()</div></pre></td></tr></table></figure></p>
+<p>其将会在<code>~/.gromacswrapper.cfg</code>创建一个设置文件，同时会创建一个<code>~/.gromacswapper</code>的目录文件，那么你可以对其进行编辑了，以下为具体的设置内容与解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line"></div><div class="line"># 存储用户模板与rc文件.</div><div class="line">configdir = ~/.gromacswrapper</div><div class="line"></div><div class="line"># 存储用户系统脚本.</div><div class="line">qscriptdir = %(configdir)s/qscripts</div><div class="line"></div><div class="line"># 存储用户模板例如mdp文件.</div><div class="line">templatesdir = %(configdir)s/templates</div><div class="line"></div><div class="line"># 存储用户管理设置文件</div><div class="line">managerdir = %(configdir)s/managers</div><div class="line"></div><div class="line">[Gromacs]</div><div class="line"># gromacs安装的版本.</div><div class="line"># gromacs路径</div><div class="line">## GMXRC = /usr/local/gromacs/bin/GMXRC</div><div class="line">#如果为空默认先搜索gromacs5，然后是gromacs4</div><div class="line">##release = 5.1.2</div><div class="line"></div><div class="line"># Gromacs工具所有的工具名</div><div class="line">#编辑此列表仅在重新加载软件包时才起作用。.</div><div class="line"># - for Gromacs 4: Generated with &apos;ls [^Gac]*&apos; from the Gromacs bin dir</div><div class="line">## tools = ...</div><div class="line"># - 对于Gromacs5版本，仅需设置如下即可</div><div class="line">## tools = gmx gmx_d</div><div class="line"></div><div class="line"># 哪些工具可用作为 gromacs.NAME</div><div class="line"># 一般不需要修改</div><div class="line">## groups = tools</div><div class="line"></div><div class="line">[Logging]</div><div class="line"># 在当前目录下写下什么日志文件</div><div class="line">logfilename = gromacs.log</div><div class="line"></div><div class="line"># 日志文件等级 (see Python&apos;s logging module for details)</div><div class="line">#</div><div class="line"># ERROR    only fatal errors</div><div class="line"># WARN     only warnings</div><div class="line"># INFO     interesting messages</div><div class="line"># DEBUG    everything</div><div class="line"># </div><div class="line"># 写在屏幕上什么内容</div><div class="line">loglevel_console = INFO</div><div class="line"># file     什么消息写在日志文件中</div><div class="line">loglevel_file = DEBUG</div></pre></td></tr></table></figure></p>
 <p>其中版本可以通过<code>gmx -version</code>（5X版本）查看，GMXRC路径可以搜索一下，若是apt-get安装我的是<code>/usr/share/gromacs/shell-specific/GMXRC</code>仅供参考。</p>
-<p>最后我们可以检测一下是否设置好</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="python">gromacs.config.check_setup()
-</pre>
-
+<p>最后我们可以检测一下是否设置好<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gromacs.config.check_setup()</div></pre></td></tr></table></figure></p>
 <p>不出意外的话返回的为<code>True</code></p>
-<p>&nbsp;</p>
 
         </div>
 
@@ -283,7 +210,7 @@ loglevel_file = DEBUG</pre>
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T04:05:54.693Z" itemprop="dateUpdated">2017-10-28 12:05:54</time>
 </span><br>
 
 

@@ -19,15 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Pymol,VMD">
     <meta name="description" content="原文连接失效了，此为PDF版本：VMD-animations VMD版本 第一步： 提取轨迹。 往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。 第二步：导入轨迹 安装VMD，然后先导入十进制文件，再导入二进制轨迹文件（这些简单操作">
+<meta name="keywords" content="Pymol,VMD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="制作VMD动画（中文版）&#x2F;Pymol 动画">
 <meta property="og:url" content="http://kangsgo.com/239.html">
 <meta property="og:site_name" content="小康博客">
 <meta property="og:description" content="原文连接失效了，此为PDF版本：VMD-animations VMD版本 第一步： 提取轨迹。 往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。 第二步：导入轨迹 安装VMD，然后先导入十进制文件，再导入二进制轨迹文件（这些简单操作">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
+<meta property="og:updated_time" content="2017-10-29T03:05:39.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="制作VMD动画（中文版）&#x2F;Pymol 动画">
 <meta name="twitter:description" content="原文连接失效了，此为PDF版本：VMD-animations VMD版本 第一步： 提取轨迹。 往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。 第二步：导入轨迹 安装VMD，然后先导入十进制文件，再导入二进制轨迹文件（这些简单操作">
@@ -162,7 +163,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-e8-bd-ac-e8-bd-bd-e5-88-b6-e4-bd-9cvmd-e5-8a-a8-e7-94-bb-ef-bc-88-e4-b8-ad-e6-96-87-e7-89-88-ef-bc-89"
+<article id="post-制作VMD动画（中文版）Pymol 动画"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -183,7 +184,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>原文连接失效了，此为PDF版本：<a href="http://kangsgo.com/wp-content/uploads/2016/02/VMD-animations.pdf">VMD-animations</a></p>
+            <p>原文连接失效了，此为PDF版本：<a href="/images/2016/02/VMD-animations.pdf">VMD-animations</a></p>
 <p>VMD版本</p>
 <p><strong>第一步：</strong> <strong>提取轨迹。</strong></p>
 <p>往往轨迹文件很大，建议先提取其中的一段，或者把步长放大，提取完整的也行。利用指令：trjconv -f nvt.trr -b 0 -e 500 -o nvt_500.trr可以获得轨迹文件中从0到500 ps的轨迹。</p>
@@ -192,17 +193,15 @@
 <p><strong>第三步：设置参数</strong></p>
 <p>建议在空间大的盘里建立一个临时文件夹，路径名最好都是英文或者拉丁字符的，汉字VMD不认的。然后把working directory改成你刚刚新建的临时文件夹目录。Renderer选择Snapshot，Movie Setting改成Trajectory，format改成MPEG-1或者AVI（如果你有足够空间和时间的话）。其他参数按照自己的需求修改。此时点击Make Movie，整个过程就开始了。这里有个非常重要的东西要提醒：VMD是将视频一帧一桢形成图片格式输出，然后再在另一个软件中组成一个动画，因此图片就是你一会做动画的来源，既然图片选择snapshot（快照），那也就是说你必须将动画置于窗口，而不能最小化，否则相当于无法截屏了。</p>
 <p>VMD中</p>
-<blockquote>
-<p>trjconv -f mdwholeNOjump.xtc -s md_0_1.tpr -fit rot+trans -o mdahrfitNojump.xtc<br>选择蛋白文件不动，这样做出来的结果就是稳定的</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">trjconv -f mdwholeNOjump.xtc -s md_0_1.tpr -fit rot+trans -o mdahrfitNojump.xtc</div></pre></td></tr></table></figure>
+<p>选择蛋白文件不动，这样做出来的结果就是稳定的</p>
 <p>另外一种方法为：</p>
 <p>选<strong>mouse-move-molecule</strong>，然后按住shift拖动分子调整分子与坐标轴的相对朝向，以使得绕着坐标轴的某个轴转动时可以把感兴趣的区域显示出来。然后<strong>extension-analysis-RMSD trajectory tool</strong>，直接点<strong>Align</strong>，这样后续的帧中的结构就都向着最初帧的分子朝向对齐了。</p>
 <p>在Pymol模式下可以这样子：</p>
-<blockquote>
-<p>intra_fit protein and (name c,n,ca)<br>Pymol版本制作电影：<br>viewport 640,480</p>
-<p>set ray_trace_frames,1</p>
-<p>mpng frame_.png<br>具体Pymol方法可以看这里（5-6页）：<a href="http://kangsgo.com/wp-content/uploads/2016/02/Gromacs教程II-MD结果分析.docx">Gromacs教程II-MD结果分析</a></p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">intra_fit protein and (name c,n,ca)</div></pre></td></tr></table></figure>
+<p>Pymol版本制作电影：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">viewport 640,480</div><div class="line"></div><div class="line">set ray_trace_frames,1</div><div class="line"></div><div class="line">mpng frame_.png</div></pre></td></tr></table></figure>
+<p>具体Pymol方法可以看这里（5-6页）：<a href="/images/2016/02/Gromacs教程II-MD结果分析.docx">Gromacs教程II-MD结果分析</a></p>
 <p>参考文献：<a href="http://blog.sina.com.cn/s/blog_63f794950101dtte.html" target="_blank" rel="external">如何用VMD将轨迹文件制作动画</a></p>
 <p>参考文献：<a href="http://emuch.net/html/201508/9277925.html" target="_blank" rel="external">怎样用VMD软件画出一条MD轨迹中所有构象</a></p>
 <p>参考文献：<a href="http://sobereva.com/65" target="_blank" rel="external">显示粒子运动轨迹的VMD脚本</a></p>
@@ -213,7 +212,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.230Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:05:39.028Z" itemprop="dateUpdated">2017-10-29 11:05:39</time>
 </span><br>
 
 
@@ -238,6 +237,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li></ul>
+
 
             
 <div class="page-share-wrap">

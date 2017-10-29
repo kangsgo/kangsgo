@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="1.先多模版比对  # Illustrates the SALIGN multiple structure/sequence alignment  from modeller import *  log.verbose() env = environ() env.io.atom_files_directory = &apos;./:../atom_files/&apos;  aln = alignment(env)">
+    <meta name="keywords" content="Modeller">
+    <meta name="description" content="1.先多模版比对123456789101112131415161718192021222324252627282930313233343536373839# Illustrates the SALIGN multiple structure/sequence alignmentfrom modeller import *log.verbose()env = environ()env.io.atom">
+<meta name="keywords" content="Modeller">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modeller多模版-基于配体-Loop环优化[简略教程]">
 <meta property="og:url" content="http://kangsgo.com/280.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="1.先多模版比对  # Illustrates the SALIGN multiple structure/sequence alignment  from modeller import *  log.verbose() env = environ() env.io.atom_files_directory = &apos;./:../atom_files/&apos;  aln = alignment(env)">
+<meta property="og:description" content="1.先多模版比对123456789101112131415161718192021222324252627282930313233343536373839# Illustrates the SALIGN multiple structure/sequence alignmentfrom modeller import *log.verbose()env = environ()env.io.atom">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.230Z">
+<meta property="og:updated_time" content="2017-10-28T03:54:32.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Modeller多模版-基于配体-Loop环优化[简略教程]">
-<meta name="twitter:description" content="1.先多模版比对  # Illustrates the SALIGN multiple structure/sequence alignment  from modeller import *  log.verbose() env = environ() env.io.atom_files_directory = &apos;./:../atom_files/&apos;  aln = alignment(env)">
+<meta name="twitter:description" content="1.先多模版比对123456789101112131415161718192021222324252627282930313233343536373839# Illustrates the SALIGN multiple structure/sequence alignmentfrom modeller import *log.verbose()env = environ()env.io.atom">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
 
             
         </h5>
@@ -162,7 +163,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-modeller-e5-a4-9a-e6-a8-a1-e7-89-88-e5-9f-ba-e4-ba-8e-e9-85-8d-e4-bd-93-loop-e7-8e-af-e4-bc-98-e5-8c-96-e7-ae-80-e7-95-a5-e6-95-99-e7-a8-8b"
+<article id="post-Modeller多模版-基于配体-Loop环优化[简略教程]"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -171,7 +172,7 @@
             <time class="post-time" title="2016-02-27 13:26:29" datetime="2016-02-27T05:26:29.000Z"  itemprop="datePublished">2016-02-27</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
 
 
 
@@ -183,159 +184,17 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>1.先多模版比对</p>
-<pre>
-# Illustrates the SALIGN multiple structure/sequence alignment
-
-from modeller import *
-
-log.verbose()
-env = environ()
-env.io.atom_files_directory = './:../atom_files/'
-
-aln = alignment(env)
-for (code, chain) in (('3F1O', 'A'), ('3H7W', 'A'), ('3H82', 'A')):
-    mdl = model(env, file=code, model_segment=('FIRST:'+chain, 'LAST:'+chain))
-    aln.append_model(mdl, atom_files=code, align_codes=code+chain)
-
-for (weights, write_fit, whole) in (((1., 0., 0., 0., 1., 0.), False, True),
-                                    ((1., 0.5, 1., 1., 1., 0.), False, True),
-                                    ((1., 1., 1., 1., 1., 0.), True, False)):
-    aln.salign(rms_cutoff=3.5, normalize_pp_scores=False,
-               rr_file='$(LIB)/as1.sim.mat', overhang=30,
-               gap_penalties_1d=(-450, -50),
-               gap_penalties_3d=(0, 3), gap_gap_score=0, gap_residue_score=0,
-               dendrogram_file='fm00495.tree',
-               alignment_type='tree', # If 'progresive', the tree is not
-                                      # computed and all structues will be
-                                      # aligned sequentially to the first
-               feature_weights=weights, # For a multiple sequence alignment only
-                                        # the first feature needs to be non-zero
-               improve_alignment=True, fit=True, write_fit=write_fit,
-               write_whole_pdb=whole, output='ALIGNMENT QUALITY')
-
-aln.write(file='fm00495.pap', alignment_format='PAP')
-aln.write(file='fm00495.ali', alignment_format='PIR')
-
-aln.salign(rms_cutoff=1.0, normalize_pp_scores=False,
-           rr_file='$(LIB)/as1.sim.mat', overhang=30,
-           gap_penalties_1d=(-450, -50), gap_penalties_3d=(0, 3),
-           gap_gap_score=0, gap_residue_score=0, dendrogram_file='1is3A.tree',
-           alignment_type='progressive', feature_weights=[0]*6,
-           improve_alignment=False, fit=False, write_fit=True,
-           write_whole_pdb=False, output='QUALITY')
-</pre>
-File :salign.py
-
-结果如下:
-<pre>
- _aln.pos         10        20        30        40        50        60
-3F1OA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
-3H7WA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
-3H82A     EFKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV 
- _consrvd  *******************************************************************
-
- _aln.p   70        80        90       100       110
-3F1OA     VSGQYRMLAKHGGYVWLETQGTVIYN-----PQCIMCVNYVLSEIEK 
-3H7WA     VSGQYRMLAKHGGYVWLETQGTVIY------PQCIMCVNYVLSEIEK 
-3H82A     VSGQYRMLAKHGGYVWLETQGTVIYNPRNLQPQCIMCVNYVLSEIEK 
- _consrvd *************************      ****************
-</pre>
-File :fm00495.pap
-
-模版开搞：
-<pre>
-from modeller import *
-
-log.verbose()
-env = environ()
-
-env.libs.topology.read(file='$(LIB)/top_heav.lib')
-
-# Read aligned structure(s):
-aln = alignment(env)
-aln.append(file='fm00495.ali', align_codes='all')
-aln_block = len(aln)
-
-# Read aligned sequence(s):
-aln.append(file='musahr.ali', align_codes='musahr')
-
-# Structure sensitive variable gap penalty sequence-sequence alignment:
-aln.salign(output='', max_gap_length=20,
-           gap_function=True,   # to use structure-dependent gap penalty
-           alignment_type='PAIRWISE', align_block=aln_block,
-           feature_weights=(1., 0., 0., 0., 0., 0.), overhang=0,
-           gap_penalties_1d=(-450, 0),
-           gap_penalties_2d=(0.35, 1.2, 0.9, 1.2, 0.6, 8.6, 1.2, 0., 0.),
-           similarity_flag=True)
-
-aln.write(file='TvLDH-mult.ali', alignment_format='PIR')
-aln.write(file='TvLDH-mult.pap', alignment_format='PAP')
-</pre>
-File: align2d_mult.py
-
-注意序列尾巴标*
-
-<pre>
-from modeller import *
-from modeller.automodel import *
-
-env = environ()
-a = automodel(env, alnfile='TvLDH-mult.ali',
-              knowns=('3F1OA','3H7WA','3H82A'), sequence='mahr')
-a.starting_model = 1
-a.ending_model = 5
-a.make()
-</pre>
-File: model.py
-
-loop优化：
-<pre>
-# Loop refinement of an existing model
-from modeller import *
-from modeller.automodel import *
-
-log.verbose()
-env = environ()
-
-# directories for input atom files
-env.io.atom_files_directory = './:../atom_files'
-
-# Create a new class based on 'loopmodel' so that we can redefine
-# select_loop_atoms (necessary)
-class MyLoop(loopmodel):
-    # This routine picks the residues to be refined by loop modeling
-    def select_loop_atoms(self):
-        # 10 residue insertion 
-        return selection(self.residue_range('70', '80'))
-
-m = MyLoop(env,
-           inimodel='musahr1.pdb', # initial model of the target
-           sequence='mahr')          # code of the target
-
-m.loop.starting_model= 10           # index of the first loop model 
-m.loop.ending_model  = 15          # index of the last loop model
-m.loop.md_level = refine.very_fast # loop refinement method; this yields
-                                   # models quickly but of low quality;
-                                   # use refine.slow for better models
-
-m.make()
-</pre>
-
-<p>增加配体</p>
-<pre>
-from modeller import *
-from modeller.automodel import *
-
-env = environ()
-env.io.hetatm = True
-a = automodel(env, alnfile='TvLDH-1emd_bs.ali',
-              knowns=('3F1OA','3H7WA','3H82A'), sequence='mahr')
-a.starting_model = 20
-a.ending_model = 30
-a.make()
-</pre>
-
+            <p>1.先多模版比对<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Illustrates the SALIGN multiple structure/sequence alignment</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> modeller <span class="keyword">import</span> *</div><div class="line"></div><div class="line">log.verbose()</div><div class="line">env = environ()</div><div class="line">env.io.atom_files_directory = <span class="string">'./:../atom_files/'</span></div><div class="line"></div><div class="line">aln = alignment(env)</div><div class="line"><span class="keyword">for</span> (code, chain) <span class="keyword">in</span> ((<span class="string">'3F1O'</span>, <span class="string">'A'</span>), (<span class="string">'3H7W'</span>, <span class="string">'A'</span>), (<span class="string">'3H82'</span>, <span class="string">'A'</span>)):</div><div class="line">    mdl = model(env, file=code, model_segment=(<span class="string">'FIRST:'</span>+chain, <span class="string">'LAST:'</span>+chain))</div><div class="line">    aln.append_model(mdl, atom_files=code, align_codes=code+chain)</div><div class="line"></div><div class="line"><span class="keyword">for</span> (weights, write_fit, whole) <span class="keyword">in</span> (((<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>), <span class="keyword">False</span>, <span class="keyword">True</span>),</div><div class="line">                                    ((<span class="number">1.</span>, <span class="number">0.5</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>), <span class="keyword">False</span>, <span class="keyword">True</span>),</div><div class="line">                                    ((<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>), <span class="keyword">True</span>, <span class="keyword">False</span>)):</div><div class="line">    aln.salign(rms_cutoff=<span class="number">3.5</span>, normalize_pp_scores=<span class="keyword">False</span>,</div><div class="line">               rr_file=<span class="string">'$(LIB)/as1.sim.mat'</span>, overhang=<span class="number">30</span>,</div><div class="line">               gap_penalties_1d=(<span class="number">-450</span>, <span class="number">-50</span>),</div><div class="line">               gap_penalties_3d=(<span class="number">0</span>, <span class="number">3</span>), gap_gap_score=<span class="number">0</span>, gap_residue_score=<span class="number">0</span>,</div><div class="line">               dendrogram_file=<span class="string">'fm00495.tree'</span>,</div><div class="line">               alignment_type=<span class="string">'tree'</span>, <span class="comment"># If 'progresive', the tree is not</span></div><div class="line">                                      <span class="comment"># computed and all structues will be</span></div><div class="line">                                      <span class="comment"># aligned sequentially to the first</span></div><div class="line">               feature_weights=weights, <span class="comment"># For a multiple sequence alignment only</span></div><div class="line">                                        <span class="comment"># the first feature needs to be non-zero</span></div><div class="line">               improve_alignment=<span class="keyword">True</span>, fit=<span class="keyword">True</span>, write_fit=write_fit,</div><div class="line">               write_whole_pdb=whole, output=<span class="string">'ALIGNMENT QUALITY'</span>)</div><div class="line"></div><div class="line">aln.write(file=<span class="string">'fm00495.pap'</span>, alignment_format=<span class="string">'PAP'</span>)</div><div class="line">aln.write(file=<span class="string">'fm00495.ali'</span>, alignment_format=<span class="string">'PIR'</span>)</div><div class="line"></div><div class="line">aln.salign(rms_cutoff=<span class="number">1.0</span>, normalize_pp_scores=<span class="keyword">False</span>,</div><div class="line">           rr_file=<span class="string">'$(LIB)/as1.sim.mat'</span>, overhang=<span class="number">30</span>,</div><div class="line">           gap_penalties_1d=(<span class="number">-450</span>, <span class="number">-50</span>), gap_penalties_3d=(<span class="number">0</span>, <span class="number">3</span>),</div><div class="line">           gap_gap_score=<span class="number">0</span>, gap_residue_score=<span class="number">0</span>, dendrogram_file=<span class="string">'1is3A.tree'</span>,</div><div class="line">           alignment_type=<span class="string">'progressive'</span>, feature_weights=[<span class="number">0</span>]*<span class="number">6</span>,</div><div class="line">           improve_alignment=<span class="keyword">False</span>, fit=<span class="keyword">False</span>, write_fit=<span class="keyword">True</span>,</div><div class="line">           write_whole_pdb=<span class="keyword">False</span>, output=<span class="string">'QUALITY'</span>)</div></pre></td></tr></table></figure></p>
+<p>File :salign.py</p>
+<p>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> _aln.pos         10        20        30        40        50        60</div><div class="line">3F1OA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV </div><div class="line">3H7WA     -FKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV </div><div class="line">3H82A     EFKGLDSKTFLSEHSMDMKFTYCDDRITELIGYHPEELLGRSAYEFYHALDSENMTKSHQNLCTKGQV </div><div class="line"> _consrvd  *******************************************************************</div><div class="line"></div><div class="line"> _aln.p   70        80        90       100       110</div><div class="line">3F1OA     VSGQYRMLAKHGGYVWLETQGTVIYN-----PQCIMCVNYVLSEIEK </div><div class="line">3H7WA     VSGQYRMLAKHGGYVWLETQGTVIY------PQCIMCVNYVLSEIEK </div><div class="line">3H82A     VSGQYRMLAKHGGYVWLETQGTVIYNPRNLQPQCIMCVNYVLSEIEK </div><div class="line"> _consrvd *************************      ****************</div></pre></td></tr></table></figure></p>
+<p>File :fm00495.pap</p>
+<p>模版开搞：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> modeller <span class="keyword">import</span> *</div><div class="line"></div><div class="line">log.verbose()</div><div class="line">env = environ()</div><div class="line"></div><div class="line">env.libs.topology.read(file=<span class="string">'$(LIB)/top_heav.lib'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Read aligned structure(s):</span></div><div class="line">aln = alignment(env)</div><div class="line">aln.append(file=<span class="string">'fm00495.ali'</span>, align_codes=<span class="string">'all'</span>)</div><div class="line">aln_block = len(aln)</div><div class="line"></div><div class="line"><span class="comment"># Read aligned sequence(s):</span></div><div class="line">aln.append(file=<span class="string">'musahr.ali'</span>, align_codes=<span class="string">'musahr'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Structure sensitive variable gap penalty sequence-sequence alignment:</span></div><div class="line">aln.salign(output=<span class="string">''</span>, max_gap_length=<span class="number">20</span>,</div><div class="line">           gap_function=<span class="keyword">True</span>,   <span class="comment"># to use structure-dependent gap penalty</span></div><div class="line">           alignment_type=<span class="string">'PAIRWISE'</span>, align_block=aln_block,</div><div class="line">           feature_weights=(<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>), overhang=<span class="number">0</span>,</div><div class="line">           gap_penalties_1d=(<span class="number">-450</span>, <span class="number">0</span>),</div><div class="line">           gap_penalties_2d=(<span class="number">0.35</span>, <span class="number">1.2</span>, <span class="number">0.9</span>, <span class="number">1.2</span>, <span class="number">0.6</span>, <span class="number">8.6</span>, <span class="number">1.2</span>, <span class="number">0.</span>, <span class="number">0.</span>),</div><div class="line">           similarity_flag=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">aln.write(file=<span class="string">'TvLDH-mult.ali'</span>, alignment_format=<span class="string">'PIR'</span>)</div><div class="line">aln.write(file=<span class="string">'TvLDH-mult.pap'</span>, alignment_format=<span class="string">'PAP'</span>)</div></pre></td></tr></table></figure></p>
+<p>File: align2d_mult.py</p>
+<p>注意序列尾巴标*</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> modeller <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> modeller.automodel <span class="keyword">import</span> *</div><div class="line"></div><div class="line">env = environ()</div><div class="line">a = automodel(env, alnfile=<span class="string">'TvLDH-mult.ali'</span>,</div><div class="line">              knowns=(<span class="string">'3F1OA'</span>,<span class="string">'3H7WA'</span>,<span class="string">'3H82A'</span>), sequence=<span class="string">'mahr'</span>)</div><div class="line">a.starting_model = <span class="number">1</span></div><div class="line">a.ending_model = <span class="number">5</span></div><div class="line">a.make()</div></pre></td></tr></table></figure>
+<p>File: model.py</p>
+<p>loop优化：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Loop refinement of an existing model</span></div><div class="line"><span class="keyword">from</span> modeller <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> modeller.automodel <span class="keyword">import</span> *</div><div class="line"></div><div class="line">log.verbose()</div><div class="line">env = environ()</div><div class="line"></div><div class="line"><span class="comment"># directories for input atom files</span></div><div class="line">env.io.atom_files_directory = <span class="string">'./:../atom_files'</span></div><div class="line"></div><div class="line"><span class="comment"># Create a new class based on 'loopmodel' so that we can redefine</span></div><div class="line"><span class="comment"># select_loop_atoms (necessary)</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLoop</span><span class="params">(loopmodel)</span>:</span></div><div class="line">    <span class="comment"># This routine picks the residues to be refined by loop modeling</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_loop_atoms</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># 10 residue insertion </span></div><div class="line">        <span class="keyword">return</span> selection(self.residue_range(<span class="string">'70'</span>, <span class="string">'80'</span>))</div><div class="line"></div><div class="line">m = MyLoop(env,</div><div class="line">           inimodel=<span class="string">'musahr1.pdb'</span>, <span class="comment"># initial model of the target</span></div><div class="line">           sequence=<span class="string">'mahr'</span>)          <span class="comment"># code of the target</span></div><div class="line"></div><div class="line">m.loop.starting_model= <span class="number">10</span>           <span class="comment"># index of the first loop model </span></div><div class="line">m.loop.ending_model  = <span class="number">15</span>          <span class="comment"># index of the last loop model</span></div><div class="line">m.loop.md_level = refine.very_fast <span class="comment"># loop refinement method; this yields</span></div><div class="line">                                   <span class="comment"># models quickly but of low quality;</span></div><div class="line">                                   <span class="comment"># use refine.slow for better models</span></div><div class="line"></div><div class="line">m.make()</div></pre></td></tr></table></figure></p>
+<p>增加配体<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> modeller <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> modeller.automodel <span class="keyword">import</span> *</div><div class="line"></div><div class="line">env = environ()</div><div class="line">env.io.hetatm = <span class="keyword">True</span></div><div class="line">a = automodel(env, alnfile=<span class="string">'TvLDH-1emd_bs.ali'</span>,</div><div class="line">              knowns=(<span class="string">'3F1OA'</span>,<span class="string">'3H7WA'</span>,<span class="string">'3H82A'</span>), sequence=<span class="string">'mahr'</span>)</div><div class="line">a.starting_model = <span class="number">20</span></div><div class="line">a.ending_model = <span class="number">30</span></div><div class="line">a.make()</div></pre></td></tr></table></figure></p>
 <p>参考文献：<a href="http://salilab.org/modeller/tutorial/advanced.html" target="_blank" rel="external">官方教程多模版建模</a><br>参考文献:<a href="http://bioms.org/thread-1480-1-3.html" target="_blank" rel="external">Modeller 学习记录（四）</a></p>
 
         </div>
@@ -344,7 +203,7 @@ a.make()
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.230Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-28T03:54:32.764Z" itemprop="dateUpdated">2017-10-28 11:54:32</time>
 </span><br>
 
 
@@ -369,6 +228,8 @@ a.make()
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeller/">Modeller</a></li></ul>
+
 
             
 <div class="page-share-wrap">

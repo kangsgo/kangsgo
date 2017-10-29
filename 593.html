@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: Usage: aln.py [options] arg  Options:   -h, --help            show this help message and">
+    <meta name="description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: 123456789101112Usage: aln.py [options] argOptions:  -h, --help            show this help">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算氨基酸残基保守性工具">
 <meta property="og:url" content="http://kangsgo.com/593.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: Usage: aln.py [options] arg  Options:   -h, --help            show this help message and">
+<meta property="og:description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: 123456789101112Usage: aln.py [options] argOptions:  -h, --help            show this help">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T02:49:53.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算氨基酸残基保守性工具">
-<meta name="twitter:description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: Usage: aln.py [options] arg  Options:   -h, --help            show this help message and">
+<meta name="twitter:description" content="这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置） 使用方法如下: 123456789101112Usage: aln.py [options] argOptions:  -h, --help            show this help">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -148,7 +148,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/杂项/">杂项</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
 
             
         </h5>
@@ -162,7 +162,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-e8-ae-a1-e7-ae-97-e6-b0-a8-e5-9f-ba-e9-85-b8-e6-ae-8b-e5-9f-ba-e4-bf-9d-e5-ae-88-e6-80-a7-e5-b7-a5-e5-85-b7"
+<article id="post-计算氨基酸残基保守性工具"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -171,7 +171,7 @@
             <time class="post-time" title="2017-04-26 15:53:01" datetime="2017-04-26T07:53:01.000Z"  itemprop="datePublished">2017-04-26</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/杂项/">杂项</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
 
 
 
@@ -185,27 +185,11 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置）</p>
 <p>使用方法如下:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="null">Usage: aln.py [options] arg
-
-Options:
-  -h, --help            show this help message and exit
-  -n NUMPROTEIN, --num=NUMPROTEIN
-                        设置序列比对中蛋白数量
-  -p PARAGRAPH, --paragraph=PARAGRAPH
-                        设置一共有多少段内容
-  -f PATHFILE, --file=PATHFILE
-                        设置读入文件路径
-  -s SAVEFILE, --save=SAVEFILE
-                        设置保存文件名
-</pre>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Usage: aln.py [options] arg</div><div class="line"></div><div class="line">Options:</div><div class="line">  -h, --help            show this help message <span class="keyword">and</span> exit</div><div class="line">  -n NUMPROTEIN, --num=NUMPROTEIN</div><div class="line">                        设置序列比对中蛋白数量</div><div class="line">  -p PARAGRAPH, --paragraph=PARAGRAPH</div><div class="line">                        设置一共有多少段内容</div><div class="line">  -f PATHFILE, --file=PATHFILE</div><div class="line">                        设置读入文件路径</div><div class="line">  -s SAVEFILE, --save=SAVEFILE</div><div class="line">                        设置保存文件名</div></pre></td></tr></table></figure>
 <p>例如:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="null">python .\aln.py -n 100 -p 16 -f .\seqdump.aln -s .\save.csv
-
-</pre>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python .\aln.py -n 100 -p 16 -f .\seqdump.aln -s .\save.csv</div></pre></td></tr></table></figure>
 <p>结果可用统计软件进行处理</p>
-<p>脚本下载:  <a href="http://kangsgo.com/wp-content/uploads/2017/04/aln.rar">aln</a></p>
+<p>脚本下载:  <a href="/images/2017/04/aln.rar">aln</a></p>
 
         </div>
 
@@ -213,7 +197,7 @@ Options:
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T02:49:53.260Z" itemprop="dateUpdated">2017-10-29 10:49:53</time>
 </span><br>
 
 

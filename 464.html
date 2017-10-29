@@ -19,18 +19,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 #!/bin/bash # author:kangsgo # name: fpocket2 MD 前处理脚本 # method: #    默认轨迹名称：mdwholeNOjump.xtc，默认tpr为md_0_1.tpr #    请根据需要修改如下参数 #    总的轨迹数量(ps) #    numtray=">
+    <meta name="keywords" content="Gromacs">
+    <meta name="description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 123456789101112131415161718192021222324252627282930313233343536373839404142#!/bin/bash# author:kangsgo# name: fpocket2 MD 前处理脚本# method:#    默认轨迹名称：mdwholeNOj">
+<meta name="keywords" content="Gromacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[自写]focket2 中md处理脚本">
 <meta property="og:url" content="http://kangsgo.com/464.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 #!/bin/bash # author:kangsgo # name: fpocket2 MD 前处理脚本 # method: #    默认轨迹名称：mdwholeNOjump.xtc，默认tpr为md_0_1.tpr #    请根据需要修改如下参数 #    总的轨迹数量(ps) #    numtray=">
+<meta property="og:description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 123456789101112131415161718192021222324252627282930313233343536373839404142#!/bin/bash# author:kangsgo# name: fpocket2 MD 前处理脚本# method:#    默认轨迹名称：mdwholeNOj">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T12:17:14.231Z">
+<meta property="og:updated_time" content="2017-10-29T03:30:53.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[自写]focket2 中md处理脚本">
-<meta name="twitter:description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 #!/bin/bash # author:kangsgo # name: fpocket2 MD 前处理脚本 # method: #    默认轨迹名称：mdwholeNOjump.xtc，默认tpr为md_0_1.tpr #    请根据需要修改如下参数 #    总的轨迹数量(ps) #    numtray=">
+<meta name="twitter:description" content="保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容 123456789101112131415161718192021222324252627282930313233343536373839404142#!/bin/bash# author:kangsgo# name: fpocket2 MD 前处理脚本# method:#    默认轨迹名称：mdwholeNOj">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -148,7 +149,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/Linux/">Linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
             
         </h5>
@@ -162,7 +163,7 @@
 
 <div class="container body-wrap">
     
-<article id="post-e8-87-aa-e5-86-99focket2-e4-b8-admd-e5-a4-84-e7-90-86-e8-84-9a-e6-9c-ac"
+<article id="post-[自写]focket2 中md处理脚本"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -171,7 +172,7 @@
             <time class="post-time" title="2016-09-17 18:09:40" datetime="2016-09-17T10:09:40.000Z"  itemprop="datePublished">2016-09-17</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/Linux/">Linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/Linux/自用脚本/">自用脚本</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
 
 
@@ -184,51 +185,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>保存为sh格式后缀，放入处理文件目录，会生成fopcket2文件夹，内包含所有内容</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="null">#!/bin/bash
-# author:kangsgo
-# name: fpocket2 MD 前处理脚本
-# method:
-#    默认轨迹名称：mdwholeNOjump.xtc，默认tpr为md_0_1.tpr
-#    请根据需要修改如下参数
-#    总的轨迹数量(ps)
-#    numtray=150000
-#    每多少间隔提取一次(约150frame)
-#    dttray=1000
-
-#设置比对结构,选择蛋白
-echo -e "1\n1\n"|trjconv_mpi -f mdwholeNOjump.xtc -s md_0_1.tpr -fit rot+trans -o align.xtc
-#创建目录迁移
-mkdir fpocket2
-cp align.xtc fpocket2/align.xtc
-cp md_0_1.tpr fpocket2/md_0_1.tpr
-cd fpocket2
-#创建txt文件
-touch mdpocket_input.txt
-#总的轨迹数量(ps)
-numtray=150000
-#每多少间隔提取一次(约150frame)
-dttray=1000
-#轨迹变量
-numdttray=$[$numtray/$dttray]
-echo "轨迹间隔$numdttray"
-count=0
-num=0
-while [ $num -le $numtray ]
-do
-  echo "数值为$num"
-  echo "count数值为$count"
-  count=$[ $count +1]
-  num=$[$dttray*$count]
-  #参数修改为ns，除以1000
-  ns=$[$num/1000]
-  echo -e "1\n"|trjconv_mpi -f align.xtc -s md_0_1.tpr -dump $num -o snap_$ns.pdb
-  #写入文件
-  echo "snap_$ns.pdb\n"&gt;&gt;mdpocket_input.txt
-done
-echo "全部完成"
-</pre>
-
-<p>&nbsp;<br>下载地址：<a href="http://kangsgo.com/wp-content/uploads/2016/09/fpocketpre.sh_.zip">fpocketpre-sh</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># author:kangsgo</span></div><div class="line"><span class="comment"># name: fpocket2 MD 前处理脚本</span></div><div class="line"><span class="comment"># method:</span></div><div class="line"><span class="comment">#    默认轨迹名称：mdwholeNOjump.xtc，默认tpr为md_0_1.tpr</span></div><div class="line"><span class="comment">#    请根据需要修改如下参数</span></div><div class="line"><span class="comment">#    总的轨迹数量(ps)</span></div><div class="line"><span class="comment">#    numtray=150000</span></div><div class="line"><span class="comment">#    每多少间隔提取一次(约150frame)</span></div><div class="line"><span class="comment">#    dttray=1000</span></div><div class="line"></div><div class="line"><span class="comment">#设置比对结构,选择蛋白</span></div><div class="line"><span class="built_in">echo</span> -e <span class="string">"1\n1\n"</span>|trjconv_mpi -f mdwholeNOjump.xtc -s md_0_1.tpr -fit rot+trans -o align.xtc</div><div class="line"><span class="comment">#创建目录迁移</span></div><div class="line">mkdir fpocket2</div><div class="line">cp align.xtc fpocket2/align.xtc</div><div class="line">cp md_0_1.tpr fpocket2/md_0_1.tpr</div><div class="line"><span class="built_in">cd</span> fpocket2</div><div class="line"><span class="comment">#创建txt文件</span></div><div class="line">touch mdpocket_input.txt</div><div class="line"><span class="comment">#总的轨迹数量(ps)</span></div><div class="line">numtray=150000</div><div class="line"><span class="comment">#每多少间隔提取一次(约150frame)</span></div><div class="line">dttray=1000</div><div class="line"><span class="comment">#轨迹变量</span></div><div class="line">numdttray=$[<span class="variable">$numtray</span>/<span class="variable">$dttray</span>]</div><div class="line"><span class="built_in">echo</span> <span class="string">"轨迹间隔<span class="variable">$numdttray</span>"</span></div><div class="line">count=0</div><div class="line">num=0</div><div class="line"><span class="keyword">while</span> [ <span class="variable">$num</span> -le <span class="variable">$numtray</span> ]</div><div class="line"><span class="keyword">do</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"数值为<span class="variable">$num</span>"</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"count数值为<span class="variable">$count</span>"</span></div><div class="line">  count=$[ <span class="variable">$count</span> +1]</div><div class="line">  num=$[<span class="variable">$dttray</span>*<span class="variable">$count</span>]</div><div class="line">  <span class="comment">#参数修改为ns，除以1000</span></div><div class="line">  ns=$[<span class="variable">$num</span>/1000]</div><div class="line">  <span class="built_in">echo</span> -e <span class="string">"1\n"</span>|trjconv_mpi -f align.xtc -s md_0_1.tpr -dump <span class="variable">$num</span> -o snap_<span class="variable">$ns</span>.pdb</div><div class="line">  <span class="comment">#写入文件</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"snap_<span class="variable">$ns</span>.pdb\n"</span>&amp;gt;&amp;gt;mdpocket_input.txt</div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"全部完成"</span></div></pre></td></tr></table></figure>
+<p>&nbsp;<br>下载地址：<a href="/images/2016/09/fpocketpre.sh_.zip">fpocketpre-sh</a></p>
 <p>&nbsp;</p>
 
         </div>
@@ -237,7 +195,7 @@ echo "全部完成"
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:17:14.231Z" itemprop="dateUpdated">2017-10-18 20:17:14</time>
+    Last updated: <time datetime="2017-10-29T03:30:53.666Z" itemprop="dateUpdated">2017-10-29 11:30:53</time>
 </span><br>
 
 
@@ -262,6 +220,8 @@ echo "全部完成"
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
 
             
 <div class="page-share-wrap">

@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：  nvcc -V(注意大写V)&amp;nbsp;  应该有类似输出：">
+    <meta name="description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：1**nvcc -V**(注意大写V) 应该有类似输出：1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 15.10 Gromacs GPU加速错误解决办法">
 <meta property="og:url" content="http://kangsgo.com/226.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：  nvcc -V(注意大写V)&amp;nbsp;  应该有类似输出：">
+<meta property="og:description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：1**nvcc -V**(注意大写V) 应该有类似输出：1234">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-10-18T14:25:17.608Z">
+<meta property="og:updated_time" content="2017-10-28T03:30:58.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 15.10 Gromacs GPU加速错误解决办法">
-<meta name="twitter:description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：  nvcc -V(注意大写V)&amp;nbsp;  应该有类似输出：">
+<meta name="twitter:description" content="今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。 看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下： 按照先前安装教程安装 1.终端输入如下：1**nvcc -V**(注意大写V) 应该有类似输出：1234">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -186,13 +186,10 @@
             <p>今天把新电脑装了Ubuntu15.10，装GPU加速版本，但是在gromacs安装的时候出现了问题，在cmake那一步就出错，make时也报错，make check直接显示找不到文件。</p>
 <p>看错误日志发现CUDA的字眼，猜测是CUDA驱动版本是15.04的缘故，在网上搜，发现了相关教程。贴图如下：</p>
 <p>按照先前安装教程<a href="http://kangsgo.com/40.html">安装</a></p>
-<p>1.终端输入如下：</p>
-<blockquote>
-<p><strong>nvcc -V</strong>(注意大写V)<br>&nbsp;</p>
-</blockquote>
-<p>应该有类似输出：</p>
-<p><pre>nvcc: NVIDIA(R) Cuda compiler driver<br>copyright (c) 2005-2015 NVIDIA Corporation<br>Built on ………………<br>Cuda compilation tools, release 7.5, V7.5.17<br></pre><br>2.使用自带的samples进行GPU运算测试。</p>
-<p>进入到cuda-7.5的samples目录，一般都是<span style="color: #ff0000;"><code>cd /usr/local/cuda-7.5/samples</code></span>，然后会有一个Makefile文件，执行命令<span style="color: #ff0000;"><code>sudo make</code></span>，不出意外地话，会出现带有红颜色的error错误，大概是这样的：unsupported GNU version! gcc versions later than 4.9 are not supported! 意思也很明显了，就是gcc的版本高于4.9，Cuda不支持。解释一下：ubuntu15.10自带的gcc是5.2.1，可以通过<span style="color: #ff0000;"><code>gcc –version</code></span>（两个-）查看，但是cuda不支持超过4.9.0的gcc编译器。要么安装一个低版本的编译器，要么把cuda的这个限制给去掉。我选择的是后者，而且尚未出现其他问题。</p>
+<p>1.终端输入如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**nvcc -V**(注意大写V)</div></pre></td></tr></table></figure></p>
+<p>应该有类似输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nvcc: NVIDIA(R) Cuda compiler driver</div><div class="line">copyright (c) 2005-2015 NVIDIA Corporation</div><div class="line">Built on ………………</div><div class="line">Cuda compilation tools, release 7.5, V7.5.17</div></pre></td></tr></table></figure></p>
+<p>2.使用自带的samples进行GPU运算测试。</p>
+<p>进入到cuda-7.5的samples目录，一般都是<code>cd /usr/local/cuda-7.5/samples</code>，然后会有一个Makefile文件，执行命令<code>sudo make</code>，不出意外地话，会出现带有红颜色的error错误，大概是这样的：unsupported GNU version! gcc versions later than 4.9 are not supported! 意思也很明显了，就是gcc的版本高于4.9，Cuda不支持。解释一下：ubuntu15.10自带的gcc是5.2.1，可以通过<code>gcc –version</code>（两个-）查看，但是cuda不支持超过4.9.0的gcc编译器。要么安装一个低版本的编译器，要么把cuda的这个限制给去掉。我选择的是后者，而且尚未出现其他问题。</p>
 <p>3.解决方案如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo cd /usr/local/cuda/include/ #进入到头文件目录cuda(而不是cuda-7.5)；</div><div class="line">sudo cp host_config.h host_config.h.bak #备份原头文件；</div><div class="line">sudo gedit host_config.h #编辑头文件；</div><div class="line">ctrl+F查找4.9出现的地方，大约位于115行，在第113行处应该显示if _GNUC_&gt;4 || (_GNUC_ == 4 &amp;&amp; _GNUC_MINOR_ &gt; 9)，因为我们的是5.2.1，因此，把上面的2个4都改成5就ok了，保存退出。</div></pre></td></tr></table></figure>
 <p>自此解决，若还不放心，可以从新运行第2步的sudo make（注意目录同第二步）</p>
@@ -204,7 +201,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-18T14:25:17.608Z" itemprop="dateUpdated">2017-10-18 22:25:17</time>
+    Last updated: <time datetime="2017-10-28T03:30:58.300Z" itemprop="dateUpdated">2017-10-28 11:30:58</time>
 </span><br>
 
 
