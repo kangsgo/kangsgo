@@ -111,6 +111,33 @@
   </entry>
   
   <entry>
+    <title>smina安装与简介</title>
+    <link href="http://kangsgo.com/3.html"/>
+    <id>http://kangsgo.com/3.html</id>
+    <published>2017-10-29T04:36:39.000Z</published>
+    <updated>2017-11-02T15:31:54.877Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>smina 是基于<a href="http://vina.scripps.edu/" target="_blank" rel="external">Autodock Vina</a>的软件，主要聚焦于提升算法和最小化。主要的改变包括:</p><ul><li>通过OpenBabel提供能多的配体分子格式</li><li>支持多配体文件</li><li>增加术语类型（例如:去溶剂化能，静电势能）</li><li>支持用户自定义得分参数和得分功能</li><li>基于特异的结合配体自动计算盒子</li><li>允许输出超过20个对接姿势</li><li>提升了最小化算法</li></ul><p>*如果配体不是pdbqt格式，那么在文件中需要局部电荷。完成这项工作在OpenBabel和AutoDock Tools中的prepare_ligand4.py脚本中会有不同的结果。</p><p>静态编译文件提供了openbabel和boost（1.5.4），但是要求内核高于2.6.24</p><h2 id="Ubuntu下安装"><a href="#Ubuntu下安装" class="headerlink" title="Ubuntu下安装"></a>Ubuntu下安装</h2><p>首先在网站上下载<code>smina.static</code>文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp smina.static /usr/<span class="built_in">local</span>/bin/smina</div></pre></td></tr></table></figure></p><p>然后可以输入<code>smina --help</code>查看预编译版本是否可用</p><h2 id="输入文件简介"><a href="#输入文件简介" class="headerlink" title="输入文件简介"></a>输入文件简介</h2><p>输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"># arg表示该参数后面需要加参数</div><div class="line"> -r [--receptor] arg刚性受体（PDBQT）</div><div class="line"> --flex arg      柔性侧链（PDBQT）</div><div class="line"> -l [--ligand] arg  配体（s）</div><div class="line"> --flexres arg  特别的柔性侧链，通过逗号分隔 chain:resid</div><div class="line"> --flexdist_ligand arg 用于flexdist的配体</div><div class="line"> --flexdist arg  该参数表示flexdist配体多少距离以内设为柔性配体</div><div class="line"></div><div class="line"> 搜寻空间 (required):</div><div class="line">  --center_x arg        X中心坐标</div><div class="line">  --center_y arg        Y中心坐标</div><div class="line">  --center_z arg        Z中心坐标</div><div class="line">  --size_x arg          X尺寸大小 (Angstroms)</div><div class="line">  --size_y arg          Y尺寸大小 (Angstroms)</div><div class="line">  --size_z arg          Z尺寸大小 (Angstroms)</div><div class="line">  --autobox_ligand arg  自动创建盒子的配体</div><div class="line">  --autobox_add arg     若为自动创建盒子，那么缓冲空间的数量，默认为+4</div><div class="line">  --no_lig              无配体;对于取样/最小化柔性残基</div><div class="line"></div><div class="line">评分和最小化设置:</div><div class="line">  --custom_scoring arg         自定义得分文件</div><div class="line">  --score_only                 配体姿势得分</div><div class="line">  --local_only                 使用盒子进行局部搜索 (可能需要附带使用 --minimize)</div><div class="line">  --minimize                   能量最小化</div><div class="line">  --randomize_only             生成随机姿势，避免空间位阻</div><div class="line">  --minimize_iters arg (=0)    最陡下降法迭代数量，默认值是无法收敛的，我用的ahr为5000，可以用gmx等软件查看收敛系数</div><div class="line">  --accurate_line              使用精确的线性搜索</div><div class="line">  --minimize_early_term        S最小化搜索的终止能量 </div><div class="line">  --approximation arg          使用的近似 (linear, spline, or exact)</div><div class="line">  --factor arg                 近似因子: finer-grained效果较好</div><div class="line">  --force_cap arg              最大允许力，低值对于最小化clashing结构更好</div><div class="line">  --user_grid arg              用户计算若需要用到的格点文件Autodock map 文件</div><div class="line">  --user_grid_lambda arg (=-1) 缩放user_grid和功能得分</div><div class="line">  --print_terms                打印所有项目和默认值</div><div class="line">  --print_atom_types           打印所有可用原子类型</div><div class="line"></div><div class="line">输出设置 (optional):</div><div class="line">  -o [ --out ] arg      输出文件，格式根据后缀来</div><div class="line">  --out_flex arg        对于柔性残基的输出文件</div><div class="line">  --log arg             可设置的log文件</div><div class="line">  --atom_terms arg      可设置的输出每个残基的联系值</div><div class="line">  --atom_term_data      封装每个残基的联系值进入sd数据</div><div class="line"></div><div class="line">Misc (optional):</div><div class="line">  --cpu arg                  使用的cpu数量，默认全使用</div><div class="line">  --seed arg                 随机种子</div><div class="line">  --exhaustiveness arg (=8)  用尽一切的全局搜索</div><div class="line">  --num_modes arg (=9)      最大结合模式生成数量</div><div class="line">  --energy_range arg (=3)   最好和最低结合之间的数值设置(kcal/mol)</div><div class="line">  --min_rmsd_filter arg (=1) rmsd阈值</div><div class="line">  -q [ --quiet ]             禁止输出消息</div><div class="line">  --addH arg                 自动加氢（默认是执行的）</div><div class="line">  --flex_hydrogens           开启氢键转角</div><div class="line"></div><div class="line">设置文件 (optional):</div><div class="line">  --config arg          以上的设置可以放入这个文件</div><div class="line"></div><div class="line">信息 (optional):</div><div class="line">  --help                展示帮助</div><div class="line">  --help_hidden         展示包含隐藏设置的帮助</div><div class="line">  --version             版本</div></pre></td></tr></table></figure></p><p>具体的分子对接待编辑<br>未完待续</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot; title=&quot;概要&quot;&gt;&lt;/a&gt;概要&lt;/h2&gt;&lt;p&gt;smina 是基于&lt;a href=&quot;http://vina.scripps.edu/&quot; target=&quot;_blank&quot; rel=&quot;exter
+      
+    
+    </summary>
+    
+      <category term="分子对接" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/"/>
+    
+    
+      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="Dock" scheme="http://kangsgo.com/tags/Dock/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Dock6安装教程</title>
     <link href="http://kangsgo.com/844.html"/>
     <id>http://kangsgo.com/844.html</id>
@@ -345,9 +372,9 @@
       <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
     
     
-      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
-    
       <category term="amber" scheme="http://kangsgo.com/tags/amber/"/>
+    
+      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
     
   </entry>
   
@@ -374,9 +401,9 @@
       <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
     
     
-      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
-    
       <category term="amber" scheme="http://kangsgo.com/tags/amber/"/>
+    
+      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -503,35 +530,6 @@
     
     
       <category term="Pymol" scheme="http://kangsgo.com/tags/Pymol/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VMD粗粒化显示插件Bendix简单介绍</title>
-    <link href="http://kangsgo.com/700.html"/>
-    <id>http://kangsgo.com/700.html</id>
-    <published>2017-08-24T01:19:52.000Z</published>
-    <updated>2017-10-28T15:07:43.095Z</updated>
-    
-    <content type="html"><![CDATA[<p>VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 <a href="http://www.ks.uiuc.edu/Research/vmd/" target="_blank" rel="external">http://www.ks.uiuc.edu/Research/vmd/</a>.其展示的蛋白非常漂亮，而且是免费软件，是与Pymol，UCSF Chimera齐名的可视化软件。但是粗粒化的显示效果不佳，好在可以在VMD 1.9.2以后自带的Bendix插件的帮助下显示非常美丽的粗粒化模型。</p><p>先一饱眼福粗粒化模拟做出来的图：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-0d3dbb3be65140e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1： DPPC bilayer formation" title="">                </div>                <div class="image-caption">图片1： DPPC bilayer formation</div>            </figure></p><h3 id="官方教程"><a href="#官方教程" class="headerlink" title="官方教程"></a>官方教程</h3><p>这里对官方显示教程做一个简单的介绍：<br>首先下载官方示例包：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/data/tutorial_files.zip</a><br>其中包含pdb文件（PDB ID：1PV7）和一个分析文件（pdb）以及一个分析轨迹文件（dcd）</p><h3 id="1-VMD中一般螺旋表示"><a href="#1-VMD中一般螺旋表示" class="headerlink" title="1.VMD中一般螺旋表示"></a>1.VMD中一般螺旋表示</h3><p>首先我们可以把背景设置为白色<strong>VMD Main &gt; Graphics &gt; Colours</strong>，选择<strong>Display</strong>，设置<strong>Background</strong>颜色为8 white<br>加载 1PV7_LacY.pdb。通过<strong>Graphics &gt;Representations</strong>设置为下图所示：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-e31cf4b2dc5ca76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h3 id="2-Bendix中螺旋的功能图形的显示"><a href="#2-Bendix中螺旋的功能图形的显示" class="headerlink" title="2.Bendix中螺旋的功能图形的显示"></a>2.Bendix中螺旋的功能图形的显示</h3><p>从<strong>VMD Main&gt;Extensions&gt;Visualization&gt;Bendix</strong>中打开工具，保持默认设置，点击<strong>Draw</strong>按钮，结果如下：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-0ca1fa61779d0ba8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h3 id="3-设置成单一颜色"><a href="#3-设置成单一颜色" class="headerlink" title="3.设置成单一颜色"></a>3.设置成单一颜色</h3><p>这个非常的简单，在Uniform color中设置 <strong>full selection</strong>即可，如果是多个蛋白，设置<strong>by chain</strong>即可显示不同颜色<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-a8d57f0aa49a67cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h3 id="4-热图"><a href="#4-热图" class="headerlink" title="4.热图"></a>4.热图</h3><p>显示热图仅需设置为Heatmap color即可，<strong>Scale</strong>选项默认为RGB，即Red-Green-Blue，<strong>Color threshold</strong>为颜色阈值。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-4b1472df77b14462.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h3 id="5-绘制non-Bendices"><a href="#5-绘制non-Bendices" class="headerlink" title="5. 绘制non-Bendices"></a>5. 绘制non-Bendices</h3><p>仅需<strong>Rep 0</strong>修改为<strong>Tube</strong>即可<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-42ad4ed2bdd5ad3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><p>完整的教程包括轨迹教程可以查阅官方文档：<a href="http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html" target="_blank" rel="external">http://sbcb.bioch.ox.ac.uk/Bendix/tutorial.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;VMD是一个分子可视化程序, 它采用三维图形技术以及内置脚本来对生物大分子体系进行展示, 动画制作和分析. VMD官方网站 &lt;a href=&quot;http://www.ks.uiuc.edu/Research/vmd/&quot; target=&quot;_blank&quot; rel=&quot;externa
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
-    
-      <category term="粗粒化" scheme="http://kangsgo.com/tags/%E7%B2%97%E7%B2%92%E5%8C%96/"/>
-    
-      <category term="VMD" scheme="http://kangsgo.com/tags/VMD/"/>
     
   </entry>
   
