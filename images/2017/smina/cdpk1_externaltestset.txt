@@ -1,0 +1,23 @@
+Name	SMILES	IUPAC name	Chemical formula	Molecular weight
+1480	Cc1c(c2ccccc2o1)c3c(c(n(n3)C(C)(C)C)N)C(=O)N	5-amino-1-tert-butyl-3-(2-methylbenzofuran-3-yl)pyrazole-4-carboxamide	C17H20N4O2	312.37
+1492	CC(C)n1c(c(c(n1)c2ccc3ccccc3c2)C(=O)N)N	5-amino-1-isopropyl-3-(2-naphthyl)pyrazole-4-carboxamide	C17H18N4O	294.35
+1499	c1ccc2cc(ccc2c1)c3c(c(n(n3)CC(F)(F)F)N)C(=O)N	"5-amino-3-(2-naphthyl)-1-(2,2,2-trifluoroethyl)pyrazole-4-carboxamide"	C16H13F3N4O	334.30
+1505	CN1CCC(CC1)Cn2c(c(c(n2)N)C(=O)N)c3ccc4cc(ccc4c3)OC	3-amino-5-(6-methoxy-2-naphthyl)-1-[(1-methyl-4-piperidyl)methyl]pyrazole-4-carboxamide	C22H27N5O2	393.48
+1521	CCOc1ccc2cc(ccc2c1)c3cc(cc4c3c(n[nH]4)N)CN5CCNCC5	4-(6-ethoxy-2-naphthyl)-6-(piperazin-1-ylmethyl)-1H-indazol-3-amine	C24H27N5O	401.50
+1530	CCOc1ccc2cc(ccc2c1)c3cc(ccc3C(=O)O)CN4CCNCC4	2-(6-ethoxy-2-naphthyl)-4-(piperazin-1-ylmethyl)benzoic acid	C24H26N2O3	390.48
+1549	CCOc1ccc2cc(ccc2c1)c3cc(cc4c3c(n[nH]4)N)C(C)(C)C	6-tert-butyl-4-(6-ethoxy-2-naphthyl)-1H-indazol-3-amine	C23H25N3O	359.46
+1555	CC(C)(C)n1c(c(c(n1)c2cc3ccc(cc3nc2)C(F)(F)F)C(=O)N)N	5-amino-1-tert-butyl-3-[7-(trifluoromethyl)-3-quinolyl]pyrazole-4-carboxamide	C18H18F3N5O	377.36
+1569	CC(C)Oc1ccc2cc(cnc2c1)c3c(c(n(n3)C(C)(C)C)N)C(=O)N	5-amino-1-tert-butyl-3-(7-isopropoxy-3-quinolyl)pyrazole-4-carboxamide	C20H25N5O2	367.45
+1570	CC(C)(C)n1c(c(c(n1)c2cc3ccc(cc3nc2)OCCOC)C(=O)N)N	5-amino-1-tert-butyl-3-[7-(2-methoxyethoxy)-3-quinolyl]pyrazole-4-carboxamide	C20H25N5O3	383.44
+1597	CCOc1ccc2cc(ccc2n1)c3c(c(n(n3)C(C)(C)C)N)C(=O)N	5-amino-1-tert-butyl-3-(2-ethoxy-6-quinolyl)pyrazole-4-carboxamide	C19H23N5O2	353.42
+1354	c1c[nH]c2c1cc(cn2)c3c4c(ncnc4n(n3)C5CCCC5)N	"1-cyclopentyl-3-(1H-pyrrolo[2,3-b]pyridin-5-yl)-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C17H17N7	319.36
+1433	c1ccc(cc1)COc2ccc3cc(ccc3n2)c4c5c(ncnc5n(n4)CC6CCNCC6)N	"3-(2-(benzyloxy)quinolin-6-yl)-1-(piperidin-4-ylmethyl)-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C27H27N7O	465.55
+1478	CCOc1ccc2cc(cnc2c1)c3c4c(ncnc4n(n3)C(C)C)N	"3-(7-ethoxyquinolin-3-yl)-1-isopropyl-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C19H20N6O	348.40
+1479	CC(C)(C)Oc1ccc2cc(ccc2c1)c3c4c(ncnc4n(n3)CC5CCOCC5)N	"3-(6-tert-butoxynaphthalen-2-yl)-1-((tetrahydro-2H-pyran-4-yl)methyl)-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C25H29N5O2	431.53
+1514	c1cc(cc2c1cc(cc2)OC3CC3)c4c5c(ncnc5n(n4)CC6CCNCC6)N	"3-[6-(cyclopropoxy)-2-naphthyl]-1-(4-piperidylmethyl)pyrazolo[3,4-d]pyrimidin-4-amine"	C24H26N6O	414.50
+1536	CC(C)(Cn1c2c(c(n1)c3ccc4cc(ccc4c3)OC5CC5)c(ncn2)N)CO	"3-(4-amino-3-(6-cyclopropoxynaphthalen-2-yl)-1H-pyrazolo[3,4-d]pyrimidin-1-yl)-2,2-dimethylpropan-1-ol"	C23H25N5O2	403.48
+1542	CC(C)(C)Cn1c2c(c(n1)c3ccc4cc(ccc4c3)O)c(ncn2)N	"6-(4-amino-1-neopentyl-1H-pyrazolo[3,4-d]pyrimidin-3-yl)naphthalen-2-ol"	C20H21N5O	347.41
+1551	c1cc(nc2c1cc(cc2)c3c4c(ncnc4n(n3)CC5CCNCC5)N)OC6CC6	"3-(2-cyclopropoxyquinolin-6-yl)-1-(piperidin-4-ylmethyl)-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C23H25N7O	415.49
+1553	CC(C)(Cn1c2c(c(n1)c3ccc4cc(ccc4c3)OC5CC5)c(ncn2)N)O	"1-(4-amino-3-(6-cyclopropoxynaphthalen-2-yl)-1H-pyrazolo[3,4-d]pyrimidin-1-yl)-2-methylpropan-2-ol"	C22H23N5O2	389.45
+1563	c1cc(nc2c1cc(cc2)c3c4c(ncnc4n(n3)CC5CCNCC5)N)OCC(F)(F)F	"1-(piperidin-4-ylmethyl)-3-(2-(2,2,2-trifluoroethoxy)quinolin-6-yl)-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C22H22F3N7O	457.45
+1610	CCOc1ccc2ccc(cc2c1)c3c4c(ncnc4n(n3)CC(C)C)N	"3-(7-ethoxynaphthalen-2-yl)-1-isobutyl-1H-pyrazolo[3,4-d]pyrimidin-4-amine"	C21H23N5O	361.44
