@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/pressure.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/density.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/5.png">
-<meta property="og:updated_time" content="2017-10-28T14:31:05.593Z">
+<meta property="og:updated_time" content="2017-11-11T12:25:54.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
@@ -227,7 +227,7 @@
 <p>力场选择amber99SB 5</p>
 </blockquote>
 <p>8.准备小分子拓扑结构</p>
-<p>将得到的TCD_GMX.top中顶部的[defaults]，[ atomtypes ]，[ moleculetype ]，底部的[ system ]，[ molecules ]删除，改名为TCD.itp</p>
+<p>将得到的TCD_GMX.top中顶部的[defaults]，[ atomtypes ]，底部的[ system ]，[ molecules ]删除，改名为TCD.itp</p>
 <p>复制mAhR_processed.gro，重命名为complex.gro 将TCD_GMX.gro中内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">1  TCD  CL1    1   1.163  -4.344   0.912</div><div class="line">1  TCD  CL2    2   1.223  -4.088   0.726</div><div class="line">1  TCD  CL3    3   2.103  -4.309   1.263</div><div class="line">1  TCD  CL4    4   2.164  -4.054   1.077</div><div class="line">1  TCD   O1    5   1.637  -4.310   1.076</div><div class="line">1  TCD   O2    6   1.690  -4.088   0.913</div><div class="line">1  TCD   C1    7   1.542  -4.258   0.994</div><div class="line">1  TCD   C2    8   1.568  -4.148   0.914</div><div class="line">1  TCD   C3    9   1.759  -4.250   1.075</div><div class="line">1  TCD   C4   10   1.785  -4.140   0.995</div><div class="line">1  TCD   C5   11   1.417  -4.317   0.992</div><div class="line">1  TCD   C6   12   1.469  -4.098   0.832</div><div class="line">1  TCD   C7   13   1.857  -4.300   1.157</div><div class="line">1  TCD   C8   14   1.909  -4.081   0.997</div><div class="line">1  TCD   C9   15   1.318  -4.266   0.911</div><div class="line">1  TCD  C10   16   1.344  -4.156   0.830</div><div class="line">1  TCD  C11   17   1.983  -4.242   1.159</div><div class="line">1  TCD  C12   18   2.009  -4.132   1.079</div><div class="line">1  TCD   H1   19   1.399  -4.402   1.055</div><div class="line">1  TCD   H2   20   1.490  -4.013   0.771</div><div class="line">1  TCD   H3   21   1.836  -4.385   1.218</div><div class="line">1  TCD   H4   22   1.928  -3.996   0.934</div></pre></td></tr></table></figure>
 <p>添加到complex.gro底部数字行上面将顶部1741加22个原子改为1763，保存。</p>
@@ -405,7 +405,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-28T14:31:05.593Z" itemprop="dateUpdated">2017-10-28 22:31:05</time>
+    Last updated: <time datetime="2017-11-11T12:25:54.512Z" itemprop="dateUpdated">2017-11-11 20:25:54</time>
 </span><br>
 
 
