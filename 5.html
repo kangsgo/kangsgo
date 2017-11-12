@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://kangsgo.com/images/2017/smina/SMINA8.png">
 <meta property="og:image" content="http://kangsgo.com/images/2017/smina/SMINA10.png">
 <meta property="og:image" content="http://kangsgo.com/images/2017/smina/SMINA11.png">
-<meta property="og:updated_time" content="2017-11-12T06:21:36.939Z">
+<meta property="og:updated_time" content="2017-11-12T06:29:44.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMINA教程以CDPK1为例">
 <meta name="twitter:description" content="SMINA教程以CDPK1为例 原作者:David Ryan Koes翻译:康文渊 若进行精读建议查看原文以及参考文献，本文是我根据教程快速阅读做的笔记  Q1:我们有autodock vina，为什么还要SMINA？ A1:SMINA有更加优秀的速度和更加的扩展性 Q2:用该对接软件有什么优势？ A2:首先该对接软件为免费/学术免费软件，其次其有非常良好的对接准确度，甚至在商业软件中都为上乘，同">
@@ -136,7 +136,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -214,7 +214,7 @@
 <p>本教程是一个使用SMINA进行对<em>E.tenella</em>中的钙依赖性蛋白激酶1(calcium-dependent protein kinase 1 CDPK1)进行的结构为基础的虚拟筛选的教程。<em>E.tenella</em>是一种感染幼禽并且导致潜在致命球虫病的寄生虫。尽管这种酶并未解析晶体结构（译者翻译时该结构已经被解析，pdb:4YSJ），但是有相关寄生虫的该种酶的结构。<em>C. parvum</em> 和 <em>T. gondii</em>的该种酶结构已经被解析，并且有生物活性数据表明他们的小分子竭抗剂。<br>我们将会对怎么分析已知结构，评价SMINA对于这些结构的表现，对于对接结果创建自定义的得分函数，使用SWISS-MODEL创建<em>E.tenella</em>的结构模型，并且进行<em>E.tenella</em>CDPK1的虚拟筛选。（个人认为作者提到的<em>E.tenella</em>均表示的为<em>E.tenella</em>CDPK1）。</p>
 <h2 id="假设和惯例"><a href="#假设和惯例" class="headerlink" title="假设和惯例"></a>假设和惯例</h2><p>假设读者对Linux命令行有一定的了解，并对一些用到的软件熟悉。教程在Ubuntu Linux12.04（原作者）和Ubuntu Linux16.04（译者）测试通过。bash命令行如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"Hello"</span></div></pre></td></tr></table></figure></p>
 <p>python基础的PyMOL环境展示如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#python2.x</span></div><div class="line"><span class="keyword">print</span> <span class="string">"Hello"</span></div></pre></td></tr></table></figure></p>
-<p>以下为（译者）用到的软件:<br>|–Software–|–License–|–Source–|<br>|—|:——:|—|<br>|<a href="/images/2017/smina/color_by_mutation.py">color_by_mutation</a>|GNU|<a href="http://www.pymolwiki.org/index.php/Color_By_Mutations|" target="_blank" rel="external">http://www.pymolwiki.org/index.php/Color_By_Mutations|</a><br>|PyMOL 1.7.x|Python|<a href="http://sourceforge.net/projects/pymol/|" target="_blank" rel="external">http://sourceforge.net/projects/pymol/|</a><br>|RDKit 2017_03|BSD Style|<a href="http://rdkit.org/|" target="_blank" rel="external">http://rdkit.org/|</a><br>|smina|GPLv2|<a href="http://sourceforge.net/projects/smina/|" target="_blank" rel="external">http://sourceforge.net/projects/smina/|</a></p>
+<p>以下为（译者）用到的软件:<br>|–Software–|–License–|–Source–|<br>|—|—|—|<br>|<a href="/images/2017/smina/color_by_mutation.py">color_by_mutation</a>|GNU|<a href="http://www.pymolwiki.org/index.php/Color_By_Mutations|" target="_blank" rel="external">http://www.pymolwiki.org/index.php/Color_By_Mutations|</a><br>|PyMOL 1.7.x|Python|<a href="http://sourceforge.net/projects/pymol/|" target="_blank" rel="external">http://sourceforge.net/projects/pymol/|</a><br>|RDKit 2017_03|BSD Style|<a href="http://rdkit.org/|" target="_blank" rel="external">http://rdkit.org/|</a><br>|smina|GPLv2|<a href="http://sourceforge.net/projects/smina/|" target="_blank" rel="external">http://sourceforge.net/projects/smina/|</a></p>
 <h1 id="1-检查C-parvum和T-gondii晶体结构"><a href="#1-检查C-parvum和T-gondii晶体结构" class="headerlink" title="1. 检查C.parvum和T.gondii晶体结构"></a>1. 检查<em>C.parvum</em>和<em>T.gondii</em>晶体结构</h1><p>该部分内容可以参考早期博客文章同源建模系列<br>首先我们分析<em>E.tenella</em>序列和验证三个结构的异同（三个寄生虫中改结构）。然后我们使用<em>C.parvum</em>和<em>T.gondii</em>创建一个虚拟筛选的测试集，并且对接这些测试集化合物。我们使用这些对接结果来进行晶体结构的筛选和模型的增加。</p>
 <h2 id="1-1-靶标分析"><a href="#1-1-靶标分析" class="headerlink" title="1.1 靶标分析"></a>1.1 靶标分析</h2><p>首先，我们分析<em>E.tenella</em>序列和<em>C.parvum</em>和<em>T.gondii*</em>结构</p>
 <h3 id="1-1-1-E-tenella序列分析"><a href="#1-1-1-E-tenella序列分析" class="headerlink" title="1.1.1 E.tenella序列分析"></a>1.1.1 <em>E.tenella</em>序列分析</h3><p>1.复制或者下载<em>E.tenella</em>的FASTA序列,你可以点击<a href="http://www.ncbi.nlm.nih.gov/protein/CAA96439" target="_blank" rel="external">这里</a>进入网址,同样也可以<a href="/images/2017/smina/CDPK1.fasta">下载</a>我们已经下载好的。</p>
@@ -400,7 +400,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-11-12T06:21:36.939Z" itemprop="dateUpdated">2017-11-12 14:21:36</time>
+    最後更新時間：<time datetime="2017-11-12T06:29:44.946Z" itemprop="dateUpdated">2017-11-12 14:29:44</time>
 </span><br>
 
 
@@ -485,7 +485,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/87.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Gromacs笔记</h4>
+        <h4 class="title">系列笔记整理</h4>
       </a>
     </div>
   
@@ -563,7 +563,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
