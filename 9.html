@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>mahotas进行细胞统计开胃菜 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="mahotas">
+    <meta name="description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+<meta name="keywords" content="mahotas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mahotas进行细胞统计开胃菜">
+<meta property="og:url" content="http://kangsgo.com/9.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/dna.jpeg">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_6_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_8_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_11_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_13_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_15_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_18_1.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_20_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_22_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_26_0.png">
+<meta property="og:image" content="http://kangsgo.com/images/2017/11/output_27_0.png">
+<meta property="og:updated_time" content="2017-11-25T18:27:35.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mahotas进行细胞统计开胃菜">
+<meta name="twitter:description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+<meta name="twitter:image" content="http://kangsgo.com/images/2017/11/dna.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mahotas进行细胞统计开胃菜</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mahotas进行细胞统计开胃菜</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-25T18:27:23.000Z" itemprop="datePublished" class="page-time">
+  2017-11-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python-图像教程"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python 图像教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要用到的软件"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">需要用到的软件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一个项目-计算细胞核"><span class="post-toc-number">2.</span> <span class="post-toc-text">第一个项目:计算细胞核</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#玩弄"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">玩弄</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些实际的工作"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">一些实际的工作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二个项目-分隔图像"><span class="post-toc-number">3.</span> <span class="post-toc-text">第二个项目:分隔图像</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#寻找种子"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">寻找种子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Watershed"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Watershed</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-mahotas进行细胞统计开胃菜"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mahotas进行细胞统计开胃菜</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-26 02:27:23" datetime="2017-11-25T18:27:23.000Z"  itemprop="datePublished">2017-11-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Python-图像教程"><a href="#Python-图像教程" class="headerlink" title="Python 图像教程"></a>Python 图像教程</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="需要用到的软件"><a href="#需要用到的软件" class="headerlink" title="需要用到的软件"></a>需要用到的软件</h4><ul>
+<li>Python</li>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>mahotas</li>
+<li>ipython&amp;notebook</li>
+</ul>
+<h2 id="第一个项目-计算细胞核"><a href="#第一个项目-计算细胞核" class="headerlink" title="第一个项目:计算细胞核"></a>第一个项目:计算细胞核</h2><p>我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/dna.jpeg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure><br>首先导入包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> mahotas <span class="keyword">as</span> mh</div></pre></td></tr></table></figure>
+<p>对于Python，有能够通过包来完成许多工具，而不是一个包。我们用numpy数组进行储存图像，在我们的案例中，其是一个二维数组（高X宽），或者，对于彩色图像，为三维数组（高X宽X3或者高X宽X4，其中3和4分别表示red，green，blue或者red，green，blue，alpha的元组，其中alpha为透明度）<br>首先我们读取图像进入内存:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dna=mh.imread(<span class="string">'dna.jpeg'</span>)</div></pre></td></tr></table></figure>
+<h3 id="玩弄"><a href="#玩弄" class="headerlink" title="玩弄"></a>玩弄</h3><p>在交互模式，例如ipython，你可以查看使用如下方法查看图像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.imshow(dna)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_6_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p>你可能惊讶图片并不像原来的图片是黑色的，原因是plt默认展示的为热图，你可以通过切换colormap来切换成默认的灰度图，例如如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plt.imshow(dna)</div><div class="line">plt.gray()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_8_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p>你还可以探索如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(dna.shape)</div><div class="line">print(dna.dtype)</div><div class="line">print(dna.max())</div><div class="line">print(dna.min())</div></pre></td></tr></table></figure>
+<pre><code>(1024, 1344)
+uint8
+252
+0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.imshow(dna // <span class="number">2</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_11_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p>我们将图片所有性质除以2，然而得到的结果居然一样，实际上plt在展示图片之前会进行对比扩展</p>
+<h3 id="一些实际的工作"><a href="#一些实际的工作" class="headerlink" title="一些实际的工作"></a>一些实际的工作</h3><p>现在我们开始实际的计算核酸的工作，我们对开篇导入的图片的物体（objects）进行计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">T=mh.thresholding.otsu(dna)</div><div class="line">plt.imshow(dna&gt;T)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_13_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p>在这里，我们又一次利用了dna是一个numpy数组，并在逻辑运算中使用它（dna&gt; T）的事实。 结果是一个布尔值的数组，这个pylab显示为一个黑白图像。<br>但是看起来不是那么美好，因为图像包含了许多小的物体。这里有两个方法解决它。一个简单的方法是使用Gaussian筛选抚平小的物体</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dnaf = mh.gaussian_filter(dna, <span class="number">8</span>).astype(<span class="string">'uint8'</span>)</div><div class="line">T = mh.thresholding.otsu(dnaf)</div><div class="line">plt.imshow(dnaf&gt;T)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_15_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p><code>mh.gaussian_filter</code>接收图像并过滤器的标准偏差(以像素为单位)并返回过滤后的图像，但是一个更好的方法是使用mahotas筛选图像并且计算阈值，使用numpy操作创建的图像，并用plt展示他们，但是所有的工作都是数组完成的，这样的结果会更好。</p>
+<p>我们现在进行一些细胞核的merged。 最后的计数只是一个额外的函数调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">labeled,nr_objects=mh.label(dnaf&gt;T)</div><div class="line">print(nr_objects)</div><div class="line">plt.imshow(labeled)</div><div class="line">plt.jet()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<pre><code>18
+</code></pre><p><img src="/images/2017/11/output_18_1.png" alt="png"></p>
+<p>我们拥有物体的图像为18个，展示的为标记的（labeled）图像，使用jet()进行着色<br>我们可以探索标记的物体，其是一个整数的数组，它的值是该位置上对象的标签，所以值的范围从0（背景）到nr_objects。</p>
+<h2 id="第二个项目-分隔图像"><a href="#第二个项目-分隔图像" class="headerlink" title="第二个项目:分隔图像"></a>第二个项目:分隔图像</h2><p>通过第一个项目，我们完成的还是令人满意，但是仍然有一些核酸是黏在一起的，然我们to do better<br>这里有一个简单的，传统的想法:</p>
+<ol>
+<li>平滑图像</li>
+<li>寻找区域最大值</li>
+<li>使用区域最大值作为watershed的种子</li>
+</ol>
+<h3 id="寻找种子"><a href="#寻找种子" class="headerlink" title="寻找种子"></a>寻找种子</h3><p>首先我们进行如下的尝试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#plt.figure(figsize=(15,15))</span></div><div class="line">dnaf=mh.gaussian_filter(dna,<span class="number">8</span>).astype(<span class="string">'uint8'</span>)</div><div class="line">rmax=mh.regmax(dnaf)</div><div class="line">plt.imshow(mh.overlay(dna,rmax))</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_20_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p><code>mh.overlay()</code>返回一个彩色图像，第一个参数给出灰度级分量，而第二个参数作为红色通道。 结果看起来不太好：<br>稍微摆弄一下后，我们决定用一个更大的sigma尝试相同的想法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">15</span>))</div><div class="line">dnaf=mh.gaussian_filter(dna,<span class="number">15</span>).astype(<span class="string">'uint8'</span>)</div><div class="line">rmax=mh.regmax(dnaf)</div><div class="line">plt.imshow(mh.overlay(dna,rmax))</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_22_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<p>看起来好许多，我们可以方便的统计核算数量了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">seeds,nr_nuclei=mh.label(rmax)</div><div class="line">print(nr_nuclei)</div></pre></td></tr></table></figure>
+<pre><code>22
+</code></pre><h3 id="Watershed"><a href="#Watershed" class="headerlink" title="Watershed"></a>Watershed</h3><p>我们打算将Watershed应用于阈值图像的距离变换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">T=mh.thresholding.otsu(dnaf)</div><div class="line">dist =  mh.distance(dnaf&gt;T)</div><div class="line">dist =  dist.max()-dist</div><div class="line">dist -= dist.min()</div><div class="line">dist  = dist/float(dist.ptp())*<span class="number">255</span></div><div class="line">dist  = dist.astype(np.uint8)</div><div class="line">plt.imshow(dist)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_26_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nuclei=mh.cwatershed(dist,seeds)</div><div class="line">plt.imshow(nuclei)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2017/11/output_27_0.png" alt="png" title="">
+                </div>
+                <div class="image-caption">png</div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-11-25T18:27:35.806Z" itemprop="dateUpdated">2017-11-26 02:27:35</time>
+</span><br>
+
+
+        
+        链接：<a href="/9.html" target="_blank" rel="external">http://kangsgo.com/9.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mahotas/">mahotas</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/9.html&title=《mahotas进行细胞统计开胃菜》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/9.html&title=《mahotas进行细胞统计开胃菜》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/9.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mahotas进行细胞统计开胃菜》 — 小康博客&url=http://kangsgo.com/9.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/9.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/87.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">系列笔记整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/8.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mahotas安装教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/9.html&title=《mahotas进行细胞统计开胃菜》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/9.html&title=《mahotas进行细胞统计开胃菜》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/9.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mahotas进行细胞统计开胃菜》 — 小康博客&url=http://kangsgo.com/9.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/9.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABXUlEQVR42u3ayw7DIAxEUf7/p6nUVaS07viRRZnLKooIOSxiHMNactvvdr2+3on73HuONViwDmLtsN1fqeC+Pau8CxYsZ5YSFOI+8VTT48CCBUtenuMRWtODBQtWOJySEMfPwoIFq5M011Lnx3N5WLCOYNUKSbXrx+tbsGD9IWuXWqewK40PC5YZS/k1rX3RcR8pcMCCZcPKJrVKobaz2fkhbsGCZcbSX6Yk1p3AAQuWJ2v2z3HgMBAsWGYsJUwo08gWklqVZliwzFj9DZJsKUrKI2DBOpSlfPy1A0DKnVXLxGHBOo6lL6tKQpzdaJFCAyxYliwlBGQPA6UDCixYNqziUYBw0VWS7B9JMyxYZqxOSt0/tDdw3AEWrINYtY0Tfa56gIAFC1atktOqXcXbn7BgwWpvW+oL81iAgAXLhhVDp36AYcFyZtUOGWSPIMCCBavTsiXa2pRgwbJkvQD+V3PbhhDhpAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
