@@ -20,13 +20,13 @@
     
     
     <meta name="keywords" content="mahotas">
-    <meta name="description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+    <meta name="description" content="Python 图像教程介绍需要用到的软件 Python 3+ numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
 <meta name="keywords" content="mahotas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mahotas进行细胞统计开胃菜">
 <meta property="og:url" content="http://kangsgo.com/9.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+<meta property="og:description" content="Python 图像教程介绍需要用到的软件 Python 3+ numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://kangsgo.com/images/2017/11/dna.jpeg">
 <meta property="og:image" content="http://kangsgo.com/images/2017/11/output_6_0.png">
@@ -39,10 +39,10 @@
 <meta property="og:image" content="http://kangsgo.com/images/2017/11/output_22_0.png">
 <meta property="og:image" content="http://kangsgo.com/images/2017/11/output_26_0.png">
 <meta property="og:image" content="http://kangsgo.com/images/2017/11/output_27_0.png">
-<meta property="og:updated_time" content="2017-11-25T18:27:35.806Z">
+<meta property="og:updated_time" content="2017-11-30T01:52:54.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mahotas进行细胞统计开胃菜">
-<meta name="twitter:description" content="Python 图像教程介绍需要用到的软件 Python numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
+<meta name="twitter:description" content="Python 图像教程介绍需要用到的软件 Python 3+ numpy matplotlib mahotas ipython&amp;amp;notebook  第一个项目:计算细胞核我们的第一个任务是进行细胞核的计算，你可以点击图像进行下载到本地跟着进行运行">
 <meta name="twitter:image" content="http://kangsgo.com/images/2017/11/dna.jpeg">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
@@ -204,7 +204,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="Python-图像教程"><a href="#Python-图像教程" class="headerlink" title="Python 图像教程"></a>Python 图像教程</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="需要用到的软件"><a href="#需要用到的软件" class="headerlink" title="需要用到的软件"></a>需要用到的软件</h4><ul>
-<li>Python</li>
+<li>Python 3+</li>
 <li>numpy</li>
 <li>matplotlib</li>
 <li>mahotas</li>
@@ -229,7 +229,7 @@
                 </div>
                 <div class="image-caption">png</div>
             </figure>
-<p>你可能惊讶图片并不像原来的图片是黑色的，原因是plt默认展示的为热图，你可以通过切换colormap来切换成默认的灰度图，例如如下:</p>
+<p>你可能惊讶图片并不像原来的图片是黑色的，原因是plt默认展示的为jet()  bar，你可以通过切换colormap来切换成默认的灰度图，例如如下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plt.imshow(dna)</div><div class="line">plt.gray()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -283,7 +283,7 @@ uint8
 <li>寻找区域最大值</li>
 <li>使用区域最大值作为watershed的种子</li>
 </ol>
-<h3 id="寻找种子"><a href="#寻找种子" class="headerlink" title="寻找种子"></a>寻找种子</h3><p>首先我们进行如下的尝试</p>
+<h3 id="寻找种子"><a href="#寻找种子" class="headerlink" title="寻找种子"></a>寻找种子</h3><p>但是且慢，有一些细胞在照片上重叠了，被我们算作一个细胞了。显然是这不科学的，因此我们需要更精确的计算方法。接下来我们要讨论的方法寻找团块的中心点并计算中心点的个数。这里我们假设在灰度图上，团块比较中心的地方比较亮，最亮的地方就是最中心的地方。这个东西叫regional maxima，相当于一片山脉中的最高峰。我们找到这个点之后，进行标亮，并且与原来的灰度图重叠在一起。首先我们进行如下的尝试</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#plt.figure(figsize=(15,15))</span></div><div class="line">dnaf=mh.gaussian_filter(dna,<span class="number">8</span>).astype(<span class="string">'uint8'</span>)</div><div class="line">rmax=mh.regmax(dnaf)</div><div class="line">plt.imshow(mh.overlay(dna,rmax))</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -304,7 +304,7 @@ uint8
 <p>看起来好许多，我们可以方便的统计核算数量了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">seeds,nr_nuclei=mh.label(rmax)</div><div class="line">print(nr_nuclei)</div></pre></td></tr></table></figure>
 <pre><code>22
-</code></pre><h3 id="Watershed"><a href="#Watershed" class="headerlink" title="Watershed"></a>Watershed</h3><p>我们打算将Watershed应用于阈值图像的距离变换：</p>
+</code></pre><h3 id="Watershed"><a href="#Watershed" class="headerlink" title="Watershed"></a>Watershed</h3><p>我们打算将Watershed应用于阈值图像的距离变换(使用矩阵最大值减去矩阵内所有元素，使得矩阵元素的数值原来大的变小，小的变大,得到下图)：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">T=mh.thresholding.otsu(dnaf)</div><div class="line">dist =  mh.distance(dnaf&gt;T)</div><div class="line">dist =  dist.max()-dist</div><div class="line">dist -= dist.min()</div><div class="line">dist  = dist/float(dist.ptp())*<span class="number">255</span></div><div class="line">dist  = dist.astype(np.uint8)</div><div class="line">plt.imshow(dist)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -313,6 +313,7 @@ uint8
                 </div>
                 <div class="image-caption">png</div>
             </figure>
+<p>现在，根据矩阵的元素的大小，以之前得到的一堆最高峰（seeds）为核心位置，观察每个核心与邻居核心之间的边界（元素数值的局域极大值），把这个边界标记出来。就得到了核心的区域划分图。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nuclei=mh.cwatershed(dist,seeds)</div><div class="line">plt.imshow(nuclei)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -321,6 +322,7 @@ uint8
                 </div>
                 <div class="image-caption">png</div>
             </figure>
+<p>参考资料:<br><a href="http://pythonvision.org/basic-tutorial/" target="_blank" rel="external">原文</a><br><a href="http://wiki.swarma.net/index.php?title=%E4%BD%BF%E7%94%A8python%E5%81%9A%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86&amp;variant=zh" target="_blank" rel="external">使用python做图像处理</a></p>
 
         </div>
 
@@ -328,7 +330,7 @@ uint8
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-11-25T18:27:35.806Z" itemprop="dateUpdated">2017-11-26 02:27:35</time>
+    Last updated: <time datetime="2017-11-30T01:52:54.310Z" itemprop="dateUpdated">2017-11-30 09:52:54</time>
 </span><br>
 
 
@@ -420,9 +422,9 @@ uint8
 
   
     <div class="waves-block waves-effect next">
-      <a href="/8.html" id="post-next" class="post-nav-link">
+      <a href="/11.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">mahotas安装教程</h4>
+        <h4 class="title">SwissSimilarity:基于配体的虚拟筛选在线服务器</h4>
       </a>
     </div>
   

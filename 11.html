@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>SwissSimilarity:基于配体的虚拟筛选在线服务器 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="swiss">
+    <meta name="description" content="SwissSimilarity)是Swiss系提供的一个基于配体的虚拟筛选在线服务器。 主要的用途我觉得包含几个方面，1)一个是比如有一个小分子，需要找寻它潜在的靶标位点，作为一个找靶。2)另外一个是你有一个已知的靶点小分子，但是它的性能可能不好，你需要对其母环改造，那么可以进行骨架跃迁。3)还有一个应用就是你有一系列已知作用靶标的化合物，想找类似物进行合成优化，那么也可以进行LBVS进行初筛。当">
+<meta name="keywords" content="swiss">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SwissSimilarity:基于配体的虚拟筛选在线服务器">
+<meta property="og:url" content="http://kangsgo.com/11.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="SwissSimilarity)是Swiss系提供的一个基于配体的虚拟筛选在线服务器。 主要的用途我觉得包含几个方面，1)一个是比如有一个小分子，需要找寻它潜在的靶标位点，作为一个找靶。2)另外一个是你有一个已知的靶点小分子，但是它的性能可能不好，你需要对其母环改造，那么可以进行骨架跃迁。3)还有一个应用就是你有一系列已知作用靶标的化合物，想找类似物进行合成优化，那么也可以进行LBVS进行初筛。当">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/images/12/SwissSimilarity-Input.jpg">
+<meta property="og:image" content="http://kangsgo.com/images/12/SwissSimilarity-Output.jpg">
+<meta property="og:updated_time" content="2017-12-01T06:22:23.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SwissSimilarity:基于配体的虚拟筛选在线服务器">
+<meta name="twitter:description" content="SwissSimilarity)是Swiss系提供的一个基于配体的虚拟筛选在线服务器。 主要的用途我觉得包含几个方面，1)一个是比如有一个小分子，需要找寻它潜在的靶标位点，作为一个找靶。2)另外一个是你有一个已知的靶点小分子，但是它的性能可能不好，你需要对其母环改造，那么可以进行骨架跃迁。3)还有一个应用就是你有一系列已知作用靶标的化合物，想找类似物进行合成优化，那么也可以进行LBVS进行初筛。当">
+<meta name="twitter:image" content="http://kangsgo.com/images/12/SwissSimilarity-Input.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SwissSimilarity:基于配体的虚拟筛选在线服务器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SwissSimilarity:基于配体的虚拟筛选在线服务器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-25T18:27:23.000Z" itemprop="datePublished" class="page-time">
+  2017-11-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/在线服务/">在线服务</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分子描述方法简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">分子描述方法简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#筛选数据库简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">筛选数据库简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可用的筛选方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">可用的筛选方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据库使用</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-SwissSimilarity基于小分子的虚拟筛选在线服务"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SwissSimilarity:基于配体的虚拟筛选在线服务器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-26 02:27:23" datetime="2017-11-25T18:27:23.000Z"  itemprop="datePublished">2017-11-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/在线服务/">在线服务</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><a href="(http://www.swisssimilarity.ch">SwissSimilarity</a>)是Swiss系提供的一个基于配体的虚拟筛选在线服务器。</p>
+<p><strong>主要的用途</strong>我觉得包含几个方面，1)一个是比如有一个小分子，需要找寻它潜在的靶标位点，作为一个找靶。2)另外一个是你有一个已知的靶点小分子，但是它的性能可能不好，你需要对其母环改造，那么可以进行骨架跃迁。3)还有一个应用就是你有一系列已知作用靶标的化合物，想找类似物进行合成优化，那么也可以进行LBVS进行初筛。当然限于我的知识面的原因，可能还有其他许多应用欢迎小伙伴们提出。</p>
+<p>虚拟筛选（Virtual screening, VS）一般可以分为受体基础（RBVS）和配体基础（LBVS）两种方法，其中RBVS又可以称做结构为基础的虚拟筛选（SBVS），通常是对目标大分子进行对接筛选。LBVS则是通过分子相似性来和已知活性化合物相互比较。</p>
+<h3 id="分子描述方法简介"><a href="#分子描述方法简介" class="headerlink" title="分子描述方法简介"></a>分子描述方法简介</h3><p>SwissSimilarity的工作则主要是基于LBVS方法，理论基础是相似性的分子拥有相似的生物活性，对于相似性的评判标准主要是通过分子描述，分子描述主要可以分为1维，2维或3维，三类（1D，2D,3D），下面主要介绍一下:<br> 1D方法主要是1D-描述，如一些分子或者物理化学全局参数，例如分子体积，氢键供体/受体数量等等，其主要应用于数据库的清洗或者特别的项目标准（如：复合物可以跨越血脑屏障），<a href="http://kangsgo.com/5.html">SMINA教程以CDPK1为例</a>中所提到的诱饵数据库Database of Useful Decoys：Enhanced（DUDE）也是使用该方法准备的（复合1D-描述，同时不符合2D-描述）<br> 2D方法是用2维化学结构的性质来描述计算化学相似性，最有名的要数<a href="http://www.dalkescientific.com/writings/diary/archive/2008/06/26/fingerprint_background.html" target="_blank" rel="external">分子印迹（molecular fingerprints，FP）</a>，其将许多化学特征投射成简单的向量。FP2方法是一个典型的基于路径的FP方法，其分析给定数量键的分子结构所有片段的线性路径。FP之间的相似性的实际量化通常由Tanimoto系数给出，Tanimoto系数是两个字符串中常见正位的数量除以两个字符串之间的正位总数。<br> 3D方法主要是考虑的分子的三维几何构象，包括药效团识别和形状相似性。一个3D优于2D方法的优势是可以用于骨架迁移的研究。由于3D方法计算时间较长，对于在线服务计算量大是不适宜这种在线网站做筛选的，所以SwissSimilarity对于3D方法选择的也是计算量比较小的一些方法，例如Spectrophores，其方法是把3D分子力场转换到1D描述。其包含48个向量，不仅包含形状的描述，同时也包含许多其他参数的描述。Electroshape-5D是采用的Gasteiger 部分电荷（在使用ucsf Dock时原始的电荷也是这个，小伙伴们有没有留意过呢）和原子分配系数（ALOGP）。当然这两种方法都<strong>不</strong>进行几何比对。3维的相似性量化最常用的方法为Tanimoto相关系数和Manhattan距离。</p>
+<h3 id="筛选数据库简介"><a href="#筛选数据库简介" class="headerlink" title="筛选数据库简介"></a>筛选数据库简介</h3><p>SwissSimilarity包含许多小分子数据库，以下:<br>1)药物数据库，包含FDA批准的（1500），实验和在研的（4800，500），偏僻的（160），不正规的（illicit）（170）和营养品分子（78）<br>2）生物活性分子数据库，包括PDB（19500），高亲和力ChEBI数据库(28 000),来自ChEMBL和GLASS的酶和GPCR抑制剂数据库（480 000），生物代谢数据库HMDB(39 000)<br>3)ZINC 数据库 drug-like,lead-like 和 fragment-like （10 600 000, 4300 000,700 000）,可以在供应商买到的(9700 000)<br>4)可合成的虚拟库（205万）</p>
+<p>由于计算量的问题，有一些方法只适用于小的库，具体可以查看界面。</p>
+<h3 id="可用的筛选方法"><a href="#可用的筛选方法" class="headerlink" title="可用的筛选方法"></a>可用的筛选方法</h3><p>其实上面已经介绍了，这里初略说一下：<br>1) 2D相似性，基于相似结构的FP2分子印迹<br>2) 3D相似性<br>  Electroshape-5D和Spectrophore（见上文）<br>  Shape-IT和Align-IT分别基于3D形状和药效团<br>其中还有一个combined score，其英文的解释如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In additioni to the score of the above mentioned methods, it is possible to make a consensus 2D/3D screening using a score based on both FP2 Tanimoto coefficient (s1) and Electroshape-5D Manhattan distance (s2). This combined score f(s1,s2) was developed for reverse screening using our SwissTargetPrediction web interface.</div><div class="line"></div><div class="line">It was obtained by logistic regression using f(s1,s2)=(1+exp(-a0-a1s1-a2s2))-1, where a0, a1 and a2 are parameters learned by the model to predict possible protein targets for a small molecule based on molecular similarity to known bioactive compounds. f(s1,s2) ranges from 0 for totally dissimilar molecules to 1 for perfectly identical molecules. This combined score was found to perform significantly better for drug-like molecules than the similarity assessed by FP2 or Electroshape-5D separatly.</div></pre></td></tr></table></figure></p>
+<p>大致的意思是FP2和Electroshape-5D两种评分系统用逻辑回归拟合而成。</p>
+<h3 id="数据库使用"><a href="#数据库使用" class="headerlink" title="数据库使用"></a>数据库使用</h3><p>数据库的使用方法非常傻瓜<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/12/SwissSimilarity-Input.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>仅仅需要绘画或者输入SMILE选择要测的数据库提交</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/12/SwissSimilarity-Output.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>得出的配体按照打分排列，值为1为最相似，同时还整合了新虚拟筛选，靶标预测，ADME预测和获取SMILES功能</p>
+<p>参考资料:<br> Zoete, V., Daina, A., Bovigny, C., &amp; Michielin, O. SwissSimilarity: A Web Tool for Low to Ultra High Throughput Ligand-Based Virtual Screening., J. Chem. Inf. Model., 2016, 56(8), 1399-1404.<br><a href="http://www.swisssimilarity.ch/faq.php" target="_blank" rel="external">SwissSimilarity help</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-01T06:22:23.812Z" itemprop="dateUpdated">2017-12-01 14:22:23</time>
+</span><br>
+
+
+        
+        链接：<a href="/11.html" target="_blank" rel="external">http://kangsgo.com/11.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiss/">swiss</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/11.html&title=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/11.html&title=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/11.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&url=http://kangsgo.com/11.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/11.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/9.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mahotas进行细胞统计开胃菜</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/8.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mahotas安装教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/11.html&title=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/11.html&title=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/11.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SwissSimilarity:基于配体的虚拟筛选在线服务器》 — 小康博客&url=http://kangsgo.com/11.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/11.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABZ0lEQVR42u3a0QrDIAyF4b7/SzvY1aAYz0nsoOb3anRr/RxUY+J1yW182+zK+Gn3K/d7tzVYsA5ijbDNOp49YYbW+4IFqzMrnhRmE0R8PeYuDLBgwRJebGUAsGDB+idL/z0sWLBilr7E5ogPxvKwYB3BchNJlc8P5rdgwXota6SakkgqPR8WrGasyjZVYSmlFymWhwXraJZSntSJ+tZU+p9gwWrD0oPaXKI2t92FBasbq1KkdI8jGIeEYMFqzMotqLlEkr1xhQWrActe25VHmwmmHSEHLFhvZSlhro7IpZCMAgwsWIey3KKI0mVuGzyt+cCC1YBlp1nDhTZHtCs/sGAdx6ofNcgt84thwILVjOWei3NPzblJJViwOrOUSUHvUk8b2VkuWLAasCrlycoMtIgjYMGCpb/MZjFGuhcWLFjmAYLckBZQWLBastyg2Q2sNxwAggXraFYukaQXLPVvN+S3YMF6H+sDOmwDWhy2MzQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
