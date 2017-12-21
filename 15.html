@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Open Babel API | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="OpenBabel">
+    <meta name="description" content="介绍此文章不完全翻译自官方文档，不定期更新，欢迎关注 Open Babel是一个非常优秀的支持多种分子格式的开源软件，同时可以进行2D 3D格式的转换，也可以编写脚本。编译安装方法可以查看我们之前的文章。 对于python，Open Babel是支持的很好的，其包括了两个Python包，分别为openbabel模块和Pybel模块。 1.Openbabel模块    其包含标准的Python粘合，">
+<meta name="keywords" content="OpenBabel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Open Babel API">
+<meta property="og:url" content="http://kangsgo.com/15.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="介绍此文章不完全翻译自官方文档，不定期更新，欢迎关注 Open Babel是一个非常优秀的支持多种分子格式的开源软件，同时可以进行2D 3D格式的转换，也可以编写脚本。编译安装方法可以查看我们之前的文章。 对于python，Open Babel是支持的很好的，其包括了两个Python包，分别为openbabel模块和Pybel模块。 1.Openbabel模块    其包含标准的Python粘合，">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2017-12-17T05:27:12.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Open Babel API">
+<meta name="twitter:description" content="介绍此文章不完全翻译自官方文档，不定期更新，欢迎关注 Open Babel是一个非常优秀的支持多种分子格式的开源软件，同时可以进行2D 3D格式的转换，也可以编写脚本。编译安装方法可以查看我们之前的文章。 对于python，Open Babel是支持的很好的，其包括了两个Python包，分别为openbabel模块和Pybel模块。 1.Openbabel模块    其包含标准的Python粘合，">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Open Babel API</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Open Babel API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-12T08:10:20.000Z" itemprop="datePublished" class="page-time">
+  2017-12-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#openbabel模块"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">openbabel模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用迭代器"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">使用迭代器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pybel模块"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Pybel模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原子和分子"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">原子和分子</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Open Babel API"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Open Babel API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-12 16:10:20" datetime="2017-12-12T08:10:20.000Z"  itemprop="datePublished">2017-12-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>此文章不完全翻译自官方文档，不定期更新，欢迎关注</p>
+<p>Open Babel是一个非常优秀的支持多种分子格式的开源软件，同时可以进行2D 3D格式的转换，也可以编写脚本。编译安装方法可以查看我们之前的<a href="http://kangsgo.com/526.html">文章</a>。</p>
+<p>对于python，Open Babel是支持的很好的，其包括了两个Python包，分别为<code>openbabel</code>模块和<code>Pybel</code>模块。</p>
+<p>1.<code>Openbabel</code>模块</p>
+<p>   其包含标准的Python粘合，来自于C++API，通过SWIG自动生成</p>
+<p>2.<code>Pybel</code>模块<br>   这是一个轻量级的<code>openbabel</code>封装类和方法，其提供更多的便利和Pythonic方式来操控Open Babel工具</p>
+<h3 id="openbabel模块"><a href="#openbabel模块" class="headerlink" title="openbabel模块"></a><code>openbabel</code>模块</h3><p>   包含基本类 OBMol，OBAtom，OBBond和OBResidue，以及转换框架 OBConversion</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>(以下均为python3测试通过)<br>普通的自编分子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> openbabel</div><div class="line"></div><div class="line"><span class="comment"># 创建实例</span></div><div class="line">mol=openbabel.OBMol()</div><div class="line">print(<span class="string">'Should print 0 (atoms)'</span>)</div><div class="line">print(mol.NumAtoms())</div><div class="line"></div><div class="line"><span class="comment"># 创建新原子</span></div><div class="line">a=mol.NewAtom()</div><div class="line"><span class="comment"># C原子,见元素周期表</span></div><div class="line">a.SetAtomicNum(<span class="number">6</span>)</div><div class="line"><span class="comment"># 设置坐标</span></div><div class="line">a.SetVector(<span class="number">0.0</span>,<span class="number">1.0</span>,<span class="number">2.0</span>)</div><div class="line"></div><div class="line">b = mol.NewAtom()</div><div class="line"><span class="comment"># 原子键索引为1</span></div><div class="line">mol.AddBond(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)  </div><div class="line"><span class="comment"># 输出原子树木</span></div><div class="line">print(mol.NumAtoms())</div><div class="line"><span class="comment"># 输出键树木</span></div><div class="line">print(mol.NumBonds())</div><div class="line"></div><div class="line">mol.Clear()</div></pre></td></tr></table></figure></p>
+<p>当然也可以通过阅读SML码读取已有分子进行加氢，输出其他文件的操作，主要是使用<a href="http://openbabel.org/dev-api/classOpenBabel_1_1OBConversion.shtml" target="_blank" rel="external">OBConversion</a>框架</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> openbabel</div><div class="line"></div><div class="line">obConversion=openbabel.OBConversion()</div><div class="line">obConversion.SetInAndOutFormats(<span class="string">'smi'</span>,<span class="string">'mdl'</span>)</div><div class="line"></div><div class="line">mol=openbabel.OBMol()</div><div class="line">obConversion.ReadString(mol,<span class="string">"C1=CC=CS1"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 将会显示5个原子</span></div><div class="line">print(mol.NumAtoms())</div><div class="line"></div><div class="line"><span class="comment">#加氢</span></div><div class="line">mol.AddHydrogens()</div><div class="line"></div><div class="line"><span class="comment"># 将会显示9个原子</span></div><div class="line">print(mol.NumAtoms())</div><div class="line"></div><div class="line">outMDL=obConversion.WriteString(mol)</div></pre></td></tr></table></figure>
+<p>当然也可以阅读文件模式进行阅读<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> openbabel</div><div class="line"></div><div class="line">obConversion = openbabel.OBConversion()</div><div class="line">obConversion.SetInAndOutFormats(<span class="string">"pdb"</span>, <span class="string">"mol2"</span>)</div><div class="line"></div><div class="line">mol = openbabel.OBMol()</div><div class="line">obConversion.ReadFile(mol, <span class="string">"1ABC.pdb.gz"</span>)   <span class="comment"># Open Babel will uncompress automatically</span></div><div class="line"></div><div class="line">mol.AddHydrogens()</div><div class="line"></div><div class="line">print(mol.NumAtoms())</div><div class="line">print(mol.NumBonds())</div><div class="line">print(mol.NumResidues())</div><div class="line"></div><div class="line">obConversion.WriteFile(mol, <span class="string">'1abc.mol2'</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="使用迭代器"><a href="#使用迭代器" class="headerlink" title="使用迭代器"></a>使用迭代器</h4><p>许多Open Babel工具包提供迭代器，其后缀为”iter”,所有的API可以在<a href="http://openbabel.sourceforge.net/api/current/annotated.shtml" target="_blank" rel="external">官网</a>查询</p>
+<h3 id="Pybel模块"><a href="#Pybel模块" class="headerlink" title="Pybel模块"></a>Pybel模块</h3><p>Pybel我觉得是更加好用更加容易理解的工具，使用的方法也很容易，就是<code>import pybel</code>或者<code>from pybel import *</code></p>
+<h4 id="原子和分子"><a href="#原子和分子" class="headerlink" title="原子和分子"></a>原子和分子</h4><p><a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule" target="_blank" rel="external">分子</a>可以通过三种方法进行创建:<br> 1.使用<a href="http://openbabel.org/dev-api/classOpenBabel_1_1OBMol.shtml" target="_blank" rel="external">OBMol</a><br> 2.从文件中阅读（见下）<br> 3.从字符串中阅读（见下）</p>
+<p><a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Atom" target="_blank" rel="external">原子</a>可以通过两种方法创建:<br>  1.使用<a href="http://openbabel.org/dev-api/classOpenBabel_1_1OBAtom.shtml" target="_blank" rel="external">OBAtom</a><br>  2.分子中的<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.atoms" target="_blank" rel="external">原子</a></p>
+<p>分子的话有如下属性:<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.atoms" target="_blank" rel="external">atoms</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.charge" target="_blank" rel="external">charge</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.data" target="_blank" rel="external">data</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.dim" target="_blank" rel="external">dim</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.energy" target="_blank" rel="external">energy</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.exactmass" target="_blank" rel="external">exactmass</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.formula" target="_blank" rel="external">formula</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.molwt" target="_blank" rel="external">molwt</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.spin" target="_blank" rel="external">spin</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.sssr" target="_blank" rel="external">sssr</a>,<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.title" target="_blank" rel="external">title</a>和<a href="http://openbabel.org/docs/current/UseTheLibrary/Python_PybelAPI.html#pybel.Molecule.unitcell" target="_blank" rel="external">unitcell</a>（这个需要晶体数据）,atoms属性主要是提供分子中的所有原子列表，data属性可以看作一个字典，可以阅读和编辑数据。</p>
+<p>以下为一个示例，让我们假设有一个SD文件包含数据的描述</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-17T05:27:12.521Z" itemprop="dateUpdated">2017-12-17 13:27:12</time>
+</span><br>
+
+
+        
+        链接：<a href="/15.html" target="_blank" rel="external">http://kangsgo.com/15.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenBabel/">OpenBabel</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/15.html&title=《Open Babel API》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/15.html&title=《Open Babel API》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/15.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Open Babel API》 — 小康博客&url=http://kangsgo.com/15.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/15.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/77.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Amber17的安装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/13.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">gromacs中构建非标准氨基酸残基力场</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/15.html&title=《Open Babel API》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/15.html&title=《Open Babel API》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/15.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Open Babel API》 — 小康博客&url=http://kangsgo.com/15.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/15.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABVUlEQVR42u3aQQ6DMAxEUe5/abpFQgkzsbNo5meFCiWvlXCM4+uSx/0az89HV46uaRuwYB3EuqdDmex99n1/fS5YsJJZyu3q1yvfhQULljLN2goLCxasHQGichYWLFiVpHn+mjoPGRtzeViwjmDpC3D9eEt9CxasP2fd5pgvxnog+JgFFqwwlv4AjxbUSqn34/6wYMWwKtsh9dfd4U+CBSuM5bYIzB91vYQkpdSwYMWwlAe13u6zmC7DghXDUm6xFkTmSbaUrMOCFcaqEN2gUMomYME6muWWfnr3dux/CBasGJZC7GpQMJJmWLDCWErS7G7D2IEJFqwYVm/DgRIalHADC1Yaa60vrlIwWkusYcFKYOlBofJdJWn+2PmBBSuA1VXJ6QpAsGDBcpdbt/xk777CggXLPO5qJ4IFK5O1VjxS2umUTVNYsGC5bQE6ZWNlCxasc1g//62cpMZ0w3cAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

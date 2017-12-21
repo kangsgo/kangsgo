@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/pressure.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/density.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/5.png">
-<meta property="og:updated_time" content="2017-11-11T12:25:54.512Z">
+<meta property="og:updated_time" content="2017-12-21T11:37:24.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
@@ -137,7 +137,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -240,14 +240,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx editconf -f complex.gro -o newbox.gro -bt cubic -d 1.2</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx solvate -cp newbox.gro -cs spc216.gro -p topol.top -o solv.gro</div></pre></td></tr></table></figure>
 <p>用vmd观察蛋白体系是否在盒子内部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr</div><div class="line">gmx mdrun -deffnm md_0_1</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2015/12/vmdscene.png" alt="vmdscene" title="">
-                </div>
-                <div class="image-caption">vmdscene</div>
-            </figure>
+<p><img src="/images/2015/12/vmdscene.png" alt="vmdscene"></p>
 <p>个人感觉盒子可以调小一些～</p>
 <p>10.添加离子</p>
 <p>教程使用了能量最小化的文件，我这里稍微改了一下</p>
@@ -405,7 +398,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-11-11T12:25:54.512Z" itemprop="dateUpdated">2017-11-11 20:25:54</time>
+    Last updated: <time datetime="2017-12-21T11:37:24.050Z" itemprop="dateUpdated">2017-12-21 19:37:24</time>
 </span><br>
 
 
@@ -568,7 +561,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

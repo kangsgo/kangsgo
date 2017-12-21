@@ -123,7 +123,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -155,6 +155,150 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-不同软件中参数单位"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-21 12:49:47" datetime="2017-09-21T04:49:47.000Z"  itemprop="datePublished">2017-09-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/755.html">不同软件中参数单位</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        看了贾壮老师的博文Gromacs中添加CHARMM力场发现不同软件的力场数值是不一样的，进一步分析可以发现就是单位的变化导致的，所以在这里总（chao）结（xi）常用的力场软件使用的单位。
+以下是常用的单元系统
+UnitSystem         Length unit     Mass unit     Time unit     Charge unit  Temperature    ...
+    
+
+        <a href="/755.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-linux安装GAUSSIAN 09（G09）和GVIEW简略版"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-13 17:50:28" datetime="2017-09-13T09:50:28.000Z"  itemprop="datePublished">2017-09-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/83.html">linux安装GAUSSIAN 09（G09）和GVIEW简略版</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        首发时间: 2015年12月9日
+更新时间:2017年9月13日
+一、安装Linux版Gaussian例如安装在/home/kangsgo/install/g09下，下同
+首先解压
+123456789unzip gaosi09-D01.zipmv g09D01 g09cd g09mkdir scratchgedit ~/.bashrc
+在里面加入
+123export g09root=/hom...
+    
+
+        <a href="/83.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-amber非标准残基生成的小坑"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-13 15:10:59" datetime="2017-09-13T07:10:59.000Z"  itemprop="datePublished">2017-09-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/748.html">amber非标准残基生成的小坑</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于gromacs需要二面角参数，然而文献中给的CHARMM力场的二面角力场不够，正好看到amber有非标准残基的制作，所以想看一下能不能出坑，没想到一坑比一坑高，爬出一个坑又掉进另外一个坑，坑坑相连，所以在这里把amber非标准残基的小坑给理清楚，给后来人，当然等我非标准氨基酸残基系统的跑完以后会分享给大家完整的流程，大家同样可以看一下是否可以跑出来。
+问题1在使用如下命令生成bcc电荷时...
+    
+
+        <a href="/748.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-[转载]amber中非标准氨基酸残基的参数生成"
@@ -192,65 +336,13 @@ http://ambermd.org/tutorials/basic/tutorial5/
     
 
         <a href="/746.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Amber17的安装"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-09-11 07:56:01" datetime="2017-09-10T23:56:01.000Z"  itemprop="datePublished">2017-09-11</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/77.html">Amber17的安装</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        首次版本:2015-12-3
-更新日期:2017-9-11
-首先您可能需要安装CUDA和Openmpi 这里就不再详细说明，您阅读这篇文章时默认已经安装了这两个
-我们以将amber安装在/home/kangsgo/mdinstall/md下为例：
-1.进入目录：1cd /home/kangsgo/mdinstall/md
-2.解压12345tar xvfj AmberTools17.tar....
-    
-
-        <a href="/77.html" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
 
     </div>
     
@@ -293,7 +385,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/725.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -343,7 +435,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/722.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -390,7 +482,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/717.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -432,7 +524,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/714.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -491,7 +583,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/706.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -538,7 +630,7 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
     
 
         <a href="/700.html" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -546,102 +638,6 @@ CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质�
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Gromacs 5.1.2做拉伸动力学的几点笔记"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-08-19 15:14:18" datetime="2017-08-19T07:14:18.000Z"  itemprop="datePublished">2017-08-19</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/694.html">Gromacs 5.1.2做拉伸动力学的几点笔记</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        因为后期实验需要用到，最近几天在学习拉伸动力学模拟，虽然拉伸动力学教程为5.X版本，但是自5.1版本对于pull模块还是有较大的变化，这里和大家分享一下其中遇到的问题和我自己的解决方法。
-英文版已经升级到5.1最新了，可能用5.1版本不会遇到这些问题
-首先第一条就遇到了一点小问题
-gmx pdb2gmx -f input.pdb -ignh -ter -o complex.gro
-
-其提示选...
-    
-
-        <a href="/694.html" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-GromacsWrapperGromacs的Python框架包"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-08-10 16:15:21" datetime="2017-08-10T08:15:21.000Z"  itemprop="datePublished">2017-08-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/690.html">GromacsWrapper:Gromacs的Python框架包</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-GromacsWrapper是一个调用Gromacs工具的封装Python包，其能够完美的通过python脚本来运行gromacs工具。其相比shell脚本在错误处理和结构检测中更具优势，同时其模块化以及代码的循环利用也是该软件包的一大特色。其支持的gromacs版本有（v4.6.x, v5.x, and 2016.x）笔者写这篇文章时版本为0.6.2，版本更新请查看最新文档
-
-一、安装1...
-    
-
-        <a href="/690.html" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
     </div>
     
 </article>
@@ -677,7 +673,7 @@ GromacsWrapper是一个调用Gromacs工具的封装Python包，其能够完美�
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
