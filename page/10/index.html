@@ -157,6 +157,57 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-gromacs续跑问题"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-03 23:28:45" datetime="2016-03-03T15:28:45.000Z"  itemprop="datePublished">2016-03-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/165.html">gromacs续跑问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于我EVO跑了50ns并未平衡，所以还需要继续加跑时间查看，在网上查了一些续跑的资料，现在续跑分享给大家～
+1.重启模拟（未测试）
+适用范围，突然停机等等，有检查点生成的
+1mdrun -s md_0_1.tpr -cpi state.cpt –append _(不能改变核数)
+以上 state.cpt 文件为最新生产的断点文件（ mdrun 会保存另外一个断点文件：_stateprev....
+    
+
+        <a href="/165.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-gmxpbsatool-e5-ae-89-e8-a3-85-e4-b8-8e-e4-bd-bf-e7-94-a8-e7-bb-8f-e9-aa-8c-e6-95-99-e7-a8-8b"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -591,58 +642,6 @@ http://www.ks.uiuc.edu/Research/vmd/p...
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-02-07 12:21:27" datetime="2016-02-07T04:21:27.000Z"  itemprop="datePublished">2016-02-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/194.html">[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        杂志：Am J Cancer Res
-影响因子：3.98
-接收：2015年8月  发表：2015年11月
-一篇伊朗的研究论文
-题目：Molecular dynamics simulation on the low sensitivity ofmutants of NEDD-8 activating enzyme forMLN4924 inhibitor as a cancer drug
-全文...
-    
-
-        <a href="/194.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献/">文献</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
@@ -676,7 +675,7 @@ http://www.ks.uiuc.edu/Research/vmd/p...
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2017</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

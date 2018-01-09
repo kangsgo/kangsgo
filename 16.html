@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Amber教程5:模拟绿色荧光蛋白 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Amber">
+    <meta name="description" content="教程B5 模拟绿色荧光蛋白原文:Jason Swails,Dave Case, Tai-Sung Lee译: 湖南大学-康文渊                                                                                                            绿色荧光蛋白的结构，配体分子使用球棍模型展示 介绍这个教程">
+<meta name="keywords" content="Amber">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amber教程5:模拟绿色荧光蛋白">
+<meta property="og:url" content="http://kangsgo.com/16.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="教程B5 模拟绿色荧光蛋白原文:Jason Swails,Dave Case, Tai-Sung Lee译: 湖南大学-康文渊                                                                                                            绿色荧光蛋白的结构，配体分子使用球棍模型展示 介绍这个教程">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://ambermd.org/tutorials/basic/tutorial5/files/gfp_img.jpg">
+<meta property="og:updated_time" content="2017-12-26T01:47:38.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Amber教程5:模拟绿色荧光蛋白">
+<meta name="twitter:description" content="教程B5 模拟绿色荧光蛋白原文:Jason Swails,Dave Case, Tai-Sung Lee译: 湖南大学-康文渊                                                                                                            绿色荧光蛋白的结构，配体分子使用球棍模型展示 介绍这个教程">
+<meta name="twitter:image" content="http://ambermd.org/tutorials/basic/tutorial5/files/gfp_img.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Amber教程5:模拟绿色荧光蛋白</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Amber教程5:模拟绿色荧光蛋白</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-12T08:10:20.000Z" itemprop="datePublished" class="page-time">
+  2017-12-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#教程B5-模拟绿色荧光蛋白"><span class="post-toc-number">1.</span> <span class="post-toc-text">教程B5 模拟绿色荧光蛋白</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第1部分：准备PDB文件"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">第1部分：准备PDB文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第2部分-计算CRO分解电荷和原子类型"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">第2部分:计算CRO分解电荷和原子类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第3部分-准备给LEaP所使用的残基库和力场参数"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">第3部分:准备给LEaP所使用的残基库和力场参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第4部分-创建用于模拟的拓扑和坐标文件"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">第4部分:创建用于模拟的拓扑和坐标文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第5部分：模拟；最小化，加热，平衡和正式（模拟）"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">第5部分：模拟；最小化，加热，平衡和正式（模拟）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最小化"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">最小化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#加热"><span class="post-toc-number">1.1.5.2.</span> <span class="post-toc-text">加热</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#正式模拟"><span class="post-toc-number">1.1.5.3.</span> <span class="post-toc-text">正式模拟</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Amber模拟绿色荧光蛋白"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Amber教程5:模拟绿色荧光蛋白</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-12 16:10:20" datetime="2017-12-12T08:10:20.000Z"  itemprop="datePublished">2017-12-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="教程B5-模拟绿色荧光蛋白"><a href="#教程B5-模拟绿色荧光蛋白" class="headerlink" title="教程B5 模拟绿色荧光蛋白"></a>教程B5 模拟绿色荧光蛋白</h1><p>原文:Jason Swails,Dave Case, Tai-Sung Lee<br>译: 湖南大学-康文渊</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ambermd.org/tutorials/basic/tutorial5/files/gfp_img.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>绿色荧光蛋白的结构，配体分子使用球棍模型展示</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>这个教程主要是介绍怎样用Amber进行分子动力学模拟一个带有非标准氨基酸残基的体系。需要注意的是非标准的残基是聚合物的一部分，这不同于其他的有机小分子参数力场构建的例子，所以相对更加复杂，主要涉及电荷的计算和准备恰当的文件用于肽链中的非标准残基。</p>
+<p>我们假设你已经运行过仅含标准氨基酸残基的基本模拟体系（同时建议熟悉<a href="http://ambermd.org/tutorials/basic/tutorial4b/index.html" target="_blank" rel="external">antechamber Sustiva tutorial</a> ）,所以该教程主要关注非标准氨基酸残基的参数构建。不过本教程同时包含完整的GFP（绿色荧光蛋白）分子动力学流程。</p>
+<p>教程的大纲如下:<br>1.使用AMBER准备PDB文件<br>2.计算非标准氨基酸残基的电荷和原子类型<br>3.使用LEaP准备残基文库和力场参数<br>4.创建用于模拟的拓扑和坐标文件<br>5.使用生成的文件进行最小化，加热，平衡和正式模拟</p>
+<p>让我们开始do it！</p>
+<h3 id="第1部分：准备PDB文件"><a href="#第1部分：准备PDB文件" class="headerlink" title="第1部分：准备PDB文件"></a>第1部分：准备PDB文件</h3><p>我们开始于<a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1ema" target="_blank" rel="external">1EMA.pdb</a>PDB文件，其包含GFP和CRO生色团。因此我们首先从RCSB网站下载PDB文件（或者<a href="http://ambermd.org/tutorials/basic/tutorial5/files/1EMA.pdb" target="_blank" rel="external">点此</a>下载副本）.你可以看到CRO残基位于PDB文件中的896行，标记残基编号为66（残基65和67并入残基66生成生色团，PDB文件头部有描述）。</p>
+<p>第一步是在准备使用tleap之前给PDB文件“按摩”。为了使用<code>tleap</code>,Amber包括一个名为<code>pdb4amber</code>的脚本，可以修饰PDB文件。<code>--help</code>标签可以展示所有可用的设置。我们将使用<code>--dry</code>标签来移除晶体水，<code>--reduce</code>标签增加氢原子到它们最理想的位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pdb4amber -i 1EMA.pdb -o gfp.pdb --dry --reduce</div></pre></td></tr></table></figure>
+<p>需要提醒的是你要了解<code>pdb4amber</code>到底“做”了什么。现在输出的PDB文件应该每个残基都包含了对应的氢键（该体系中没有二硫键，如果体系中包含二硫键，<code>pdb4amber</code>会在正确的位置为你加上二硫键）。运行<code>pdb4amber</code>之后，你需要修改gfp.pdb文件，将MSE残基（硒代甲硫氨酸，selenomethionine）改为标准的MET（我们需要模拟的是野生型变体，而不是为了结晶而刻意突变的版本）。你可以使用<code>sed</code>或者你喜爱的编辑软件将MSE全局替换为MET。此外，你需要转换硒原子变为硫原子（名称为SD）以及将元素符号SE转为S。建议您自己运行命令，当然也可以下载我们的副本<a href="http://ambermd.org/tutorials/basic/tutorial5/files/gfp.pdb" target="_blank" rel="external">gfp.pdb</a>文件进行比较。</p>
+<h3 id="第2部分-计算CRO分解电荷和原子类型"><a href="#第2部分-计算CRO分解电荷和原子类型" class="headerlink" title="第2部分:计算CRO分解电荷和原子类型"></a>第2部分:计算CRO分解电荷和原子类型</h3><p>我们通过1EMA.pdb的头部文件了解到CRO是非标准氨基酸残基（实际上是三个氨基酸残基环化形成）。因此，Amber的标准氨基酸残基库不包含该残基的原子类型和电荷。单这些是分子模拟所需要的。 这一部分教程主要关注于如何制作CRO电荷和测定其原子类型。<br>我们将使用<code>antechamber</code>使用<code>bcc</code>电荷方案生成电荷，如果你运行过介绍中提到过的Sustiva教程方案你应该熟知（操作的方法）。需要注意的是该选择不是唯一的，并且对于所有应用也可能不是最佳方案。另外一些工具，例如<a href="http://q4md-forcefieldtools.org/" target="_blank" rel="external">R.E.D.Tools</a>提供了更加严谨和可重复的计算电荷，但是对于这个教程，antechamber工具已足够。如果你希望使用R.E.D.，他们拥有一定数量的教程，你可以用来生成电荷和原子类型，之后可以直接查看第4部分教程.</p>
+<p>CRO模板我们可以使用Protein Data Bank中的非常有用的”components.cif”(<a href="http://www.rcsb.org/pdb/static.do?p=download/http/index.html" target="_blank" rel="external">在此查看</a>)，对于每个包含在PDB文件中的化合物，其都包含观察到的和假想的结构。使用这个解决了坐标问题，并且确保了原子和残基名称会和您的PDB文件相匹配。如果你在PDB中搜索“CRO”，选择配体ID的搜索结果，你将会进入一个站点，其可以下载CRO component CIF文件，CRO.cif.(可以<a href="http://ambermd.org/tutorials/basic/tutorial5/files/CRO.cif" target="_blank" rel="external">点此</a>下载copy)</p>
+<p>antechamber项目将会阅读component CIF（ccif）文件，并且生成电荷和原子类型。你应该查询”Antechamber and GAFF”章节的Amber参考手册的描述和例子。当然你也可以在命令行中输入<code>antechamber -help</code>获取关于设置的详细信息。在这里我们告知他原子类型为Amber类型(-at amber)，因为这是一个修饰的氨基酸残基，分子和Amber原子类型参数是相似的（对于更普遍的有机小分子，通常使用gaff原子类型会更好）我们使用如下的命令来运行<code>antechamber</code>（通常需要几分钟的时间）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">antechamber -<span class="keyword">fi</span> ccif -i CRO.cif -bk CRO -fo ac -o cro.ac -c bcc -at amber</div></pre></td></tr></table></figure>
+<p>在生成的许多其他文件中，你可以看到<code>cro.ac</code>文件，其有点像PDB文件，但是包含键，分解的原子电荷和原子类型参数。需要注意的是antechamber是为gaff原子类型所使用的，所以在制作Amber原子类型的时候会出现一些错误，在这个例子中，我们需要修复起始的N原子，其需要拥有酰胺氮(N)同样的类型。你可以手动简单的改变原子类型<code>NT</code>变为<code>N</code>。(或者当作练习，使用<code>sed</code>,<code>awk</code>,<code>perl</code>等工具修改)，你可以<a href="http://ambermd.org/tutorials/basic/tutorial5/files/cro.ac" target="_blank" rel="external">下载cro.ac</a>和您的文件做比较。</p>
+<p>现在我们有antechamber分子文件，其包含分解原子电荷和原子类型。下一部分将会讨论怎样创建残基库文件和为LEaP做准备。</p>
+<p>提醒:你通常需要使用<code>antechamber</code>来创建mol2文件给LEaP阅读。但是我们随后的流程需要先将结果文件给<code>prepgen</code>进行阅读，所以我们需要使用<code>prepgen</code>能够阅读的ac格式文件。</p>
+<h3 id="第3部分-准备给LEaP所使用的残基库和力场参数"><a href="#第3部分-准备给LEaP所使用的残基库和力场参数" class="headerlink" title="第3部分:准备给LEaP所使用的残基库和力场参数"></a>第3部分:准备给LEaP所使用的残基库和力场参数</h3><p>我们从PDB下载的“CRO”组件是一个完整的分子，包含了所有的氢原子，这是antechamber（或任何量子力学程序）计算电荷所需要的。 但是我们需要在开头和结尾处去除原子，以便制备一个“氨基酸”样残基，该氨基酸残基可以在其N-端和C-端与其他氨基酸连接。</p>
+<p>这部分可以使用<code>prepgen</code>项目和”mc”(主链)文件进行准备，该文件定义哪些原子需要被移除，哪些原子是主链的一部分(例如:骨架原子)。通常需要自己创建该文件。下面的内容是该教程的例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">HEAD_NAME N1</div><div class="line">TAIL_NAME C3 </div><div class="line">MAIN_CHAIN CA1</div><div class="line">MAIN_CHAIN C1</div><div class="line">MAIN_CHAIN N3</div><div class="line">MAIN_CHAIN CA3</div><div class="line">OMIT_NAME H2</div><div class="line">OMIT_NAME HN11</div><div class="line">OMIT_NAME OXT</div><div class="line">OMIT_NAME HXT</div><div class="line">PRE_HEAD_TYPE C</div><div class="line">POST_TAIL_TYPE N</div><div class="line">CHARGE 0.0</div></pre></td></tr></table></figure></p>
+<p><code>HEAD_NAME</code>和<code>TAIL_NAME</code>行的原子将会联系前后氨基酸残基。<code>MAIN_CHAIN</code>行列出连接头和尾原子之间链中的原子,<code>OMIT_NAME</code>行列出了CRO残基中应该从最终结构中去除的原子，因为它们不存在于完整蛋白质中。<code>PRE_HEAD_TYPE</code>和<code>POST_TAIL_TYPE</code>行让<code>prepgen</code>知道周围蛋白质中哪些原子类型将用于共价连接。(需要记住的是<code>prepgen</code>在用于蛋白和多肽以外还可以用于聚合物的制作)<code>CHARGE</code>行设定氨基酸残基的总电荷，<code>prepgen</code>将确保“删除的”原子电荷在剩余的原子之间重新分配，以便总电荷是正确的。(在这个例子中为0)</p>
+<p>之后，你可以对<code>prepgen</code>使用<code>-help</code>标签来查看该项目所有可用的设置。随后运行<code>prepgen</code>将会除去N端和C端不需要的原子，假设你的主链文件命名为<code>cro.mc</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prepgen -i cro.ac -o cro.prepin -m cro.mc -rn CRO</div></pre></td></tr></table></figure></p>
+<p>运行该命令之后你将会拥有<code>cro.prepin</code>文件，包含定义的CRO残基（可以<a href="http://ambermd.org/tutorials/basic/tutorial5/files/cro.prepin" target="_blank" rel="external">从此下载</a>相互比较）</p>
+<p>此刻，我们拥有包含我们修饰的氨基酸残基的原子电荷的残基库。接下来我们需要检查其共价参数(bonds,angles和diherals)，查看他们是否可用。<code>parmchk2</code>项目将会描绘出哪些参数是需要的，并且在标准文件中寻找。如果没有找到，将会进行训练过的猜测，并且放入新参数到文件中，我们命名为”frcmod.cro”。</p>
+<p>我们使用如下命令运行<code>parmchk2</code>(同样的可以使用<code>-help</code>标签查看可用的设置):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parmchk2 -i cro.prepin -f prepi -o frcmod.cro -a Y \</div><div class="line">         -p <span class="variable">$AMBERHOME</span>/dat/leap/parm/parm10.dat</div></pre></td></tr></table></figure></p>
+<p>这里我们指定<code>parm10.dat</code>文件，因为它是我们打算使用的ff14SB力场的主要参数数据库，（这个信息可以在您打算使用的力场的leaprc文件中找到）。 如果我们删除这个标签，那么parmchk2将匹配gaff数据库中的参数，这并不是我们想要的。我们还要求打印所有的参数（即使是在parm10.dat中完美匹配的参数），原因很快就会明了。</p>
+<p>完成这一步之后，查看<code>frcmod.cro</code>（你可以比较我们的<a href="http://ambermd.org/tutorials/basic/tutorial5/files/frcmod.cro" target="_blank" rel="external">frcmod.cro副本</a>）。 您应该马上看到了含有标记为ATTN的参数的行的问题需要修改。 这表示<code>parmchk2</code>在<code>parm10.dat</code>数据库中找不到适当的相似参数。 还有许多其他的参数被选择为具有高惩罚（这表明<code>parmchk2</code>的结果是不合适的）。</p>
+<p>一个简单的解决办法是通过设置<code>parm10.dat</code>,使用<code>parmchk2</code>搜寻<code>gaff.dat</code>来“填充”不存在或者高惩罚的参数。所以我们需要删除<code>frcmod.cro</code>中标为<code>ATTN:need revision</code>的参数，并且告诉<code>parmchk2</code>在<code>gaff.dat</code>(默认设置)中搜寻。来自parm10.dat内的参数我们想要保留，而其他参数使用gaff参数填充到frcmod1.cro文件中（这也是为什么我们需要使用<code>-a Y</code>标签打印所有参数）。完成这些设置的命令如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep -v <span class="string">"ATTN"</span> frcmod.cro &gt; frcmod1.cro <span class="comment"># Strip out ATTN lines</span></div><div class="line">parmchk2 -i cro.prepin -f prepi -o frcmod2.cro</div></pre></td></tr></table></figure></p>
+<p>至此，我们拥有两个frcmod文件，一个参数来自于Amber参数数据库(frcmod1.cro,可以再此<a href="http://ambermd.org/tutorials/basic/tutorial5/files/frcmod1.cro" target="_blank" rel="external">下载副本</a>进行比较),另一个参数为gaff原子类型(frcmod2.cro,可以再此<a href="http://ambermd.org/tutorials/basic/tutorial5/files/frcmod2.cro" target="_blank" rel="external">下载副本</a>进行比较),在这两个参数之中拥有所有我们需要的内容。如果你想，你可以从frcmod2.cro种提取7个缺失参数（和附加的高惩罚参数），将其添加到frcmod1.cro中。然而，如果你按照教程顺序进行操作，这些参数会在下一部分加载，不需要进行这一步操作。然我们继续下面的步骤来创建<code>prmtop</code>和<code>inpcrd</code>文件。</p>
+<p>与往常一样，这里生成的参数 - 尤其是由gaff提供的参数，应被视为一个起点，应该根据可用的实验或高水平QM数据进行验证。 为了本教程的目的，我们将简单地继续我们在这里生成的内容。</p>
+<h3 id="第4部分-创建用于模拟的拓扑和坐标文件"><a href="#第4部分-创建用于模拟的拓扑和坐标文件" class="headerlink" title="第4部分:创建用于模拟的拓扑和坐标文件"></a>第4部分:创建用于模拟的拓扑和坐标文件</h3><p>我们现在有了我们需要的所有文件来创建用于sander或pmemd的拓扑和坐标文件！我们只需要将这些文件加载到LEaP来创建这些文件。 如果你使用R.E.D. 或其他一些工具来做电荷推导和原子类型，欢迎回到教程。</p>
+<p>对于这个例子，我们使用ff14SB力场和igb=8隐性水模型，描述可以查看Amber参考手册。将默认PBRadii设置为“mbondi3”集是指定力场的一部分。</p>
+<p>我们之后加载之前创建的<code>cro.prepin</code>文件。在这种情况下，我们需要首先加载<code>frcmod2.cro</code>文件，随后是<code>frcmod1.cro</code>文件，确保gaff参数会被我们更加想用的ff14SB参数所覆盖。然后我们加入我们准备的1EMA PDB文件（为gfp.pdb），并保存这个结果。脚本展示如下，将其保存为<code>tleap.in</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">source leaprc.protein.ff14SB</div><div class="line">set default PBRadii mbondi3</div><div class="line">loadAmberPrep cro.prepin</div><div class="line">loadAmberParams frcmod2.cro</div><div class="line">loadAmberParams frcmod1.cro</div><div class="line">x = loadPDB gfp.pdb</div><div class="line">saveAmberParm x gfp.parm7 gfp.rst7</div><div class="line">quit</div></pre></td></tr></table></figure></p>
+<p>我们可以通过如下命令运行tleap:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tleap -f tleap.in</div></pre></td></tr></table></figure></p>
+<p>这一步骤以后，你应该有完整的拓扑和坐标文件，你已经准备开始模拟啦！你可以<a href="http://ambermd.org/tutorials/basic/tutorial5/files/gfp_parmcrd.tgz" target="_blank" rel="external">下载我们创建的副本</a>和你的进行比较.进入部分5！</p>
+<h3 id="第5部分：模拟；最小化，加热，平衡和正式（模拟）"><a href="#第5部分：模拟；最小化，加热，平衡和正式（模拟）" class="headerlink" title="第5部分：模拟；最小化，加热，平衡和正式（模拟）"></a>第5部分：模拟；最小化，加热，平衡和正式（模拟）</h3><p>由于本教程的目的是通过对修饰聚合物“link”进行参数化，本部分仅作简要介绍。 在你自己的项目中，你当然可以自由选择显式溶剂模型和比我们在这里使用的更小心的最小化，加热和平衡程序（也许利用位置限制来防止结构扭曲）。</p>
+<h4 id="最小化"><a href="#最小化" class="headerlink" title="最小化"></a>最小化</h4><p>我们使用的最小化输入文件如下。我们将该文件命名为<code>min.in</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> simple generalized Born minimization script</div><div class="line">&amp;cntrl</div><div class="line">  imin=1, ntb=0, maxcyc=100, ntpr=10, cut=1000., igb=8, </div><div class="line">/</div></pre></td></tr></table></figure></p>
+<p>我们可以使用<code>sander</code>模块运行最小化:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sander -O -i min.in -p gfp.parm7 -c gfp.rst7 -o min1.out -r min1.rst7</div></pre></td></tr></table></figure></p>
+<p>如同往常一样，我们建议可视化查看结果结构(mini1.rst7)来确保观察没有糟糕的事情发生，并且输出文件确保所有的看起来都正常（例如:结构完整，在最小化期间总能量最大梯度稳步下降）。我们创建的输出文件可以作为压缩包的一部分进行下载，压缩包包含本节最后的计算过程中生成的大部分文件。</p>
+<h4 id="加热"><a href="#加热" class="headerlink" title="加热"></a>加热</h4><p>下面显示了我们用于加热的输入文件。 我们将这个文件命名为<code>heat.in</code>，并且将在从10K到300K的200ps的过程中线性地改变目标温度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Implicit solvent initial heating mdin</div><div class="line"> &amp;cntrl</div><div class="line">   imin=0, irest=0, ntx=1,</div><div class="line">   ntpr=1000, ntwx=1000, nstlim=100000,</div><div class="line">   dt=0.002, ntt=3, tempi=10,</div><div class="line">   temp0=300, gamma_ln=1.0, ig=-1,</div><div class="line">   ntp=0, ntc=2, ntf=2, cut=1000,</div><div class="line">   ntb=0, igb=8, ioutfm=1, nmropt=1,</div><div class="line"> /</div><div class="line"> &amp;wt</div><div class="line">   TYPE=&apos;TEMP0&apos;, ISTEP1=1, ISTEP2=100000,</div><div class="line">   VALUE1=10.0, VALUE2=300.0,</div><div class="line"> /</div><div class="line"> &amp;wt TYPE=&apos;END&apos; /</div></pre></td></tr></table></figure></p>
+<p>需要注意的是，我们加热结构时，我们需要使用上一步（最小化）生成的结构来加热。所用使用<code>sander</code>来进行加热操作的命令看起来如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sander -O -i heat.in -p gfp.parm7 -c min1.rst7 -o heat.mdout \</div><div class="line">       -x heat.nc -r heat.rst7</div></pre></td></tr></table></figure></p>
+<p>值得注意的是使用<code>sander</code>可能需要很长世间，我们使用<code>pmemd.cuda</code>运行我们的模拟，在我们的GTX680上运行能够更加快速的完成。与往常一样，使用您最喜爱的可视化工具检查所得结构和轨迹，以确保没有发生任何明显的不良事件。和以前一样，我们生成的文件将在本节末尾的压缩包中提供。</p>
+<h4 id="正式模拟"><a href="#正式模拟" class="headerlink" title="正式模拟"></a>正式模拟</h4><p>！！！这一段翻译的不是很好<br>我们成功的加热了我们的结构！现在我们已经准备开始正式的模拟。请注意，许多人称之为“平衡”的过程实际上只是在分析过程中忽略的正式模拟的一部分，因为要么就是稳定约束的结构，要么就是让系统向平衡位置迁移。为了本教程的目的，我们不区分这两个阶段，我们使用相同的输入对待两者。</p>
+<p>我们将使用的输入文件如下，命名为<code>md.in</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Implicit solvent molecular dynamics</div><div class="line"> &amp;cntrl</div><div class="line">   imin=0, irest=1, ntx=5,</div><div class="line">   ntpr=1000, ntwx=1000, nstlim=500000,</div><div class="line">   dt=0.002, ntt=3, tempi=300,</div><div class="line">   temp0=300, gamma_ln=1.0, ig=-1,</div><div class="line">   ntp=0, ntc=2, ntf=2, cut=1000,</div><div class="line">   ntb=0, igb=8, ioutfm=1,</div><div class="line"> /</div></pre></td></tr></table></figure></p>
+<p>你可以使用随后的命令来运行模拟(再一次，我们将使用<code>pmemd.cuda</code>):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sander -O -i md.in -p gfp.parm7 -c heat.rst7 -o md1.mdout \</div><div class="line">       -x md1.nc -r md1.rst7</div></pre></td></tr></table></figure></p>
+<p>所有的都完成了！当然，你仍然需要分析你的模拟，以便测试通过首先运行计算得到的结果。现在你已经知道怎样进行一个新的参数化，修饰包含寡聚链的单体单元（例如修饰核苷酸或者氨基酸残基）。这个侧链可以应用你想应用到的任何寡聚单元。</p>
+<p>正如我们的承诺，你可以<a href="http://ambermd.org/tutorials/basic/tutorial5/files/simulation_files.tgz" target="_blank" rel="external">下载</a>我们生成的版本。值得注意的是你的输出绝大部分时候和我们的都会不同（甚至整体参数都会不同，因为1ns的轨迹实在太短）</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-26T01:47:38.063Z" itemprop="dateUpdated">2017-12-26 09:47:38</time>
+</span><br>
+
+
+        
+        链接：<a href="/16.html" target="_blank" rel="external">http://kangsgo.com/16.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Amber/">Amber</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/16.html&title=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/16.html&title=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/16.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&url=http://kangsgo.com/16.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/16.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/77.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Amber17的安装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/15.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Open Babel API</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/16.html&title=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/16.html&title=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/16.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Amber教程5:模拟绿色荧光蛋白》 — 小康博客&url=http://kangsgo.com/16.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/16.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABTklEQVR42u3ayxKEIBBDUf//p53tVFlA0o0LyWVl+YCzUdrAdcntHrT/q887n1c3N1iwDmLd0zYabPTsqH99LFiwkllKd8obrR8vDLBgwRK6nj+lTOqwYMHqfyBqRTMsWLDmrM6LPZ/IX6/lYcE6gqWnOv3jV/ItWLA+zrrNVgue7FFgwQpjuSFRJ8DV+4cFK43VKXk7wdOiNIcFK4xl3DQ9o29EMEpqWLDCWHqZWwue7HIZFixY7SxqPpgdMMGCFcZSoP2PwobwFxasQ1n69LlteVLY7gALVibLnVDdItg9DwtWMksvefvF9yIshgUrhlXcCmDW4/riKCxYmay96U0N3WqwYB3Eqi2WuM/qv8SwYCWz3K0819YGCxYsl2X/H9eWOWHBgmVOz51F0KEBFqxIVq3wdSMnI0KCBSuM5W4LUCZm6ROwq9aGBevbrB/uVJykipkNXAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
