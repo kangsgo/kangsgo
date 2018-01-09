@@ -13,28 +13,25 @@
     
     
     
-    <title>LigPlot+官方手册初译 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <title>计算蛋白长宽高 | 小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="LigPlot">
-    <meta name="description" content="由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。（最后发现还是无法这么弄） LigPlot+是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的">
-<meta name="keywords" content="LigPlot">
+    <meta name="keywords" content="Pymol">
+    <meta name="description" content="最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法： 1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&amp;#123;print $7&amp;#125;’| sort -n |sed -n ‘1p;$">
+<meta name="keywords" content="Pymol">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LigPlot+官方手册初译">
-<meta property="og:url" content="http://kangsgo.com/497.html">
+<meta property="og:title" content="计算蛋白长宽高">
+<meta property="og:url" content="http://kangsgo.com/14.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。（最后发现还是无法这么弄） LigPlot+是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的">
+<meta property="og:description" content="最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法： 1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&amp;#123;print $7&amp;#125;’| sort -n |sed -n ‘1p;$">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://kangsgo.com/images/2016/09/ligplot_tab.gif">
-<meta property="og:image" content="http://kangsgo.com/images/2016/09/key.gif">
-<meta property="og:updated_time" content="2017-10-28T04:03:58.677Z">
+<meta property="og:updated_time" content="2018-01-09T13:43:24.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LigPlot+官方手册初译">
-<meta name="twitter:description" content="由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。（最后发现还是无法这么弄） LigPlot+是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的">
-<meta name="twitter:image" content="http://kangsgo.com/images/2016/09/ligplot_tab.gif">
+<meta name="twitter:title" content="计算蛋白长宽高">
+<meta name="twitter:description" content="最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法： 1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&amp;#123;print $7&amp;#125;’| sort -n |sed -n ‘1p;$">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -122,7 +119,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">LigPlot+官方手册初译</div>
+        <div class="flex-col header-title ellipsis">计算蛋白长宽高</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -144,11 +141,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">LigPlot+官方手册初译</h1>
+        <h1 class="title">计算蛋白长宽高</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-09-27T16:34:55.000Z" itemprop="datePublished" class="page-time">
-  2016-09-28
+                <time datetime="2017-09-05T12:25:21.000Z" itemprop="datePublished" class="page-time">
+  2017-09-05
 </time>
 
 
@@ -166,13 +163,20 @@
 
 <div class="container body-wrap">
     
-<article id="post-LigPlot+官方手册初译"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-shell进行读取"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.shell进行读取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-利用python脚本进行读取计算"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.利用python脚本进行读取计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Pymol进行读取计算"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.Pymol进行读取计算</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-计算蛋白长宽高"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">LigPlot+官方手册初译</h1>
+        <h1 class="post-card-title">计算蛋白长宽高</h1>
         <div class="post-meta">
-            <time class="post-time" title="2016-09-28 00:34:55" datetime="2016-09-27T16:34:55.000Z"  itemprop="datePublished">2016-09-28</time>
+            <time class="post-time" title="2017-09-05 20:25:21" datetime="2017-09-05T12:25:21.000Z"  itemprop="datePublished">2017-09-05</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
@@ -187,32 +191,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>由于自己想用LigPlot作图，但是做出来的图并不理想，有一些氨基酸残基并不能被绘制上去，所以想看以下有没有解决办法。<strong><span style="color: #ff0000;">（最后发现还是无法这么弄）</span></strong></p>
-<p>LigPlot<sup>+</sup>是LIGPLOT和DIMPLOT项目的图形终端。绘图生成的项目可以交互式的在界面上编辑，然后写PostScript文件来绘图或者转换成其他的图像格式。除此之外，你可以叠加相关的LIGPLOTs 蛋白结合相似或者相同的配体，或者相同/相似的配体在不同的蛋白中。</p>
-<p><em><strong>LIGPLOT</strong> </em>自动生成缩略图在蛋白配体复合物PDB文件中蛋白配体的相互作用图</p>
-<p><em><strong>DIMPLOT</strong> </em>绘制选择的蛋白蛋白或者结构域结构域表面的相互联系</p>
-<p>File-&gt;Open-&gt;PDB File</p>
-<p>我们着重介绍LIGPLOT</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2016/09/ligplot_tab.gif" alt="ligplot_tab" title="">
-                </div>
-                <div class="image-caption">ligplot_tab</div>
-            </figure>
-<p>1.选择配体，你希望绘制的，在如上清单里</p>
-<p>另一个方法就是你可以输入你在盒子里想要的残基范围。残基范围能够在如下中选择：</p>
-<p>例子</p>
-<p>18 20 A 残基范围：起始-结束残基，链ID，如果连ID为空则被忽略</p>
-<p>NAG 18 MAN 20 A 残基名称和数量，增加连ID</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2016/09/key.gif" alt="key" title="">
-                </div>
-                <div class="image-caption">key</div>
-            </figure>
-<p>如上为图形的标志</p>
+            <p>最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法：</p>
+<h3 id="1-shell进行读取"><a href="#1-shell进行读取" class="headerlink" title="1.shell进行读取"></a>1.shell进行读取</h3><p>这个我之前其实有<a href="http://kangsgo.com/840.html">分享</a>过,代码简单如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="comment">#作者：GROMACS中文组群: 广药-阿福</span></div><div class="line"><span class="comment">#x轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$7</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div><div class="line"><span class="comment">#y轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$8</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div><div class="line"><span class="comment">#z轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$9</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div></pre></td></tr></table></figure></p>
+<h3 id="2-利用python脚本进行读取计算"><a href="#2-利用python脚本进行读取计算" class="headerlink" title="2.利用python脚本进行读取计算"></a>2.利用python脚本进行读取计算</h3><p>这个是我今天写的，写的很初略，因为我发现第三种方法最直接简练:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*-coding:utf-8-*-</span></div><div class="line">x=[]</div><div class="line">y=[]</div><div class="line">z=[]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> open(<span class="string">'file.pdb'</span>,<span class="string">'r'</span>):</div><div class="line">    <span class="keyword">if</span> i.startswith(<span class="string">'ATOM'</span>):</div><div class="line">        new=i.split()</div><div class="line">        x.append(float(new[<span class="number">6</span>]))</div><div class="line">        y.append(float(new[<span class="number">7</span>]))</div><div class="line">        z.append(float(new[<span class="number">8</span>]))</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">print(<span class="string">'长:'</span>+str(max(x)-min(x)))</div><div class="line">print(<span class="string">'宽:'</span>+str(max(y)-min(y)))</div><div class="line">print(<span class="string">'高:'</span>+str(max(z)-min(z)))</div></pre></td></tr></table></figure></p>
+<h3 id="3-Pymol进行读取计算"><a href="#3-Pymol进行读取计算" class="headerlink" title="3.Pymol进行读取计算"></a>3.Pymol进行读取计算</h3><p>其实简单的方便的方法可以使用Pymol的<code>get_extent</code>来获得XYZ的最大最小值，如下排列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ [ min-X , min-Y , min-Z ],[ max-X, max-Y , max-Z ]]</div></pre></td></tr></table></figure></p>
+<p>可以使用命令行如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get_extent sele</div></pre></td></tr></table></figure></p>
+<p><strong>PYMOL API</strong>如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmd.get_extent(string selection=<span class="string">"(all)"</span>, state=<span class="number">0</span> )</div></pre></td></tr></table></figure></p>
 
         </div>
 
@@ -220,12 +204,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-10-28T04:03:58.677Z" itemprop="dateUpdated">2017-10-28 12:03:58</time>
+    最后更新时间：<time datetime="2018-01-09T13:43:24.064Z" itemprop="dateUpdated">2018-01-09 21:43:24</time>
 </span><br>
 
 
         
-        链接：<a href="/497.html" target="_blank" rel="external">http://kangsgo.com/497.html</a>
+        链接：<a href="/14.html" target="_blank" rel="external">http://kangsgo.com/14.html</a>
         
     </div>
     <footer>
@@ -245,7 +229,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LigPlot/">LigPlot</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
 
 
             
@@ -255,7 +239,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/497.html&title=《LigPlot+官方手册初译》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/14.html&title=《计算蛋白长宽高》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -265,22 +249,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/497.html&title=《LigPlot+官方手册初译》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/14.html&title=《计算蛋白长宽高》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/497.html" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/14.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LigPlot+官方手册初译》 — 小康博客&url=http://kangsgo.com/497.html&via=http://kangsgo.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算蛋白长宽高》 — 小康博客&url=http://kangsgo.com/14.html&via=http://kangsgo.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/497.html" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/14.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -303,18 +287,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/504.html" id="post-prev" class="post-nav-link">
+      <a href="/714.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">将多个小分子mol合并为1个</h4>
+        <h4 class="title">Pymol小脚本之Rotkit</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/493.html" id="post-next" class="post-nav-link">
+      <a href="/706.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">do_dssp 绘图记录</h4>
+        <h4 class="title">Pymol 选择速查手册</h4>
       </a>
     </div>
   
@@ -405,7 +389,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/497.html&title=《LigPlot+官方手册初译》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/14.html&title=《计算蛋白长宽高》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -415,22 +399,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/497.html&title=《LigPlot+官方手册初译》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/14.html&title=《计算蛋白长宽高》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/497.html" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/14.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LigPlot+官方手册初译》 — 小康博客&url=http://kangsgo.com/497.html&via=http://kangsgo.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算蛋白长宽高》 — 小康博客&url=http://kangsgo.com/14.html&via=http://kangsgo.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/497.html" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/14.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -441,7 +425,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aS5LCMAwFQO5/6cx2FiQ8Wf5AVXtFQUgaFirrya9XvK5/6/nTu2vyu01YuLi4be71uO4ecMXr+Q65ARcXdz/3rmI8X5NTxu6Pi4v7W9y8hM36Sbi4uL/FfS5w1cKHi4v7PdykdRkLNZLitaRXw8XFbXDnPnLs9ZJ8FxcXd4h7FVeyxZkVs755Oi4u7hZuXlCqo5G8fSqPY3FxcTdyE9Cs9/PBTNSr4eLiTuV2WpFZG5dCOIKLi7uRmxSgsVC18/rNp7i4uNu51SMRSQGa1T7h4uLu5OatSH8blAciH56Ii4u7kTt2/CI5JJHcMy92uLi4q7nJJiZpivK4JC9zt80PLi7uFm41ykyCjLEQJCpkuLi4i7nVkWe1AFWbouhKXFzco9yxzU1n9NIKTHFxcRdz+wOP6nimEKDg4uIe4ubblyQEmTWAwcXF3cO9iqva8HTiVFxc3FPcanGpDkWq9E7UgouLO5dbjTCqY5LOXzDhYBYuLm6D+1x6kqAkj1CX9Gq4uLhHudXilR//ah2/wMXF/Xru3MgDFxf3FLdcUIa+Wy1zuLi4p7jVUlJtYPrHNXBxcTdy/wCYflLB7w/HCgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABVklEQVR42u3a0QqDMAyFYd//pR3saiCN5yTdYJ6/V0VH/RyYpm2OQ27nu137n1euv7le39xgwXoQ6yxbTVn1lbs3dFiwIlluUHC/bv1ZsGDBqln1Z9+b5mHBgtULEPOJHBYsWJOkWU95e+PAgpXMmmwkuf0f7W/BgvVXrLPVXJA9PixYYaxVEqx/v8p1PdU+9OFgwXooqzdJu6m2nhDAgpXD0tNcd5mqs5aTNCxYMazJEYu+nTQqBoIFK4DllgXoSbAebm4WrrBgBbDc3VR9elYeb/wdsGDFsCabtvr0PzpogQXr0azegco3ggUsWLDmQcQd8yZ8wIIVw5qUGripsJE0w4IVxuoV4en57eTYBhasNFYvXdbftRdoYMHKZOlFP9v2ruoFMCxYsFrHlvoC1TjngQULVrnU7BUJGQEFFqxI1qQ4QC/LgwUL1qTtKvFRXhgWrDDWC3xn5FxbEGTZAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
