@@ -62,6 +62,82 @@
   </entry>
   
   <entry>
+    <title>利用OpenBabel生成多个构像</title>
+    <link href="http://kangsgo.com/21.html"/>
+    <id>http://kangsgo.com/21.html</id>
+    <published>2018-01-19T08:10:20.000Z</published>
+    <updated>2018-01-19T14:08:27.534Z</updated>
+    
+    <content type="html"><![CDATA[<p>此文感谢建民兄的指导，才让我学习到这么有用的工具</p><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>有许多软件例如<code>Dock 6.8</code>，对于小分子的柔性对接支持并不那么好，这就导致了因为初始构像的不正确而导致了对接结果的不正确和不可靠，为了解决这个问题一个方法就是进行构像的生成，再进行多对接，整理得分排序。当然还有一个应用就是用于3D药效团的使用。网上有许多在线网站可以进行这方面的工作，但是最好用的我感觉还是openbabel神器！</p><h2 id="利用openbabel生成多构像"><a href="#利用openbabel生成多构像" class="headerlink" title="利用openbabel生成多构像"></a>利用openbabel生成多构像</h2><p>Open Babel提供了两种构像生成的算法代码:</p><ol><li>Confab: 一个成体系的构像生成器，有序的生成所有的低能量构像</li><li>遗传算法: 是一个随机构像产生器，能够根据RMSD或者能量的不同达到优化的目的</li></ol><h3 id="1-遗传算法"><a href="#1-遗传算法" class="headerlink" title="1. 遗传算法"></a>1. 遗传算法</h3><p>了解算法的命令信息可以使用:<code>obabel -L conformer</code>查看。虽然查看是说的构像搜寻，但是可以使用<code>--writeconformers</code>对生成的构像进行保存。可以查看如下的生成30个构像的例子:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obabel startingConformer.mol -O ga_conformers.sdf --conformer --nconf 30  --score rmsd --writeconformers</div></pre></td></tr></table></figure></p><p>其中<code>--score rmsd</code>可以不写，因为默认就是使用这种方式</p><p>当然生成的构像在1个文件里，我们有时候需要split，当然首先想到的还是<code>obabel</code>,其进行拆分相当于高射炮打蚊子–相当好用呀（&lt;-原谅我在这里乱用歇后语），示例如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obabel ga_conformers.sdf -O new.mol -m</div></pre></td></tr></table></figure></p><p>我自己的输出结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">32 molecules converted</div><div class="line">32 files output. The first is molecule/new1.mol2</div></pre></td></tr></table></figure></p><h3 id="2-Confab"><a href="#2-Confab" class="headerlink" title="2. Confab"></a>2. Confab</h3><p>Confab 生成分子的低能量构像分子集合。设置命令为<code>--confab</code>,同样可以使用<code>obabel -L confab</code>进行查看了解。<br>使用简单的设置操作如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obabel &lt;inputfile&gt; -O &lt;outputfile&gt; --confab [confab options]</div></pre></td></tr></table></figure></p><p>其还有一个额外的应用就是<strong>confabreport format</strong>，如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obabel &lt;inputfile&gt; [-O &lt;outputfile&gt;] -o confabreport -xf &lt;reference_file&gt; [-xr &lt;rmsd&gt;]</div></pre></td></tr></table></figure></p><p>主要是为了和初始构像进行比较。</p><p>下面是其中一个例子，首先生成100K个构像:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&gt; obabel bostrom.sdf -O confs.sdf --confab --conf 100000</div><div class="line"></div><div class="line">**Starting Confab 1.1.0</div><div class="line">**To support, cite Journal of Cheminformatics, 2011, 3, 8.</div><div class="line">..Input format = sdf</div><div class="line">..Output format = sdf</div><div class="line">..RMSD cutoff = 0.5</div><div class="line">..Energy cutoff = 50</div><div class="line">..Conformer cutoff = 1000000</div><div class="line">..Write input conformation? False</div><div class="line">..Verbose? False</div><div class="line"></div><div class="line">**Molecule 1</div><div class="line">..title = 1a28_STR_1_A_1__C__</div><div class="line">..number of rotatable bonds = 1</div><div class="line">..tot conformations = 12</div><div class="line">..tot confs tested = 12</div><div class="line">..below energy threshold = 10</div><div class="line">..generated 3 conformers</div><div class="line"></div><div class="line">... etc, etc</div><div class="line"></div><div class="line">0 molecules converted</div></pre></td></tr></table></figure></p><p>统计多少个构像和初始构像相比RMSD小于1.0A<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; obabel confs.sdf -oconfabreport -xf bostrom.sdf -xr 1.0</div><div class="line"></div><div class="line">**Generating Confab Report</div><div class="line">..Reference file = bostrom.sdf</div><div class="line">..Conformer file = confs.sdf</div><div class="line"></div><div class="line">..Molecule 1</div><div class="line">..title = 1a28_STR_1_A_1__C__</div><div class="line">..number of confs = 3</div><div class="line">..minimum rmsd = 0.0644801</div><div class="line">..confs less than cutoffs: 0.2 0.5 1 1.5 2 3 4 100</div><div class="line">..1 1 3 3 3 3 3 3</div><div class="line">..cutoff (1) passed =  Yes</div><div class="line"></div><div class="line">... etc, etc</div><div class="line"></div><div class="line">**Summary</div><div class="line">..number of molecules = 36</div><div class="line">..less than cutoff(1) = 35</div><div class="line">52271 molecules converted</div></pre></td></tr></table></figure></p><p>我做的一个的简单应用（批量读取文件对接），不提供部分代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*-coding:utf-8-*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> ucsfdock.docksh <span class="keyword">import</span> PreDock</div><div class="line"><span class="keyword">from</span> ucsfdock.dockfile <span class="keyword">import</span> Dock</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment">#计时器工具</span></div><div class="line"><span class="keyword">import</span> time</div><div class="line">time_start=time.time()</div><div class="line"></div><div class="line">DOCKHOME=<span class="string">'/home/kangsgo/install/dock6/bin/'</span></div><div class="line"><span class="comment">#run=PreDock(DOCKHOME=DOCKHOME)</span></div><div class="line"><span class="comment">#run.onerun()</span></div><div class="line">dock=Dock(DOCKHOME=DOCKHOME)</div><div class="line"><span class="comment">#遍历molecule目录下所有的文件</span></div><div class="line"><span class="keyword">for</span> (dirpath,dirnames,filenames) <span class="keyword">in</span> os.walk(<span class="string">'molecule'</span>):</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> filenames:</div><div class="line">        print(<span class="string">'开始执行'</span>+i+<span class="string">'文件'</span>)</div><div class="line">        dock.dock(mode=<span class="number">2</span>,ligand_atom_file=<span class="string">'molecule/'</span>+i,ligand_outfile_prefix=<span class="string">'out1/'</span>+i[:<span class="number">-5</span>])</div><div class="line"><span class="comment">#dock.dock(mode=2,ligand_atom_file='2.mol2')</span></div><div class="line">print(<span class="string">"done!"</span>)</div><div class="line">time_end=time.time()</div><div class="line">print(<span class="string">"耗时为"</span>+str(time_end-time_start)+<span class="string">" 秒"</span>)</div></pre></td></tr></table></figure></p><p>参考资料:</p><ol><li><a href="http://open-babel.readthedocs.io/en/latest/3DStructureGen/multipleconformers.html" target="_blank" rel="external">Generate multiple conformers</a></li><li><a href="http://open-babel.readthedocs.io/en/latest/Command-line_tools/babel.html" target="_blank" rel="external">obabel and babel</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;此文感谢建民兄的指导，才让我学习到这么有用的工具&lt;/p&gt;
+&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;有许多软件例如&lt;code&gt;Dock 6.8&lt;/code&gt;，对于小分子的柔性对
+      
+    
+    </summary>
+    
+      <category term="预处理" scheme="http://kangsgo.com/categories/%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="OpenBabel" scheme="http://kangsgo.com/tags/OpenBabel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell脚本文件夹内文件依次执行</title>
+    <link href="http://kangsgo.com/20.html"/>
+    <id>http://kangsgo.com/20.html</id>
+    <published>2018-01-18T04:05:29.000Z</published>
+    <updated>2018-01-18T05:00:23.656Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个脚本非常简单，个人觉得也很实用，对于初学linux或者bash的小伙伴们，我觉得在很多地方可以解放我们的小手。<br>写的这个脚本是因为师弟师妹们有很多高斯文件需要计算，高斯的计算文件一般以<code>gjf</code>或者<code>com</code>结尾。所以要师弟师妹们把文件放到一个文件夹下，然后批量执行。<br>为了以后的方便我还写了通过识别后缀是否执行。脚本全文如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `ls` ;<span class="keyword">do</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"文件的后缀为"</span><span class="variable">$&#123;i##*.&#125;</span></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$&#123;i##*.&#125;</span> = <span class="string">"gjf"</span> ]||[ <span class="variable">$&#123;i##*.&#125;</span> = <span class="string">"com"</span> ];<span class="keyword">then</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$i</span><span class="string">"后缀正确，开始计算"</span></div><div class="line">g09 <span class="variable">$i</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"计算完成"</span></div></pre></td></tr></table></figure></p><p>首先通过一个for循环结合<code>ls</code>查看文件命令依次读取文件，然后用一个<code>if</code>命令判定后缀是否后缀正确，<br><code>##*.</code>表示删除最后一个点以及左边的字符。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这个脚本非常简单，个人觉得也很实用，对于初学linux或者bash的小伙伴们，我觉得在很多地方可以解放我们的小手。&lt;br&gt;写的这个脚本是因为师弟师妹们有很多高斯文件需要计算，高斯的计算文件一般以&lt;code&gt;gjf&lt;/code&gt;或者&lt;code&gt;com&lt;/code&gt;结尾。所以要
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://kangsgo.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux GTX1080TI安装显卡驱动小记</title>
+    <link href="http://kangsgo.com/19.html"/>
+    <id>http://kangsgo.com/19.html</id>
+    <published>2018-01-11T09:50:28.000Z</published>
+    <updated>2018-01-11T02:30:53.092Z</updated>
+    
+    <content type="html"><![CDATA[<p>我这辈子没有见过什么世面，之前用的最好的显卡就是GTX750Ti了，有幸来到一个还算有钱的课题组，导师给配了一台装有E5-2696 v3 CPU，GTX1080TI显卡的电脑，不甚欢喜，爱不释手。没想到是填坑的开始，前前后后捣鼓了一个星期，把其中的坑慢慢总结，今天先记录一下我安装记录:</p><p>由于GTX1080TI在linux下没有开源驱动，所以安装ubuntu后啥也没有，需要安装闭源驱动。点此进入<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">下载地址</a>。由于我的CPU没有集成显卡，无奈只能在旧机器上弄了一个GT630装上，其实也可以把硬盘取下来，安装好后再重新装上。</p><p>安装好后进行驱动的安装，简要如下:</p><p>a) 禁用nouveau<br>终端中运行：<code>lsmod | grep nouveau</code>，如果有输出则代表nouveau正在加载。</p><p>Ubuntu的nouveau禁用方法：<br>在<code>/etc/modprobe.d</code>中创建文件<code>blacklist-nouveau.conf</code>，在文件中输入一下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">blacklist nouveau</div><div class="line">options nouveau modeset=0</div></pre></td></tr></table></figure><p>打开终端，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-initramfs –u</div></pre></td></tr></table></figure></p><p>设置完毕可以再次运行 <code>lsmod | grep nouveau</code>检查是否禁用成功，如果运行后没有任何输出，则代表禁用成功。</p><p>b) 重启电脑，到达登录界面时，<code>alt+ctrl+f1</code>，进入text mode，登录账户</p><p>c) 输入<code>sudo service lightdm stop</code>关闭图形化界面</p><p>d) 切换到cuda安装文件的路径，运行<code>sudo sh cuda_9.1.18_linux.run</code> (可能不同)</p><p>按照提示一步步操作</p><p>安装成功后，会显示<strong>installed</strong>，否则会显示<strong>failed</strong>。</p><p>e) 输入 $ sudo service lightdm start 重新启动图形化界面。</p><p>Alt + ctrl +F7，返回到图形化登录界面，输入密码登录。<br>如果能够成功登录，则表示不会遇到循环登录的问题，基本说明CUDA的安装成功了。</p><p>f) 重启电脑。检查<strong>Device Node Verification</strong>。</p><p>检查路径/dev下 有无存在名为nvidia*（以nvidia开头）的多个文件(device files)<br>如果没有的话，可以参考官方文档里的指导步骤，进行添加。</p><p>若安装了CUDA，则需要设置环境变量，具体可以查看<a href="http://kangsgo.com/40.html">这一篇</a>文章。</p><p>参考:<a href="http://blog.csdn.net/masa_fish/article/details/51882183" target="_blank" rel="external">Ubuntu 14.04 上安装 CUDA 7.5/8.0 超详细教程</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我这辈子没有见过什么世面，之前用的最好的显卡就是GTX750Ti了，有幸来到一个还算有钱的课题组，导师给配了一台装有E5-2696 v3 CPU，GTX1080TI显卡的电脑，不甚欢喜，爱不释手。没想到是填坑的开始，前前后后捣鼓了一个星期，把其中的坑慢慢总结，今天先记录一下
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
+    
+    
+      <category term="安装" scheme="http://kangsgo.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>g_mmpbsa之参数注释</title>
     <link href="http://kangsgo.com/17.html"/>
     <id>http://kangsgo.com/17.html</id>
@@ -434,82 +510,6 @@
       
       
         &lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot; title=&quot;概要&quot;&gt;&lt;/a&gt;概要&lt;/h2&gt;&lt;p&gt;smina 是基于&lt;a href=&quot;http://vina.scripps.edu/&quot; target=&quot;_blank&quot; rel=&quot;exter
-      
-    
-    </summary>
-    
-      <category term="分子对接" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/"/>
-    
-    
-      <category term="Dock" scheme="http://kangsgo.com/tags/Dock/"/>
-    
-      <category term="软件安装" scheme="http://kangsgo.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chimera制作旋转动画</title>
-    <link href="http://kangsgo.com/834.html"/>
-    <id>http://kangsgo.com/834.html</id>
-    <published>2017-10-29T04:42:20.000Z</published>
-    <updated>2017-10-29T04:45:51.442Z</updated>
-    
-    <content type="html"><![CDATA[<p>示例如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Open <span class="number">2</span>GHA.pdb.</div><div class="line"></div><div class="line">Delete chain B. Select / Chain / B <span class="keyword">and</span> Actions / Atoms / Delete</div><div class="line"></div><div class="line">Color ribbon. Presets / Interactive <span class="number">1</span> (ribbons)</div><div class="line"></div><div class="line">Highlight ligand. Select / Structure / Ligand <span class="keyword">and</span> Actions / Atoms / Sphere</div><div class="line"></div><div class="line">Clear selection. Select / Clear Selection</div><div class="line"></div><div class="line">Rotate <span class="number">360</span> degrees. Favorites / Command Line</div><div class="line"></div><div class="line">          turn y <span class="number">1</span> <span class="number">360</span></div><div class="line"></div><div class="line">Record “spin” movie.</div><div class="line"></div><div class="line">         movie record ; turn y <span class="number">1</span> <span class="number">360</span> ; wait ; movie encode</div><div class="line"></div><div class="line">Semicolons separate commands on one line.</div><div class="line"></div><div class="line">movie record starts capturing images.</div><div class="line"></div><div class="line">wait prevents going to the next command until motion finishes.</div><div class="line"></div><div class="line">movie encode writes the images to a movie file.</div></pre></td></tr></table></figure><p>如果是windows一般保存在桌面上</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;示例如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div clas
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="chimera" scheme="http://kangsgo.com/tags/chimera/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell脚本读取PDB文件中的长宽高</title>
-    <link href="http://kangsgo.com/840.html"/>
-    <id>http://kangsgo.com/840.html</id>
-    <published>2017-10-29T04:41:15.000Z</published>
-    <updated>2017-10-29T04:42:05.851Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line"><span class="comment">#作者：GROMACS中文组群: 广药-阿福</span></div><div class="line"><span class="comment">#x轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$7</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div><div class="line"><span class="comment">#y轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$8</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div><div class="line"><span class="comment">#z轴</span></div><div class="line">grep ^ATOM <span class="variable">$1</span> | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$9</span>&#125;’| sort -n |sed -n ‘1p;<span class="variable">$p</span>’</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Dock6安装教程</title>
-    <link href="http://kangsgo.com/844.html"/>
-    <id>http://kangsgo.com/844.html</id>
-    <published>2017-10-29T04:36:39.000Z</published>
-    <updated>2017-10-29T04:40:52.806Z</updated>
-    
-    <content type="html"><![CDATA[<p>好久没有使用Dock了，不知不觉中已经更新到了6.8。首先需要在官网填写资料下载:<a href="http://dock.compbio.ucsf.edu/DOCK_6/index.htm" target="_blank" rel="external">http://dock.compbio.ucsf.edu/DOCK_6/index.htm</a> 每个邮箱可以登陆5次，不过用完了可以新用一个邮箱，申请过的邮箱不能再次申请，需要发邮件或者重新使用一个邮箱。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/903467-e4b37e3e48599ab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dock" title="">                </div>                <div class="image-caption">dock</div>            </figure><p>安装方法也非常简单，如下:</p><h3 id="1-安装依赖环境"><a href="#1-安装依赖环境" class="headerlink" title="1.安装依赖环境"></a>1.安装依赖环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install c++</div><div class="line">sudo apt-get install g++</div><div class="line">sudo apt-get install gfortran</div><div class="line">sudo apt-get install cmake</div></pre></td></tr></table></figure><h3 id="2-解压文件进入目录"><a href="#2-解压文件进入目录" class="headerlink" title="2.解压文件进入目录"></a>2.解压文件进入目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf dock.6.8.tar.gz</div><div class="line"><span class="built_in">cd</span> dock6/install</div></pre></td></tr></table></figure><h3 id="3-设置Configure文件"><a href="#3-设置Configure文件" class="headerlink" title="3.设置Configure文件"></a>3.设置Configure文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure [configuration file]</div></pre></td></tr></table></figure><p>[configuration file]完整的可以看官方教程<br><a href="http://dock.compbio.ucsf.edu/DOCK_6/dock6_manual.htm#Installation" target="_blank" rel="external">http://dock.compbio.ucsf.edu/DOCK_6/dock6_manual.htm#Installation</a></p><p>这里介绍几个常用的:<br><code>gnu</code> : GNU编译（需要CUDA？）<br><code>gnu.parallel</code> :GNU和多线程编译<br><code>intel</code> :Intel编译<br><code>intel.parallel</code> :Intel多线程编译</p><p>我选择的是<code>gnu</code>版本，即</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure gnu</div></pre></td></tr></table></figure><h3 id="4-安装"><a href="#4-安装" class="headerlink" title="4.安装"></a>4.安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make all</div></pre></td></tr></table></figure><h3 id="5-测试"><a href="#5-测试" class="headerlink" title="5.测试"></a>5.测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">test</span></div><div class="line">make <span class="built_in">test</span></div><div class="line">make check</div></pre></td></tr></table></figure><p>如果安装了maber的话，由于<code>$AMBERHOME</code>被占用，会导致ambersize测试失败。大致提示如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt; make[2]: Leaving directory &apos;/home/rdx12/Downloads/dock6/dock6</div><div class="line">&gt; Apr/install/test/zou_gbsa_score&apos;</div><div class="line">&gt; </div><div class="line">&gt; cd amber_score_181l &amp;&amp; make test</div><div class="line">&gt; </div><div class="line">&gt; make[2]: Entering directory &apos;/home/rdx12/Downloads/dock6/dock6</div><div class="line">&gt; Apr/install/test/amber_score_181l&apos;</div><div class="line">&gt; </div><div class="line">&gt; ../../../bin/prepare_amber.pl lig.mol2 181l.pdb</div><div class="line">&gt; </div><div class="line">&gt; Error from amberize_receptor; examine amberize_receptor.out</div><div class="line">&gt; </div><div class="line">&gt; ../default_targets.h:18: recipe for target &apos;amberize&apos; failed</div><div class="line">&gt; </div><div class="line">&gt; make[2]: *** [amberize] Error 25</div><div class="line">&gt; </div><div class="line">&gt; make[2]: Leaving directory &apos;/home/rdx12/Downloads/dock6/dock6</div><div class="line">&gt; Apr/install/test/amber_score_181l&apos;</div><div class="line">&gt; </div><div class="line">&gt; Makefile:43: recipe for target &apos;amberdock&apos; failed</div><div class="line">&gt; make[1]: *** [amberdock] Error 2</div></pre></td></tr></table></figure><p>你需要解掉变量</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> AMBERHOME <span class="comment">#(bash)</span></div><div class="line">unsetenv AMBERHOME <span class="comment">#(tcsh)</span></div></pre></td></tr></table></figure><h3 id="6-设置环境变量"><a href="#6-设置环境变量" class="headerlink" title="6.设置环境变量"></a>6.设置环境变量</h3><p>常规的设置环境变量如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gedit  ~/.bashrc      <span class="comment">#打开.bashrc  </span></div><div class="line">  </div><div class="line"><span class="comment">#DOCK6.8  </span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/home/kangsgo/install/dock6/bin</div><div class="line">  </div><div class="line"><span class="built_in">source</span> ~/.bashrc      <span class="comment">#source立即生效</span></div></pre></td></tr></table></figure><p>查看可以发现dock6.8自带了<code>antechamber</code>等一些amber里也有的东西,不知道会不会产生问题，我仅仅设置了一个DOCK目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gedit  ~/.bashrc      <span class="comment">#打开.bashrc  </span></div><div class="line">  </div><div class="line"><span class="comment">#DOCK6.8  </span></div><div class="line">DOCKHOME=/home/kangsgo/install/dock6/bin </div><div class="line">  </div><div class="line"><span class="built_in">source</span> ~/.bashrc      <span class="comment">#source立即生效</span></div></pre></td></tr></table></figure><p>这样每次输入的时候都是用的<code>$DOCKHOME</code>加命令</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;好久没有使用Dock了，不知不觉中已经更新到了6.8。首先需要在官网填写资料下载:&lt;a href=&quot;http://dock.compbio.ucsf.edu/DOCK_6/index.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://do
       
     
     </summary>

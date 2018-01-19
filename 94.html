@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/pressure.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/density.png">
 <meta property="og:image" content="http://kangsgo.com/images/2015/12/5.png">
-<meta property="og:updated_time" content="2017-12-21T11:37:24.050Z">
+<meta property="og:updated_time" content="2018-01-19T14:20:19.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs下蛋白-配体复合物模拟[GAFF]">
 <meta name="twitter:description" content="gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～ 我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。 由于AhR晶体结构并未解析">
@@ -137,7 +137,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -201,7 +201,6 @@
 <p>由于AhR晶体结构并未解析，建模的方法我在这里不累述</p>
 <p>你可以在这里下载初始文件:<a href="/images/2015/12/tcddPhe289Ala.tar.gz">tcddPhe289Ala.tar</a></p>
 <p><span style="color: #ff0000;">mdp文件建议从压缩包中的进行修改，以免直接复制导致换行问题。</span></p>
-<a id="more"></a>
 <p>1.高斯输入文件建立</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">antechamber -i tcdd-h.mol2 -<span class="keyword">fi</span> mol2 -o tcdd.gjf -fo gcrt -pf y -gm <span class="string">"%mem=1024MB"</span> -gn <span class="string">"%nproc=2"</span> -nc 0 -gk <span class="string">"#HF/6-31G*SCF=tight Test Pop=MK iop(6/33=2) iop(6/42=6) iop(6/50=1) opt nosymm"</span> -ge tcdd_resp.gesp -gv 1</div></pre></td></tr></table></figure>
 <p>其中nosymm是是否保留坐标，可以不加。高斯windows版本内存最多使用1G</p>
@@ -223,11 +222,9 @@
 <p>7.准备蛋白质的拓扑</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx pdb2gmx -f mAhR.pdb -o mAhR_processed.gro -water tip3p</div></pre></td></tr></table></figure>
 <p>注：群里说tip3p准确度比spec高</p>
-<blockquote>
-<p>力场选择amber99SB 5</p>
-</blockquote>
+<p>力场选择<code>amber99SB 5</code></p>
 <p>8.准备小分子拓扑结构</p>
-<p>将得到的TCD_GMX.top中顶部的[defaults]，[ atomtypes ]，底部的[ system ]，[ molecules ]删除，改名为TCD.itp</p>
+<p>将得到的TCD_GMX.top中顶部的[defaults]，[ atomtypes ]，底部的[ system ]，[ molecules ]删除，改名为TCD.itp。记得[ moleculetype ]需要被<strong>保留</strong>!!</p>
 <p>复制mAhR_processed.gro，重命名为complex.gro 将TCD_GMX.gro中内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">1  TCD  CL1    1   1.163  -4.344   0.912</div><div class="line">1  TCD  CL2    2   1.223  -4.088   0.726</div><div class="line">1  TCD  CL3    3   2.103  -4.309   1.263</div><div class="line">1  TCD  CL4    4   2.164  -4.054   1.077</div><div class="line">1  TCD   O1    5   1.637  -4.310   1.076</div><div class="line">1  TCD   O2    6   1.690  -4.088   0.913</div><div class="line">1  TCD   C1    7   1.542  -4.258   0.994</div><div class="line">1  TCD   C2    8   1.568  -4.148   0.914</div><div class="line">1  TCD   C3    9   1.759  -4.250   1.075</div><div class="line">1  TCD   C4   10   1.785  -4.140   0.995</div><div class="line">1  TCD   C5   11   1.417  -4.317   0.992</div><div class="line">1  TCD   C6   12   1.469  -4.098   0.832</div><div class="line">1  TCD   C7   13   1.857  -4.300   1.157</div><div class="line">1  TCD   C8   14   1.909  -4.081   0.997</div><div class="line">1  TCD   C9   15   1.318  -4.266   0.911</div><div class="line">1  TCD  C10   16   1.344  -4.156   0.830</div><div class="line">1  TCD  C11   17   1.983  -4.242   1.159</div><div class="line">1  TCD  C12   18   2.009  -4.132   1.079</div><div class="line">1  TCD   H1   19   1.399  -4.402   1.055</div><div class="line">1  TCD   H2   20   1.490  -4.013   0.771</div><div class="line">1  TCD   H3   21   1.836  -4.385   1.218</div><div class="line">1  TCD   H4   22   1.928  -3.996   0.934</div></pre></td></tr></table></figure>
 <p>添加到complex.gro底部数字行上面将顶部1741加22个原子改为1763，保存。</p>
@@ -258,12 +255,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> 1   Cl     1   TCD   CL1    1    -0.072622     35.45000 ; qtot -0.073</div><div class="line"> 2   Cl     1   TCD   CL2    2    -0.072622     35.45000 ; qtot -0.145</div><div class="line"> 3   Cl     1   TCD   CL3    3    -0.072622     35.45000 ; qtot -0.218</div><div class="line"> 4   Cl     1   TCD   CL4    4    -0.072622     35.45000 ; qtot -0.290</div><div class="line"> 5   OS     1   TCD    O1    5    -0.320484     16.00000 ; qtot -0.611</div><div class="line"> 6   OS     1   TCD    O2    6    -0.320484     16.00000 ; qtot -0.931</div><div class="line"> 7   CA     1   TCD    C1    7     0.247670     12.01000 ; qtot -0.684</div><div class="line"> 8   CA     1   TCD    C2    8     0.247670     12.01000 ; qtot -0.436</div><div class="line"> 9   CA     1   TCD    C3    9     0.247670     12.01000 ; qtot -0.188</div><div class="line">10   CA     1   TCD    C4   10     0.247670     12.01000 ; qtot 0.059</div><div class="line">11   CA     1   TCD    C5   11    -0.253268     12.01000 ; qtot -0.194</div><div class="line">12   CA     1   TCD    C6   12    -0.253268     12.01000 ; qtot -0.447</div><div class="line">13   CA     1   TCD    C7   13    -0.253268     12.01000 ; qtot -0.701</div><div class="line">14   CA     1   TCD    C8   14    -0.253268     12.01000 ; qtot -0.954</div><div class="line">15   CA     1   TCD    C9   15     0.041544     12.01000 ; qtot -0.912</div><div class="line">16   CA     1   TCD   C10   16     0.041544     12.01000 ; qtot -0.871</div><div class="line">17   CA     1   TCD   C11   17     0.041544     12.01000 ; qtot -0.829</div><div class="line">18   CA     1   TCD   C12   18     0.041544     12.01000 ; qtot -0.788</div><div class="line">19   HA     1   TCD    H1   19     0.196918      1.00800 ; qtot -0.591</div><div class="line">20   HA     1   TCD    H2   20     0.196918      1.00800 ; qtot -0.394</div><div class="line">21   HA     1   TCD    H3   21     0.196918      1.00800 ; qtot -0.197</div><div class="line">22   HA     1   TCD    H4   22     0.196918      1.00800 ; qtot -0.000</div></pre></td></tr></table></figure>
 <p>然而amber99SB力场下如是写的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cl          17      35.45    0.0000  A   4.40104e-01  4.18400e-01</div></pre></td></tr></table></figure>
-<p><span style="color: #ff0000;">我们需要将top文件的[ atomtypes ]可以写入相应力场的ffnonbonded.itp中，这个方法更加的实用。</span></p>
+<p>以下有两种方法解决:<br>方法一:</p>
+<p>我们需要将top文件的[ atomtypes ]可以写入相应力场的ffnonbonded.itp中，这个方法更加的实用。<strong>此方法不建议再使用</strong></p>
 <p>个人认为比较稳妥且不会污染力场的方法为将力场文件复制出来，然后在当前目录中进行修改，如果采用apt-get安装，可以在usr/share/gromacs/top下查找对应力场文件,例如拷贝amber99sb-ildn-ligand.ff力场文件，重命名为amber99sb-ildn-ligand.ff，将; Include forcefield parameters下面一行修改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#include &quot;amber99sb-ildn-ligand.ff/forcefield.itp&quot;</div></pre></td></tr></table></figure>
 <p>topol文件其它引用力场的位置可修改可不修改，个人觉得最好修改</p>
-<p><img src="/images/2015/12/2.png" alt="2"></p>
-<p>然后就是添加离子了</p>
+<p>方法二:(建议使用该方法)</p>
+<p>将[ atomtypes ]写入拓扑中，位于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">; Include forcefield parameters</div><div class="line">#include &quot;amber99sb-ildn.ff/forcefield.itp&quot;</div></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[ moleculetype ]</div><div class="line">; Name            nrexcl</div><div class="line">Protein             3</div></pre></td></tr></table></figure></p>
+<p>之间，例如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">; Include forcefield parameters</div><div class="line">#include &quot;amber99sb-ildn.ff/forcefield.itp&quot;</div><div class="line"></div><div class="line">[ atomtypes ]</div><div class="line">;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb</div><div class="line"> c3       c3          0.00000  0.00000   A     3.39967e-01   4.57730e-01 ; 1.91  0.1094</div><div class="line"> nh       nh          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700</div><div class="line"> hn       hn          0.00000  0.00000   A     1.06908e-01   6.56888e-02 ; 0.60  0.0157</div><div class="line"> cc       cc          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860</div><div class="line"> ca       ca          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860</div><div class="line"> na       na          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700</div><div class="line"> cd       cd          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860</div><div class="line"> hc       hc          0.00000  0.00000   A     2.64953e-01   6.56888e-02 ; 1.49  0.0157</div><div class="line"> h1       h1          0.00000  0.00000   A     2.47135e-01   6.56888e-02 ; 1.39  0.0157</div><div class="line"> ha       ha          0.00000  0.00000   A     2.59964e-01   6.27600e-02 ; 1.46  0.0150</div><div class="line"> h4       h4          0.00000  0.00000   A     2.51055e-01   6.27600e-02 ; 1.41  0.0150</div><div class="line"></div><div class="line">[ moleculetype ]</div><div class="line">; Name            nrexcl</div><div class="line">Protein             3</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2015/12/2.png" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<p>然后就是添加离子了<br>现在有一种快速添加的方法，即平衡为中性，如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nname CL -neutral</div></pre></td></tr></table></figure></p>
+<p>当然还有手动平衡的方法如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx genion -s ions.tpr -o solv_ions.gro -p topol.top -pname NA -nname CL -nn 4</div></pre></td></tr></table></figure>
 <p>-nn 表示的添加阴离子数目</p>
 <blockquote>
@@ -275,7 +284,7 @@
 <p>11.能量最小化</p>
 <p>参数文件如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">; LINES STARTING WITH &apos;;&apos; ARE COMMENTS</div><div class="line">title       = Minimization  ; Title of run</div><div class="line">define          = -DFLEXIBLE</div><div class="line"></div><div class="line">; Parameters describing what to do, when to stop and what to save</div><div class="line">integrator  = steep     ; Algorithm (steep = steepest descent minimization)</div><div class="line">emtol       = 500.0     ; Stop minimization when the maximum force &lt; 5.0 kJ/mol</div><div class="line">emstep      = 0.01      ; Energy step size</div><div class="line">nsteps      = 50000     ; Maximum number of (minimization) steps to perform</div><div class="line">energygrps  = Protein TCD   ; Which energy group(s) to write to disk</div><div class="line"></div><div class="line">; Parameters describing how to find the neighbors of each atom and how to calculate the interactions</div><div class="line">nstlist         = 1         ; Frequency to update the neighbor list and long range forces</div><div class="line">cutoff-scheme   = Verlet</div><div class="line">ns_type         = grid      ; Method to determine neighbor list (simple, grid)</div><div class="line">rlist           = 1.0       ; Cut-off for making neighbor list (short range forces)</div><div class="line">coulombtype     = PME       ; Treatment of long range electrostatic interactions</div><div class="line">rcoulomb        = 1.0       ; long range electrostatic cut-off</div><div class="line">rvdw            = 1.0       ; long range Van der Waals cut-off</div><div class="line">constraints         = none</div><div class="line">pbc             = xyz       ; Periodic Boundary Conditions</div></pre></td></tr></table></figure>
-<p><strong><span style="color: #ff0000;">能量组为energygrps = Protein TCD，这里TCD需要根据自己的体系进行修改，下同 </span></strong></p>
+<p><strong>能量组为energygrps = Protein TCD，这里TCD需要根据自己的体系进行修改，下同 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">energygrps   = Protein TCD</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx grompp -f em_real.mdp -c solv_ions.gro -p topol.top -o em.tpr</div></pre></td></tr></table></figure>
 <p>运行模拟</p>
@@ -398,7 +407,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-21T11:37:24.050Z" itemprop="dateUpdated">2017-12-21 19:37:24</time>
+    最後更新時間：<time datetime="2018-01-19T14:20:19.609Z" itemprop="dateUpdated">2018-01-19 22:20:19</time>
 </span><br>
 
 
@@ -443,7 +452,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -561,7 +570,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -593,7 +602,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/94.html&title=《gromacs下蛋白-配体复合物模拟[GAFF]》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
