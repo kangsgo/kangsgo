@@ -16,6 +16,8 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -31,8 +33,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,19 +50,61 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -75,6 +119,20 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -126,11 +184,15 @@
 
     
         参考资料：待编辑
-1.内容性推荐综合性网站推荐：小木虫...
+1.内容性推荐综合性网站推荐：小木虫论坛：一个综合性的论坛，项目非常杂，但是里面有非常多的资料分享。感觉对于交流和求知比较欠缺 。
+bioms分子模拟论坛：是一个专业性质的论坛，主要集中讨论计算机辅助药物设计这一快，氛围非常好，但是最近活跃度有所下降。
+哲科文：李继存老师的个人博客，主要是gromacs的一些中文教程，老师人也非常好
+勤力既懒猪：一些模拟方面的教程
+计算化学...
     
 
         <a href="/2.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -171,11 +233,18 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        1.Gromacs笔记整理1.1.安装篇Gromacs...
+        1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本)
+Gromacs CUDA版一键安装脚本
+1.2.核心教程GROMACS之水中部分載脂蛋白
+LigParGen:配体OPLS/CM1A力场在线生成
+gromacs下蛋白-配体复合物模拟[GAFF]
+gromacs中构建非标准氨基酸残基力场
+gromacs下蛋白配体复合物分析
+Groma...
     
 
         <a href="/87.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -213,11 +282,12 @@
 
     
         此文感谢建民兄的指导，才让我学习到这么有用的工具
-起因...
+起因有许多软件例如Dock 6.8，对于小分子的柔性对接支持并不那么好，这就导致了因为初始构像的不正确而导致了对接结果的不正确和不可靠，为了解决这个问题一个方法就是进行构像的生成，再进行多对接，整理得分排序。当然还有一个应用就是用于3D药效团的使用。网上有许多在线网站可以进行这方面的工作，但是最好用的我感觉还是openbabel神器！
+利用o...
     
 
         <a href="/21.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -260,11 +330,11 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        这个脚本非常简单，个人觉得也很实用，对于初学linux...
+        这个脚本非常简单，个人觉得也很实用，对于初学linux或者bash的小伙伴们，我觉得在很多地方可以解放我们的小手。写的这个脚本是因为师弟师妹们有很多高斯文件需要计算，高斯的计算文件一般以gjf或者com结尾。所以要师弟师妹们把文件放到一个文件夹下，然后批量执行。为了以后的方便我还写了通过识别后缀是否执行。脚本全文如下:12345678910#!/bin/bashfor i in `ls` ;...
     
 
         <a href="/20.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -307,11 +377,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        我这辈子没有见过什么世面，之前用的最好的显卡就是GTX...
+        我这辈子没有见过什么世面，之前用的最好的显卡就是GTX750Ti了，有幸来到一个还算有钱的课题组，导师给配了一台装有E5-2696 v3 CPU，GTX1080TI显卡的电脑，不甚欢喜，爱不释手。没想到是填坑的开始，前前后后捣鼓了一个星期，把其中的坑慢慢总结，今天先记录一下我安装记录:
+由于GTX1080TI在linux下没有开源驱动，所以安装ubuntu后啥也没有，需要安装闭源驱动。点此进...
     
 
         <a href="/19.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -354,11 +425,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白...
+        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白配体测亲和力很有用的方法。g_mmpbsa是一个针对GROMACS程序使用的MM/PBSA方法，最近在群里讨论非常多，最近一个膜蛋白体系使用该方法做出的结果发现一些问题，最近在找问题，所以先把g_mmpbsa的参数进行了研读，在这里分享给大家。
+极性溶剂化能(Polar Solvation Energy)输入关键字polar1polar ...
     
 
         <a href="/17.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -395,11 +467,11 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白...
+        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白配体测亲和力很有用的方法。相对于自由能微扰(FEP)和热力学积分(TI),虽然准确度相对较低，但其计算量相对较小，比较适用于生物大分子体系。是一种对MD轨迹进行后处理以估计结合自由能的方法, 计算时会将溶剂视为均匀的连续介质, 并基于力场和隐式的连续介质模型, 对平衡轨迹中的许多帧进行平均, 以考虑温度的影响。其实该教程网上很多地方有，我...
     
 
         <a href="/18.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -436,11 +508,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非...
+        最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法：
+1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&#123;print $7&#125;’| sort -n |sed -n ‘1...
     
 
         <a href="/14.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -483,11 +556,19 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        教程B5 模拟绿色荧光蛋白原文:Jason Swail...
+        教程B5 模拟绿色荧光蛋白原文:Jason Swails,Dave Case, Tai-Sung Lee译: 湖南大学-康文渊   建议移步查看许楠(浙江大学)修订的版本
+
+                
+                    
+                    
+                
+                
+            
+绿色荧光...
     
 
         <a href="/16.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -531,11 +612,15 @@
 
     
         首次发布:2015-12-02
-第一次更新:2017-...
+第一次更新:2017-12-21
+第二次更新:2018-01-02
+gromacs2018版本其实和gromacs5.X版本差别不大，正好新电脑到了，这里以2018版本为例进行安装
+默认安装在各位文件夹（我的用户名yaolab）的install下：
+一.预先安装：123456sudo apt-get install gccsudo apt-get instal...
     
 
         <a href="/31.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -558,16 +643,25 @@
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -581,21 +675,106 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWUlEQVR42u3asZKDMAxFUf7/p0mTgsbKlQSZwbquMmzWPmls8azjwOO8jNXz619Xz28esmRtxDrDcf0OR8ef47VkyZrMWi0WT11jxWvJkiWLsPhismTJeoJFyl++WciSJatWNPNJ/1rLy5K1BYunOv3Pj+RbsmS9nHUmB399rc3/nUGWrGGsTqTb/68fR74sWYNZ2Sn4pQt/9ZUlazKLTJQthVsltSxZY1i1C0v+/fhQX240smQNY3VCH37AZ6GyZM1k8dCncyXDn8uSNZOF1LgZKHuVgrYGWbLGsHjrANkseKsB6kiSJWsMKwbxnKcW4KJ3a1myNmV1Gg6yh3oiopIlaxir0xeXDW3vLbVlydqP1Y+E4gOeX6sUO5JkydqIla21efxUjJNkyZKFYyDeKpT+MbJkycIbRKd0TiTNsmSNYdWKZrIMiYZlyZLVaQsghzT/wbJkjWR9ADd5bu46CChtAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

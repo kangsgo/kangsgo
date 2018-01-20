@@ -16,6 +16,8 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -31,8 +33,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,19 +50,61 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -75,6 +119,20 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -128,11 +186,13 @@
 
     
         
-LigParGen是一个提供有机分子或者配体力场的在...
+LigParGen是一个提供有机分子或者配体力场的在线服务网站，其能够提供键长，二面角以及Lennard-Jones OPLS-AA参数，电荷算法为1.14*CM1A或1.14*CM1A-LBCC。生成的配体力场可以非常容易的在Gromacs，NAMD以及OpenMM中使用，文章中说明将在不久提供Amber软件的支持。最大配体原子大小不超过200个原子，计算模型的电荷最大为正负2。
+
+该在...
     
 
         <a href="/681.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -175,11 +235,13 @@ LigParGen是一个提供有机分子或者配体力场的在...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        GROMACS之水中部分載脂蛋白本教程来自于李继存老师...
+        GROMACS之水中部分載脂蛋白本教程来自于李继存老师博客：http://jerkwin.coding.me/GMX/GMXtut-1/#%E6%A6%82%E8%BF%B0特此说明
+
+今天带和大家介绍一下gromacs最简单的教程，这个教程李老师已经组织翻译了一遍，翻译的质量非常高，我仍然炒一遍剩饭主要是想准备把自己所学的温故知新一遍，为了更加快速的进行模拟，我们将两个教程的蛋白进行了替换...
     
 
         <a href="/670.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -223,11 +285,12 @@ LigParGen是一个提供有机分子或者配体力场的在...
 
     
         翻译自，github:(2015版)
-蛋白配体对接与评...
+蛋白配体对接与评价AutoDock 4.2License:free, open-source (GNU GPL)
+一个使用相对廉价的”hybrid”力场的分子对接与得分工具，该力场为半经验的方法（molecular mechanics as well as empirical terms）.其预测的绝对结合自由能相较于更大的计算量项目可能精确度较低，但这...
     
 
         <a href="/665.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -264,11 +327,12 @@ LigParGen是一个提供有机分子或者配体力场的在...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        此文档不完全翻译自官方从头预测文档当蛋白与已知解析蛋白...
+        此文档不完全翻译自官方从头预测文档当蛋白与已知解析蛋白结构为低相似性的时候从头预测变得非常有用。在从头预测算法中，蛋白序列在 n-mer 片段文库中进行phi/psi角采样来进行构象的扩展（extended conformation）和“折叠”。当整个蛋白质氨基酸残基数小于100以内时，其结果较为精确。
+官方有Rosetta@home计划的在线服务器，可以直接提交序列，然后在线服务器进行计算...
     
 
         <a href="/657.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -312,11 +376,13 @@ LigParGen是一个提供有机分子或者配体力场的在...
 
     
         
-蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的...
+蛋白蛋白对接一直是分子模拟中非常重要同时非常难解决的话题，相较于小分子蛋白之间的联系，蛋白蛋白对接如今更加不成熟，在蛋白蛋白对接之前，最好能够搜集更多的文献进行支持，让模拟的结果不空洞，才能保证对接的准确性。
+
+蛋白蛋白对接如今比较著名的软件有Hex Protein Docking，ZDock，rDock，以及Rosetta等等。其中Hex Protein Docking虽算法比较复杂，但...
     
 
         <a href="/647.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -359,11 +425,13 @@ LigParGen是一个提供有机分子或者配体力场的在...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        我们用Gooey制作了一个蛋白配体分割工具。用以切割P...
+        我们用Gooey制作了一个蛋白配体分割工具。用以切割Pymol中保存的Autodock Vina对接结果。
+工具下载地址: https://pan.baidu.com/s/1jIzGh2A 密码: kwg2
+我们用Pymol插件中的Autodock Vina对接,对接完后在Pymol中将蛋白配体结果全部保存，保存以后问题来了，我们如何进行分析和后续处理呢？比较简单的方法为进行手动切割，如图:...
     
 
         <a href="/639.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -406,11 +474,16 @@ LigParGen是一个提供有机分子或者配体力场的在...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        iGEMDOCK是一个台湾产的分子对接软件，其优势是简...
+        iGEMDOCK是一个台湾产的分子对接软件，其优势是简单易用，对接准确度较高，可以用于初筛和精度对接，也可用于金属对接（注：未试）。最后更新为2008年，但对接软件近几年发展缓慢，基本没有什么新的算法产生。其完整手册可从次下载：点我下载官方下载地址：点我进入
+1.安装windows直接打开即可
+linux赋权
+1chmod 755 iGemdock/bin/*
+执行脚本
+12cd iGemd...
     
 
         <a href="/625.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -455,11 +528,12 @@ LigParGen是一个提供有机分子或者配体力场的在...
     
         为bioms群-汕大洪 提供
 还没有细看，待研究
-ht...
+http://www.dddc.ac.cn/pdtd/index.php
+
     
 
         <a href="/597.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -502,11 +576,13 @@ ht...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        这个是帮师妹写的一个用于处理clusta序列比对的处理...
+        这个是帮师妹写的一个用于处理clusta序列比对的处理脚本，对序列比对的结果进行处理，统计出所有位置上对应的氨基酸残基种类数目，从而得出哪些位置为保守的，哪些位置为不保守的（种类数目越多，认为是不保守位置）
+使用方法如下:
+123456789101112Usage: aln.py [options] argOptions:  -h, --help            show this h...
     
 
         <a href="/593.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -543,11 +619,18 @@ ht...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        最新版本:1.01beta  更新时间 2017/10...
+        最新版本:1.01beta  更新时间 2017/10/8
+使用方法:将解压后的脚本放置于主文件夹（home主目录）
+12chomd +x gromacs.sh./gromacs.sh
+适用于系统:ubuntu 14.04和 16.04可选择安装的gmx版本:
+1.gromacs2016版本
+2.gromacs5.1.X版本
+3.gromacs5.0.X版本
+如有问题可以bioms群联系:西...
     
 
         <a href="/577.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -576,16 +659,25 @@ ht...
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -599,21 +691,106 @@ ht...
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/5/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/5/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/5/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABcElEQVR42u3a0QrCMAxGYd//pSd4JYjd+ZMJrjm9GjLbb4JdkubxwON4jffr90/W93zeedmQJWsj1rEc35YksxHuV7osWSNZZFNYL79+VL6WLFmy+Ks33TJkyZJ17QZBXrTpa16WLFk8aOaLkXkui+VlydqCVSsk1a5/Xt+SJeuGrKMx1ltDZ35ZsqaxSEko/RfXSr3oC7Jkbc1KC7KkjFs77Ax+P1mytmORYhBpO+BJLNqeZMkawyIT8aaftNUg2L5kyRrA6rQFkIXTh5claxqLl3vIqzpNcU8eQJasYaxaowCnB3lz52xHlqybs9J8lxeMeMNQ3JEkS9amLB40r4PdTl35pKQrS9amrGIrQGmbCIJmWbKGsWrBdC1NJcF3K8aXJevmrE4JqXPYGdebZckawOJFpVoTXnqmKUuWrLS8ywu4xQMVWbJkgek6CXDxcEWWrE1ZvDkgvb+WEsuSNY11VSNCJ939YX+ELFn/znoCBbeSyuWdlDEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

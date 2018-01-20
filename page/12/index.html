@@ -16,6 +16,8 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -31,8 +33,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,19 +50,61 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -75,6 +119,20 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -127,11 +185,16 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        这个主要是rostta下载的时候没有速度，所以想拖到v...
+        这个主要是rostta下载的时候没有速度，所以想拖到vps上然后下载。
+方法为在hostloc的朋友告知
+
+wget http://user:passwd@url.com/xxx.files.tar.gz
+
+
     
 
         <a href="/161.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -169,11 +232,18 @@
 
     
         此是记录的按照前面做了以后
-废话不多说，先调整周期性1...
+废话不多说，先调整周期性1trjconv_mpi -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -ur compact
+全部选择
+
+0(“System”)
+
+老规矩，作图
+1gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd.xvg -tu ns
+全...
     
 
         <a href="/156.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -216,11 +286,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        自己之前稍微学习过一点PHP和Python的书籍，但是...
+        自己之前稍微学习过一点PHP和Python的书籍，但是两个都学的不是很精，应该是项目做少了，还有就是前面学的非常不扎实，所以要从头学，找了这么多资料，个人感觉老齐的《从零开始学Python》非常不错，推荐给大家！
+&nbsp;
+还发现一个国外特别经典但是国内翻译了的《笨方法学python》，推荐给大家～挺经典的
+
     
 
         <a href="/150.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -257,11 +330,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        个人还是比较喜欢用pymol插件做的，仁者见仁智者见智...
+        个人还是比较喜欢用pymol插件做的，仁者见仁智者见智吧~
+[video width=”800” height=”600” wmv=”http://kangsgo.com/wp-content/uploads/2016/01/vina_tutorial.wmv&quot;][/video]
+
     
 
         <a href="/135.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -307,11 +382,19 @@
         参数具体用法可以查看：官方文本
 有空再翻译
 ;
-; F...
+; File 'mdout.mdp' was generated
+; By user: kangsgo (1000)
+; On host: kangsgo-pc
+; At date: Thu Dec 31 22:38:07 2015
+; 5.02参数所有备注
+;
+
+; VARIOUS PREPROCESSING OPTIONS
+; Prepro...
     
 
         <a href="/121.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -348,11 +431,15 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        网上VMD安装教程很多，也非常简单，在这里我只是为了给...
+        网上VMD安装教程很多，也非常简单，在这里我只是为了给自己做一下笔记记录一下。
+软件下载地址：点我下载
+我选择的版本为：LINUX_64 OpenGL, CUDA, TachyonL-OptiX
+下载后我放在了1/home/kangsgo/mdinstall/plot/ 文件夹下
+解压文件12tar -xvf vmd-1.9.2.bin.LINUXAMD64-RHEL5.opengl.tar...
     
 
         <a href="/113.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -401,7 +488,7 @@
     
 
         <a href="/106.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -444,11 +531,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        gromacs小分子的配体的电荷问题一直时gromac...
+        gromacs小分子的配体的电荷问题一直时gromacs模拟蛋白-配体复合物中的难点与重点～网上有许多相关方面的教程，但是都没有成为系统，应李继存老师之邀，把最近摸索的方法过程总结出来，分享给大家～感谢网络上的朋友对我的帮助～
+我们以我现在在做的蛋白配体复合物进行模拟，蛋白质为AhR的PAS-B结构域，其是AhR转录因子的配体结合区～TCDD复合物是AhR的经典激动剂。
+由于AhR晶体结构并...
     
 
         <a href="/94.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -492,11 +581,16 @@
 
     
         英文版教程：点我查看
-中文版教程：严重的然后口头禅··...
+中文版教程：严重的然后口头禅·····
+你可能需要用到的：
+1.ADT和Autodock/vina的安装
+2.Pymol安装与问题解决
+3.Pymol插件：Autodock/Vina
+
     
 
         <a href="/89.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -539,11 +633,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        大家知道在AutoDockTools中使用AutoDo...
+        大家知道在AutoDockTools中使用AutoDock Vina特别的复杂，但是Pymol这个插件非常的好用，可以代替AutoDockTools的使用，但是需要注意以下几点：
+
+1. 该插件能正常使用的前提是：已经正常安装ADT/AutoDockTools；已经下载并安装AutoDock 和/或 AutoDock Vina。
+2. 该插件的功能只是为AutoDock及AutoDock的运...
     
 
         <a href="/68.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -572,16 +669,25 @@
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -595,21 +701,106 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/12/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/12/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/12/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/12/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/12/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3ay4qEMBAF0P7/n+6BWQ006q0qk3bgZCWi8cRFqEder3i8f8fnnb/3P+8cvXt+/4aBi4s75r5Px+fUOet8kUdzHj2Di4u7n3u+0eTbVrLZnV9f2HBxcR/GTa7Pl5FslLi4uP+LmwdD+TO4uLhP5k4QkwBoYa6Gi4s74FYLpiuuF9Z3cXFxi9x3ceSfSYqq5a/j4uJu4eYtkDxwSeacpEO4uLh7uHlAMzl+kX++nPzg4uLeyu2lJflbvcUczoOLi7uRm7RFk+rEXSnQ4bu4uLhbuNVAp9d2rc7ZDI9wcXFv5TYLl/EyqonTxR/FxcVdzO01SJJtaHT0alKtwcXFHXPzJCdvuuQJTHWbw8XF3c/tNV/vDY9wcXGfwJ2kN9UWaX7kq9BKwcXFXcDtBTe9zauaLF0UTHFxcZdxe1P0Up1km7uYExcXdyO3V5+sLqB8nAIXF/er3ElRo9omqbZjb+4G4+LitnqXk+LppL3a+x24uLjruHlRI2HNj3BdfB0XF3cjt3cMK19SHspcPIOLi/swbp7A5CFLua2Li4v7SO4kHZpvjri4uDu5+eGJJGSpJkWFn4WLi7uF22udVtshedqTl1xxcXEXcH8ABNIGHO8QbmMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

@@ -16,6 +16,8 @@
     <title>小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -31,8 +33,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -48,19 +50,61 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -75,6 +119,20 @@
         </a>
         <div class="flex-col header-title ellipsis">小康博客</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -127,11 +185,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        最近在读Python数据分析与挖掘实战发现《中医证型关...
+        最近在读Python数据分析与挖掘实战发现《中医证型关联规则挖掘》中Apriori关联规则
+通过百度发现来自苏剑林《用Pandas实现高效的Apriori算法》一文，书中代码
+123456789101112131415161718192021222324252627#-*- coding: utf-8 -*-from __future__ import print_functionimpor...
     
 
         <a href="/570.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -173,7 +233,7 @@
     
 
         <a href="/566.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -216,11 +276,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Pharmmapper算是一个非常知名的由华东理工大学...
+        Pharmmapper算是一个非常知名的由华东理工大学开发与维护的药效团匹配与潜在识别靶标平台，开始以为对自己的课题很有用，但是仔细研究发现可能自己的课题用不上，所以没有阅读其文献，在这里分享给大家可能算是一个初窥吧。
+如果你需要经常使用这个在线服务，强烈建议通读原理和算法，这样计算的结果才更加真实更加正确！！！
+该服务的用途我理解为主要是通过已知的小分子化合物，去寻找其可能作用的靶点的过程...
     
 
         <a href="/12.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -257,11 +319,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        SwissSimilarity是Swiss系提供的一个...
+        SwissSimilarity是Swiss系提供的一个基于配体的虚拟筛选在线服务器。
+主要的用途我觉得包含几个方面，1)一个是比如有一个小分子，需要找寻它潜在的靶标位点，作为一个找靶。2)另外一个是你有一个已知的靶点小分子，但是它的性能可能不好，你需要对其母环改造，那么可以进行骨架跃迁。3)还有一个应用就是你有一系列已知作用靶标的化合物，想找类似物进行合成优化，那么也可以进行LBVS进行初筛...
     
 
         <a href="/11.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -308,7 +371,7 @@
     
 
         <a href="/534.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -349,7 +412,7 @@
     
 
         <a href="/526.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -394,11 +457,12 @@
     
         acdlab和marvin
 &nbsp;
-待研究，信息...
+待研究，信息来源于华中师大-精灵
+
     
 
         <a href="/524.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -435,11 +499,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        一个是科研绘图插件morris.js，但是设置功能较少...
+        一个是科研绘图插件morris.js，但是设置功能较少，不能设置max x，y，这一点比较尴尬
+另外一个是缩略图插件JQUERY LIGHTBOX，适合图片过大
+
     
 
         <a href="/521.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -481,7 +547,7 @@
     
 
         <a href="/514.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -524,11 +590,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        1cat *.mol2 &gt; total.mol2...
+        1cat *.mol2 &gt; total.mol2
+来源:贵医-周
+
     
 
         <a href="/504.html" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文…
         </a>
     </div>
     
@@ -551,16 +619,25 @@
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -574,21 +651,106 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/page/6/&title=小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/page/6/&title=小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/page/6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=小康博客&url=http://kangsgo.com/page/6/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/page/6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWklEQVR42u3aMQ6DMAxAUe5/6VTqBKJKv20yEP9MCIL6GOo4jo8Dj/Ed5+vznfvM+/xjxZAlayPWmI4569l3ZcmSxYPCfX49WMiSJYuzyFMeLGTJklUJECR15p8nS5asaNJMNq7z+UtyeVmytmDlCkm56+X1LVmyXsgawUGW7VzJ6fKuLFnNWGRrOr+fCxYofMiS1Z5FyrK5AxUSUGTJ6sbKHZnwYMFbE/5kELJkbc2K7hlzizT5YFmyZJHlmf/tOahUYJIlayPWikJSbgf6I4uXJasZK9rQkwsipIR0yeVlyWrDym1EKz8ZzuJlyWrAihaSwtXiSneDLFmNWbyQRLjRdgRZsnqynm3Cq8xf2BsoS9ZLWLkGguhRCt8Ay5LVmVVZgHOBALUayJIl66FAkDx9lSVLVpkVaOjhhyuyZDVg8eOTaOsPT8RlyerMyhWS5mFlyaGLLFl7sj537QNaI56+VgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

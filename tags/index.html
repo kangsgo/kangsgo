@@ -16,6 +16,8 @@
     <title>tags | 小康博客 | 计算化学与分子模拟爱好者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta name="description" content="Gromacs,Dock,Martini,Chimera,Pymol">
@@ -32,8 +34,8 @@
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.16">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -49,19 +51,61 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">kangsgo</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect active">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -74,15 +118,29 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">Tags</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
 <header class="content-header tags-header">
 
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">Tags</h1>
         <h5 class="subtitle">
             
         </h5>
@@ -92,22 +150,22 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-             active">All</a>
+             active">全部</a>
         
 
-            <a href="/tags/Autodock/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Autodock</a>
-
-        
-
-            <a href="/tags/Dock/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">Dock</a>
+            <a href="/tags/amber/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">amber</a>
 
         
 
-            <a href="/tags/软件安装/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">软件安装</a>
+            <a href="/tags/软件安装/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">软件安装</a>
 
         
 
-            <a href="/tags/amber/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">amber</a>
+            <a href="/tags/Autodock/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">Autodock</a>
+
+        
+
+            <a href="/tags/Dock/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Dock</a>
 
         
 
@@ -127,11 +185,11 @@
 
         
 
-            <a href="/tags/gromacs/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">gromacs</a>
+            <a href="/tags/LigPlot/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">LigPlot</a>
 
         
 
-            <a href="/tags/LigPlot/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">LigPlot</a>
+            <a href="/tags/gromacs/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">gromacs</a>
 
         
 
@@ -139,19 +197,19 @@
 
         
 
-            <a href="/tags/Modeller/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Modeller</a>
+            <a href="/tags/OpenBabel/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">OpenBabel</a>
 
         
 
-            <a href="/tags/OpenBabel/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">OpenBabel</a>
+            <a href="/tags/Modeller/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Modeller</a>
 
         
 
-            <a href="/tags/Python/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">Python</a>
+            <a href="/tags/Pymol/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">Pymol</a>
 
         
 
-            <a href="/tags/Pymol/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">Pymol</a>
+            <a href="/tags/Python/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">Python</a>
 
         
 
@@ -159,11 +217,11 @@
 
         
 
-            <a href="/tags/文献下载/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">文献下载</a>
+            <a href="/tags/dock/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">dock</a>
 
         
 
-            <a href="/tags/dock/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">dock</a>
+            <a href="/tags/文献下载/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">文献下载</a>
 
         
 
@@ -183,35 +241,35 @@
 
         
 
-            <a href="/tags/mahotas/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">mahotas</a>
+            <a href="/tags/Gaussian/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">Gaussian</a>
 
         
 
-            <a href="/tags/安装/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">安装</a>
+            <a href="/tags/mahotas/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">mahotas</a>
 
         
 
-            <a href="/tags/Groamcs/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">Groamcs</a>
+            <a href="/tags/Linux/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
 
         
 
-            <a href="/tags/iGEMDOCK/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">iGEMDOCK</a>
+            <a href="/tags/安装/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">安装</a>
 
         
 
-            <a href="/tags/推荐/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">推荐</a>
+            <a href="/tags/iGEMDOCK/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">iGEMDOCK</a>
 
         
 
-            <a href="/tags/chimera/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">chimera</a>
+            <a href="/tags/Groamcs/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">Groamcs</a>
 
         
 
-            <a href="/tags/Gaussian/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">Gaussian</a>
+            <a href="/tags/推荐/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">推荐</a>
 
         
 
-            <a href="/tags/Linux/" style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
+            <a href="/tags/chimera/" style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">chimera</a>
 
         
     </nav>
@@ -227,6 +285,394 @@
 
 <div class="container body-wrap fade">
     
+
+            <h3 class="archive-separator" id="tag-amber">amber</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-12-21 07:56:01" datetime="2017-12-20T23:56:01.000Z"  itemprop="datePublished">2017-12-21</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/77.html">Amber17的安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-13 11:38:06" datetime="2017-09-13T03:38:06.000Z"  itemprop="datePublished">2017-09-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/746.html">[转载]amber中非标准氨基酸残基的参数生成</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-软件安装">软件安装</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-12-21 07:56:01" datetime="2017-12-20T23:56:01.000Z"  itemprop="datePublished">2017-12-21</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/77.html">Amber17的安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-12-03 22:54:46" datetime="2015-12-03T14:54:46.000Z"  itemprop="datePublished">2015-12-03</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/64.html">ADT和Autodock/vina的安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-10-29 12:36:39" datetime="2017-10-29T04:36:39.000Z"  itemprop="datePublished">2017-10-29</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/844.html">Dock6安装教程</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-12-11 16:10:20" datetime="2016-12-11T08:10:20.000Z"  itemprop="datePublished">2016-12-11</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/526.html">Open Babel编译安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-05-11 16:16:30" datetime="2016-05-11T08:16:30.000Z"  itemprop="datePublished">2016-05-11</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/403.html">NetCDF安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-12-03 00:58:30" datetime="2015-12-02T16:58:30.000Z"  itemprop="datePublished">2015-12-03</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/47.html">Pymol安装与问题解决</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-13 17:50:28" datetime="2017-09-13T09:50:28.000Z"  itemprop="datePublished">2017-09-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/83.html">linux安装GAUSSIAN 09（G09）和GVIEW简略版</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-05-11 13:29:43" datetime="2016-05-11T05:29:43.000Z"  itemprop="datePublished">2016-05-11</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/400.html">mdtraj安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-11-02 23:36:39" datetime="2017-11-02T15:36:39.000Z"  itemprop="datePublished">2017-11-02</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/3.html">smina安装与简介</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
 
             <h3 class="archive-separator" id="tag-Autodock">Autodock</h3>
 
@@ -345,6 +791,74 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
+      <time class="post-time" title="2015-12-03 22:54:46" datetime="2015-12-03T14:54:46.000Z"  itemprop="datePublished">2015-12-03</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/64.html">ADT和Autodock/vina的安装</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-10-29 12:36:39" datetime="2017-10-29T04:36:39.000Z"  itemprop="datePublished">2017-10-29</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/844.html">Dock6安装教程</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
       <time class="post-time" title="2015-12-03 23:08:41" datetime="2015-12-03T15:08:41.000Z"  itemprop="datePublished">2015-12-03</time>
 
       
@@ -402,462 +916,6 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-12-03 22:54:46" datetime="2015-12-03T14:54:46.000Z"  itemprop="datePublished">2015-12-03</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/64.html">ADT和Autodock/vina的安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-10-29 12:36:39" datetime="2017-10-29T04:36:39.000Z"  itemprop="datePublished">2017-10-29</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/844.html">Dock6安装教程</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-软件安装">软件安装</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-05-11 16:16:30" datetime="2016-05-11T08:16:30.000Z"  itemprop="datePublished">2016-05-11</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/403.html">NetCDF安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-12-11 16:10:20" datetime="2016-12-11T08:10:20.000Z"  itemprop="datePublished">2016-12-11</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/526.html">Open Babel编译安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-12-03 00:58:30" datetime="2015-12-02T16:58:30.000Z"  itemprop="datePublished">2015-12-03</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/47.html">Pymol安装与问题解决</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-11-02 23:36:39" datetime="2017-11-02T15:36:39.000Z"  itemprop="datePublished">2017-11-02</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/3.html">smina安装与简介</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-13 17:50:28" datetime="2017-09-13T09:50:28.000Z"  itemprop="datePublished">2017-09-13</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/83.html">linux安装GAUSSIAN 09（G09）和GVIEW简略版</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-05-11 13:29:43" datetime="2016-05-11T05:29:43.000Z"  itemprop="datePublished">2016-05-11</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/400.html">mdtraj安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-12-03 22:54:46" datetime="2015-12-03T14:54:46.000Z"  itemprop="datePublished">2015-12-03</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/64.html">ADT和Autodock/vina的安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Autodock/">Autodock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-21 07:56:01" datetime="2017-12-20T23:56:01.000Z"  itemprop="datePublished">2017-12-21</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/77.html">Amber17的安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-10-29 12:36:39" datetime="2017-10-29T04:36:39.000Z"  itemprop="datePublished">2017-10-29</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/844.html">Dock6安装教程</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dock/">Dock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-amber">amber</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-21 07:56:01" datetime="2017-12-20T23:56:01.000Z"  itemprop="datePublished">2017-12-21</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/77.html">Amber17的安装</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-13 11:38:06" datetime="2017-09-13T03:38:06.000Z"  itemprop="datePublished">2017-09-13</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/746.html">[转载]amber中非标准氨基酸残基的参数生成</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
 
     </div>
     
@@ -999,244 +1057,6 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-02-07 12:21:27" datetime="2016-02-07T04:21:27.000Z"  itemprop="datePublished">2016-02-07</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/194.html">[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献/">文献</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-04-19 16:28:36" datetime="2016-04-19T08:28:36.000Z"  itemprop="datePublished">2016-04-19</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/352.html">[读书笔记]高分分子模拟文章</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-04-27 12:33:53" datetime="2016-04-27T04:33:53.000Z"  itemprop="datePublished">2016-04-27</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/360.html">去除膜蛋白内的水分子脚本</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-09-16 16:05:29" datetime="2016-09-16T08:05:29.000Z"  itemprop="datePublished">2016-09-16</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/440.html">自用脚本分享</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-03-25 17:33:56" datetime="2016-03-25T09:33:56.000Z"  itemprop="datePublished">2016-03-25</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/329.html">输出trr精度文章/制定帧数</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-02-14 20:21:53" datetime="2016-02-14T12:21:53.000Z"  itemprop="datePublished">2016-02-14</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/214.html">自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
       <time class="post-time" title="2017-07-11 10:18:51" datetime="2017-07-11T02:18:51.000Z"  itemprop="datePublished">2017-07-11</time>
 
       
@@ -1251,40 +1071,6 @@
   
     <h3 class="post-title" itemprop="name">
       <a class="post-title-link" href="/670.html">GROMACS之水中部分載脂蛋白</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-03-31 18:26:12" datetime="2017-03-31T10:26:12.000Z"  itemprop="datePublished">2017-03-31</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/577.html">Gromacs CUDA版一键安装脚本</a>
     </h3>
   
 
@@ -1339,41 +1125,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-09-17 18:09:40" datetime="2016-09-17T10:09:40.000Z"  itemprop="datePublished">2016-09-17</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/464.html">[自写]focket2 中md处理脚本</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-07 20:05:36" datetime="2017-09-07T12:05:36.000Z"  itemprop="datePublished">2017-09-07</time>
+      <time class="post-time" title="2017-03-31 18:26:12" datetime="2017-03-31T10:26:12.000Z"  itemprop="datePublished">2017-03-31</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1386,211 +1138,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/725.html">[转载]Gromacs中添加CHARMM力场</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-13 11:38:06" datetime="2017-09-13T03:38:06.000Z"  itemprop="datePublished">2017-09-13</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/746.html">[转载]amber中非标准氨基酸残基的参数生成</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-11-26 16:23:05" datetime="2016-11-26T08:23:05.000Z"  itemprop="datePublished">2016-11-26</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/514.html">[转载]Gromacs分析教程（一）</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-13 15:10:59" datetime="2017-09-13T07:10:59.000Z"  itemprop="datePublished">2017-09-13</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/748.html">amber非标准残基生成的小坑</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-09-19 21:49:34" datetime="2016-09-19T13:49:34.000Z"  itemprop="datePublished">2016-09-19</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/493.html">do_dssp 绘图记录</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-09-17 00:01:24" datetime="2016-09-16T16:01:24.000Z"  itemprop="datePublished">2016-09-17</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/443.html">fpocket2探索</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-01-16 23:38:55" datetime="2016-01-16T15:38:55.000Z"  itemprop="datePublished">2016-01-16</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/170.html">g_mmpbsa 安装与使用笔记</a>
+      <a class="post-title-link" href="/577.html">Gromacs CUDA版一键安装脚本</a>
     </h3>
   
 
@@ -1679,7 +1227,75 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-01-05 23:46:44" datetime="2016-01-05T15:46:44.000Z"  itemprop="datePublished">2016-01-05</time>
+      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-17 18:09:40" datetime="2016-09-17T10:09:40.000Z"  itemprop="datePublished">2016-09-17</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/464.html">[自写]focket2 中md处理脚本</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-02-07 12:21:27" datetime="2016-02-07T04:21:27.000Z"  itemprop="datePublished">2016-02-07</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1692,7 +1308,245 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/156.html">gromacs下蛋白配体复合物分析</a>
+      <a class="post-title-link" href="/194.html">[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献/">文献</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-07 20:05:36" datetime="2017-09-07T12:05:36.000Z"  itemprop="datePublished">2017-09-07</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/725.html">[转载]Gromacs中添加CHARMM力场</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-04-19 16:28:36" datetime="2016-04-19T08:28:36.000Z"  itemprop="datePublished">2016-04-19</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/352.html">[读书笔记]高分分子模拟文章</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-11-26 16:23:05" datetime="2016-11-26T08:23:05.000Z"  itemprop="datePublished">2016-11-26</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/514.html">[转载]Gromacs分析教程（一）</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-13 11:38:06" datetime="2017-09-13T03:38:06.000Z"  itemprop="datePublished">2017-09-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/746.html">[转载]amber中非标准氨基酸残基的参数生成</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-13 15:10:59" datetime="2017-09-13T07:10:59.000Z"  itemprop="datePublished">2017-09-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/748.html">amber非标准残基生成的小坑</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-01-16 23:38:55" datetime="2016-01-16T15:38:55.000Z"  itemprop="datePublished">2016-01-16</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/170.html">g_mmpbsa 安装与使用笔记</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-17 00:01:24" datetime="2016-09-16T16:01:24.000Z"  itemprop="datePublished">2016-09-17</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/443.html">fpocket2探索</a>
     </h3>
   
 
@@ -1743,18 +1597,11 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-gromacs">gromacs</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-08-10 16:06:49" datetime="2017-08-10T08:06:49.000Z"  itemprop="datePublished">2017-08-10</time>
+      <time class="post-time" title="2016-01-05 23:46:44" datetime="2016-01-05T15:46:44.000Z"  itemprop="datePublished">2016-01-05</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1767,7 +1614,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/681.html">LigParGen:配体OPLS/CM1A力场在线生成</a>
+      <a class="post-title-link" href="/156.html">gromacs下蛋白配体复合物分析</a>
     </h3>
   
 
@@ -1776,7 +1623,259 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-19 21:49:34" datetime="2016-09-19T13:49:34.000Z"  itemprop="datePublished">2016-09-19</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/493.html">do_dssp 绘图记录</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-04-27 12:33:53" datetime="2016-04-27T04:33:53.000Z"  itemprop="datePublished">2016-04-27</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/360.html">去除膜蛋白内的水分子脚本</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-02-14 20:21:53" datetime="2016-02-14T12:21:53.000Z"  itemprop="datePublished">2016-02-14</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/214.html">自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-16 16:05:29" datetime="2016-09-16T08:05:29.000Z"  itemprop="datePublished">2016-09-16</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/440.html">自用脚本分享</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-03-25 17:33:56" datetime="2016-03-25T09:33:56.000Z"  itemprop="datePublished">2016-03-25</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/329.html">输出trr精度文章/制定帧数</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-LigPlot">LigPlot</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-28 00:34:55" datetime="2016-09-27T16:34:55.000Z"  itemprop="datePublished">2016-09-28</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/497.html">LigPlot+官方手册初译</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LigPlot/">LigPlot</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-gromacs">gromacs</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-30 18:29:37" datetime="2017-09-30T10:29:37.000Z"  itemprop="datePublished">2017-09-30</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/770.html">MARTINI 2.0力场笔记</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
     </div>
     
@@ -1822,7 +1921,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-09-30 18:29:37" datetime="2017-09-30T10:29:37.000Z"  itemprop="datePublished">2017-09-30</time>
+      <time class="post-time" title="2017-08-10 16:06:49" datetime="2017-08-10T08:06:49.000Z"  itemprop="datePublished">2017-08-10</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1835,7 +1934,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/770.html">MARTINI 2.0力场笔记</a>
+      <a class="post-title-link" href="/681.html">LigParGen:配体OPLS/CM1A力场在线生成</a>
     </h3>
   
 
@@ -1844,7 +1943,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li></ul>
 
     </div>
     
@@ -1856,7 +1955,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-05-11 11:35:55" datetime="2016-05-11T03:35:55.000Z"  itemprop="datePublished">2016-05-11</time>
+      <time class="post-time" title="2016-03-03 23:28:45" datetime="2016-03-03T15:28:45.000Z"  itemprop="datePublished">2016-03-03</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1869,7 +1968,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/398.html">mdtraj牛逼的轨迹转化软件！</a>
+      <a class="post-title-link" href="/165.html">gromacs续跑问题</a>
     </h3>
   
 
@@ -1924,7 +2023,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-03-03 23:28:45" datetime="2016-03-03T15:28:45.000Z"  itemprop="datePublished">2016-03-03</time>
+      <time class="post-time" title="2016-05-11 11:35:55" datetime="2016-05-11T03:35:55.000Z"  itemprop="datePublished">2016-05-11</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
@@ -1937,7 +2036,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/165.html">gromacs续跑问题</a>
+      <a class="post-title-link" href="/398.html">mdtraj牛逼的轨迹转化软件！</a>
     </h3>
   
 
@@ -1957,47 +2056,6 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-LigPlot">LigPlot</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-09-28 00:34:55" datetime="2016-09-27T16:34:55.000Z"  itemprop="datePublished">2016-09-28</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/497.html">LigPlot+官方手册初译</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LigPlot/">LigPlot</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
             <h3 class="archive-separator" id="tag-粗粒化">粗粒化</h3>
 
             <div class="waterfall">
@@ -2006,10 +2064,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
+      <time class="post-time" title="2017-09-30 18:29:37" datetime="2017-09-30T10:29:37.000Z"  itemprop="datePublished">2017-09-30</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -2019,7 +2077,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
+      <a class="post-title-link" href="/770.html">MARTINI 2.0力场笔记</a>
     </h3>
   
 
@@ -2028,41 +2086,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-23 12:22:18" datetime="2017-09-23T04:22:18.000Z"  itemprop="datePublished">2017-09-23</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/759.html">VMD可视化粗粒化力场简单介绍</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
     </div>
     
@@ -2108,10 +2132,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-09-30 18:29:37" datetime="2017-09-30T10:29:37.000Z"  itemprop="datePublished">2017-09-30</time>
+      <time class="post-time" title="2017-09-23 12:22:18" datetime="2017-09-23T04:22:18.000Z"  itemprop="datePublished">2017-09-23</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
 
 
@@ -2121,7 +2145,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/770.html">MARTINI 2.0力场笔记</a>
+      <a class="post-title-link" href="/759.html">VMD可视化粗粒化力场简单介绍</a>
     </h3>
   
 
@@ -2130,48 +2154,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Modeller">Modeller</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-02-14 21:31:34" datetime="2017-02-14T13:31:34.000Z"  itemprop="datePublished">2017-02-14</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/566.html">Modeller同源建模简单教程</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeller/">Modeller</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
     </div>
     
@@ -2183,10 +2166,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-02-27 13:26:29" datetime="2016-02-27T05:26:29.000Z"  itemprop="datePublished">2016-02-27</time>
+      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
 
 
@@ -2196,7 +2179,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/280.html">Modeller多模版-基于配体-Loop环优化[简略教程]</a>
+      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
     </h3>
   
 
@@ -2205,7 +2188,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeller/">Modeller</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
     </div>
     
@@ -2219,40 +2202,6 @@
             <h3 class="archive-separator" id="tag-OpenBabel">OpenBabel</h3>
 
             <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2018-01-19 16:10:20" datetime="2018-01-19T08:10:20.000Z"  itemprop="datePublished">2018-01-19</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/21.html">利用OpenBabel生成多个构像</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenBabel/">OpenBabel</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
             
 
                 <div class="waterfall-item">
@@ -2288,21 +2237,14 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Python">Python</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-06-01 18:26:33" datetime="2017-06-01T10:26:33.000Z"  itemprop="datePublished">2017-06-01</time>
+      <time class="post-time" title="2018-01-19 16:10:20" datetime="2018-01-19T08:10:20.000Z"  itemprop="datePublished">2018-01-19</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/预处理/">预处理</a></li></ul>
 
 
 
@@ -2312,7 +2254,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/639.html">原创蛋白配体分割工具</a>
+      <a class="post-title-link" href="/21.html">利用OpenBabel生成多个构像</a>
     </h3>
   
 
@@ -2321,7 +2263,48 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iGEMDOCK/">iGEMDOCK</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenBabel/">OpenBabel</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Modeller">Modeller</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-02-27 13:26:29" datetime="2016-02-27T05:26:29.000Z"  itemprop="datePublished">2016-02-27</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/280.html">Modeller多模版-基于配体-Loop环优化[简略教程]</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeller/">Modeller</a></li></ul>
 
     </div>
     
@@ -2333,10 +2316,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-09-19 00:45:37" datetime="2016-09-18T16:45:37.000Z"  itemprop="datePublished">2016-09-19</time>
+      <time class="post-time" title="2017-02-14 21:31:34" datetime="2017-02-14T13:31:34.000Z"  itemprop="datePublished">2017-02-14</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/同源建模/">同源建模</a></li></ul>
 
 
 
@@ -2346,7 +2329,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/489.html">ProDy笔记[未完成]</a>
+      <a class="post-title-link" href="/566.html">Modeller同源建模简单教程</a>
     </h3>
   
 
@@ -2355,7 +2338,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeller/">Modeller</a></li></ul>
 
     </div>
     
@@ -2374,7 +2357,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-11-16 20:09:30" datetime="2017-11-16T12:09:30.000Z"  itemprop="datePublished">2017-11-16</time>
+      <time class="post-time" title="2017-09-05 13:27:24" datetime="2017-09-05T05:27:24.000Z"  itemprop="datePublished">2017-09-05</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
@@ -2387,109 +2370,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/7.html">利用Pymol将周边图像虚化</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-02-25 17:55:49" datetime="2016-02-25T09:55:49.000Z"  itemprop="datePublished">2016-02-25</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2016-02-25 15:21:14" datetime="2016-02-25T07:21:14.000Z"  itemprop="datePublished">2016-02-25</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/239.html">制作VMD动画（中文版）/Pymol 动画</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2018-01-09 20:25:21" datetime="2018-01-09T12:25:21.000Z"  itemprop="datePublished">2018-01-09</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/14.html">计算蛋白长宽高</a>
+      <a class="post-title-link" href="/706.html">Pymol 选择速查手册</a>
     </h3>
   
 
@@ -2533,40 +2414,6 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-05 13:27:24" datetime="2017-09-05T05:27:24.000Z"  itemprop="datePublished">2017-09-05</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/706.html">Pymol 选择速查手册</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
 
     </div>
     
@@ -2676,21 +2523,14 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Rosetta">Rosetta</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-06-13 11:08:23" datetime="2017-06-13T03:08:23.000Z"  itemprop="datePublished">2017-06-13</time>
+      <time class="post-time" title="2016-02-25 17:55:49" datetime="2016-02-25T09:55:49.000Z"  itemprop="datePublished">2016-02-25</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
 
 
@@ -2700,7 +2540,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/647.html">Rosetta蛋白蛋白对接</a>
+      <a class="post-title-link" href="/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a>
     </h3>
   
 
@@ -2709,13 +2549,197 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rosetta/">Rosetta</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
 
     </div>
     
   </article>
 </div>
 
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-11-16 20:09:30" datetime="2017-11-16T12:09:30.000Z"  itemprop="datePublished">2017-11-16</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/7.html">利用Pymol将周边图像虚化</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-02-25 15:21:14" datetime="2016-02-25T07:21:14.000Z"  itemprop="datePublished">2016-02-25</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/239.html">制作VMD动画（中文版）/Pymol 动画</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2018-01-09 20:25:21" datetime="2018-01-09T12:25:21.000Z"  itemprop="datePublished">2018-01-09</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/14.html">计算蛋白长宽高</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Python">Python</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-09-19 00:45:37" datetime="2016-09-18T16:45:37.000Z"  itemprop="datePublished">2016-09-19</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/489.html">ProDy笔记[未完成]</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-06-01 18:26:33" datetime="2017-06-01T10:26:33.000Z"  itemprop="datePublished">2017-06-01</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/639.html">原创蛋白配体分割工具</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iGEMDOCK/">iGEMDOCK</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Rosetta">Rosetta</h3>
+
+            <div class="waterfall">
             
 
                 <div class="waterfall-item">
@@ -2751,21 +2775,14 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-文献下载">文献下载</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-11-29 02:55:47" datetime="2015-11-28T18:55:47.000Z"  itemprop="datePublished">2015-11-29</time>
+      <time class="post-time" title="2017-06-13 11:08:23" datetime="2017-06-13T03:08:23.000Z"  itemprop="datePublished">2017-06-13</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
 
 
 
@@ -2775,7 +2792,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/10.html">Sci-hub下载文献方法</a>
+      <a class="post-title-link" href="/647.html">Rosetta蛋白蛋白对接</a>
     </h3>
   
 
@@ -2784,7 +2801,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献下载/">文献下载</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rosetta/">Rosetta</a></li></ul>
 
     </div>
     
@@ -2826,6 +2843,47 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dock/">dock</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-文献下载">文献下载</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-11-29 02:55:47" datetime="2015-11-28T18:55:47.000Z"  itemprop="datePublished">2015-11-29</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/10.html">Sci-hub下载文献方法</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献下载/">文献下载</a></li></ul>
 
     </div>
     
@@ -2926,40 +2984,6 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
       <time class="post-time" title="2017-09-23 12:22:18" datetime="2017-09-23T04:22:18.000Z"  itemprop="datePublished">2017-09-23</time>
 
       
@@ -2983,6 +3007,40 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-08-24 09:19:52" datetime="2017-08-24T01:19:52.000Z"  itemprop="datePublished">2017-08-24</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/700.html">VMD粗粒化显示插件Bendix简单介绍</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/粗粒化/">粗粒化</a></li></ul>
 
     </div>
     
@@ -3136,6 +3194,47 @@
             </div>
             
 
+            <h3 class="archive-separator" id="tag-Gaussian">Gaussian</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017-09-13 17:50:28" datetime="2017-09-13T09:50:28.000Z"  itemprop="datePublished">2017-09-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/83.html">linux安装GAUSSIAN 09（G09）和GVIEW简略版</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
             <h3 class="archive-separator" id="tag-mahotas">mahotas</h3>
 
             <div class="waterfall">
@@ -3211,7 +3310,7 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-安装">安装</h3>
+            <h3 class="archive-separator" id="tag-Linux">Linux</h3>
 
             <div class="waterfall">
             
@@ -3219,10 +3318,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-12-31 13:17:54" datetime="2015-12-31T05:17:54.000Z"  itemprop="datePublished">2015-12-31</time>
+      <time class="post-time" title="2018-01-18 12:05:29" datetime="2018-01-18T04:05:29.000Z"  itemprop="datePublished">2018-01-18</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
 
 
@@ -3232,7 +3331,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/113.html">VMD安装教程</a>
+      <a class="post-title-link" href="/20.html">shell脚本文件夹内文件依次执行</a>
     </h3>
   
 
@@ -3241,13 +3340,20 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装/">安装</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 
     </div>
     
   </article>
 </div>
 
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-安装">安装</h3>
+
+            <div class="waterfall">
             
 
                 <div class="waterfall-item">
@@ -3283,21 +3389,14 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Groamcs">Groamcs</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016-02-24 23:28:54" datetime="2016-02-24T15:28:54.000Z"  itemprop="datePublished">2016-02-24</time>
+      <time class="post-time" title="2015-12-31 13:17:54" datetime="2015-12-31T05:17:54.000Z"  itemprop="datePublished">2015-12-31</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
 
 
 
@@ -3307,7 +3406,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/230.html">两个PCA分析工具</a>
+      <a class="post-title-link" href="/113.html">VMD安装教程</a>
     </h3>
   
 
@@ -3316,7 +3415,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Groamcs/">Groamcs</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装/">安装</a></li></ul>
 
     </div>
     
@@ -3392,6 +3491,47 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iGEMDOCK/">iGEMDOCK</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Groamcs">Groamcs</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2016-02-24 23:28:54" datetime="2016-02-24T15:28:54.000Z"  itemprop="datePublished">2016-02-24</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/230.html">两个PCA分析工具</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Groamcs/">Groamcs</a></li></ul>
 
     </div>
     
@@ -3481,104 +3621,31 @@
             
             </div>
             
-
-            <h3 class="archive-separator" id="tag-Gaussian">Gaussian</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-09-13 17:50:28" datetime="2017-09-13T09:50:28.000Z"  itemprop="datePublished">2017-09-13</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/83.html">linux安装GAUSSIAN 09（G09）和GVIEW简略版</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gaussian/">Gaussian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Linux">Linux</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2018-01-18 12:05:29" datetime="2018-01-18T04:05:29.000Z"  itemprop="datePublished">2018-01-18</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/20.html">shell脚本文件夹内文件依次执行</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
     
 </div>
 
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -3592,21 +3659,106 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/tags/&title=《tags》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/tags/&title=《tags》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/tags/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tags》 — 小康博客&url=http://kangsgo.com/tags/&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/tags/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABZElEQVR42u3ayw6DMAxEUf7/p6nUVSWKmbHNIvHNqqIPDpXiOLGPQx7nd9xd/x3x9eYBC9ZGrDMcV5bySfe7f+iwYI1kxUEhnuTXd5XHezDAggUrnNjuYgwLFqw3AoR7G1iwYOksPRWOA4e7rW3I5WHB2oLlHiRVXr94vgUL1rKss2koqbbxa7BgDWPFy61bblE2sUbggAVrJKt+s3qx80+AgAVrDCtXSnE3t0rLQvI8GBasxVnu9NZTZCWBPrqiDixYi7P0pNYteSrLvwSFBWsMqzKxu1Lq21weFqwxLL35QC+I5jbDzr4WFqzdWO6kzU14dzmHBWsmq9LQkyvVPIQPWLDGsHKtALntqxFQYMEaxqo04bm3Vxb+ht5AWLCWZfVuSnNJNixYsOL0Vz8SysWeWxwsWLCEMmf9EKpUUIEFazCrt6VA6kuCBWsY673DI/fvgAVrJivXiKBvcesPAAvW1qwP6RySyudviacAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.16"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
