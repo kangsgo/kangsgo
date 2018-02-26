@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Pymol渲染（Ray）笔记 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Pymol">
+    <meta name="description" content="Rayray将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可能就是直接ray一下出图，其实ray有许多功能可以挖掘，这里简单介绍一小部分。 使用1ray [width,height [,renderer [,angle [,shift ]]] angle和shift将会生成立体的配对width和height为设置ray的长宽，可以超出现在的框架 例子默认">
+<meta name="keywords" content="Pymol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pymol渲染（Ray）笔记">
+<meta property="og:url" content="http://kangsgo.com/22.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="Rayray将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可能就是直接ray一下出图，其实ray有许多功能可以挖掘，这里简单介绍一小部分。 使用1ray [width,height [,renderer [,angle [,shift ]]] angle和shift将会生成立体的配对width和height为设置ray的长宽，可以超出现在的框架 例子默认">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-1.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-2.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-3.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-4.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-5.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-6.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-7.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-8.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-9.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/2/3fbi-10.png">
+<meta property="og:updated_time" content="2018-02-26T05:21:39.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pymol渲染（Ray）笔记">
+<meta name="twitter:description" content="Rayray将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可能就是直接ray一下出图，其实ray有许多功能可以挖掘，这里简单介绍一小部分。 使用1ray [width,height [,renderer [,angle [,shift ]]] angle和shift将会生成立体的配对width和height为设置ray的长宽，可以超出现在的框架 例子默认">
+<meta name="twitter:image" content="http://kangsgo.com/images/2018/2/3fbi-1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liangtian.me/"  >
+                <i class="icon icon-lg icon-liantian"></i>
+                LiangTian
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Pymol渲染（Ray）笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Pymol渲染（Ray）笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-16T12:09:30.000Z" itemprop="datePublished" class="page-time">
+  2017-11-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Ray"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ray</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PyMol-API"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">PyMol API</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染模式"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">渲染模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透视"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">透视</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">渲染</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Pymol渲染笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Pymol渲染（Ray）笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-16 20:09:30" datetime="2017-11-16T12:09:30.000Z"  itemprop="datePublished">2017-11-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Ray"><a href="#Ray" class="headerlink" title="Ray"></a>Ray</h1><p><strong>ray</strong>将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可能就是直接ray一下出图，其实ray有许多功能可以挖掘，这里简单介绍一小部分。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ray [width,height [,renderer [,angle [,<span class="built_in">shift</span> ]]]</div></pre></td></tr></table></figure>
+<p><strong>angle</strong>和<strong>shift</strong>将会生成立体的配对<br><strong>width</strong>和<strong>height</strong>为设置ray的长宽，可以超出现在的框架</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>默认图像</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-1.png" alt="图片1" title="">
+                </div>
+                <div class="image-caption">图片1</div>
+            </figure>
+<p>简单渲染<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#全部使用默认设置</span></div><div class="line">ray</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-2.png" alt="图片2" title="">
+                </div>
+                <div class="image-caption">图片2</div>
+            </figure>
+<h2 id="PyMol-API"><a href="#PyMol-API" class="headerlink" title="PyMol API"></a>PyMol API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmd.ray(int width,int height,int renderer=<span class="number">-1</span>,float shift=<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="渲染模式"><a href="#渲染模式" class="headerlink" title="渲染模式"></a>渲染模式</h3><p>设置<strong>Ray_trace_mode</strong>设置可以修改最终成图的时候的PyMOL的内部渲染蛋白的模式.<br>下面可以查看不同模式的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 普通颜色</div><div class="line">set ray_trace_mode, 0</div><div class="line"></div><div class="line"># 普通颜色+黑色线</div><div class="line">set ray_trace_mode, 1</div><div class="line"></div><div class="line"># 仅包含黑色线</div><div class="line">set ray_trace_mode, 2</div><div class="line"></div><div class="line"># 倍色+黑色线</div><div class="line">set ray_trace_mode, 3</div><div class="line"></div><div class="line"># 建议设置</div><div class="line">set antialias, 2</div><div class="line"></div><div class="line"># 更改线的颜色</div><div class="line">set ray_trace_color, magenta</div></pre></td></tr></table></figure>
+<p>效果如下</p>
+<p>ray_trace_mode, 1<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-3.png" alt="图片3" title="">
+                </div>
+                <div class="image-caption">图片3</div>
+            </figure></p>
+<p>ray_trace_mode, 2<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-4.png" alt="图片4" title="">
+                </div>
+                <div class="image-caption">图片4</div>
+            </figure></p>
+<p>ray_trace_mode, 3<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-5.png" alt="图片5" title="">
+                </div>
+                <div class="image-caption">图片5</div>
+            </figure></p>
+<p>ray_trace_color, magenta<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-6.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+<h3 id="透视"><a href="#透视" class="headerlink" title="透视"></a>透视</h3><p>在0.98版本以后，渲染速度得到了提升，选择的开关如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set orthoscopic, off</div><div class="line"></div><div class="line">set orthoscopic, on</div></pre></td></tr></table></figure></p>
+<p>放大近景如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set field_of_view, X</div></pre></td></tr></table></figure></p>
+<p>当50&lt;X&lt;70，默认为20.50-70 拥有非常强的透视效果。透视的轴为Y轴，而不是X轴</p>
+<p>orthoscopic, off<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-7.png" alt="图片7" title="">
+                </div>
+                <div class="image-caption">图片7</div>
+            </figure></p>
+<p>orthoscopic, on<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-8.png" alt="图片8" title="">
+                </div>
+                <div class="image-caption">图片8</div>
+            </figure></p>
+<p>set field_of_view, 70<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-9.png" alt="图片9" title="">
+                </div>
+                <div class="image-caption">图片9</div>
+            </figure></p>
+<p>不知道为何我做出来没有效果，可以看官方的图例</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/2/3fbi-10.png" alt="图片10" title="">
+                </div>
+                <div class="image-caption">图片10</div>
+            </figure>
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><p>renderer = -1 为默认渲染<br>renderer = 0 为PyMOL内部渲染器<br>renderer = 1 使用PovRay渲染器， <strong>Unix-only </strong></p>
+<p>例子如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ray trace with an external renderer.</span></div><div class="line">ray renderer=<span class="number">0</span></div></pre></td></tr></table></figure></p>
+<p>比较了一下-1和0模式的效果差别不大。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-02-26T05:21:39.111Z" itemprop="dateUpdated">2018-02-26 13:21:39</time>
+</span><br>
+
+
+        
+        链接：<a href="/22.html" target="_blank" rel="external">http://kangsgo.com/22.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/22.html&title=《Pymol渲染（Ray）笔记》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/22.html&title=《Pymol渲染（Ray）笔记》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/22.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol渲染（Ray）笔记》 — 小康博客&url=http://kangsgo.com/22.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/22.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/8.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mahotas安装教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/7.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">利用Pymol将周边图像虚化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/22.html&title=《Pymol渲染（Ray）笔记》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/22.html&title=《Pymol渲染（Ray）笔记》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/22.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol渲染（Ray）笔记》 — 小康博客&url=http://kangsgo.com/22.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/22.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABRUlEQVR42u3awa4CIQxG4Xn/l567cWFiLp7+RRPpYUWcET4XNqXluvC4X8Z/T8n724YsWQex7uV4foesQ+brvWTJmszi25BPyPyNQZYsWcWl1+FDlixZe1nZm7JkyeIskjTzZPqrubwsWUeweFWnP/9IfUuWrB9n3cVByrid9R8ryJI1jNUp6XbKTyh1liVrJIsXakkSnDU7ZcmSxY+d67/6tpRalqxhrKxEywMBDyKyZE1mZQXWLDQUdpQlayQrg1a3L7RqZMmSFbUzs1YKyuVlyRrJIkTegOGpsyxZsqoHUf4zskOyLFlzWNlVgH4DRpYsWbywW70owLfPAoosWWezeFCoXjhofVeWrJGsrNl5bRqyZMnKWKQU1SkWy5Ila9cFIH5YLVSaZck6mlVNmjuFJ1I+liVrGqt6LSALDeSpLFkjWX/hByc2Cthg9gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
