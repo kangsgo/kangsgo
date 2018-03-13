@@ -29,15 +29,10 @@
 <meta property="og:description" content="大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。 默认设置默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:1234set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4set">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://kangsgo.com/images/2018/3/1.png">
-<meta property="og:image" content="http://kangsgo.com/images/2018/3/5.png">
-<meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
-<meta property="og:image" content="http://kangsgo.com/images/2018/3/7.png">
-<meta property="og:image" content="http://kangsgo.com/images/2018/3/8.png">
-<meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
 <meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
 <meta property="og:image" content="http://kangsgo.com/images/2018/3/9.png">
 <meta property="og:image" content="http://kangsgo.com/images/2018/3/10.png">
-<meta property="og:updated_time" content="2018-03-13T06:06:59.036Z">
+<meta property="og:updated_time" content="2018-03-13T06:24:15.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pymol核酸绘图">
 <meta name="twitter:description" content="大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。 默认设置默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:1234set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4set">
@@ -142,7 +137,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -183,7 +178,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认设置"><span class="post-toc-number">1.</span> <span class="post-toc-text">默认设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon-环模式（ring-mode）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cartoon 环模式（ring mode）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon梯子模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">Cartoon梯子模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon核酸模式"><span class="post-toc-number">4.</span> <span class="post-toc-text">Cartoon核酸模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子-2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认设置"><span class="post-toc-number">1.</span> <span class="post-toc-text">默认设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon-环模式（ring-mode）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cartoon 环模式（ring mode）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -218,48 +213,13 @@
                 </div>
                 <div class="image-caption">图片1</div>
             </figure>
-<h2 id="Cartoon-环模式（ring-mode）"><a href="#Cartoon-环模式（ring-mode）" class="headerlink" title="Cartoon 环模式（ring mode）"></a>Cartoon 环模式（ring mode）</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">set cartoon_ring_mode, value</div><div class="line">``` </div><div class="line"></div><div class="line">**值影响**</div><div class="line">0  枝条从骨架原子到嘌呤的N1或嘧啶的N3</div><div class="line">1  简单的核糖平面和覆盖环键之间区域的基环</div><div class="line">2  简单的核糖平面和覆盖环键内侧之间区域的基环（和模式1相比略小）</div><div class="line">3  用棍棒包围核糖和基环的平面</div><div class="line">4  在核糖中心和每个基环上的大直径环球体</div><div class="line">5  大约为4的1/10的球体</div><div class="line"></div><div class="line">### 例子</div><div class="line"></div><div class="line">模式1：</div><div class="line">![图片2](/images/2018/3/2.png)</div><div class="line"></div><div class="line">模式3：</div><div class="line">![图片3](/images/2018/3/3.png)</div><div class="line"></div><div class="line">模式4：</div><div class="line">![图片4](/images/2018/3/4.png)</div><div class="line"></div><div class="line">## Cartoon ring finder</div><div class="line">### 设置</div><div class="line"></div><div class="line">```python</div><div class="line">set cartoon_ring_finder, value</div></pre></td></tr></table></figure>
-<p><strong>值影响</strong><br>0 没有环或枝条加入<br>1 核糖和基础环<br>2 只有基础环<br>3 和模式1类似，轻微的透视<br>4 和模式1类似，核糖核苷酸和碱基，以及蛋白质的芳香侧链显示<br>5 只有枝条，无环</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2018/3/5.png" alt="图片5" title="">
-                </div>
-                <div class="image-caption">图片5</div>
-            </figure></p>
-<p>模式1：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2018/3/6.png" alt="图片6" title="">
-                </div>
-                <div class="image-caption">图片6</div>
-            </figure></p>
-<p>模式2：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2018/3/7.png" alt="图片7" title="">
-                </div>
-                <div class="image-caption">图片7</div>
-            </figure></p>
-<h2 id="Cartoon梯子模式"><a href="#Cartoon梯子模式" class="headerlink" title="Cartoon梯子模式"></a>Cartoon梯子模式</h2><h3 id="设置-1"><a href="#设置-1" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set cartoon_ladder_mode, value</div></pre></td></tr></table></figure>
-<p><strong>值影响</strong><br>0 没有枝条展示<br>1 枝条展示</p>
-<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2018/3/8.png" alt="图片8" title="">
-                </div>
-                <div class="image-caption">图片8</div>
-            </figure></p>
-<p>模式1：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2018/3/6.png" alt="图片6" title="">
-                </div>
-                <div class="image-caption">图片6</div>
-            </figure></p>
-<h2 id="Cartoon核酸模式"><a href="#Cartoon核酸模式" class="headerlink" title="Cartoon核酸模式"></a>Cartoon核酸模式</h2><h3 id="设置-2"><a href="#设置-2" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set cartoon_nucleic_acid_mode, value</div></pre></td></tr></table></figure>
+<h2 id="Cartoon-环模式（ring-mode）"><a href="#Cartoon-环模式（ring-mode）" class="headerlink" title="Cartoon 环模式（ring mode）"></a>Cartoon 环模式（ring mode）</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">set cartoon_ring_mode, value</div><div class="line">``` </div><div class="line"></div><div class="line">**值影响**</div><div class="line"></div><div class="line">0  枝条从骨架原子到嘌呤的N1或嘧啶的N3</div><div class="line">1  简单的核糖平面和覆盖环键之间区域的基环</div><div class="line">2  简单的核糖平面和覆盖环键内侧之间区域的基环（和模式1相比略小）</div><div class="line">3  用棍棒包围核糖和基环的平面</div><div class="line">4  在核糖中心和每个基环上的大直径环球体</div><div class="line">5  大约为4的1/10的球体</div><div class="line"></div><div class="line">### 例子</div><div class="line"></div><div class="line">模式1：</div><div class="line">![图片2](/images/2018/3/2.png)</div><div class="line"></div><div class="line">模式3：</div><div class="line">![图片3](/images/2018/3/3.png)</div><div class="line"></div><div class="line">模式4：</div><div class="line">![图片4](/images/2018/3/4.png)</div><div class="line"></div><div class="line">## Cartoon ring finder</div><div class="line">### 设置</div></pre></td></tr></table></figure>
+<p>set cartoon_ring_finder, value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">**值影响**</div><div class="line"></div><div class="line">0 没有环或枝条加入</div><div class="line">1 核糖和基础环</div><div class="line">2 只有基础环</div><div class="line">3 和模式1类似，轻微的透视</div><div class="line">4 和模式1类似，核糖核苷酸和碱基，以及蛋白质的芳香侧链显示</div><div class="line">5 只有枝条，无环</div><div class="line"></div><div class="line">### 例子</div><div class="line">模式0：</div><div class="line">![图片5](/images/2018/3/5.png)</div><div class="line"></div><div class="line">模式1：</div><div class="line">![图片6](/images/2018/3/6.png)</div><div class="line"></div><div class="line">模式2：</div><div class="line">![图片7](/images/2018/3/7.png)</div><div class="line"></div><div class="line">## Cartoon梯子模式</div><div class="line">### 设置</div></pre></td></tr></table></figure>
+<p>set cartoon_ladder_mode, value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**值影响**</div><div class="line">0 没有枝条展示</div><div class="line">1 枝条展示</div><div class="line"></div><div class="line">### 例子</div><div class="line">模式0：</div><div class="line">![图片8](/images/2018/3/8.png)</div><div class="line"></div><div class="line">模式1：</div><div class="line">![图片6](/images/2018/3/6.png)</div><div class="line"></div><div class="line">## Cartoon核酸模式</div><div class="line">### 设置</div></pre></td></tr></table></figure></p>
+<p>set cartoon_nucleic_acid_mode, value<br>```</p>
 <p><strong>值影响</strong><br>0    光滑的骨架通过磷原子，骨架的两端均终止于磷末端<br>1    光滑的骨架通过核糖C3’原子，骨架的两端最后C3’终止<br>2    光滑的骨架通过磷原子，主链在5’末端终止于磷，在3’末端终止于O3’<br>3    和0模式相似？<br>4    和模式2相似？</p>
-<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/2018/3/6.png" alt="图片6" title="">
@@ -287,7 +247,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2018-03-13T06:06:59.036Z" itemprop="dateUpdated">2018-03-13 14:06:59</time>
+    Last updated: <time datetime="2018-03-13T06:24:15.410Z" itemprop="dateUpdated">2018-03-13 14:24:15</time>
 </span><br>
 
 
@@ -450,7 +410,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
