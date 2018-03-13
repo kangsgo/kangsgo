@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Pymol核酸绘图 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Pymol">
+    <meta name="description" content="大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。 默认设置默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:1234set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4set">
+<meta name="keywords" content="Pymol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pymol核酸绘图">
+<meta property="og:url" content="http://kangsgo.com/23.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。 默认设置默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:1234set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4set">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/1.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/5.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/7.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/8.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/6.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/9.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/3/10.png">
+<meta property="og:updated_time" content="2018-03-13T05:57:37.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pymol核酸绘图">
+<meta name="twitter:description" content="大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。 默认设置默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:1234set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4set">
+<meta name="twitter:image" content="http://kangsgo.com/images/2018/3/1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liangtian.me/"  >
+                <i class="icon icon-lg icon-liantian"></i>
+                LiangTian
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Pymol核酸绘图</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Pymol核酸绘图</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-13T05:09:30.000Z" itemprop="datePublished" class="page-time">
+  2018-03-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认设置"><span class="post-toc-number">1.</span> <span class="post-toc-text">默认设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon-环模式（ring-mode）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cartoon 环模式（ring mode）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon梯子模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">Cartoon梯子模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cartoon核酸模式"><span class="post-toc-number">4.</span> <span class="post-toc-text">Cartoon核酸模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子-2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Pymol核酸绘图"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Pymol核酸绘图</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-13 13:09:30" datetime="2018-03-13T05:09:30.000Z"  itemprop="datePublished">2018-03-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。</p>
+<h2 id="默认设置"><a href="#默认设置" class="headerlink" title="默认设置"></a>默认设置</h2><p>默认的一般有一个磷酸骨架和一个跨过核苷酸平面的枝棒，默认设置如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set cartoon_nucleic_acid_mode, 0 # 骨架随后的磷酸盐，实际上pymol默认设置为4</div><div class="line">set cartoon_ladder_mode, 1 # 从骨架到核苷酸的枝条</div><div class="line">set cartoon_ring_mode, 0 # 没有核酸环</div><div class="line">set cartoon_ring_finder, 1 # 核糖和基本环 (因为ring mode 0，所以这里设置什么都不会展示)</div></pre></td></tr></table></figure></p>
+<p>我们以PDB<code>265d</code>为例<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fetch <span class="number">265</span>d</div><div class="line">remove resname HOH</div><div class="line">remove resname MG</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/1.png" alt="图片1" title="">
+                </div>
+                <div class="image-caption">图片1</div>
+            </figure>
+<h2 id="Cartoon-环模式（ring-mode）"><a href="#Cartoon-环模式（ring-mode）" class="headerlink" title="Cartoon 环模式（ring mode）"></a>Cartoon 环模式（ring mode）</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">set cartoon_ring_mode, value</div><div class="line">``` </div><div class="line">**值影响**</div><div class="line">0  枝条从骨架原子到嘌呤的N1或嘧啶的N3</div><div class="line">1  简单的核糖平面和覆盖环键之间区域的基环</div><div class="line">2  简单的核糖平面和覆盖环键内侧之间区域的基环（和模式1相比略小）</div><div class="line">3  用棍棒包围核糖和基环的平面</div><div class="line">4  在核糖中心和每个基环上的大直径环球体</div><div class="line">5  大约为4的1/10的球体</div><div class="line"></div><div class="line">### 例子</div><div class="line">模式1：</div><div class="line">![图片2](/images/2018/3/2.png)</div><div class="line"></div><div class="line">模式3：</div><div class="line">![图片3](/images/2018/3/3.png)</div><div class="line"></div><div class="line">模式4：</div><div class="line">![图片4](/images/2018/3/4.png)</div><div class="line"></div><div class="line">## Cartoon ring finder</div><div class="line">### 设置</div><div class="line">```python</div><div class="line">set cartoon_ring_finder, value</div></pre></td></tr></table></figure>
+<p><strong>值影响</strong><br>0 没有环或枝条加入<br>1 核糖和基础环<br>2 只有基础环<br>3 和模式1类似，轻微的透视<br>4 和模式1类似，核糖核苷酸和碱基，以及蛋白质的芳香侧链显示<br>5 只有枝条，无环</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/5.png" alt="图片5" title="">
+                </div>
+                <div class="image-caption">图片5</div>
+            </figure></p>
+<p>模式1：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/6.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+<p>模式2：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/7.png" alt="图片7" title="">
+                </div>
+                <div class="image-caption">图片7</div>
+            </figure></p>
+<h2 id="Cartoon梯子模式"><a href="#Cartoon梯子模式" class="headerlink" title="Cartoon梯子模式"></a>Cartoon梯子模式</h2><h3 id="设置-1"><a href="#设置-1" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set cartoon_ladder_mode, value</div></pre></td></tr></table></figure>
+<p><strong>值影响</strong><br>0 没有枝条展示<br>1 枝条展示</p>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/8.png" alt="图片8" title="">
+                </div>
+                <div class="image-caption">图片8</div>
+            </figure></p>
+<p>模式1：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/6.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+<h2 id="Cartoon核酸模式"><a href="#Cartoon核酸模式" class="headerlink" title="Cartoon核酸模式"></a>Cartoon核酸模式</h2><h3 id="设置-2"><a href="#设置-2" class="headerlink" title="设置"></a>设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set cartoon_nucleic_acid_mode, value</div></pre></td></tr></table></figure>
+<p><strong>值影响</strong><br>0    光滑的骨架通过磷原子，骨架的两端均终止于磷末端<br>1    光滑的骨架通过核糖C3’原子，骨架的两端最后C3’终止<br>2    光滑的骨架通过磷原子，主链在5’末端终止于磷，在3’末端终止于O3’<br>3    和0模式相似？<br>4    和模式2相似？</p>
+<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><p>模式0：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/6.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+<p>模式1：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/9.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+<p>模式2：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/3/10.png" alt="图片6" title="">
+                </div>
+                <div class="image-caption">图片6</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-03-13T05:57:37.961Z" itemprop="dateUpdated">2018-03-13 13:57:37</time>
+</span><br>
+
+
+        
+        链接：<a href="/23.html" target="_blank" rel="external">http://kangsgo.com/23.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/23.html&title=《Pymol核酸绘图》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/23.html&title=《Pymol核酸绘图》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/23.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol核酸绘图》 — 小康博客&url=http://kangsgo.com/23.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/23.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/87.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">系列笔记整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/22.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Pymol渲染（Ray）笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/23.html&title=《Pymol核酸绘图》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/23.html&title=《Pymol核酸绘图》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/23.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pymol核酸绘图》 — 小康博客&url=http://kangsgo.com/23.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/23.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABUklEQVR42u3a0Q6DIBBEUf//p+lrkwac2ZU0MpenRlGOTcRll+uS2/hp38dnPWd9HmuwYB3EGss2G2x2n/VxZSxYsJJZyu36/ZVrYcGCpQ+zvkr/tMOCBavGUkLkP0wQsGAdwXJfbH2Buj2WhwXrCJae1en/3pLfggXr5axhNj29OxoNFqw0lv4Cu2g9ETztCQtWDEsvUnbCaPuesGAFs9xlpD5B2CE1LFiRrPU0ob/Y7tmbcBkWLFhyyUR/JCPBBAtWGGtdaHwqUK59zmHBSmO5wysTRK1sc3X+FViwjmb1Cy1uWAALFqxWgFsqqNzUfGDBCmD1NxwoD7Be0MKCBau2L66TMLIHhgUrhlXb0ONea6eAYcGKZClB7Za5x90bCAsWrNr6uLYkhgULlvl5rpU27borLFgBrE4RRV/KGikkWLDCWLVtAfqidF+oDQvWEawP6EIsI4sbXCYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
