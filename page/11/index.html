@@ -164,6 +164,148 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-vmd操作笔记"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-08 13:42:19" datetime="2016-03-08T05:42:19.000Z"  itemprop="datePublished">2016-03-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/303.html">VMD操作笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1.保存图片：
+File-&gt;;Render-&gt;;Start Rendering
+
+    
+
+        <a href="/303.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMD/">VMD</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-gromacs续跑问题"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-03 23:28:45" datetime="2016-03-03T15:28:45.000Z"  itemprop="datePublished">2016-03-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/165.html">gromacs续跑问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于我EVO跑了50ns并未平衡，所以还需要继续加跑时间查看，在网上查了一些续跑的资料，现在续跑分享给大家～
+1.重启模拟（未测试）
+适用范围，突然停机等等，有检查点生成的
+1mdrun -s md_0_1.tpr -cpi state.cpt –append _(不能改变核数)
+以上 state.cpt 文件为最新生产的断点文件（ mdrun 会保存另外一个断点文件：_stateprev....
+    
+
+        <a href="/165.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gromacs/">gromacs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-GMXPBSAtool安装与使用经验教程"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-01 12:03:05" datetime="2016-03-01T04:03:05.000Z"  itemprop="datePublished">2016-03-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/295.html">GMXPBSAtool安装与使用经验教程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        由于自己在使用G_mmbps时发现并不是那么准确,反复计算均未得到自己想要的结果,所以想试一下GMXPBSAtool得到的结果,但是安装和调试bug就花费了我一上午的时间,为了帮助大家更加快速的使用,我在这里总结一下经验分享给大家~
+1.Gromacs安装略应该这个不可以使用mpi版本,自己测试也无法完成,若需要用mpi版本应该需要改bash脚本,至少将gromacs命令相应更改(PS:我使...
+    
+
+        <a href="/295.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Modeller多模版-基于配体-Loop环优化[简略教程]"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -497,150 +639,6 @@ http://www.ks.uiuc.edu/Research/vmd/p...
     
 
         <a href="/221.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-02-14 20:21:53" datetime="2016-02-14T12:21:53.000Z"  itemprop="datePublished">2016-02-14</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/214.html">自动的Gromacs拓扑生成工具和比较不同力场的溶剂化自由能</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        原文名称：Automatic GROMACS Topology Generation and Comparisons of Force Fields for Solvation Free Energy Calculations
-接受日期：2014年10月26日
-影响因子:3.32
-文章下载：本地下载
-摘要：现在我们提供一个新的框架，这个框架能够全自动的生成GROMACS拓扑文件对于许多（an...
-    
-
-        <a href="/214.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-02-07 12:21:27" datetime="2016-02-07T04:21:27.000Z"  itemprop="datePublished">2016-02-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/194.html">[读书笔记]NEDD-8活化酶的低敏感性突变与癌症药物MLN4924抑制剂的分子动力学研究</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        杂志：Am J Cancer Res
-影响因子：3.98
-接收：2015年8月  发表：2015年11月
-一篇伊朗的研究论文
-题目：Molecular dynamics simulation on the low sensitivity ofmutants of NEDD-8 activating enzyme forMLN4924 inhibitor as a cancer drug
-全文...
-    
-
-        <a href="/194.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文献/">文献</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-分析待整理"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-01-19 01:59:12" datetime="2016-01-18T17:59:12.000Z"  itemprop="datePublished">2016-01-19</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/杂项/">杂项</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/190.html">分析待整理</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        王新宇@天津&lt;wangdephor@qq.com&gt; 9:07:29@吴萌@上海 ,取残基中两个特定原子间的距离可以吗，比如alpha碳，如果是残基质心的话，我觉得需要自己动手写脚本吴萌@上海(2425896046) 9:10:25我想分析的是两个residue间的距离随时间的变化情况王新宇@天津&lt;wangdephor@qq.com&gt; 9:11:53每个残基好多原子，怎...
-    
-
-        <a href="/190.html" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>

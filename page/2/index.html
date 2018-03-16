@@ -164,6 +164,137 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-g_mmpbsa参数注释"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-01-10 22:23:09" datetime="2018-01-10T14:23:09.000Z"  itemprop="datePublished">2018-01-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/17.html">g_mmpbsa之参数注释</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白配体测亲和力很有用的方法。g_mmpbsa是一个针对GROMACS程序使用的MM/PBSA方法，最近在群里讨论非常多，最近一个膜蛋白体系使用该方法做出的结果发现一些问题，最近在找问题，所以先把g_mmpbsa的参数进行了研读，在这里分享给大家。
+极性溶剂化能(Polar Solvation Energy)输入关键字polar1polar ...
+    
+
+        <a href="/17.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-g_mmpbsa简单教程"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-01-10 22:20:09" datetime="2018-01-10T14:20:09.000Z"  itemprop="datePublished">2018-01-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gromacs/">Gromacs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/18.html">g_mmpbsa之简单教程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        MM/PBSA方法是一个非常有用的针对大分子特别是蛋白配体测亲和力很有用的方法。相对于自由能微扰(FEP)和热力学积分(TI),虽然准确度相对较低，但其计算量相对较小，比较适用于生物大分子体系。是一种对MD轨迹进行后处理以估计结合自由能的方法, 计算时会将溶剂视为均匀的连续介质, 并基于力场和隐式的连续介质模型, 对平衡轨迹中的许多帧进行平均, 以考虑温度的影响。其实该教程网上很多地方有，我...
+    
+
+        <a href="/18.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-计算蛋白长宽高"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-01-09 20:25:21" datetime="2018-01-09T12:25:21.000Z"  itemprop="datePublished">2018-01-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/14.html">计算蛋白长宽高</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法：
+1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&#123;print $7&#125;’| sort -n |sed -n ‘1...
+    
+
+        <a href="/14.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Amber模拟绿色荧光蛋白"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -509,163 +640,6 @@ ipython&amp;notebook
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mahotas/">mahotas</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-利用Pymol将周边图像虚化"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-16 20:09:30" datetime="2017-11-16T12:09:30.000Z"  itemprop="datePublished">2017-11-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/7.html">利用Pymol将周边图像虚化</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        FocalBlur是一个Pymol脚本可以创建非常cool的图像，将周边的的图像虚化，更加突出中心的object。虚化图片如下:
-                
-                    
-                    
-                
-                图片1
-            
-使用首先加载FocalBlur脚本:1run ...
-    
-
-        <a href="/7.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-使用python处理TCGA数据库"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-14 09:53:21" datetime="2017-11-14T01:53:21.000Z"  itemprop="datePublished">2017-11-14</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/6.html">使用python得到TCGA表格</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        我们需要提取下面的表格到本地，具体图片如下:
-
-                
-                    
-                    
-                
-                图片1
-            
-我们首先先点击表格右上角的JSON下载为JSON格式(假设保存的为data.json格式)，打开可以发现其数据与表格上的数据是有...
-    
-
-        <a href="/6.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-SMINA教程以CDPK1为例"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-08 15:04:21" datetime="2017-11-08T07:04:21.000Z"  itemprop="datePublished">2017-11-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子对接/">分子对接</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/5.html">SMINA教程以CDPK1为例</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        SMINA教程以CDPK1为例
-原作者:David Ryan Koes翻译:康文渊
-若进行精读建议查看原文以及参考文献，本文是我根据教程快速阅读做的笔记
-
-Q1:我们有autodock vina，为什么还要SMINA？
-A1:SMINA有更加优秀的速度和更加的扩展性
-Q2:用该对接软件有什么优势？
-A2:首先该对接软件为免费/学术免费软件，其次其有非常良好的对接准确度，甚至在商业软件中都为上...
-    
-
-        <a href="/5.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dock/">dock</a></li></ul>
 
     </div>
     
