@@ -62,6 +62,32 @@
   </entry>
   
   <entry>
+    <title>自动化之Pexpect</title>
+    <link href="http://kangsgo.com/28.html"/>
+    <id>http://kangsgo.com/28.html</id>
+    <published>2018-03-21T05:09:30.000Z</published>
+    <updated>2018-03-22T11:02:52.603Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近发现做了很多模拟，但是一些常规分析每次都需要进行查阅，套路化计算，我在想为何不能自动化每次模拟完自动执行一下呢？之前写了一个shell脚本的，现在看起来非常不高级，而且时间久了就会忘记，磨刀不误砍柴工，所以最近粗略的学习了Python自动化运维常用的两个模块，<code>Pexpect</code>和<code>psutil</code>，在这里简单介绍一下。</p></blockquote><h2 id="Pexpect简介"><a href="#Pexpect简介" class="headerlink" title="Pexpect简介"></a>Pexpect简介</h2><p>Pexpect是一个终端自动交互python模块，十分易于上手</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装可以通过pip或者conda，适用版本为Python2.7或者Python3.3以上<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pexpect</div></pre></td></tr></table></figure></p><h3 id="简单使用说明"><a href="#简单使用说明" class="headerlink" title="简单使用说明"></a>简单使用说明</h3><p>其实使用方法在简书的<a href="https://www.jianshu.com/p/cfd163200d12" target="_blank" rel="external">Pexpect 模块使用说明</a>总结的非常好，这里仅做快速简要介绍</p><h4 id="spawn-执行程序"><a href="#spawn-执行程序" class="headerlink" title="spawn() - 执行程序"></a>spawn() - 执行程序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 执行linux命令，返回的为结果</span></div><div class="line">pexpect.spawn(command, args=[], timeout=<span class="number">30</span>,  logfile=<span class="keyword">None</span>, cwd=<span class="keyword">None</span>)</div></pre></td></tr></table></figure><p>参数里面我列了几个觉得很重要的内容，一个是<code>timeout</code>表示等待时间,<code>logfile</code>表示写入的日志文件,<code>cwd</code>表示根目录</p><h4 id="expect-关键字匹配"><a href="#expect-关键字匹配" class="headerlink" title="expect() - 关键字匹配"></a>expect() - 关键字匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 正则匹配输出</span></div><div class="line">expect(pattern, timeout=<span class="number">-1</span>, searchwindowsize=<span class="number">-1</span>, async_=<span class="keyword">False</span>, **kw)</div></pre></td></tr></table></figure><p>匹配后会返回值，若匹配的是一个字符串，匹配到了会返回0,若为一个列表，则匹配到了的话，会定位到列表的第几个关键字，从0开始计算</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expect_loop(self, searcher, timeout=-1, searchwindowsize=-1)</div></pre></td></tr></table></figure><p>用于从标准输入中获取内容，loop这个词代表它会进入一个循环，必须要从标准输入中获取到关键字才会往下继续执行。</p><h4 id="send-发送关键字"><a href="#send-发送关键字" class="headerlink" title="send() -发送关键字"></a>send() -发送关键字</h4><p>其实相当于Shell中<code>echo -e</code>，我感觉</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 发送</span></div><div class="line">send()</div><div class="line"><span class="comment"># 发送加空格</span></div><div class="line">sendlines()</div><div class="line"><span class="comment"># 发送但没有返回值</span></div><div class="line">write()</div><div class="line"><span class="comment"># 发送包含字符串的列表</span></div><div class="line"><span class="comment"># 类似于 write() 命令，只不过接受的是一个字符串列表，</span></div><div class="line"><span class="comment"># writelines() 会向子程序一条一条的发送列表中的元素，</span></div><div class="line"><span class="comment">#但是不会自动在每个元素的最后加上回车换行符。</span></div><div class="line">writelines()</div><div class="line"><span class="comment"># 发送特殊字符，例如Ctrl-G</span></div><div class="line">sendcontrol(<span class="string">'g'</span>)</div></pre></td></tr></table></figure><h4 id="read-返回关键字"><a href="#read-返回关键字" class="headerlink" title="read() - 返回关键字"></a>read() - 返回关键字</h4><p>感觉应用不多<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 返回剩下的所有内容</span></div><div class="line">read() </div><div class="line"><span class="comment"># 返回一行输出</span></div><div class="line">readline()</div><div class="line"><span class="comment"># 返回列表模式的所有输出</span></div><div class="line">readlines()</div></pre></td></tr></table></figure></p><h4 id="控制子程序"><a href="#控制子程序" class="headerlink" title="控制子程序"></a>控制子程序</h4><p>一些对于执行程序的操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 杀死子程序</span></div><div class="line">kill()</div><div class="line"><span class="comment"># 查看是否存活</span></div><div class="line">isalive()</div><div class="line"><span class="comment"># 等待直到子程序退出</span></div><div class="line">wait()</div><div class="line"><span class="comment"># 关闭子程序</span></div><div class="line">close()</div><div class="line"><span class="comment"># 子程序进程</span></div><div class="line">pid</div></pre></td></tr></table></figure></p><h4 id="运行功能"><a href="#运行功能" class="headerlink" title="运行功能"></a>运行功能</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 运行linux命令，返回的为结果</span></div><div class="line">pexpect.run(command, args=[], timeout=<span class="number">30</span>,  logfile=<span class="keyword">None</span>, cwd=<span class="keyword">None</span>)</div></pre></td></tr></table></figure><p>可能大家对<code>run()</code>和<code>spwan()</code>之间的区别很好奇，<code>run()</code>相比<code>spwan()</code>为等待命令完全完成，然后才会返回结果</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;最近发现做了很多模拟，但是一些常规分析每次都需要进行查阅，套路化计算，我在想为何不能自动化每次模拟完自动执行一下呢？之前写了一个shell脚本的，现在看起来非常不高级，而且时间久了就会忘记，磨刀不误砍柴工，所以最近粗略的学习了Python自动化运维
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
+    
+    
+      <category term="自动化" scheme="http://kangsgo.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Chimera补全蛋白缺失结构</title>
     <link href="http://kangsgo.com/26.html"/>
     <id>http://kangsgo.com/26.html</id>
@@ -478,32 +504,6 @@
       
       
         &lt;h2 id=&quot;Python-图像教程&quot;&gt;&lt;a href=&quot;#Python-图像教程&quot; class=&quot;headerlink&quot; title=&quot;Python 图像教程&quot;&gt;&lt;/a&gt;Python 图像教程&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="mahotas" scheme="http://kangsgo.com/tags/mahotas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mahotas安装教程</title>
-    <link href="http://kangsgo.com/8.html"/>
-    <id>http://kangsgo.com/8.html</id>
-    <published>2017-11-25T16:38:23.000Z</published>
-    <updated>2017-11-25T16:56:10.346Z</updated>
-    
-    <content type="html"><![CDATA[<p>hi!各位好久不见，小伙伴们的科研道路是否顺利。<br>我的导师告诉我要讲好故事，才能让人觉得生动有趣，所以我今天想用另外一种方式和大家分享今天发现的一个<strong>大</strong>玩意儿</p><p>故事的开始是我有一张图片，想计算图片里东西的长宽，如果一个一个数，一个个比，那太费劲了，所以就百度了一下，看一下有什么办法解决没有，然后谷歌到了一个python处理细胞细胞核的工具，觉得自己应该能够用的上（后面和大家分享），进一步挖掘发现他是用的<a href="https://github.com/luispedro/mahotas" target="_blank" rel="external">mathotas</a>这个包。</p><p>进一步进入github上发现其作者是如下光头男(luispedro):<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2017/11/lpc2013-small.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>luispedro是一个计算生物科学家（小伙伴们看到这里是否两眼发光），其原来是利用宏基因组分析微生物群体，对其机器学习和数学等打下了非常坚实的基础，现在主要是利用生物图像信息学进行<a href="https://en.wikipedia.org/wiki/Bioimage_informatics" target="_blank" rel="external">细胞亚定位分析</a>，现在其工作于<a href="http://murphylab.web.cmu.edu/" target="_blank" rel="external">Murphy Lab</a></p><p>所以小伙伴们有细胞等图像处理的时候可以关注一下这个包，我在后期也会分享一些包的应用给大家。今天仅仅简答介绍一下。</p><p>Mahotas 是一个快速的视觉算法的Python包，其主要是用C++写成，速度甚至超过了numpy数组计算操作。</p><p>现在有如下算法:</p><ul><li>watershed</li><li>convex points calculation</li><li>hit &amp; miss, thinning</li><li>Zernike &amp; Haralick, LBP, and TAS features</li><li>Speeded-Up Robust Features(SURF), a form of local features.</li><li>thresholding</li><li>convolution</li><li>Sobel edge detection</li><li>spline interpolation</li><li>SLIC super pixes</li></ul><p>现在Mahotas有超过100种的图像程序处理功能和计算机视觉功能，且现在还在增加。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>言归正传我，我们简单介绍一下安装方法，最简单的安装方法就是使用conda安装，其中conda加强包（conda-forge）具有mahots<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</div><div class="line">conda install mahotas</div></pre></td></tr></table></figure></p><p>其他方法包括pip安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mahotas</div></pre></td></tr></table></figure></p><p>windows 还可以进行包安装，地址为:<br><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></p><p>不过还是建议用conda安装，是否安装成功仅需要<code>import mahotas as mh</code>导入一下看一下是否报错即可</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;hi!各位好久不见，小伙伴们的科研道路是否顺利。&lt;br&gt;我的导师告诉我要讲好故事，才能让人觉得生动有趣，所以我今天想用另外一种方式和大家分享今天发现的一个&lt;strong&gt;大&lt;/strong&gt;玩意儿&lt;/p&gt;
-&lt;p&gt;故事的开始是我有一张图片，想计算图片里东西的长宽，如果一个一个
       
     
     </summary>
