@@ -164,6 +164,55 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-ProDy笔记[未完成]"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-09-19 00:45:37" datetime="2016-09-18T16:45:37.000Z"  itemprop="datePublished">2016-09-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/489.html">ProDy笔记[未完成]</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        教程实例文件：ZIP
+&nbsp;
+
+    
+
+        <a href="/489.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-[译]coMD项目简介"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -541,55 +590,6 @@ fpocket基本使用
     
 
         <a href="/443.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-自用脚本分享"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-09-16 16:05:29" datetime="2016-09-16T08:05:29.000Z"  itemprop="datePublished">2016-09-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/440.html">自用脚本分享</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        计算G_mmpbsa1234567891011121314151617#!/bin/bash# author:kangsgo# method:# loop 后面为文件夹变量,表示进入哪个文件夹# trj_125-150ns.xtc 轨迹变量for loop in achmd bnf318 qna tcdddoecho "开始执行!";echo "进入第一个目录:$loop!";cd /home/gromacs/shiyan/$loopecho "进行一步计算"echo -e "1\n13\n"|g_mmpbsa -f trj_125-150ns.xtc -s npt.tpr -n index.ndx -i canshu/pbsa.mdp -pdie 2 -pbsa -decompecho "开始能量拆分"python3 MmPbSaStat.py -m energy_MM.xvg -p polar.xvg -a apolar.xvgpython3 MmPbSaDecomp.py -bs -nbs 2000 -m contrib_MM.dat -p contrib_pol.dat -a contrib_apol.datecho "完成"done
-&nbsp;
-计算rmsf，并且处理轨迹
-    
-
-        <a href="/440.html" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
