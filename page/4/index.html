@@ -113,6 +113,13 @@
               </a>
             </li>
         
+            <li class="waves-block waves-effect">
+              <a href="http://Baidu.com.ru/"  >
+                <i class="icon icon-lg icon-bash"></i>
+                乐思
+              </a>
+            </li>
+        
       </ul>
     </div>
   </div>
@@ -162,6 +169,47 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-shell脚本读取PDB文件中的长宽高"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-29 12:41:15" datetime="2017-10-29T04:41:15.000Z"  itemprop="datePublished">2017-10-29</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/840.html">shell脚本读取PDB文件中的长宽高</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        123456789#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&#123;print $7&#125;’| sort -n |sed -n ‘1p;$p’#y轴grep ^ATOM $1 | awk ‘&#123;print $8&#125;’| sort -n |sed -n ‘1p;$p’#z轴grep ^ATOM $1 ...
+    
+
+        <a href="/840.html" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-Dock6安装教程"
@@ -599,55 +647,6 @@ http://ambermd.org/tutorials/basic/tutorial5/
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/amber/">amber</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-[转载]Gromacs中添加CHARMM力场"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-09-07 20:05:36" datetime="2017-09-07T12:05:36.000Z"  itemprop="datePublished">2017-09-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/725.html">[转载]Gromacs中添加CHARMM力场</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        转自贾壮老师博客:http://blog.sciencenet.cn/blog-794272-718384.html
-待整理
-CHARMM力场提供了很多生物分子的力场参数，如蛋白质、脂质、核酸等，Gromacs中自带了CHARMM27力场，当然也可在Gromacs官网上下载到已转换成Gromacs支持的CHARMM36力场。不过使用Gromacs做MD模拟的朋友如果想模拟一个Gromacs中...
-    
-
-        <a href="/725.html" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
 
     </div>
     
