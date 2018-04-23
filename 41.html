@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://wbarnett.us/tutorials/1_tip4pew_water/eql2-press.png">
 <meta property="og:image" content="http://wbarnett.us/tutorials/1_tip4pew_water/water1.png">
 <meta property="og:image" content="http://wbarnett.us/tutorials/1_tip4pew_water/water2.png">
-<meta property="og:updated_time" content="2018-04-23T07:47:17.396Z">
+<meta property="og:updated_time" content="2018-04-23T07:48:47.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gromacs教程1-水">
 <meta name="twitter:description" content="原文：James (Wes) Barnett翻译：谷歌/康文渊-湖南大学 在本入门教程中，我将向您展示如何创建一个盒子的水，并在恒定的温度和压力下对其进行简单模拟。 最后我们会找出水的密度。 设置每个GROMACS模拟需要三个基本文件：结构（.gro / .pdb），拓扑（.top）和参数（.mdp）。 结构文件包含系统中每个原子位点的笛卡尔坐标。 该拓扑文件包含有关每个原子位点与其他原子位点进行">
@@ -145,7 +145,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -271,9 +271,87 @@
 <p>对于第一次最小化，我们使用最陡峭下降算法，通过设置<code>integrator = steep</code>来最小化系统能量，最大步长为1000步（<code>nsteps = 1000</code>）。如果在此之前能量收敛，则最小化将停止。另外我们进行<code>define = -DFLEXIBLE</code>。这让GROMACS知道使用灵活的水，因为默认情况下所有的水模型都是使用<code>SETTLE</code>算法为刚性模型。在我们拥有的水模型的拓扑文件中，有一个if语句查找要定义的<code>FLEXIBLE</code>变量。第一次最小化的目的是使分子处于良好的起始位置，这样我们就可以无任何错误地打开<code>SETTLE</code>。</p>
 <p>在第二个最小化中，我们只需删除<code>define = -DFLEXIBLE</code>并将最大步数增加到50,000。</p>
 <p>最后三部分-两个平衡和生产-都使用<code>integrator = md</code>。此外，通过设置<code>dt=0.002</code>来使用2fs时间步长。</p>
-<p>对于第一个平衡步骤，有几点需要注意。我们正在添加如下所示的几个参数：<br>|–参数–|–值–|–解释–|<br>|—|—|—|<br>|gen-vel|yes|根据Maxwell-Boltzmann分布为每个原子位点生成速度。<strong>只为您的第一个平衡步骤生成速度</strong>。这使我们接近我们将耦合系统的温度。|<br>|gen-temp|298.15|K中的温度用于<code>gen-vel</code>。 除非你正在做一些奇怪的/有趣的事情，否则这应该与ref-t相同。|<br>|tcoupl|Nose-Hoover    |用于温度耦合的算法。 Nose-Hoover 为经典温度耦合算法。|<br>|tc-grps|System|要结合哪些组。 你可以将不同的原子组分开，但我们只需要耦合整个系统。|<br>|tau-t|2.0|耦合的时间常数。 详情请参阅手册。|<br>|ref-t|298.15|以K为单位的温度。|<br>|nhchainlength|1|Leap-frog integrator 只支持1，但默认情况下这是10。这是设置，所以GROMACS不会发出警告。|</p>
+<p>对于第一个平衡步骤，有几点需要注意。我们正在添加如下所示的几个参数：</p>
+<table>
+<thead>
+<tr>
+<th>–参数–</th>
+<th>–值–</th>
+<th>–解释–</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gen-vel</td>
+<td>yes</td>
+<td>根据Maxwell-Boltzmann分布为每个原子位点生成速度。<strong>只为您的第一个平衡步骤生成速度</strong>。这使我们接近我们将耦合系统的温度。</td>
+</tr>
+<tr>
+<td>gen-temp</td>
+<td>298.15</td>
+<td>K中的温度用于<code>gen-vel</code>。 除非你正在做一些奇怪的/有趣的事情，否则这应该与ref-t相同。</td>
+</tr>
+<tr>
+<td>tcoupl</td>
+<td>Nose-Hoover</td>
+<td>用于温度耦合的算法。 Nose-Hoover 为经典温度耦合算法。</td>
+</tr>
+<tr>
+<td>tc-grps</td>
+<td>System</td>
+<td>要结合哪些组。 你可以将不同的原子组分开，但我们只需要耦合整个系统。</td>
+</tr>
+<tr>
+<td>tau-t</td>
+<td>2.0</td>
+<td>耦合的时间常数。 详情请参阅手册。</td>
+</tr>
+<tr>
+<td>ref-t</td>
+<td>298.15</td>
+<td>以K为单位的温度。</td>
+</tr>
+<tr>
+<td>nhchainlength</td>
+<td>1</td>
+<td>Leap-frog integrator 只支持1，但默认情况下这是10。这是设置，所以GROMACS不会发出警告。</td>
+</tr>
+</tbody>
+</table>
 <p>第一次平衡的关键是在加压耦合之前让我们达到正确的温度（298.15 K）。 同时添加温度和压力耦合可能会导致系统不稳定并发生崩溃。 我们不想在一开始就震惊我们的系统。 另外，我们设置了<code>nsteps = 50000</code>，所以以2fs的时间步长，这意味着它将运行100ps。 这对我们在这里所做的工作是足够的，但是在更大/更复杂的系统中，您可能需要更长时间的平衡。</p>
-<p>第二个平衡增加了压力耦合。 请注意，我们并没有再次产生速度，因为那样会取消我们刚刚做的一些工作。 我们还为约束设置了<code>continuation = yes</code>，因为我们从第一次平衡开始继续进行模拟。 这部分将运行1ns。 同样，对于其他系统，这可能需要更长一些。<br>|–参数–|–值–|–解释–|<br>|—|—|—|<br>|pcoupl|Parrinello-Rahman|用于压力耦合的算法。 Parrinello-Rahman在与Nose-Hoover一起使用时正确地产生了等压等温线。|<br>|tau-p|2.0|耦合的时间常数。 详情请参阅手册。|<br>|ref-p|1.0|压力耦合常数|<br>|compressibility|4.46e-5|系统压缩系数|<br>对于生产运行，除了输出更多数据并运行10 ns外，所有内容与上次平衡完全相同。</p>
+<p>第二个平衡增加了压力耦合。 请注意，我们并没有再次产生速度，因为那样会取消我们刚刚做的一些工作。 我们还为约束设置了<code>continuation = yes</code>，因为我们从第一次平衡开始继续进行模拟。 这部分将运行1ns。 同样，对于其他系统，这可能需要更长一些。</p>
+<table>
+<thead>
+<tr>
+<th>–参数–</th>
+<th>–值–</th>
+<th>–解释–</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pcoupl</td>
+<td>Parrinello-Rahman</td>
+<td>用于压力耦合的算法。 Parrinello-Rahman在与Nose-Hoover一起使用时正确地产生了等压等温线。</td>
+</tr>
+<tr>
+<td>tau-p</td>
+<td>2.0</td>
+<td>耦合的时间常数。 详情请参阅手册。</td>
+</tr>
+<tr>
+<td>ref-p</td>
+<td>1.0</td>
+<td>压力耦合常数</td>
+</tr>
+<tr>
+<td>compressibility</td>
+<td>4.46e-5</td>
+<td>系统压缩系数</td>
+</tr>
+</tbody>
+</table>
+<p>对于生产运行，除了输出更多数据并运行10 ns外，所有内容与上次平衡完全相同。</p>
 <h2 id="模拟"><a href="#模拟" class="headerlink" title="模拟"></a>模拟</h2><p>我们现在有了我们需要的所有文件来运行模拟的每个部分。 每个部分通常运行<em>gmx grompp</em>，以将我们现在具有的三个文件（.gro，.top和.mdp）预处理为.tpr文件（有时也称为拓扑文件）。</p>
 <h3 id="最小化"><a href="#最小化" class="headerlink" title="最小化"></a>最小化</h3><p>首先，通过执行以下操作来执行我们的两个最小化步骤：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ gmx grompp -f mdp/min.mdp -o min -pp min -po min</div><div class="line">$ gmx mdrun -deffnm min</div><div class="line"></div><div class="line">$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min</div><div class="line">$ gmx mdrun -deffnm min2</div></pre></td></tr></table></figure></p>
 <p>在每个部分，我们都使用<code>-f</code>标志在.mdp文件中读取。默认情况下，如果未指定<code>-c</code>和<code>-p</code>标志，GROMACS将使用<code>conf.gro</code>和<code>topol.top</code>作为结构和拓扑文件。此外，我们正在输出处理后的拓扑文件<code>-pp</code>和mdp文件<code>-po</code>。这些是可选的，但可能值得一看，尤其是处理过的mdp文件，因为它已被评论。</p>
@@ -341,7 +419,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2018-04-23T07:47:17.396Z" itemprop="dateUpdated">2018-04-23 15:47:17</time>
+    Last updated: <time datetime="2018-04-23T07:48:47.783Z" itemprop="dateUpdated">2018-04-23 15:48:47</time>
 </span><br>
 
 
@@ -504,7 +582,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
