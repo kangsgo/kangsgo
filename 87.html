@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程Gromacs教程 GROMACS教程1-水 GROMACS之水中部分載脂蛋白 LigParGen:配体OPLS/CM1A力场在线生成 gromacs下蛋白-配体复合物模拟[GAFF] gromacs中构建非标准氨基酸残基力场 gro">
+    <meta name="description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程1.2.1 James (Wes) Barnett教程Gromacs教程 GROMACS教程1-水 GROMACS教程2-水中的单个甲烷 1.2.2 简单教程GROMACS之水中部分載脂蛋白 1.2.3 蛋白配体教程LigParGen">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系列笔记整理">
 <meta property="og:url" content="http://kangsgo.com/87.html">
 <meta property="og:site_name" content="小康博客">
-<meta property="og:description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程Gromacs教程 GROMACS教程1-水 GROMACS之水中部分載脂蛋白 LigParGen:配体OPLS/CM1A力场在线生成 gromacs下蛋白-配体复合物模拟[GAFF] gromacs中构建非标准氨基酸残基力场 gro">
+<meta property="og:description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程1.2.1 James (Wes) Barnett教程Gromacs教程 GROMACS教程1-水 GROMACS教程2-水中的单个甲烷 1.2.2 简单教程GROMACS之水中部分載脂蛋白 1.2.3 蛋白配体教程LigParGen">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-04-23T07:50:50.972Z">
+<meta property="og:updated_time" content="2018-04-25T11:42:47.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系列笔记整理">
-<meta name="twitter:description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程Gromacs教程 GROMACS教程1-水 GROMACS之水中部分載脂蛋白 LigParGen:配体OPLS/CM1A力场在线生成 gromacs下蛋白-配体复合物模拟[GAFF] gromacs中构建非标准氨基酸残基力场 gro">
+<meta name="twitter:description" content="1.Gromacs笔记整理1.1.安装篇Gromacs2018 详细安装  (兼容gromacs5.X版本) Gromacs CUDA版一键安装脚本 1.2.核心教程1.2.1 James (Wes) Barnett教程Gromacs教程 GROMACS教程1-水 GROMACS教程2-水中的单个甲烷 1.2.2 简单教程GROMACS之水中部分載脂蛋白 1.2.3 蛋白配体教程LigParGen">
     
         <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
     
@@ -138,7 +138,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -177,7 +177,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Gromacs笔记整理"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.Gromacs笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-安装篇"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1.安装篇</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-核心教程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2.核心教程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-1-g-mmpbsa教程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.2.1 g_mmpbsa教程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-小技巧合集"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1.3.小技巧合集</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Rosetta笔记整理"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.Rosetta笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-安装篇"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1.安装篇</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-完整教程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2.完整教程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Pymol笔记整理"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.Pymol笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-基本手册"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 基本手册</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-笔记"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3 笔记</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Gromacs笔记整理"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.Gromacs笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-安装篇"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1.安装篇</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-核心教程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2.核心教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-1-James-Wes-Barnett教程"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.2.1 James (Wes) Barnett教程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-2-简单教程"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">1.2.2 简单教程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-3-蛋白配体教程"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">1.2.3 蛋白配体教程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-4-g-mmpbsa教程"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">1.2.4 g_mmpbsa教程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-5-其他不完善教程"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">1.2.5 其他不完善教程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-小技巧合集"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3.小技巧合集</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Rosetta笔记整理"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.Rosetta笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-安装篇"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1.安装篇</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-完整教程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2.完整教程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Pymol笔记整理"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.Pymol笔记整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-基本手册"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 基本手册</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-笔记"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3 笔记</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -202,22 +202,30 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="1-Gromacs笔记整理"><a href="#1-Gromacs笔记整理" class="headerlink" title="1.Gromacs笔记整理"></a>1.Gromacs笔记整理</h2><h3 id="1-1-安装篇"><a href="#1-1-安装篇" class="headerlink" title="1.1.安装篇"></a>1.1.安装篇</h3><p><a href="http://kangsgo.com/31.html">Gromacs2018 详细安装</a>  (兼容gromacs5.X版本)</p>
 <p><a href="http://kangsgo.com/577.html">Gromacs CUDA版一键安装脚本</a></p>
-<h3 id="1-2-核心教程"><a href="#1-2-核心教程" class="headerlink" title="1.2.核心教程"></a>1.2.核心教程</h3><p><a href="http://kangsgo.com/42.html">Gromacs教程</a></p>
+<h3 id="1-2-核心教程"><a href="#1-2-核心教程" class="headerlink" title="1.2.核心教程"></a>1.2.核心教程</h3><h4 id="1-2-1-James-Wes-Barnett教程"><a href="#1-2-1-James-Wes-Barnett教程" class="headerlink" title="1.2.1 James (Wes) Barnett教程"></a>1.2.1 James (Wes) Barnett教程</h4><p><a href="http://kangsgo.com/42.html">Gromacs教程</a></p>
 <p><a href="http://kangsgo.com/41.html">GROMACS教程1-水</a></p>
-<p><a href="http://kangsgo.com/670.html">GROMACS之水中部分載脂蛋白</a></p>
-<p><a href="http://kangsgo.com/681.html">LigParGen:配体OPLS/CM1A力场在线生成</a></p>
+<p><a href="http://kangsgo.com/41.html">GROMACS教程2-水中的单个甲烷</a></p>
+<h4 id="1-2-2-简单教程"><a href="#1-2-2-简单教程" class="headerlink" title="1.2.2 简单教程"></a>1.2.2 简单教程</h4><p><a href="http://kangsgo.com/670.html">GROMACS之水中部分載脂蛋白</a></p>
+<h4 id="1-2-3-蛋白配体教程"><a href="#1-2-3-蛋白配体教程" class="headerlink" title="1.2.3 蛋白配体教程"></a>1.2.3 蛋白配体教程</h4><p><a href="http://kangsgo.com/681.html">LigParGen:配体OPLS/CM1A力场在线生成</a></p>
 <p><a href="http://kangsgo.com/94.html">gromacs下蛋白-配体复合物模拟[GAFF]</a></p>
 <p><a href="http://kangsgo.com/13.html">gromacs中构建非标准氨基酸残基力场</a></p>
 <p><a href="http://kangsgo.com/156.html">gromacs下蛋白配体复合物分析</a></p>
-<p><a href="http://kangsgo.com/694.html">Gromacs 5.1.2做拉伸动力学的几点笔记</a></p>
-<h3 id="1-2-1-g-mmpbsa教程"><a href="#1-2-1-g-mmpbsa教程" class="headerlink" title="1.2.1 g_mmpbsa教程"></a>1.2.1 g_mmpbsa教程</h3><p><a href="http://kangsgo.com/18.html">g_mmpbsa之简单教程/结合自由能计算</a></p>
+<h4 id="1-2-4-g-mmpbsa教程"><a href="#1-2-4-g-mmpbsa教程" class="headerlink" title="1.2.4 g_mmpbsa教程"></a>1.2.4 g_mmpbsa教程</h4><p><a href="http://kangsgo.com/18.html">g_mmpbsa之简单教程/结合自由能计算</a></p>
 <p><a href="http://kangsgo.com/17.html">g_mmpbsa之参数注释</a></p>
 <p><a href="http://kangsgo.com/295.html">GMXPBSAtool安装与使用经验教程</a></p>
+<h4 id="1-2-5-其他不完善教程"><a href="#1-2-5-其他不完善教程" class="headerlink" title="1.2.5 其他不完善教程"></a>1.2.5 其他不完善教程</h4><p><a href="http://kangsgo.com/694.html">Gromacs 5.1.2做拉伸动力学的几点笔记</a></p>
 <h3 id="1-3-小技巧合集"><a href="#1-3-小技巧合集" class="headerlink" title="1.3.小技巧合集"></a>1.3.小技巧合集</h3><p><a href="http://kangsgo.com/106.html">Gromacs共轭梯度法mdp设置</a></p>
-<h2 id="2-Rosetta笔记整理"><a href="#2-Rosetta笔记整理" class="headerlink" title="2.Rosetta笔记整理"></a>2.Rosetta笔记整理</h2><h3 id="2-1-安装篇"><a href="#2-1-安装篇" class="headerlink" title="2.1.安装篇"></a>2.1.安装篇</h3><h3 id="2-2-完整教程"><a href="#2-2-完整教程" class="headerlink" title="2.2.完整教程"></a>2.2.完整教程</h3><p><a href="http://kangsgo.com/647.html">Rosetta蛋白蛋白对接</a><br><a href="http://kangsgo.com/657.html">Rosetta从头结构预测</a></p>
+<h2 id="2-Rosetta笔记整理"><a href="#2-Rosetta笔记整理" class="headerlink" title="2.Rosetta笔记整理"></a>2.Rosetta笔记整理</h2><h3 id="2-1-安装篇"><a href="#2-1-安装篇" class="headerlink" title="2.1.安装篇"></a>2.1.安装篇</h3><h3 id="2-2-完整教程"><a href="#2-2-完整教程" class="headerlink" title="2.2.完整教程"></a>2.2.完整教程</h3><p><a href="http://kangsgo.com/647.html">Rosetta蛋白蛋白对接</a></p>
+<p><a href="http://kangsgo.com/657.html">Rosetta从头结构预测</a></p>
 <h2 id="3-Pymol笔记整理"><a href="#3-Pymol笔记整理" class="headerlink" title="3.Pymol笔记整理"></a>3.Pymol笔记整理</h2><h3 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h3><p><a href="http://kangsgo.com/47.html">Pymol安装与问题解决</a></p>
 <h3 id="3-2-基本手册"><a href="#3-2-基本手册" class="headerlink" title="3.2 基本手册"></a>3.2 基本手册</h3><p><a href="http://kangsgo.com/706.html">Pymol选择速查手册</a></p>
-<h3 id="3-3-笔记"><a href="#3-3-笔记" class="headerlink" title="3.3 笔记"></a>3.3 笔记</h3><p><a href="http://kangsgo.com/68.html">Pymol插件：Autodock/Vina</a><br><a href="http://kangsgo.com/181.html">[转]pymol小技巧-选择配体周围氨基酸残基</a><br><a href="http://kangsgo.com/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a><br><a href="http://kangsgo.com/714.html">Pymol小脚本之Rotkit</a><br><a href="http://kangsgo.com/7.html">利用Pymol将周边图像虚化</a><br><a href="http://kangsgo.com/23.html">Pymol核酸绘图</a><br><a href="http://kangsgo.com/22.html">Pymol渲染（Ray）笔记</a></p>
+<h3 id="3-3-笔记"><a href="#3-3-笔记" class="headerlink" title="3.3 笔记"></a>3.3 笔记</h3><p><a href="http://kangsgo.com/68.html">Pymol插件：Autodock/Vina</a></p>
+<p><a href="http://kangsgo.com/181.html">[转]pymol小技巧-选择配体周围氨基酸残基</a></p>
+<p><a href="http://kangsgo.com/243.html">使用Pymol的Modevectors脚本绘画豪猪图</a></p>
+<p><a href="http://kangsgo.com/714.html">Pymol小脚本之Rotkit</a></p>
+<p><a href="http://kangsgo.com/7.html">利用Pymol将周边图像虚化</a></p>
+<p><a href="http://kangsgo.com/23.html">Pymol核酸绘图</a></p>
+<p><a href="http://kangsgo.com/22.html">Pymol渲染（Ray）笔记</a></p>
 
         </div>
 
@@ -225,7 +233,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-04-23T07:50:50.972Z" itemprop="dateUpdated">2018-04-23 15:50:50</time>
+    最后更新时间：<time datetime="2018-04-25T11:42:47.858Z" itemprop="dateUpdated">2018-04-25 19:42:47</time>
 </span><br>
 
 
@@ -386,7 +394,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
