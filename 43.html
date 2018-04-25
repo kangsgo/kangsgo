@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Gromacs教程2-水中的单个甲烷 | 小康博客 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Gromacs">
+    <meta name="description" content="原文：James (Wes) Barnett翻译：谷歌/康文渊-湖南大学 在本教程中，我将向您展示如何在一个盒子的TIP4PEW水中创建一个包含一个OPLS力场甲烷的系统。 ##设置和以前一样，我们需要一个结构文件，一个拓扑文件和参数文件。我们将使用GROMACS工具gmx pdb2gmx从pdb文件生成拓扑。 用pdb2gmx设置残基对于这个分子，我们将使用OPLS力场。 力场位于顶层力场目录（">
+<meta name="keywords" content="Gromacs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gromacs教程2-水中的单个甲烷">
+<meta property="og:url" content="http://kangsgo.com/43.html">
+<meta property="og:site_name" content="小康博客">
+<meta property="og:description" content="原文：James (Wes) Barnett翻译：谷歌/康文渊-湖南大学 在本教程中，我将向您展示如何在一个盒子的TIP4PEW水中创建一个包含一个OPLS力场甲烷的系统。 ##设置和以前一样，我们需要一个结构文件，一个拓扑文件和参数文件。我们将使用GROMACS工具gmx pdb2gmx从pdb文件生成拓扑。 用pdb2gmx设置残基对于这个分子，我们将使用OPLS力场。 力场位于顶层力场目录（">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://wbarnett.us/tutorials/2_methane_in_water/rdf.png">
+<meta property="og:updated_time" content="2018-04-25T11:26:08.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gromacs教程2-水中的单个甲烷">
+<meta name="twitter:description" content="原文：James (Wes) Barnett翻译：谷歌/康文渊-湖南大学 在本教程中，我将向您展示如何在一个盒子的TIP4PEW水中创建一个包含一个OPLS力场甲烷的系统。 ##设置和以前一样，我们需要一个结构文件，一个拓扑文件和参数文件。我们将使用GROMACS工具gmx pdb2gmx从pdb文件生成拓扑。 用pdb2gmx设置残基对于这个分子，我们将使用OPLS力场。 力场位于顶层力场目录（">
+<meta name="twitter:image" content="http://wbarnett.us/tutorials/2_methane_in_water/rdf.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liangtian.me/"  >
+                <i class="icon icon-lg icon-liantian"></i>
+                LiangTian
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://Baidu.com.ru/"  >
+                <i class="icon icon-lg icon-bash"></i>
+                乐思
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Gromacs教程2-水中的单个甲烷</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Gromacs教程2-水中的单个甲烷</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-25T10:32:12.000Z" itemprop="datePublished" class="page-time">
+  2018-04-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用pdb2gmx设置残基"><span class="post-toc-number">1.</span> <span class="post-toc-text">用pdb2gmx设置残基</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建pdb文件并且运行gmx-pdb2gmx"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建pdb文件并且运行gmx pdb2gmx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#溶剂体系"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">溶剂体系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数文件"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">参数文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模拟"><span class="post-toc-number">3.</span> <span class="post-toc-text">模拟</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析"><span class="post-toc-number">4.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">6.</span> <span class="post-toc-text">问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Gromacs教程2-水中的单个甲烷"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Gromacs教程2-水中的单个甲烷</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-25 18:32:12" datetime="2018-04-25T10:32:12.000Z"  itemprop="datePublished">2018-04-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>原文：James (Wes) Barnett<br>翻译：谷歌/康文渊-湖南大学</p>
+<p>在本教程中，我将向您展示如何在一个盒子的TIP4PEW水中创建一个包含一个OPLS力场甲烷的系统。</p>
+<p>##设置<br>和以前一样，我们需要一个结构文件，一个拓扑文件和参数文件。我们将使用GROMACS工具<em>gmx pdb2gmx</em>从pdb文件生成拓扑。</p>
+<h2 id="用pdb2gmx设置残基"><a href="#用pdb2gmx设置残基" class="headerlink" title="用pdb2gmx设置残基"></a>用pdb2gmx设置残基</h2><p>对于这个分子，我们将使用OPLS力场。 力场位于顶层力场目录（可能是<code>/usr/share/gromacs/top</code>或类似的东西）。</p>
+<p>如果您不确定您的GROMACS安装位置在哪里，可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> $ GMXPREFIX</div></pre></td></tr></table></figure>
+<p>如果您sourcing 了GROMACS配置文件，则会为您提供安装位置。在该目录中找到<code>share/gromacs/top</code>并进入它（例如，如果GMXPREFIX是<code>/usr</code>，则转到<code>/usr/share/gromacs/top</code>）。或者你可以简单地转到<code>$GMXDATA/top</code>。</p>
+<p>我们来看看force field目录的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> oplsaa.ff</div><div class="line">$ ls</div></pre></td></tr></table></figure>
+<p>你会看到几个文件，但我们现在只对其中的一些文件感兴趣。注意<code>forcefield.itp</code>。这是模拟中使用的主要文件。在里面你会看到一个[<code>defaults</code>]部分以及包含两个其他文件 - 一个用于键联系，另一个用于非键联系。我们也对<code>atomtypes.atp</code>感兴趣，它给出了难以理解的<code>opls _ ####</code>术语的描述以及<code>aminoacids.rtp</code>，它们给出了用于<em>gmx pdb2gmx</em>命令能够识别的氨基酸残基列表。</p>
+<p>用你的文本编辑器打开<code>atomtypes.atp</code>,比如用vim打开它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim atomtypes.atp</div></pre></td></tr></table></figure>
+<p>转到<code>opls_138</code>的行。请注意，注释是否为<code>alkane CH4</code>。但是，请注意第二列中的mass - 这只是CH4组的碳，所以我们也需要氢。这是一个“全原子”模型 - 每个原子都被表示出来。相应的氢是<code>opls_140</code>。您可能还需要查看<a href="http://pubs.acs.org/doi/suppl/10.1021/ja9621760/suppl_file/ja11225.pdf" target="_blank" rel="external">OPLS force field 论文</a>的支持信息。论文中的参数应该与我们刚刚看到的参数相匹配。现在记下这两种原子类型并关闭文件。</p>
+<p>让我们来看看这两种原子类型的ffnonbonded.itp：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ grep opls_138 ffnonbonded.itp</div><div class="line">$ grep opls_140 ffnonbonded.itp</div></pre></td></tr></table></figure>
+<p>在这里，我们看到原子类型的名称，键类型，质量，电荷，ptype，sigma和epsilon。记下每个类型的电荷 - 我们将需要它来构建我们新的氨基酸残基。作为一个方面说明，<code>ffbonded.itp</code>将使用键类型，键类型和二面角类型。</p>
+<p>在继续之前，您可能希望将您的顶级力场目录复制到别的地方，例如您的主目录，因为我们将修改它并添加一些文件。将其复制到您的主目录中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cp -r <span class="variable">$GMXDATA</span>/top <span class="variable">$HOME</span>/GMXLIB</div></pre></td></tr></table></figure>
+<p>你可能需要root权限执行它。现在将<code>$ GMXLIB</code>环境变量更改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> GMXLIB = $ HOME/GMXLIB</div></pre></td></tr></table></figure>
+<p>将上述内容添加到<code>.bash_profile</code>中以使其成为永久性的,然后进行执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> $ GMXLIB</div></pre></td></tr></table></figure>
+<p>您现在处于刚刚拷贝的副本中，所有模拟将使用该目录而不是GROMACS默认目录中提供的目录。</p>
+<p>现在进入<code>oplsaa.ff</code>并打开<code>aminoacids.rtp</code>。您会注意到文件中已有多个残基。我们将为我们的甲烷添加一个名为<code>methane.rtp</code>的新文件，其中包含我们称之为CH4的残基。关闭<code>aminoacids.rtp</code>。我们需要告诉<em>gmx pdb2gmx</em>我们的残差文件中原子的原子和键。我们也可以告诉它角度，但是我们会将它们排除在外，因为<em>gmx pdb2gmx</em>会为我们解决这个问题。现在需要在<code>oplsaa.ff</code>目录中创建以下内容并另存为<code>methane.rtp</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[ bondedtypes ]</div><div class="line">; bonds  angles  dihedrals  impropers all_dihedrals nrexcl HH14 RemoveDih</div><div class="line">  1      1       3          1         1             3      1    0</div><div class="line"></div><div class="line">; Methane</div><div class="line">[ CH4 ]</div><div class="line"> [ atoms ]</div><div class="line">   C      opls_138    -0.240     1</div><div class="line">   H1     opls_140     0.060     1</div><div class="line">   H2     opls_140     0.060     1</div><div class="line">   H3     opls_140     0.060     1</div><div class="line">   H4     opls_140     0.060     1</div><div class="line"> [ bonds ]</div><div class="line">   C      H1</div><div class="line">   C      H2</div><div class="line">   C      H3</div><div class="line">   C      H4</div></pre></td></tr></table></figure>
+<p>关于上述文件的一些注意事项：[<code>bondedtypes</code>]来自<code>aminoacids.rtp</code>并且是必需的。 在[<code>atoms</code>]下的名字可以随便命名，但是需要匹配稍后构建pdb文件中的名字。 注意在第一列中我们给出了原子名称，然后我们给出了原子类型，电荷，然后是电荷组。 在[<code>bonds</code>]下，我们只是告诉它每个原子如何连接到其他原子。 在这种情况下，<code>C</code>与每个氢都有连接。我们可以选择添加[<code>angles</code>]，但是如前所述，GROMACS会为我们搞定。 现在关闭文件。 有关这方面的更多信息，请参阅第5.6节。</p>
+<h2 id="创建pdb文件并且运行gmx-pdb2gmx"><a href="#创建pdb文件并且运行gmx-pdb2gmx" class="headerlink" title="创建pdb文件并且运行gmx pdb2gmx"></a>创建pdb文件并且运行<em>gmx pdb2gmx</em></h2><p>现在我们准备创建pdb文件。 有几个程序可以创建分子结构文件。例如 <a href="http://avogadro.cc/wiki/Main_Page" target="_blank" rel="external">Avogadro</a>。 另一种方法是使用AmberTools软件包中的“xleap”。 将这个文件保存为methane.pdb。 你的文件应该看起来像这样。 将其保存在您的主目录中的某个位置，但不在<code>$ GMXLIB</code>中的任何位置。</p>
+<p>在<code>methane.pdb</code>中将LIG更改为CH4。还要将第一个H更改为H1，将第二个更改为H2等等。PDB文件是固定格式，因此请将每列的开头保留在相同的位置。CONNECT和MASTER记录也不需要，因此可以删除它们。同时继续并将<code>UNNAMED</code>更改为<code>METHANE</code>。你修改过的文件应该是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">COMPND    METHANE</div><div class="line">AUTHOR    GENERATED BY OPEN BABEL 2.3.2</div><div class="line">HETATM    1  C   CH4     1      -0.370   0.900   0.000  1.00  0.00           C  </div><div class="line">HETATM    2  H1  CH4     1       0.700   0.900   0.000  1.00  0.00           H  </div><div class="line">HETATM    3  H2  CH4     1      -0.727   0.122   0.643  1.00  0.00           H  </div><div class="line">HETATM    4  H3  CH4     1      -0.727   0.731  -0.995  1.00  0.00           H  </div><div class="line">HETATM    5  H4  CH4     1      -0.727   1.845   0.351  1.00  0.00           H  </div><div class="line">END</div></pre></td></tr></table></figure>
+<p>保存文件为<code>methane.pdb</code>.</p>
+<p>现在我们可以使用<em>gmx pdb2gmx</em>创建GROMACS .conf和.top文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gmx pdb2gmx -f methane.pdb</div></pre></td></tr></table></figure>
+<p>系统会提示您选择力场。选择OPLS。如果您在两个不同的力场目录之间有一个选项，请选择您所复制目录中的OPLS。对于水模型选择TIP4PEW。如果您发现GROMACS找不到残基CH4的错误，您可能会使用错误的力场。</p>
+<p>将创建三个文件：<code>conf.gro</code>，<code>posre.itp</code>和<code>topol.top</code>。<code>conf.gro</code>是我们的文件，只包含一个甲烷，<code>topol.top</code>是系统的拓扑文件，<code>posre.itp</code>是我们溶质（甲烷）的可选位置限制文件。我们不会使用那个。在<code>topol.top</code>文件中注意到有一个[<code>angles</code>]部分。您还需要在<code>topol.top</code>中重命名化合物。看看并探索每个文件。 GROMACS手册的第5章将帮助您更多地了解拓扑文件。</p>
+<p><strong>注意</strong>：<code>topol.top</code>和<code>methane.pdb</code>将在其他教程中再次使用。</p>
+<p>对于那些使用<em>gmx pdb2gmx</em>生成大型蛋白质拓扑的人来说，事情会变得更加复杂。这仅仅是一个简单的例子，我们可能真的可以在其他地方找到这种拓扑。</p>
+<h3 id="溶剂体系"><a href="#溶剂体系" class="headerlink" title="溶剂体系"></a>溶剂体系</h3><p>我们的结构文件和拓扑文件到目前为止只有我们的甲烷。我们需要通过使用<em>gmx solvate</em>来添加水：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gmx solvate -cp conf.gro -o conf.gro -cs tip4p -p topol.top -box 2.3 2.3 2.3</div></pre></td></tr></table></figure>
+<h3 id="参数文件"><a href="#参数文件" class="headerlink" title="参数文件"></a>参数文件</h3><p>我们将使用前一教程中的相同<a href="http://wbarnett.us/tutorials/1_tip4pew_water/mdp.tar.gz" target="_blank" rel="external">文件</a>。</p>
+<h2 id="模拟"><a href="#模拟" class="headerlink" title="模拟"></a>模拟</h2><p>我们将使用与上次相同的流程。这假定您的<code>mdp</code>文件位于名为<code>mdp</code>的目录中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ gmx grompp -f mdp/min.mdp -o min -pp min -po min</div><div class="line">$ gmx mdrun -deffnm min</div><div class="line">$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min</div><div class="line">$ gmx mdrun -deffnm min2</div><div class="line">$ gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2</div><div class="line">$ gmx mdrun -deffnm eql</div><div class="line">$ gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql</div><div class="line">$ gmx mdrun -deffnm eql2</div><div class="line">$ gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2</div><div class="line">$ gmx mdrun -deffnm prd</div></pre></td></tr></table></figure>
+<p>您可以把它当作脚本来使用，在头部添加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">set -e</div></pre></td></tr></table></figure>
+<p>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod +x run</div></pre></td></tr></table></figure>
+<p>运行脚本:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./run</div></pre></td></tr></table></figure></p>
+<p>其中<code>set -e</code>表示如果有错误立马停止</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>我们来计算一下称为<a href="https://en.wikipedia.org/wiki/Radial_distribution_function" target="_blank" rel="external">径向分布函数</a>的东西。首先，我们需要创建一个索引文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gmx make_ndx -f conf.gro</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; a C</div><div class="line">&gt; a OW</div><div class="line">&gt; q</div></pre></td></tr></table></figure>
+<p>然后运行 <em>gmx rdf</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gmx rdf -f prd.xtc -n index.ndx</div></pre></td></tr></table></figure>
+<p>在提示时选择<code>C</code>作为参考组。 然后选择<code>OW</code>。 然后输入<code>CTRL-D</code>结束。 数据的第1列和第3列中的结果图将通过在gnuplot中执行以下操作来绘制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; plot &apos;rdf.xvg&apos; u 1:3 w l</div></pre></td></tr></table></figure>
+<p>它应该看起来像这样：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://wbarnett.us/tutorials/2_methane_in_water/rdf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本教程中，我们学习了如何创建一个用于<em>gmx pdb2gmx</em>的残基模板文件（.rtp）。 我们为OPLS甲烷创建了一个结构，并为其生成了一个拓扑。我们用gmx solvated对它周围进行了加水。在此之后，我们进行了仿真，就像上次一样。最后，我们使用<em>gmx rdf</em>发现了C-OW径向分布函数。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如果教程中存在错误或错误，或者如果有什么不清楚的地方，请打开一个<a href="https://github.com/wesbarnett/wesbarnett.github.io/issues/new" target="_blank" rel="external">问题</a>，我很乐意解决它。 如果您有关于GROMACS的一般问题，请参阅<a href="http://manual.gromacs.org/documentation" target="_blank" rel="external">GROMACS文档</a>。 您还可以将关于GROMACS的一般问题通过查阅<a href="http://manual.gromacs.org/documentation" target="_blank" rel="external">邮件列表</a>来解决。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-04-25T11:26:08.737Z" itemprop="dateUpdated">2018-04-25 19:26:08</time>
+</span><br>
+
+
+        
+        链接：<a href="/43.html" target="_blank" rel="external">http://kangsgo.com/43.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/43.html&title=《Gromacs教程2-水中的单个甲烷》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/43.html&title=《Gromacs教程2-水中的单个甲烷》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/43.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Gromacs教程2-水中的单个甲烷》 — 小康博客&url=http://kangsgo.com/43.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/43.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/87.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">系列笔记整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/41.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Gromacs教程1-水</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/43.html&title=《Gromacs教程2-水中的单个甲烷》 — 小康博客&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/43.html&title=《Gromacs教程2-水中的单个甲烷》 — 小康博客&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/43.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Gromacs教程2-水中的单个甲烷》 — 小康博客&url=http://kangsgo.com/43.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/43.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABUklEQVR42u3auw6DQAxEUf7/p0mTAglhxmMrUuy7Jc9DAV4PexzyOC/juiXee9/ePGDBGsQ6w3FHxOc+ofV7wYK1mfV0y/gY5Xj98WDBguXdRq+5sGDB6mJlizcsWLCyLGXSrDeoP53Lw4I1glUpt5WJclu+BQvWn7PO5NDDI+/63yvAgrWM5UW6CkWBvkydYcFayaqEuV0/O2HB2sySdoSvt9fEJh4bFqzRrPhC2XKrbFciKliwdrL0AFdvX722FhasnSwvX9V/fNajKFiw9rAqxVgp7W0tKyxYK1nZhjZb4EtNLCxYo1n15ThegPvSW8OCNZplLgUQmlWv3YUFayer67X3FiuUQLBgjWNlF97pZ2XjJHNFEixYg1jpuXbrgAULlsdSwiYvFIYFC1b2A+GFtmbSDAvWApY+ac4GT3rTCwvWZpa3LCD7adAbY1iwlrE+XEZP/0XVWHYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

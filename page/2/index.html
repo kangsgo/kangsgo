@@ -171,6 +171,55 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Chimera补全蛋白缺失结构"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-16 13:09:30" datetime="2018-03-16T05:09:30.000Z"  itemprop="datePublished">2018-03-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/26.html">Chimera补全蛋白缺失结构</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。
+其实Chimera补全蛋白缺失结构主要是是利用的modeller，可以补全尾部结构或者中间的缺失结构，所以个人觉得对于之前介绍的GalaxyFill更加强大。
+我们以PDB:1qln为例，1qln为T...
+    
+
+        <a href="/26.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chimera/">Chimera</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-利用GalaxyFill补全蛋白"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -585,54 +634,6 @@ angle和shift将会生成立体的配对width和height为设置ray的长宽，�
         <a href="/18.html" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-计算蛋白长宽高"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-01-09 20:25:21" datetime="2018-01-09T12:25:21.000Z"  itemprop="datePublished">2018-01-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/绘图与可视化/">绘图与可视化</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/14.html">计算蛋白长宽高</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        最近遇到了两次需要初略估计蛋白长宽高的情况，其实这个非常简单，在pdb中查看卡迪尔坐标然后排序即可。这里和大家分享三种方法：
-1.shell进行读取这个我之前其实有分享过,代码简单如下:12345678#!/bin/sh#作者：GROMACS中文组群: 广药-阿福#x轴grep ^ATOM $1 | awk ‘&#123;print $7&#125;’| sort -n |sed -n ‘1...
-    
-
-        <a href="/14.html" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pymol/">Pymol</a></li></ul>
-
     </div>
     
 </article>
