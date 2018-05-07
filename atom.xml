@@ -62,6 +62,31 @@
   </entry>
   
   <entry>
+    <title>gromacs使用额外水模型</title>
+    <link href="http://kangsgo.com/45.html"/>
+    <id>http://kangsgo.com/45.html</id>
+    <published>2018-05-07T11:27:12.000Z</published>
+    <updated>2018-05-07T11:31:29.100Z</updated>
+    
+    <content type="html"><![CDATA[<p>在我们MD中我们有时候很少进行水模型的选择，很多时候我们对于不要求精确的体系使用<code>spc</code>水模型，对于相对要求精确的模型一般使用<code>tip3p</code>模型，对于离子或者小分子的研究有时候使用<code>tip4p</code>的模型，这些在gromacs中都是含有的，但是水模型一直在发展，不同的体系可能对于水模型有较大的变化，具体可以查看水模型的<a href="http://www1.lsbu.ac.uk/water/water_models.html" target="_blank" rel="external">综述页面</a>。例如核酸中用的较多的除了<code>tip4p-eW</code>水模型以外还有<code>OPC</code>水模型，但是该水模型并未在gromacs中自带，所以需要自己构建，以下简单介绍方法:</p><h3 id="关于OPC水模型"><a href="#关于OPC水模型" class="headerlink" title="关于OPC水模型"></a>关于OPC水模型</h3><p>简化的经典水模型是实际原子模拟中不可缺少的组成部分。然而，尽管经过几十年的深入研究，这些模型还远未完善。我们开发了一种新的方法来构建广泛使用的点电荷水模型，这与主流水模型参数化技术完全不同。与传统方法相比，除了对称性之外，我们不对模型施加任何几何约束。相反，我们优化点电荷的分布以最好地描述水分子的“静电”。我们使用这种新方法开发了4点OPC和3点OPC3刚性水模型，与常用的刚性模型相比，该模型显示出更为精确地重现大部分的性质。</p><h3 id="以OPC水模型为例"><a href="#以OPC水模型为例" class="headerlink" title="以OPC水模型为例"></a>以OPC水模型为例</h3><p>首先进行<a href="https://bioinformatics.cs.vt.edu/~izadi/OPC_Gromacs/opc.top" target="_blank" rel="external">下载</a>GROMACS的OPC，topol文件，若没有带拓扑文件，可以使用例如ACPYPE进行转化。<br>OPC水模型的topol文件完整如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">[ atomtypes ]</div><div class="line">OW            OW      0.0000  0.0000  A   3.16655e-01  8.903586e-01</div><div class="line">HW            HW      0.0000  0.0000  A   0.00000e+00  0.00000e+00</div><div class="line">MW            MW      0.0000  0.0000  A   0.00000e+00  0.00000e+00</div><div class="line"></div><div class="line">[ moleculetype ]</div><div class="line">; molname       nrexcl</div><div class="line">SOL             2</div><div class="line"></div><div class="line">[ atoms ]</div><div class="line">; id  at type     res nr  res name  at name  cg nr  charge    mass</div><div class="line">  1   OW          1       SOL       OW       1       0        16.00000</div><div class="line">  2   HW          1       SOL       HW1      1       0.67914   1.00800</div><div class="line">  3   HW          1       SOL       HW2      1       0.67914   1.00800</div><div class="line">  4   MW          1       SOL       MW       1      -1.35828   0.00000</div><div class="line"></div><div class="line">#ifndef FLEXIBLE</div><div class="line"></div><div class="line">[ settles ]</div><div class="line">; i     funct   doh     dhh</div><div class="line">1       1       0.08724 0.13712</div><div class="line"></div><div class="line">#else</div><div class="line"></div><div class="line">[ bonds ]</div><div class="line">; i     j       funct   length  force.c.</div><div class="line">1       2       1       0.08724 502416.0 0.08724        502416.0</div><div class="line">1       3       1       0.08724 502416.0 0.08724        502416.0</div><div class="line"></div><div class="line">[ angles ]</div><div class="line">; i     j       k       funct   angle   force.c.</div><div class="line">2       1       3       1       103.6   628.02  103.6  628.02</div><div class="line"></div><div class="line">#endif</div><div class="line"></div><div class="line"></div><div class="line">[ virtual_sites3 ]</div><div class="line">; Vsite from                    funct   a               b</div><div class="line">4       1       2       3       1       0.147722363     0.147722363</div><div class="line"></div><div class="line"></div><div class="line">[ exclusions ]</div><div class="line">1       2       3       4</div><div class="line">2       1       3       4</div><div class="line">3       1       2       4</div><div class="line">4       1       2       3</div><div class="line"></div><div class="line"></div><div class="line">; The position of the virtual site is computed as follows:</div><div class="line">;</div><div class="line">;               O</div><div class="line">;             </div><div class="line">;               V</div><div class="line">;         </div><div class="line">;       H               H</div><div class="line">;</div><div class="line">; Ewald OPC:</div><div class="line">; const = distance (OV) / [ cos (angle(VOH))    * distance (OH) ]</div><div class="line">;         0.01594 nm     / [ cos (51.8 deg)     * 0.0872433 nm    ]</div><div class="line">;       then a = b = 0.5 * const = 0.147722363</div><div class="line">;</div><div class="line">; Vsite pos x4 = x1 + a*(x2-x1) + b*(x3-x1)</div></pre></td></tr></table></figure><p>我们可以在<code>topol</code>或者<code>ffnobonded.itp</code>中恰当的位置写入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">;opc</div><div class="line">HW_opc       1       1.008   0.0000  A   0.00000e+00  0.00000e+00</div><div class="line">OW_opc       8      16.00    0.0000  A   3.16655e-01  8.903586e-01</div></pre></td></tr></table></figure></p><p>为了防止污染我把原拓扑中的原子类型增加了后缀，以免报错。然后将原top中的[ <code>atomtypes</code> ]部分删除，重命名为<code>opc.itp</code>.</p><p>由于我们使用的为4点电荷，我是使用的gromacs中<code>tip4p</code>那一套，反正要进行预平衡的，当然也可以自己预平衡一个水，制作一个gro文件。简单介绍一下我用tip4p选择水模型以后，仅需将topol文件中的水拓扑文件替换为如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">; Include water topology</div><div class="line">#include &quot;./amber_na.ff/opc.itp&quot;</div></pre></td></tr></table></figure><p>值得注意的是opc水模型在md过程中需要进行长程色散校正或者使用Lennard Jones PME,即以下mdp设置二选一（默认的gromacs教程中有1设置）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. DispCorr = EnerPres (Tested)</div><div class="line">2. vdwtype = PME</div></pre></td></tr></table></figure><p>参考资料:<a href="https://bioinformatics.cs.vt.edu/~izadi/" target="_blank" rel="external">https://bioinformatics.cs.vt.edu/~izadi/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在我们MD中我们有时候很少进行水模型的选择，很多时候我们对于不要求精确的体系使用&lt;code&gt;spc&lt;/code&gt;水模型，对于相对要求精确的模型一般使用&lt;code&gt;tip3p&lt;/code&gt;模型，对于离子或者小分子的研究有时候使用&lt;code&gt;tip4p&lt;/code&gt;的模型，这些
+      
+    
+    </summary>
+    
+      <category term="分子模拟" scheme="http://kangsgo.com/categories/%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F/"/>
+    
+    
+      <category term="Gromacs" scheme="http://kangsgo.com/tags/Gromacs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Pymol之保存</title>
     <link href="http://kangsgo.com/45.html"/>
     <id>http://kangsgo.com/45.html</id>
@@ -301,32 +326,6 @@
   </entry>
   
   <entry>
-    <title>Chimera补全蛋白缺失结构</title>
-    <link href="http://kangsgo.com/26.html"/>
-    <id>http://kangsgo.com/26.html</id>
-    <published>2018-03-16T05:09:30.000Z</published>
-    <updated>2018-03-16T06:27:56.574Z</updated>
-    
-    <content type="html"><![CDATA[<p>可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。</p><p>其实Chimera补全蛋白缺失结构主要是是利用的<code>modeller</code>，可以补全尾部结构或者中间的缺失结构，所以个人觉得对于之前介绍的<code>GalaxyFill</code>更加强大。</p><p>我们以<code>PDB:1qln</code>为例，1qln为T7 RNA 聚合酶，其中包括了一段核酸序列。我们可以先下载下来了解其信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://files.rcsb.org/download/1QLN.pdb</div></pre></td></tr></table></figure></p><p>可以看到MISSING RESIDUES信息，主要是前端和<code>56-71</code>的loop环的缺失。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c1.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure></p><p>我们将对其中loop进行补齐，若缺失的loop环是自己设计的残基，那么还需要自己修改<code>SEQRES</code>信息，如下图:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><br>其中<code>SEQRES</code>为完整序列信息（包含缺失序列），可以自己创建或者修改添加从而达到自己的补全内容的目的。除非特殊要求一般PDB数据库中不需要修改或者自己添加。</p><p>我们打开UCSF Chimera，点击<strong>Favorites -&gt; Command Line</strong>,在下面<strong>Command</strong>中进行下载蛋白，删除核酸等操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#打开PDB 1qln</div><div class="line">open 1qln</div><div class="line">#删除 核酸和溶剂等</div><div class="line">delete ~protein</div></pre></td></tr></table></figure></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c3.png" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure><p>再点击<strong>Tools -&gt;  Structure Editing -&gt;  Model/Refines Loops</strong><br>会弹出两个框框，其中这个框框主要是完整的序列信息，其中缺失蛋白位置会用红色框框圈出。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c4.png" alt="图片4" title="">                </div>                <div class="image-caption">图片4</div>            </figure><br>另外一个为设置modeller的框框:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c5.png" alt="图片5" title="">                </div>                <div class="image-caption">图片5</div>            </figure><br>具体的设置内容如下:<br><strong>Model/remodel 区域</strong><br>-active region: 序列框内的活性区域<br>-Chimera selection region: Chimera中选择的区域<br>-non-terminal missing structure: 非端点的缺失结构，会将坐标文件和SEQRES相互比较<br>-all missing structure: 所有缺失片段<br><strong>Allow this many residues adjacent to missing regions to move (default 1) </strong><br>允许移动的残基（来适配缺失残基），建议就是默认值<br><strong>Number of models to generate</strong><br>生成的模型数，个人觉得1个就好，后期再优化，默认为5个<br><strong>Loop modeling protocol</strong><br>-standard（默认）<br>-DOPE: 精度更高，花的时间更多，有可能没有结果或者比预期结果少<br>-DOPE-HR：和DOPE类似，精度相对没有那么高<br><strong>Run modeller using</strong><br>-web service（默认）:需要Modeller license key，学术用户可以输入<em>MODELIRANJE</em><br>-local installation：需要路径，我的是usr/local/mode9.19</p><p>点击<code>OK</code>会后台会运行，我运行了大约15分钟，运行完后模型会直接进入界面，然后保存即可。<br>若停止或者查看可以在<strong>Task Panel</strong>查看，即右下角<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/taskicon.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>图标</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。&lt;/p&gt;
-&lt;p&gt;其实Chimera补全蛋白缺失结构主要是是利用的&lt;code&gt;mod
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="Chimera" scheme="http://kangsgo.com/tags/Chimera/"/>
-    
-  </entry>
-  
-  <entry>
     <title>马尔科夫状态模型模拟笔记</title>
     <link href="http://kangsgo.com/27.html"/>
     <id>http://kangsgo.com/27.html</id>
@@ -350,6 +349,32 @@
     
     
       <category term="增强采样MD" scheme="http://kangsgo.com/tags/%E5%A2%9E%E5%BC%BA%E9%87%87%E6%A0%B7MD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chimera补全蛋白缺失结构</title>
+    <link href="http://kangsgo.com/26.html"/>
+    <id>http://kangsgo.com/26.html</id>
+    <published>2018-03-16T05:09:30.000Z</published>
+    <updated>2018-03-16T06:27:56.574Z</updated>
+    
+    <content type="html"><![CDATA[<p>可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。</p><p>其实Chimera补全蛋白缺失结构主要是是利用的<code>modeller</code>，可以补全尾部结构或者中间的缺失结构，所以个人觉得对于之前介绍的<code>GalaxyFill</code>更加强大。</p><p>我们以<code>PDB:1qln</code>为例，1qln为T7 RNA 聚合酶，其中包括了一段核酸序列。我们可以先下载下来了解其信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://files.rcsb.org/download/1QLN.pdb</div></pre></td></tr></table></figure></p><p>可以看到MISSING RESIDUES信息，主要是前端和<code>56-71</code>的loop环的缺失。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c1.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure></p><p>我们将对其中loop进行补齐，若缺失的loop环是自己设计的残基，那么还需要自己修改<code>SEQRES</code>信息，如下图:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><br>其中<code>SEQRES</code>为完整序列信息（包含缺失序列），可以自己创建或者修改添加从而达到自己的补全内容的目的。除非特殊要求一般PDB数据库中不需要修改或者自己添加。</p><p>我们打开UCSF Chimera，点击<strong>Favorites -&gt; Command Line</strong>,在下面<strong>Command</strong>中进行下载蛋白，删除核酸等操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#打开PDB 1qln</div><div class="line">open 1qln</div><div class="line">#删除 核酸和溶剂等</div><div class="line">delete ~protein</div></pre></td></tr></table></figure></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c3.png" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure><p>再点击<strong>Tools -&gt;  Structure Editing -&gt;  Model/Refines Loops</strong><br>会弹出两个框框，其中这个框框主要是完整的序列信息，其中缺失蛋白位置会用红色框框圈出。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c4.png" alt="图片4" title="">                </div>                <div class="image-caption">图片4</div>            </figure><br>另外一个为设置modeller的框框:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c5.png" alt="图片5" title="">                </div>                <div class="image-caption">图片5</div>            </figure><br>具体的设置内容如下:<br><strong>Model/remodel 区域</strong><br>-active region: 序列框内的活性区域<br>-Chimera selection region: Chimera中选择的区域<br>-non-terminal missing structure: 非端点的缺失结构，会将坐标文件和SEQRES相互比较<br>-all missing structure: 所有缺失片段<br><strong>Allow this many residues adjacent to missing regions to move (default 1) </strong><br>允许移动的残基（来适配缺失残基），建议就是默认值<br><strong>Number of models to generate</strong><br>生成的模型数，个人觉得1个就好，后期再优化，默认为5个<br><strong>Loop modeling protocol</strong><br>-standard（默认）<br>-DOPE: 精度更高，花的时间更多，有可能没有结果或者比预期结果少<br>-DOPE-HR：和DOPE类似，精度相对没有那么高<br><strong>Run modeller using</strong><br>-web service（默认）:需要Modeller license key，学术用户可以输入<em>MODELIRANJE</em><br>-local installation：需要路径，我的是usr/local/mode9.19</p><p>点击<code>OK</code>会后台会运行，我运行了大约15分钟，运行完后模型会直接进入界面，然后保存即可。<br>若停止或者查看可以在<strong>Task Panel</strong>查看，即右下角<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/taskicon.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>图标</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。&lt;/p&gt;
+&lt;p&gt;其实Chimera补全蛋白缺失结构主要是是利用的&lt;code&gt;mod
+      
+    
+    </summary>
+    
+      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="Chimera" scheme="http://kangsgo.com/tags/Chimera/"/>
     
   </entry>
   
@@ -500,31 +525,6 @@
     
     
       <category term="Linux" scheme="http://kangsgo.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux GTX1080TI安装显卡驱动小记</title>
-    <link href="http://kangsgo.com/19.html"/>
-    <id>http://kangsgo.com/19.html</id>
-    <published>2018-01-11T09:50:28.000Z</published>
-    <updated>2018-01-11T02:30:53.092Z</updated>
-    
-    <content type="html"><![CDATA[<p>我这辈子没有见过什么世面，之前用的最好的显卡就是GTX750Ti了，有幸来到一个还算有钱的课题组，导师给配了一台装有E5-2696 v3 CPU，GTX1080TI显卡的电脑，不甚欢喜，爱不释手。没想到是填坑的开始，前前后后捣鼓了一个星期，把其中的坑慢慢总结，今天先记录一下我安装记录:</p><p>由于GTX1080TI在linux下没有开源驱动，所以安装ubuntu后啥也没有，需要安装闭源驱动。点此进入<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">下载地址</a>。由于我的CPU没有集成显卡，无奈只能在旧机器上弄了一个GT630装上，其实也可以把硬盘取下来，安装好后再重新装上。</p><p>安装好后进行驱动的安装，简要如下:</p><p>a) 禁用nouveau<br>终端中运行：<code>lsmod | grep nouveau</code>，如果有输出则代表nouveau正在加载。</p><p>Ubuntu的nouveau禁用方法：<br>在<code>/etc/modprobe.d</code>中创建文件<code>blacklist-nouveau.conf</code>，在文件中输入一下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">blacklist nouveau</div><div class="line">options nouveau modeset=0</div></pre></td></tr></table></figure><p>打开终端，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-initramfs –u</div></pre></td></tr></table></figure></p><p>设置完毕可以再次运行 <code>lsmod | grep nouveau</code>检查是否禁用成功，如果运行后没有任何输出，则代表禁用成功。</p><p>b) 重启电脑，到达登录界面时，<code>alt+ctrl+f1</code>，进入text mode，登录账户</p><p>c) 输入<code>sudo service lightdm stop</code>关闭图形化界面</p><p>d) 切换到cuda安装文件的路径，运行<code>sudo sh cuda_9.1.18_linux.run</code> (可能不同)</p><p>按照提示一步步操作</p><p>安装成功后，会显示<strong>installed</strong>，否则会显示<strong>failed</strong>。</p><p>e) 输入 $ sudo service lightdm start 重新启动图形化界面。</p><p>Alt + ctrl +F7，返回到图形化登录界面，输入密码登录。<br>如果能够成功登录，则表示不会遇到循环登录的问题，基本说明CUDA的安装成功了。</p><p>f) 重启电脑。检查<strong>Device Node Verification</strong>。</p><p>检查路径/dev下 有无存在名为nvidia*（以nvidia开头）的多个文件(device files)<br>如果没有的话，可以参考官方文档里的指导步骤，进行添加。</p><p>若安装了CUDA，则需要设置环境变量，具体可以查看<a href="http://kangsgo.com/40.html">这一篇</a>文章。</p><p>参考:<a href="http://blog.csdn.net/masa_fish/article/details/51882183" target="_blank" rel="external">Ubuntu 14.04 上安装 CUDA 7.5/8.0 超详细教程</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我这辈子没有见过什么世面，之前用的最好的显卡就是GTX750Ti了，有幸来到一个还算有钱的课题组，导师给配了一台装有E5-2696 v3 CPU，GTX1080TI显卡的电脑，不甚欢喜，爱不释手。没想到是填坑的开始，前前后后捣鼓了一个星期，把其中的坑慢慢总结，今天先记录一下
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
-    
-    
-      <category term="安装" scheme="http://kangsgo.com/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
