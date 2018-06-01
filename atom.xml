@@ -62,6 +62,30 @@
   </entry>
   
   <entry>
+    <title>网站域名修改为cn后缀</title>
+    <link href="http://kangsgo.com/48.html"/>
+    <id>http://kangsgo.com/48.html</id>
+    <published>2018-06-01T07:23:15.082Z</published>
+    <updated>2018-06-01T07:27:48.337Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为网站<a href="https://kangsgo.cn" target="_blank" rel="external">kangsgo.cn</a>进行了备案，以后请访问这个域名，谢谢啦^_^</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;因为网站&lt;a href=&quot;https://kangsgo.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;kangsgo.cn&lt;/a&gt;进行了备案，以后请访问这个域名，谢谢啦^_^&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://kangsgo.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>gromacs使用额外水模型</title>
     <link href="http://kangsgo.com/46.html"/>
     <id>http://kangsgo.com/46.html</id>
@@ -218,33 +242,6 @@
   </entry>
   
   <entry>
-    <title>Rosetta系列-PyRosetta安装</title>
-    <link href="http://kangsgo.com/36.html"/>
-    <id>http://kangsgo.com/36.html</id>
-    <published>2018-04-10T10:27:12.000Z</published>
-    <updated>2018-04-11T02:31:50.976Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>转载请联系，且保留链接</strong></p><p>PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在<a href="http://www.pyrosetta.org/dow" target="_blank" rel="external">下载页面</a>选择合适的版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#解压</span></div><div class="line">tar -vjxf PyRosetta-&lt;version&gt;.tar.bz2.</div><div class="line"></div><div class="line"><span class="comment"># 移动位置</span></div><div class="line">mv PyRosetta&lt;version&gt; PyRosetta4</div><div class="line"></div><div class="line"><span class="comment"># 进入</span></div><div class="line"><span class="built_in">cd</span> PyRosetta4</div><div class="line"></div><div class="line"><span class="comment">#安装</span></div><div class="line"><span class="built_in">cd</span> setup &amp;&amp;  python setup.py install</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。&lt;/p&gt;
-&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安
-      
-    
-    </summary>
-    
-      <category term="蛋白建模" scheme="http://kangsgo.com/categories/%E8%9B%8B%E7%99%BD%E5%BB%BA%E6%A8%A1/"/>
-    
-    
-      <category term="Rosetta" scheme="http://kangsgo.com/tags/Rosetta/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Rosetta系列-FloppyTail构建蛋白柔性尾</title>
     <link href="http://kangsgo.com/35.html"/>
     <id>http://kangsgo.com/35.html</id>
@@ -260,6 +257,33 @@
         &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用这个代码需要蛋白具有长的柔性尾，在晶体结构中是缺失的，生物化学证据表明已知结合伴侣上尾部的特定结合位点.该代码旨在模拟长柔性尾巴的范围并确定假设的结合位点是否合理。&lt;/p&gt;
 &lt;p&gt;该工具更有用于测试
+      
+    
+    </summary>
+    
+      <category term="蛋白建模" scheme="http://kangsgo.com/categories/%E8%9B%8B%E7%99%BD%E5%BB%BA%E6%A8%A1/"/>
+    
+    
+      <category term="Rosetta" scheme="http://kangsgo.com/tags/Rosetta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rosetta系列-PyRosetta安装</title>
+    <link href="http://kangsgo.com/36.html"/>
+    <id>http://kangsgo.com/36.html</id>
+    <published>2018-04-10T10:27:12.000Z</published>
+    <updated>2018-04-11T02:31:50.976Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>转载请联系，且保留链接</strong></p><p>PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在<a href="http://www.pyrosetta.org/dow" target="_blank" rel="external">下载页面</a>选择合适的版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#解压</span></div><div class="line">tar -vjxf PyRosetta-&lt;version&gt;.tar.bz2.</div><div class="line"></div><div class="line"><span class="comment"># 移动位置</span></div><div class="line">mv PyRosetta&lt;version&gt; PyRosetta4</div><div class="line"></div><div class="line"><span class="comment"># 进入</span></div><div class="line"><span class="built_in">cd</span> PyRosetta4</div><div class="line"></div><div class="line"><span class="comment">#安装</span></div><div class="line"><span class="built_in">cd</span> setup &amp;&amp;  python setup.py install</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安
       
     
     </summary>
@@ -326,32 +350,6 @@
   </entry>
   
   <entry>
-    <title>Chimera补全蛋白缺失结构</title>
-    <link href="http://kangsgo.com/26.html"/>
-    <id>http://kangsgo.com/26.html</id>
-    <published>2018-03-16T05:09:30.000Z</published>
-    <updated>2018-03-16T06:27:56.574Z</updated>
-    
-    <content type="html"><![CDATA[<p>可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。</p><p>其实Chimera补全蛋白缺失结构主要是是利用的<code>modeller</code>，可以补全尾部结构或者中间的缺失结构，所以个人觉得对于之前介绍的<code>GalaxyFill</code>更加强大。</p><p>我们以<code>PDB:1qln</code>为例，1qln为T7 RNA 聚合酶，其中包括了一段核酸序列。我们可以先下载下来了解其信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://files.rcsb.org/download/1QLN.pdb</div></pre></td></tr></table></figure></p><p>可以看到MISSING RESIDUES信息，主要是前端和<code>56-71</code>的loop环的缺失。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c1.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure></p><p>我们将对其中loop进行补齐，若缺失的loop环是自己设计的残基，那么还需要自己修改<code>SEQRES</code>信息，如下图:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><br>其中<code>SEQRES</code>为完整序列信息（包含缺失序列），可以自己创建或者修改添加从而达到自己的补全内容的目的。除非特殊要求一般PDB数据库中不需要修改或者自己添加。</p><p>我们打开UCSF Chimera，点击<strong>Favorites -&gt; Command Line</strong>,在下面<strong>Command</strong>中进行下载蛋白，删除核酸等操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#打开PDB 1qln</div><div class="line">open 1qln</div><div class="line">#删除 核酸和溶剂等</div><div class="line">delete ~protein</div></pre></td></tr></table></figure></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c3.png" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure><p>再点击<strong>Tools -&gt;  Structure Editing -&gt;  Model/Refines Loops</strong><br>会弹出两个框框，其中这个框框主要是完整的序列信息，其中缺失蛋白位置会用红色框框圈出。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c4.png" alt="图片4" title="">                </div>                <div class="image-caption">图片4</div>            </figure><br>另外一个为设置modeller的框框:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c5.png" alt="图片5" title="">                </div>                <div class="image-caption">图片5</div>            </figure><br>具体的设置内容如下:<br><strong>Model/remodel 区域</strong><br>-active region: 序列框内的活性区域<br>-Chimera selection region: Chimera中选择的区域<br>-non-terminal missing structure: 非端点的缺失结构，会将坐标文件和SEQRES相互比较<br>-all missing structure: 所有缺失片段<br><strong>Allow this many residues adjacent to missing regions to move (default 1) </strong><br>允许移动的残基（来适配缺失残基），建议就是默认值<br><strong>Number of models to generate</strong><br>生成的模型数，个人觉得1个就好，后期再优化，默认为5个<br><strong>Loop modeling protocol</strong><br>-standard（默认）<br>-DOPE: 精度更高，花的时间更多，有可能没有结果或者比预期结果少<br>-DOPE-HR：和DOPE类似，精度相对没有那么高<br><strong>Run modeller using</strong><br>-web service（默认）:需要Modeller license key，学术用户可以输入<em>MODELIRANJE</em><br>-local installation：需要路径，我的是usr/local/mode9.19</p><p>点击<code>OK</code>会后台会运行，我运行了大约15分钟，运行完后模型会直接进入界面，然后保存即可。<br>若停止或者查看可以在<strong>Task Panel</strong>查看，即右下角<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/taskicon.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>图标</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。&lt;/p&gt;
-&lt;p&gt;其实Chimera补全蛋白缺失结构主要是是利用的&lt;code&gt;mod
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="Chimera" scheme="http://kangsgo.com/tags/Chimera/"/>
-    
-  </entry>
-  
-  <entry>
     <title>马尔科夫状态模型模拟笔记</title>
     <link href="http://kangsgo.com/27.html"/>
     <id>http://kangsgo.com/27.html</id>
@@ -375,6 +373,32 @@
     
     
       <category term="增强采样MD" scheme="http://kangsgo.com/tags/%E5%A2%9E%E5%BC%BA%E9%87%87%E6%A0%B7MD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chimera补全蛋白缺失结构</title>
+    <link href="http://kangsgo.com/26.html"/>
+    <id>http://kangsgo.com/26.html</id>
+    <published>2018-03-16T05:09:30.000Z</published>
+    <updated>2018-03-16T06:27:56.574Z</updated>
+    
+    <content type="html"><![CDATA[<p>可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。</p><p>其实Chimera补全蛋白缺失结构主要是是利用的<code>modeller</code>，可以补全尾部结构或者中间的缺失结构，所以个人觉得对于之前介绍的<code>GalaxyFill</code>更加强大。</p><p>我们以<code>PDB:1qln</code>为例，1qln为T7 RNA 聚合酶，其中包括了一段核酸序列。我们可以先下载下来了解其信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://files.rcsb.org/download/1QLN.pdb</div></pre></td></tr></table></figure></p><p>可以看到MISSING RESIDUES信息，主要是前端和<code>56-71</code>的loop环的缺失。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c1.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure></p><p>我们将对其中loop进行补齐，若缺失的loop环是自己设计的残基，那么还需要自己修改<code>SEQRES</code>信息，如下图:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><br>其中<code>SEQRES</code>为完整序列信息（包含缺失序列），可以自己创建或者修改添加从而达到自己的补全内容的目的。除非特殊要求一般PDB数据库中不需要修改或者自己添加。</p><p>我们打开UCSF Chimera，点击<strong>Favorites -&gt; Command Line</strong>,在下面<strong>Command</strong>中进行下载蛋白，删除核酸等操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#打开PDB 1qln</div><div class="line">open 1qln</div><div class="line">#删除 核酸和溶剂等</div><div class="line">delete ~protein</div></pre></td></tr></table></figure></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c3.png" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure><p>再点击<strong>Tools -&gt;  Structure Editing -&gt;  Model/Refines Loops</strong><br>会弹出两个框框，其中这个框框主要是完整的序列信息，其中缺失蛋白位置会用红色框框圈出。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c4.png" alt="图片4" title="">                </div>                <div class="image-caption">图片4</div>            </figure><br>另外一个为设置modeller的框框:<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/3/c5.png" alt="图片5" title="">                </div>                <div class="image-caption">图片5</div>            </figure><br>具体的设置内容如下:<br><strong>Model/remodel 区域</strong><br>-active region: 序列框内的活性区域<br>-Chimera selection region: Chimera中选择的区域<br>-non-terminal missing structure: 非端点的缺失结构，会将坐标文件和SEQRES相互比较<br>-all missing structure: 所有缺失片段<br><strong>Allow this many residues adjacent to missing regions to move (default 1) </strong><br>允许移动的残基（来适配缺失残基），建议就是默认值<br><strong>Number of models to generate</strong><br>生成的模型数，个人觉得1个就好，后期再优化，默认为5个<br><strong>Loop modeling protocol</strong><br>-standard（默认）<br>-DOPE: 精度更高，花的时间更多，有可能没有结果或者比预期结果少<br>-DOPE-HR：和DOPE类似，精度相对没有那么高<br><strong>Run modeller using</strong><br>-web service（默认）:需要Modeller license key，学术用户可以输入<em>MODELIRANJE</em><br>-local installation：需要路径，我的是usr/local/mode9.19</p><p>点击<code>OK</code>会后台会运行，我运行了大约15分钟，运行完后模型会直接进入界面，然后保存即可。<br>若停止或者查看可以在<strong>Task Panel</strong>查看，即右下角<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/taskicon.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>图标</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;可能很多人喜欢用pymol，其实我认为Chimera是一个更加强大的可视化软件，只是不容易上手，可能不符合国人使用习惯用的人相对较少，这里简单介绍一下最近用到的Chimera补全蛋白缺失结构。&lt;/p&gt;
+&lt;p&gt;其实Chimera补全蛋白缺失结构主要是是利用的&lt;code&gt;mod
+      
+    
+    </summary>
+    
+      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="Chimera" scheme="http://kangsgo.com/tags/Chimera/"/>
     
   </entry>
   
@@ -500,31 +524,6 @@
     
     
       <category term="OpenBabel" scheme="http://kangsgo.com/tags/OpenBabel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell脚本文件夹内文件依次执行</title>
-    <link href="http://kangsgo.com/20.html"/>
-    <id>http://kangsgo.com/20.html</id>
-    <published>2018-01-18T04:05:29.000Z</published>
-    <updated>2018-01-18T05:00:23.656Z</updated>
-    
-    <content type="html"><![CDATA[<p>这个脚本非常简单，个人觉得也很实用，对于初学linux或者bash的小伙伴们，我觉得在很多地方可以解放我们的小手。<br>写的这个脚本是因为师弟师妹们有很多高斯文件需要计算，高斯的计算文件一般以<code>gjf</code>或者<code>com</code>结尾。所以要师弟师妹们把文件放到一个文件夹下，然后批量执行。<br>为了以后的方便我还写了通过识别后缀是否执行。脚本全文如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `ls` ;<span class="keyword">do</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"文件的后缀为"</span><span class="variable">$&#123;i##*.&#125;</span></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$&#123;i##*.&#125;</span> = <span class="string">"gjf"</span> ]||[ <span class="variable">$&#123;i##*.&#125;</span> = <span class="string">"com"</span> ];<span class="keyword">then</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$i</span><span class="string">"后缀正确，开始计算"</span></div><div class="line">g09 <span class="variable">$i</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"计算完成"</span></div></pre></td></tr></table></figure></p><p>首先通过一个for循环结合<code>ls</code>查看文件命令依次读取文件，然后用一个<code>if</code>命令判定后缀是否后缀正确，<br><code>##*.</code>表示删除最后一个点以及左边的字符。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这个脚本非常简单，个人觉得也很实用，对于初学linux或者bash的小伙伴们，我觉得在很多地方可以解放我们的小手。&lt;br&gt;写的这个脚本是因为师弟师妹们有很多高斯文件需要计算，高斯的计算文件一般以&lt;code&gt;gjf&lt;/code&gt;或者&lt;code&gt;com&lt;/code&gt;结尾。所以要
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://kangsgo.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://kangsgo.com/tags/Linux/"/>
     
   </entry>
   
