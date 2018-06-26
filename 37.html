@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Rosetta系列-重新设计高表面净电荷蛋白 | 小康学习 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Rosetta">
+    <meta name="description" content="最近比较忙，拿出一篇以前翻译的教程凑数 关键词：一般设计 If you want to run supercharge now, the application is called ‘supercharge’ in src/apps/public/supercharge.cc. 这里有四个例子: (where ROSETTA3=path-to-Rosetta/main/source) 1$&amp;gt;">
+<meta name="keywords" content="Rosetta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rosetta系列-重新设计高表面净电荷蛋白">
+<meta property="og:url" content="http://kangsgo.com/37.html">
+<meta property="og:site_name" content="小康学习">
+<meta property="og:description" content="最近比较忙，拿出一篇以前翻译的教程凑数 关键词：一般设计 If you want to run supercharge now, the application is called ‘supercharge’ in src/apps/public/supercharge.cc. 这里有四个例子: (where ROSETTA3=path-to-Rosetta/main/source) 1$&amp;gt;">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-06-26T01:23:37.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rosetta系列-重新设计高表面净电荷蛋白">
+<meta name="twitter:description" content="最近比较忙，拿出一篇以前翻译的教程凑数 关键词：一般设计 If you want to run supercharge now, the application is called ‘supercharge’ in src/apps/public/supercharge.cc. 这里有四个例子: (where ROSETTA3=path-to-Rosetta/main/source) 1$&amp;gt;">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康学习" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liangtian.me/"  >
+                <i class="icon icon-lg icon-liantian"></i>
+                LiangTian
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://Baidu.com.ru/"  >
+                <i class="icon icon-lg icon-bash"></i>
+                乐思
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Rosetta系列-重新设计高表面净电荷蛋白</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Rosetta系列-重新设计高表面净电荷蛋白</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-26T01:27:12.000Z" itemprop="datePublished" class="page-time">
+  2018-06-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/蛋白建模/">蛋白建模</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为什么给蛋白表面增加电荷"><span class="post-toc-number">1.</span> <span class="post-toc-text">为什么给蛋白表面增加电荷?</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#两种方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">两种方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#每种模型的流程"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">每种模型的流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AvNAPSA-mode-电荷目标"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">AvNAPSA-mode, 电荷目标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AvNAPSA-mode-表面cuttof"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">AvNAPSA-mode, 表面cuttof</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Rosetta-mode-表面-cutoff-和目标电荷"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">Rosetta-mode, 表面 cutoff 和目标电荷</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Rosetta-mode-表面cutoff-和输入参考能量对于电荷残基类型"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">Rosetta-mode, 表面cutoff 和输入参考能量对于电荷残基类型</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设置"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AvNAPSA-Mode"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">AvNAPSA Mode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Rosetta-Mode"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Rosetta Mode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AvNAPSA-and-Rosetta-Mode"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">AvNAPSA and Rosetta Mode</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#输出"><span class="post-toc-number">4.</span> <span class="post-toc-text">输出</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Rosetta系列-超电荷蛋白"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Rosetta系列-重新设计高表面净电荷蛋白</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-26 09:27:12" datetime="2018-06-26T01:27:12.000Z"  itemprop="datePublished">2018-06-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/蛋白建模/">蛋白建模</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>最近比较忙，拿出一篇以前翻译的教程凑数</strong></p>
+<p>关键词：一般设计</p>
+<p>If you want to run supercharge now, the application is called ‘supercharge’ in <code>src/apps/public/supercharge.cc</code>.</p>
+<p>这里有四个例子:</p>
+<p>(where <code>ROSETTA3</code>=path-to-Rosetta/main/source)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&gt; $ROSETTA3/bin/supercharge.default.macosgccrelease @rosetta_inputs/options1</div></pre></td></tr></table></figure>
+<p>// Rosetta-mode, positive-charge, fixed surface cutoff and input ref energies<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&gt; $ROSETTA3/bin/supercharge.default.macosgccrelease @rosetta_inputs/options2</div></pre></td></tr></table></figure></p>
+<p>// Rosetta-mode, negative-charge, fixed surface cutoff and target net charge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&gt; $ROSETTA3/bin/supercharge.default.macosgccrelease @rosetta_inputs/options3</div></pre></td></tr></table></figure></p>
+<p>// AvNAPSA-mode, negative-charge, target net charge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&gt; $ROSETTA3/bin/supercharge.default.macosgccrelease @rosetta_inputs/options4</div></pre></td></tr></table></figure></p>
+<p>// AvNAPSA-mode, positive-charge, fixed surface cutoff</p>
+<p>Rosetta-mode and AvNAPSA-mode are explained below…</p>
+<h1 id="为什么给蛋白表面增加电荷"><a href="#为什么给蛋白表面增加电荷" class="headerlink" title="为什么给蛋白表面增加电荷?"></a>为什么给蛋白表面增加电荷?</h1><p>重新设计蛋白表面让其有高电荷，称之为Supercharging,可以提升未折叠的可逆性通过阻止部分未折叠状态的聚合.在生物技术和医疗中聚合聚集是常见的障碍。此外，高正电荷蛋白和肽段能够穿入病毒载体，高负电荷蛋白在肾过滤中更加缓慢，相较于中性蛋白或者正电荷蛋白。</p>
+<p>应该确定引入带电侧链的最佳位置，因为许多突变和相同的电荷积累可能使得天然的状态变得不稳定。先前的证实方法突变每个侧链原子具有最少的平均临近原子的柔软的极性残基（氨基酸残基DERKNQ）（ AvNAPSA: Lawrence MS, Phillips KJ, Liu DR, 2007, Supercharging proteins can impart unusual resilience, JACS）我们的方法使用Rosetta-based能量计算来选择表面的突变。在该在线服务中包含了这两种方法。</p>
+<h1 id="两种方法"><a href="#两种方法" class="headerlink" title="两种方法"></a>两种方法</h1><p>这里有两种自动的方法, <strong>Rosetta supercharge (Rsc)</strong> 和 <strong>AvNAPSA supercharge (Asc)</strong></p>
+<p><strong>AvNAPSA supercharge理论 (Asc):</strong> 突变最暴露的<font color="red">极性</font>残基以保证最小的结构变化和最小的不稳定。仅仅DE-RK-NQ残基被突变。</p>
+<p><strong>Rosetta supercharge理论 (Rsc):</strong> 突变残基的位置为保留或添加有利的表面相互作用。疏水或者弱极性表面也可以被突变。</p>
+<p><strong>AvNAPSA 缺点:</strong> 突变表面极性氨基酸残基可能会删除氢键。螺旋加帽，边缘链的相互作用和loop环的稳定性。并且自动突变N到D和Q到E，但是N到Q有时候会扮演氢键供体或者受体。</p>
+<p><strong>Rosetta 缺点:</strong> 突变较少的暴露位置可以导致更好的计算能量，但是错误的位置可能导致不稳定。 AvNAPSA 热衷于电荷交换,所以Rosetta完成相同的电荷改变需要进行更多的突变。</p>
+<p>AvNAPSA通过调整表面cutoff来适应电荷变化。Rosetta方法通过调节带正电荷或带负电荷的残基的参考能量来改变净电荷。</p>
+<p>supercharge server 可以使用四个不同的模型:<br>-AvNAPSA with a target net charge<br>-AvNAPSA with a surface cutoff<br>-Rosetta with a surface cutoff and target net charge<br>-Rosetta with a surface cutoff and input reference energies for charged residue types</p>
+<p><strong>AvNAPSA 代表什么:</strong> 每个侧链原子的平均邻近原子数。这是一个值，这个值用以表达侧链埋藏/accessibility的程度。它类似于Rosetta通常用来定义表面的临近氨基酸残基距离。但是它是在原子水平而不是残基水平。AvNAPSA模型计算AvNAPSA值对于所有的残基。’surface_atom_cutoff‘代表cutoff AvNASPA值通过定义表面残基。AvNAPSA值一般为50-150.AvNAPSA值》150对于核心残基是典型的。surface_atom_cutoff 设置100为适度增压，150将会导致更重的增压。                                   </p>
+<h2 id="每种模型的流程"><a href="#每种模型的流程" class="headerlink" title="每种模型的流程"></a>每种模型的流程</h2><h3 id="AvNAPSA-mode-电荷目标"><a href="#AvNAPSA-mode-电荷目标" class="headerlink" title="AvNAPSA-mode, 电荷目标"></a>AvNAPSA-mode, 电荷目标</h3><ol>
+<li>定义表面.  排序 NQ 和 RK/DE 残基通过 AvNAPSA 由低到高排序</li>
+<li>残基排序: Positive: 突变 DENQ–&gt;K, Negative: 突变 RKQ–&gt;E and N–&gt;D</li>
+<li>如果计算电荷等于目标电荷, 输出 pdb文件</li>
+</ol>
+<h3 id="AvNAPSA-mode-表面cuttof"><a href="#AvNAPSA-mode-表面cuttof" class="headerlink" title="AvNAPSA-mode, 表面cuttof"></a>AvNAPSA-mode, 表面cuttof</h3><ol>
+<li>定义表面通过 AvNAPSA 值 (&lt;100 default)</li>
+<li>对于每个在表面的 NQ 和 DE/RK 残基: Positive: 突变 DENQ–&gt;K, Negative: 突变 RKQ–&gt;E and N–&gt;D</li>
+<li>输出 pdb 文件</li>
+</ol>
+<h3 id="Rosetta-mode-表面-cutoff-和目标电荷"><a href="#Rosetta-mode-表面-cutoff-和目标电荷" class="headerlink" title="Rosetta-mode, 表面 cutoff 和目标电荷"></a>Rosetta-mode, 表面 cutoff 和目标电荷</h3><ol>
+<li>定义表面.  临近的距离计算 (CB dist.), &lt;16 neighbors default 或者定义表面通过 AvNAPSA 值 (&lt;100 default)</li>
+<li>设置设计任务<ul>
+<li>阅读用户 resfile 文件（如果提供）</li>
+<li>dont_mutate gly, pro, cys （不突变）</li>
+<li>dont_mutate h-bonded sidechains</li>
+<li>dont_mutate correct charge residues</li>
+</ul>
+</li>
+<li>设置对于RK/DE的参考能量，开始于输入值</li>
+<li>pack rotamers mover</li>
+<li>检测电荷, 增加或者降低参考能量 (返回步骤 3.)</li>
+<li>Once a pack rotamers run results in the correct net charge, 输出 pdb 文件</li>
+</ol>
+<h3 id="Rosetta-mode-表面cutoff-和输入参考能量对于电荷残基类型"><a href="#Rosetta-mode-表面cutoff-和输入参考能量对于电荷残基类型" class="headerlink" title="Rosetta-mode, 表面cutoff 和输入参考能量对于电荷残基类型"></a>Rosetta-mode, 表面cutoff 和输入参考能量对于电荷残基类型</h3><ol>
+<li>定义表面.  临近的距离计算 (CB dist.), &lt;16 neighbors default 或者定义表面通过 AvNAPSA 值 (&lt;100 default)</li>
+<li>设置设计任务<ul>
+<li>阅读用户 resfile 文件（如果提供）</li>
+<li>dont_mutate gly, pro, cys （不突变）</li>
+<li>dont_mutate h-bonded sidechains</li>
+<li>dont_mutate correct charge residues</li>
+</ul>
+</li>
+<li>设置对于RK/DE的参考能量，开始于输入值</li>
+<li>pack rotamers mover</li>
+<li>输出 pdb 文件</li>
+</ol>
+<h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><h2 id="AvNAPSA-Mode"><a href="#AvNAPSA-Mode" class="headerlink" title="AvNAPSA Mode"></a>AvNAPSA Mode</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">AvNAPSA_positive  BOOL def(false);				//运行 positive-charge AvNAPSA</div><div class="line">AvNAPSA_negative  BOOL def(false); 				//运行 negative-charge AvNAPSA</div><div class="line">target_net_charge  SIGNED_INT def(0);  				//残基位置会被一个一个突变知道达到设定的电荷值</div><div class="line">surface_atom_cutoff  UNSIGNED_INT def(100); 			// 如果你没有电荷目标，AvNAPSA会突变所有的位于表面的DE-RK-NQ残基到这个表面cutoff</div></pre></td></tr></table></figure>
+<h2 id="Rosetta-Mode"><a href="#Rosetta-Mode" class="headerlink" title="Rosetta Mode"></a>Rosetta Mode</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">surface_residue_cutoff  UNSIGNED_INT def(16);  //在10埃内具有&lt;16个相邻残基的残基被认为是表面的一部分</div><div class="line"></div><div class="line">include_arg  BOOL def(false);  //使用 arginine supercharge</div><div class="line">include_lys  BOOL def(false);  //使用 lysine supercharge</div><div class="line">include_asp  BOOL def(false);  //使用 aspartate supercharge</div><div class="line">include_glu  BOOL def(false);  //使用 glutamate supercharge</div><div class="line"></div><div class="line">//带电残基类型的参考能量将控制Rosetta设计的净电荷。 Rosetta可以在允许的带电荷残基类型和天然残基之间进行选择。 更多的负参考能量将导致更多的电荷突变。</div><div class="line">refweight_arg  FLOAT def(-0.98);</div><div class="line">refweight_lys  FLOAT def(-0.65);</div><div class="line">refweight_asp  FLOAT def(-0.67);</div><div class="line">refweight_glu  FLOAT def(-0.81);</div><div class="line"></div><div class="line">dont_mutate_glyprocys  BOOL def(true);		 //dont_mutate：不突变。glycine, proline, 和 cysteine 在蛋白中经常扮演特别的结构</div><div class="line">dont_mutate_correct_charge  BOOL def(true);      //例., 不突变 arginine 到 lysine</div><div class="line">dont_mutate_hbonded_sidechains  BOOL def(true);  //不突变会形成氢键的氨基酸残基</div><div class="line">pre_packminpack  BOOL def(false);                //Packrotamers is always done as the first step.  This option will go one step further and run packrotamers, sidechain+backbone minimization, packrotamers on the input structure before performing the supercharge design step.</div><div class="line"></div><div class="line">nstruct  UNSIGNED_INT def(1);  			 //蛋白表面的蒙特卡洛序列 设计一般会聚集的但是仍然是随机的，如果需要可以进行多个设计运行。</div><div class="line">target_net_charge  UNSIGNED_INT def(0);  	 //如果需要，可以实现目标净电荷，这通过递增/递减充电的残余参考能量以自动方式进行，直到从蒙特卡罗设计步骤得到所需的净电荷。.</div></pre></td></tr></table></figure>
+<h2 id="AvNAPSA-and-Rosetta-Mode"><a href="#AvNAPSA-and-Rosetta-Mode" class="headerlink" title="AvNAPSA and Rosetta Mode"></a>AvNAPSA and Rosetta Mode</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">surface_atom_cutoff  UNSIGNED_INT def(100); // this is how AvNAPSA defines surface, can be used in either approach</div><div class="line">compare_energies  BOOL def(false);  	 	      		//打印全部的残基到残基的能量分析到log文件中</div><div class="line">only_compare_mutated_residues  BOOL def(false);  		//在能量分析中只分辨突变残基</div><div class="line">resfile  FILE;  	       	    				//可以定义哪些特别的残基不突变。默认设置必须为ALLAA。一个残基一个残基设置需要为NATAA，结果如下：</div><div class="line"></div><div class="line">ALLAA</div><div class="line">start</div><div class="line">  20  A  NATAA</div><div class="line">  24  A  NATAA</div><div class="line">  26  A  NATAA</div><div class="line"></div><div class="line"></div><div class="line">Note: 输入的 resfile 是可以设置的.  However, every supercharge run generates an output resfile that governs the design run.  The default of this output resfile is NATAA, which prevents core residues from mutating (see below).  The input resfile is read first, the output resfile (see below) is read second, and this is why ALLAA must be the default for the input resfile.  If the default were NATRO, for example, no design would occur!</div></pre></td></tr></table></figure>
+<h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>作为输出文件，一个log文件，管理设计运行的residue文件和输出的PDB文件被提供。首先，log文件包含着所有的Rosetta的命令行，标识位于表面的残基文件，在最终序列中的带电残基列表，净电荷，突变的清单，文本对于PyMOL选择可以非常容易的在PyMOL中查看，和可设置的，重新包装的天然与超荷电结构的充分能量比较。第二个，Rosetta残基文件指示哪个残基可以被突变以及什么残基类型。第三个输出文件是supercharged的原子坐标。并且输出PDB的命名旨在便于对于给定设计运行的输入的自记录。 对于Rosetta设计，该名称包括所使用的最终参考能量和最终净电荷，对于AvNAPSA设计，该名称包括净电荷和突变残基的最大AvNAPSA值。</p>
+<p>下面是一个AvNAPSA-positive supercharging的输出文件，lysine总是被选择：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NATAA</div><div class="line">start</div><div class="line">   6 A  PIKAA  K</div><div class="line">   19 A  PIKAA  K</div><div class="line">   21 A  PIKAA  K</div><div class="line">   32 A  PIKAA  K</div><div class="line">   34 A  PIKAA  K</div><div class="line">   39 A  PIKAA  K</div></pre></td></tr></table></figure>
+<p>下面是一个Rosetta-positive supercharging的输出文件，其允许天然和RK之间的选择，并且保留h键:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">NATAA</div><div class="line">start</div><div class="line">   6 A  PIKAA ERK</div><div class="line">   9 A  PIKAA TRK</div><div class="line">   11 A  PIKAA VRK</div><div class="line">   21 A  PIKAA DRK</div><div class="line">   25 A  PIKAA HRK</div><div class="line">   26 A  NATAA  #same charge</div><div class="line">   30 A  NATAA  #same charge</div><div class="line">   32 A  NATRO  #has sc hbond energy=-1.15844</div><div class="line">   38 A  PIKAA TRK</div><div class="line">   39 A  NATRO  #has sc hbond energy=-1.33149</div><div class="line">   43 A  PIKAA TRK</div><div class="line">   50 A  NATRO  #has sc hbond energy=-0.536622</div><div class="line">   52 A  NATAA  #same charge</div><div class="line">   76 A  PIKAA DRK</div><div class="line">   77 A  PIKAA HRK</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2018-06-26T01:23:37.354Z" itemprop="dateUpdated">2018-06-26 09:23:37</time>
+</span><br>
+
+
+        
+        链接：<a href="/37.html" target="_blank" rel="external">http://kangsgo.com/37.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rosetta/">Rosetta</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/37.html&title=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/37.html&title=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/37.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&url=http://kangsgo.com/37.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/37.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/87.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">系列笔记整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/46.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">gromacs使用额外水模型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备18006841号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/37.html&title=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/37.html&title=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/37.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Rosetta系列-重新设计高表面净电荷蛋白》 — 小康学习&url=http://kangsgo.com/37.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/37.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWUlEQVR42u3awQ4DIQhF0fn/n7ZJV00a6Xugi8J11WSmeGajgjyPPNZ7xE8/31lf47kxYMFqxFrhUFgKUZ8LFqzJrHhRUELHn6rPBQsWrJi1m17f5mHBgnVjgdhFiP8LCxasyqFZT1CVOMfO8rBgtWC5haTK74v1LViw/pa1ykM/ahsxYcEaxopTU71oq8Sxy8SwYA1juRutO7H+2T9ya1iwWrPcK5DcUmLHhAVrJMtYS+Q3S81AsGCNYZ1KSnObvZS4woI1gJVrEVCuVZTpk3k2LFgjWWdrO6X7H1iwWrNyzax6m4K+WMCCBUs5vLolp0q6CwvWHFalvaDerrf9SFiwhrHOHqPdAlPuwgYWrK4s9/jrfquyQBj1ZliwWrPcgtGp2hUsWLByLH0jVzbmbWRYsGDJi0LugrN0qQkLVmuW3hygPy2198GCNYxVuf2voK/Ut2DB+j/WCxJqNf1Sky1sAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
