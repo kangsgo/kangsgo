@@ -86,6 +86,30 @@
   </entry>
   
   <entry>
+    <title>系列笔记整理</title>
+    <link href="http://kangsgo.com/49.html"/>
+    <id>http://kangsgo.com/49.html</id>
+    <published>2018-08-14T13:32:44.000Z</published>
+    <updated>2018-08-14T13:35:46.036Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前看到文献中有能量景观图，非常羡慕，而且感觉很高大上，等自己真正体会了主成分分析以后就比较释然了，但是若本身不是做模拟的，用来放一张图在支撑材料我感觉还是非常的好。</p><p>示例图如下:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/8/4.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure><h3 id="比对结构"><a href="#比对结构" class="headerlink" title="比对结构"></a>比对结构</h3><p>Tip:</p><p>之前一直卡在后面计算时间很长，后来才发现是未进行蛋白比对的缘故，若没有进行蛋白比对（即蛋白不乱动），请先蛋白比对一下，命令如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx trjconv -f md.xtc -s  md.tpr -fit rot+trans -o mdfit.xtc</div></pre></td></tr></table></figure><h3 id="生成协方差"><a href="#生成协方差" class="headerlink" title="生成协方差"></a>生成协方差</h3><p>首先我们需要使用<code>gromacs covar</code>来生成协方差矩阵并计算本征向量和本征值:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx covar -s md.gro -f mdfit.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm</div></pre></td></tr></table></figure><p>运行后会询问选择哪些原子范围做比对，选择<code>C-alpha</code>，之后会询问选择哪些原子范围做PCA，选择<code>C-alpha</code>或者其他均可。</p><p>最后会生成协方差的图形。但是这个最好在bio3d中，效果更佳，如下图所示:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/8/2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><p>蓝色表示正相关，红色表示负相关，只需要看分界线的一面即可。</p><h3 id="投影本征向量"><a href="#投影本征向量" class="headerlink" title="投影本征向量"></a>投影本征向量</h3><p>若需要看PC1和PC2的投影，可以执行:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -first 1 -last 2 -2d 2d.xvg</div></pre></td></tr></table></figure><p>同样bio3d上面可能好看那么一丢丢:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="img/3.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>但是这样的缺点就是会丢失时间系数，所以我们只能一个PC一个PC的倒出:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -last 1 -proj pc1.xvg</div><div class="line"></div><div class="line">gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -frist 2 -last 2 -proj pc2.xvg</div></pre></td></tr></table></figure><p>当然也可以写在一条里面。</p><p>再用<a href="/images/2018/8/sham.pl">perl脚本</a>进行合并:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perl sham.pl -i1 pc1.xvg -i2 pc2.xvg -data 1 -data2 1 -o gsham_input.xvg</div></pre></td></tr></table></figure><p>再使用<code>sham</code>工具计算Gibbs自由能：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx sham -f gsham_input.xvg -ls FES.xpm</div></pre></td></tr></table></figure><p>生成的FES.xpm文件可以在linux系统下直接查看，但是不美观，我们可以使用<a href="/images/2018/8/xpm2txt.py">脚本</a>转换为文本文件用其他软件做图:</p><p>[注意该脚本为python2版本]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python2.7 xpm2txt.py -f FES.xpm -o free-energy-landscape.txt</div></pre></td></tr></table></figure></p><p>最后可以进行绘图，我是使用的matplotlib[注意我这里用的python3版本]:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#导包</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 读取文件</span></div><div class="line">data=pd.read_csv(<span class="string">'free-energy-landscape.txt'</span>,sep=<span class="string">'\t'</span>,header=<span class="keyword">None</span>)</div><div class="line"></div><div class="line">fesvalue=np.array(data[<span class="number">2</span>])</div><div class="line"><span class="comment"># 因为默认为32*32=1024,所以把其整为32*32格点，横纵坐标可抛弃，因为都是依次的，而且意义不大。</span></div><div class="line">plotvalue=np.reshape(test,(<span class="number">32</span>,<span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 绘图</span></div><div class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">8</span>))</div><div class="line">plt.imshow(newtest,cmap=<span class="string">'jet'</span>,interpolation=<span class="string">'bilinear'</span>)</div><div class="line">plt.xticks([],[])</div><div class="line">plt.yticks([],[])</div><div class="line">plt.xlabel(<span class="string">'PC1'</span>,fontsize=<span class="number">16</span>)</div><div class="line">plt.ylabel(<span class="string">'PC2'</span>,fontsize=<span class="number">16</span>)</div><div class="line"><span class="comment">#plt.show()</span></div><div class="line">plt.savefig(<span class="string">'fes.png'</span>,dpi=<span class="number">600</span>)</div></pre></td></tr></table></figure></p><p>由于文章未发表，所以盗取sob老师的一张图，大致也差不太多:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/8/3.jpg" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure><p>参考资料:</p><ol><li><p><a href="https://www.mail-archive.com/gromacs.org_gmx-users@maillist.sys.kth.se/msg23365.html" target="_blank" rel="external"> Free Energy Landscape- PCA</a></p></li><li><p><a href="http://sobereva.com/73" target="_blank" rel="external">浅谈PCA与g_covar+g_anaeig+ddtpd+sigmaplot做自由能面图的方法</a></p></li><li><p><a href="https://jerkwin.github.io/2017/10/20/GROMACS%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E6%95%99%E7%A8%8B-%E5%A4%9A%E8%82%BD-%E8%9B%8B%E7%99%BD%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/" target="_blank" rel="external">GROMACS分子动力学模拟教程：多肽-蛋白相互作用</a></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前看到文献中有能量景观图，非常羡慕，而且感觉很高大上，等自己真正体会了主成分分析以后就比较释然了，但是若本身不是做模拟的，用来放一张图在支撑材料我感觉还是非常的好。&lt;/p&gt;
+&lt;p&gt;示例图如下:&lt;/p&gt;
+&lt;figure class=&quot;image-bubble&quot;&gt;
+     
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Rosetta系列-重新设计高表面净电荷蛋白</title>
     <link href="http://kangsgo.com/37.html"/>
     <id>http://kangsgo.com/37.html</id>
@@ -269,33 +293,6 @@
   </entry>
   
   <entry>
-    <title>Rosetta系列-PyRosetta安装</title>
-    <link href="http://kangsgo.com/36.html"/>
-    <id>http://kangsgo.com/36.html</id>
-    <published>2018-04-10T10:27:12.000Z</published>
-    <updated>2018-04-11T02:31:50.976Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>转载请联系，且保留链接</strong></p><p>PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在<a href="http://www.pyrosetta.org/dow" target="_blank" rel="external">下载页面</a>选择合适的版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#解压</span></div><div class="line">tar -vjxf PyRosetta-&lt;version&gt;.tar.bz2.</div><div class="line"></div><div class="line"><span class="comment"># 移动位置</span></div><div class="line">mv PyRosetta&lt;version&gt; PyRosetta4</div><div class="line"></div><div class="line"><span class="comment"># 进入</span></div><div class="line"><span class="built_in">cd</span> PyRosetta4</div><div class="line"></div><div class="line"><span class="comment">#安装</span></div><div class="line"><span class="built_in">cd</span> setup &amp;&amp;  python setup.py install</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。&lt;/p&gt;
-&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安
-      
-    
-    </summary>
-    
-      <category term="蛋白建模" scheme="http://kangsgo.com/categories/%E8%9B%8B%E7%99%BD%E5%BB%BA%E6%A8%A1/"/>
-    
-    
-      <category term="Rosetta" scheme="http://kangsgo.com/tags/Rosetta/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Rosetta系列-FloppyTail构建蛋白柔性尾</title>
     <link href="http://kangsgo.com/35.html"/>
     <id>http://kangsgo.com/35.html</id>
@@ -311,6 +308,33 @@
         &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用这个代码需要蛋白具有长的柔性尾，在晶体结构中是缺失的，生物化学证据表明已知结合伴侣上尾部的特定结合位点.该代码旨在模拟长柔性尾巴的范围并确定假设的结合位点是否合理。&lt;/p&gt;
 &lt;p&gt;该工具更有用于测试
+      
+    
+    </summary>
+    
+      <category term="蛋白建模" scheme="http://kangsgo.com/categories/%E8%9B%8B%E7%99%BD%E5%BB%BA%E6%A8%A1/"/>
+    
+    
+      <category term="Rosetta" scheme="http://kangsgo.com/tags/Rosetta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rosetta系列-PyRosetta安装</title>
+    <link href="http://kangsgo.com/36.html"/>
+    <id>http://kangsgo.com/36.html</id>
+    <published>2018-04-10T10:27:12.000Z</published>
+    <updated>2018-04-11T02:31:50.976Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>转载请联系，且保留链接</strong></p><p>PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在<a href="http://www.pyrosetta.org/dow" target="_blank" rel="external">下载页面</a>选择合适的版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#解压</span></div><div class="line">tar -vjxf PyRosetta-&lt;version&gt;.tar.bz2.</div><div class="line"></div><div class="line"><span class="comment"># 移动位置</span></div><div class="line">mv PyRosetta&lt;version&gt; PyRosetta4</div><div class="line"></div><div class="line"><span class="comment"># 进入</span></div><div class="line"><span class="built_in">cd</span> PyRosetta4</div><div class="line"></div><div class="line"><span class="comment">#安装</span></div><div class="line"><span class="built_in">cd</span> setup &amp;&amp;  python setup.py install</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;转载请联系，且保留链接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PyRosetta是一个Python为基础的Rosetta交互套件。其打开了用户自定义的利用Rosetta采样方法和能量函数进行自定义建模的方法。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安
       
     
     </summary>
@@ -492,31 +516,6 @@
       
         &lt;p&gt;大家都知道chimera的核酸绘图功能非常强大，一般大家理解的pymol核酸绘图功能就显得薄弱了，但是今天在看pymol的cartoon的时候无意间看到了其核酸绘图，发现实际上其功能还是不错的。&lt;/p&gt;
 &lt;h2 id=&quot;默认设置&quot;&gt;&lt;a href=&quot;#默认设置&quot; class
-      
-    
-    </summary>
-    
-      <category term="绘图与可视化" scheme="http://kangsgo.com/categories/%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="Pymol" scheme="http://kangsgo.com/tags/Pymol/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pymol渲染（Ray）笔记</title>
-    <link href="http://kangsgo.com/22.html"/>
-    <id>http://kangsgo.com/22.html</id>
-    <published>2018-02-26T05:09:30.000Z</published>
-    <updated>2018-02-26T05:33:41.164Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Ray"><a href="#Ray" class="headerlink" title="Ray"></a>Ray</h1><p><strong>ray</strong>将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可能就是直接ray一下出图，其实ray有许多功能可以挖掘，这里简单介绍一小部分。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ray [width,height [,renderer [,angle [,<span class="built_in">shift</span> ]]]</div></pre></td></tr></table></figure><p><strong>angle</strong>和<strong>shift</strong>将会生成立体的配对<br><strong>width</strong>和<strong>height</strong>为设置ray的长宽，可以超出现在的框架</p><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>默认图像</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-1.png" alt="图片1" title="">                </div>                <div class="image-caption">图片1</div>            </figure><p>简单渲染<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#全部使用默认设置</span></div><div class="line">ray</div></pre></td></tr></table></figure></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-2.png" alt="图片2" title="">                </div>                <div class="image-caption">图片2</div>            </figure><h2 id="PyMol-API"><a href="#PyMol-API" class="headerlink" title="PyMol API"></a>PyMol API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmd.ray(int width,int height,int renderer=<span class="number">-1</span>,float shift=<span class="number">0</span>)</div></pre></td></tr></table></figure><h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="渲染模式"><a href="#渲染模式" class="headerlink" title="渲染模式"></a>渲染模式</h3><p>设置<strong>Ray_trace_mode</strong>设置可以修改最终成图的时候的PyMOL的内部渲染蛋白的模式.<br>下面可以查看不同模式的效果</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 普通颜色</div><div class="line">set ray_trace_mode, 0</div><div class="line"></div><div class="line"># 普通颜色+黑色线</div><div class="line">set ray_trace_mode, 1</div><div class="line"></div><div class="line"># 仅包含黑色线</div><div class="line">set ray_trace_mode, 2</div><div class="line"></div><div class="line"># 倍色+黑色线</div><div class="line">set ray_trace_mode, 3</div><div class="line"></div><div class="line"># 建议设置</div><div class="line">set antialias, 2</div><div class="line"></div><div class="line"># 更改线的颜色</div><div class="line">set ray_trace_color, magenta</div></pre></td></tr></table></figure><p>效果如下</p><p>ray_trace_mode, 1<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-3.png" alt="图片3" title="">                </div>                <div class="image-caption">图片3</div>            </figure></p><p>ray_trace_mode, 2<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-4.png" alt="图片4" title="">                </div>                <div class="image-caption">图片4</div>            </figure></p><p>ray_trace_mode, 3<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-5.png" alt="图片5" title="">                </div>                <div class="image-caption">图片5</div>            </figure></p><p>ray_trace_color, magenta<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-6.png" alt="图片6" title="">                </div>                <div class="image-caption">图片6</div>            </figure></p><h3 id="透视"><a href="#透视" class="headerlink" title="透视"></a>透视</h3><p>在0.98版本以后，渲染速度得到了提升，选择的开关如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set orthoscopic, off</div><div class="line"></div><div class="line">set orthoscopic, on</div></pre></td></tr></table></figure></p><p>放大近景如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set field_of_view, X</div></pre></td></tr></table></figure></p><p>当50&lt;X&lt;70，默认为20.50-70 拥有非常强的透视效果。透视的轴为Y轴，而不是X轴</p><p>orthoscopic, off<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-7.png" alt="图片7" title="">                </div>                <div class="image-caption">图片7</div>            </figure></p><p>orthoscopic, on<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-8.png" alt="图片8" title="">                </div>                <div class="image-caption">图片8</div>            </figure></p><p>set field_of_view, 70<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-9.png" alt="图片9" title="">                </div>                <div class="image-caption">图片9</div>            </figure></p><p>不知道为何我做出来没有效果，可以看官方的图例</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/2018/2/3fbi-10.png" alt="图片10" title="">                </div>                <div class="image-caption">图片10</div>            </figure><h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><p>renderer = -1 为默认渲染<br>renderer = 0 为PyMOL内部渲染器<br>renderer = 1 使用PovRay渲染器， <strong>Unix-only </strong></p><p>例子如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ray trace with an external renderer.</span></div><div class="line">ray renderer=<span class="number">0</span></div></pre></td></tr></table></figure></p><p>比较了一下-1和0模式的效果差别不大。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Ray&quot;&gt;&lt;a href=&quot;#Ray&quot; class=&quot;headerlink&quot; title=&quot;Ray&quot;&gt;&lt;/a&gt;Ray&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ray&lt;/strong&gt;将会创建一个现在的框架图像的渲染（ray-traced）图像。我们平常使用pymol的时候可
       
     
     </summary>

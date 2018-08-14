@@ -171,6 +171,53 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Ctrl+Alt+F1黑屏解决办法"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-12-03 04:26:42" datetime="2015-12-02T20:26:42.000Z"  itemprop="datePublished">2015-12-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/55.html">Ctrl+Alt+F1黑屏解决办法</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        今天晚上为了安装CUDA弄了半天，一切都是为了省那么1G的流量，哎，学校按照流量收费真的花不起啊～
+由于CUDA需要进入tty来解决，但是我电脑打开偏偏又黑屏，找到好久才找到一个解决办法：
+编辑/etc/default/grub
+修改GRUB_CMDLINE_LINUX_DEFAULT的值为nomodeset
+更新grub：sudo update-grub
+重启
+参考文章：安装NVidia显...
+    
+
+        <a href="/55.html" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Pymol安装与问题解决"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -361,6 +408,10 @@ SCI-HUB地址：sci-hub.io
                 
                 <a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备18006841号-1</a><br>
                 
+				<div style="width:300px;margin:0 auto; padding:20px 0;">
+				<img src="http://billvm.com/usr/uploads/2018/08/1822562579.png"  alt="公安备案" />
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43010402000569" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43010402000569号</p></a>
+		 	</div>
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
             </span>
         </p>
