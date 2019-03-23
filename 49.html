@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://kangsgo.com/images/2018/8/2.png">
 <meta property="og:image" content="http://kangsgo.com/img/3.png">
 <meta property="og:image" content="http://kangsgo.com/images/2018/8/3.jpg">
-<meta property="og:updated_time" content="2018-08-14T14:07:51.193Z">
+<meta property="og:updated_time" content="2018-09-11T01:09:50.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gromacs使用PCA绘制能量景观图">
 <meta name="twitter:description" content="之前看到文献中有能量景观图，非常羡慕，而且感觉很高大上，等自己真正体会了主成分分析以后就比较释然了，但是若本身不是做模拟的，用来放一张图在支撑材料我感觉还是非常的好。 示例图如下:                                                                                              图片1">
@@ -143,7 +143,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -248,7 +248,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gmx sham -f gsham_input.xvg -ls FES.xpm</div></pre></td></tr></table></figure>
 <p>生成的FES.xpm文件可以在linux系统下直接查看，但是不美观，我们可以使用<a href="/images/2018/8/xpm2txt.py">脚本</a>转换为文本文件用其他软件做图:</p>
 <p>[注意该脚本为python2版本]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python2.7 xpm2txt.py -f FES.xpm -o free-energy-landscape.txt</div></pre></td></tr></table></figure></p>
-<p>最后可以进行绘图，我是使用的matplotlib[注意我这里用的python3版本]:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#导包</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 读取文件</span></div><div class="line">data=pd.read_csv(<span class="string">'free-energy-landscape.txt'</span>,sep=<span class="string">'\t'</span>,header=<span class="keyword">None</span>)</div><div class="line"></div><div class="line">fesvalue=np.array(data[<span class="number">2</span>])</div><div class="line"><span class="comment"># 因为默认为32*32=1024,所以把其整为32*32格点，横纵坐标可抛弃，因为都是依次的，而且意义不大。</span></div><div class="line">plotvalue=np.reshape(test,(<span class="number">32</span>,<span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 绘图</span></div><div class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">8</span>))</div><div class="line">plt.imshow(newtest,cmap=<span class="string">'jet'</span>,interpolation=<span class="string">'bilinear'</span>)</div><div class="line">plt.xticks([],[])</div><div class="line">plt.yticks([],[])</div><div class="line">plt.xlabel(<span class="string">'PC1'</span>,fontsize=<span class="number">16</span>)</div><div class="line">plt.ylabel(<span class="string">'PC2'</span>,fontsize=<span class="number">16</span>)</div><div class="line"><span class="comment">#plt.show()</span></div><div class="line">plt.savefig(<span class="string">'fes.png'</span>,dpi=<span class="number">600</span>)</div></pre></td></tr></table></figure></p>
+<p>最后可以进行绘图，我是使用的matplotlib[注意我这里用的python3版本]:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#导包</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 读取文件</span></div><div class="line">data=pd.read_csv(<span class="string">'free-energy-landscape.txt'</span>,sep=<span class="string">'\t'</span>,header=<span class="keyword">None</span>)</div><div class="line"></div><div class="line">fesvalue=np.array(data[<span class="number">2</span>])</div><div class="line"><span class="comment"># 因为默认为32*32=1024,所以把其整为32*32格点，横纵坐标可抛弃，因为都是依次的，而且意义不大。</span></div><div class="line">plotvalue=np.reshape(fesvalue,(<span class="number">32</span>,<span class="number">-1</span>))</div><div class="line"></div><div class="line"><span class="comment"># 绘图</span></div><div class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">8</span>))</div><div class="line">plt.imshow(plotvalue,cmap=<span class="string">'jet'</span>,interpolation=<span class="string">'bilinear'</span>)</div><div class="line">plt.xticks([],[])</div><div class="line">plt.yticks([],[])</div><div class="line">plt.xlabel(<span class="string">'PC1'</span>,fontsize=<span class="number">16</span>)</div><div class="line">plt.ylabel(<span class="string">'PC2'</span>,fontsize=<span class="number">16</span>)</div><div class="line"><span class="comment">#plt.show()</span></div><div class="line">plt.savefig(<span class="string">'fes.png'</span>,dpi=<span class="number">600</span>)</div></pre></td></tr></table></figure></p>
 <p>由于文章未发表，所以盗取sob老师的一张图，大致也差不太多:</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -273,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2018-08-14T14:07:51.193Z" itemprop="dateUpdated">2018-08-14 22:07:51</time>
+    Last updated: <time datetime="2018-09-11T01:09:50.652Z" itemprop="dateUpdated">2018-09-11 09:09:50</time>
 </span><br>
 
 
@@ -354,9 +354,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/87.html" id="post-prev" class="post-nav-link">
+      <a href="/32.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">系列笔记整理</h4>
+        <h4 class="title">PLUMED系列-MOLINFO阅读分子</h4>
       </a>
     </div>
   
@@ -434,11 +434,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>kangsgo &copy; 2015 - 2018</span>
+        <p><span>kangsgo &copy; 2015 - 2019</span>
             <span>
                 
                 <a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备18006841号-1</a><br>

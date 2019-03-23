@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>PLUMED系列-Trieste使用PLUMED分析轨迹 | 小康学习 | 计算化学与分子模拟爱好者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Gromacs,PLUMED">
+    <meta name="description" content="该教程计划每周自己做一个 转载请联系，且保留链接 翻译自:Trieste tutorial: Analyzing trajectories using PLUMED 目标主要是熟悉PLUMED语句，并用来写简单的CV(collective variable)进行分析已有的轨迹 流程 写一个简单的PLUMED输入文件，使用PLUMED driver来分析轨迹 使用GROUP关键字进行压缩和快速的构建">
+<meta name="keywords" content="Gromacs,PLUMED">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLUMED系列-Trieste使用PLUMED分析轨迹">
+<meta property="og:url" content="http://kangsgo.com/30.html">
+<meta property="og:site_name" content="小康学习">
+<meta property="og:description" content="该教程计划每周自己做一个 转载请联系，且保留链接 翻译自:Trieste tutorial: Analyzing trajectories using PLUMED 目标主要是熟悉PLUMED语句，并用来写简单的CV(collective variable)进行分析已有的轨迹 流程 写一个简单的PLUMED输入文件，使用PLUMED driver来分析轨迹 使用GROUP关键字进行压缩和快速的构建">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://kangsgo.com/images/2018/4/p-2.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/4/p-3.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/4/p-4.png">
+<meta property="og:image" content="http://kangsgo.com/images/2018/4/p-5.png">
+<meta property="og:updated_time" content="2019-03-23T13:00:21.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PLUMED系列-Trieste使用PLUMED分析轨迹">
+<meta name="twitter:description" content="该教程计划每周自己做一个 转载请联系，且保留链接 翻译自:Trieste tutorial: Analyzing trajectories using PLUMED 目标主要是熟悉PLUMED语句，并用来写简单的CV(collective variable)进行分析已有的轨迹 流程 写一个简单的PLUMED输入文件，使用PLUMED driver来分析轨迹 使用GROUP关键字进行压缩和快速的构建">
+<meta name="twitter:image" content="http://kangsgo.com/images/2018/4/p-2.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="小康学习" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">kangsgo</h5>
+          <a href="mailto:kangsgo@vip.qq.com" title="kangsgo@vip.qq.com" class="mail">kangsgo@vip.qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kangsgo" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.aspirincode.com/"  >
+                <i class="icon icon-lg icon-link"></i>
+                AspirinCode
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liangtian.me/"  >
+                <i class="icon icon-lg icon-liantian"></i>
+                LiangTian
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://Baidu.com.ru/"  >
+                <i class="icon icon-lg icon-bash"></i>
+                乐思
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PLUMED系列-Trieste使用PLUMED分析轨迹</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PLUMED系列-Trieste使用PLUMED分析轨迹</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-22T10:27:12.000Z" itemprop="datePublished" class="page-time">
+  2018-03-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资源包"><span class="post-toc-number">3.</span> <span class="post-toc-text">资源包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PLUMED输入文件例子"><span class="post-toc-number">4.</span> <span class="post-toc-text">PLUMED输入文件例子</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#练习1-计算和打印CV"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">练习1:计算和打印CV</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附加-结合多个CV"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">附加:结合多个CV</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#练习1b-结合CV"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">练习1b:结合CV</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决周期性问题"><span class="post-toc-number">5.</span> <span class="post-toc-text">解决周期性问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#练习2-解决周期性问题并且转存原子坐标"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">练习2:解决周期性问题并且转存原子坐标</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Plumed系列-使用PLUMED分析轨迹"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PLUMED系列-Trieste使用PLUMED分析轨迹</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-22 18:27:12" datetime="2018-03-22T10:27:12.000Z"  itemprop="datePublished">2018-03-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分子模拟/">分子模拟</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><em>该教程计划每周自己做一个</em></p>
+<p><strong>转载请联系，且保留链接</strong></p>
+<p>翻译自:<a href="https://plumed.github.io/doc-v2.4/user-doc/html/trieste-1.html" target="_blank" rel="external">Trieste tutorial: Analyzing trajectories using PLUMED</a></p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>主要是熟悉PLUMED语句，并用来写简单的CV(collective variable)进行分析已有的轨迹</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ul>
+<li>写一个简单的PLUMED输入文件，使用PLUMED <code>driver</code>来分析轨迹</li>
+<li>使用<code>GROUP</code>关键字进行压缩和快速的构建复杂的原子组</li>
+<li>打印<code>PRINT</code> CV变量例如距离(DISTANCE)，转角(TORSION),回转半径(GYRATION)和坐标数(?COORDINATION)</li>
+<li>计算原子组几何中心CENTER</li>
+<li>了解如何处理周期性条件，使用WHOLEMOLECULES 和WRAPAROUND，能够确认结果DUMPATOMS.</li>
+<li>释放满足特别条件的快照，使用关键字UPDATE_IF.</li>
+</ul>
+<h2 id="资源包"><a href="#资源包" class="headerlink" title="资源包"></a>资源包</h2><p>在线轨迹包:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://plumed.github.io/doc-v2.4/user-doc/html/tutorial-resources/trieste-1.tar.gz</div></pre></td></tr></table></figure></p>
+<p>文件包含如下内容:</p>
+<ul>
+<li>ref.pdb: RNA双链在含有MG离子的水盒子内</li>
+<li>traj-whole.xtc: 轨迹文件,周期性处理过后</li>
+<li>traj-broken.xtc: 原始GROMACS文件</li>
+</ul>
+<p>RNA如下(chimera做图):<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/4/p-2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="PLUMED输入文件例子"><a href="#PLUMED输入文件例子" class="headerlink" title="PLUMED输入文件例子"></a>PLUMED输入文件例子</h2><p>一个简单的输入例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 告知VIM这是一个plumed格式的文件，若用vim编辑器</div><div class="line"># vim: ft=plumed</div><div class="line"></div><div class="line"># 计算原子1和10之间的距离.</div><div class="line"># 设置了一个&quot;d&quot;的变量.</div><div class="line">d: DISTANCE ATOMS=1,10</div><div class="line"></div><div class="line"># 创建原子20到30之间的中心的虚拟原子位点.</div><div class="line"># 设置了一个&quot;center&quot;的变量.</div><div class="line">center: CENTER ATOMS=20,30</div><div class="line"></div><div class="line"># 计算 1, 10, 20, 和 center之间的转角.</div><div class="line"># 注意的是虚拟位点可以用于真实的原子</div><div class="line"># 设置了一个&quot;phi&quot;的变量.</div><div class="line">phi: TORSION ATOMS=1,10,20,center</div><div class="line"></div><div class="line"># 计算一些功能函数</div><div class="line"># 设置了一个&quot;d2&quot;的变量，计算的为cos phi</div><div class="line">d2: MATHEVAL ...</div><div class="line">  ARG=phi FUNC=cos(x)</div><div class="line">  PERIODIC=NO</div><div class="line">...</div><div class="line"># 上面的多行可以写成一行.</div><div class="line">#   d2: MATHEVAL ARG=phi FUNC=cos(x) PERIODIC=NO</div><div class="line"></div><div class="line"># 打印d,d2，每10步到一个文件命名为 &quot;COLVAR1&quot;.</div><div class="line">PRINT ARG=d,d2 STRIDE=10 FILE=COLVAR1</div><div class="line"></div><div class="line"># 打印 phi 到另外一个称之为&quot;COLVAR2&quot; 的文件，每 100 步.</div><div class="line">PRINT ARG=phi STRIDE=100 FILE=COLVAR2</div></pre></td></tr></table></figure></p>
+<p>PS：给的名称例如:<code>d: DISTANCE ATOMS=1,10</code>等价于<code>DISTANCE ATOMS=1,10</code></p>
+<p>然后我们就可以运行进行分析了:</p>
+<ul>
+<li>拷贝上面的PLUMED输入文件保存，例如<code>plumed.dat</code></li>
+<li><p>运行plumed driver <code>--mf_xtc traj.xtc --plumed plumed.dat</code></p>
+<p>运行后会得到COLVAR1和COLVAR2两个文件。当然还不需要进行计算，练习从下面才正式开始:</p>
+</li>
+</ul>
+<h3 id="练习1-计算和打印CV"><a href="#练习1-计算和打印CV" class="headerlink" title="练习1:计算和打印CV"></a>练习1:计算和打印CV</h3><p>  一些原子选择可以通过<a href="http://kangsgo.com/32.html">MOLINFO</a>关键字来进行<br> ,我们来看给的例子，其中<code>_FILL_</code>是需要自己进行修改的:<br> 要求如下:该段就不翻译了:</p>
+<ul>
+<li><p>The gyration radius of the solute RNA molecule (<strong>GYRATION</strong>). Look in the ref.pdb file which are the atoms that are part of RNA (search for the first occurrence of a water molecule, residue name SOL). Remember that you don’t need to list all the atoms: instead of ATOMS=1,2,3,4,5 you can write ATOMS=1-5.</p>
+</li>
+<li><p>The torsional angle (<strong>TORSION</strong>) corresponding to the glycosidic chi angle χ of the first nucleotide. Since this nucleotide is a purine (guanine), the proper atoms to compute the torsion are O4’ C1 N9 C4. Find their serial number in the ref.pdb file or learn how to select a special angle reading the MOLINFO documentation.</p>
+</li>
+<li><p>The total number of contacts (<strong>COORDINATION</strong>) between all RNA atoms and all water oxygens. For COORDINATION, set reference distance <strong>R_0 to 2.5 A</strong> (be careful with units!!). Try to be smart in selecting the water oxygens without listing all of them explicitly.</p>
+</li>
+<li><p>Same as before but against water hydrogen. Also in this case you should be smart to select water hydrogens. Documentation of GROUP might help.<br>Distance between the Mg ion and <strong>the geometric center of</strong> the RNA duplex (use <strong>CENTER</strong> and <strong>DISTANCE</strong>).</p>
+<p>需要完整制作的目标如下:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"> # First load information about the molecule.</div><div class="line">MOLINFO __FILL__</div><div class="line"># Notice that this is special kind of &quot;action&quot; (&quot;setup action&quot;)</div><div class="line"># that is only used during setup. It will not be re-executed at each step.</div><div class="line"></div><div class="line"># Define some group that will make the rest of the input more readable</div><div class="line"># Here are the atoms belonging to RNA.</div><div class="line">rna: GROUP ATOMS=1-258</div><div class="line"># This is the Mg ion. A group with atom is also useful!</div><div class="line">mg:  GROUP ATOMS=6580</div><div class="line"># This group should contain all the atoms belonging to water molecules.</div><div class="line">wat: GROUP ATOMS=__FILL__</div><div class="line"># Select water oxygens only:</div><div class="line">owat: GROUP __FILL__</div><div class="line"># Select water hydrogens only:</div><div class="line">hwat: GROUP __FILL__</div><div class="line"></div><div class="line"># Compute gyration radius:</div><div class="line">r: GYRATION ATOMS=__FILL__</div><div class="line"># Compute the Chi torsional angle:</div><div class="line">c: TORSION ATOMS=__FILL__</div><div class="line"># Compute coordination of RNA with water oxygens</div><div class="line">co: COORDINATION GROUPA=rna GROUPB=owat R_0=__FILL__</div><div class="line"># Compute coordination of RNA with water hydrogens</div><div class="line">ch: COORDINATION GROUPA=rna GROUPB=hwat __FILL__</div><div class="line"></div><div class="line"># Compute the geometric center of the RNA molecule:</div><div class="line">ce: CENTER ATOMS=__FILL__</div><div class="line"># Compute the distance between the Mg ion and the RNA center:</div><div class="line">d: DISTANCE ATOMS=__FILL__</div><div class="line"></div><div class="line"># Print the collective variables on COLVAR file</div><div class="line"># No STRIDE means &quot;print for every step&quot;</div><div class="line">PRINT ARG=r,c,co,ch,d FILE=COLVAR</div></pre></td></tr></table></figure>
+<p>注意，以上的<code>.dat</code>文件中的<strong>FILL</strong>需要补全后再运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plumed driver --plumed plumed.dat --mf_xtc whole.xtc</div></pre></td></tr></table></figure></p>
+<p>创建的COLVAR文件大致这个样子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#! FIELDS time r c co ch d</div><div class="line">#! SET min_c -pi</div><div class="line">#! SET max_c pi</div><div class="line"> 0.000000 0.788694 -2.963150 207.795793 502.027244 0.595611</div><div class="line"> 1.000000 0.804101 -2.717302 208.021688 499.792595 0.951945</div><div class="line"> 2.000000 0.788769 -2.939333 208.347867 500.552127 1.014850</div><div class="line"> 3.000000 0.790232 -2.940726 211.274315 514.749124 1.249502</div><div class="line"> 4.000000 0.796395 3.050949 212.352810 507.892198 2.270682</div></pre></td></tr></table></figure></p>
+<p>这个文件可以使用gnuplot查看:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gnuplot&gt; p &quot;COLVAR&quot; u 1:2, &quot;&quot; u 1:3</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="images/2018/4/p-3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>以下是我的设置，供参考:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># First load information about the molecule.</div><div class="line">MOLINFO STRUCTURE=ref.pdb MOLTYPE=rna</div><div class="line"># Notice that this is special kind of &quot;action&quot; (&quot;setup action&quot;)</div><div class="line"># that is only used during setup. It will not be re-executed at each step.</div><div class="line"></div><div class="line"># Define some group that will make the rest of the input more readable</div><div class="line"># Here are the atoms belonging to RNA.</div><div class="line">rna: GROUP ATOMS=1-258</div><div class="line"># This is the Mg ion. A group with atom is also useful!</div><div class="line">mg:  GROUP ATOMS=6580</div><div class="line"># This group should contain all the atoms belonging to water molecules.</div><div class="line">wat: GROUP ATOMS=259-6579</div><div class="line"># Select water oxygens only:</div><div class="line">owat: GROUP ATOMS=wat</div><div class="line"># Select water hydrogens only:</div><div class="line">hwat: GROUP ATOMS=wat REMOVE=owat</div><div class="line"></div><div class="line"># Compute gyration radius:</div><div class="line">r: GYRATION ATOMS=rna</div><div class="line"># Compute the Chi torsional angle:</div><div class="line">c: TORSION ATOMS=@chi-1</div><div class="line"># Compute coordination of RNA with water oxygens</div><div class="line">co: COORDINATION GROUPA=rna GROUPB=owat R_0=0.25</div><div class="line"># Compute coordination of RNA with water hydrogens</div><div class="line">ch: COORDINATION GROUPA=rna GROUPB=hwat R_0=0.25</div><div class="line"></div><div class="line"># Compute the geometric center of the RNA molecule:</div><div class="line">ce: CENTER ATOMS=rna</div><div class="line"># Compute the distance between the Mg ion and the RNA center:</div><div class="line">d: DISTANCE ATOMS=ce,mg</div><div class="line"></div><div class="line"># Print the collective variables on COLVAR file</div><div class="line"># No STRIDE means &quot;print for every step&quot;</div><div class="line">PRINT ARG=r,c,co,ch,d FILE=COLVAR</div></pre></td></tr></table></figure></p>
+<p>我的结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#! FIELDS time r c co ch d</div><div class="line">#! SET min_c -pi</div><div class="line">#! SET max_c pi</div><div class="line"> 0.000000 0.788694 -2.963150 206.199511 498.826274 0.595611</div><div class="line"> 1.000000 0.804101 -2.717302 206.427138 496.592883 0.951945</div><div class="line"> 2.000000 0.788769 -2.939333 206.744720 497.333112 1.014850</div><div class="line"> 3.000000 0.790232 -2.940726 209.694868 511.577231 1.249502</div><div class="line"> 4.000000 0.796395 3.050949 210.755463 504.675747 2.270682</div></pre></td></tr></table></figure></p>
+<p>两个COORDINATION有点不一样，原因不详</p>
+<h4 id="附加-结合多个CV"><a href="#附加-结合多个CV" class="headerlink" title="附加:结合多个CV"></a>附加:结合多个CV</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># Distance between atoms 1 and 2:</div><div class="line">d1: DISTANCE ATOMS=1,2</div><div class="line"># Distance between atoms 1 and 3:</div><div class="line">d2: DISTANCE ATOMS=1,3</div><div class="line"># Distance between atoms 1 and 4:</div><div class="line">d3: DISTANCE ATOMS=1,4</div><div class="line"></div><div class="line"># Compute the sum of the squares of those three distances:</div><div class="line">c: COMBINE ARG=d1,d2,d3 POWERS=2 PERIODIC=NO</div><div class="line"></div><div class="line"># Sort the three distances:</div><div class="line">s: SORT ARG=d1,d2,d3</div><div class="line"># Notice that SORT creates a compund object with three components:</div><div class="line"># s.1: the smallest distance</div><div class="line"># s.2: the middle distance</div><div class="line"># s.3: the largest distance</div><div class="line"></div><div class="line">p: MATHEVAL ARG=d1,d2,d3 FUNC=x*y*z PERIODIC=NO</div><div class="line"></div><div class="line"># Print the sum of the squares and the largest among the three distances:</div><div class="line">PRINT FILE=COLVAR ARG=c,s.3</div></pre></td></tr></table></figure>
+<p>当有多个距离的时候可以使用部分正则表达式，比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s: SORT ARG=d1,d2,d3</div></pre></td></tr></table></figure></p>
+<p>可以修改为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s: SORT ARG=(d.)</div></pre></td></tr></table></figure></p>
+<p>MATHEVAL是一个函数功能的实现，非常好用。！</p>
+<h3 id="练习1b-结合CV"><a href="#练习1b-结合CV" class="headerlink" title="练习1b:结合CV"></a>练习1b:结合CV</h3><p>目的:</p>
+<ul>
+<li>The sum of the distances between Mg and each of the phosphorous atoms.</li>
+<li>The distance between Mg and the closest phosphorous atom.</li>
+</ul>
+<p>要查看亚磷酸原子可以简单的使用shell:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep ATOM ref.pdb | grep <span class="string">" P "</span> | awk <span class="string">'&#123;print $2&#125;'</span></div></pre></td></tr></table></figure></p>
+<p>以上脚本主要是用到了管道,grep和awk<br>其中grep先搜寻ATOM，然后得到的结果交付给搜寻<code>P</code>(注意空格)，最后的行去第二行<br>结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">33</div><div class="line">67</div><div class="line">101</div><div class="line">165</div><div class="line">196</div><div class="line">227</div></pre></td></tr></table></figure></p>
+<p>练习如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># First load information about the molecule.</div><div class="line">MOLINFO __FILL__</div><div class="line"></div><div class="line"># Define some group that will make the rest of the input more readable</div><div class="line">mg:  GROUP ATOMS=6580 # a group with one atom is also useful!</div><div class="line"></div><div class="line"># Distances between Mg and phosphorous atoms:</div><div class="line">d1: DISTANCE ATOMS=mg,33</div><div class="line">d2: DISTANCE __FILL__</div><div class="line">__FILL__</div><div class="line">d6: DISTANCE __FILL__</div><div class="line"># You can use serial numbers, but you might also use MOLINFO strings</div><div class="line"></div><div class="line"># Compute the sum of these distances</div><div class="line">c: COMBINE __FILL__</div><div class="line"></div><div class="line"># Compute the distance between Mg and the closest phosphorous atom</div><div class="line">s: SORT __FILL__</div><div class="line"></div><div class="line"># Print the requested variables</div><div class="line">PRINT FILE=COLVAR __FILL__</div></pre></td></tr></table></figure></p>
+<p>结果类似如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#! FIELDS time c s.1</div><div class="line"> 0.000000 6.655622 0.768704</div><div class="line"> 1.000000 7.264049 0.379416</div><div class="line"> 2.000000 7.876489 0.817820</div><div class="line"> 3.000000 8.230621 0.380191</div><div class="line"> 4.000000 13.708759 2.046935</div></pre></td></tr></table></figure></p>
+<p>以下是我的设置，供参考：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># First load information about the molecule.</div><div class="line">MOLINFO STRUCTURE=ref.pdb MOLTYPE=rna</div><div class="line"></div><div class="line"># Define some group that will make the rest of the input more readable</div><div class="line">mg:  GROUP ATOMS=6580 # a group with one atom is also useful!</div><div class="line"></div><div class="line"># Distances between Mg and phosphorous atoms:</div><div class="line">d1: DISTANCE ATOMS=mg,33</div><div class="line">d2: DISTANCE ATOMS=mg,67</div><div class="line">d3: DISTANCE ATOMS=mg,101</div><div class="line">d4: DISTANCE ATOMS=mg,165</div><div class="line">d5: DISTANCE ATOMS=mg,196</div><div class="line">d6: DISTANCE ATOMS=mg,227</div><div class="line"># You can use serial numbers, but you might also use MOLINFO strings</div><div class="line"></div><div class="line"># Compute the sum of these distances</div><div class="line">c: COMBINE ARG=(d.) PERIODIC=NO</div><div class="line"></div><div class="line"># Compute the distance between Mg and the closest phosphorous atom</div><div class="line">s: SORT ARG=(d.)</div><div class="line"></div><div class="line"># Print the requested variables</div><div class="line">PRINT FILE=COLVAR ARG=c,s.1</div></pre></td></tr></table></figure></p>
+<p>我的结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#! FIELDS time c s.1</div><div class="line"> 0.000000 6.655622 0.768704</div><div class="line"> 1.000000 7.264049 0.379416</div><div class="line"> 2.000000 7.876489 0.817820</div><div class="line"> 3.000000 8.230621 0.380191</div><div class="line"> 4.000000 13.708759 2.046935</div></pre></td></tr></table></figure></p>
+<h2 id="解决周期性问题"><a href="#解决周期性问题" class="headerlink" title="解决周期性问题"></a>解决周期性问题</h2><p>PLUMED可以使用<code>DUMPATOMS</code>来转存（dump）内部储存的原子坐标，主要可能用到的用途如下:</p>
+<ul>
+<li>To dump coordinates of virtual atoms that only exist within PLUMED (e.g. a CENTER).</li>
+<li>To dump snapshots of our molecule conditioned to some value of some collective variable (see UPDATE_IF).</li>
+<li>To dump coordinates of atoms that have been moved by PLUMED.</li>
+</ul>
+<p>我们可以用VMD来查看GROMACS未处理周期性的轨迹（其实我感觉处理周期性完全可以在GROMACS中处理后交由PLUMED完成后续分析）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vmd ref.pdb traj-broken.xtc</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/4/p-4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="练习2-解决周期性问题并且转存原子坐标"><a href="#练习2-解决周期性问题并且转存原子坐标" class="headerlink" title="练习2:解决周期性问题并且转存原子坐标"></a>练习2:解决周期性问题并且转存原子坐标</h3><p>要求如下:</p>
+<ul>
+<li>保证RNA完整，详细参考<a href="https://plumed.github.io/doc-v2.4/user-doc/html/_w_h_o_l_e_m_o_l_e_c_u_l_e_s.html" target="_blank" rel="external">WHOLEMOLECULES</a></li>
+<li>提供一个模板进行比对（structure reference.pdb）.具体查看<a href="https://plumed.github.io/doc-v2.4/user-doc/html/_f_i_t__t_o__t_e_m_p_l_a_t_e.html" target="_blank" rel="external">FIT_TO_TEMPLATE</a>,使用<code>TYPE=OPTIMAL</code>.如若使用<code>ref.pdb</code>，需要移除<strong>非</strong>RNA的原子</li>
+<li>完整的RNA和Mg离子，但是包括的快照为Mg和残基8的亚磷酸（P）小于4A的距离. 使用<a href="https://plumed.github.io/doc-v2.4/user-doc/html/_u_p_d_a_t_e__i_f.html" target="_blank" rel="external">UPDATE_IF</a>选择执行框架</li>
+<li>整个RNA双链体加上水分子和mg离子缠绕在双链体的中心。 先用CENTER计算双螺旋的中心，然后用<a href="https://plumed.github.io/doc-v2.4/user-doc/html/_w_r_a_p_a_r_o_u_n_d.html" target="_blank" rel="external">WRAPAROUND</a>包裹分子。 确保移动后个别水分子不会破碎！</li>
+</ul>
+<p>练习需要填充的配置文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># First load information about the molecule.</div><div class="line">MOLINFO __FILL__</div><div class="line"></div><div class="line"># Define here the groups that you need.</div><div class="line"># Same as in the previous exercise.</div><div class="line">rna: GROUP ATOMS=__FILL__</div><div class="line">mg:  GROUP ATOMS=__FILL__</div><div class="line">wat: GROUP ATOMS=__FILL__</div><div class="line"></div><div class="line"># Make RNA duplex whole.</div><div class="line">WHOLEMOLECULES __FILL__</div><div class="line"></div><div class="line"># Dump first trajectory in gro format.</div><div class="line"># Notice that PLUMED understands the format based on the file extension</div><div class="line">DUMPATOMS ATOMS=rna FILE=rna-whole.gro</div><div class="line"></div><div class="line"># Align RNA duplex to a reference structure</div><div class="line"># This should not be the ref.pdb file but a new file with only RNA atoms.</div><div class="line">FIT_TO_TEMPLATE REFERENCE=__FILL__ TYPE=OPTIMAL</div><div class="line"># Notice that before using FIT_TO_TEMPLATE we used WHOLEMOLECULES to make RNA whole</div><div class="line"># This is necessary otherwise you would align a broken molecule!</div><div class="line"></div><div class="line"># Dump the aligned RNA on a separate file</div><div class="line">DUMPATOMS ATOMS=rna FILE=rna-aligned.gro</div><div class="line"></div><div class="line"># Compute the distance between the Mg and the Phosphorous from residue 8</div><div class="line">d: DISTANCE ATOMS=mg,__FILL__ ## put the serial number of the correct phosphorous here</div><div class="line"></div><div class="line"># here we only dump frames conditioned to the value of d</div><div class="line">UPDATE_IF ARG=d __FILL__</div><div class="line">DUMPATOMS ATOMS=rna,mg FILE=rna-select.gro</div><div class="line">UPDATE_IF ARG=d __FILL__ # this command is required to close the UPDATE_IF above</div><div class="line"></div><div class="line"># compute the center of the RNA molecule</div><div class="line">center: CENTER ATOMS=rna</div><div class="line"></div><div class="line"># Wrap atoms correctly</div><div class="line">WRAPAROUND ATOMS=mg AROUND=__FILL__</div><div class="line">WRAPAROUND ATOMS=wat AROUND=center __FILL__ # anything missing here?</div><div class="line"></div><div class="line"># Dump the last trajectory</div><div class="line">DUMPATOMS ATOMS=rna,wat,mg FILE=rna-wrap.gro</div></pre></td></tr></table></figure></p>
+<p>我的设置与结果<br>首先创建一个仅含RNA的pdb文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep -v <span class="string">"SOL"</span> ref.pdb | grep -v <span class="string">"MG"</span> &gt; refrna.pdb</div></pre></td></tr></table></figure></p>
+<p>我的配置如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># First load information about the molecule.</div><div class="line">MOLINFO STRUCTURE=ref.pdb MOLTYPE=rna</div><div class="line"></div><div class="line"># Define here the groups that you need.</div><div class="line"># Same as in the previous exercise.</div><div class="line">rna: GROUP ATOMS=1-258</div><div class="line">mg:  GROUP ATOMS=6580</div><div class="line">wat: GROUP ATOMS=259-6579</div><div class="line"></div><div class="line"># Make RNA duplex whole.</div><div class="line">WHOLEMOLECULES ENTITY0=1-258</div><div class="line"></div><div class="line"># Dump first trajectory in gro format.</div><div class="line"># Notice that PLUMED understands the format based on the file extension</div><div class="line">DUMPATOMS ATOMS=rna FILE=rna-whole.gro</div><div class="line"></div><div class="line"># Align RNA duplex to a reference structure</div><div class="line"># This should not be the ref.pdb file but a new file with only RNA atoms.</div><div class="line">FIT_TO_TEMPLATE REFERENCE=refrna.pdb TYPE=SIMPLE</div><div class="line"># Notice that before using FIT_TO_TEMPLATE we used WHOLEMOLECULES to make RNA whole</div><div class="line"># This is necessary otherwise you would align a broken molecule!</div><div class="line"></div><div class="line"># Dump the aligned RNA on a separate file</div><div class="line">DUMPATOMS ATOMS=rna FILE=rna-aligned.gro</div><div class="line"></div><div class="line"># Compute the distance between the Mg and the Phosphorous from residue 8</div><div class="line">d: DISTANCE ATOMS=mg,227 ## put the serial number of the correct phosphorous here</div><div class="line"></div><div class="line"># here we only dump frames conditioned to the value of d</div><div class="line">UPDATE_IF ARG=d LESS_THAN=0.5</div><div class="line">DUMPATOMS ATOMS=rna,mg FILE=rna-select.gro</div><div class="line">UPDATE_IF ARG=d END # this command is required to close the UPDATE_IF above</div><div class="line"></div><div class="line"># compute the center of the RNA molecule</div><div class="line">center: CENTER ATOMS=rna</div><div class="line"></div><div class="line"># Wrap atoms correctly</div><div class="line">WRAPAROUND ATOMS=mg AROUND=rna</div><div class="line">WRAPAROUND ATOMS=wat AROUND=center GROUPBY=3 # anything missing here?</div><div class="line"></div><div class="line"># Dump the last trajectory</div><div class="line">DUMPATOMS ATOMS=rna,wat,mg FILE=rna-wrap.gro</div></pre></td></tr></table></figure></p>
+<p>执行命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plumed driver --plumed plumed.dat --mf_xtc broken.xtc</div></pre></td></tr></table></figure></p>
+<p>我使用的是<strong>TYPE=SIMPLE </strong>，但是教程上建议的是 <strong>OPTIMAL</strong>，但是我一使用就报错，暂时不知道原因，也不知道自己哪里错了，不知道是不是bug<br>以下为我的结果：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/2018/4/p-5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>参考视频:<br><a href="https://asciinema.org/a/174035" target="_blank" rel="external">练习1b</a><br><a href="https://asciinema.org/a/174032" target="_blank" rel="external">练习1</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-23T13:00:21.873Z" itemprop="dateUpdated">2019-03-23 21:00:21</time>
+</span><br>
+
+
+        
+        链接：<a href="/30.html" target="_blank" rel="external">http://kangsgo.com/30.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://kangsgo.com">
+            <img src="/img/avatar.jpg" alt="kangsgo">
+            kangsgo
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gromacs/">Gromacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLUMED/">PLUMED</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/30.html&title=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/30.html&title=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/30.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&url=http://kangsgo.com/30.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/30.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/29.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PLUMED系列-安装教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/28.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">自动化之Pexpect</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>kangsgo &copy; 2015 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备18006841号-1</a><br>
+                
+				<div style="width:300px;margin:0 auto; padding:20px 0;">
+				<img src="http://billvm.com/usr/uploads/2018/08/1822562579.png"  alt="公安备案" />
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43010402000569" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43010402000569号</p></a>
+		 	</div>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://kangsgo.com/30.html&title=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&pic=http://kangsgo.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://kangsgo.com/30.html&title=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&source=Gromacs,Dock,Martini,Chimera,Pymol" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kangsgo.com/30.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PLUMED系列-Trieste使用PLUMED分析轨迹》 — 小康学习&url=http://kangsgo.com/30.html&via=http://kangsgo.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://kangsgo.com/30.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABW0lEQVR42u3aQQ7CMAxEUe5/6SKxJu6Mhy6wf1aItuQVqU5q+/WSx/UZ9dHTOfW10YAFaxDrKsfpnBPo9I0+FyxYm1n1g638kH4bUhCBBQvWYRrlqBIgYMGClbOUAKHfHixYsNxNc28hf3wvDwvWCJabSEo+P5jfggXrb1mXOerFtRcUvswCC9YyVp700VO9dmEGFqw1rLyUoqecjGthwVrJ0lsH3G20+w0sWJtZSuOOniRSQslNsIAFaxkrKaj0AkGUWoIFazRLT+7kDUDGrcKCtYblJo+S1906KBw3zbBgLWMlgSBpXDD28rBgDWXpIUBJMyX9DkblBxascaxeK4C7K9eTULBg7WT1Eky/atpzN9awYM1mJUFBbyGy/w9YsFaykoe8N/3NUg0LFiyzzOk+/EaZExYsWMELarKow4K1mdUrZNYJX72sAgsWrPxd0k3aNrNZsGDNZL0BJX0DWjCWQAIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
